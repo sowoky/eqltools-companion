@@ -28,7 +28,7 @@ function buildIndexes(datasets) {
       NAME2KEY.set(z.name.toLowerCase(), key);
       const m = new Map();
       for (const row of z.mobs) {
-        const n = K.normName(row.n);
+        const n = K.normMob(row.n);
         if (!m.has(n)) m.set(n, row);
         if (!NAMEZONES.has(n)) NAMEZONES.set(n, new Set());
         NAMEZONES.get(n).add(key);
@@ -71,7 +71,7 @@ function bumpActive(ts) {
 
 function newStream(file) {
   currentFile = file;
-  stream = new P.KillStream({ name2key: NAME2KEY, normName: K.normName });
+  stream = new P.KillStream({ name2key: NAME2KEY, normName: K.normMob });
   killBuf = [];
 }
 
@@ -86,7 +86,7 @@ function onBootstrap({ file, text }) {
   // tracker (high-water mark makes restarts safe — same parseLog semantics,
   // inlined so loot isn't discarded), the last SEED_CAP drops for the feed,
   // and the final zone so the live stream starts where the player is.
-  const boot = new P.KillStream({ name2key: NAME2KEY, normName: K.normName });
+  const boot = new P.KillStream({ name2key: NAME2KEY, normName: K.normMob });
   const kills = [], loots = [];
   const collect = ev => {
     if (ev.kind === "kill") kills.push({ ts: ev.ts, zone: ev.zone, n: ev.n, credit: ev.credit });
@@ -774,6 +774,9 @@ async function main() {
   const init = await window.companion.init();
   buildIndexes(init.datasets);
   STATE = K.load();
+  // Kills an older matching rule filed as unmatched (the site's /kills page
+  // does the same migration on load).
+  if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE);
   LOGSTATUS.logDir = init.settings.logDir;
   renderOverlayState(init.overlay);
   $("verLine").textContent = `EQL Tools Companion ${init.version} — data © eqlwiki (CC BY-SA 4.0), served by eqltools.com. Logs are read locally and never leave this machine.`;
@@ -791,7 +794,7 @@ async function main() {
   window.companion.onLogStatus(st => { LOGSTATUS = st; renderStatus(); });
   window.companion.onInvFile(onInvFile);
   window.companion.onInvStatus(onInvStatus);
-  window.companion.onDataUpdated(d => { buildIndexes(d); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); renderInv(); renderQuests(); pushZone(); });
+  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); renderInv(); renderQuests(); pushZone(); });
   window.companion.onOverlayState(renderOverlayState);
   window.companion.onUpdate(renderUpdate);
   renderUpdate(await window.companion.getUpdate());

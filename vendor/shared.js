@@ -33,6 +33,14 @@ window.EQLKills = (() => {
     return s;
   }
 
+  // Mob-only key. The wiki disambiguates same-named mobs with a parenthetical
+  // the game never prints — "a shadowknight (Ogre)", "Guard Mystan (Northern
+  // Felwithe)" — so mob matching drops (...) groups. Items must stay on plain
+  // normName: "(Azia)"/"(Beza)" research words are genuinely different items.
+  function normMob(n) {
+    return normName(String(n).replace(/\s*\([^)]*\)/g, " "));
+  }
+
   // Re-key a state written before normName existed (raw-lowercase keys).
   // Idempotent: normName of a normalized key is itself.
   function migrateNames(s) {
@@ -84,9 +92,33 @@ window.EQLKills = (() => {
 
   const inZone = (bucket, zkey, n) => !!(bucket[zkey] && bucket[zkey][n]);
 
+  // Move unmatched kills the current roster index recognizes into the credit
+  // pool — an older parse filed them before the matching rule that now covers
+  // them existed ("orc legionnaire" vs "an orc legionnaire", "a shadowknight"
+  // vs "a shadowknight (Ogre)"). nameZones: Map(normMob name -> Set(zone
+  // keys)). Mutates s; returns moved count — caller saves when nonzero.
+  function reclassify(s, nameZones) {
+    let moved = 0;
+    for (const [z, mobs] of Object.entries(s.unmatched)) {
+      for (const [n, c] of Object.entries(mobs)) {
+        if (!nameZones.has(n)) {
+          if (/ pet$/.test(n)) { delete mobs[n]; moved += c; }  // NPC-pet noise from older parses
+          continue;
+        }
+        let zk = z;
+        if (zk === UNPLACED && nameZones.get(n).size === 1) zk = nameZones.get(n).values().next().value;
+        const zb = s.kills[zk] || (s.kills[zk] = {});
+        if (zb[n]) zb[n].c += c; else zb[n] = { c, t: 0 };
+        delete mobs[n]; moved += c;
+      }
+      if (!Object.keys(mobs).length) delete s.unmatched[z];
+    }
+    return moved;
+  }
+
   // row: a roster mob {n, named, ...}. glob: globalKilled(s).
   function credited(s, glob, zkey, row) {
-    const n = normName(row.n);
+    const n = normMob(row.n);
     if (inZone(s.kills, zkey, n)) return true;
     if (s.settings.witnessed && inZone(s.wit, zkey, n)) return true;
     if ((row.named || s.settings.genericEverywhere) && glob.has(n)) return true;
@@ -151,6 +183,6 @@ window.EQLKills = (() => {
     return { zones, done, total, zonesDone, zonesTotal, glob };
   }
 
-  return { KEY, UNPLACED, DEFAULTS, blank, load, save, clear, normName,
-           globalKilled, credited, zoneIgnored, lvlNum, sortRows, summarize };
+  return { KEY, UNPLACED, DEFAULTS, blank, load, save, clear, normName, normMob,
+           globalKilled, credited, reclassify, zoneIgnored, lvlNum, sortRows, summarize };
 })();
