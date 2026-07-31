@@ -5,8 +5,7 @@ EverQuest Legends log file in real time and can overlay the game window.
 
 **Download:** grab `EQL-Tools-Companion-Setup-<version>.exe` from the
 [latest release](https://github.com/sowoky/eqltools-companion/releases/latest).
-That's the installer — installed builds keep themselves updated. The portable
-exe and the zip are for machines you can't install on; they don't self-update.
+It installs per-user — no admin rights needed — and keeps itself updated.
 
 The build is not code-signed yet, so Windows flags the download. Either way
 past works:
@@ -43,7 +42,7 @@ Logging must be on in game: `/log`.
 
 ```
 npm install
-npm run dist:win     # → dist/  (installer + portable exe, x64)
+npm run dist:win     # → dist/  (per-user installer, x64)
 ```
 
 Works from this repo as published: `vendor/` (the site's canonical
