@@ -26,6 +26,15 @@ const RX = {
   // alternation (undefined = plain "...corpse." — kept), m[12] the coin
   // string when the tail is a sale.
   loot:      new RegExp(TS + String.raw`You looted (?:an? |(\d+) )?(.+?) from (.+?)'s corpse(?:\.| (and stored it in your tradeskill depot|and sold it for free\.|and sold it for (.+?)\.|to create an? .+))?$`),
+  // MANUAL loot (corpse window) prints a different line than auto-loot:
+  // "--You have looted a Charcoal from an earth elemental's corpse.--".
+  // Observed 2026-07-31, 309 lines in eqlog_Ravlin_oggok: always --wrapped,
+  // article precedes even plural item names ("a Bone Chips"), stacks print a
+  // count ("2 Bone Chips"), items may contain apostrophes ("Rambunctious
+  // Pet's Skull from a rambunctious pet's corpse" — the lazy item group stops
+  // at the first " from "). No sell/depot tail exists on manual loot.
+  // Groups mirror RX.loot: m[8] qty, m[9] item, m[10] mob.
+  lootManual: new RegExp(TS + String.raw`--You have looted (?:an? |(\d+) )?(.+?) from (.+?)'s corpse\.--$`),
 };
 const ZONE_SKIP = /^(an area|an Arena|the Drunken Monkey)/;
 const ZONE_TIER = /^(.*) [1-4] \((?:Awakened|Adaptive|Fused|Refined)\)$/;
@@ -113,6 +122,11 @@ class KillStream {
       out.push({ kind: "loot", ts, zone: this.zone,
         qty: +(m[8] || 1), item: m[9], mob: m[10], disp,
         ...(disp === "sold" ? { soldFor: m[12] } : {}) });
+    } else if ((m = RX.lootManual.exec(rawLine))) {
+      const ts = toSec(m);
+      this._seenTs = ts;
+      out.push({ kind: "loot", ts, zone: this.zone,
+        qty: +(m[8] || 1), item: m[9], mob: m[10], disp: "kept" });
     }
     this._drain(out, false);
     return out;

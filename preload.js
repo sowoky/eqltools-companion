@@ -17,6 +17,7 @@ contextBridge.exposeInMainWorld("companion", {
   openWiki: (url) => ipcRenderer.send("wiki:open", url),
   toggleOverlay: (force) => ipcRenderer.send("overlay:toggle", force),
   setClickThrough: (on) => ipcRenderer.send("overlay:clickThrough", on),
+  overlayHotspot: (on) => ipcRenderer.send("overlay:hotspot", on),
   setOverlayOpacity: (v) => ipcRenderer.send("overlay:opacity", v),
   sendFeedEvent: (ev) => ipcRenderer.send("feed:event", ev),
   sendZone: (z) => ipcRenderer.send("feed:zone", z),

@@ -66,7 +66,10 @@ if (process.argv.includes("--fixture")) {
     }
     if (step % 2 === 1) {
       const item = LOOT[(step >> 1) % LOOT.length];
-      b.push(`${now()} You looted a ${item} from ${mob}'s corpse.`);
+      // alternate the two real loot formats: auto-loot and manual corpse-window
+      b.push((step >> 1) % 2 === 0
+        ? `${now()} You looted a ${item} from ${mob}'s corpse.`
+        : `${now()} --You have looted a ${item} from ${mob}'s corpse.--`);
     }
     appendFileSync(out, b.join("\n") + "\n");
     step++;

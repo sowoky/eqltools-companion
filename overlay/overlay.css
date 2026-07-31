@@ -1,50 +1,52 @@
-/* Overlay — readable over game footage: dark translucent panel, hard text
-   shadows, nothing subtle. The whole window is transparent; #panel is the
+/* Overlay — compact and utilitarian (Kyle, 2026-07-31): tight rows, small
+   type, hard text shadows for readability over game footage, no decoration
+   beyond the quest highlight. The whole window is transparent; #panel is the
    visible surface. */
 * { box-sizing: border-box; margin: 0; }
 html, body { height: 100%; background: transparent; overflow: hidden; }
 body {
-  font: 13px/1.4 "Segoe UI", system-ui, sans-serif;
+  font: 11.5px/1.35 "Segoe UI", system-ui, sans-serif;
   color: #ece8f7;
   text-shadow: 0 1px 2px rgba(0,0,0,.9);
   user-select: none;
 }
 #panel {
   height: 100%; display: flex; flex-direction: column;
-  background: rgba(11, 9, 19, .78);
-  border: 1px solid rgba(201, 149, 42, .55);
-  border-radius: 8px; overflow: hidden;
+  background: rgba(9, 8, 14, .82);
+  border: 1px solid rgba(201, 149, 42, .45);
+  border-radius: 4px; overflow: hidden;
 }
 #bar {
-  display: flex; align-items: center; gap: 8px;
-  padding: 5px 9px;
+  display: flex; align-items: center; gap: 6px;
+  padding: 2px 4px 2px 7px;
   background: rgba(23, 18, 39, .9);
-  border-bottom: 1px solid rgba(201, 149, 42, .35);
+  border-bottom: 1px solid rgba(201, 149, 42, .3);
   -webkit-app-region: drag;            /* the whole bar drags the window */
-  font-weight: 600; color: #e7b94e; font-size: 12px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-weight: 600; color: #e7b94e; font-size: 11px;
+  white-space: nowrap; overflow: hidden;
 }
 #bar span { flex: 1; overflow: hidden; text-overflow: ellipsis; }
 #btnPin {
   -webkit-app-region: no-drag;
-  background: none; border: 1px solid rgba(201,149,42,.4); border-radius: 5px;
-  color: #e7b94e; cursor: pointer; font-size: 11px; padding: 1px 6px;
+  background: none; border: 1px solid rgba(201,149,42,.35); border-radius: 3px;
+  color: #c9952a; cursor: pointer; font: 10px "Segoe UI", system-ui, sans-serif;
+  padding: 0 5px; line-height: 15px;
 }
-#btnPin:hover { border-color: #e7b94e; }
-body.through #btnPin { display: none; }  /* unreachable anyway — the hotkey is the way back */
+#btnPin:hover { border-color: #e7b94e; color: #e7b94e; }
+body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 
-#feed { list-style: none; padding: 4px 8px; overflow: hidden; flex: 1; }
-#feed li { padding: 3px 0; border-bottom: 1px solid rgba(44, 37, 69, .6); }
+#feed { list-style: none; padding: 2px 7px; overflow: hidden; flex: 1; }
+#feed li { padding: 1px 0; border-bottom: 1px solid rgba(44, 37, 69, .45); }
 #feed li:last-child { border-bottom: none; }
-#feed .kill { color: #9086ad; font-size: 12px; }
+#feed .kill { color: #8d84a8; font-size: 11px; }
 #feed .loot { color: #ccc4de; }
 #feed .quest {
   color: #f6dfa0;
-  background: rgba(201, 149, 42, .14);
-  border-left: 3px solid #e7b94e;
-  padding: 4px 6px; border-radius: 4px; margin: 2px 0;
+  border-left: 2px solid #e7b94e;
+  padding: 1px 0 1px 5px; margin: 1px 0;
 }
 #feed .quest b { color: #fff; }
-#feed .qn { color: #9ccc9c; cursor: pointer; text-decoration: underline; text-decoration-color: rgba(156,204,156,.5); }
-#feed .qn:hover { color: #f6dfa0; }
-#feed .rew { display: block; font-size: 12px; color: #ccc4de; }
+#feed .qn { color: #9ccc9c; cursor: pointer; }
+#feed .qn:hover { color: #f6dfa0; text-decoration: underline; }
+#feed .rew { color: #b6aecb; font-size: 11px; }
+#feed .dim { color: #8d84a8; }

@@ -397,6 +397,15 @@ ipcMain.on("overlay:toggle", (_e, force) => toggleOverlay(force));
 ipcMain.on("overlay:clickThrough", (_e, on) => {
   SETTINGS.overlay.clickThrough = !!on; saveSettings(); applyClickThrough(); notifyOverlayState();
 });
+/* The unpin hotspot: forward:true keeps mousemove flowing while ignoring
+   clicks, so the overlay can tell us the cursor is over the pin button and
+   we flip the window interactive just for it — otherwise a pinned overlay
+   could only be unpinned by hotkey or the main window (Kyle, 2026-07-31:
+   "once you pin it, you can't unpin it"). */
+ipcMain.on("overlay:hotspot", (_e, on) => {
+  if (overlayWin && SETTINGS.overlay.clickThrough)
+    overlayWin.setIgnoreMouseEvents(!on, { forward: true });
+});
 ipcMain.on("overlay:opacity", (_e, v) => {
   SETTINGS.overlay.opacity = Math.min(1, Math.max(0.2, +v || 0.92)); saveSettings(); applyClickThrough();
 });
