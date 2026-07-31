@@ -1,0 +1,1441 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Ancient Fishing Pole",
+   "u": "https://eqlwiki.com/index.php/Ancient_Fishing_Pole"
+  },
+  {
+   "g": 1,
+   "n": "Ancient Seahorse Hide Cloak",
+   "u": "https://eqlwiki.com/index.php/Ancient_Seahorse_Hide_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Ball of Kelp",
+   "u": "https://eqlwiki.com/index.php/Ball_of_Kelp"
+  },
+  {
+   "g": 1,
+   "n": "Behemoth's Fangs",
+   "u": "https://eqlwiki.com/index.php/Behemoth's_Fangs"
+  },
+  {
+   "n": "Black Marble",
+   "u": "https://eqlwiki.com/index.php/Black_Marble"
+  },
+  {
+   "n": "Black Pearl",
+   "u": "https://eqlwiki.com/index.php/Black_Pearl"
+  },
+  {
+   "n": "Bloodstone",
+   "u": "https://eqlwiki.com/index.php/Bloodstone"
+  },
+  {
+   "g": 1,
+   "n": "Bloodstone Ring",
+   "u": "https://eqlwiki.com/index.php/Bloodstone_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Bowl of Watery Protection",
+   "u": "https://eqlwiki.com/index.php/Bowl_of_Watery_Protection"
+  },
+  {
+   "n": "Bulthar Hide",
+   "u": "https://eqlwiki.com/index.php/Bulthar_Hide"
+  },
+  {
+   "n": "Bulthar Trunk",
+   "u": "https://eqlwiki.com/index.php/Bulthar_Trunk"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Black Marble",
+   "u": "https://eqlwiki.com/index.php/Chipped_Black_Marble"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Onyx Sapphire",
+   "u": "https://eqlwiki.com/index.php/Chipped_Onyx_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Cloak of the Seacaller",
+   "u": "https://eqlwiki.com/index.php/Cloak_of_the_Seacaller"
+  },
+  {
+   "g": 1,
+   "n": "Conch Shell Horn",
+   "u": "https://eqlwiki.com/index.php/Conch_Shell_Horn"
+  },
+  {
+   "n": "Coral Crescent",
+   "u": "https://eqlwiki.com/index.php/Coral_Crescent"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Black Marble",
+   "u": "https://eqlwiki.com/index.php/Crushed_Black_Marble"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Coral",
+   "u": "https://eqlwiki.com/index.php/Crushed_Coral"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Diamond Dust",
+   "u": "https://eqlwiki.com/index.php/Crushed_Diamond_Dust"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Emerald",
+   "u": "https://eqlwiki.com/index.php/Crushed_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Flame Emerald",
+   "u": "https://eqlwiki.com/index.php/Crushed_Flame_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Flame Opal",
+   "u": "https://eqlwiki.com/index.php/Crushed_Flame_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Jaundice Gem",
+   "u": "https://eqlwiki.com/index.php/Crushed_Jaundice_Gem"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Lava Ruby",
+   "u": "https://eqlwiki.com/index.php/Crushed_Lava_Ruby"
+  },
+  {
+   "n": "Crushed Nephrite",
+   "u": "https://eqlwiki.com/index.php/Crushed_Nephrite"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Onyx Sapphire",
+   "u": "https://eqlwiki.com/index.php/Crushed_Onyx_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Opal",
+   "u": "https://eqlwiki.com/index.php/Crushed_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Sea Sapphire",
+   "u": "https://eqlwiki.com/index.php/Crushed_Sea_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Topaz",
+   "u": "https://eqlwiki.com/index.php/Crushed_Topaz"
+  },
+  {
+   "n": "Crystallized Sulfur",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
+  },
+  {
+   "n": "Deepwater Ink",
+   "u": "https://eqlwiki.com/index.php/Deepwater_Ink"
+  },
+  {
+   "g": 1,
+   "n": "Dragonbane Herb",
+   "u": "https://eqlwiki.com/index.php/Dragonbane_Herb"
+  },
+  {
+   "g": 1,
+   "n": "Drums of the Beast",
+   "u": "https://eqlwiki.com/index.php/Drums_of_the_Beast"
+  },
+  {
+   "n": "Emerald",
+   "u": "https://eqlwiki.com/index.php/Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Enchanted Kelp Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Enchanted_Kelp_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Enchanted Kelp Leggings",
+   "u": "https://eqlwiki.com/index.php/Enchanted_Kelp_Leggings"
+  },
+  {
+   "n": "Excellent Siren Scales",
+   "u": "https://eqlwiki.com/index.php/Excellent_Siren_Scales"
+  },
+  {
+   "n": "Fatty Walrus Meat",
+   "u": "https://eqlwiki.com/index.php/Fatty_Walrus_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Fellspine's Tail",
+   "u": "https://eqlwiki.com/index.php/Fellspine's_Tail"
+  },
+  {
+   "n": "Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Fire Emerald Ring",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Chrysolite",
+   "u": "https://eqlwiki.com/index.php/Flawed_Chrysolite"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Flame Emerald",
+   "u": "https://eqlwiki.com/index.php/Flawed_Flame_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Flame Opal",
+   "u": "https://eqlwiki.com/index.php/Flawed_Flame_Opal"
+  },
+  {
+   "n": "Flawed Lava Ruby",
+   "u": "https://eqlwiki.com/index.php/Flawed_Lava_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Topaz",
+   "u": "https://eqlwiki.com/index.php/Flawed_Topaz"
+  },
+  {
+   "g": 1,
+   "n": "Flawless Aquamarine",
+   "u": "https://eqlwiki.com/index.php/Flawless_Aquamarine"
+  },
+  {
+   "g": 1,
+   "n": "Flawless Diamond",
+   "u": "https://eqlwiki.com/index.php/Flawless_Diamond"
+  },
+  {
+   "n": "Fresh Fish",
+   "u": "https://eqlwiki.com/index.php/Fresh_Fish"
+  },
+  {
+   "g": 1,
+   "n": "Gloves of Watery Distraction",
+   "u": "https://eqlwiki.com/index.php/Gloves_of_Watery_Distraction"
+  },
+  {
+   "g": 1,
+   "n": "Golden Earring",
+   "u": "https://eqlwiki.com/index.php/Golden_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Golden Pendant",
+   "u": "https://eqlwiki.com/index.php/Golden_Pendant"
+  },
+  {
+   "g": 1,
+   "n": "Immaculate Shell Horn",
+   "u": "https://eqlwiki.com/index.php/Immaculate_Shell_Horn"
+  },
+  {
+   "n": "Imperfect Diamond",
+   "u": "https://eqlwiki.com/index.php/Imperfect_Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Improved Invis vs Undead",
+   "u": "https://eqlwiki.com/index.php/Improved_Invis_vs_Undead"
+  },
+  {
+   "g": 1,
+   "n": "Inscribable Words",
+   "u": "https://eqlwiki.com/index.php/Inscribable_Words"
+  },
+  {
+   "g": 1,
+   "n": "Jade Ring",
+   "u": "https://eqlwiki.com/index.php/Jade_Ring"
+  },
+  {
+   "n": "Jasper",
+   "u": "https://eqlwiki.com/index.php/Jasper"
+  },
+  {
+   "n": "Jaundice Gem",
+   "u": "https://eqlwiki.com/index.php/Jaundice_Gem"
+  },
+  {
+   "n": "Lock of Siren Hair",
+   "u": "https://eqlwiki.com/index.php/Lock_of_Siren_Hair"
+  },
+  {
+   "g": 1,
+   "n": "Lyendlln's Lute",
+   "u": "https://eqlwiki.com/index.php/Lyendlln's_Lute"
+  },
+  {
+   "g": 1,
+   "n": "Mask of Swirling Water",
+   "u": "https://eqlwiki.com/index.php/Mask_of_Swirling_Water"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Amulet",
+   "u": "https://eqlwiki.com/index.php/Mithril_Amulet"
+  },
+  {
+   "n": "Molkor Hide",
+   "u": "https://eqlwiki.com/index.php/Molkor_Hide"
+  },
+  {
+   "g": 1,
+   "n": "Neriad Shawl",
+   "u": "https://eqlwiki.com/index.php/Neriad_Shawl"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Amice",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Amice"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Bracelet",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Cap",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Choker",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Choker"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Cloak",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Gloves",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Lined Shoes",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Lined_Shoes"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Pantaloons",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Pantaloons"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Sash",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Sash"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Sleeves",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Tunic",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Netted Kelp Veil",
+   "u": "https://eqlwiki.com/index.php/Netted_Kelp_Veil"
+  },
+  {
+   "n": "Onyx",
+   "u": "https://eqlwiki.com/index.php/Onyx"
+  },
+  {
+   "n": "Opal",
+   "u": "https://eqlwiki.com/index.php/Opal"
+  },
+  {
+   "g": 1,
+   "n": "Ornately Runed Shell Necklace",
+   "u": "https://eqlwiki.com/index.php/Ornately_Runed_Shell_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Earring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Ring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Ring"
+  },
+  {
+   "n": "Peridot",
+   "u": "https://eqlwiki.com/index.php/Peridot"
+  },
+  {
+   "n": "Platinum Dragon Scale",
+   "u": "https://eqlwiki.com/index.php/Platinum_Dragon_Scale"
+  },
+  {
+   "n": "Pristine Emerald",
+   "u": "https://eqlwiki.com/index.php/Pristine_Emerald"
+  },
+  {
+   "n": "Rune of Banding",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Banding"
+  },
+  {
+   "n": "Rune of Solusek Ro",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Solusek_Ro"
+  },
+  {
+   "g": 1,
+   "n": "Runed Shell Necklace",
+   "u": "https://eqlwiki.com/index.php/Runed_Shell_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Runed Walrus Fang Ring",
+   "u": "https://eqlwiki.com/index.php/Runed_Walrus_Fang_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Runed Walrus Hide Cloak",
+   "u": "https://eqlwiki.com/index.php/Runed_Walrus_Hide_Cloak"
+  },
+  {
+   "n": "Runed_Sea_Shell_(Cloud)",
+   "u": "https://eqlwiki.com/index.php/Runed_Sea_Shell_(Cloud)"
+  },
+  {
+   "n": "Sapphire",
+   "u": "https://eqlwiki.com/index.php/Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Sapphire Necklace",
+   "u": "https://eqlwiki.com/index.php/Sapphire_Necklace"
+  },
+  {
+   "n": "Seahorse Scales",
+   "u": "https://eqlwiki.com/index.php/Seahorse_Scales"
+  },
+  {
+   "g": 1,
+   "n": "Seahorse Spine Bracelet",
+   "u": "https://eqlwiki.com/index.php/Seahorse_Spine_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Shield of the Tsunami",
+   "u": "https://eqlwiki.com/index.php/Shield_of_the_Tsunami"
+  },
+  {
+   "g": 1,
+   "n": "Silver Earring",
+   "u": "https://eqlwiki.com/index.php/Silver_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Silver Ring",
+   "u": "https://eqlwiki.com/index.php/Silver_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Siren Hair",
+   "u": "https://eqlwiki.com/index.php/Siren_Hair"
+  },
+  {
+   "g": 1,
+   "n": "Siren Hair Earring",
+   "u": "https://eqlwiki.com/index.php/Siren_Hair_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Siren Hair Locket",
+   "u": "https://eqlwiki.com/index.php/Siren_Hair_Locket"
+  },
+  {
+   "g": 1,
+   "n": "Sleeves of the Kelpmaidens",
+   "u": "https://eqlwiki.com/index.php/Sleeves_of_the_Kelpmaidens"
+  },
+  {
+   "g": 1,
+   "n": "Spiked Seahorse Hide Belt",
+   "u": "https://eqlwiki.com/index.php/Spiked_Seahorse_Hide_Belt"
+  },
+  {
+   "g": 1,
+   "n": "Spined Seahorse Hide Breastplate",
+   "u": "https://eqlwiki.com/index.php/Spined_Seahorse_Hide_Breastplate"
+  },
+  {
+   "n": "Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
+  },
+  {
+   "n": "Star Ruby",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Star Ruby Earring",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Swordfish Bill",
+   "u": "https://eqlwiki.com/index.php/Swordfish_Bill"
+  },
+  {
+   "n": "Swordfish tooth",
+   "u": "https://eqlwiki.com/index.php/Swordfish_tooth"
+  },
+  {
+   "n": "Ulthork Hide",
+   "u": "https://eqlwiki.com/index.php/Ulthork_Hide"
+  },
+  {
+   "n": "Ulthork Meat",
+   "u": "https://eqlwiki.com/index.php/Ulthork_Meat"
+  },
+  {
+   "n": "Ulthork Tusks",
+   "u": "https://eqlwiki.com/index.php/Ulthork_Tusks"
+  },
+  {
+   "g": 1,
+   "n": "Walrus Hide Pauldrons",
+   "u": "https://eqlwiki.com/index.php/Walrus_Hide_Pauldrons"
+  },
+  {
+   "g": 1,
+   "n": "Walrus Skin Drum",
+   "u": "https://eqlwiki.com/index.php/Walrus_Skin_Drum"
+  },
+  {
+   "g": 1,
+   "n": "Wavecrasher",
+   "u": "https://eqlwiki.com/index.php/Wavecrasher"
+  },
+  {
+   "n": "Words of Motion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Motion"
+  },
+  {
+   "n": "Words of Recall",
+   "u": "https://eqlwiki.com/index.php/Words_of_Recall"
+  },
+  {
+   "g": 1,
+   "n": "Woven Kelp Sandals",
+   "u": "https://eqlwiki.com/index.php/Woven_Kelp_Sandals"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    12,
+    13,
+    16,
+    31,
+    32,
+    42,
+    43,
+    44,
+    45,
+    46,
+    48,
+    54,
+    59,
+    94,
+    95
+   ],
+   "loc": null,
+   "lvl": "51-53",
+   "n": "a coldspine seahorse",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Coldspine_Seahorse"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    59
+   ],
+   "loc": null,
+   "lvl": "54 - 55",
+   "n": "a massive walrus",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_massive_walrus"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    55,
+    65,
+    66,
+    67,
+    68,
+    72,
+    73,
+    75,
+    76,
+    98
+   ],
+   "loc": null,
+   "lvl": "50?-53",
+   "n": "a neriad maiden",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Neriad_Maiden"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    15,
+    65,
+    89,
+    90,
+    93,
+    113
+   ],
+   "loc": null,
+   "lvl": "55-56",
+   "n": "a neriad mistress",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Neriad_Mistress"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    35,
+    36,
+    50,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    89,
+    90,
+    113
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "a neriad sea princess",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_neriad_sea_princess"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    36,
+    53,
+    65,
+    80,
+    89,
+    90,
+    114
+   ],
+   "loc": [
+    -588.0,
+    -491.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "a neriad weaver",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_neriad_weaver"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    4,
+    5,
+    31,
+    34,
+    38,
+    47,
+    48,
+    52,
+    55,
+    57,
+    79,
+    81,
+    82,
+    83,
+    85
+   ],
+   "loc": [
+    -250.0,
+    -64.0,
+    null
+   ],
+   "lvl": "51-53",
+   "n": "a servant manatee",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_servant_manatee"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "48",
+   "n": "a servant sea elephant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_servant_sea_elephant"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    0,
+    49,
+    108,
+    109
+   ],
+   "loc": [
+    -335.0,
+    -303.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "a servant swordfish",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_servant_swordfish"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "47",
+   "n": "a servant walrus",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_servant_walrus"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    13,
+    16,
+    42,
+    43,
+    44,
+    45,
+    46,
+    48,
+    54,
+    59,
+    60,
+    91
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "a siren beguiler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Siren_Beguiler"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a siren coercer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_siren_coercer"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Very Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    15,
+    30,
+    37,
+    60,
+    83,
+    86,
+    87,
+    88,
+    91,
+    99,
+    114,
+    116
+   ],
+   "loc": null,
+   "lvl": "37",
+   "n": "a siren enticer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Siren_Enticer"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    4,
+    12,
+    13,
+    16,
+    42,
+    43,
+    44,
+    45,
+    46,
+    48,
+    50,
+    54,
+    56,
+    59,
+    91
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "a siren myrmidon",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Siren_Myrmidon"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    15,
+    37,
+    43,
+    48,
+    55,
+    60,
+    80,
+    85,
+    91
+   ],
+   "loc": [
+    -555.0,
+    -314.0,
+    null
+   ],
+   "lvl": "51?-55?",
+   "n": "a siren priestess",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_siren_priestess"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Rare",
+    "Ultra Rare",
+    "Very Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    5,
+    15,
+    30,
+    34,
+    37,
+    40,
+    47,
+    52,
+    57,
+    63,
+    79,
+    81,
+    82,
+    83,
+    88,
+    92,
+    99,
+    106
+   ],
+   "loc": null,
+   "lvl": "38",
+   "n": "a siren seductress",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Siren_Seductress"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    84
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "a siren sorceress",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_siren_sorceress"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    12,
+    13,
+    16,
+    42,
+    43,
+    44,
+    45,
+    46,
+    48,
+    54,
+    59,
+    91,
+    117
+   ],
+   "loc": null,
+   "lvl": "57",
+   "n": "a siren templar",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Siren_Templar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "52?-53",
+   "n": "a walrus servant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_walrus_servant"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "54-56+",
+   "n": "a watery servant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_watery_servant"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    7,
+    9,
+    10,
+    17,
+    20,
+    21,
+    23,
+    27,
+    28,
+    30,
+    31,
+    38,
+    48,
+    77,
+    97,
+    105
+   ],
+   "loc": null,
+   "lvl": "53-55?",
+   "n": "an enthralled bulthar",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Enthralled_Bulthar"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    21,
+    22,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    31,
+    38,
+    64,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    112
+   ],
+   "loc": null,
+   "lvl": "51-56",
+   "n": "an enthralled molkor",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Enthralled_Molkor"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    31,
+    110,
+    111,
+    112,
+    118
+   ],
+   "loc": [
+    -201.0,
+    102.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "an enthralled ulthork",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Enthralled_Ulthork"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    5,
+    6,
+    7,
+    11,
+    16,
+    45,
+    51,
+    58,
+    59,
+    78,
+    95,
+    97,
+    98,
+    107
+   ],
+   "loc": null,
+   "lvl": "53-56+",
+   "n": "an icy servant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_icy_servant"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    41,
+    48,
+    85,
+    91,
+    101
+   ],
+   "loc": [
+    170.0,
+    -49.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Elna Kelpweaver",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Elna_Kelpweaver"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    39,
+    62,
+    103,
+    104
+   ],
+   "loc": [
+    -138.0,
+    -207.0,
+    -173.0
+   ],
+   "lvl": "54",
+   "n": "Fellspine",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Fellspine"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Uncommon",
+    null
+   ],
+   "drops": [
+    8,
+    100,
+    101,
+    102
+   ],
+   "loc": [
+    -522.0,
+    -306.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Helsia Mindreaver",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Helsia_Mindreaver"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    14,
+    33,
+    60,
+    61,
+    102
+   ],
+   "loc": [
+    -638.0,
+    -738.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Mistress Latazura",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mistress_Latazura"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -638.0,
+    -737.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Priestess Sercema",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Priestess_Sercema"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    33,
+    96,
+    115
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "shimmering sea spirit",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Shimmering_Sea_Spirit"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    3
+   ],
+   "loc": [
+    -685.0,
+    -165.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Ulth the Enraged",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ulth_the_Enraged"
+  }
+ ],
+ "updated": "2026-05-25T17:58:07Z",
+ "wikiTitle": "Siren's Grotto",
+ "wikiUrl": "https://eqlwiki.com/index.php/Siren's_Grotto",
+ "zone": "sirens"
+}

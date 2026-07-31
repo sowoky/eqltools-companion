@@ -1,0 +1,883 @@
+{
+ "items": [
+  {
+   "n": "Ale",
+   "u": "https://eqlwiki.com/index.php/Ale"
+  },
+  {
+   "n": "Amber",
+   "u": "https://eqlwiki.com/index.php/Amber"
+  },
+  {
+   "g": 1,
+   "n": "Animated Shield",
+   "u": "https://eqlwiki.com/index.php/Animated_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Animated Sword2",
+   "u": "https://eqlwiki.com/index.php/Animated_Sword2"
+  },
+  {
+   "g": 1,
+   "n": "Animated Sword3",
+   "u": "https://eqlwiki.com/index.php/Animated_Sword3"
+  },
+  {
+   "g": 1,
+   "n": "Beholder Optic Fluid",
+   "u": "https://eqlwiki.com/index.php/Beholder_Optic_Fluid"
+  },
+  {
+   "n": "Block of Clay",
+   "u": "https://eqlwiki.com/index.php/Block_of_Clay"
+  },
+  {
+   "n": "Block of Ore",
+   "u": "https://eqlwiki.com/index.php/Block_of_Ore"
+  },
+  {
+   "g": 1,
+   "n": "Bloodstone Ring",
+   "u": "https://eqlwiki.com/index.php/Bloodstone_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Brahhms Horn",
+   "u": "https://eqlwiki.com/index.php/Brahhms_Horn"
+  },
+  {
+   "g": 1,
+   "n": "Bunch of Optic Nerves",
+   "u": "https://eqlwiki.com/index.php/Bunch_of_Optic_Nerves"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "g": 1,
+   "n": "Copper Amulet",
+   "u": "https://eqlwiki.com/index.php/Copper_Amulet"
+  },
+  {
+   "n": "Crystallized Sulfur",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
+  },
+  {
+   "g": 1,
+   "n": "Damaged Annals",
+   "u": "https://eqlwiki.com/index.php/Damaged_Annals"
+  },
+  {
+   "n": "Electrum Bar",
+   "u": "https://eqlwiki.com/index.php/Electrum_Bar"
+  },
+  {
+   "n": "Evil Eye Eyestalk",
+   "u": "https://eqlwiki.com/index.php/Evil_Eye_Eyestalk"
+  },
+  {
+   "n": "Flame Agate",
+   "u": "https://eqlwiki.com/index.php/Flame_Agate"
+  },
+  {
+   "g": 1,
+   "n": "Gold Ring",
+   "u": "https://eqlwiki.com/index.php/Gold_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Golden Earring",
+   "u": "https://eqlwiki.com/index.php/Golden_Earring"
+  },
+  {
+   "n": "Heavy Clay",
+   "u": "https://eqlwiki.com/index.php/Heavy_Clay"
+  },
+  {
+   "n": "Hematite",
+   "u": "https://eqlwiki.com/index.php/Hematite"
+  },
+  {
+   "g": 1,
+   "n": "Humerus Handled Mace",
+   "u": "https://eqlwiki.com/index.php/Humerus_Handled_Mace"
+  },
+  {
+   "n": "Ice of Velious",
+   "u": "https://eqlwiki.com/index.php/Ice_of_Velious"
+  },
+  {
+   "n": "Iron Ration",
+   "u": "https://eqlwiki.com/index.php/Iron_Ration"
+  },
+  {
+   "n": "Ivory",
+   "u": "https://eqlwiki.com/index.php/Ivory"
+  },
+  {
+   "n": "Jade",
+   "u": "https://eqlwiki.com/index.php/Jade"
+  },
+  {
+   "n": "Jade Shard",
+   "u": "https://eqlwiki.com/index.php/Jade_Shard"
+  },
+  {
+   "n": "Jasper",
+   "u": "https://eqlwiki.com/index.php/Jasper"
+  },
+  {
+   "g": 1,
+   "n": "Labyrinth Talisman",
+   "u": "https://eqlwiki.com/index.php/Labyrinth_Talisman"
+  },
+  {
+   "n": "Large Bag",
+   "u": "https://eqlwiki.com/index.php/Large_Bag"
+  },
+  {
+   "n": "Large Block of Clay",
+   "u": "https://eqlwiki.com/index.php/Large_Block_of_Clay"
+  },
+  {
+   "n": "Large Brick of Ore",
+   "u": "https://eqlwiki.com/index.php/Large_Brick_of_Ore"
+  },
+  {
+   "n": "Lens of Lord Soptyvr",
+   "u": "https://eqlwiki.com/index.php/Lens_of_Lord_Soptyvr"
+  },
+  {
+   "n": "Malachite",
+   "u": "https://eqlwiki.com/index.php/Malachite"
+  },
+  {
+   "g": 1,
+   "n": "Minotaur Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Minotaur_Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Minotaur Horn",
+   "u": "https://eqlwiki.com/index.php/Minotaur_Horn"
+  },
+  {
+   "g": 1,
+   "n": "Minotaur Ribcage",
+   "u": "https://eqlwiki.com/index.php/Minotaur_Ribcage"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Earring",
+   "u": "https://eqlwiki.com/index.php/Mithril_Earring"
+  },
+  {
+   "n": "Muddite Mud",
+   "u": "https://eqlwiki.com/index.php/Muddite_Mud"
+  },
+  {
+   "g": 1,
+   "n": "Onyx Ring",
+   "u": "https://eqlwiki.com/index.php/Onyx_Ring"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 24 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._24_(Left)"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "n": "Pearl Shard",
+   "u": "https://eqlwiki.com/index.php/Pearl_Shard"
+  },
+  {
+   "g": 1,
+   "n": "Polished Bone Bracelet",
+   "u": "https://eqlwiki.com/index.php/Polished_Bone_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Polished Bone Hoop",
+   "u": "https://eqlwiki.com/index.php/Polished_Bone_Hoop"
+  },
+  {
+   "g": 1,
+   "n": "Quartz Crystal",
+   "u": "https://eqlwiki.com/index.php/Quartz_Crystal"
+  },
+  {
+   "n": "Ration",
+   "u": "https://eqlwiki.com/index.php/Ration"
+  },
+  {
+   "g": 1,
+   "n": "Ring of Xorbb",
+   "u": "https://eqlwiki.com/index.php/Ring_of_Xorbb"
+  },
+  {
+   "n": "Silver Bar",
+   "u": "https://eqlwiki.com/index.php/Silver_Bar"
+  },
+  {
+   "g": 1,
+   "n": "Silver Stud",
+   "u": "https://eqlwiki.com/index.php/Silver_Stud"
+  },
+  {
+   "g": 1,
+   "n": "Slime Crystal Staff",
+   "u": "https://eqlwiki.com/index.php/Slime_Crystal_Staff"
+  },
+  {
+   "n": "Small Block of Clay",
+   "u": "https://eqlwiki.com/index.php/Small_Block_of_Clay"
+  },
+  {
+   "n": "Small Box",
+   "u": "https://eqlwiki.com/index.php/Small_Box"
+  },
+  {
+   "n": "Small Brick of Ore",
+   "u": "https://eqlwiki.com/index.php/Small_Brick_of_Ore"
+  },
+  {
+   "g": 1,
+   "n": "Small Buckler",
+   "u": "https://eqlwiki.com/index.php/Small_Buckler"
+  },
+  {
+   "n": "Small Piece of Ore",
+   "u": "https://eqlwiki.com/index.php/Small_Piece_of_Ore"
+  },
+  {
+   "n": "Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
+  },
+  {
+   "n": "Turquoise",
+   "u": "https://eqlwiki.com/index.php/Turquoise"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Agate",
+   "u": "https://eqlwiki.com/index.php/Whirling_Agate"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Amber",
+   "u": "https://eqlwiki.com/index.php/Whirling_Amber"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Bloodstone",
+   "u": "https://eqlwiki.com/index.php/Whirling_Bloodstone"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Carnelian",
+   "u": "https://eqlwiki.com/index.php/Whirling_Carnelian"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Crystal",
+   "u": "https://eqlwiki.com/index.php/Whirling_Crystal"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Hematite",
+   "u": "https://eqlwiki.com/index.php/Whirling_Hematite"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Jasper",
+   "u": "https://eqlwiki.com/index.php/Whirling_Jasper"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Lapis Lazuli",
+   "u": "https://eqlwiki.com/index.php/Whirling_Lapis_Lazuli"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Malachite",
+   "u": "https://eqlwiki.com/index.php/Whirling_Malachite"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Onyx",
+   "u": "https://eqlwiki.com/index.php/Whirling_Onyx"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Quartz",
+   "u": "https://eqlwiki.com/index.php/Whirling_Quartz"
+  },
+  {
+   "g": 1,
+   "n": "Whirling Turquoise",
+   "u": "https://eqlwiki.com/index.php/Whirling_Turquoise"
+  },
+  {
+   "n": "Words of Imitation",
+   "u": "https://eqlwiki.com/index.php/Words_of_Imitation"
+  },
+  {
+   "n": "Words of Possession",
+   "u": "https://eqlwiki.com/index.php/Words_of_Possession"
+  },
+  {
+   "n": "Words of Radiance",
+   "u": "https://eqlwiki.com/index.php/Words_of_Radiance"
+  },
+  {
+   "n": "Words of the Extinct",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Extinct"
+  },
+  {
+   "n": "Words of the Quickening",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Quickening"
+  },
+  {
+   "n": "Words of the Sentient (Azia)",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Sentient_(Azia)"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    23,
+    27,
+    35,
+    36,
+    75
+   ],
+   "loc": [
+    66.0,
+    -886.0,
+    null
+   ],
+   "lvl": "19 - 20",
+   "n": "a chasm minotaur",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chasm_Minotaur"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    22
+   ],
+   "loc": [
+    705.0,
+    -1794.0,
+    null
+   ],
+   "lvl": "16 - 21",
+   "n": "a goblin alchemist",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_alchemist_(Beholder's_Maze)"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    0,
+    11,
+    24,
+    28,
+    30,
+    47,
+    53,
+    58
+   ],
+   "loc": null,
+   "lvl": "8",
+   "n": "a goblin lookout",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Lookout"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    21,
+    30,
+    34,
+    50,
+    53,
+    55,
+    58
+   ],
+   "loc": [
+    738.0,
+    -1906.0,
+    null
+   ],
+   "lvl": "8-10",
+   "n": "a goblin sentry",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Sentry"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "12",
+   "n": "a goblin veteran",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Veteran"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    23,
+    35,
+    36,
+    72,
+    73,
+    74
+   ],
+   "loc": null,
+   "lvl": "15-16",
+   "n": "a gorge minotaur",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gorge_Minotaur"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare",
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    6,
+    7,
+    15,
+    20,
+    31,
+    32,
+    39,
+    43,
+    49,
+    52,
+    54,
+    56
+   ],
+   "loc": null,
+   "lvl": "15",
+   "n": "a muddite elder",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Muddite_Elder"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    6,
+    7,
+    20,
+    31,
+    32,
+    39,
+    49,
+    52,
+    54,
+    56
+   ],
+   "loc": null,
+   "lvl": "10-11",
+   "n": "a muddite minor",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Muddite_Minor"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    7,
+    14,
+    15,
+    20,
+    39,
+    49,
+    52,
+    56,
+    76
+   ],
+   "loc": [
+    677.0,
+    -1829.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "a muddite recordkeeper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Muddite_Recordkeeper"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Common",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    10,
+    16,
+    17,
+    40,
+    44,
+    45,
+    46,
+    57,
+    72
+   ],
+   "loc": [
+    532.0,
+    -634.0,
+    null
+   ],
+   "lvl": "18 - 20? (lt blue to lvl 27)",
+   "n": "an evil eye",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Evil_Eye_(Beholder's_Maze)"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    29
+   ],
+   "loc": [
+    680.0,
+    210.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "Brahhm",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Brahhm"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1262.0,
+    -545.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Diggs Duggun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Diggs_Duggun"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Always",
+    "Rare"
+   ],
+   "drops": [
+    10,
+    44,
+    45,
+    48,
+    51
+   ],
+   "loc": [
+    672.0,
+    -207.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "King Xorbb",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/King_Xorbb"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Always",
+    "Uncommon"
+   ],
+   "drops": [
+    10,
+    33,
+    44
+   ],
+   "loc": [
+    492.0,
+    -604.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Lord Soptyvr",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Soptyvr"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    5,
+    10,
+    16,
+    17,
+    27,
+    38,
+    41,
+    42,
+    44,
+    45
+   ],
+   "loc": [
+    538.0,
+    -638.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Lord Sviir",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Sviir"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    10,
+    13,
+    16,
+    18,
+    25,
+    26,
+    44
+   ],
+   "loc": [
+    469.0,
+    -562.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Lord Syrkl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Syrkl"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Common",
+    "Rare",
+    "Common",
+    "Rare",
+    "Common",
+    "Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    15,
+    31,
+    32,
+    39,
+    49,
+    52,
+    54,
+    56,
+    71
+   ],
+   "loc": [
+    846.0,
+    -557.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Qlei",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Qlei"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70
+   ],
+   "loc": [
+    702.0,
+    -225.0,
+    null
+   ],
+   "lvl": "12",
+   "n": "Spinflint",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Spinflint"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    2,
+    3,
+    4
+   ],
+   "loc": null,
+   "lvl": "??",
+   "n": "Summoned Pet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/An_Evil_Eye_Pet"
+  },
+  {
+   "dr": [
+    null,
+    "Common"
+   ],
+   "drops": [
+    19,
+    37
+   ],
+   "loc": [
+    876.0,
+    -751.0,
+    null
+   ],
+   "lvl": "17-19",
+   "n": "Yymp the Infernal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Yymp_the_Infernal"
+  }
+ ],
+ "updated": "2026-05-25T17:36:41Z",
+ "wikiTitle": "Beholder's Maze",
+ "wikiUrl": "https://eqlwiki.com/index.php/Beholder's_Maze",
+ "zone": "beholder"
+}

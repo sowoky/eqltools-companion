@@ -1,0 +1,224 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Crimson Sr Apprentice Robe*",
+   "u": "https://eqlwiki.com/index.php/Crimson_Sr_Apprentice_Robe%2A"
+  },
+  {
+   "g": 1,
+   "n": "Ghoulbane",
+   "u": "https://eqlwiki.com/index.php/Ghoulbane"
+  },
+  {
+   "g": 1,
+   "n": "Shiny Brass Shield",
+   "u": "https://eqlwiki.com/index.php/Shiny_Brass_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Two_Handed_Sword"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    375.0,
+    -846.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Farios Elianos",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Farios_Elianos"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    3
+   ],
+   "loc": [
+    503.0,
+    -366.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Golyn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Golyn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    408.0,
+    -601.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Mystan (Southern Felwithe)",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Mystan_(Southern_Felwithe)"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    3
+   ],
+   "loc": [
+    295.0,
+    -584.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Plage",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Plage"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    3
+   ],
+   "loc": [
+    415.0,
+    -585.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Guard Psape",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Psape"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    3
+   ],
+   "loc": [
+    692.0,
+    -522.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Spioko",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Spioko"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    3
+   ],
+   "loc": [
+    510.0,
+    -855.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Tistan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Tistan"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    3
+   ],
+   "loc": [
+    415.0,
+    -614.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Tynthal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Tynthal"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    1,
+    2
+   ],
+   "loc": [
+    736.0,
+    -658.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Joren Nobleheart",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Joren_Nobleheart"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    556.0,
+    -839.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Kinool Goldsinger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kinool_Goldsinger"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    795.0,
+    -599.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Niola Impholder",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Niola_Impholder"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    507.0,
+    -409.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Tarker Blazetoss",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tarker_Blazetoss"
+  }
+ ],
+ "updated": "2026-04-13T08:34:03Z",
+ "wikiTitle": "Southern Felwithe",
+ "wikiUrl": "https://eqlwiki.com/index.php/Southern_Felwithe",
+ "zone": "felwitheb"
+}

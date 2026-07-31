@@ -1,0 +1,1407 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Bronze Long Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Short Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Warhammer",
+   "u": "https://eqlwiki.com/index.php/Bronze_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Long Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Short Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Forged Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Forged_Two_Handed_Sword"
+  },
+  {
+   "n": "Fresh Fish",
+   "u": "https://eqlwiki.com/index.php/Fresh_Fish"
+  },
+  {
+   "n": "Gnome Meat",
+   "u": "https://eqlwiki.com/index.php/Gnome_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Long Sword",
+   "u": "https://eqlwiki.com/index.php/Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Mandolin",
+   "u": "https://eqlwiki.com/index.php/Mandolin"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Long Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Short Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Short Sword",
+   "u": "https://eqlwiki.com/index.php/Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Short Sword*",
+   "u": "https://eqlwiki.com/index.php/Short_Sword%2A"
+  },
+  {
+   "n": "Token of Truth",
+   "u": "https://eqlwiki.com/index.php/Token_of_Truth"
+  },
+  {
+   "g": 1,
+   "n": "Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Warhammer",
+   "u": "https://eqlwiki.com/index.php/Warhammer"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    230.0,
+    -25.0,
+    null
+   ],
+   "lvl": "1",
+   "n": "a_minnow",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_minnow"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    75.0,
+    414.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Arem Ulosia",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Arem_Ulosia"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    475.0,
+    580.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Bondl Felligan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bondl_Felligan"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    12
+   ],
+   "loc": [
+    -146.0,
+    571.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Caskin Marsheart",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Caskin_Marsheart"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    75.0,
+    348.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Celsar Vestagon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Celsar_Vestagon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    91.0,
+    17.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "Dunore Moorwing",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dunore_Moorwing"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    19
+   ],
+   "loc": [
+    259.0,
+    -189.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Edwardian Holyblade",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Edwardian_Holyblade"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    186.0,
+    -126.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Eestyana Naestra",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Eestyana_Naestra"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -108.0,
+    551.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Felisity Starbright",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Felisity_Starbright"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    84.0,
+    297.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Ghonic Erharn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ghonic_Erharn"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    18
+   ],
+   "loc": [
+    132.0,
+    -257.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "Guard Willia",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Willia"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    20
+   ],
+   "loc": [
+    139.0,
+    339.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Gygus Remnara",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gygus_Remnara"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    60.0,
+    350.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Jemoz Lerkarson",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jemoz_Lerkarson"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    185.0,
+    -46.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Kalatrina Plossen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kalatrina_Plossen"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -124.0,
+    350.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Laken Boorheez",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Laken_Boorheez"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    12
+   ],
+   "loc": [
+    -113.0,
+    528.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Marus Kemson",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marus_Kemson"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    214.0,
+    -188.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Merko Quetalis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Merko_Quetalis"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    80.0,
+    5.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Onytir Seavin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Onytir_Seavin"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    20
+   ],
+   "loc": [
+    92.0,
+    305.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Palious Jarten",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Palious_Jarten"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -34.0,
+    -216.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Peran Silverfield",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Peran_Silverfield"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    20
+   ],
+   "loc": [
+    -91.0,
+    337.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Sentry Andlin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentry_Andlin"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    20
+   ],
+   "loc": [
+    147.0,
+    335.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "Sentry Boris",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentry_Boris"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    20
+   ],
+   "loc": [
+    38.0,
+    340.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Sentry Gallius",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentry_Gallius"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    20
+   ],
+   "loc": [
+    147.0,
+    364.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentry Janeal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentry_Janeal"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    20
+   ],
+   "loc": [
+    37.0,
+    359.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Sentry Meighan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentry_Meighan"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    20
+   ],
+   "loc": [
+    76.0,
+    371.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Sentry Theo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentry_Theo"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    20
+   ],
+   "loc": [
+    86.0,
+    414.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Sentry Warren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentry_Warren"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    46.0,
+    352.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Serna Tasknon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Serna_Tasknon"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    142.0,
+    76.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Ackmin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Ackmin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -9.0,
+    -11.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Arlin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Arlin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    213.0,
+    -20.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Artanis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Artanis"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -31.0,
+    -190.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Breel",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Breel"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -64.0,
+    -245.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Costkin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Costkin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    17.0,
+    -220.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Sir Drolfis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Drolfis"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    190.0,
+    -129.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Folon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Folon"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    200.0,
+    -76.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Sir Fosco",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Fosco"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    207.0,
+    -129.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Glimmon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Glimmon"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -188.0,
+    563.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Hallis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Hallis"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    212.0,
+    -78.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Hogo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Hogo"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    220.0,
+    -76.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Sir Iot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Iot"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    306.0,
+    382.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Lishmin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Lishmin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    302.0,
+    341.0,
+    null
+   ],
+   "lvl": "26",
+   "n": "Sir Mollin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Mollin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -186.0,
+    366.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Noshon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Noshon"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -173.0,
+    341.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Ollin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Ollin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -175.0,
+    360.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Penan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Penan"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -184.0,
+    314.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Phallin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Phallin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -162.0,
+    314.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sir Rophol",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Rophol"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -220.0,
+    392.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Sir Shalint",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Shalint"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    19
+   ],
+   "loc": [
+    -378.0,
+    -83.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Sir Willam",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Willam"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    13,
+    14,
+    16,
+    17
+   ],
+   "loc": [
+    -34.0,
+    -57.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Sir Xantille",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sir_Xantille"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -34.0,
+    -230.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Soris Silverfield",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Soris_Silverfield"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    239.0,
+    -142.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Theron Rolius",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Theron_Rolius"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    20
+   ],
+   "loc": [
+    140.0,
+    351.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Tholius Quey",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tholius_Quey"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    132.0,
+    393.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Thurion Desius",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Thurion_Desius"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -77.0,
+    579.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Ton Twostring",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ton_Twostring"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    229.0,
+    -183.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Valeron Dushire",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Valeron_Dushire"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    9,
+    10
+   ],
+   "loc": [
+    -171.0,
+    208.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Zigg Flin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Zigg_Flin"
+  }
+ ],
+ "updated": "2026-07-18T20:56:58Z",
+ "wikiTitle": "North Freeport",
+ "wikiUrl": "https://eqlwiki.com/index.php/North_Freeport",
+ "zone": "freportn"
+}

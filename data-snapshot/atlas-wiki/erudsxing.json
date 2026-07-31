@@ -1,0 +1,764 @@
+{
+ "items": [
+  {
+   "n": "A Doll",
+   "u": "https://eqlwiki.com/index.php/A_Doll"
+  },
+  {
+   "n": "A Spider Venom Sac",
+   "u": "https://eqlwiki.com/index.php/A_Spider_Venom_Sac"
+  },
+  {
+   "n": "Algae Covered Flesh",
+   "u": "https://eqlwiki.com/index.php/Algae_Covered_Flesh"
+  },
+  {
+   "n": "Amber",
+   "u": "https://eqlwiki.com/index.php/Amber"
+  },
+  {
+   "n": "Blurred Map",
+   "u": "https://eqlwiki.com/index.php/Blurred_Map"
+  },
+  {
+   "n": "Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Bone_Chips"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Jutte",
+   "u": "https://eqlwiki.com/index.php/Bronze_Jutte"
+  },
+  {
+   "n": "Catman Skin",
+   "u": "https://eqlwiki.com/index.php/Catman_Skin"
+  },
+  {
+   "n": "Damaged Catman Skin",
+   "u": "https://eqlwiki.com/index.php/Damaged_Catman_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Disease Reflection",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Disease_Reflection"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Fire Reflection",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Fire_Reflection"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Frost Reflection",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Frost_Reflection"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Magic Reflection",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Magic_Reflection"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Poison Reflection",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Poison_Reflection"
+  },
+  {
+   "n": "Fresh Fish",
+   "u": "https://eqlwiki.com/index.php/Fresh_Fish"
+  },
+  {
+   "n": "Giant Bat Fur",
+   "u": "https://eqlwiki.com/index.php/Giant_Bat_Fur"
+  },
+  {
+   "n": "Giant Bat Wing",
+   "u": "https://eqlwiki.com/index.php/Giant_Bat_Wing"
+  },
+  {
+   "n": "Incomplete Tool Kit",
+   "u": "https://eqlwiki.com/index.php/Incomplete_Tool_Kit"
+  },
+  {
+   "n": "Kerra Isle Beetle eye",
+   "u": "https://eqlwiki.com/index.php/Kerra_Isle_Beetle_eye"
+  },
+  {
+   "n": "Large Snake Rattle",
+   "u": "https://eqlwiki.com/index.php/Large_Snake_Rattle"
+  },
+  {
+   "n": "Mermaid Scale",
+   "u": "https://eqlwiki.com/index.php/Mermaid_Scale"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Necklace",
+   "u": "https://eqlwiki.com/index.php/Pearl_Necklace"
+  },
+  {
+   "n": "Rotten Shark Meat",
+   "u": "https://eqlwiki.com/index.php/Rotten_Shark_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Axe",
+   "u": "https://eqlwiki.com/index.php/Rusty_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Rusty_Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Broad Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Broad_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Dagger",
+   "u": "https://eqlwiki.com/index.php/Rusty_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Long Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Mace",
+   "u": "https://eqlwiki.com/index.php/Rusty_Mace"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Morning Star",
+   "u": "https://eqlwiki.com/index.php/Rusty_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Rapier",
+   "u": "https://eqlwiki.com/index.php/Rusty_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Scimitar",
+   "u": "https://eqlwiki.com/index.php/Rusty_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Short Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Shortened Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Shortened_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Two Handed Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Rusty_Two_Handed_Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Warhammer",
+   "u": "https://eqlwiki.com/index.php/Rusty_Warhammer"
+  },
+  {
+   "n": "Seahorse Roe",
+   "u": "https://eqlwiki.com/index.php/Seahorse_Roe"
+  },
+  {
+   "n": "Seahorse Scales",
+   "u": "https://eqlwiki.com/index.php/Seahorse_Scales"
+  },
+  {
+   "n": "Shark Bones",
+   "u": "https://eqlwiki.com/index.php/Shark_Bones"
+  },
+  {
+   "n": "Shark Meat",
+   "u": "https://eqlwiki.com/index.php/Shark_Meat"
+  },
+  {
+   "n": "Shark Skin",
+   "u": "https://eqlwiki.com/index.php/Shark_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Shark Tooth",
+   "u": "https://eqlwiki.com/index.php/Shark_Tooth"
+  },
+  {
+   "n": "Ship Manifesto",
+   "u": "https://eqlwiki.com/index.php/Ship_Manifesto"
+  },
+  {
+   "n": "Snake Egg",
+   "u": "https://eqlwiki.com/index.php/Snake_Egg"
+  },
+  {
+   "n": "Snake Fang",
+   "u": "https://eqlwiki.com/index.php/Snake_Fang"
+  },
+  {
+   "n": "Spider Legs",
+   "u": "https://eqlwiki.com/index.php/Spider_Legs"
+  },
+  {
+   "n": "Spider Silk",
+   "u": "https://eqlwiki.com/index.php/Spider_Silk"
+  },
+  {
+   "g": 1,
+   "n": "Thin Boned Wand",
+   "u": "https://eqlwiki.com/index.php/Thin_Boned_Wand"
+  },
+  {
+   "n": "Vampire Bat Saliva",
+   "u": "https://eqlwiki.com/index.php/Vampire_Bat_Saliva"
+  },
+  {
+   "n": "Water Flask",
+   "u": "https://eqlwiki.com/index.php/Water_Flask"
+  },
+  {
+   "n": "Words of Requisition",
+   "u": "https://eqlwiki.com/index.php/Words_of_Requisition"
+  },
+  {
+   "n": "Zombie Skin",
+   "u": "https://eqlwiki.com/index.php/Zombie_Skin"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    6,
+    17
+   ],
+   "loc": [
+    33.0,
+    3165.0,
+    null
+   ],
+   "lvl": "19",
+   "n": "a frantic kerran",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_frantic_kerran"
+  },
+  {
+   "dr": [
+    null,
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    19,
+    38,
+    45,
+    46
+   ],
+   "loc": [
+    -1153.0,
+    1457.0,
+    null
+   ],
+   "lvl": "8",
+   "n": "a kerra snake",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Kerra_Snake"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    1,
+    38,
+    47,
+    48
+   ],
+   "loc": [
+    -1304.0,
+    1252.0,
+    null
+   ],
+   "lvl": "12",
+   "n": "a kerra spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerra_spider"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    14,
+    21,
+    40,
+    41,
+    42,
+    43
+   ],
+   "loc": [
+    -1108.0,
+    3982.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "a killer shark",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Killer_Shark"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Common",
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    0,
+    22,
+    38,
+    40,
+    41,
+    42,
+    43
+   ],
+   "loc": [
+    -2400.0,
+    800.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "a plague shark",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_plague_shark"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    38,
+    39
+   ],
+   "loc": [
+    -425.0,
+    800.0,
+    -60.0
+   ],
+   "lvl": "7-9",
+   "n": "a seahorse",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_seahorse"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    5,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    44
+   ],
+   "loc": null,
+   "lvl": "11",
+   "n": "a skeleton sailor",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Skeleton_Sailor"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    52
+   ],
+   "loc": null,
+   "lvl": "Blue @ lvl50",
+   "n": "a thought bleeder",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_thought_bleeder"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Uncommon",
+    null
+   ],
+   "drops": [
+    15,
+    16,
+    49,
+    50
+   ],
+   "loc": [
+    -1304.0,
+    1252.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "a vampire bat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_vampire_bat"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    2,
+    4,
+    27,
+    53
+   ],
+   "loc": [
+    -1157.0,
+    2108.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "a zombie sailor",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Zombie_Sailor"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "loc": [
+    -1690.7,
+    1055.3,
+    null
+   ],
+   "lvl": "15",
+   "n": "An erudite madman",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/An_erudite_madman"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    51
+   ],
+   "loc": [
+    -1690.7,
+    1055.3,
+    null
+   ],
+   "lvl": "9-12",
+   "n": "an island madman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_island_madman"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    -425.0,
+    800.0,
+    -60.0
+   ],
+   "lvl": "?",
+   "n": "Hastashi",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hastashi"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    14
+   ],
+   "loc": null,
+   "lvl": "14 ~ 17",
+   "n": "Hojo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hojo"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    14
+   ],
+   "loc": [
+    -1334.0,
+    746.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Jarra",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jarra"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    14
+   ],
+   "loc": [
+    -1312.0,
+    753.0,
+    null
+   ],
+   "lvl": "13 ~ 17",
+   "n": "Kala",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kala"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    18
+   ],
+   "loc": [
+    -1200.0,
+    1315.0,
+    null
+   ],
+   "lvl": "2",
+   "n": "Kerra Isle beetle",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kerra_Isle_beetle"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    3,
+    7,
+    8,
+    14
+   ],
+   "loc": [
+    -1771.0,
+    797.0,
+    null
+   ],
+   "lvl": "13-16",
+   "n": "Milla",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Milla"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    3,
+    7,
+    8,
+    14
+   ],
+   "loc": [
+    -1779.0,
+    678.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "Monala",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Monala"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    3,
+    7,
+    8,
+    14
+   ],
+   "loc": [
+    -1591.0,
+    962.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "Nifta",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nifta"
+  },
+  {
+   "dr": [
+    "Always",
+    "Rare",
+    "Rare",
+    "Always"
+   ],
+   "drops": [
+    3,
+    7,
+    8,
+    14
+   ],
+   "loc": [
+    -1781.0,
+    1125.0,
+    null
+   ],
+   "lvl": "4",
+   "n": "Nomala",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nomala"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -919.0,
+    1638.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Ooglyn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ooglyn"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    3,
+    7,
+    8,
+    14
+   ],
+   "loc": [
+    -721.0,
+    780.0,
+    null
+   ],
+   "lvl": "15-16",
+   "n": "Tolo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tolo"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1175.0,
+    1239.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Yelesom Paust",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Yelesom_Paust"
+  }
+ ],
+ "updated": "2026-07-12T21:11:26Z",
+ "wikiTitle": "Erud's Crossing",
+ "wikiUrl": "https://eqlwiki.com/index.php/Erud's_Crossing",
+ "zone": "erudsxing"
+}

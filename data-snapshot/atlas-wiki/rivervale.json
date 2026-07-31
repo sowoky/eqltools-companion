@@ -1,0 +1,1256 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Arrow",
+   "u": "https://eqlwiki.com/index.php/Arrow"
+  },
+  {
+   "g": 1,
+   "n": "Arrow of Contagion",
+   "u": "https://eqlwiki.com/index.php/Arrow_of_Contagion"
+  },
+  {
+   "g": 1,
+   "n": "Arrow of Poison",
+   "u": "https://eqlwiki.com/index.php/Arrow_of_Poison"
+  },
+  {
+   "g": 1,
+   "n": "Arrow of Stunning",
+   "u": "https://eqlwiki.com/index.php/Arrow_of_Stunning"
+  },
+  {
+   "n": "Brownie Parts",
+   "u": "https://eqlwiki.com/index.php/Brownie_Parts"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "n": "Chunk of Meat",
+   "u": "https://eqlwiki.com/index.php/Chunk_of_Meat"
+  },
+  {
+   "n": "Fish Scales",
+   "u": "https://eqlwiki.com/index.php/Fish_Scales"
+  },
+  {
+   "n": "Fresh Fish",
+   "u": "https://eqlwiki.com/index.php/Fresh_Fish"
+  },
+  {
+   "g": 1,
+   "n": "Golden Earring",
+   "u": "https://eqlwiki.com/index.php/Golden_Earring"
+  },
+  {
+   "n": "Hematite",
+   "u": "https://eqlwiki.com/index.php/Hematite"
+  },
+  {
+   "n": "Jumjum Stalk",
+   "u": "https://eqlwiki.com/index.php/Jumjum_Stalk"
+  },
+  {
+   "n": "Large Ruby (Glass Ruby)",
+   "u": "https://eqlwiki.com/index.php/Large_Ruby_(Glass_Ruby)"
+  },
+  {
+   "n": "Onyx",
+   "u": "https://eqlwiki.com/index.php/Onyx"
+  },
+  {
+   "n": "Piranha Tooth",
+   "u": "https://eqlwiki.com/index.php/Piranha_Tooth"
+  },
+  {
+   "n": "Rat Whiskers",
+   "u": "https://eqlwiki.com/index.php/Rat_Whiskers"
+  },
+  {
+   "n": "Rivervale Trout",
+   "u": "https://eqlwiki.com/index.php/Rivervale_Trout"
+  },
+  {
+   "g": 1,
+   "n": "Silver Ring",
+   "u": "https://eqlwiki.com/index.php/Silver_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Small Round Shield",
+   "u": "https://eqlwiki.com/index.php/Small_Round_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Spear",
+   "u": "https://eqlwiki.com/index.php/Spear"
+  },
+  {
+   "g": 1,
+   "n": "Squad Ring",
+   "u": "https://eqlwiki.com/index.php/Squad_Ring"
+  },
+  {
+   "n": "Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
+  },
+  {
+   "n": "Words of Derivation",
+   "u": "https://eqlwiki.com/index.php/Words_of_Derivation"
+  },
+  {
+   "n": "Words of the Element",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Element"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    487.0,
+    -385.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "a halfling grandma",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_halfling_grandma"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    474.0,
+    -433.0,
+    null
+   ],
+   "lvl": "4-5",
+   "n": "a halfling grandpa",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_halfling_grandpa"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    339.0,
+    -377.0,
+    null
+   ],
+   "lvl": "4-6",
+   "n": "a halfling mother",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_halfling_mother"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    7,
+    8,
+    14
+   ],
+   "loc": [
+    134.0,
+    -314.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "a large piranha",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_large_piranha"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    15
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a rodent",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_rodent"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -139.0,
+    -342.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "a shady halfling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shady_Halfling"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "9",
+   "n": "A tavern patron",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_tavern_patron"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    7,
+    16
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a trout",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_trout"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -60.0,
+    -191.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Ace Slighthand",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ace_Slighthand"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -224.0,
+    -387.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Beek Guinders",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Beek_Guinders"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -49.0,
+    -177.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Blinza Toepopal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Blinza_Toepopal"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -78.0,
+    -181.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Bouncer Bigboot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Bigboot"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -29.0,
+    -181.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Bouncer Bogglebin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Bogglebin"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    12
+   ],
+   "loc": [
+    104.0,
+    -379.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "Chomper",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Chomper_(NPC)"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    18.0,
+    -200.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Deputy Alltin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Alltin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    18.0,
+    -200.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Deputy Alltin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Tizzin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    58.0,
+    -175.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "Deputy Antana",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Antana"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    247.0,
+    -202.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Deputy Banto",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Banto"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    -276.0,
+    -344.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "Deputy Chopo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Chopo"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    -236.0,
+    -330.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "Deputy Dopkin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Dopkin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    340.0,
+    -350.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "Deputy Finlip",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Finlip"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    46.0,
+    -40.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Deputy Goltin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Goltin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    58.0,
+    -175.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Deputy Heepo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Heepo"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    340.0,
+    -350.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "Deputy Higley",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Higley"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    -9.0,
+    -47.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Deputy Higrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Higrin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    300.0,
+    -465.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Deputy Hiltop",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Hiltop"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    -9.0,
+    -47.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Deputy Jeggin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Jeggin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    300.0,
+    -465.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Deputy Kapop",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Kapop"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    124.0,
+    -221.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Deputy Leeot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Leeot"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    130.0,
+    -147.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Deputy Lowmot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Lowmot"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    105.0,
+    -147.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Deputy Millin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Millin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    162.0,
+    -149.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Deputy Percin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Percin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    247.0,
+    -202.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Deputy Pigon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Pigon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -276.0,
+    -344.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "Deputy Pittin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Pittin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    -82.0,
+    -259.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "Deputy Quillto",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Quillto"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    18.0,
+    -200.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Deputy Raynin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Raynin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    85.0,
+    -173.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Deputy Regno",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Regno"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    -143.0,
+    -172.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Deputy Rollin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Rollin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    58.0,
+    -149.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Deputy Sertlin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Sertlin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    -249.0,
+    -135.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "Deputy Shelmy",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Shelmy"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    46.0,
+    -40.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "Deputy Tilo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Tilo"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "loc": [
+    90.0,
+    -136.0,
+    null
+   ],
+   "lvl": "19",
+   "n": "Deputy Tonlo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deputy_Tonlo"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    86.0,
+    -173.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Donlo Goobler",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Donlo_Goobler"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -240.0,
+    -412.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Gapeers Johhanis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gapeers_Johhanis"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -92.0,
+    -201.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Hebber Druneny",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hebber_Druneny"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -231.0,
+    -380.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Hendi Mrubble",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hendi_Mrubble"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -38.5,
+    -424.8,
+    null
+   ],
+   "lvl": "",
+   "n": "Hibbs Rootenpaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hibbs_Rootenpaw"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -219.0,
+    -330.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Jano Jinglebelly",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jano_Jinglebelly"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -51.0,
+    -189.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Lendel Deeppockets",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lendel_Deeppockets"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -159.0,
+    -247.0,
+    null
+   ],
+   "lvl": "2",
+   "n": "Mangler",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mangler"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    99.0,
+    -137.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Marshal Anrey",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marshal_Anrey"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    126.0,
+    -205.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Marshal Ghobber",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marshal_Ghobber"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    90.0,
+    -174.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Marshal Lanena",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marshal_Lanena"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "50",
+   "n": "Mayor Gubbin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mayor_Gubbin_(NPC)"
+  },
+  {
+   "dr": [
+    null,
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    null,
+    null,
+    null,
+    "Uncommon",
+    null,
+    null,
+    "Uncommon",
+    null
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    9,
+    10,
+    11,
+    13,
+    21,
+    22,
+    23
+   ],
+   "loc": [
+    417.0,
+    -431.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "Nillipuss",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nillipuss"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    393.0,
+    -343.0,
+    null
+   ],
+   "lvl": "4-6",
+   "n": "Nyla Gubbin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nyla_Gubbin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -128.0,
+    -423.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Reebo Leafsway",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Reebo_Leafsway"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -87.0,
+    -203.0,
+    2.0
+   ],
+   "lvl": "61",
+   "n": "Rueppy Kutpurse",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rueppy_Kutpurse"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -140.0,
+    -410.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Shakey Scarecrow",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shakey_Scarecrow"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "15",
+   "n": "Shayde Higginsbot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shayde_Higginsbot"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    92.0,
+    -153.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Sheriff Roglio",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sheriff_Roglio"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    150.0,
+    -150.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Silna Songsmith",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Silna_Songsmith"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -252.0,
+    -333.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Thekela Meepup",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Thekela_Meepup"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -28.0,
+    -198.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Toelia Snuckery",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Toelia_Snuckery"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -125.0,
+    -394.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Uner Gnarltrunk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Uner_Gnarltrunk"
+  }
+ ],
+ "updated": "2026-04-21T18:21:07Z",
+ "wikiTitle": "Rivervale",
+ "wikiUrl": "https://eqlwiki.com/index.php/Rivervale",
+ "zone": "rivervale"
+}

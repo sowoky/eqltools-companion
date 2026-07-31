@@ -1,0 +1,2666 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "A Shimmering Orb",
+   "u": "https://eqlwiki.com/index.php/A_Shimmering_Orb"
+  },
+  {
+   "n": "A Spider Venom Sac",
+   "u": "https://eqlwiki.com/index.php/A_Spider_Venom_Sac"
+  },
+  {
+   "n": "Amber",
+   "u": "https://eqlwiki.com/index.php/Amber"
+  },
+  {
+   "g": 1,
+   "n": "Bamboo Tanto Bo",
+   "u": "https://eqlwiki.com/index.php/Bamboo_Tanto_Bo"
+  },
+  {
+   "n": "Barbarian Head (Head of Wulfthan)",
+   "u": "https://eqlwiki.com/index.php/Barbarian_Head_(Head_of_Wulfthan)"
+  },
+  {
+   "n": "Bloodstone",
+   "u": "https://eqlwiki.com/index.php/Bloodstone"
+  },
+  {
+   "g": 1,
+   "n": "Bloodstone Ring",
+   "u": "https://eqlwiki.com/index.php/Bloodstone_Ring"
+  },
+  {
+   "n": "Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Bone_Chips"
+  },
+  {
+   "g": 1,
+   "n": "Bracelet of Woven Grass",
+   "u": "https://eqlwiki.com/index.php/Bracelet_of_Woven_Grass"
+  },
+  {
+   "g": 1,
+   "n": "Brazier of Elemental Summoning",
+   "u": "https://eqlwiki.com/index.php/Brazier_of_Elemental_Summoning"
+  },
+  {
+   "n": "Breath of Solusek",
+   "u": "https://eqlwiki.com/index.php/Breath_of_Solusek"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Mace",
+   "u": "https://eqlwiki.com/index.php/Bronze_Mace"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Morning Star",
+   "u": "https://eqlwiki.com/index.php/Bronze_Morning_Star"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "g": 1,
+   "n": "Chitin Shell Armor",
+   "u": "https://eqlwiki.com/index.php/Chitin_Shell_Armor"
+  },
+  {
+   "g": 1,
+   "n": "Chitin Shell Shield",
+   "u": "https://eqlwiki.com/index.php/Chitin_Shell_Shield"
+  },
+  {
+   "n": "Chunk of Meat",
+   "u": "https://eqlwiki.com/index.php/Chunk_of_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Collar of Undead Protection",
+   "u": "https://eqlwiki.com/index.php/Collar_of_Undead_Protection"
+  },
+  {
+   "g": 1,
+   "n": "Copper Band",
+   "u": "https://eqlwiki.com/index.php/Copper_Band"
+  },
+  {
+   "g": 1,
+   "n": "Cracked Staff",
+   "u": "https://eqlwiki.com/index.php/Cracked_Staff"
+  },
+  {
+   "n": "Degenerated Guk Weed",
+   "u": "https://eqlwiki.com/index.php/Degenerated_Guk_Weed"
+  },
+  {
+   "n": "Dull Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Dull_Bone_Chips"
+  },
+  {
+   "g": 1,
+   "n": "Elf-hide Gloves",
+   "u": "https://eqlwiki.com/index.php/Elf-hide_Gloves"
+  },
+  {
+   "n": "Essence of Rathe",
+   "u": "https://eqlwiki.com/index.php/Essence_of_Rathe"
+  },
+  {
+   "n": "Faerix Spores",
+   "u": "https://eqlwiki.com/index.php/Faerix_Spores"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Great Staff",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Morning Star",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Fordel Short Sword",
+   "u": "https://eqlwiki.com/index.php/Fordel_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Froglok Blood",
+   "u": "https://eqlwiki.com/index.php/Froglok_Blood"
+  },
+  {
+   "n": "Froglok Eye",
+   "u": "https://eqlwiki.com/index.php/Froglok_Eye"
+  },
+  {
+   "n": "Froglok Head",
+   "u": "https://eqlwiki.com/index.php/Froglok_Head"
+  },
+  {
+   "n": "Froglok Leg",
+   "u": "https://eqlwiki.com/index.php/Froglok_Leg"
+  },
+  {
+   "n": "Froglok Meat",
+   "u": "https://eqlwiki.com/index.php/Froglok_Meat"
+  },
+  {
+   "n": "Froglok Poison Gland",
+   "u": "https://eqlwiki.com/index.php/Froglok_Poison_Gland"
+  },
+  {
+   "n": "Froglok Tad Tongue",
+   "u": "https://eqlwiki.com/index.php/Froglok_Tad_Tongue"
+  },
+  {
+   "n": "Froglok Tadpole Eye",
+   "u": "https://eqlwiki.com/index.php/Froglok_Tadpole_Eye"
+  },
+  {
+   "n": "Froglok Tadpole Flesh",
+   "u": "https://eqlwiki.com/index.php/Froglok_Tadpole_Flesh"
+  },
+  {
+   "g": 1,
+   "n": "Fungus Spores",
+   "u": "https://eqlwiki.com/index.php/Fungus_Spores"
+  },
+  {
+   "n": "Gator Meat",
+   "u": "https://eqlwiki.com/index.php/Gator_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Gatorscale Leggings",
+   "u": "https://eqlwiki.com/index.php/Gatorscale_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Gatorscale Sleeves",
+   "u": "https://eqlwiki.com/index.php/Gatorscale_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Ghoulbane",
+   "u": "https://eqlwiki.com/index.php/Ghoulbane"
+  },
+  {
+   "g": 1,
+   "n": "Globe of Shadow",
+   "u": "https://eqlwiki.com/index.php/Globe_of_Shadow"
+  },
+  {
+   "g": 1,
+   "n": "Glowing Mask",
+   "u": "https://eqlwiki.com/index.php/Glowing_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Gold Ring",
+   "u": "https://eqlwiki.com/index.php/Gold_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Golden Earring",
+   "u": "https://eqlwiki.com/index.php/Golden_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Golden Rod",
+   "u": "https://eqlwiki.com/index.php/Golden_Rod"
+  },
+  {
+   "n": "Grave Mold",
+   "u": "https://eqlwiki.com/index.php/Grave_Mold"
+  },
+  {
+   "g": 1,
+   "n": "Green Goblin Skin",
+   "u": "https://eqlwiki.com/index.php/Green_Goblin_Skin"
+  },
+  {
+   "n": "Guk Bracket Mildew",
+   "u": "https://eqlwiki.com/index.php/Guk_Bracket_Mildew"
+  },
+  {
+   "n": "Hematite",
+   "u": "https://eqlwiki.com/index.php/Hematite"
+  },
+  {
+   "n": "Ice of Velious",
+   "u": "https://eqlwiki.com/index.php/Ice_of_Velious"
+  },
+  {
+   "n": "Innothule Mushroom",
+   "u": "https://eqlwiki.com/index.php/Innothule_Mushroom"
+  },
+  {
+   "n": "Ivory",
+   "u": "https://eqlwiki.com/index.php/Ivory"
+  },
+  {
+   "n": "Jade",
+   "u": "https://eqlwiki.com/index.php/Jade"
+  },
+  {
+   "g": 1,
+   "n": "Jade Earring",
+   "u": "https://eqlwiki.com/index.php/Jade_Earring"
+  },
+  {
+   "n": "Jasper",
+   "u": "https://eqlwiki.com/index.php/Jasper"
+  },
+  {
+   "g": 1,
+   "n": "Lens of Glowing Amber",
+   "u": "https://eqlwiki.com/index.php/Lens_of_Glowing_Amber"
+  },
+  {
+   "n": "Malachite",
+   "u": "https://eqlwiki.com/index.php/Malachite"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Armbands",
+   "u": "https://eqlwiki.com/index.php/Mesh_Armbands"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Bracers",
+   "u": "https://eqlwiki.com/index.php/Mesh_Bracers"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Cape",
+   "u": "https://eqlwiki.com/index.php/Mesh_Cape"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Mesh_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Girth",
+   "u": "https://eqlwiki.com/index.php/Mesh_Girth"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Gorget",
+   "u": "https://eqlwiki.com/index.php/Mesh_Gorget"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Helm",
+   "u": "https://eqlwiki.com/index.php/Mesh_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Leggings",
+   "u": "https://eqlwiki.com/index.php/Mesh_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Mantle",
+   "u": "https://eqlwiki.com/index.php/Mesh_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Mask",
+   "u": "https://eqlwiki.com/index.php/Mesh_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Tunic",
+   "u": "https://eqlwiki.com/index.php/Mesh_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Earring",
+   "u": "https://eqlwiki.com/index.php/Mithril_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Netted Cap",
+   "u": "https://eqlwiki.com/index.php/Netted_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Netted Cape",
+   "u": "https://eqlwiki.com/index.php/Netted_Cape"
+  },
+  {
+   "g": 1,
+   "n": "Netted Choker",
+   "u": "https://eqlwiki.com/index.php/Netted_Choker"
+  },
+  {
+   "g": 1,
+   "n": "Netted Girth",
+   "u": "https://eqlwiki.com/index.php/Netted_Girth"
+  },
+  {
+   "g": 1,
+   "n": "Netted Gloves",
+   "u": "https://eqlwiki.com/index.php/Netted_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Netted Mantle",
+   "u": "https://eqlwiki.com/index.php/Netted_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Netted Mask",
+   "u": "https://eqlwiki.com/index.php/Netted_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Netted Pants",
+   "u": "https://eqlwiki.com/index.php/Netted_Pants"
+  },
+  {
+   "g": 1,
+   "n": "Netted Shirt",
+   "u": "https://eqlwiki.com/index.php/Netted_Shirt"
+  },
+  {
+   "g": 1,
+   "n": "Netted Sleeves",
+   "u": "https://eqlwiki.com/index.php/Netted_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Netted Wristband",
+   "u": "https://eqlwiki.com/index.php/Netted_Wristband"
+  },
+  {
+   "n": "Onyx",
+   "u": "https://eqlwiki.com/index.php/Onyx"
+  },
+  {
+   "n": "Ornate Tin Box",
+   "u": "https://eqlwiki.com/index.php/Ornate_Tin_Box"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 23 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._23_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 23 (Right)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._23_(Right)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 312 (Right)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._312_(Right)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 375 (Right)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._375_(Right)"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Earring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Ring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Pouch of Ghoul Ash",
+   "u": "https://eqlwiki.com/index.php/Pouch_of_Ghoul_Ash"
+  },
+  {
+   "g": 1,
+   "n": "Reed Ring",
+   "u": "https://eqlwiki.com/index.php/Reed_Ring"
+  },
+  {
+   "n": "Rune of Al'Kabor",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Al'Kabor"
+  },
+  {
+   "n": "Rune of Falhalem",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Falhalem"
+  },
+  {
+   "n": "Rune of Periphery",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Periphery"
+  },
+  {
+   "n": "Rune of Proximity",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Proximity"
+  },
+  {
+   "g": 1,
+   "n": "Rune of Scale",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Scale"
+  },
+  {
+   "g": 1,
+   "n": "Runed Bone Fork",
+   "u": "https://eqlwiki.com/index.php/Runed_Bone_Fork"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Long Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Morning Star",
+   "u": "https://eqlwiki.com/index.php/Rusty_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Short Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Warhammer",
+   "u": "https://eqlwiki.com/index.php/Rusty_Warhammer"
+  },
+  {
+   "n": "Sarcoscypha Fungus",
+   "u": "https://eqlwiki.com/index.php/Sarcoscypha_Fungus"
+  },
+  {
+   "g": 1,
+   "n": "Shin Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Shin_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Shin Greaves",
+   "u": "https://eqlwiki.com/index.php/Shin_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Silver Earring",
+   "u": "https://eqlwiki.com/index.php/Silver_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Silver Ring",
+   "u": "https://eqlwiki.com/index.php/Silver_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Silver-Plated Bracer",
+   "u": "https://eqlwiki.com/index.php/Silver-Plated_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Soiled Boots",
+   "u": "https://eqlwiki.com/index.php/Soiled_Boots"
+  },
+  {
+   "n": "Spider Legs",
+   "u": "https://eqlwiki.com/index.php/Spider_Legs"
+  },
+  {
+   "n": "Spider Silk",
+   "u": "https://eqlwiki.com/index.php/Spider_Silk"
+  },
+  {
+   "n": "Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
+  },
+  {
+   "n": "Topaz",
+   "u": "https://eqlwiki.com/index.php/Topaz"
+  },
+  {
+   "n": "Troll Parts",
+   "u": "https://eqlwiki.com/index.php/Troll_Parts"
+  },
+  {
+   "g": 1,
+   "n": "Troll-hide Belt",
+   "u": "https://eqlwiki.com/index.php/Troll-hide_Belt"
+  },
+  {
+   "n": "Turquoise",
+   "u": "https://eqlwiki.com/index.php/Turquoise"
+  },
+  {
+   "n": "Velishoul's Tome Pg.67",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg.67"
+  },
+  {
+   "n": "Warbone Chips",
+   "u": "https://eqlwiki.com/index.php/Warbone_Chips"
+  },
+  {
+   "n": "Words of Allure",
+   "u": "https://eqlwiki.com/index.php/Words_of_Allure"
+  },
+  {
+   "n": "Words of Anthology",
+   "u": "https://eqlwiki.com/index.php/Words_of_Anthology"
+  },
+  {
+   "n": "Words of Dissolution",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dissolution"
+  },
+  {
+   "n": "Words of Dominion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dominion"
+  },
+  {
+   "n": "Words of Eradication",
+   "u": "https://eqlwiki.com/index.php/Words_of_Eradication"
+  },
+  {
+   "n": "Words of Imitation",
+   "u": "https://eqlwiki.com/index.php/Words_of_Imitation"
+  },
+  {
+   "n": "Words of Materials",
+   "u": "https://eqlwiki.com/index.php/Words_of_Materials"
+  },
+  {
+   "n": "Words of Possession",
+   "u": "https://eqlwiki.com/index.php/Words_of_Possession"
+  },
+  {
+   "n": "Words of Spirit",
+   "u": "https://eqlwiki.com/index.php/Words_of_Spirit"
+  },
+  {
+   "n": "Words of the Element",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Element"
+  },
+  {
+   "n": "Words of the Sentient (Azia)",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Sentient_(Azia)"
+  },
+  {
+   "n": "Words of the Spoken",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Spoken"
+  },
+  {
+   "n": "Words of Tyranny",
+   "u": "https://eqlwiki.com/index.php/Words_of_Tyranny"
+  },
+  {
+   "g": 1,
+   "n": "Woven Cap",
+   "u": "https://eqlwiki.com/index.php/Woven_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Woven Cape",
+   "u": "https://eqlwiki.com/index.php/Woven_Cape"
+  },
+  {
+   "g": 1,
+   "n": "Woven Collar",
+   "u": "https://eqlwiki.com/index.php/Woven_Collar"
+  },
+  {
+   "g": 1,
+   "n": "Woven Girth",
+   "u": "https://eqlwiki.com/index.php/Woven_Girth"
+  },
+  {
+   "g": 1,
+   "n": "Woven Gloves",
+   "u": "https://eqlwiki.com/index.php/Woven_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Woven Leggings",
+   "u": "https://eqlwiki.com/index.php/Woven_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Woven Mantle",
+   "u": "https://eqlwiki.com/index.php/Woven_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Woven Sleeves",
+   "u": "https://eqlwiki.com/index.php/Woven_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Woven Tunic",
+   "u": "https://eqlwiki.com/index.php/Woven_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Woven Wristbands",
+   "u": "https://eqlwiki.com/index.php/Woven_Wristbands"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    29,
+    33,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82
+   ],
+   "loc": [
+    459.0,
+    179.0,
+    null
+   ],
+   "lvl": "6 (there is some variation, had a yellow to my lvl 6)",
+   "n": "a froglok apprentice",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Apprentice"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    30,
+    33,
+    55,
+    57,
+    60,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    83
+   ],
+   "loc": null,
+   "lvl": "18",
+   "n": "a froglok gaz knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Gaz_Knight"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    2,
+    29,
+    32,
+    33,
+    34,
+    55,
+    57,
+    60,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    83,
+    133
+   ],
+   "loc": null,
+   "lvl": "16",
+   "n": "a froglok gaz shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Gaz_Shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    29,
+    33,
+    55,
+    57,
+    83,
+    99
+   ],
+   "loc": [
+    594.0,
+    179.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "a froglok gaz squire",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Gaz_Squire"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    29,
+    30,
+    32,
+    33,
+    34,
+    95
+   ],
+   "loc": null,
+   "lvl": "15 - 17",
+   "n": "a froglok gaz warrior",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Gaz_Warrior"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    29,
+    33,
+    65,
+    66,
+    67,
+    68,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    103,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143
+   ],
+   "loc": null,
+   "lvl": "4-6, ~12",
+   "n": "a froglok guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Guard"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    582.0,
+    -60.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "a froglok idealist",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Idealist"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    33,
+    55,
+    57,
+    83
+   ],
+   "loc": [
+    163.0,
+    161.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "a froglok necromancer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Necromancer"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    33,
+    55,
+    57,
+    65,
+    66,
+    67,
+    68,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83
+   ],
+   "loc": [
+    385.0,
+    28.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "a froglok neophyte",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Neophyte"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    3,
+    29,
+    33,
+    43,
+    55,
+    57,
+    65,
+    66,
+    67,
+    68,
+    83
+   ],
+   "loc": [
+    1269.0,
+    627.0,
+    null
+   ],
+   "lvl": "27",
+   "n": "a froglok nokta shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Nokta_Shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    33,
+    55,
+    57,
+    65,
+    66,
+    67,
+    68,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143
+   ],
+   "loc": [
+    21.0,
+    23.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "a froglok novice",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Novice"
+  },
+  {
+   "dr": [
+    "Very Rare",
+    "Always",
+    "Common",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    29,
+    31,
+    33,
+    53,
+    84
+   ],
+   "loc": null,
+   "lvl": "18",
+   "n": "a froglok outlander",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_outlander"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    47
+   ],
+   "loc": [
+    1104.0,
+    331.0,
+    null
+   ],
+   "lvl": "24",
+   "n": "a froglok priest",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Priest"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    33,
+    55,
+    57,
+    83,
+    92,
+    93
+   ],
+   "loc": [
+    267.0,
+    -146.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "a froglok realist",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Realist"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    8,
+    44
+   ],
+   "loc": [
+    244.0,
+    -465.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "a froglok scryer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Scryer"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    33,
+    55,
+    57,
+    65,
+    66,
+    67,
+    68,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143
+   ],
+   "loc": [
+    21.0,
+    23.0,
+    null
+   ],
+   "lvl": "8",
+   "n": "a froglok sentinel",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Sentinel"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    33,
+    55,
+    57,
+    65,
+    66,
+    67,
+    68,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83
+   ],
+   "loc": [
+    21.0,
+    23.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "a froglok sentry",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Sentry"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    10,
+    29,
+    32,
+    33,
+    105,
+    106
+   ],
+   "loc": null,
+   "lvl": "27-31",
+   "n": "a froglok shin knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Shin_Knight"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    33,
+    55,
+    57,
+    60,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    83,
+    105,
+    106
+   ],
+   "loc": [
+    202.0,
+    166.0,
+    null
+   ],
+   "lvl": "19",
+   "n": "a froglok shin shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Shin_Shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Always",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    4,
+    29,
+    33,
+    55,
+    57,
+    65,
+    66,
+    67,
+    68,
+    83
+   ],
+   "loc": [
+    1424.0,
+    344.0,
+    null
+   ],
+   "lvl": "26",
+   "n": "a froglok shinta warrior",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Shinta_Warrior"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    9,
+    10,
+    19,
+    29,
+    33,
+    55,
+    57,
+    58,
+    62,
+    65,
+    66,
+    67,
+    68,
+    69,
+    83
+   ],
+   "loc": [
+    1104.0,
+    266.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "a froglok summoner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Summoner"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    29,
+    33,
+    35,
+    36,
+    37
+   ],
+   "loc": null,
+   "lvl": "1-2 or 1-5",
+   "n": "a froglok tad",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_tad"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    33,
+    55,
+    57,
+    60,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    83
+   ],
+   "loc": [
+    -5.0,
+    288.0,
+    null
+   ],
+   "lvl": "33-34",
+   "n": "a froglok tal shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Tal_Shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    30,
+    33,
+    34,
+    55,
+    57,
+    60,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    83,
+    121,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143
+   ],
+   "loc": null,
+   "lvl": "23 - 25",
+   "n": "a froglok ton knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Ton_Knight"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    30,
+    33,
+    34,
+    55,
+    57,
+    60,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    83,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143
+   ],
+   "loc": null,
+   "lvl": "19",
+   "n": "a froglok ton shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Ton_Shaman"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    11,
+    12,
+    30,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    85,
+    86,
+    96,
+    97,
+    101,
+    123,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133
+   ],
+   "loc": [
+    1282.0,
+    218.0,
+    null
+   ],
+   "lvl": "19",
+   "n": "a froglok ton shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_ton_shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    30,
+    33,
+    55,
+    57,
+    60,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    83,
+    100,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143
+   ],
+   "loc": [
+    352.0,
+    191.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "a froglok ton warrior",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Ton_Warrior"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    null,
+    "Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    33,
+    55,
+    57,
+    65,
+    66,
+    67,
+    68,
+    83,
+    103,
+    111
+   ],
+   "loc": [
+    612.0,
+    -48.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "a froglok tonta knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Tonta_Knight"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    3,
+    29,
+    33,
+    43,
+    55,
+    57,
+    65,
+    66,
+    67,
+    68,
+    83
+   ],
+   "loc": null,
+   "lvl": "27-31",
+   "n": "a froglok tsu shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_tsu_shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    30,
+    33,
+    55,
+    57,
+    60,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    83,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143
+   ],
+   "loc": null,
+   "lvl": "15",
+   "n": "a froglok tuk knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Tuk_Knight"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    33,
+    55,
+    57,
+    60,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    83,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143
+   ],
+   "loc": [
+    505.0,
+    -63.0,
+    null
+   ],
+   "lvl": "13",
+   "n": "a froglok tuk shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Tuk_Shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    29,
+    30,
+    33,
+    34,
+    55,
+    57,
+    60,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    83,
+    100,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143
+   ],
+   "loc": null,
+   "lvl": "11 - 13",
+   "n": "a froglok tuk warrior",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Tuk_Warrior"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    25,
+    26,
+    27,
+    30,
+    32,
+    33,
+    34,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70
+   ],
+   "loc": [
+    102.0,
+    314.0,
+    null
+   ],
+   "lvl": "24",
+   "n": "a froglok vis shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_vis_shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    19,
+    29,
+    33,
+    55,
+    57,
+    83
+   ],
+   "loc": [
+    501.0,
+    162.0,
+    null
+   ],
+   "lvl": "11",
+   "n": "a froglok witch doctor",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_witch_doctor"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    19,
+    23,
+    38,
+    56,
+    89,
+    104
+   ],
+   "loc": null,
+   "lvl": "25 ~ 26",
+   "n": "a fungus ancient",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Fungus_Ancient"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    5,
+    55,
+    57,
+    83
+   ],
+   "loc": [
+    481.0,
+    180.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "a fungus breeder",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Fungus_Breeder"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    5,
+    55,
+    57,
+    83
+   ],
+   "loc": [
+    556.0,
+    132.0,
+    null
+   ],
+   "lvl": "21 - 24",
+   "n": "a fungus drone",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Fungus_Drone"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    20,
+    24,
+    50
+   ],
+   "loc": [
+    611.0,
+    244.0,
+    null
+   ],
+   "lvl": "23",
+   "n": "a fungus mutant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Fungus_Mutant"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    5,
+    55,
+    57,
+    83,
+    104
+   ],
+   "loc": [
+    501.0,
+    194.0,
+    null
+   ],
+   "lvl": "18 - 24",
+   "n": "a fungus soldier",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Fungus_Soldier"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Always",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    5,
+    14,
+    15,
+    45,
+    54,
+    55,
+    57,
+    83,
+    89,
+    113,
+    122,
+    129
+   ],
+   "loc": [
+    -27.0,
+    -139.0,
+    null
+   ],
+   "lvl": "15-21",
+   "n": "a giant heart spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Giant_Heart_Spider"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    6,
+    13,
+    18,
+    45,
+    46,
+    51,
+    55,
+    57,
+    59,
+    83,
+    100,
+    108,
+    109,
+    112,
+    113,
+    114,
+    115,
+    118
+   ],
+   "loc": [
+    -73.0,
+    -244.0,
+    null
+   ],
+   "lvl": "11-15, named PH 16",
+   "n": "a heart spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_heart_spider"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    5,
+    45,
+    46,
+    54,
+    55,
+    57,
+    71,
+    83,
+    87,
+    88,
+    89,
+    90,
+    91,
+    94,
+    107,
+    109,
+    112,
+    113,
+    114,
+    115,
+    122,
+    124
+   ],
+   "loc": [
+    -27.0,
+    -139.0,
+    null
+   ],
+   "lvl": "17-21",
+   "n": "a large heart spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_large_heart_spider"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    16,
+    39,
+    98
+   ],
+   "loc": [
+    1661.0,
+    470.0,
+    null
+   ],
+   "lvl": "27-30",
+   "n": "a saltwater croc",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Saltwater_Croc"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    null,
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    7,
+    21,
+    45,
+    48,
+    52,
+    55,
+    119,
+    120
+   ],
+   "loc": null,
+   "lvl": "23-25",
+   "n": "a skeletal monk",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Skeletal_Monk"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    44
+   ],
+   "loc": [
+    740.0,
+    -42.0,
+    null
+   ],
+   "lvl": "28~",
+   "n": "a skeleton monk",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_skeleton_monk"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    16
+   ],
+   "loc": null,
+   "lvl": "8 - 15",
+   "n": "a swampwater crocodile",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_swampwater_crocodile"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    116
+   ],
+   "loc": [
+    292.0,
+    -161.0,
+    null
+   ],
+   "lvl": "9-11",
+   "n": "a troll prisoner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_troll_prisoner"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    39,
+    40,
+    41
+   ],
+   "loc": [
+    1653.0,
+    462.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "an ancient croc",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Ancient_Croc"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    740.0,
+    -42.0,
+    null
+   ],
+   "lvl": "25-26",
+   "n": "Tempus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tempus"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    null,
+    "Common"
+   ],
+   "drops": [
+    29,
+    33,
+    42,
+    102,
+    110
+   ],
+   "loc": [
+    -5.0,
+    288.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "the froglok shin lord",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/The_froglok_shin_lord"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    5,
+    22,
+    28,
+    29,
+    33,
+    49,
+    55,
+    57,
+    65,
+    66,
+    67,
+    68,
+    83,
+    117
+   ],
+   "loc": [
+    286.0,
+    -77.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "the froglok warden",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/The_Froglok_Warden"
+  }
+ ],
+ "updated": "2026-04-13T08:33:17Z",
+ "wikiTitle": "Upper Guk",
+ "wikiUrl": "https://eqlwiki.com/index.php/Upper_Guk",
+ "zone": "guktop"
+}

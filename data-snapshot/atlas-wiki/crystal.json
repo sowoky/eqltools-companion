@@ -1,0 +1,1786 @@
+{
+ "items": [
+  {
+   "n": "Amber",
+   "u": "https://eqlwiki.com/index.php/Amber"
+  },
+  {
+   "g": 1,
+   "n": "Ball of Velium",
+   "u": "https://eqlwiki.com/index.php/Ball_of_Velium"
+  },
+  {
+   "n": "Black Pearl",
+   "u": "https://eqlwiki.com/index.php/Black_Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Crystalline Robe",
+   "u": "https://eqlwiki.com/index.php/Blackened_Crystalline_Robe"
+  },
+  {
+   "n": "Block of Velium",
+   "u": "https://eqlwiki.com/index.php/Block_of_Velium"
+  },
+  {
+   "g": 1,
+   "n": "Bloodstone Ring",
+   "u": "https://eqlwiki.com/index.php/Bloodstone_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Bottle of Karsin Acid",
+   "u": "https://eqlwiki.com/index.php/Bottle_of_Karsin_Acid"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Amber",
+   "u": "https://eqlwiki.com/index.php/Chipped_Amber"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Black Pearl",
+   "u": "https://eqlwiki.com/index.php/Chipped_Black_Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Diamond",
+   "u": "https://eqlwiki.com/index.php/Chipped_Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Emerald",
+   "u": "https://eqlwiki.com/index.php/Chipped_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Chipped_Fire_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Fire Opal",
+   "u": "https://eqlwiki.com/index.php/Chipped_Fire_Opal"
+  },
+  {
+   "n": "Chipped Hematite",
+   "u": "https://eqlwiki.com/index.php/Chipped_Hematite"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Jade",
+   "u": "https://eqlwiki.com/index.php/Chipped_Jade"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Jasper",
+   "u": "https://eqlwiki.com/index.php/Chipped_Jasper"
+  },
+  {
+   "n": "Chipped Onyx",
+   "u": "https://eqlwiki.com/index.php/Chipped_Onyx"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Ruby",
+   "u": "https://eqlwiki.com/index.php/Chipped_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Sapphire",
+   "u": "https://eqlwiki.com/index.php/Chipped_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Chipped_Star_Rose_Quartz"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Star Ruby",
+   "u": "https://eqlwiki.com/index.php/Chipped_Star_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Velium Amulet",
+   "u": "https://eqlwiki.com/index.php/Chipped_Velium_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Wolf's Eye Agate",
+   "u": "https://eqlwiki.com/index.php/Chipped_Wolf's_Eye_Agate"
+  },
+  {
+   "g": 1,
+   "n": "Cloak of the Ry`Gorr Oracles",
+   "u": "https://eqlwiki.com/index.php/Cloak_of_the_Ry%60Gorr_Oracles"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Covered Shroud",
+   "u": "https://eqlwiki.com/index.php/Crystal_Covered_Shroud"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Fiber",
+   "u": "https://eqlwiki.com/index.php/Crystal_Fiber"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Grinder",
+   "u": "https://eqlwiki.com/index.php/Crystal_Grinder"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Lined Slippers",
+   "u": "https://eqlwiki.com/index.php/Crystal_Lined_Slippers"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Webshield",
+   "u": "https://eqlwiki.com/index.php/Crystal_Webshield"
+  },
+  {
+   "g": 1,
+   "n": "Crystalized Web Silk",
+   "u": "https://eqlwiki.com/index.php/Crystalized_Web_Silk"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Belt",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Belt"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Robes",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Robes"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Silk",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Silk"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Silk Net",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Silk_Net"
+  },
+  {
+   "g": 1,
+   "n": "Crystallized Blade",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Blade"
+  },
+  {
+   "n": "Crystallized Sulfur",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
+  },
+  {
+   "g": 1,
+   "n": "Crystallized Sword",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Crystallized Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Two_Handed_Sword"
+  },
+  {
+   "n": "Emerald",
+   "u": "https://eqlwiki.com/index.php/Emerald"
+  },
+  {
+   "n": "Eye of Serilis",
+   "u": "https://eqlwiki.com/index.php/Eye_of_Serilis"
+  },
+  {
+   "n": "Faded Velishoul's Tome Page",
+   "u": "https://eqlwiki.com/index.php/Faded_Velishoul's_Tome_Page"
+  },
+  {
+   "n": "Flame Agate",
+   "u": "https://eqlwiki.com/index.php/Flame_Agate"
+  },
+  {
+   "n": "Flame of Vox",
+   "u": "https://eqlwiki.com/index.php/Flame_of_Vox"
+  },
+  {
+   "g": 1,
+   "n": "Flawless Aquamarine",
+   "u": "https://eqlwiki.com/index.php/Flawless_Aquamarine"
+  },
+  {
+   "g": 1,
+   "n": "Foreman's Skull Cap",
+   "u": "https://eqlwiki.com/index.php/Foreman's_Skull_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Froststone Stein",
+   "u": "https://eqlwiki.com/index.php/Froststone_Stein"
+  },
+  {
+   "g": 1,
+   "n": "Frozen Long Sword",
+   "u": "https://eqlwiki.com/index.php/Frozen_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Frozen Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Frozen_Two_Handed_Sword"
+  },
+  {
+   "n": "Glove of Rallos Zek",
+   "u": "https://eqlwiki.com/index.php/Glove_of_Rallos_Zek"
+  },
+  {
+   "g": 1,
+   "n": "Glowing Velium Axe",
+   "u": "https://eqlwiki.com/index.php/Glowing_Velium_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Gold Ring",
+   "u": "https://eqlwiki.com/index.php/Gold_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Golden Earring",
+   "u": "https://eqlwiki.com/index.php/Golden_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Golden Pendant",
+   "u": "https://eqlwiki.com/index.php/Golden_Pendant"
+  },
+  {
+   "n": "Hematite",
+   "u": "https://eqlwiki.com/index.php/Hematite"
+  },
+  {
+   "n": "Herbalist Pack",
+   "u": "https://eqlwiki.com/index.php/Herbalist_Pack"
+  },
+  {
+   "n": "Ivory",
+   "u": "https://eqlwiki.com/index.php/Ivory"
+  },
+  {
+   "n": "Jade",
+   "u": "https://eqlwiki.com/index.php/Jade"
+  },
+  {
+   "g": 1,
+   "n": "Jade Earring",
+   "u": "https://eqlwiki.com/index.php/Jade_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Jade Ring",
+   "u": "https://eqlwiki.com/index.php/Jade_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Klezendian Crystal",
+   "u": "https://eqlwiki.com/index.php/Klezendian_Crystal"
+  },
+  {
+   "g": 1,
+   "n": "Messenger of the Queen",
+   "u": "https://eqlwiki.com/index.php/Messenger_of_the_Queen"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Earring",
+   "u": "https://eqlwiki.com/index.php/Mithril_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Onyxbrand",
+   "u": "https://eqlwiki.com/index.php/Onyxbrand"
+  },
+  {
+   "n": "Opal",
+   "u": "https://eqlwiki.com/index.php/Opal"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 390 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._390_(Left)"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Earring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Necklace",
+   "u": "https://eqlwiki.com/index.php/Pearl_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Ring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Ring"
+  },
+  {
+   "n": "Pearl Shard",
+   "u": "https://eqlwiki.com/index.php/Pearl_Shard"
+  },
+  {
+   "n": "Peridot",
+   "u": "https://eqlwiki.com/index.php/Peridot"
+  },
+  {
+   "n": "Rune of Al'Kabor",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Al'Kabor"
+  },
+  {
+   "n": "Rune of Arrest",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Arrest"
+  },
+  {
+   "n": "Rune of Banding",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Banding"
+  },
+  {
+   "n": "Rune of Conception",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Conception"
+  },
+  {
+   "n": "Rune of Concussion",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Concussion"
+  },
+  {
+   "n": "Rune of Consumption",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Consumption"
+  },
+  {
+   "n": "Rune of Contortion",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Contortion"
+  },
+  {
+   "n": "Rune of Expulsion",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Expulsion"
+  },
+  {
+   "n": "Rune of Fulguration",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Fulguration"
+  },
+  {
+   "n": "Rune of Howling",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Howling"
+  },
+  {
+   "n": "Rune of Karana",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Karana"
+  },
+  {
+   "n": "Rune of Rallos Zek",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Rallos_Zek"
+  },
+  {
+   "n": "Rune of Regeneration",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Regeneration"
+  },
+  {
+   "n": "Rune of Solusek Ro",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Solusek_Ro"
+  },
+  {
+   "n": "Rune of Sorcery",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Sorcery"
+  },
+  {
+   "n": "Rune of the Catalyst",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Catalyst"
+  },
+  {
+   "n": "Rune of the Combine",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Combine"
+  },
+  {
+   "n": "Rune of the Cyclone",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Cyclone"
+  },
+  {
+   "n": "Rune of the Helix",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Helix"
+  },
+  {
+   "n": "Rune of Xegony",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Xegony"
+  },
+  {
+   "g": 1,
+   "n": "Ry`Gorr Mining Pick",
+   "u": "https://eqlwiki.com/index.php/Ry%60Gorr_Mining_Pick"
+  },
+  {
+   "n": "Salil's Writ Pg. 60 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._60_(Left)"
+  },
+  {
+   "n": "Salil's Writ Pg. 60 (Right)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._60_(Right)"
+  },
+  {
+   "n": "Salil's Writ Pg. 64 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._64_(Left)"
+  },
+  {
+   "n": "Salil's Writ Pg. 90 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._90_(Left)"
+  },
+  {
+   "g": 1,
+   "n": "Sceptre of the Coldain Ancients",
+   "u": "https://eqlwiki.com/index.php/Sceptre_of_the_Coldain_Ancients"
+  },
+  {
+   "n": "Shimmering Velium Ruby",
+   "u": "https://eqlwiki.com/index.php/Shimmering_Velium_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Silver Earring",
+   "u": "https://eqlwiki.com/index.php/Silver_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Silver Ring",
+   "u": "https://eqlwiki.com/index.php/Silver_Ring"
+  },
+  {
+   "n": "Small Brick of Velium",
+   "u": "https://eqlwiki.com/index.php/Small_Brick_of_Velium"
+  },
+  {
+   "n": "Small Piece of Velium",
+   "u": "https://eqlwiki.com/index.php/Small_Piece_of_Velium"
+  },
+  {
+   "g": 1,
+   "n": "Spider Fang Choker",
+   "u": "https://eqlwiki.com/index.php/Spider_Fang_Choker"
+  },
+  {
+   "g": 1,
+   "n": "Stalagterror Spine Spear",
+   "u": "https://eqlwiki.com/index.php/Stalagterror_Spine_Spear"
+  },
+  {
+   "n": "Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
+  },
+  {
+   "n": "Topaz",
+   "u": "https://eqlwiki.com/index.php/Topaz"
+  },
+  {
+   "n": "Velishoul's Tome Pg. 109",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg._109"
+  },
+  {
+   "n": "Velishoul's Tome Pg. 17",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg._17"
+  },
+  {
+   "n": "Velishoul's Tome Pg. 43",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg._43"
+  },
+  {
+   "n": "Velishoul's Tome Pg. 75",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg._75"
+  },
+  {
+   "n": "Velishoul's Tome Pg.43",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg.43"
+  },
+  {
+   "n": "Velishoul's Tome Pg.44",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg.44"
+  },
+  {
+   "n": "Velishoul's Tome Pg.67",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg.67"
+  },
+  {
+   "n": "Velishoul's Tome Pg.68",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg.68"
+  },
+  {
+   "g": 1,
+   "n": "Velium Crawler Eye",
+   "u": "https://eqlwiki.com/index.php/Velium_Crawler_Eye"
+  },
+  {
+   "g": 1,
+   "n": "Velium Dagger",
+   "u": "https://eqlwiki.com/index.php/Velium_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Velium Great Staff",
+   "u": "https://eqlwiki.com/index.php/Velium_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Velium Long Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium Morning Star",
+   "u": "https://eqlwiki.com/index.php/Velium_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Velium Scimitar",
+   "u": "https://eqlwiki.com/index.php/Velium_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Velium Short Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium Warhammer",
+   "u": "https://eqlwiki.com/index.php/Velium_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Vial of Drachnid Blood",
+   "u": "https://eqlwiki.com/index.php/Vial_of_Drachnid_Blood"
+  },
+  {
+   "n": "Words of Absorption",
+   "u": "https://eqlwiki.com/index.php/Words_of_Absorption"
+  },
+  {
+   "n": "Words of Cazic-Thule",
+   "u": "https://eqlwiki.com/index.php/Words_of_Cazic-Thule"
+  },
+  {
+   "n": "Words of Coercion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Coercion"
+  },
+  {
+   "n": "Words of Dark Paths",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dark_Paths"
+  },
+  {
+   "n": "Words of Descrying",
+   "u": "https://eqlwiki.com/index.php/Words_of_Descrying"
+  },
+  {
+   "n": "Words of Detachment",
+   "u": "https://eqlwiki.com/index.php/Words_of_Detachment"
+  },
+  {
+   "n": "Words of Detention",
+   "u": "https://eqlwiki.com/index.php/Words_of_Detention"
+  },
+  {
+   "n": "Words of Dimension",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dimension"
+  },
+  {
+   "n": "Words of Duration",
+   "u": "https://eqlwiki.com/index.php/Words_of_Duration"
+  },
+  {
+   "n": "Words of Duress",
+   "u": "https://eqlwiki.com/index.php/Words_of_Duress"
+  },
+  {
+   "n": "Words of Efficacy",
+   "u": "https://eqlwiki.com/index.php/Words_of_Efficacy"
+  },
+  {
+   "n": "Words of Endurance",
+   "u": "https://eqlwiki.com/index.php/Words_of_Endurance"
+  },
+  {
+   "n": "Words of Haunting",
+   "u": "https://eqlwiki.com/index.php/Words_of_Haunting"
+  },
+  {
+   "n": "Words of Motion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Motion"
+  },
+  {
+   "n": "Words of Neglect",
+   "u": "https://eqlwiki.com/index.php/Words_of_Neglect"
+  },
+  {
+   "n": "Words of Parasitism",
+   "u": "https://eqlwiki.com/index.php/Words_of_Parasitism"
+  },
+  {
+   "n": "Words of Possession",
+   "u": "https://eqlwiki.com/index.php/Words_of_Possession"
+  },
+  {
+   "n": "Words of Purification",
+   "u": "https://eqlwiki.com/index.php/Words_of_Purification"
+  },
+  {
+   "n": "Words of Quivering",
+   "u": "https://eqlwiki.com/index.php/Words_of_Quivering"
+  },
+  {
+   "n": "Words of Resolve",
+   "u": "https://eqlwiki.com/index.php/Words_of_Resolve"
+  },
+  {
+   "n": "Words of Rupturing",
+   "u": "https://eqlwiki.com/index.php/Words_of_Rupturing"
+  },
+  {
+   "n": "Words of Sight",
+   "u": "https://eqlwiki.com/index.php/Words_of_Sight"
+  },
+  {
+   "n": "Words of the Incorporeal",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Incorporeal"
+  },
+  {
+   "n": "Words of the Suffering",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Suffering"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    null,
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    5,
+    7,
+    30,
+    33,
+    36,
+    43,
+    51,
+    52,
+    56,
+    57,
+    58,
+    67,
+    68,
+    72,
+    84,
+    90,
+    99,
+    106,
+    107,
+    108,
+    110,
+    111,
+    142,
+    148
+   ],
+   "loc": null,
+   "lvl": "32-33",
+   "n": "a crystal crawler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crystal_Crawler"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    27,
+    30,
+    33,
+    34,
+    57,
+    107
+   ],
+   "loc": null,
+   "lvl": "33",
+   "n": "a crystal grinder",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystal_grinder"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Common",
+    "Ultra Rare"
+   ],
+   "drops": [
+    33,
+    50,
+    104,
+    130
+   ],
+   "loc": [
+    -553.0,
+    -930.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "a crystal lurker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystal_lurker"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    28,
+    33
+   ],
+   "loc": [
+    -592.0,
+    -951.0,
+    null
+   ],
+   "lvl": "32-35",
+   "n": "a crystal purifier",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystal_purifier"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    33,
+    54,
+    100
+   ],
+   "loc": null,
+   "lvl": "20-25",
+   "n": "a crystal spiderling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystal_spiderling"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    null,
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    33,
+    34,
+    57,
+    58,
+    62,
+    66,
+    87,
+    107,
+    127,
+    149
+   ],
+   "loc": null,
+   "lvl": "33-34",
+   "n": "a crystal webmaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystal_webmaster"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    28,
+    29,
+    33,
+    35,
+    37,
+    38,
+    50,
+    125
+   ],
+   "loc": null,
+   "lvl": "33 - 36",
+   "n": "A drachnid retainer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_dracnid_retainer"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    7,
+    12,
+    13,
+    16,
+    18,
+    19,
+    21,
+    39,
+    44,
+    64,
+    71,
+    74,
+    78,
+    86,
+    89,
+    93,
+    95,
+    127,
+    129,
+    135,
+    136,
+    139,
+    144,
+    149
+   ],
+   "loc": [
+    -381.0,
+    35.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "a focus gem",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_focus_gem"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    9,
+    10,
+    13,
+    16,
+    18,
+    19
+   ],
+   "loc": [
+    -664.0,
+    -165.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "a gem collector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_gem_collector"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    7,
+    8,
+    11,
+    14,
+    15,
+    16,
+    17,
+    20,
+    23,
+    42,
+    56,
+    60,
+    67,
+    75,
+    78,
+    132,
+    136
+   ],
+   "loc": null,
+   "lvl": "31-37",
+   "n": "a geonid",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_geonid_(CC)"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    26,
+    46
+   ],
+   "loc": [
+    -238.0,
+    -276.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "a hollow crystal",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_hollow_crystal"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    3,
+    22,
+    36
+   ],
+   "loc": [
+    -191.0,
+    -300.0,
+    null
+   ],
+   "lvl": "38-42",
+   "n": "a life leech",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_life_leech"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    6,
+    25,
+    55,
+    60
+   ],
+   "loc": [
+    567.0,
+    796.0,
+    -328.0
+   ],
+   "lvl": "30",
+   "n": "a Ry`Gorr herbalist",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Ry%60Gorr_herbalist"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    6,
+    31
+   ],
+   "loc": null,
+   "lvl": "30",
+   "n": "a Ry`Gorr inspector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Ry%60Gorr_inspector"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    4,
+    6,
+    41,
+    51,
+    56,
+    57,
+    58,
+    60,
+    62,
+    65,
+    66,
+    67,
+    70,
+    79,
+    82,
+    92,
+    98,
+    99,
+    102,
+    103,
+    106,
+    107,
+    109,
+    126,
+    131,
+    133,
+    146
+   ],
+   "loc": null,
+   "lvl": "26-29",
+   "n": "a Ry`Gorr miner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Ry%60Gorr_miner"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    6,
+    24,
+    60
+   ],
+   "loc": null,
+   "lvl": "42 - 44",
+   "n": "A Ry`Gorr oracle",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Ry%60Gorr_oracle"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    6,
+    42,
+    47,
+    48,
+    49,
+    51,
+    52,
+    56,
+    57,
+    60,
+    62,
+    66,
+    82,
+    88,
+    91,
+    99,
+    106,
+    107,
+    117,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    128,
+    138,
+    141
+   ],
+   "loc": null,
+   "lvl": "29-31",
+   "n": "a Ry`Gorr watchman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Ry%60Gorr_watchman"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    2,
+    26,
+    36,
+    39,
+    40,
+    42,
+    44,
+    49,
+    51,
+    52,
+    53,
+    56,
+    57,
+    58,
+    59,
+    62,
+    64,
+    66,
+    67,
+    69,
+    71,
+    72,
+    73,
+    74,
+    76,
+    77,
+    78,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    91,
+    93,
+    94,
+    95,
+    96,
+    99,
+    107,
+    112,
+    113,
+    114,
+    115,
+    127,
+    128,
+    129,
+    132,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    149
+   ],
+   "loc": null,
+   "lvl": "29-37",
+   "n": "a stalag terror",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Stalag_Terror"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    105
+   ],
+   "loc": [
+    -297.0,
+    285.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "a terror carver",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_terror_carver"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    5,
+    7,
+    43,
+    51,
+    101,
+    116
+   ],
+   "loc": [
+    -230.0,
+    700.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "A velium crawler",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_velium_crawler"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -255.0,
+    230.0,
+    -395.0
+   ],
+   "lvl": "?",
+   "n": "Captain Dunstan Coldheart",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Captain_Dunstan_Coldheart"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "?",
+   "n": "Cassia Gemshard",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cassia_Gemshard"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -320.0,
+    205.0,
+    -380.0
+   ],
+   "lvl": "?",
+   "n": "Derron Coldmist",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Derron_Coldmist"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -361.0,
+    320.0,
+    -424.0
+   ],
+   "lvl": "?",
+   "n": "Flint Velweaver",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Flint_Velweaver"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    45,
+    47,
+    48,
+    118
+   ],
+   "loc": [
+    469.0,
+    506.0,
+    null
+   ],
+   "lvl": "33-35",
+   "n": "Foreman Rixact",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Foreman_Rixact"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    2,
+    44,
+    45,
+    47,
+    48,
+    118,
+    120,
+    136,
+    137
+   ],
+   "loc": [
+    395.0,
+    457.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "Foreman Smason",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Foreman_Smason"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -235.0,
+    396.0,
+    -372.0
+   ],
+   "lvl": "?",
+   "n": "Fuller Velweaver",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Fuller_Velweaver"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    63
+   ],
+   "loc": [
+    -190.0,
+    -250.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Ghost of Burdael",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ghost_of_Burdael"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -315.0,
+    265.0,
+    -394.0
+   ],
+   "lvl": "35",
+   "n": "Guard Evercold",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Evercold"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -130.0,
+    235.0,
+    -360.0
+   ],
+   "lvl": "35",
+   "n": "Guard Grabadin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Grabadin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -130.0,
+    200.0,
+    -360.0
+   ],
+   "lvl": "35",
+   "n": "Guard Hollander",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Hollander"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -235.0,
+    396.0,
+    -372.0
+   ],
+   "lvl": "35",
+   "n": "Guard Justik",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Justik"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -261.0,
+    193.0,
+    -384.0
+   ],
+   "lvl": "35",
+   "n": "Guard Kevin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kevin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -93.0,
+    252.0,
+    -364.0
+   ],
+   "lvl": "35",
+   "n": "Guard Kristen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kristen"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -315.0,
+    250.0,
+    -394.0
+   ],
+   "lvl": "35",
+   "n": "Guard Slacey",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Slacey"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -231.0,
+    410.0,
+    -372.0
+   ],
+   "lvl": "35",
+   "n": "Guard Solistak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Solistak"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -322.0,
+    229.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Historian Baenek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Historian_Baenek"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -193.0,
+    299.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Kramble Gemshard",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kramble_Gemshard"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -95.0,
+    260.0,
+    -380.0
+   ],
+   "lvl": "?",
+   "n": "Nadalia Coldmist",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nadalia_Coldmist"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    32,
+    35,
+    61,
+    97
+   ],
+   "loc": [
+    -592.0,
+    -951.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Queen Dracnia",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Queen_Dracnia"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -228.0,
+    238.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "Soren Coldheart",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Soren_Coldheart"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -125.0,
+    340.0,
+    -380.0
+   ],
+   "lvl": "30",
+   "n": "Tacy MistHeart",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tacy_MistHeart"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -230.0,
+    250.0,
+    -380.0
+   ],
+   "lvl": "28",
+   "n": "Vevina Velweaver",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vevina_Velweaver"
+  }
+ ],
+ "updated": "2026-06-06T00:35:35Z",
+ "wikiTitle": "Crystal Caverns",
+ "wikiUrl": "https://eqlwiki.com/index.php/Crystal_Caverns",
+ "zone": "crystal"
+}

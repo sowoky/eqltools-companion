@@ -1,0 +1,117 @@
+{
+ "items": [],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    515.0,
+    -165.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Commander Riteb",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Commander_Riteb"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    617.0,
+    -116.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Hierophant Oxylin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hierophant_Oxylin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    619.0,
+    -119.0,
+    -20.0
+   ],
+   "lvl": "70",
+   "n": "Hierophant Oxyln",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hierophant_Oxyln"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    511.0,
+    -125.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Lady Zleka",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lady_Zleka"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    571.0,
+    -118.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Master Xalg",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Master_Xalg"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    616.0,
+    -168.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Mistress Drozlen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mistress_Drozlen"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    575.0,
+    -169.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Patriarch Zevlex",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Patriarch_Zevlex"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    485.0,
+    -144.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Kraer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Kraer"
+  }
+ ],
+ "updated": "2026-06-22T17:41:16Z",
+ "wikiTitle": "New Sebilis Expedition",
+ "wikiUrl": "https://eqlwiki.com/index.php/New_Sebilis_Expedition",
+ "zone": "newsebexp"
+}

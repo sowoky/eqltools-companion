@@ -1,0 +1,446 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Elven Blood",
+   "u": "https://eqlwiki.com/index.php/Elven_Blood"
+  },
+  {
+   "g": 1,
+   "n": "Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Two_Handed_Sword"
+  },
+  {
+   "n": "Wood Elf Parts",
+   "u": "https://eqlwiki.com/index.php/Wood_Elf_Parts"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    21.0,
+    -292.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Arrias Arcanum",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Arrias_Arcanum"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -34.0,
+    -441.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Banker Rylisan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Banker_Rylisan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -50.0,
+    -453.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Banker Tintal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Banker_Tintal"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -14.0,
+    -262.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Challice",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Challice"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    247.0,
+    -713.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Elia the Pure",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Elia_the_Pure"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    17.0,
+    -198.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "General Jyleel",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/General_Jyleel"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    27.0,
+    -163.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Guard Allmayn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Allmayn"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -50.0,
+    -439.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Guard Crucorn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Crucorn"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    7.0,
+    -562.0,
+    null
+   ],
+   "lvl": "40-41",
+   "n": "Guard Hutian",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Hutian"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    100.0,
+    -308.0,
+    null
+   ],
+   "lvl": "40-41",
+   "n": "Guard Jassong",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Jassong"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -100.0,
+    -280.0,
+    null
+   ],
+   "lvl": "40-41",
+   "n": "Guard Kiston",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kiston"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    0.0,
+    -35.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Guard Legver",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Legver"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    52.0,
+    -151.0,
+    null
+   ],
+   "lvl": "40-41",
+   "n": "Guard Lovayn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Lovayn"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -14.0,
+    -47.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Meadom",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Meadom"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -3.0,
+    21.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Guard Mystan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Mystan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -2.0,
+    -196.0,
+    null
+   ],
+   "lvl": "40-41",
+   "n": "Guard Mystan (Northern Felwithe)",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Mystan_(Northern_Felwithe)"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -24.0,
+    -163.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Settine",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Settine"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -6.0,
+    -644.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Trerun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Trerun"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    14.0,
+    -47.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Guard Wisnyw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Wisnyw"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    172.0,
+    -140.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Lieutenant Rosaed",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lieutenant_Rosaed"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    154.0,
+    -342.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Lord Nethryn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Nethryn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    0.0,
+    -225.0,
+    null
+   ],
+   "lvl": "1",
+   "n": "Soulbinder Elendalira",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Soulbinder_Elendalira"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -90.0,
+    -326.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Tacar Tissleplay",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tacar_Tissleplay"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    0,
+    2
+   ],
+   "loc": null,
+   "lvl": "25",
+   "n": "Tacar Tissleplay",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tacar_tissleplay"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -65.0,
+    -690.0,
+    -10.0
+   ],
+   "lvl": "35",
+   "n": "Tolkar Parlone",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tolkar_Parlone"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "33 (or less, blue to 34)",
+   "n": "Tolon Nurbyte",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tolon_Nurbyte"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    11.0,
+    -328.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Tynkale",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tynkale"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    13.0,
+    -435.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Yeolarn Bronzeleaf",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Yeolarn_Bronzeleaf"
+  }
+ ],
+ "updated": "2026-05-20T05:23:22Z",
+ "wikiTitle": "Northern Felwithe",
+ "wikiUrl": "https://eqlwiki.com/index.php/Northern_Felwithe",
+ "zone": "felwithea"
+}

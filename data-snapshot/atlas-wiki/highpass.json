@@ -1,0 +1,1196 @@
+{
+ "items": [
+  {
+   "n": "Amber",
+   "u": "https://eqlwiki.com/index.php/Amber"
+  },
+  {
+   "n": "Bayle List I",
+   "u": "https://eqlwiki.com/index.php/Bayle_List_I"
+  },
+  {
+   "n": "Bayle List III",
+   "u": "https://eqlwiki.com/index.php/Bayle_List_III"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Dagger",
+   "u": "https://eqlwiki.com/index.php/Bronze_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Morning Star",
+   "u": "https://eqlwiki.com/index.php/Bronze_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Spear",
+   "u": "https://eqlwiki.com/index.php/Bronze_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Warhammer",
+   "u": "https://eqlwiki.com/index.php/Bronze_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Cracked Darkwood Shield",
+   "u": "https://eqlwiki.com/index.php/Cracked_Darkwood_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Cracked Staff",
+   "u": "https://eqlwiki.com/index.php/Cracked_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Dagger",
+   "u": "https://eqlwiki.com/index.php/Dagger"
+  },
+  {
+   "n": "Dwarf Meat",
+   "u": "https://eqlwiki.com/index.php/Dwarf_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Fading Shadow Dagger",
+   "u": "https://eqlwiki.com/index.php/Fading_Shadow_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Dagger",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Long Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Morning Star",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Rapier",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Scimitar",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Short Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Giant Snake Fang",
+   "u": "https://eqlwiki.com/index.php/Giant_Snake_Fang"
+  },
+  {
+   "n": "Gnoll Scalp",
+   "u": "https://eqlwiki.com/index.php/Gnoll_Scalp"
+  },
+  {
+   "n": "Head of Stanos",
+   "u": "https://eqlwiki.com/index.php/Head_of_Stanos"
+  },
+  {
+   "n": "Ivory",
+   "u": "https://eqlwiki.com/index.php/Ivory"
+  },
+  {
+   "n": "Large Bag",
+   "u": "https://eqlwiki.com/index.php/Large_Bag"
+  },
+  {
+   "n": "Locked Book",
+   "u": "https://eqlwiki.com/index.php/Locked_Book"
+  },
+  {
+   "n": "Orc Scalp",
+   "u": "https://eqlwiki.com/index.php/Orc_Scalp"
+  },
+  {
+   "n": "Page 30 of a Book",
+   "u": "https://eqlwiki.com/index.php/Page_30_of_a_Book"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 23 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._23_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 23 (Right)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._23_(Right)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 24 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._24_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 312 (Right)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._312_(Right)"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Pickbringers Chainmail Coif",
+   "u": "https://eqlwiki.com/index.php/Pickbringers_Chainmail_Coif"
+  },
+  {
+   "g": 1,
+   "n": "Pickbringers Chainmail Faceguard",
+   "u": "https://eqlwiki.com/index.php/Pickbringers_Chainmail_Faceguard"
+  },
+  {
+   "g": 1,
+   "n": "Polished Granite Tomahawk",
+   "u": "https://eqlwiki.com/index.php/Polished_Granite_Tomahawk"
+  },
+  {
+   "n": "Rain Water",
+   "u": "https://eqlwiki.com/index.php/Rain_Water"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Skullcap",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Skullcap"
+  },
+  {
+   "n": "Rune of Oppression",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Oppression"
+  },
+  {
+   "n": "Rune of Periphery",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Periphery"
+  },
+  {
+   "n": "Rune of Velious",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Velious"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Broad Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Broad_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Long Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Short Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Sealed Letter",
+   "u": "https://eqlwiki.com/index.php/Sealed_Letter"
+  },
+  {
+   "g": 1,
+   "n": "Shiny Brass Halberd",
+   "u": "https://eqlwiki.com/index.php/Shiny_Brass_Halberd"
+  },
+  {
+   "g": 1,
+   "n": "Shiny Brass Idol",
+   "u": "https://eqlwiki.com/index.php/Shiny_Brass_Idol"
+  },
+  {
+   "n": "Short Beer",
+   "u": "https://eqlwiki.com/index.php/Short_Beer"
+  },
+  {
+   "n": "Shralok Pack",
+   "u": "https://eqlwiki.com/index.php/Shralok_Pack"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "n": "Small Box",
+   "u": "https://eqlwiki.com/index.php/Small_Box"
+  },
+  {
+   "g": 1,
+   "n": "Splintering Club",
+   "u": "https://eqlwiki.com/index.php/Splintering_Club"
+  },
+  {
+   "n": "Stald's Badge",
+   "u": "https://eqlwiki.com/index.php/Stald's_Badge"
+  },
+  {
+   "n": "Topaz",
+   "u": "https://eqlwiki.com/index.php/Topaz"
+  },
+  {
+   "n": "Words of Dominion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dominion"
+  },
+  {
+   "n": "Words of Eradication",
+   "u": "https://eqlwiki.com/index.php/Words_of_Eradication"
+  },
+  {
+   "n": "Words of the Sentient (Azia)",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Sentient_(Azia)"
+  },
+  {
+   "g": 1,
+   "n": "Worn Great Staff",
+   "u": "https://eqlwiki.com/index.php/Worn_Great_Staff"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    21,
+    37,
+    41,
+    42,
+    43
+   ],
+   "loc": null,
+   "lvl": "9 - 10",
+   "n": "a gnoll",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_gnoll_(Highpass_Hold)"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare"
+   ],
+   "drops": [
+    21,
+    36,
+    43
+   ],
+   "loc": [
+    765.0,
+    175.0,
+    null
+   ],
+   "lvl": "13 - 15",
+   "n": "a gnoll brawler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gnoll_Brawler"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    21,
+    29,
+    56
+   ],
+   "loc": null,
+   "lvl": "16",
+   "n": "a gnoll champion",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_gnoll_champion"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    21,
+    28,
+    36,
+    39,
+    51,
+    55,
+    57
+   ],
+   "loc": null,
+   "lvl": "18",
+   "n": "a gnoll flamepaw",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_gnoll_flamepaw"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    21,
+    51
+   ],
+   "loc": null,
+   "lvl": "7 - 11",
+   "n": "a gnoll shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_gnoll_shaman_(Highpass_Hold)"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    6,
+    21,
+    24,
+    36,
+    47
+   ],
+   "loc": null,
+   "lvl": "16",
+   "n": "a gnoll soothsayer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_gnoll_soothsayer"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    17
+   ],
+   "loc": null,
+   "lvl": "20-36",
+   "n": "A guard",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Guard"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ],
+   "loc": [
+    -88.0,
+    409.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "a Highpass citizen",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Highpass_Citizen"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    56
+   ],
+   "loc": null,
+   "lvl": "12,18",
+   "n": "a smuggler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Smuggler"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -59.9,
+    433.9,
+    9.8
+   ],
+   "lvl": "61",
+   "n": "Alhareen the Just",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Alhareen_the_Just"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    8,
+    26,
+    50,
+    57
+   ],
+   "loc": [
+    -874.0,
+    213.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "an orc acolyte",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Orc_Acolyte"
+  },
+  {
+   "dr": [
+    "Ultra Rare"
+   ],
+   "drops": [
+    26
+   ],
+   "loc": [
+    -826.0,
+    244.0,
+    null
+   ],
+   "lvl": "12-14",
+   "n": "an orc berserker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Orc_Berserker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -807.0,
+    265.0,
+    null
+   ],
+   "lvl": "12-15",
+   "n": "an orc conscript",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Orc_Conscript"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    26,
+    57
+   ],
+   "loc": [
+    -826.0,
+    244.0,
+    null
+   ],
+   "lvl": "19-21",
+   "n": "an orc fanatic",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_orc_fanatic"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    26,
+    40
+   ],
+   "loc": null,
+   "lvl": "15 - 18",
+   "n": "an orc medic",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Orc_Medic"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    26,
+    54
+   ],
+   "loc": [
+    -874.0,
+    213.0,
+    null
+   ],
+   "lvl": "18-20",
+   "n": "an orc mercenary",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_orc_mercenary"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -826.0,
+    244.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "an orc scout",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Orc_Scout"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    31,
+    38,
+    56
+   ],
+   "loc": null,
+   "lvl": "10-12, 15-18",
+   "n": "an orc scout",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_orc_scout"
+  },
+  {
+   "dr": [
+    "Ultra Rare"
+   ],
+   "drops": [
+    26
+   ],
+   "loc": [
+    -897.0,
+    231.0,
+    null
+   ],
+   "lvl": "12",
+   "n": "an orc soldier",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_orc_soldier"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    26,
+    33,
+    34
+   ],
+   "loc": null,
+   "lvl": "6-8, 12-15, 15-18",
+   "n": "an orc warrior",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Orc_Warrior"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    5.0,
+    325.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Anson McBale",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Anson_McBale"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    9
+   ],
+   "loc": null,
+   "lvl": "20",
+   "n": "Barn Bloodstone",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Barn_Bloodstone"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "40",
+   "n": "Beef",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Beef"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    426.0,
+    -260.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "Breck Damison",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Breck_Damison"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    5,
+    23,
+    32,
+    53
+   ],
+   "loc": [
+    1.0,
+    158.0,
+    null
+   ],
+   "lvl": "11",
+   "n": "Brenon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Brenon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -231.0,
+    91.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Bryan McGee",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bryan_McGee"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    200.0,
+    513.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Burgek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Burgek"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    17
+   ],
+   "loc": [
+    -568.0,
+    225.0,
+    null
+   ],
+   "lvl": "27",
+   "n": "Captain Ashlan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Captain_Ashlan"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    17
+   ],
+   "loc": [
+    554.0,
+    119.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Captain Orben",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Captain_Orben"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -12.0,
+    -5.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Commander Thafer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Commander_Thafer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    328.0,
+    -199.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Crenn Salbet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crenn_Salbet"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    61.7,
+    317.2,
+    46.4
+   ],
+   "lvl": "61",
+   "n": "Cyrla Shadowstepper",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cyrla_Shadowstepper"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    389.0,
+    -259.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Cytodl Krish",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cytodl_Krish"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    5,
+    49
+   ],
+   "loc": [
+    -38.0,
+    182.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "Dalishea",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dalishea"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    2,
+    27
+   ],
+   "loc": [
+    39.0,
+    126.0,
+    null
+   ],
+   "lvl": "16",
+   "n": "Dyllin Starsine",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dyllin_Starsine"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    625.0,
+    90.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Grenix Mucktail",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grenix_Mucktail"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    5,
+    10,
+    30,
+    32,
+    53
+   ],
+   "loc": [
+    2.0,
+    187.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Greth Truksorn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Greth_Truksorn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -27.0,
+    396.0,
+    null
+   ],
+   "lvl": "23",
+   "n": "Guard Becker",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Becker"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    52
+   ],
+   "loc": [
+    127.0,
+    464.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Guard Stald",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Stald"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -192.0,
+    4.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Gublink Furnhorn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gublink_Furnhorn"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    45
+   ],
+   "loc": [
+    -874.0,
+    213.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "Hagnis Shralok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hagnis_Shralok"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -192.0,
+    4.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Jovan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jovan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    353.0,
+    -258.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Kaden Gron",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kaden_Gron"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    25
+   ],
+   "loc": null,
+   "lvl": "4",
+   "n": "Lydl the Great",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lydl_the_Great"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -216.0,
+    30.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "Lylea",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lylea"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    44
+   ],
+   "loc": [
+    336.0,
+    -265.0,
+    null
+   ],
+   "lvl": "16",
+   "n": "Malik Zaren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Malik_Zaren"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    1,
+    20
+   ],
+   "loc": [
+    422.0,
+    -60.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Mutt Rootlit",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mutt_Rootlit"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    396.0,
+    -203.0,
+    null
+   ],
+   "lvl": "27",
+   "n": "Prak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Prak"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Always"
+   ],
+   "drops": [
+    26,
+    48
+   ],
+   "loc": [
+    -874.0,
+    213.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "Recfek Shralok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Recfek_Shralok_(Highpass_Hold)"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    9,
+    11,
+    22
+   ],
+   "loc": [
+    35.0,
+    327.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Stanos Herkanor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Stanos_Herkanor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -226.0,
+    -826.0,
+    null
+   ],
+   "lvl": "15-17",
+   "n": "Swiftfingers",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Swiftfingers"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    7
+   ],
+   "loc": [
+    625.0,
+    90.0,
+    null
+   ],
+   "lvl": "21 (Highpass Hold)",
+   "n": "Vexven Mucktail",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vexven_Mucktail"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -532.0,
+    193.0,
+    null
+   ],
+   "lvl": "4",
+   "n": "Volunteer Delharn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Volunteer_Delharn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    479.0,
+    118.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Volunteer Renlor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Volunteer_Renlor"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Always"
+   ],
+   "drops": [
+    26,
+    46
+   ],
+   "loc": null,
+   "lvl": "15, 19-22",
+   "n": "Vopuk Shralok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vopuk_Shralok"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    426.0,
+    -205.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Wres Corber",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wres_Corber"
+  }
+ ],
+ "updated": "2026-07-13T15:13:18Z",
+ "wikiTitle": "Highpass Hold",
+ "wikiUrl": "https://eqlwiki.com/index.php/Highpass_Hold",
+ "zone": "highpass"
+}

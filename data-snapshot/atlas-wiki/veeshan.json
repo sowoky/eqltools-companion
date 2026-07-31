@@ -1,0 +1,707 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Blackstone Maul",
+   "u": "https://eqlwiki.com/index.php/Blackstone_Maul"
+  },
+  {
+   "g": 1,
+   "n": "Blade of Falling Stars",
+   "u": "https://eqlwiki.com/index.php/Blade_of_Falling_Stars"
+  },
+  {
+   "g": 1,
+   "n": "Blood Orchid Katana",
+   "u": "https://eqlwiki.com/index.php/Blood_Orchid_Katana"
+  },
+  {
+   "n": "Blue Diamond",
+   "u": "https://eqlwiki.com/index.php/Blue_Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Blued Flower Katana",
+   "u": "https://eqlwiki.com/index.php/Blued_Flower_Katana"
+  },
+  {
+   "g": 1,
+   "n": "Bo Staff of Trorsmang",
+   "u": "https://eqlwiki.com/index.php/Bo_Staff_of_Trorsmang"
+  },
+  {
+   "g": 1,
+   "n": "Claw of Phara Dar",
+   "u": "https://eqlwiki.com/index.php/Claw_of_Phara_Dar"
+  },
+  {
+   "g": 1,
+   "n": "Crown of Rile",
+   "u": "https://eqlwiki.com/index.php/Crown_of_Rile"
+  },
+  {
+   "n": "Diamond",
+   "u": "https://eqlwiki.com/index.php/Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Dragon Claw Main Gauche",
+   "u": "https://eqlwiki.com/index.php/Dragon_Claw_Main_Gauche"
+  },
+  {
+   "g": 1,
+   "n": "Dragon Spine Staff",
+   "u": "https://eqlwiki.com/index.php/Dragon_Spine_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Executioner's Blade",
+   "u": "https://eqlwiki.com/index.php/Executioner's_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Fatesealer",
+   "u": "https://eqlwiki.com/index.php/Fatesealer"
+  },
+  {
+   "g": 1,
+   "n": "Feverblade - Bane of the Shissar",
+   "u": "https://eqlwiki.com/index.php/Feverblade_-_Bane_of_the_Shissar"
+  },
+  {
+   "n": "Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
+  },
+  {
+   "n": "Fire Opal",
+   "u": "https://eqlwiki.com/index.php/Fire_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Frozen Zweihander",
+   "u": "https://eqlwiki.com/index.php/Frozen_Zweihander"
+  },
+  {
+   "g": 1,
+   "n": "Green Dragon Scales",
+   "u": "https://eqlwiki.com/index.php/Green_Dragon_Scales"
+  },
+  {
+   "g": 1,
+   "n": "Grey Suede Boots",
+   "u": "https://eqlwiki.com/index.php/Grey_Suede_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Hammer of the Dragonborn",
+   "u": "https://eqlwiki.com/index.php/Hammer_of_the_Dragonborn"
+  },
+  {
+   "g": 1,
+   "n": "Howling Cutlass",
+   "u": "https://eqlwiki.com/index.php/Howling_Cutlass"
+  },
+  {
+   "g": 1,
+   "n": "Katana of Endurance",
+   "u": "https://eqlwiki.com/index.php/Katana_of_Endurance"
+  },
+  {
+   "g": 1,
+   "n": "Katana of Flowing Water",
+   "u": "https://eqlwiki.com/index.php/Katana_of_Flowing_Water"
+  },
+  {
+   "g": 1,
+   "n": "Left Eye of Xygoz",
+   "u": "https://eqlwiki.com/index.php/Left_Eye_of_Xygoz"
+  },
+  {
+   "g": 1,
+   "n": "Lyran's Mystical Lute",
+   "u": "https://eqlwiki.com/index.php/Lyran's_Mystical_Lute"
+  },
+  {
+   "g": 1,
+   "n": "Maelstrom",
+   "u": "https://eqlwiki.com/index.php/Maelstrom"
+  },
+  {
+   "g": 1,
+   "n": "Malevolent Runeblade",
+   "u": "https://eqlwiki.com/index.php/Malevolent_Runeblade"
+  },
+  {
+   "g": 1,
+   "n": "Nightfall",
+   "u": "https://eqlwiki.com/index.php/Nightfall"
+  },
+  {
+   "g": 1,
+   "n": "Pulsating Gem",
+   "u": "https://eqlwiki.com/index.php/Pulsating_Gem"
+  },
+  {
+   "g": 1,
+   "n": "Razor Fang of Xygoz",
+   "u": "https://eqlwiki.com/index.php/Razor_Fang_of_Xygoz"
+  },
+  {
+   "g": 1,
+   "n": "Razor Sharp Short Sword",
+   "u": "https://eqlwiki.com/index.php/Razor_Sharp_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Robe of Adversity",
+   "u": "https://eqlwiki.com/index.php/Robe_of_Adversity"
+  },
+  {
+   "g": 1,
+   "n": "Robe of Asphyxiation",
+   "u": "https://eqlwiki.com/index.php/Robe_of_Asphyxiation"
+  },
+  {
+   "g": 1,
+   "n": "Robe of Burning Rage",
+   "u": "https://eqlwiki.com/index.php/Robe_of_Burning_Rage"
+  },
+  {
+   "g": 1,
+   "n": "Robe of Decay",
+   "u": "https://eqlwiki.com/index.php/Robe_of_Decay"
+  },
+  {
+   "g": 1,
+   "n": "Robe of Smothering",
+   "u": "https://eqlwiki.com/index.php/Robe_of_Smothering"
+  },
+  {
+   "g": 1,
+   "n": "Robe of the Azure Sky",
+   "u": "https://eqlwiki.com/index.php/Robe_of_the_Azure_Sky"
+  },
+  {
+   "g": 1,
+   "n": "Robe of the Spring",
+   "u": "https://eqlwiki.com/index.php/Robe_of_the_Spring"
+  },
+  {
+   "n": "Ruby",
+   "u": "https://eqlwiki.com/index.php/Ruby"
+  },
+  {
+   "n": "Rune of Impetus",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Impetus"
+  },
+  {
+   "g": 1,
+   "n": "Runestone Maul",
+   "u": "https://eqlwiki.com/index.php/Runestone_Maul"
+  },
+  {
+   "n": "Sapphire",
+   "u": "https://eqlwiki.com/index.php/Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Channeler Staff",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Channeler_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Summoners Staff",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Summoners_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Shield of Elders",
+   "u": "https://eqlwiki.com/index.php/Shield_of_Elders"
+  },
+  {
+   "g": 1,
+   "n": "Shissar Apothic Staff",
+   "u": "https://eqlwiki.com/index.php/Shissar_Apothic_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Shissar Deathspeaker Staff",
+   "u": "https://eqlwiki.com/index.php/Shissar_Deathspeaker_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Shissar Elementalist's Staff",
+   "u": "https://eqlwiki.com/index.php/Shissar_Elementalist's_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Shissar Elementalist`s Cane",
+   "u": "https://eqlwiki.com/index.php/Shissar_Elementalist%60s_Cane"
+  },
+  {
+   "g": 1,
+   "n": "Shissar Focus Staff",
+   "u": "https://eqlwiki.com/index.php/Shissar_Focus_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Shissar Protection Staff",
+   "u": "https://eqlwiki.com/index.php/Shissar_Protection_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Shissar Seance Staff",
+   "u": "https://eqlwiki.com/index.php/Shissar_Seance_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Shroud of Veeshan",
+   "u": "https://eqlwiki.com/index.php/Shroud_of_Veeshan"
+  },
+  {
+   "g": 1,
+   "n": "Skullcrusher of Kragg",
+   "u": "https://eqlwiki.com/index.php/Skullcrusher_of_Kragg"
+  },
+  {
+   "g": 1,
+   "n": "Smoldering Cudgel",
+   "u": "https://eqlwiki.com/index.php/Smoldering_Cudgel"
+  },
+  {
+   "g": 1,
+   "n": "Solist's Robe of Invocation",
+   "u": "https://eqlwiki.com/index.php/Solist's_Robe_of_Invocation"
+  },
+  {
+   "g": 1,
+   "n": "Spear of Constriction",
+   "u": "https://eqlwiki.com/index.php/Spear_of_Constriction"
+  },
+  {
+   "g": 1,
+   "n": "Sprinkler of Suffering",
+   "u": "https://eqlwiki.com/index.php/Sprinkler_of_Suffering"
+  },
+  {
+   "g": 1,
+   "n": "Staff of Null",
+   "u": "https://eqlwiki.com/index.php/Staff_of_Null"
+  },
+  {
+   "g": 1,
+   "n": "Star of the Guardian",
+   "u": "https://eqlwiki.com/index.php/Star_of_the_Guardian"
+  },
+  {
+   "n": "Star Ruby",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Sword of Rile",
+   "u": "https://eqlwiki.com/index.php/Sword_of_Rile"
+  },
+  {
+   "g": 1,
+   "n": "Sword of the Shissar",
+   "u": "https://eqlwiki.com/index.php/Sword_of_the_Shissar"
+  },
+  {
+   "n": "Tears of Prexus",
+   "u": "https://eqlwiki.com/index.php/Tears_of_Prexus"
+  },
+  {
+   "g": 1,
+   "n": "The Scimitar of Lifestealing",
+   "u": "https://eqlwiki.com/index.php/The_Scimitar_of_Lifestealing"
+  },
+  {
+   "g": 1,
+   "n": "Veldrak's Shortblade",
+   "u": "https://eqlwiki.com/index.php/Veldrak's_Shortblade"
+  },
+  {
+   "g": 1,
+   "n": "Veridix's Shortsword",
+   "u": "https://eqlwiki.com/index.php/Veridix's_Shortsword"
+  },
+  {
+   "n": "Wurm Meat",
+   "u": "https://eqlwiki.com/index.php/Wurm_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Ykeshan Broad Axe",
+   "u": "https://eqlwiki.com/index.php/Ykeshan_Broad_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Yunnb's Earring",
+   "u": "https://eqlwiki.com/index.php/Yunnb's_Earring"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    839.0,
+    416.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "a furious guardian wurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Furious_Guardian_Wurm"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "60",
+   "n": "a lava drake",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lava_drake"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    8,
+    14,
+    15,
+    38,
+    41,
+    60
+   ],
+   "loc": [
+    799.0,
+    1696.0,
+    null
+   ],
+   "lvl": "63",
+   "n": "a mature flame protector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_mature_flame_protector"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    8,
+    14,
+    15,
+    38,
+    41,
+    60
+   ],
+   "loc": [
+    799.0,
+    1696.0,
+    null
+   ],
+   "lvl": "63",
+   "n": "a mature frost protector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_mature_frost_protector"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "60",
+   "n": "a racnar",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Racnar"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    21,
+    25,
+    42,
+    43,
+    46,
+    49,
+    53,
+    66
+   ],
+   "loc": [
+    1418.0,
+    -206.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Druushk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Druushk"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1537.0,
+    614.0,
+    null
+   ],
+   "lvl": "27",
+   "n": "elven dancer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Elven_Dancer"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    39,
+    63,
+    67
+   ],
+   "loc": null,
+   "lvl": "60 - 61",
+   "n": "guardian wurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Guardian_wurm"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    12,
+    13,
+    17,
+    18,
+    33,
+    45,
+    47,
+    48,
+    50,
+    62,
+    65,
+    66
+   ],
+   "loc": null,
+   "lvl": "65",
+   "n": "Hoshkar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hoshkar"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    5,
+    20,
+    27,
+    28,
+    31,
+    57,
+    59,
+    68
+   ],
+   "loc": [
+    1170.0,
+    -561.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Nexona",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nexona"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    7,
+    22,
+    36,
+    44,
+    52,
+    61,
+    69
+   ],
+   "loc": [
+    -1156.0,
+    -1314.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Phara Dar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Phara_Dar"
+  },
+  {
+   "dr": [
+    "Ultra Rare"
+   ],
+   "drops": [
+    34
+   ],
+   "loc": null,
+   "lvl": "65",
+   "n": "Qunard Ashenclaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Qunard_Ashenclaw"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    4,
+    9,
+    10,
+    11,
+    19,
+    24,
+    32,
+    35,
+    40,
+    42,
+    51,
+    64
+   ],
+   "loc": [
+    319.0,
+    -258.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Silverwing",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Silverwing"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    319.0,
+    -258.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "Silverwing",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Silverwing_(duck)"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    16,
+    23,
+    26,
+    29,
+    30,
+    37,
+    54,
+    55,
+    56,
+    58
+   ],
+   "loc": [
+    1261.0,
+    1217.0,
+    762.0
+   ],
+   "lvl": "65",
+   "n": "Xygoz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Xygoz"
+  }
+ ],
+ "updated": "2026-05-19T04:34:58Z",
+ "wikiTitle": "Veeshan's Peak",
+ "wikiUrl": "https://eqlwiki.com/index.php/Veeshan's_Peak",
+ "zone": "veeshan"
+}

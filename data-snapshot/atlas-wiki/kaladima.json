@@ -1,0 +1,575 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Dwarven Axe",
+   "u": "https://eqlwiki.com/index.php/Dwarven_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Small Kite Shield",
+   "u": "https://eqlwiki.com/index.php/Small_Kite_Shield"
+  },
+  {
+   "n": "Wood Elf Parts",
+   "u": "https://eqlwiki.com/index.php/Wood_Elf_Parts"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Ultra Rare"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": null,
+   "lvl": "50",
+   "n": "a Bloodforge Captain",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Bloodforge_Captain"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    138.0,
+    339.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Barrith the Brave",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Barrith_the_Brave"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    83.0,
+    404.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Beno Targnarle",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Beno_Targnarle"
+  },
+  {
+   "dr": [
+    "Ultra Rare"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": null,
+   "lvl": "49",
+   "n": "Bloodforge Brigade",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bloodforge_Brigade"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -88.0,
+    416.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Bronlor Lightblade",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bronlor_Lightblade"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -38.0,
+    400.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Byzar Bloodforge",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Byzar_Bloodforge"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -16.0,
+    536.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Canloe Nusback",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Canloe_Nusback"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    42.0,
+    365.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Dirjadak Barbrawler",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dirjadak_Barbrawler"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    73.0,
+    300.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Furtog Ogrebane",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Furtog_Ogrebane"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    117.0,
+    334.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Adolar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Adolar"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -109.0,
+    -304.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Adolmer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Adolmer"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    0,
+    3
+   ],
+   "loc": [
+    64.0,
+    -30.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Anathur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Anathur"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    70.0,
+    34.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Guard Badmer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Badmer"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -96.0,
+    -341.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Bobbin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Bobbin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    0,
+    3
+   ],
+   "loc": [
+    63.0,
+    14.0,
+    null
+   ],
+   "lvl": "38-42",
+   "n": "Guard Cardaff",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Cardaff"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -65.0,
+    -351.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Guard Didek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Didek"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -159.0,
+    -343.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Dinamin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Dinamin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    0,
+    3
+   ],
+   "loc": [
+    70.0,
+    34.0,
+    null
+   ],
+   "lvl": "40-41",
+   "n": "Guard Dinler",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Dinler"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    0,
+    3
+   ],
+   "loc": [
+    135.0,
+    12.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Gabbles",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Gabbles"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    83.0,
+    404.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Hinolmer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Hinolmer"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    0,
+    3
+   ],
+   "loc": [
+    134.0,
+    -13.0,
+    null
+   ],
+   "lvl": "39-41",
+   "n": "Guard Humkor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Humkor"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    41.0,
+    -373.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Humphet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Humphet"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": null,
+   "lvl": "40",
+   "n": "Guard Kanuf",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kanuf"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    113.0,
+    180.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Kathur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kathur"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    0,
+    3
+   ],
+   "loc": [
+    242.0,
+    -200.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Kindor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kindor"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    0,
+    3
+   ],
+   "loc": [
+    145.0,
+    -4.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Guard Koranin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Koranin"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    26.0,
+    -377.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Ninadek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Ninadek"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -65.0,
+    -369.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Ninaf",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Ninaf"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    0,
+    3
+   ],
+   "loc": [
+    63.0,
+    -12.0,
+    null
+   ],
+   "lvl": "38-41",
+   "n": "Guard Stump",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Stump"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    -96.0,
+    -378.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Guard Tantan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Tantan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    142.0,
+    306.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Hogunk Ventille",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hogunk_Ventille"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    4
+   ],
+   "loc": [
+    104.0,
+    221.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Kilam Oresinger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kilam_Oresinger"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    2,
+    3
+   ],
+   "loc": [
+    -118.0,
+    -360.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "King Kazon Stormhammer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/King_Kazon_Stormhammer"
+  }
+ ],
+ "updated": "2026-05-25T17:58:30Z",
+ "wikiTitle": "South Kaladim",
+ "wikiUrl": "https://eqlwiki.com/index.php/South_Kaladim",
+ "zone": "kaladima"
+}

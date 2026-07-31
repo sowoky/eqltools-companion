@@ -1,0 +1,3421 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Ball of Velium",
+   "u": "https://eqlwiki.com/index.php/Ball_of_Velium"
+  },
+  {
+   "g": 1,
+   "n": "Barbed Ringmail",
+   "u": "https://eqlwiki.com/index.php/Barbed_Ringmail"
+  },
+  {
+   "g": 1,
+   "n": "Barbed Ringmail Gloves",
+   "u": "https://eqlwiki.com/index.php/Barbed_Ringmail_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Barbed Ringmail Leggings",
+   "u": "https://eqlwiki.com/index.php/Barbed_Ringmail_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Barbed Ringmail Shoulderpads",
+   "u": "https://eqlwiki.com/index.php/Barbed_Ringmail_Shoulderpads"
+  },
+  {
+   "g": 1,
+   "n": "Barbed Ringmail Sleeves",
+   "u": "https://eqlwiki.com/index.php/Barbed_Ringmail_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Bitter Blade of the Icepaw",
+   "u": "https://eqlwiki.com/index.php/Bitter_Blade_of_the_Icepaw"
+  },
+  {
+   "g": 1,
+   "n": "Black Ice Boots",
+   "u": "https://eqlwiki.com/index.php/Black_Ice_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Black Ice Leggings",
+   "u": "https://eqlwiki.com/index.php/Black_Ice_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Black Ice Sleeves",
+   "u": "https://eqlwiki.com/index.php/Black_Ice_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Black Ice Wrist Guard",
+   "u": "https://eqlwiki.com/index.php/Black_Ice_Wrist_Guard"
+  },
+  {
+   "n": "Black Marble",
+   "u": "https://eqlwiki.com/index.php/Black_Marble"
+  },
+  {
+   "n": "Block of Velium",
+   "u": "https://eqlwiki.com/index.php/Block_of_Velium"
+  },
+  {
+   "g": 1,
+   "n": "Blood Runed Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Blood_Runed_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Blood Runed Girdle",
+   "u": "https://eqlwiki.com/index.php/Blood_Runed_Girdle"
+  },
+  {
+   "g": 1,
+   "n": "Blood Runed Greaves",
+   "u": "https://eqlwiki.com/index.php/Blood_Runed_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Blood Runed Scimitar",
+   "u": "https://eqlwiki.com/index.php/Blood_Runed_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Blood Runed Short Sword",
+   "u": "https://eqlwiki.com/index.php/Blood_Runed_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Bone Bracelet of Condemnation",
+   "u": "https://eqlwiki.com/index.php/Bone_Bracelet_of_Condemnation"
+  },
+  {
+   "g": 1,
+   "n": "Bone Ring of Condemnation",
+   "u": "https://eqlwiki.com/index.php/Bone_Ring_of_Condemnation"
+  },
+  {
+   "g": 1,
+   "n": "Book of Dawn",
+   "u": "https://eqlwiki.com/index.php/Book_of_Dawn"
+  },
+  {
+   "g": 1,
+   "n": "Book of Twilight",
+   "u": "https://eqlwiki.com/index.php/Book_of_Twilight"
+  },
+  {
+   "g": 1,
+   "n": "Boots of Bladecalling",
+   "u": "https://eqlwiki.com/index.php/Boots_of_Bladecalling"
+  },
+  {
+   "g": 1,
+   "n": "Bow of the Icepaw",
+   "u": "https://eqlwiki.com/index.php/Bow_of_the_Icepaw"
+  },
+  {
+   "g": 1,
+   "n": "Bracelet of Frostbite",
+   "u": "https://eqlwiki.com/index.php/Bracelet_of_Frostbite"
+  },
+  {
+   "g": 1,
+   "n": "Broad Sword",
+   "u": "https://eqlwiki.com/index.php/Broad_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Black Marble",
+   "u": "https://eqlwiki.com/index.php/Chipped_Black_Marble"
+  },
+  {
+   "g": 1,
+   "n": "Chipped Onyx Sapphire",
+   "u": "https://eqlwiki.com/index.php/Chipped_Onyx_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Cord",
+   "u": "https://eqlwiki.com/index.php/Cloth_Cord"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Gloves",
+   "u": "https://eqlwiki.com/index.php/Cloth_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Sandals",
+   "u": "https://eqlwiki.com/index.php/Cloth_Sandals"
+  },
+  {
+   "g": 1,
+   "n": "Cold Steel Boots",
+   "u": "https://eqlwiki.com/index.php/Cold_Steel_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Cold Steel Breastplate",
+   "u": "https://eqlwiki.com/index.php/Cold_Steel_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Cold Steel Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Cold_Steel_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Cold Steel Greaves",
+   "u": "https://eqlwiki.com/index.php/Cold_Steel_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Cold Steel Helmet",
+   "u": "https://eqlwiki.com/index.php/Cold_Steel_Helmet"
+  },
+  {
+   "n": "Coral Crescent",
+   "u": "https://eqlwiki.com/index.php/Coral_Crescent"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Black Marble",
+   "u": "https://eqlwiki.com/index.php/Crushed_Black_Marble"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Chrysolite",
+   "u": "https://eqlwiki.com/index.php/Crushed_Chrysolite"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Coral",
+   "u": "https://eqlwiki.com/index.php/Crushed_Coral"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Diamond Dust",
+   "u": "https://eqlwiki.com/index.php/Crushed_Diamond_Dust"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Emerald",
+   "u": "https://eqlwiki.com/index.php/Crushed_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Flame Emerald",
+   "u": "https://eqlwiki.com/index.php/Crushed_Flame_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Flame Opal",
+   "u": "https://eqlwiki.com/index.php/Crushed_Flame_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Jaundice Gem",
+   "u": "https://eqlwiki.com/index.php/Crushed_Jaundice_Gem"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Lava Ruby",
+   "u": "https://eqlwiki.com/index.php/Crushed_Lava_Ruby"
+  },
+  {
+   "n": "Crushed Nephrite",
+   "u": "https://eqlwiki.com/index.php/Crushed_Nephrite"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Onyx Sapphire",
+   "u": "https://eqlwiki.com/index.php/Crushed_Onyx_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Opal",
+   "u": "https://eqlwiki.com/index.php/Crushed_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Sea Sapphire",
+   "u": "https://eqlwiki.com/index.php/Crushed_Sea_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Topaz",
+   "u": "https://eqlwiki.com/index.php/Crushed_Topaz"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Chitin Armplates",
+   "u": "https://eqlwiki.com/index.php/Crystal_Chitin_Armplates"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Chitin Boots",
+   "u": "https://eqlwiki.com/index.php/Crystal_Chitin_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Chitin Chestguard",
+   "u": "https://eqlwiki.com/index.php/Crystal_Chitin_Chestguard"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Chitin Circlet",
+   "u": "https://eqlwiki.com/index.php/Crystal_Chitin_Circlet"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Chitin Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Crystal_Chitin_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Chitin Leggings",
+   "u": "https://eqlwiki.com/index.php/Crystal_Chitin_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Chitin Shield",
+   "u": "https://eqlwiki.com/index.php/Crystal_Chitin_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Crown of Confusion",
+   "u": "https://eqlwiki.com/index.php/Crystal_Crown_of_Confusion"
+  },
+  {
+   "n": "Crystal Dragon Eye",
+   "u": "https://eqlwiki.com/index.php/Crystal_Dragon_Eye"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Rod of Confusion",
+   "u": "https://eqlwiki.com/index.php/Crystal_Rod_of_Confusion"
+  },
+  {
+   "g": 1,
+   "n": "Crystal Spider Eyes",
+   "u": "https://eqlwiki.com/index.php/Crystal_Spider_Eyes"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Silk",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Silk"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Silk Belt",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Silk_Belt"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Silk Mask (Lore)",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Silk_Mask_(Lore)"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Silk Thread",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Silk_Thread"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Spider Fang",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Spider_Fang"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Torque",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Torque"
+  },
+  {
+   "n": "Diamond",
+   "u": "https://eqlwiki.com/index.php/Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Doljonijiarnimorinar",
+   "u": "https://eqlwiki.com/index.php/Doljonijiarnimorinar"
+  },
+  {
+   "g": 1,
+   "n": "Drake Skull Helm",
+   "u": "https://eqlwiki.com/index.php/Drake_Skull_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Efreeti Ice Staff",
+   "u": "https://eqlwiki.com/index.php/Efreeti_Ice_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Fatecaller",
+   "u": "https://eqlwiki.com/index.php/Fatecaller"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Chrysolite",
+   "u": "https://eqlwiki.com/index.php/Flawed_Chrysolite"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Emerald",
+   "u": "https://eqlwiki.com/index.php/Flawed_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Flame Emerald",
+   "u": "https://eqlwiki.com/index.php/Flawed_Flame_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Flame Opal",
+   "u": "https://eqlwiki.com/index.php/Flawed_Flame_Opal"
+  },
+  {
+   "n": "Flawed Lava Ruby",
+   "u": "https://eqlwiki.com/index.php/Flawed_Lava_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Opal",
+   "u": "https://eqlwiki.com/index.php/Flawed_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Sea Sapphire",
+   "u": "https://eqlwiki.com/index.php/Flawed_Sea_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Flawed Topaz",
+   "u": "https://eqlwiki.com/index.php/Flawed_Topaz"
+  },
+  {
+   "g": 1,
+   "n": "Flawless Diamond",
+   "u": "https://eqlwiki.com/index.php/Flawless_Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Frost Covered Tome",
+   "u": "https://eqlwiki.com/index.php/Frost_Covered_Tome"
+  },
+  {
+   "g": 1,
+   "n": "Frozen Efreeti Boots",
+   "u": "https://eqlwiki.com/index.php/Frozen_Efreeti_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Frozen Turban",
+   "u": "https://eqlwiki.com/index.php/Frozen_Turban"
+  },
+  {
+   "g": 1,
+   "n": "Girdle of Wurmslaying",
+   "u": "https://eqlwiki.com/index.php/Girdle_of_Wurmslaying"
+  },
+  {
+   "g": 1,
+   "n": "Gloves of Bladecalling",
+   "u": "https://eqlwiki.com/index.php/Gloves_of_Bladecalling"
+  },
+  {
+   "g": 1,
+   "n": "Glowing Red Stone",
+   "u": "https://eqlwiki.com/index.php/Glowing_Red_Stone"
+  },
+  {
+   "g": 1,
+   "n": "Iceflame",
+   "u": "https://eqlwiki.com/index.php/Iceflame"
+  },
+  {
+   "n": "Icepaw Bangle",
+   "u": "https://eqlwiki.com/index.php/Icepaw_Bangle"
+  },
+  {
+   "n": "Icepaw Kobold's Paw",
+   "u": "https://eqlwiki.com/index.php/Icepaw_Kobold's_Paw"
+  },
+  {
+   "n": "Icepaw Scalp",
+   "u": "https://eqlwiki.com/index.php/Icepaw_Scalp"
+  },
+  {
+   "g": 1,
+   "n": "Icepaw Skull Helm",
+   "u": "https://eqlwiki.com/index.php/Icepaw_Skull_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Icepaw War Claw",
+   "u": "https://eqlwiki.com/index.php/Icepaw_War_Claw"
+  },
+  {
+   "g": 1,
+   "n": "Icicle Tunic",
+   "u": "https://eqlwiki.com/index.php/Icicle_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Icicle Wristband",
+   "u": "https://eqlwiki.com/index.php/Icicle_Wristband"
+  },
+  {
+   "n": "Imperfect Diamond",
+   "u": "https://eqlwiki.com/index.php/Imperfect_Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Improved Invis vs Undead",
+   "u": "https://eqlwiki.com/index.php/Improved_Invis_vs_Undead"
+  },
+  {
+   "n": "Jaundice Gem",
+   "u": "https://eqlwiki.com/index.php/Jaundice_Gem"
+  },
+  {
+   "g": 1,
+   "n": "Kobold Bone Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Kobold_Bone_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Kobold Jester's Crown",
+   "u": "https://eqlwiki.com/index.php/Kobold_Jester's_Crown"
+  },
+  {
+   "n": "Kobold Parts",
+   "u": "https://eqlwiki.com/index.php/Kobold_Parts"
+  },
+  {
+   "n": "Large Brick of Velium",
+   "u": "https://eqlwiki.com/index.php/Large_Brick_of_Velium"
+  },
+  {
+   "n": "Loaf of Bread",
+   "u": "https://eqlwiki.com/index.php/Loaf_of_Bread"
+  },
+  {
+   "g": 1,
+   "n": "Lute of the Howler",
+   "u": "https://eqlwiki.com/index.php/Lute_of_the_Howler"
+  },
+  {
+   "n": "Nephrite",
+   "u": "https://eqlwiki.com/index.php/Nephrite"
+  },
+  {
+   "g": 1,
+   "n": "Poisoned Whip",
+   "u": "https://eqlwiki.com/index.php/Poisoned_Whip"
+  },
+  {
+   "n": "Pristine Emerald",
+   "u": "https://eqlwiki.com/index.php/Pristine_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Rijoely's Bracelet",
+   "u": "https://eqlwiki.com/index.php/Rijoely's_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Rijoely's Dancing Rapier",
+   "u": "https://eqlwiki.com/index.php/Rijoely's_Dancing_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Rijoely's Earring",
+   "u": "https://eqlwiki.com/index.php/Rijoely's_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Ring of the Frost Spiders",
+   "u": "https://eqlwiki.com/index.php/Ring_of_the_Frost_Spiders"
+  },
+  {
+   "g": 1,
+   "n": "Ring of the Frozen Flame",
+   "u": "https://eqlwiki.com/index.php/Ring_of_the_Frozen_Flame"
+  },
+  {
+   "g": 1,
+   "n": "Robe of Melding Auras",
+   "u": "https://eqlwiki.com/index.php/Robe_of_Melding_Auras"
+  },
+  {
+   "g": 1,
+   "n": "Shadow Rager",
+   "u": "https://eqlwiki.com/index.php/Shadow_Rager"
+  },
+  {
+   "g": 1,
+   "n": "Shield of the Freezing Winds",
+   "u": "https://eqlwiki.com/index.php/Shield_of_the_Freezing_Winds"
+  },
+  {
+   "g": 1,
+   "n": "Shimmering Terror Hide Boots",
+   "u": "https://eqlwiki.com/index.php/Shimmering_Terror_Hide_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Shimmering Terror Hide Cloak",
+   "u": "https://eqlwiki.com/index.php/Shimmering_Terror_Hide_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Shiny Ore Machete",
+   "u": "https://eqlwiki.com/index.php/Shiny_Ore_Machete"
+  },
+  {
+   "g": 1,
+   "n": "Silver Chitin Hand Wraps",
+   "u": "https://eqlwiki.com/index.php/Silver_Chitin_Hand_Wraps"
+  },
+  {
+   "g": 1,
+   "n": "Silver Chitin Wristband",
+   "u": "https://eqlwiki.com/index.php/Silver_Chitin_Wristband"
+  },
+  {
+   "g": 1,
+   "n": "Silver Sword of Yalrek",
+   "u": "https://eqlwiki.com/index.php/Silver_Sword_of_Yalrek"
+  },
+  {
+   "n": "Small Brick of Velium",
+   "u": "https://eqlwiki.com/index.php/Small_Brick_of_Velium"
+  },
+  {
+   "n": "Small Piece of Velium",
+   "u": "https://eqlwiki.com/index.php/Small_Piece_of_Velium"
+  },
+  {
+   "n": "Snow Spider Legs",
+   "u": "https://eqlwiki.com/index.php/Snow_Spider_Legs"
+  },
+  {
+   "g": 1,
+   "n": "Snow Storm Mask",
+   "u": "https://eqlwiki.com/index.php/Snow_Storm_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Spider Fur Belt",
+   "u": "https://eqlwiki.com/index.php/Spider_Fur_Belt"
+  },
+  {
+   "g": 1,
+   "n": "Spider Fur Cloak",
+   "u": "https://eqlwiki.com/index.php/Spider_Fur_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Spider Fur Collar",
+   "u": "https://eqlwiki.com/index.php/Spider_Fur_Collar"
+  },
+  {
+   "g": 1,
+   "n": "Spider Fur Gloves",
+   "u": "https://eqlwiki.com/index.php/Spider_Fur_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Spider Fur-Lined Boots",
+   "u": "https://eqlwiki.com/index.php/Spider_Fur-Lined_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Stein of Bitter Cold",
+   "u": "https://eqlwiki.com/index.php/Stein_of_Bitter_Cold"
+  },
+  {
+   "g": 1,
+   "n": "Sword of Blessings",
+   "u": "https://eqlwiki.com/index.php/Sword_of_Blessings"
+  },
+  {
+   "g": 1,
+   "n": "Sword of Pain",
+   "u": "https://eqlwiki.com/index.php/Sword_of_Pain"
+  },
+  {
+   "g": 1,
+   "n": "Tijoely's Bracelet",
+   "u": "https://eqlwiki.com/index.php/Tijoely's_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Tijoely's Dancing Rapier",
+   "u": "https://eqlwiki.com/index.php/Tijoely's_Dancing_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Tijoely's Earring",
+   "u": "https://eqlwiki.com/index.php/Tijoely's_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Tiny Velium Gargoyle",
+   "u": "https://eqlwiki.com/index.php/Tiny_Velium_Gargoyle"
+  },
+  {
+   "g": 1,
+   "n": "Velium Crystal Staff",
+   "u": "https://eqlwiki.com/index.php/Velium_Crystal_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Velium Short Blade",
+   "u": "https://eqlwiki.com/index.php/Velium_Short_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Velium Short Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velketor's Spell Book",
+   "u": "https://eqlwiki.com/index.php/Velketor's_Spell_Book"
+  },
+  {
+   "g": 1,
+   "n": "Venomous Axe of the Velium Brood",
+   "u": "https://eqlwiki.com/index.php/Venomous_Axe_of_the_Velium_Brood"
+  },
+  {
+   "g": 1,
+   "n": "Vermilion Orb of Torrefaction",
+   "u": "https://eqlwiki.com/index.php/Vermilion_Orb_of_Torrefaction"
+  },
+  {
+   "g": 1,
+   "n": "Vermilion Robe of Torrefaction",
+   "u": "https://eqlwiki.com/index.php/Vermilion_Robe_of_Torrefaction"
+  },
+  {
+   "n": "Wax Flower",
+   "u": "https://eqlwiki.com/index.php/Wax_Flower"
+  },
+  {
+   "n": "White Spider Fur",
+   "u": "https://eqlwiki.com/index.php/White_Spider_Fur"
+  },
+  {
+   "n": "Words of Covert",
+   "u": "https://eqlwiki.com/index.php/Words_of_Covert"
+  },
+  {
+   "g": 1,
+   "n": "Worn Great Staff",
+   "u": "https://eqlwiki.com/index.php/Worn_Great_Staff"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    51,
+    52,
+    55,
+    62,
+    124,
+    129,
+    130,
+    146
+   ],
+   "loc": null,
+   "lvl": "48-49",
+   "n": "a blizzard hunter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Blizzard_Hunter"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    62,
+    65,
+    123,
+    124,
+    146
+   ],
+   "loc": null,
+   "lvl": "45",
+   "n": "a blizzard spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_blizzard_spider"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    28,
+    29,
+    30,
+    102,
+    103,
+    122,
+    123
+   ],
+   "loc": [
+    -19.0,
+    -238.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "a cold shade",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_cold_shade"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    28,
+    29,
+    30,
+    102,
+    103,
+    122,
+    123
+   ],
+   "loc": [
+    -36.0,
+    -184.0,
+    null
+   ],
+   "lvl": ">49",
+   "n": "a cold spectre",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_cold_spectre"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    11,
+    12,
+    81,
+    102,
+    107,
+    122,
+    123
+   ],
+   "loc": [
+    -85.0,
+    5.0,
+    null
+   ],
+   "lvl": "59",
+   "n": "a crystal destroyer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crystal_Destroyer"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    37,
+    39,
+    42,
+    43,
+    48,
+    50,
+    68,
+    74,
+    79,
+    80,
+    102,
+    105,
+    122,
+    123
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "a crystal gargoyle",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crystal_Gargoyle"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    46,
+    48,
+    49,
+    50,
+    102,
+    122,
+    123
+   ],
+   "loc": [
+    -15.0,
+    -169.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "a crystal guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystal_guardian"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    44,
+    48,
+    49,
+    50,
+    68,
+    102,
+    122,
+    123
+   ],
+   "loc": [
+    -15.0,
+    -169.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "a crystal guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Crystal_Guardian"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    12,
+    37,
+    39,
+    42,
+    43,
+    48,
+    50,
+    68,
+    74,
+    79,
+    80,
+    105
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "a crystal sentinel",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crystal_Sentinel"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    11,
+    12,
+    27,
+    74,
+    79,
+    80,
+    81,
+    98,
+    105,
+    107
+   ],
+   "loc": null,
+   "lvl": "51",
+   "n": "a crystal shard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystal_shard"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    102,
+    122,
+    123
+   ],
+   "loc": [
+    427.0,
+    8.0,
+    -44.5
+   ],
+   "lvl": "45",
+   "n": "a crystal statue",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystal_statue"
+  },
+  {
+   "dr": [
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    12,
+    27,
+    37,
+    39,
+    41,
+    42,
+    43,
+    44,
+    45,
+    47,
+    48,
+    50,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    98,
+    102,
+    105,
+    122,
+    123
+   ],
+   "loc": [
+    -23.0,
+    235.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "a crystaline sentinel",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crystaline_Sentinel"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    12,
+    62,
+    102,
+    122,
+    123
+   ],
+   "loc": null,
+   "lvl": "47",
+   "n": "a crystalline devourer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystalline_devourer"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    12,
+    36,
+    37,
+    39,
+    42,
+    43,
+    48,
+    50,
+    68,
+    74,
+    79,
+    80,
+    105
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "a crystalline gargoyle",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crystalline_Gargoyle"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    37,
+    39,
+    41,
+    42,
+    43,
+    44,
+    45,
+    47,
+    48,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    62,
+    65,
+    74,
+    75,
+    78,
+    79,
+    80,
+    98,
+    102,
+    105,
+    122,
+    123,
+    124,
+    129
+   ],
+   "loc": null,
+   "lvl": "48",
+   "n": "a crystalline hunter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crystalline_Hunter"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    102,
+    122,
+    123
+   ],
+   "loc": [
+    -85.0,
+    5.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "a crystalline sentinel",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystalline_sentinel"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    11,
+    12,
+    27,
+    74,
+    79,
+    80,
+    81,
+    98,
+    105,
+    107
+   ],
+   "loc": null,
+   "lvl": "47",
+   "n": "a crystalline shard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystalline_shard"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    102,
+    122,
+    123
+   ],
+   "loc": [
+    401.0,
+    14.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "a crystalline statue",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystalline_statue"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    12,
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    62,
+    65,
+    74,
+    79,
+    80,
+    98,
+    102,
+    105,
+    122,
+    123
+   ],
+   "loc": null,
+   "lvl": "45",
+   "n": "a crystalline watcher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crystalline_Watcher"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    27,
+    37,
+    39,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    52,
+    55,
+    56,
+    62,
+    65,
+    74,
+    79,
+    80,
+    98,
+    105,
+    119,
+    120
+   ],
+   "loc": [
+    410.0,
+    70.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "a Frenzied Velium Broodling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Frenzied_Velium_Broodling"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    null,
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    37,
+    39,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    62,
+    65,
+    74,
+    79,
+    80,
+    98,
+    105,
+    111,
+    119,
+    142
+   ],
+   "loc": [
+    485.0,
+    75.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "a Frenzied Velium Stalker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Frenzied_Velium_Stalker"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    11,
+    27,
+    74,
+    79,
+    80,
+    81,
+    98,
+    103,
+    105,
+    107
+   ],
+   "loc": [
+    -19.0,
+    -238.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "a frost spectre",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Frost_Spectre"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    11,
+    12,
+    27,
+    74,
+    79,
+    80,
+    81,
+    98,
+    105,
+    107
+   ],
+   "loc": [
+    182.0,
+    -59.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "a large crystal shard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_large_crystal_shard"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    102,
+    122,
+    123
+   ],
+   "loc": [
+    -28.0,
+    -250.0,
+    null
+   ],
+   "lvl": "49",
+   "n": "a shard spectre",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_shard_spectre"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    124,
+    146
+   ],
+   "loc": null,
+   "lvl": "47",
+   "n": "a shard spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_shard_spider"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Common",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    27,
+    62,
+    65,
+    74,
+    79,
+    80,
+    98,
+    105
+   ],
+   "loc": null,
+   "lvl": "48",
+   "n": "a velium broodling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Velium_Broodling"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Common",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    11,
+    27,
+    62,
+    65,
+    74,
+    79,
+    80,
+    81,
+    98,
+    105,
+    107
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "a velium hunter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Velium_Hunter"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Common",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    27,
+    62,
+    65,
+    74,
+    79,
+    80,
+    96,
+    98,
+    105
+   ],
+   "loc": null,
+   "lvl": "50",
+   "n": "a velium stalker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Velium_Stalker"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    26,
+    27,
+    36,
+    59,
+    73,
+    75,
+    76,
+    77,
+    78,
+    79,
+    89,
+    90,
+    91,
+    93,
+    96,
+    97,
+    98,
+    101,
+    105,
+    126,
+    127,
+    128,
+    145
+   ],
+   "loc": [
+    513.0,
+    -388.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "an ice paw sorcerer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_ice_paw_sorcerer"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    26,
+    27,
+    36,
+    73,
+    74,
+    75,
+    76,
+    77,
+    79,
+    80,
+    89,
+    90,
+    91,
+    93,
+    96,
+    98,
+    105,
+    126,
+    127,
+    128,
+    139,
+    140
+   ],
+   "loc": [
+    134.0,
+    -322.0,
+    null
+   ],
+   "lvl": "48-51",
+   "n": "an Icepaw champion",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Icepaw_champion"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    74,
+    79,
+    80,
+    90,
+    91,
+    98,
+    105,
+    126,
+    127,
+    128
+   ],
+   "loc": [
+    190.0,
+    -413.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "an Icepaw cleric",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Icepaw_Cleric"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    46,
+    47,
+    48,
+    50,
+    59,
+    74,
+    79,
+    80,
+    89,
+    90,
+    91,
+    98,
+    105,
+    126,
+    127,
+    128,
+    147
+   ],
+   "loc": null,
+   "lvl": "46",
+   "n": "an Icepaw kobold",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Icepaw_Kobold"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    74,
+    79,
+    80,
+    89,
+    90,
+    91,
+    98,
+    105,
+    126,
+    127,
+    128
+   ],
+   "loc": null,
+   "lvl": "48",
+   "n": "an Icepaw kobold priest",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Icepaw_Kobold_Priest"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    74,
+    79,
+    80,
+    89,
+    90,
+    91,
+    98,
+    105,
+    126,
+    127,
+    128
+   ],
+   "loc": null,
+   "lvl": "48",
+   "n": "an Icepaw kobold warrior",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Icepaw_Kobold_Warrior"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    74,
+    79,
+    80,
+    89,
+    90,
+    91,
+    93,
+    98,
+    105,
+    126,
+    127,
+    128,
+    139,
+    140
+   ],
+   "loc": null,
+   "lvl": "51",
+   "n": "an Icepaw prophet",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Icepaw_Prophet"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    97,
+    102,
+    123
+   ],
+   "loc": [
+    19.0,
+    16.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "an icy watcher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_icy_watcher"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "?",
+   "n": "Bjoron Axefall",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bjoron_Axefall"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    "Rare",
+    "Rare",
+    null,
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    3,
+    11,
+    12,
+    15,
+    81,
+    102,
+    107,
+    123
+   ],
+   "loc": [
+    -75.0,
+    253.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "Bled",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bled"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    11,
+    12,
+    81,
+    102,
+    107,
+    123
+   ],
+   "loc": [
+    -75.0,
+    253.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "Bledrek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bledrek"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    120.0,
+    -102.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Brumen Firehammer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Brumen_Firehammer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    77.0,
+    -97.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Bryma Loftaxe",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bryma_Loftaxe"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    55,
+    61,
+    62,
+    65
+   ],
+   "loc": [
+    479.0,
+    2.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "Crystal Eyes",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crystal_Eyes"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    44,
+    57,
+    62,
+    65,
+    66,
+    75,
+    78,
+    102,
+    122,
+    123
+   ],
+   "loc": [
+    440.0,
+    154.0,
+    88.0
+   ],
+   "lvl": "47",
+   "n": "Crystal Fang",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crystal_Fang"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "?",
+   "n": "Dlemin Whiteforge",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dlemin_Whiteforge"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    8,
+    9,
+    10,
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    74,
+    79,
+    80,
+    90,
+    91,
+    98,
+    105,
+    126,
+    127,
+    128
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "Errkak Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Errkak_Icepaw"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    16,
+    17,
+    25
+   ],
+   "loc": [
+    -203.0,
+    -24.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Failed Experiment",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Failed_Experiment"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "?",
+   "n": "Frekka Alebringer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Frekka_Alebringer"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    21,
+    27,
+    31,
+    32,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    72,
+    74,
+    79,
+    80,
+    90,
+    91,
+    98,
+    105,
+    126,
+    127,
+    128,
+    133
+   ],
+   "loc": [
+    212.0,
+    -390.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "Gregendek Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gregendek_Icepaw"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "52",
+   "n": "Icy Guardian",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Icy_Guardian"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    20,
+    27,
+    34,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    74,
+    79,
+    80,
+    90,
+    91,
+    98,
+    105,
+    113,
+    126,
+    127,
+    128,
+    132
+   ],
+   "loc": [
+    134.0,
+    -322.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "Jelek Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jelek_Icepaw"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    9,
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    44,
+    45,
+    47,
+    48,
+    50,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    89,
+    90,
+    91,
+    98,
+    105
+   ],
+   "loc": [
+    209.0,
+    -466.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "Kalik Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kalik_Icepaw"
+  },
+  {
+   "dr": [
+    "Always",
+    "Ultra Rare"
+   ],
+   "drops": [
+    70,
+    97
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "Keljemor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Keljemor"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Always",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    11,
+    13,
+    81,
+    107
+   ],
+   "loc": null,
+   "lvl": "51",
+   "n": "Kerd",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kerd"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    11,
+    12,
+    81,
+    102,
+    107,
+    122,
+    123
+   ],
+   "loc": [
+    88.0,
+    -50.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "Kerdelb",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kerdelb"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    11,
+    14,
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    64,
+    74,
+    79,
+    80,
+    81,
+    88,
+    90,
+    91,
+    98,
+    104,
+    105,
+    107,
+    126,
+    127,
+    128
+   ],
+   "loc": [
+    227.0,
+    -348.0,
+    null
+   ],
+   "lvl": "59",
+   "n": "Khelkar Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Khelkar_Icepaw"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "?",
+   "n": "Khlem Alestone",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Khlem_Alestone"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    9,
+    23,
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    74,
+    79,
+    80,
+    90,
+    91,
+    98,
+    105,
+    126,
+    127,
+    128
+   ],
+   "loc": [
+    121.0,
+    -220.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "Laryk Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Laryk_Icepaw"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    75,
+    98,
+    102,
+    122,
+    137
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "Leljemor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Leljemor"
+  },
+  {
+   "dr": [
+    "Very Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    69,
+    71,
+    82,
+    83,
+    84,
+    87,
+    94,
+    95,
+    107,
+    112
+   ],
+   "loc": [
+    -30.0,
+    -133.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Lord Doljonijiarnimorinar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Doljonijiarnimorinar"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    74,
+    79,
+    80,
+    90,
+    91,
+    98,
+    105,
+    117,
+    126,
+    127,
+    128
+   ],
+   "loc": [
+    292.0,
+    -298.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "Marlek Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marlek_Icepaw"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    27,
+    37,
+    39,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    67,
+    74,
+    79,
+    80,
+    81,
+    98,
+    105
+   ],
+   "loc": [
+    -25.0,
+    150.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Meljemor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Meljemor"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    108,
+    109,
+    110
+   ],
+   "loc": [
+    85.0,
+    32.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Rijoely",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rijoely"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    74,
+    79,
+    80,
+    90,
+    91,
+    98,
+    100,
+    105,
+    126,
+    127,
+    128
+   ],
+   "loc": [
+    317.0,
+    -445.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "Rowwek Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rowwek_Icepaw"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    53,
+    54,
+    62,
+    65,
+    99,
+    102,
+    122,
+    123
+   ],
+   "loc": [
+    -36.0,
+    71.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "The Brood Master",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Brood_Master"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Ultra Rare"
+   ],
+   "drops": [
+    7,
+    53,
+    54,
+    56,
+    92,
+    138
+   ],
+   "loc": [
+    183.0,
+    74.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "The Brood Mother",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Brood_Mother"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    134,
+    135,
+    136
+   ],
+   "loc": [
+    -14.0,
+    -168.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Tijoely",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tijoely"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    6,
+    27,
+    32,
+    33,
+    35,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    51,
+    74,
+    79,
+    80,
+    90,
+    91,
+    98,
+    105,
+    114,
+    126,
+    127,
+    128
+   ],
+   "loc": [
+    190.0,
+    -413.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "Tpos Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tpos_Icepaw"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    9,
+    27,
+    33,
+    34,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    63,
+    74,
+    79,
+    80,
+    90,
+    91,
+    98,
+    105,
+    126,
+    127,
+    128
+   ],
+   "loc": [
+    121.0,
+    -220.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "Ular Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ular_Icepaw"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    18,
+    19,
+    22,
+    24,
+    58,
+    60,
+    86,
+    115,
+    118,
+    121,
+    125,
+    141,
+    143,
+    144,
+    148
+   ],
+   "loc": [
+    178.0,
+    135.0,
+    null
+   ],
+   "lvl": "66",
+   "n": "Velketor the Sorcerer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Velketor_the_Sorcerer"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    4,
+    85,
+    106,
+    131
+   ],
+   "loc": null,
+   "lvl": "57?",
+   "n": "Velketors Experiment",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Velketors_Experiment"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    37,
+    38,
+    39,
+    41,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50,
+    74,
+    79,
+    80,
+    90,
+    91,
+    98,
+    105,
+    116,
+    126,
+    127,
+    128
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "Venar Icepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Venar_Icepaw"
+  }
+ ],
+ "updated": "2026-04-22T19:20:29Z",
+ "wikiTitle": "Velketor's Labyrinth",
+ "wikiUrl": "https://eqlwiki.com/index.php/Velketor's_Labyrinth",
+ "zone": "velketor"
+}

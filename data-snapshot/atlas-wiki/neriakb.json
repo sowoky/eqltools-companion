@@ -1,0 +1,843 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Bamboo Wakizashi Bo",
+   "u": "https://eqlwiki.com/index.php/Bamboo_Wakizashi_Bo"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Dagger",
+   "u": "https://eqlwiki.com/index.php/Bronze_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Dabner's Staff of Recall",
+   "u": "https://eqlwiki.com/index.php/Dabner's_Staff_of_Recall"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Rapier",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Spear",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Spear"
+  },
+  {
+   "n": "Head of a Halfling Spy",
+   "u": "https://eqlwiki.com/index.php/Head_of_a_Halfling_Spy"
+  },
+  {
+   "g": 1,
+   "n": "Large Round Shield",
+   "u": "https://eqlwiki.com/index.php/Large_Round_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Long Sword",
+   "u": "https://eqlwiki.com/index.php/Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Round Shield",
+   "u": "https://eqlwiki.com/index.php/Round_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Rapier",
+   "u": "https://eqlwiki.com/index.php/Rusty_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Small Round Shield",
+   "u": "https://eqlwiki.com/index.php/Small_Round_Shield"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare",
+    "Always",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    9
+   ],
+   "loc": [
+    -180.0,
+    -560.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "a leatherfoot spy",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Leatherfoot_Spy"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    46.0,
+    -918.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Antian F`Lok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Antian_F%60Lok"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    132.0,
+    -899.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Aslyn C`Luzz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Aslyn_C%60Luzz"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    128.0,
+    -926.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Belux J`Ver",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Belux_J%60Ver"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    156.0,
+    -963.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Camia V`Retta",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Camia_V%60Retta"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    120.0,
+    -985.0,
+    null
+   ],
+   "lvl": "54",
+   "n": "Draxiz N'Ryt",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Draxiz_N'Ryt"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    133.0,
+    -938.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Drizm J`Axx",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Drizm_J%60Axx"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    142.0,
+    -963.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Gath N`Mare",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gath_N%60Mare"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    -22.0,
+    -629.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard D`Bious",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_D%60Bious"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    50.0,
+    -930.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard D`Unnar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_D%60Unnar"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    152.0,
+    -846.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Din`a",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Din%60a"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    -132.0,
+    -1007.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Dmizza",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Dmizza"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    50.0,
+    -930.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard F`Mazz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_F%60Mazz"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    152.0,
+    -777.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard G`Noir",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_G%60Noir"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    164.0,
+    -818.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard J`Axx",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_J%60Axx"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    -49.0,
+    -667.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard K`Jartan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_K%60Jartan"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    -37.0,
+    -850.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard L`Crit",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_L%60Crit"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    6
+   ],
+   "loc": null,
+   "lvl": "35",
+   "n": "Guard N`Mar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_N%60Mar"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    -27.0,
+    -640.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Q`Tentu",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Q%60Tentu"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    -31.0,
+    -727.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Quexill",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Quexill"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    -19.0,
+    -905.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard S`Tai",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_S%60Tai"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    -220.0,
+    -1007.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard To`Biath",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_To%60Biath"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    6
+   ],
+   "loc": null,
+   "lvl": "35",
+   "n": "Guard Tolax",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Tolax"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    -14.0,
+    -634.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard V`Resh",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_V%60Resh"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    7,
+    8,
+    10
+   ],
+   "loc": [
+    -88.0,
+    -635.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard V`Retta",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_V%60Retta"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    8
+   ],
+   "loc": null,
+   "lvl": "40",
+   "n": "Guard Zexus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Zexus"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -270.0,
+    -1028.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Isvan S`Lon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Isvan_S%60Lon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -28.0,
+    -1150.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Jarrex N`Ryt",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jarrex_N%60Ryt"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    149.0,
+    -969.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Jayna D`Bious",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jayna_D%60Bious"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    132.0,
+    -877.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Jucra V`Lask",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jucra_V%60Lask"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    629.0,
+    -818.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Klan K`Jartan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Klan_K%60Jartan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    163.0,
+    -943.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Mavin D`Dbth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mavin_D%60Dbth"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -36.0,
+    -1144.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Narex T`Vem",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Narex_T%60Vem"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    151.0,
+    -996.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Olavn N`Mar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Olavn_N%60Mar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    174.0,
+    -884.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Opizel G`Efia",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Opizel_G%60Efia"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    119.0,
+    -988.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Razran F`Lok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Razran_F%60Lok"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    150.0,
+    -900.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Ryoz K`Tarn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ryoz_K%60Tarn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    24.0,
+    -1127.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Seloxia Punox",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Seloxia_Punox"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    160.0,
+    -925.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Shanez X`Teria",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shanez_X%60Teria"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -21.0,
+    -1143.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Trizam N`Tan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trizam_N%60Tan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    169.0,
+    -912.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Utvex D`Jerna",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Utvex_D%60Jerna"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    14.0,
+    -1083.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Vexia D`Ynth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vexia_D%60Ynth"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    2
+   ],
+   "loc": null,
+   "lvl": "?",
+   "n": "Vorshar the Despised",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vorshar_the_Despised"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -51.0,
+    -1217.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Yegek B`Larin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Yegek_B%60Larin"
+  }
+ ],
+ "updated": "2026-06-16T19:36:12Z",
+ "wikiTitle": "Neriak Commons",
+ "wikiUrl": "https://eqlwiki.com/index.php/Neriak_Commons",
+ "zone": "neriakb"
+}

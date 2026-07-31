@@ -1,0 +1,803 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "A Cracked Femur",
+   "u": "https://eqlwiki.com/index.php/A_Cracked_Femur"
+  },
+  {
+   "n": "A Dusty Sealed Canopic",
+   "u": "https://eqlwiki.com/index.php/A_Dusty_Sealed_Canopic"
+  },
+  {
+   "n": "A Sapphire",
+   "u": "https://eqlwiki.com/index.php/A_Sapphire"
+  },
+  {
+   "n": "Amber",
+   "u": "https://eqlwiki.com/index.php/Amber"
+  },
+  {
+   "n": "An Emerald",
+   "u": "https://eqlwiki.com/index.php/An_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Bargynn's Digger",
+   "u": "https://eqlwiki.com/index.php/Bargynn's_Digger"
+  },
+  {
+   "g": 1,
+   "n": "Bargynn's Torch",
+   "u": "https://eqlwiki.com/index.php/Bargynn's_Torch"
+  },
+  {
+   "n": "Bloodstone",
+   "u": "https://eqlwiki.com/index.php/Bloodstone"
+  },
+  {
+   "g": 1,
+   "n": "Bloodstone Ring",
+   "u": "https://eqlwiki.com/index.php/Bloodstone_Ring"
+  },
+  {
+   "n": "Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Bone_Chips"
+  },
+  {
+   "n": "Brittle Iksar Skull",
+   "u": "https://eqlwiki.com/index.php/Brittle_Iksar_Skull"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Digmaster's Claw",
+   "u": "https://eqlwiki.com/index.php/Burynai_Digmaster's_Claw"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Boots",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Bracelets",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Bracelets"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Cap",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Choker",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Choker"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Cloak",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Gloves",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Mask",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Pants",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Pants"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Shoulder Pads",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Shoulder_Pads"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Sleeves",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Hide Tunic",
+   "u": "https://eqlwiki.com/index.php/Burynai_Hide_Tunic"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "n": "Darkbone Marrow",
+   "u": "https://eqlwiki.com/index.php/Darkbone_Marrow"
+  },
+  {
+   "g": 1,
+   "n": "Excavator Claws",
+   "u": "https://eqlwiki.com/index.php/Excavator_Claws"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Long Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Morning Star",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Scimitar",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Golden Earring",
+   "u": "https://eqlwiki.com/index.php/Golden_Earring"
+  },
+  {
+   "n": "Hollow Skull (Skull of the Tower Cook)",
+   "u": "https://eqlwiki.com/index.php/Hollow_Skull_(Skull_of_the_Tower_Cook)"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Berserker Club",
+   "u": "https://eqlwiki.com/index.php/Iksar_Berserker_Club"
+  },
+  {
+   "n": "Iksar Skull with an 'X' (Caste)",
+   "u": "https://eqlwiki.com/index.php/Iksar_Skull_with_an_'X'_(Caste)"
+  },
+  {
+   "n": "Iksar Skull with an 'X' (Leader)",
+   "u": "https://eqlwiki.com/index.php/Iksar_Skull_with_an_'X'_(Leader)"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Targ Shield",
+   "u": "https://eqlwiki.com/index.php/Iksar_Targ_Shield"
+  },
+  {
+   "n": "Jasper",
+   "u": "https://eqlwiki.com/index.php/Jasper"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Earring",
+   "u": "https://eqlwiki.com/index.php/Mithril_Earring"
+  },
+  {
+   "n": "Onyx",
+   "u": "https://eqlwiki.com/index.php/Onyx"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Mask",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Tunic",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Wristbands",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Wristbands"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Fer`Esh",
+   "u": "https://eqlwiki.com/index.php/Rusty_Fer%60Esh"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Shan`Tok",
+   "u": "https://eqlwiki.com/index.php/Rusty_Shan%60Tok"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Rusty_Sheer_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Shield of Kurn",
+   "u": "https://eqlwiki.com/index.php/Shield_of_Kurn"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Silver Earring",
+   "u": "https://eqlwiki.com/index.php/Silver_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Silver Ring",
+   "u": "https://eqlwiki.com/index.php/Silver_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Skeletal Feet",
+   "u": "https://eqlwiki.com/index.php/Skeletal_Feet"
+  },
+  {
+   "g": 1,
+   "n": "Solist's Icy Wand",
+   "u": "https://eqlwiki.com/index.php/Solist's_Icy_Wand"
+  },
+  {
+   "n": "Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
+  },
+  {
+   "g": 1,
+   "n": "Tarnished Fer`Esh",
+   "u": "https://eqlwiki.com/index.php/Tarnished_Fer%60Esh"
+  },
+  {
+   "g": 1,
+   "n": "Tarnished Shan`Tok",
+   "u": "https://eqlwiki.com/index.php/Tarnished_Shan%60Tok"
+  },
+  {
+   "g": 1,
+   "n": "Tarnished Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Tarnished_Sheer_Blade"
+  },
+  {
+   "n": "Tattered Scroll",
+   "u": "https://eqlwiki.com/index.php/Tattered_Scroll"
+  },
+  {
+   "n": "Thick Iksar Skull",
+   "u": "https://eqlwiki.com/index.php/Thick_Iksar_Skull"
+  },
+  {
+   "g": 1,
+   "n": "Tiny Collar",
+   "u": "https://eqlwiki.com/index.php/Tiny_Collar"
+  },
+  {
+   "n": "Topaz",
+   "u": "https://eqlwiki.com/index.php/Topaz"
+  },
+  {
+   "n": "Withered 2.5 Inch Finger",
+   "u": "https://eqlwiki.com/index.php/Withered_2.5_Inch_Finger"
+  },
+  {
+   "n": "Withered 3 Inch Finger",
+   "u": "https://eqlwiki.com/index.php/Withered_3_Inch_Finger"
+  },
+  {
+   "n": "Withered 3.1 Inch Finger",
+   "u": "https://eqlwiki.com/index.php/Withered_3.1_Inch_Finger"
+  },
+  {
+   "n": "Withered 4 Inch Finger",
+   "u": "https://eqlwiki.com/index.php/Withered_4_Inch_Finger"
+  },
+  {
+   "n": "Words of Possession",
+   "u": "https://eqlwiki.com/index.php/Words_of_Possession"
+  },
+  {
+   "n": "Words of Radiance",
+   "u": "https://eqlwiki.com/index.php/Words_of_Radiance"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    null,
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    7,
+    8,
+    11,
+    23,
+    31,
+    37,
+    39,
+    49,
+    50,
+    53
+   ],
+   "loc": null,
+   "lvl": "10-12",
+   "n": "a burynai burrower",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Burynai_burrower"
+  },
+  {
+   "dr": [
+    "42.5%"
+   ],
+   "drops": [
+    25
+   ],
+   "loc": null,
+   "lvl": "12-16",
+   "n": "a burynai excavator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Burynai_Excavator"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    38,
+    40,
+    48,
+    60
+   ],
+   "loc": null,
+   "lvl": "16 - 18",
+   "n": "a burynai sapper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Burynai_Sapper"
+  },
+  {
+   "dr": [
+    "Common",
+    null,
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    9,
+    24,
+    41,
+    42,
+    43
+   ],
+   "loc": null,
+   "lvl": "7-20 / 11-13 (Befallen / Najena)",
+   "n": "a greater skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Greater_Skeleton"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    36,
+    44,
+    45,
+    46,
+    54,
+    55,
+    56,
+    65,
+    66
+   ],
+   "loc": null,
+   "lvl": "17 - 19",
+   "n": "a lesser charbone skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Lesser_Charbone_Skeleton"
+  },
+  {
+   "dr": [
+    null,
+    "Rare"
+   ],
+   "drops": [
+    26,
+    47
+   ],
+   "loc": [
+    -30.0,
+    80.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "a skeletal cook",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_skeletal_cook"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    59
+   ],
+   "loc": [
+    15.0,
+    -58.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "an odd mole",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_odd_mole"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    29,
+    32,
+    33,
+    57
+   ],
+   "loc": [
+    182.0,
+    60.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "an undead jester",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_undead_jester"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    5,
+    6
+   ],
+   "loc": [
+    -115.0,
+    264.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Bargynn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bargynn"
+  },
+  {
+   "dr": [
+    null,
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    172.0,
+    146.0,
+    null
+   ],
+   "lvl": "18 - 20",
+   "n": "Burynai Forager",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Burynai_Forage"
+  },
+  {
+   "dr": [
+    null,
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    172.0,
+    146.0,
+    null
+   ],
+   "lvl": "18 - 20",
+   "n": "Burynai Forager",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Burynai_Forager"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    11
+   ],
+   "loc": null,
+   "lvl": "22",
+   "n": "Diggory",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Diggory"
+  },
+  {
+   "dr": [
+    null,
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    9,
+    28,
+    61,
+    62,
+    63,
+    64
+   ],
+   "loc": [
+    0.0,
+    31.0,
+    null
+   ],
+   "lvl": "11",
+   "n": "fingered skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Fingered_skeleton"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    0,
+    9,
+    44,
+    45,
+    46,
+    54,
+    55,
+    56
+   ],
+   "loc": null,
+   "lvl": "14-15",
+   "n": "greater scalebone",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Greater_Scalebone"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    10,
+    36,
+    44,
+    45,
+    46,
+    54,
+    55,
+    56
+   ],
+   "loc": null,
+   "lvl": "11-13",
+   "n": "greater skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Greater_skeleton_(Iksar)"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    36,
+    44,
+    45,
+    46,
+    52,
+    54,
+    55,
+    56,
+    65,
+    66
+   ],
+   "loc": null,
+   "lvl": "17 - 18",
+   "n": "lesser icebone skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Lesser_Icebone_Skeleton"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Very Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    9,
+    10,
+    36,
+    44,
+    45,
+    46,
+    54,
+    55,
+    56
+   ],
+   "loc": null,
+   "lvl": "9",
+   "n": "scalebone skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Scalebone_skeleton"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    4,
+    30,
+    51,
+    58
+   ],
+   "loc": [
+    81.0,
+    -49.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "thick boned skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Thick_boned_skeleton"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    34,
+    35
+   ],
+   "loc": [
+    -40.0,
+    -121.0,
+    null
+   ],
+   "lvl": "16",
+   "n": "undead crusader",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Undead_crusader"
+  }
+ ],
+ "updated": "2026-05-30T15:22:37Z",
+ "wikiTitle": "Kurn's Tower",
+ "wikiUrl": "https://eqlwiki.com/index.php/Kurn's_Tower",
+ "zone": "kurn"
+}

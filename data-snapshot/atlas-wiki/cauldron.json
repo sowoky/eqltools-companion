@@ -1,0 +1,676 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Arrow",
+   "u": "https://eqlwiki.com/index.php/Arrow"
+  },
+  {
+   "g": 1,
+   "n": "Barnacle-covered Pauldron",
+   "u": "https://eqlwiki.com/index.php/Barnacle-covered_Pauldron"
+  },
+  {
+   "n": "Blood Stained Note",
+   "u": "https://eqlwiki.com/index.php/Blood_Stained_Note"
+  },
+  {
+   "n": "Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Bone_Chips"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Bronze_Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Long Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Long_Sword"
+  },
+  {
+   "n": "Cauldron Prawn",
+   "u": "https://eqlwiki.com/index.php/Cauldron_Prawn"
+  },
+  {
+   "g": 1,
+   "n": "Cauldron Shell",
+   "u": "https://eqlwiki.com/index.php/Cauldron_Shell"
+  },
+  {
+   "g": 1,
+   "n": "Coral Trident",
+   "u": "https://eqlwiki.com/index.php/Coral_Trident"
+  },
+  {
+   "n": "Dwarf Meat",
+   "u": "https://eqlwiki.com/index.php/Dwarf_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Dwarven Blood",
+   "u": "https://eqlwiki.com/index.php/Dwarven_Blood"
+  },
+  {
+   "n": "Giant Rat Ear",
+   "u": "https://eqlwiki.com/index.php/Giant_Rat_Ear"
+  },
+  {
+   "g": 1,
+   "n": "Giant Rat Tail",
+   "u": "https://eqlwiki.com/index.php/Giant_Rat_Tail"
+  },
+  {
+   "n": "Giant Rat Whiskers",
+   "u": "https://eqlwiki.com/index.php/Giant_Rat_Whiskers"
+  },
+  {
+   "g": 1,
+   "n": "Giant Snake Fang",
+   "u": "https://eqlwiki.com/index.php/Giant_Snake_Fang"
+  },
+  {
+   "n": "High Elf Parts",
+   "u": "https://eqlwiki.com/index.php/High_Elf_Parts"
+  },
+  {
+   "g": 1,
+   "n": "Hunting Bow",
+   "u": "https://eqlwiki.com/index.php/Hunting_Bow"
+  },
+  {
+   "g": 1,
+   "n": "Ingot of the Constant",
+   "u": "https://eqlwiki.com/index.php/Ingot_of_the_Constant"
+  },
+  {
+   "g": 1,
+   "n": "Iron Leash Collar",
+   "u": "https://eqlwiki.com/index.php/Iron_Leash_Collar"
+  },
+  {
+   "n": "Large Snake Skin",
+   "u": "https://eqlwiki.com/index.php/Large_Snake_Skin"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 24 (Right)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._24_(Right)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 312 (Right)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._312_(Right)"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Kedge Totem",
+   "u": "https://eqlwiki.com/index.php/Pearl_Kedge_Totem"
+  },
+  {
+   "n": "Piece of Rat Fur",
+   "u": "https://eqlwiki.com/index.php/Piece_of_Rat_Fur"
+  },
+  {
+   "g": 1,
+   "n": "Rat Bone Powder",
+   "u": "https://eqlwiki.com/index.php/Rat_Bone_Powder"
+  },
+  {
+   "n": "Rat Ears",
+   "u": "https://eqlwiki.com/index.php/Rat_Ears"
+  },
+  {
+   "n": "Rat Whiskers",
+   "u": "https://eqlwiki.com/index.php/Rat_Whiskers"
+  },
+  {
+   "g": 1,
+   "n": "Reed Belt",
+   "u": "https://eqlwiki.com/index.php/Reed_Belt"
+  },
+  {
+   "n": "Rune of Oppression",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Oppression"
+  },
+  {
+   "n": "Rune of Periphery",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Periphery"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Long Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Short Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Serpent Blood Potion",
+   "u": "https://eqlwiki.com/index.php/Serpent_Blood_Potion"
+  },
+  {
+   "g": 1,
+   "n": "Serpentskin Eyepatch",
+   "u": "https://eqlwiki.com/index.php/Serpentskin_Eyepatch"
+  },
+  {
+   "g": 1,
+   "n": "Shiny Golden Coin",
+   "u": "https://eqlwiki.com/index.php/Shiny_Golden_Coin"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Silver Ring",
+   "u": "https://eqlwiki.com/index.php/Silver_Ring"
+  },
+  {
+   "n": "Snake Egg",
+   "u": "https://eqlwiki.com/index.php/Snake_Egg"
+  },
+  {
+   "n": "Snake Fang",
+   "u": "https://eqlwiki.com/index.php/Snake_Fang"
+  },
+  {
+   "n": "Snake Meat",
+   "u": "https://eqlwiki.com/index.php/Snake_Meat"
+  },
+  {
+   "n": "Snake Scales",
+   "u": "https://eqlwiki.com/index.php/Snake_Scales"
+  },
+  {
+   "n": "Snake Venom Sac",
+   "u": "https://eqlwiki.com/index.php/Snake_Venom_Sac"
+  },
+  {
+   "n": "Warbone Chips",
+   "u": "https://eqlwiki.com/index.php/Warbone_Chips"
+  },
+  {
+   "g": 1,
+   "n": "Water Ring",
+   "u": "https://eqlwiki.com/index.php/Water_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Weighted Gloves",
+   "u": "https://eqlwiki.com/index.php/Weighted_Gloves"
+  },
+  {
+   "n": "Words of Possession",
+   "u": "https://eqlwiki.com/index.php/Words_of_Possession"
+  },
+  {
+   "n": "Words of the Sentient (Azia)",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Sentient_(Azia)"
+  },
+  {
+   "n": "Words of the Spoken",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Spoken"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    11,
+    13,
+    24
+   ],
+   "loc": null,
+   "lvl": "5",
+   "n": "a cauldron rat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_cauldron_rat"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    14,
+    38,
+    40,
+    41,
+    42
+   ],
+   "loc": [
+    659.0,
+    -1953.0,
+    null
+   ],
+   "lvl": "14-16",
+   "n": "a sandbar serpent",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sandbar_serpent"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    26,
+    27,
+    37
+   ],
+   "loc": [
+    827.0,
+    -778.0,
+    null
+   ],
+   "lvl": "8",
+   "n": "a scalded rat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_scalded_rat"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    19,
+    38,
+    39,
+    41
+   ],
+   "loc": [
+    -270.0,
+    -713.0,
+    null
+   ],
+   "lvl": "8",
+   "n": "a shoal serpent",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_shoal_serpent"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    -769.0,
+    -2143.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "an exiled legionnaire",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Exiled_Legionnaire"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    21,
+    29,
+    47
+   ],
+   "loc": null,
+   "lvl": "10-12, 15-18",
+   "n": "an orc scout",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_orc_scout"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    3
+   ],
+   "loc": null,
+   "lvl": "13",
+   "n": "an undertow skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Undertow_Skeleton"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    16,
+    20,
+    30,
+    32,
+    46,
+    48
+   ],
+   "loc": [
+    113.0,
+    -1307.0,
+    null
+   ],
+   "lvl": "17-19",
+   "n": "aqua goblin bosun",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Aqua_goblin_bosun"
+  },
+  {
+   "dr": [
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    4,
+    5,
+    6,
+    16,
+    31,
+    32
+   ],
+   "loc": [
+    -235.0,
+    -1328.0,
+    null
+   ],
+   "lvl": "13",
+   "n": "aqua goblin mariner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Aqua_goblin_mariner"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    0,
+    7,
+    44
+   ],
+   "loc": null,
+   "lvl": "22-24",
+   "n": "aqua goblin tidal lord",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Aqua_goblin_tidal_lord"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    1,
+    8
+   ],
+   "loc": [
+    8.0,
+    -456.0,
+    null
+   ],
+   "lvl": "16",
+   "n": "Barnacle Bones",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Barnacle_Bones"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    23,
+    28
+   ],
+   "loc": null,
+   "lvl": "30",
+   "n": "Bilge Farfathom",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bilge_Farfathom"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    43
+   ],
+   "loc": [
+    -770.0,
+    -2140.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Captain Klunga",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Captain_Klunga"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Rare",
+    "Always"
+   ],
+   "drops": [
+    0,
+    6,
+    16,
+    17
+   ],
+   "loc": [
+    -558.0,
+    -463.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Dwigus Lowater",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dwigus_Lowater"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    445.0,
+    90.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Elmion Hendrys",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Elmion_Hendrys"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    35
+   ],
+   "loc": [
+    1020.0,
+    -1060.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Flotsam",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Flotsam"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    412.0,
+    98.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Ghilanbiddle Nylwadil",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ghilanbiddle_Nylwadil"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    10,
+    22,
+    36,
+    45
+   ],
+   "loc": [
+    -369.0,
+    -948.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Gundalthur Izuran",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gundalthur_Izuran"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    18,
+    25
+   ],
+   "loc": [
+    675.0,
+    -1970.0,
+    null
+   ],
+   "lvl": "12",
+   "n": "Jetsam",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jetsam"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -444.0,
+    -1999.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Jinalis Andir",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jinalis_Andir"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1750.0,
+    -940.0,
+    null
+   ],
+   "lvl": "32-33? (yellow to 31)",
+   "n": "Llara",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Llara"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    15
+   ],
+   "loc": null,
+   "lvl": "20",
+   "n": "Nyrien Lyrdarniel",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nyrien_Lyrdarniel"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    426.0,
+    116.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "Sigan Ilbirkun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sigan_Ilbirkun"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    33,
+    34
+   ],
+   "loc": [
+    40.0,
+    -2031.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Squallslither",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Squallslither"
+  }
+ ],
+ "updated": "2026-07-10T04:24:47Z",
+ "wikiTitle": "Dagnor's Cauldron",
+ "wikiUrl": "https://eqlwiki.com/index.php/Dagnor's_Cauldron",
+ "zone": "cauldron"
+}

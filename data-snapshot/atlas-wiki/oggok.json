@@ -1,0 +1,652 @@
+{
+ "items": [
+  {
+   "n": "Armadillo Husk",
+   "u": "https://eqlwiki.com/index.php/Armadillo_Husk"
+  },
+  {
+   "n": "Black Heart",
+   "u": "https://eqlwiki.com/index.php/Black_Heart"
+  },
+  {
+   "n": "Chunk of Meat",
+   "u": "https://eqlwiki.com/index.php/Chunk_of_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Dragoon Dirk",
+   "u": "https://eqlwiki.com/index.php/Dragoon_Dirk"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Dagger",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Long Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Short Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Spear",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Round Shield",
+   "u": "https://eqlwiki.com/index.php/Round_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Long Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Small Round Shield",
+   "u": "https://eqlwiki.com/index.php/Small_Round_Shield"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    1,
+    3
+   ],
+   "loc": [
+    352.0,
+    1139.0,
+    null
+   ],
+   "lvl": "24-26",
+   "n": "Ambassador K`Ryn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ambassador_K%60Ryn"
+  },
+  {
+   "dr": [
+    null,
+    "Rare"
+   ],
+   "drops": [
+    0,
+    2
+   ],
+   "loc": null,
+   "lvl": "2",
+   "n": "an armadillo",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Armadillo"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "61",
+   "n": "Bonlarg",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bonlarg"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    8
+   ],
+   "loc": [
+    -233.0,
+    357.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Bak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Bak"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    490.0,
+    77.0,
+    null
+   ],
+   "lvl": "33-36",
+   "n": "Bouncer Druk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Druk"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "loc": [
+    352.0,
+    1139.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Bouncer Gronk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Gronk"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    -220.0,
+    350.0,
+    null
+   ],
+   "lvl": "35-37",
+   "n": "Bouncer Haraan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Haraan"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    -220.0,
+    350.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Haraan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Raan"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    260.0,
+    -265.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Bouncer Krik",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Krik"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    -68.0,
+    69.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Mrang",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Mrang"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    7.0,
+    312.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Praag",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Praag"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    -286.0,
+    5.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Scaar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Scaar"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    -198.0,
+    367.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Skon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Skon"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    490.0,
+    39.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Skuk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Skuk"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    -350.0,
+    475.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Tazak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Tazak"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    -173.0,
+    394.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Thrang",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Thrang"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    14.0,
+    -267.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Wrok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Wrok"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "loc": [
+    136.0,
+    862.0,
+    null
+   ],
+   "lvl": "33-37",
+   "n": "Bouncer Xak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Xak"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "20",
+   "n": "Emissary Glib",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Emissary_Glib"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    80.0,
+    478.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Exterminator Glurg",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Exterminator_Glurg"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "61",
+   "n": "Fuga",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Fuga"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1 - 50",
+   "n": "Goobert",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Goobert"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    311.0,
+    27.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Grevak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grevak"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    26.0,
+    74.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Guntrik",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guntrik"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -67.0,
+    39.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Horgus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Horgus"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "61",
+   "n": "Jargo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jargo"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -71.0,
+    -26.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Kogna",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kogna"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    36.0,
+    -66.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Lork",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lork"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    653.0,
+    1096.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Marda",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marda"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    335.0,
+    -42.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Soonog",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Soonog"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -11.0,
+    -262.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Ungral Silverstomp",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ungral_Silverstomp"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    630.0,
+    983.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Zulort",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Zulort"
+  }
+ ],
+ "updated": "2026-07-06T03:17:22Z",
+ "wikiTitle": "Oggok",
+ "wikiUrl": "https://eqlwiki.com/index.php/Oggok",
+ "zone": "oggok"
+}

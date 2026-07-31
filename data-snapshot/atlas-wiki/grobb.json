@@ -1,0 +1,884 @@
+{
+ "items": [
+  {
+   "n": "Amber",
+   "u": "https://eqlwiki.com/index.php/Amber"
+  },
+  {
+   "g": 1,
+   "n": "Axe",
+   "u": "https://eqlwiki.com/index.php/Axe"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Morning Star",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Rapier",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Scimitar",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Short Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Spear",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "n": "Flame Agate",
+   "u": "https://eqlwiki.com/index.php/Flame_Agate"
+  },
+  {
+   "g": 1,
+   "n": "Great Staff",
+   "u": "https://eqlwiki.com/index.php/Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Intestine Necklace",
+   "u": "https://eqlwiki.com/index.php/Intestine_Necklace"
+  },
+  {
+   "n": "Ivory",
+   "u": "https://eqlwiki.com/index.php/Ivory"
+  },
+  {
+   "n": "Jade",
+   "u": "https://eqlwiki.com/index.php/Jade"
+  },
+  {
+   "g": 1,
+   "n": "Jade Earring",
+   "u": "https://eqlwiki.com/index.php/Jade_Earring"
+  },
+  {
+   "n": "Large Bag",
+   "u": "https://eqlwiki.com/index.php/Large_Bag"
+  },
+  {
+   "g": 1,
+   "n": "Long Sword",
+   "u": "https://eqlwiki.com/index.php/Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Earring",
+   "u": "https://eqlwiki.com/index.php/Mithril_Earring"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Round Shield",
+   "u": "https://eqlwiki.com/index.php/Round_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "n": "Words of Abatement",
+   "u": "https://eqlwiki.com/index.php/Words_of_Abatement"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    14
+   ],
+   "loc": [
+    604.0,
+    -453.0,
+    null
+   ],
+   "lvl": "4-6",
+   "n": "a froglok prisoner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_prisoner"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    10,
+    15,
+    17,
+    18
+   ],
+   "loc": [
+    263.0,
+    -49.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Basher Avisk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Avisk"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Always",
+    "Common"
+   ],
+   "drops": [
+    10,
+    15,
+    18
+   ],
+   "loc": [
+    449.0,
+    -409.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Basher Banzuk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Banzuk"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    15,
+    18
+   ],
+   "loc": [
+    202.0,
+    138.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Basher Bibeka",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Bibeka"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    15,
+    18
+   ],
+   "loc": [
+    602.0,
+    -491.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Basher Bugak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Bugak"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    6,
+    8,
+    10,
+    15,
+    16,
+    18
+   ],
+   "loc": [
+    270.0,
+    -473.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Basher Gamuk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Gamuk"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    15,
+    18
+   ],
+   "loc": [
+    196.0,
+    -94.0,
+    null
+   ],
+   "lvl": "?",
+   "n": "Basher Ganbaku",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Ganbaku"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    10,
+    11,
+    15,
+    18
+   ],
+   "loc": [
+    -16.0,
+    -435.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Basher Glaum",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Glaum"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    15,
+    18
+   ],
+   "loc": [
+    467.0,
+    -545.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Basher Gobzin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Gobzin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    15,
+    18
+   ],
+   "loc": [
+    -125.0,
+    -467.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Basher Gubaku",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Gubaku"
+  },
+  {
+   "dr": [
+    "Common",
+    "Always",
+    "Always",
+    "Rare"
+   ],
+   "drops": [
+    10,
+    15,
+    18,
+    19
+   ],
+   "loc": [
+    82.0,
+    -97.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Basher Kankuk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Kankuk"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    2,
+    10,
+    15,
+    17,
+    18
+   ],
+   "loc": [
+    209.0,
+    -459.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Basher Kigak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Kigak"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    237.0,
+    139.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Basher Kumek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Kumek"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Common",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    10,
+    13,
+    15,
+    18,
+    19
+   ],
+   "loc": [
+    439.0,
+    -221.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Basher Nagkuma",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Nagkuma"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -7.0,
+    -67.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Basher Nanrum",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Nanrum"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    10,
+    15,
+    18
+   ],
+   "loc": [
+    312.0,
+    -29.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Basher Rakguk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Rakguk"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Common",
+    "Rare",
+    "Always"
+   ],
+   "drops": [
+    5,
+    10,
+    12,
+    15,
+    17,
+    18
+   ],
+   "loc": [
+    76.0,
+    86.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Basher Razbaz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Razbaz"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    10,
+    15,
+    18,
+    19
+   ],
+   "loc": [
+    -12.0,
+    -483.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Basher Roruma",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Roruma"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    10,
+    15,
+    18,
+    20
+   ],
+   "loc": [
+    560.0,
+    -221.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Basher Scintok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Scintok"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    436.0,
+    -543.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Basher Stizik",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Stizik"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    6,
+    8,
+    10,
+    15,
+    16,
+    18
+   ],
+   "loc": [
+    145.0,
+    -74.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Basher Sutok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Sutok"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Always"
+   ],
+   "drops": [
+    10,
+    15,
+    18
+   ],
+   "loc": [
+    672.0,
+    -629.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Basher Thintan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Thintan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    581.0,
+    -640.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Basher Uvgin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Uvgin"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Always"
+   ],
+   "drops": [
+    4,
+    10,
+    11,
+    15,
+    18
+   ],
+   "loc": [
+    668.0,
+    -643.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Basher Wisthak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Wisthak"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    0,
+    5,
+    7,
+    10,
+    15,
+    16,
+    17,
+    18
+   ],
+   "loc": [
+    135.0,
+    -31.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Basher Zabaak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Zabaak"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Always",
+    "Always",
+    "Always",
+    "Common"
+   ],
+   "drops": [
+    0,
+    3,
+    10,
+    15,
+    18,
+    19
+   ],
+   "loc": [
+    270.0,
+    -443.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Basher Zazluk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Zazluk"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -258.0,
+    -235.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Bregna",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bregna"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    377.0,
+    -458.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Carver Cagrek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Carver_Cagrek"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    618.0,
+    -220.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Exterminator Filrog",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Exterminator_Filrog"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    260.0,
+    -122.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Gralok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gralok"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    310.0,
+    -125.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Hergor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hergor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    507.0,
+    -956.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Hukulk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hukulk"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    330.0,
+    -474.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Jokca",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jokca"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    20.0,
+    -490.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Kaglari",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kaglari"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    260.0,
+    -122.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Kragia",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kragia"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    308.0,
+    -162.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Ranjor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ranjor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    616.0,
+    -633.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Rohga",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rohga"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    9
+   ],
+   "loc": [
+    -58.0,
+    -428.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Savarixsa Zexus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Savarixsa_Zexus"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    450.0,
+    -558.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Spinkit",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Spinkit"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    483.0,
+    -905.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Treskar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Treskar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    0.0,
+    -500.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Urako",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Urako"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    444.0,
+    -1028.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Vergad",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vergad"
+  }
+ ],
+ "updated": "2026-07-17T21:05:00Z",
+ "wikiTitle": "Grobb",
+ "wikiUrl": "https://eqlwiki.com/index.php/Grobb",
+ "zone": "grobb"
+}

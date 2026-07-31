@@ -1,0 +1,1352 @@
+{
+ "items": [
+  {
+   "n": "A Bone Key",
+   "u": "https://eqlwiki.com/index.php/A_Bone_Key"
+  },
+  {
+   "g": 1,
+   "n": "A Bone Necklace",
+   "u": "https://eqlwiki.com/index.php/A_Bone_Necklace"
+  },
+  {
+   "n": "A Bronze Key",
+   "u": "https://eqlwiki.com/index.php/A_Bronze_Key"
+  },
+  {
+   "n": "A Copper Key",
+   "u": "https://eqlwiki.com/index.php/A_Copper_Key"
+  },
+  {
+   "n": "A Spider Venom Sac",
+   "u": "https://eqlwiki.com/index.php/A_Spider_Venom_Sac"
+  },
+  {
+   "n": "A Steel Key",
+   "u": "https://eqlwiki.com/index.php/A_Steel_Key"
+  },
+  {
+   "n": "A Stone Key",
+   "u": "https://eqlwiki.com/index.php/A_Stone_Key"
+  },
+  {
+   "n": "An Iron Key",
+   "u": "https://eqlwiki.com/index.php/An_Iron_Key"
+  },
+  {
+   "n": "Black Pearl",
+   "u": "https://eqlwiki.com/index.php/Black_Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Blade of the Earthcaller",
+   "u": "https://eqlwiki.com/index.php/Blade_of_the_Earthcaller"
+  },
+  {
+   "g": 1,
+   "n": "Book of the Rings",
+   "u": "https://eqlwiki.com/index.php/Book_of_the_Rings"
+  },
+  {
+   "g": 1,
+   "n": "Bracer of Vajeen",
+   "u": "https://eqlwiki.com/index.php/Bracer_of_Vajeen"
+  },
+  {
+   "g": 1,
+   "n": "Burynai Legion Gi",
+   "u": "https://eqlwiki.com/index.php/Burynai_Legion_Gi"
+  },
+  {
+   "g": 1,
+   "n": "Canyoneer Pike",
+   "u": "https://eqlwiki.com/index.php/Canyoneer_Pike"
+  },
+  {
+   "g": 1,
+   "n": "Choker of Majdd",
+   "u": "https://eqlwiki.com/index.php/Choker_of_Majdd"
+  },
+  {
+   "g": 1,
+   "n": "Circlet of Shadows",
+   "u": "https://eqlwiki.com/index.php/Circlet_of_Shadows"
+  },
+  {
+   "n": "Crystallized Sulfur",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
+  },
+  {
+   "g": 1,
+   "n": "Dagger of Frost",
+   "u": "https://eqlwiki.com/index.php/Dagger_of_Frost"
+  },
+  {
+   "n": "Dirty Goblin Parchment",
+   "u": "https://eqlwiki.com/index.php/Dirty_Goblin_Parchment"
+  },
+  {
+   "g": 1,
+   "n": "Drogan Obsidian Dagger",
+   "u": "https://eqlwiki.com/index.php/Drogan_Obsidian_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Drogan Warlord's Insignia",
+   "u": "https://eqlwiki.com/index.php/Drogan_Warlord's_Insignia"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Essence",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Essence"
+  },
+  {
+   "n": "Emerald",
+   "u": "https://eqlwiki.com/index.php/Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Essence of Dol",
+   "u": "https://eqlwiki.com/index.php/Essence_of_Dol"
+  },
+  {
+   "g": 1,
+   "n": "Eye of Melnor",
+   "u": "https://eqlwiki.com/index.php/Eye_of_Melnor"
+  },
+  {
+   "n": "Faded Salil's Writ Page",
+   "u": "https://eqlwiki.com/index.php/Faded_Salil's_Writ_Page"
+  },
+  {
+   "n": "Faded Velishoul's Tome Page",
+   "u": "https://eqlwiki.com/index.php/Faded_Velishoul's_Tome_Page"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Dagger",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Great Staff",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Long Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Morning Star",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Spear",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "n": "Flame of Vox",
+   "u": "https://eqlwiki.com/index.php/Flame_of_Vox"
+  },
+  {
+   "g": 1,
+   "n": "Gauntlets of Potence",
+   "u": "https://eqlwiki.com/index.php/Gauntlets_of_Potence"
+  },
+  {
+   "n": "Glove of Rallos Zek",
+   "u": "https://eqlwiki.com/index.php/Glove_of_Rallos_Zek"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Backstabber",
+   "u": "https://eqlwiki.com/index.php/Goblin_Backstabber"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Forged Chain Coif",
+   "u": "https://eqlwiki.com/index.php/Goblin_Forged_Chain_Coif"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Forged Chainmail Bracelet",
+   "u": "https://eqlwiki.com/index.php/Goblin_Forged_Chainmail_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Forged Chainmail Coat",
+   "u": "https://eqlwiki.com/index.php/Goblin_Forged_Chainmail_Coat"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Forged Chainmail Neckguard",
+   "u": "https://eqlwiki.com/index.php/Goblin_Forged_Chainmail_Neckguard"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Forged Iron Armplates",
+   "u": "https://eqlwiki.com/index.php/Goblin_Forged_Iron_Armplates"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Forged Iron Boots",
+   "u": "https://eqlwiki.com/index.php/Goblin_Forged_Iron_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Forged Iron Mask",
+   "u": "https://eqlwiki.com/index.php/Goblin_Forged_Iron_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Parrying Dagger",
+   "u": "https://eqlwiki.com/index.php/Goblin_Parrying_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Parrying Spear",
+   "u": "https://eqlwiki.com/index.php/Goblin_Parrying_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Plaguebeads",
+   "u": "https://eqlwiki.com/index.php/Goblin_Plaguebeads"
+  },
+  {
+   "n": "Goblin Scribblings",
+   "u": "https://eqlwiki.com/index.php/Goblin_Scribblings"
+  },
+  {
+   "g": 1,
+   "n": "Green Goblin Skin",
+   "u": "https://eqlwiki.com/index.php/Green_Goblin_Skin"
+  },
+  {
+   "n": "Grinning Goblin Brew",
+   "u": "https://eqlwiki.com/index.php/Grinning_Goblin_Brew"
+  },
+  {
+   "g": 1,
+   "n": "Head of Skargus",
+   "u": "https://eqlwiki.com/index.php/Head_of_Skargus"
+  },
+  {
+   "g": 1,
+   "n": "Hollow Bone Shank",
+   "u": "https://eqlwiki.com/index.php/Hollow_Bone_Shank"
+  },
+  {
+   "g": 1,
+   "n": "Idol of the Thorned",
+   "u": "https://eqlwiki.com/index.php/Idol_of_the_Thorned"
+  },
+  {
+   "g": 1,
+   "n": "Jade Ring",
+   "u": "https://eqlwiki.com/index.php/Jade_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Leather Whip",
+   "u": "https://eqlwiki.com/index.php/Leather_Whip"
+  },
+  {
+   "g": 1,
+   "n": "Mantle of Mirth",
+   "u": "https://eqlwiki.com/index.php/Mantle_of_Mirth"
+  },
+  {
+   "g": 1,
+   "n": "Mountain Death Belt",
+   "u": "https://eqlwiki.com/index.php/Mountain_Death_Belt"
+  },
+  {
+   "n": "Mt. Death Mineral Salts",
+   "u": "https://eqlwiki.com/index.php/Mt._Death_Mineral_Salts"
+  },
+  {
+   "n": "Opal",
+   "u": "https://eqlwiki.com/index.php/Opal"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Earring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Ring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Ring"
+  },
+  {
+   "n": "Peridot",
+   "u": "https://eqlwiki.com/index.php/Peridot"
+  },
+  {
+   "g": 1,
+   "n": "Ring of the Rockchanters",
+   "u": "https://eqlwiki.com/index.php/Ring_of_the_Rockchanters"
+  },
+  {
+   "g": 1,
+   "n": "Ring of the Stonechanters",
+   "u": "https://eqlwiki.com/index.php/Ring_of_the_Stonechanters"
+  },
+  {
+   "g": 1,
+   "n": "RukGus' Sticker",
+   "u": "https://eqlwiki.com/index.php/RukGus'_Sticker"
+  },
+  {
+   "n": "Rune of Concussion",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Concussion"
+  },
+  {
+   "n": "Rune of Solusek Ro",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Solusek_Ro"
+  },
+  {
+   "n": "Rune of Sorcery",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Sorcery"
+  },
+  {
+   "n": "Rune of the Cyclone",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Cyclone"
+  },
+  {
+   "n": "Rune of Xegony",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Xegony"
+  },
+  {
+   "g": 1,
+   "n": "Sainy's Singing Dagger",
+   "u": "https://eqlwiki.com/index.php/Sainy's_Singing_Dagger"
+  },
+  {
+   "n": "Salil's Writ Pg. 90 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._90_(Left)"
+  },
+  {
+   "g": 1,
+   "n": "Shroud of Nature",
+   "u": "https://eqlwiki.com/index.php/Shroud_of_Nature"
+  },
+  {
+   "g": 1,
+   "n": "Silver Ring",
+   "u": "https://eqlwiki.com/index.php/Silver_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Smokey Quartz Dagger",
+   "u": "https://eqlwiki.com/index.php/Smokey_Quartz_Dagger"
+  },
+  {
+   "n": "Spider Legs",
+   "u": "https://eqlwiki.com/index.php/Spider_Legs"
+  },
+  {
+   "n": "Spider Silk",
+   "u": "https://eqlwiki.com/index.php/Spider_Silk"
+  },
+  {
+   "g": 1,
+   "n": "Spiked Goblin Ring",
+   "u": "https://eqlwiki.com/index.php/Spiked_Goblin_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Stone of Morid",
+   "u": "https://eqlwiki.com/index.php/Stone_of_Morid"
+  },
+  {
+   "g": 1,
+   "n": "Strathbone Anti-Venom",
+   "u": "https://eqlwiki.com/index.php/Strathbone_Anti-Venom"
+  },
+  {
+   "g": 1,
+   "n": "Strathbone Shell Shield",
+   "u": "https://eqlwiki.com/index.php/Strathbone_Shell_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Strathbone Silk",
+   "u": "https://eqlwiki.com/index.php/Strathbone_Silk"
+  },
+  {
+   "g": 1,
+   "n": "Tome of the Eternal",
+   "u": "https://eqlwiki.com/index.php/Tome_of_the_Eternal"
+  },
+  {
+   "g": 1,
+   "n": "Truesilver Mail Coif",
+   "u": "https://eqlwiki.com/index.php/Truesilver_Mail_Coif"
+  },
+  {
+   "g": 1,
+   "n": "Truesilver Mail Sleeves",
+   "u": "https://eqlwiki.com/index.php/Truesilver_Mail_Sleeves"
+  },
+  {
+   "n": "Velishoul's Tome Pg. 8",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg._8"
+  },
+  {
+   "n": "Velishoul's Tome Pg. 9",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg._9"
+  },
+  {
+   "n": "Velishoul's Tome Pg.67",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg.67"
+  },
+  {
+   "g": 1,
+   "n": "Whip of Strangulation",
+   "u": "https://eqlwiki.com/index.php/Whip_of_Strangulation"
+  },
+  {
+   "n": "Words of Abatement",
+   "u": "https://eqlwiki.com/index.php/Words_of_Abatement"
+  },
+  {
+   "n": "Words of Cazic-Thule",
+   "u": "https://eqlwiki.com/index.php/Words_of_Cazic-Thule"
+  },
+  {
+   "n": "Words of Coercion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Coercion"
+  },
+  {
+   "n": "Words of Dark Paths",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dark_Paths"
+  },
+  {
+   "n": "Words of Detachment",
+   "u": "https://eqlwiki.com/index.php/Words_of_Detachment"
+  },
+  {
+   "n": "Words of Dissemination",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dissemination"
+  },
+  {
+   "n": "Words of Duration",
+   "u": "https://eqlwiki.com/index.php/Words_of_Duration"
+  },
+  {
+   "n": "Words of Duress",
+   "u": "https://eqlwiki.com/index.php/Words_of_Duress"
+  },
+  {
+   "n": "Words of Endurance",
+   "u": "https://eqlwiki.com/index.php/Words_of_Endurance"
+  },
+  {
+   "n": "Words of Motion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Motion"
+  },
+  {
+   "n": "Words of Neglect",
+   "u": "https://eqlwiki.com/index.php/Words_of_Neglect"
+  },
+  {
+   "n": "Words of Possession",
+   "u": "https://eqlwiki.com/index.php/Words_of_Possession"
+  },
+  {
+   "n": "Words of Recluse",
+   "u": "https://eqlwiki.com/index.php/Words_of_Recluse"
+  },
+  {
+   "n": "Words of the Incorporeal",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Incorporeal"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -215.0,
+    1320.0,
+    null
+   ],
+   "lvl": "19-22",
+   "n": "a crazed iksar slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crazed_iksar_slave"
+  },
+  {
+   "dr": [
+    "Common",
+    "Ultra Rare",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    20,
+    40,
+    49,
+    58
+   ],
+   "loc": null,
+   "lvl": "33-35",
+   "n": "a goblin adept",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_adept"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    null,
+    null,
+    null,
+    "Rare",
+    "Very Rare",
+    "Rare"
+   ],
+   "drops": [
+    20,
+    43,
+    49,
+    58,
+    62,
+    78,
+    87
+   ],
+   "loc": null,
+   "lvl": "31-33",
+   "n": "a goblin backbiter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_backbiter"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    8,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    54,
+    59,
+    60,
+    61,
+    62,
+    66,
+    67,
+    68,
+    69,
+    72,
+    90,
+    93,
+    96,
+    97,
+    98,
+    99
+   ],
+   "loc": null,
+   "lvl": "31-33",
+   "n": "a goblin blightcaller",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_blightcaller"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    15,
+    35,
+    89
+   ],
+   "loc": null,
+   "lvl": "36",
+   "n": "a goblin bodyguard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_bodyguard"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    49
+   ],
+   "loc": null,
+   "lvl": "29-31",
+   "n": "a goblin bonecharmer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_bonecharmer"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    49
+   ],
+   "loc": null,
+   "lvl": "31-33",
+   "n": "a goblin boneseer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_boneseer"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    20,
+    49,
+    58,
+    61
+   ],
+   "loc": null,
+   "lvl": "33-35",
+   "n": "a goblin boneslaver",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_boneslaver"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    13
+   ],
+   "loc": [
+    600.0,
+    585.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "a goblin canyoneer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_canyoneer"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    null,
+    null,
+    null,
+    "Common",
+    "Common",
+    "Ultra Rare",
+    null
+   ],
+   "drops": [
+    9,
+    16,
+    37,
+    38,
+    49,
+    58,
+    71,
+    94
+   ],
+   "loc": null,
+   "lvl": "33-35",
+   "n": "a goblin cavehunter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_cavehunter"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    "Rare",
+    null,
+    "Common",
+    null,
+    "Common",
+    null
+   ],
+   "drops": [
+    9,
+    37,
+    45,
+    46,
+    49,
+    55,
+    58,
+    71
+   ],
+   "loc": null,
+   "lvl": "33-35",
+   "n": "a goblin depredator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_depredator"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "29-31",
+   "n": "a goblin dirtcaller",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_dirtcaller"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    49,
+    71
+   ],
+   "loc": null,
+   "lvl": "33-35",
+   "n": "a goblin dirtscriber",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_dirtscriber"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    22,
+    39,
+    49,
+    58
+   ],
+   "loc": null,
+   "lvl": "31-33",
+   "n": "a goblin dirttracer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_dirttracer"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    10,
+    49,
+    79,
+    83
+   ],
+   "loc": null,
+   "lvl": "33-35",
+   "n": "a goblin fanatic",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_fanatic"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    49
+   ],
+   "loc": null,
+   "lvl": "29-31",
+   "n": "a goblin firedrowser",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_firedrowser"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    "Common",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    26,
+    46,
+    49,
+    50,
+    58
+   ],
+   "loc": null,
+   "lvl": "33-35",
+   "n": "a goblin flamedrowser",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_flamedrowser"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    25,
+    50,
+    58,
+    61
+   ],
+   "loc": null,
+   "lvl": "31-33",
+   "n": "a goblin flashdrowser",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_flashdrowser"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    3
+   ],
+   "loc": [
+    -260.0,
+    1177.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "a goblin interrogator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_interrogator"
+  },
+  {
+   "dr": [
+    "Common",
+    null,
+    null,
+    "Common",
+    null
+   ],
+   "drops": [
+    41,
+    49,
+    62,
+    74,
+    102
+   ],
+   "loc": null,
+   "lvl": "33-35",
+   "n": "A goblin legate",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_goblin_legate"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    18,
+    20,
+    30,
+    36,
+    49,
+    50,
+    58,
+    59,
+    62
+   ],
+   "loc": null,
+   "lvl": "29-31",
+   "n": "a goblin mosstrooper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_mosstrooper"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    5,
+    6,
+    7
+   ],
+   "loc": [
+    -260.0,
+    1300.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "a goblin penkeeper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_penkeeper"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    0,
+    1
+   ],
+   "loc": [
+    -200.0,
+    1315.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "a goblin penmaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_penmaster"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare",
+    null,
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare"
+   ],
+   "drops": [
+    22,
+    34,
+    47,
+    49,
+    54,
+    58,
+    61,
+    62,
+    70,
+    88,
+    92,
+    95,
+    101,
+    103
+   ],
+   "loc": null,
+   "lvl": "29-31",
+   "n": "a goblin plaguebringer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_plaguebringer"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    42,
+    49,
+    63
+   ],
+   "loc": null,
+   "lvl": "29-31",
+   "n": "a goblin rockchanter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_rockchanter"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    49
+   ],
+   "loc": null,
+   "lvl": "31-33",
+   "n": "a goblin slavedriver",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_slavedriver"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    48
+   ],
+   "loc": null,
+   "lvl": "29-35",
+   "n": "a goblin slinker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_slinker"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    14,
+    24,
+    49,
+    83
+   ],
+   "loc": null,
+   "lvl": "31-33",
+   "n": "a goblin soothsayer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_soothsayer_(Temple_of_Droga)"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    "Common",
+    "Uncommon",
+    "Common",
+    "Uncommon",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    20,
+    27,
+    44,
+    49,
+    50,
+    55,
+    86,
+    91,
+    100
+   ],
+   "loc": null,
+   "lvl": "31-33",
+   "n": "a goblin stalagknight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_stalagknight"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    48,
+    52
+   ],
+   "loc": [
+    -400.0,
+    2199.0,
+    null
+   ],
+   "lvl": "30-32",
+   "n": "a goblin stitcher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_stitcher"
+  },
+  {
+   "dr": [
+    "Rare",
+    null,
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    49,
+    54,
+    64
+   ],
+   "loc": null,
+   "lvl": "31-33",
+   "n": "a goblin stonechanter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_stonechanter"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    null,
+    "Common",
+    "Always",
+    "Common",
+    "Ultra Rare"
+   ],
+   "drops": [
+    9,
+    19,
+    49,
+    55,
+    58,
+    75
+   ],
+   "loc": null,
+   "lvl": "33-35",
+   "n": "a goblin taskmaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_taskmaster"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    15.0,
+    150.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "a goblin traitor",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_traitor"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    "Always"
+   ],
+   "drops": [
+    49,
+    58,
+    73
+   ],
+   "loc": [
+    90.0,
+    -160.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "a goblin warder",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_warder"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Common",
+    "Common",
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    19,
+    20,
+    49,
+    55,
+    58
+   ],
+   "loc": null,
+   "lvl": "29-31",
+   "n": "a goblin whipcracker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_whipcracker"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    57
+   ],
+   "loc": null,
+   "lvl": "37",
+   "n": "a maddened Burynai",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_maddened_Burynai"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    114.0,
+    1929.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "an angry goblin",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_angry_goblin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "30",
+   "n": "an enslaved iksar",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_enslaved_iksar"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    4,
+    17,
+    76,
+    77,
+    80
+   ],
+   "loc": null,
+   "lvl": "32-35",
+   "n": "briarweb spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Briarweb_spider"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    23,
+    53,
+    65
+   ],
+   "loc": [
+    -575.0,
+    2115.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Chief RokGus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Chief_RokGus"
+  },
+  {
+   "dr": [
+    "Very Rare",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    11,
+    21,
+    56
+   ],
+   "loc": [
+    726.0,
+    1967.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Soothsayer Dregzak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Soothsayer_Dregzak"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    4,
+    76,
+    80,
+    81,
+    82,
+    84,
+    85
+   ],
+   "loc": null,
+   "lvl": "30-34",
+   "n": "strathbone spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Strathbone_spider"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    51
+   ],
+   "loc": [
+    150.0,
+    1950.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Warlord Skargus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Warlord_Skargus"
+  }
+ ],
+ "updated": "2026-04-13T08:35:20Z",
+ "wikiTitle": "Temple of Droga",
+ "wikiUrl": "https://eqlwiki.com/index.php/Temple_of_Droga",
+ "zone": "droga"
+}

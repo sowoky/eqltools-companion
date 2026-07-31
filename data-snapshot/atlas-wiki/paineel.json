@@ -1,0 +1,1276 @@
+{
+ "items": [
+  {
+   "n": "Bandages",
+   "u": "https://eqlwiki.com/index.php/Bandages"
+  },
+  {
+   "n": "Bat Fur",
+   "u": "https://eqlwiki.com/index.php/Bat_Fur"
+  },
+  {
+   "n": "Bat Wing",
+   "u": "https://eqlwiki.com/index.php/Bat_Wing"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Bastard Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Bastard_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Cracked Staff",
+   "u": "https://eqlwiki.com/index.php/Cracked_Staff"
+  },
+  {
+   "n": "Infected Rat Livers",
+   "u": "https://eqlwiki.com/index.php/Infected_Rat_Livers"
+  },
+  {
+   "g": 1,
+   "n": "Kite Shield",
+   "u": "https://eqlwiki.com/index.php/Kite_Shield"
+  },
+  {
+   "n": "Piece of Rat Fur",
+   "u": "https://eqlwiki.com/index.php/Piece_of_Rat_Fur"
+  },
+  {
+   "n": "Rat Ears",
+   "u": "https://eqlwiki.com/index.php/Rat_Ears"
+  },
+  {
+   "n": "Rat Tooth",
+   "u": "https://eqlwiki.com/index.php/Rat_Tooth"
+  },
+  {
+   "n": "Rat Whiskers",
+   "u": "https://eqlwiki.com/index.php/Rat_Whiskers"
+  },
+  {
+   "n": "Rotting Femur",
+   "u": "https://eqlwiki.com/index.php/Rotting_Femur"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Short Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Short_Sword"
+  },
+  {
+   "n": "Toolbox",
+   "u": "https://eqlwiki.com/index.php/Toolbox"
+  },
+  {
+   "n": "Toolbox Mold",
+   "u": "https://eqlwiki.com/index.php/Toolbox_Mold"
+  },
+  {
+   "n": "Words of Transcendence",
+   "u": "https://eqlwiki.com/index.php/Words_of_Transcendence"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    1,
+    2
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a black bat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_black_bat"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    0
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a kobold runt",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Kobold_Runt"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1",
+   "n": "a pack rat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_pack_rat"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1164.0,
+    399.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "a spirit chanter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_spirit_chanter"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    958.0,
+    915.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Alaria Mujan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Alaria_Mujan"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    5,
+    7,
+    8,
+    9,
+    10
+   ],
+   "loc": null,
+   "lvl": "4",
+   "n": "an undead rat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_undead_rat"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    762.0,
+    829.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Antus Shelbra",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Antus_Shelbra"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1177.0,
+    488.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Atdehim Sqonci",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Atdehim_Sqonci"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    762.0,
+    849.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Auhrik Siet`ka",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Auhrik_Siet%60ka"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "?",
+   "n": "avatar of dread",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Avatar_of_Dread"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "?",
+   "n": "Avatar of Fright",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Avatar_of_Fright"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    15
+   ],
+   "loc": [
+    872.0,
+    -129.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Azzar Habbib",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Azzar_Habbib"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    797.0,
+    839.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Coriante Verisue",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Coriante_Verisue"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    863.0,
+    444.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Davorre Bloodthorn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Davorre_Bloodthorn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    854.0,
+    455.0,
+    null
+   ],
+   "lvl": "11",
+   "n": "Derena Leflor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Derena_Leflor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    905.0,
+    -100.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Duriek Bloodpool",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Duriek_Bloodpool"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1160.0,
+    476.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Dzan Amo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dzan_Amo"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1095.0,
+    816.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Elia Athrex",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Elia_Athrex"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1136.0,
+    899.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Ernax the Scholar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ernax_the_Scholar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    798.0,
+    670.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Gerot Kastane",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gerot_Kastane"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    842.0,
+    506.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Guard Abbilash",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Abbilash"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1039.0,
+    601.0,
+    null
+   ],
+   "lvl": "34-35",
+   "n": "Guard Abrebla",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Abrebla"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1168.0,
+    633.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Guard Ackin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Ackin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1257.0,
+    754.0,
+    null
+   ],
+   "lvl": "23",
+   "n": "Guard Buldoral",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Buldoral"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1050.0,
+    770.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Captain Latorl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Captain_Latorl"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1038.0,
+    757.0,
+    null
+   ],
+   "lvl": "24",
+   "n": "Guard Exclorpt",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Exclorpt"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    6,
+    12
+   ],
+   "loc": [
+    946.0,
+    -93.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Guard Heridion",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Heridion"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    878.0,
+    807.0,
+    null
+   ],
+   "lvl": "27",
+   "n": "Guard Hetorzuz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Hetorzuz"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1167.0,
+    738.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Guard Ishvlor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Ishvlor"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    884.0,
+    601.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Guard Kellolonren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kellolonren"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    643.0,
+    497.0,
+    null
+   ],
+   "lvl": "16",
+   "n": "Guard Korlack",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Korlack"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    614.0,
+    496.0,
+    null
+   ],
+   "lvl": "16",
+   "n": "Guard Lecknar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Lecknar"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1256.0,
+    618.0,
+    null
+   ],
+   "lvl": "15-16",
+   "n": "Guard Lehlufa",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Lehlufa"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    864.0,
+    600.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Guard Lelton",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Lelton"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1257.0,
+    754.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Guard Lesunra",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Lesunra"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    880.0,
+    827.0,
+    null
+   ],
+   "lvl": "27",
+   "n": "Guard Lidozarnn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Lidozarnn"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1124.0,
+    685.0,
+    null
+   ],
+   "lvl": "14-15",
+   "n": "Guard Lomanres",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Lomanres"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    6,
+    12
+   ],
+   "loc": [
+    946.0,
+    -93.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Guard Menbuknar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Menbuknar"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1139.0,
+    633.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Guard Mertanor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Mertanor"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1059.0,
+    758.0,
+    null
+   ],
+   "lvl": "24-26",
+   "n": "Guard Nextloxtl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Nextloxtl"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1134.0,
+    795.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Guard Notzxatl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Ezrothe"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1075.0,
+    855.0,
+    null
+   ],
+   "lvl": "24",
+   "n": "Guard Notzxatl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Notzxatl"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    874.0,
+    480.0,
+    null
+   ],
+   "lvl": "22 - 26",
+   "n": "Guard Pendleir",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Pendleir"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1283.0,
+    757.0,
+    null
+   ],
+   "lvl": "14-15",
+   "n": "Guard Perelin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Perelin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1257.0,
+    754.0,
+    null
+   ],
+   "lvl": "23-24",
+   "n": "Guard Polzdurn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Polzdurn"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1282.0,
+    611.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Guard Pomnares",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Pomnares"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1225.0,
+    683.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Guard Potren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Potren"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    905.0,
+    506.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Guard Rireboln",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Rireboln"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    1139.0,
+    736.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Guard Sheltuin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Sheltuin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    664.0,
+    543.0,
+    null
+   ],
+   "lvl": "24–25",
+   "n": "Guard Tynaryn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Tynaryn"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    6
+   ],
+   "loc": [
+    918.0,
+    713.0,
+    null
+   ],
+   "lvl": "23-28",
+   "n": "Guard Yerlash",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Yerlash"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1145.0,
+    866.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Librarian Kesler",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Librarian_Kesler"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1164.0,
+    887.0,
+    null
+   ],
+   "lvl": "24",
+   "n": "library assistant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Library_assistant"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    849.0,
+    455.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Mandaril Dark Knife",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mandaril_Dark_Knife"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1035.0,
+    716.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Marsa Folor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marsa_Folor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    725.0,
+    898.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Medoris Flalzm",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Medoris_Flalzm"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1130.0,
+    535.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Miadera Shadowfyre",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Miadera_Shadowfyre"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1035.0,
+    740.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Nadara Reloclen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nadara_Reloclen"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    798.0,
+    804.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Ninna Flalzm",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ninna_Flalzm"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1116.0,
+    519.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Nivold Predd",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nivold_Predd"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    4
+   ],
+   "loc": [
+    983.0,
+    -101.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Noclin Saah",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Noclin_Saah"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    869.0,
+    -121.0,
+    null
+   ],
+   "lvl": "4",
+   "n": "Noclin`s Pet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Noclin%60s_Pet"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1236.0,
+    686.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Overlord Virate Manaar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Overlord_Virate_Manaar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1308.0,
+    686.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Royal Guard Lilkus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Guard_Lilkus"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1308.0,
+    685.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Royal Guard Sheltuin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Guard_Sheltuin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    958.0,
+    924.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Sejako Mujan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sejako_Mujan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1130.0,
+    522.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Sern Adolia",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sern_Adolia"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Always"
+   ],
+   "drops": [
+    13,
+    14
+   ],
+   "loc": [
+    863.0,
+    470.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Shevra Kollintar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shevra_Kollintar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    761.0,
+    839.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Shwara Volerno",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shwara_Volerno"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1167.0,
+    848.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Talloth Vara",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Talloth_Vara"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    955.0,
+    625.0,
+    -67.0
+   ],
+   "lvl": "61",
+   "n": "Tatalros the Cruel",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tatalros_the_Cruel"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    780.0,
+    693.0,
+    null
+   ],
+   "lvl": "13",
+   "n": "Telan Buvare",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Telan_Buvare"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    734.0,
+    824.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Tormented Soul",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tormented_Soul"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    834.0,
+    719.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Velana Kelmuza",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Keeshla_Levlora"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    819.0,
+    721.0,
+    null
+   ],
+   "lvl": "12",
+   "n": "Velana Kelmuza",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Velana_Kelmuza"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    866.0,
+    694.0,
+    null
+   ],
+   "lvl": "11",
+   "n": "Verolk Kishneal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Verolk_Kishneal"
+  }
+ ],
+ "updated": "2026-05-25T17:55:09Z",
+ "wikiTitle": "Paineel",
+ "wikiUrl": "https://eqlwiki.com/index.php/Paineel",
+ "zone": "paineel"
+}

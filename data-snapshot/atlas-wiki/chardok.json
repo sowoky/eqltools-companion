@@ -1,0 +1,3311 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "A Shovel",
+   "u": "https://eqlwiki.com/index.php/A_Shovel"
+  },
+  {
+   "n": "A Singed Scroll",
+   "u": "https://eqlwiki.com/index.php/A_Singed_Scroll"
+  },
+  {
+   "g": 1,
+   "n": "Ancient Blade",
+   "u": "https://eqlwiki.com/index.php/Ancient_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Anklesmasher",
+   "u": "https://eqlwiki.com/index.php/Anklesmasher"
+  },
+  {
+   "g": 1,
+   "n": "Argent Defender",
+   "u": "https://eqlwiki.com/index.php/Argent_Defender"
+  },
+  {
+   "g": 1,
+   "n": "Argent Protector",
+   "u": "https://eqlwiki.com/index.php/Argent_Protector"
+  },
+  {
+   "g": 1,
+   "n": "Baton of Royal Stature",
+   "u": "https://eqlwiki.com/index.php/Baton_of_Royal_Stature"
+  },
+  {
+   "n": "Black Sapphire",
+   "u": "https://eqlwiki.com/index.php/Black_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Blood of the Wolf",
+   "u": "https://eqlwiki.com/index.php/Blood_of_the_Wolf"
+  },
+  {
+   "n": "Blue Diamond",
+   "u": "https://eqlwiki.com/index.php/Blue_Diamond"
+  },
+  {
+   "n": "Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Bone_Chips"
+  },
+  {
+   "g": 1,
+   "n": "Boneshear",
+   "u": "https://eqlwiki.com/index.php/Boneshear"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Statue of Bathezid",
+   "u": "https://eqlwiki.com/index.php/Bronze_Statue_of_Bathezid"
+  },
+  {
+   "g": 1,
+   "n": "Burnished Wooden Stave",
+   "u": "https://eqlwiki.com/index.php/Burnished_Wooden_Stave"
+  },
+  {
+   "g": 1,
+   "n": "Burnt Wood Staff",
+   "u": "https://eqlwiki.com/index.php/Burnt_Wood_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Chokidai Hide Pauldrons",
+   "u": "https://eqlwiki.com/index.php/Chokidai_Hide_Pauldrons"
+  },
+  {
+   "g": 1,
+   "n": "Chokidai Hide Spaulders",
+   "u": "https://eqlwiki.com/index.php/Chokidai_Hide_Spaulders"
+  },
+  {
+   "g": 1,
+   "n": "Cloak of Imperception",
+   "u": "https://eqlwiki.com/index.php/Cloak_of_Imperception"
+  },
+  {
+   "g": 1,
+   "n": "Courier`s Potion",
+   "u": "https://eqlwiki.com/index.php/Courier%60s_Potion"
+  },
+  {
+   "g": 1,
+   "n": "Crypt Master`s Conjuring Stone",
+   "u": "https://eqlwiki.com/index.php/Crypt_Master%60s_Conjuring_Stone"
+  },
+  {
+   "n": "Crystallized Sulfur",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
+  },
+  {
+   "g": 1,
+   "n": "Dark Scale Sleeves",
+   "u": "https://eqlwiki.com/index.php/Dark_Scale_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Darksight Dagger",
+   "u": "https://eqlwiki.com/index.php/Darksight_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Desiccated Halfling Mask",
+   "u": "https://eqlwiki.com/index.php/Desiccated_Halfling_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Di'zok Imperial Katana",
+   "u": "https://eqlwiki.com/index.php/Di'zok_Imperial_Katana"
+  },
+  {
+   "g": 1,
+   "n": "Di'zok Wristsnapper",
+   "u": "https://eqlwiki.com/index.php/Di'zok_Wristsnapper"
+  },
+  {
+   "g": 1,
+   "n": "Di`zok Begirding",
+   "u": "https://eqlwiki.com/index.php/Di%60zok_Begirding"
+  },
+  {
+   "g": 1,
+   "n": "Di`zok Escape Staff",
+   "u": "https://eqlwiki.com/index.php/Di%60zok_Escape_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Di`zok Oracle Shillelagh",
+   "u": "https://eqlwiki.com/index.php/Di%60zok_Oracle_Shillelagh"
+  },
+  {
+   "g": 1,
+   "n": "Di`zok Sceptre of Authority",
+   "u": "https://eqlwiki.com/index.php/Di%60zok_Sceptre_of_Authority"
+  },
+  {
+   "n": "Diamond",
+   "u": "https://eqlwiki.com/index.php/Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Blazing Energy",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Blazing_Energy"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Cleansing",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Cleansing"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Everfount",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Everfount"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Purity",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Purity"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Twisted Leaves",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Twisted_Leaves"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Woven Bark",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Woven_Bark"
+  },
+  {
+   "g": 1,
+   "n": "Edge of Cabilis",
+   "u": "https://eqlwiki.com/index.php/Edge_of_Cabilis"
+  },
+  {
+   "g": 1,
+   "n": "Emerald Ring",
+   "u": "https://eqlwiki.com/index.php/Emerald_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Engraved Di`Zok Deathbringer",
+   "u": "https://eqlwiki.com/index.php/Engraved_Di%60Zok_Deathbringer"
+  },
+  {
+   "n": "Essence of Rathe",
+   "u": "https://eqlwiki.com/index.php/Essence_of_Rathe"
+  },
+  {
+   "g": 1,
+   "n": "Etched Steel Baton",
+   "u": "https://eqlwiki.com/index.php/Etched_Steel_Baton"
+  },
+  {
+   "g": 1,
+   "n": "Fancy Velvet Mantle",
+   "u": "https://eqlwiki.com/index.php/Fancy_Velvet_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Fester",
+   "u": "https://eqlwiki.com/index.php/Fester"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Great Staff",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Long Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Morning Star",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Rapier",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Scimitar",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Scimitar"
+  },
+  {
+   "n": "Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
+  },
+  {
+   "n": "Fire Opal",
+   "u": "https://eqlwiki.com/index.php/Fire_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Froglok Blood",
+   "u": "https://eqlwiki.com/index.php/Froglok_Blood"
+  },
+  {
+   "n": "Froglok Meat",
+   "u": "https://eqlwiki.com/index.php/Froglok_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Girdle of Flayed Iksar",
+   "u": "https://eqlwiki.com/index.php/Girdle_of_Flayed_Iksar"
+  },
+  {
+   "g": 1,
+   "n": "Girdle of Rapidity",
+   "u": "https://eqlwiki.com/index.php/Girdle_of_Rapidity"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Juntah Harvester",
+   "u": "https://eqlwiki.com/index.php/Goblin_Juntah_Harvester"
+  },
+  {
+   "g": 1,
+   "n": "Golem Tear Ring",
+   "u": "https://eqlwiki.com/index.php/Golem_Tear_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Greenish Metal Shard",
+   "u": "https://eqlwiki.com/index.php/Greenish_Metal_Shard"
+  },
+  {
+   "n": "Griffenne Blood",
+   "u": "https://eqlwiki.com/index.php/Griffenne_Blood"
+  },
+  {
+   "g": 1,
+   "n": "Guard Captain`s Mallet",
+   "u": "https://eqlwiki.com/index.php/Guard_Captain%60s_Mallet"
+  },
+  {
+   "g": 1,
+   "n": "Hammered Golden Loop",
+   "u": "https://eqlwiki.com/index.php/Hammered_Golden_Loop"
+  },
+  {
+   "g": 1,
+   "n": "Hardened Bone Spaulders",
+   "u": "https://eqlwiki.com/index.php/Hardened_Bone_Spaulders"
+  },
+  {
+   "n": "Head of a Prince",
+   "u": "https://eqlwiki.com/index.php/Head_of_a_Prince"
+  },
+  {
+   "g": 1,
+   "n": "Herbalist's Spade",
+   "u": "https://eqlwiki.com/index.php/Herbalist's_Spade"
+  },
+  {
+   "g": 1,
+   "n": "History of the Di`zok",
+   "u": "https://eqlwiki.com/index.php/History_of_the_Di%60zok"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Hide Cap",
+   "u": "https://eqlwiki.com/index.php/Iksar_Hide_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Hide Cape",
+   "u": "https://eqlwiki.com/index.php/Iksar_Hide_Cape"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Hide Manual",
+   "u": "https://eqlwiki.com/index.php/Iksar_Hide_Manual"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Skin Gloves",
+   "u": "https://eqlwiki.com/index.php/Iksar_Skin_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Imperial Wardog Collar",
+   "u": "https://eqlwiki.com/index.php/Imperial_Wardog_Collar"
+  },
+  {
+   "g": 1,
+   "n": "Incarnadine Boots",
+   "u": "https://eqlwiki.com/index.php/Incarnadine_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Incarnadine Breastplate",
+   "u": "https://eqlwiki.com/index.php/Incarnadine_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Incarnadine Greaves",
+   "u": "https://eqlwiki.com/index.php/Incarnadine_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Incarnadine Helm",
+   "u": "https://eqlwiki.com/index.php/Incarnadine_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Incarnadine Legplates",
+   "u": "https://eqlwiki.com/index.php/Incarnadine_Legplates"
+  },
+  {
+   "g": 1,
+   "n": "Inlaid Jade Hoop",
+   "u": "https://eqlwiki.com/index.php/Inlaid_Jade_Hoop"
+  },
+  {
+   "g": 1,
+   "n": "Insignia Protector",
+   "u": "https://eqlwiki.com/index.php/Insignia_Protector"
+  },
+  {
+   "g": 1,
+   "n": "Intricate Silver Rapier",
+   "u": "https://eqlwiki.com/index.php/Intricate_Silver_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Ivory Imbued Collar",
+   "u": "https://eqlwiki.com/index.php/Ivory_Imbued_Collar"
+  },
+  {
+   "n": "Jacinth",
+   "u": "https://eqlwiki.com/index.php/Jacinth"
+  },
+  {
+   "g": 1,
+   "n": "Jade Inlaid Crescent Axe",
+   "u": "https://eqlwiki.com/index.php/Jade_Inlaid_Crescent_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Jade Inlaid Spaulders",
+   "u": "https://eqlwiki.com/index.php/Jade_Inlaid_Spaulders"
+  },
+  {
+   "g": 1,
+   "n": "Jade Meditation Hoop",
+   "u": "https://eqlwiki.com/index.php/Jade_Meditation_Hoop"
+  },
+  {
+   "g": 1,
+   "n": "Jagged Blade of Mourning",
+   "u": "https://eqlwiki.com/index.php/Jagged_Blade_of_Mourning"
+  },
+  {
+   "g": 1,
+   "n": "Jagged Chokidai Spine",
+   "u": "https://eqlwiki.com/index.php/Jagged_Chokidai_Spine"
+  },
+  {
+   "g": 1,
+   "n": "Jeldorin",
+   "u": "https://eqlwiki.com/index.php/Jeldorin"
+  },
+  {
+   "n": "Korucust's note to Venril",
+   "u": "https://eqlwiki.com/index.php/Korucust's_note_to_Venril"
+  },
+  {
+   "g": 1,
+   "n": "Leather Whip",
+   "u": "https://eqlwiki.com/index.php/Leather_Whip"
+  },
+  {
+   "g": 1,
+   "n": "Manisi Herb",
+   "u": "https://eqlwiki.com/index.php/Manisi_Herb"
+  },
+  {
+   "g": 1,
+   "n": "Mask of Secrets",
+   "u": "https://eqlwiki.com/index.php/Mask_of_Secrets"
+  },
+  {
+   "n": "Metal Pipe",
+   "u": "https://eqlwiki.com/index.php/Metal_Pipe"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Amulet",
+   "u": "https://eqlwiki.com/index.php/Mithril_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Nathsar Bracer",
+   "u": "https://eqlwiki.com/index.php/Nathsar_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Nathsar Breastplate",
+   "u": "https://eqlwiki.com/index.php/Nathsar_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Nathsar Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Nathsar_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Nathsar Helm",
+   "u": "https://eqlwiki.com/index.php/Nathsar_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Nathsar Leggings",
+   "u": "https://eqlwiki.com/index.php/Nathsar_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Nathsar Vambraces",
+   "u": "https://eqlwiki.com/index.php/Nathsar_Vambraces"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 416",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._416"
+  },
+  {
+   "n": "Note from Prince Selrach",
+   "u": "https://eqlwiki.com/index.php/Note_from_Prince_Selrach"
+  },
+  {
+   "g": 1,
+   "n": "Oakleaf Scimitar",
+   "u": "https://eqlwiki.com/index.php/Oakleaf_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Opal Bracelet",
+   "u": "https://eqlwiki.com/index.php/Opal_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Overseer`s Signet",
+   "u": "https://eqlwiki.com/index.php/Overseer%60s_Signet"
+  },
+  {
+   "g": 1,
+   "n": "Palladium Axe",
+   "u": "https://eqlwiki.com/index.php/Palladium_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Necklace",
+   "u": "https://eqlwiki.com/index.php/Pearl_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Pearly Sarnak Bauble",
+   "u": "https://eqlwiki.com/index.php/Pearly_Sarnak_Bauble"
+  },
+  {
+   "g": 1,
+   "n": "Poison Washed Spaulders",
+   "u": "https://eqlwiki.com/index.php/Poison_Washed_Spaulders"
+  },
+  {
+   "g": 1,
+   "n": "Polished Shai`din Naginata",
+   "u": "https://eqlwiki.com/index.php/Polished_Shai%60din_Naginata"
+  },
+  {
+   "g": 1,
+   "n": "Preserved Chokidai Vocal Cords",
+   "u": "https://eqlwiki.com/index.php/Preserved_Chokidai_Vocal_Cords"
+  },
+  {
+   "n": "Primordial Substance",
+   "u": "https://eqlwiki.com/index.php/Primordial_Substance"
+  },
+  {
+   "g": 1,
+   "n": "Rabid Chokidai Fang",
+   "u": "https://eqlwiki.com/index.php/Rabid_Chokidai_Fang"
+  },
+  {
+   "g": 1,
+   "n": "Ring of Di`Zok",
+   "u": "https://eqlwiki.com/index.php/Ring_of_Di%60Zok"
+  },
+  {
+   "g": 1,
+   "n": "Ring of Stealthy Travel",
+   "u": "https://eqlwiki.com/index.php/Ring_of_Stealthy_Travel"
+  },
+  {
+   "n": "Ruby",
+   "u": "https://eqlwiki.com/index.php/Ruby"
+  },
+  {
+   "n": "Rune of Gale",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Gale"
+  },
+  {
+   "n": "Rune of the Astral",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Astral"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Mining Pick",
+   "u": "https://eqlwiki.com/index.php/Rusty_Mining_Pick"
+  },
+  {
+   "g": 1,
+   "n": "Sandwich of Foul Smelling Herbs",
+   "u": "https://eqlwiki.com/index.php/Sandwich_of_Foul_Smelling_Herbs"
+  },
+  {
+   "n": "Sapphire",
+   "u": "https://eqlwiki.com/index.php/Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Sapphire Necklace",
+   "u": "https://eqlwiki.com/index.php/Sapphire_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Arcane Fetish",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Arcane_Fetish"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Backstabber",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Backstabber"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Battle Shield",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Battle_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Battlehammer",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Battlehammer"
+  },
+  {
+   "n": "Sarnak Blood",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Blood"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Bracer of Honor",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Bracer_of_Honor"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Devastator",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Devastator"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Earring of Station",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Earring_of_Station"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Hide Boots",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Hide_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Lightning Caller",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Lightning_Caller"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Parrying Blade",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Parrying_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Prayer Beads",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Prayer_Beads"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Skullsplitter",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Skullsplitter"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Summoner`s Dagger",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Summoner%60s_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak War Bow",
+   "u": "https://eqlwiki.com/index.php/Sarnak_War_Bow"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Warhammer",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Shai`din Revenant Bauble",
+   "u": "https://eqlwiki.com/index.php/Shai%60din_Revenant_Bauble"
+  },
+  {
+   "g": 1,
+   "n": "Shard of Darkness",
+   "u": "https://eqlwiki.com/index.php/Shard_of_Darkness"
+  },
+  {
+   "g": 1,
+   "n": "Shard of Night",
+   "u": "https://eqlwiki.com/index.php/Shard_of_Night"
+  },
+  {
+   "n": "Silver Mesh",
+   "u": "https://eqlwiki.com/index.php/Silver_Mesh"
+  },
+  {
+   "g": 1,
+   "n": "Silver Swiftblade",
+   "u": "https://eqlwiki.com/index.php/Silver_Swiftblade"
+  },
+  {
+   "g": 1,
+   "n": "Slick Leather Courier`s Cape",
+   "u": "https://eqlwiki.com/index.php/Slick_Leather_Courier%60s_Cape"
+  },
+  {
+   "g": 1,
+   "n": "Small Manisi Plant",
+   "u": "https://eqlwiki.com/index.php/Small_Manisi_Plant"
+  },
+  {
+   "g": 1,
+   "n": "Spell: Call of the Hero",
+   "u": "https://eqlwiki.com/index.php/Spell%3A_Call_of_the_Hero"
+  },
+  {
+   "g": 1,
+   "n": "Spell: Gangrenous Touch of Zum`uul",
+   "u": "https://eqlwiki.com/index.php/Spell%3A_Gangrenous_Touch_of_Zum%60uul"
+  },
+  {
+   "g": 1,
+   "n": "Spell: Incinerate Bones",
+   "u": "https://eqlwiki.com/index.php/Spell%3A_Incinerate_Bones"
+  },
+  {
+   "g": 1,
+   "n": "Spell: Shroud of Undeath",
+   "u": "https://eqlwiki.com/index.php/Spell%3A_Shroud_of_Undeath"
+  },
+  {
+   "g": 1,
+   "n": "Stained Cloth Mask",
+   "u": "https://eqlwiki.com/index.php/Stained_Cloth_Mask"
+  },
+  {
+   "n": "Star Ruby",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Stave of Shielding",
+   "u": "https://eqlwiki.com/index.php/Stave_of_Shielding"
+  },
+  {
+   "g": 1,
+   "n": "Symphonic Saber",
+   "u": "https://eqlwiki.com/index.php/Symphonic_Saber"
+  },
+  {
+   "g": 1,
+   "n": "Tanned Iksar Hide Leggings",
+   "u": "https://eqlwiki.com/index.php/Tanned_Iksar_Hide_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Tattered Flesh Veil",
+   "u": "https://eqlwiki.com/index.php/Tattered_Flesh_Veil"
+  },
+  {
+   "n": "The History of the Greenmist",
+   "u": "https://eqlwiki.com/index.php/The_History_of_the_Greenmist"
+  },
+  {
+   "g": 1,
+   "n": "Throneblade of the Ykesha",
+   "u": "https://eqlwiki.com/index.php/Throneblade_of_the_Ykesha"
+  },
+  {
+   "g": 1,
+   "n": "Tribal War Boots",
+   "u": "https://eqlwiki.com/index.php/Tribal_War_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Tribal War Mask",
+   "u": "https://eqlwiki.com/index.php/Tribal_War_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Vial of Roiling Gas",
+   "u": "https://eqlwiki.com/index.php/Vial_of_Roiling_Gas"
+  },
+  {
+   "g": 1,
+   "n": "Vibrating Gauntlets of Infuse",
+   "u": "https://eqlwiki.com/index.php/Vibrating_Gauntlets_of_Infuse"
+  },
+  {
+   "g": 1,
+   "n": "Vile Sarnak Brew",
+   "u": "https://eqlwiki.com/index.php/Vile_Sarnak_Brew"
+  },
+  {
+   "g": 1,
+   "n": "Water Sprinkler of the Forgiven",
+   "u": "https://eqlwiki.com/index.php/Water_Sprinkler_of_the_Forgiven"
+  },
+  {
+   "g": 1,
+   "n": "Withered Staff",
+   "u": "https://eqlwiki.com/index.php/Withered_Staff"
+  },
+  {
+   "n": "Words of Acquisition (Beza)",
+   "u": "https://eqlwiki.com/index.php/Words_of_Acquisition_(Beza)"
+  },
+  {
+   "n": "Words of Bondage",
+   "u": "https://eqlwiki.com/index.php/Words_of_Bondage"
+  },
+  {
+   "g": 1,
+   "n": "Worn Crescent Axe",
+   "u": "https://eqlwiki.com/index.php/Worn_Crescent_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Worn Shai`din Naginata",
+   "u": "https://eqlwiki.com/index.php/Worn_Shai%60din_Naginata"
+  },
+  {
+   "g": 1,
+   "n": "Writ of Di`zok",
+   "u": "https://eqlwiki.com/index.php/Writ_of_Di%60zok"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    27,
+    57,
+    111,
+    159
+   ],
+   "loc": [
+    95.0,
+    5.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "a Alchemist`s Acolyte",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Alchemist%60s_Acolyte"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Block Foreman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Block_Foreman"
+  },
+  {
+   "dr": [
+    null,
+    "Ultra Rare"
+   ],
+   "drops": [
+    14,
+    56
+   ],
+   "loc": null,
+   "lvl": "44",
+   "n": "a chardoki golem",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chardoki_Golem"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    7,
+    84
+   ],
+   "loc": null,
+   "lvl": "53-55",
+   "n": "a Chokidai Bloodhound",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Bloodhound"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    7,
+    84
+   ],
+   "loc": null,
+   "lvl": "53-55",
+   "n": "a Chokidai Bonesnapper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Bonesnapper"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    8,
+    10,
+    13,
+    16,
+    20,
+    38,
+    40,
+    46,
+    49,
+    50,
+    58,
+    84,
+    91,
+    101,
+    115,
+    118,
+    124,
+    139,
+    147,
+    148,
+    153,
+    154,
+    163
+   ],
+   "loc": [
+    -296.0,
+    128.0,
+    null
+   ],
+   "lvl": "49",
+   "n": "a Chokidai Fleshripper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Fleshripper"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    16,
+    45,
+    84,
+    116
+   ],
+   "loc": null,
+   "lvl": "44",
+   "n": "A Chokidai Growler",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Growler"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "54?",
+   "n": "a Chokidai Herbsniffer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Herbsniffer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "47-51",
+   "n": "a chokidai lacerator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_chokidai_lacerator"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Chokidai Lasher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Lasher"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    45,
+    84,
+    116,
+    150
+   ],
+   "loc": null,
+   "lvl": "49-51",
+   "n": "a Chokidai Mangler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Mangler"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55?",
+   "n": "a Chokidai Mauler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Mauler"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Chokidai Pitfighter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Pitfighter"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    16,
+    45,
+    84,
+    116
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "A Chokidai Rootdigger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Rootdigger"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    16,
+    45,
+    84,
+    116,
+    118
+   ],
+   "loc": null,
+   "lvl": "45",
+   "n": "a Chokidai Sniffer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Sniffer"
+  },
+  {
+   "dr": [
+    null,
+    "Uncommon"
+   ],
+   "drops": [
+    45,
+    84
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "a Chokidai Sunderfiend",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Sunderfiend"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    16,
+    84
+   ],
+   "loc": null,
+   "lvl": "49",
+   "n": "a Chokidai Tearer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Tearer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Chokidai Terror",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Terror"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "50",
+   "n": "a Chokidai Wardog",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Wardog"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    16,
+    38,
+    45,
+    116,
+    148
+   ],
+   "loc": null,
+   "lvl": "42",
+   "n": "a Chokidai Whelp",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chokidai_Whelp"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "46-47",
+   "n": "a Di`zok Aruspex",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Aruspex"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -202.0,
+    -15.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "a Di`zok Captain",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60Zok_Captain"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    26,
+    37,
+    119,
+    122,
+    123,
+    127,
+    140,
+    150,
+    156,
+    160
+   ],
+   "loc": [
+    -155.0,
+    -144.0,
+    null
+   ],
+   "lvl": "44-45",
+   "n": "a Di`zok Channeler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Channeler"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    149
+   ],
+   "loc": null,
+   "lvl": "49",
+   "n": "a Di`zok Conscript",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60Zok_Conscript"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "53",
+   "n": "a Di`zok Cryptmaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60Zok_Cryptmaster"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -202.0,
+    -15.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "a Di`zok Dragoon",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60Zok_Dragoon"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    26,
+    37,
+    122,
+    123,
+    127,
+    140,
+    150,
+    156,
+    160
+   ],
+   "loc": [
+    -155.0,
+    -144.0,
+    null
+   ],
+   "lvl": "49 (possible variation)",
+   "n": "a Di`zok Evoker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Evoker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "49-51",
+   "n": "a Di`zok Gravebinder",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Gravebinder"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55?",
+   "n": "a Di`zok Guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Guardian"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    161.0,
+    31.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "a Di`zok Herbalist",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Herbalist"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    26,
+    37,
+    50,
+    122,
+    123,
+    127,
+    140,
+    150,
+    156,
+    160
+   ],
+   "loc": null,
+   "lvl": "44",
+   "n": "a Di`zok Invoker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Invoker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Di`Zok Jannisary",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Jannisary"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    26,
+    37,
+    123,
+    125,
+    132,
+    140,
+    155,
+    156
+   ],
+   "loc": null,
+   "lvl": "49",
+   "n": "a Di`zok Legionnaire",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60Zok_Legionnaire"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -859.0,
+    977.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "a Di`zok Librarian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Librarian"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "53?",
+   "n": "a Di`zok Myrmidon",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Myrmidon"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    140
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Di`zok Observer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Observer"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    26,
+    38,
+    49,
+    50,
+    78,
+    83,
+    91,
+    101,
+    104,
+    114,
+    120,
+    122,
+    125,
+    132,
+    137,
+    140,
+    148,
+    149,
+    150,
+    155,
+    156,
+    160,
+    161
+   ],
+   "loc": [
+    -136.0,
+    -97.0,
+    null
+   ],
+   "lvl": "49",
+   "n": "a Di`zok Partisan",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60Zok_Partisan"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    26,
+    37,
+    68,
+    123,
+    125,
+    132,
+    140,
+    155,
+    156,
+    161
+   ],
+   "loc": null,
+   "lvl": "45",
+   "n": "a Di`zok Recruit",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Recruit"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    26,
+    37,
+    122,
+    123,
+    127,
+    140,
+    150,
+    156,
+    160
+   ],
+   "loc": null,
+   "lvl": "48",
+   "n": "a Di`zok Revealer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Revealer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "53",
+   "n": "a Di`zok Seer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Seer"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    4
+   ],
+   "loc": [
+    166.0,
+    380.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "a Di`zok Sergeant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Sergeant"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    120
+   ],
+   "loc": [
+    167.0,
+    378.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "a Di`zok Sergeant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Dizok_Sergeant"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    26,
+    78,
+    83,
+    122,
+    132,
+    137,
+    140,
+    149,
+    150,
+    155
+   ],
+   "loc": [
+    224.0,
+    448.0,
+    null
+   ],
+   "lvl": "43",
+   "n": "a Di`zok Underling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Di%60zok_Underling"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1",
+   "n": "a droopy slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_droopy_slave"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    51,
+    52
+   ],
+   "loc": [
+    1144.0,
+    -284.0,
+    null
+   ],
+   "lvl": "2",
+   "n": "a froglok slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_slave"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55?",
+   "n": "a Greater Guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Greater_Guardian"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "53",
+   "n": "a Lesser Guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Lesser_Guardian"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1",
+   "n": "a miserable slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_miserable_slave"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    null,
+    null
+   ],
+   "drops": [
+    13,
+    101,
+    148
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Reanimated Berserker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Reanimated_Berserker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "50-52",
+   "n": "a Reanimated Champion",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Reanimated_Champion"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    13
+   ],
+   "loc": null,
+   "lvl": "48-53",
+   "n": "a Reanimated Conscript",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Reanimated_Conscript"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "49-53",
+   "n": "a Reanimated Dragoon",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Reanimated_Dragoon"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    13,
+    118,
+    148
+   ],
+   "loc": null,
+   "lvl": "50-55",
+   "n": "a Reanimated Partisan",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Reanimated_Partisan"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    0
+   ],
+   "loc": null,
+   "lvl": "6-8",
+   "n": "a Sad Ratman Slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sad_Ratman_Slave"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "6-8",
+   "n": "a sad slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sad_slave"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    120
+   ],
+   "loc": null,
+   "lvl": "51",
+   "n": "A Sarnak Accoucheur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Accoucheur"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    160
+   ],
+   "loc": null,
+   "lvl": "45-48",
+   "n": "a sarnak aruspex",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sarnak_aruspex"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    37,
+    132
+   ],
+   "loc": null,
+   "lvl": "46 - 49",
+   "n": "a sarnak caedosaur",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sarnak_caedosaur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Sarnak Dog Handler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Dog_Handler"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    87
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "a Sarnak Foreman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Foreman"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    91.0,
+    6.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "A Sarnak Herb Collector",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Herb_Collector"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    47,
+    98,
+    148,
+    149,
+    161,
+    162
+   ],
+   "loc": [
+    -609.0,
+    815.0,
+    null
+   ],
+   "lvl": "49",
+   "n": "a sarnak janissary",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sarnak_janissary"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Sarnak Manager",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Manager"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    140
+   ],
+   "loc": [
+    -609.0,
+    815.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "a Sarnak myrmidon",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Myrmidon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Sarnak Physician",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Physician"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    87,
+    149
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Sarnak pitboss",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_pitboss"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "51",
+   "n": "a Sarnak Slavedriver",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sarnak_slavedriver"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "51-52",
+   "n": "a Sarnak Slavemaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Slavemaster"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    137
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Sarnak Underboss",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Underboss"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    149
+   ],
+   "loc": null,
+   "lvl": "51",
+   "n": "a Sarnak vindicator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Vindicator"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Sarnak Whipcracker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Whipcracker"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    30,
+    68,
+    79,
+    87,
+    149
+   ],
+   "loc": null,
+   "lvl": "55?",
+   "n": "a Scarred Overseer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Scarred_Overseer"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    74,
+    107,
+    165
+   ],
+   "loc": [
+    -559.0,
+    -373.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "A Security Advisor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Security_Advisor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "47",
+   "n": "a Shai`din Bonecollector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shai%60din_Bonecollector"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    113,
+    132,
+    143,
+    160
+   ],
+   "loc": null,
+   "lvl": "46-48",
+   "n": "a Shai`din Conscript",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shai%60din_Conscript"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "45",
+   "n": "a Shai`din Follower",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shai%60din_Follower"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    120
+   ],
+   "loc": null,
+   "lvl": "45-46",
+   "n": "a Shai`din Hemlock",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shai%60din_Hemlock"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Shai`din Jannisary",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shai%60din_Jannisary"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    30,
+    113
+   ],
+   "loc": null,
+   "lvl": "45-48",
+   "n": "a Shai`din Nightfear",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shai%60din_Nightfear"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    137,
+    143
+   ],
+   "loc": null,
+   "lvl": "41-45",
+   "n": "a Shai`din Partisan",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shai%60din_Partisan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "47-49",
+   "n": "a Shai`din Soldier",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shai%60din_Soldier"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    20,
+    83,
+    140,
+    149
+   ],
+   "loc": null,
+   "lvl": "44",
+   "n": "a Shai`din Soultrapper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shai%60din_Soultrapper"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "6-8",
+   "n": "a skinny slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_skinny_slave"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "51",
+   "n": "a Slaveblock Guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Slaveblock_Guard"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "6-8",
+   "n": "a smelly slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_smelly_slave"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1",
+   "n": "a sullen slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sullen_slave"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    13
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "a Tortured Iksar Miner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Tortured_Iksar_Miner"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    87
+   ],
+   "loc": [
+    -82.0,
+    -55.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "a Treasury Guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Treasury_Guard"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a Veteran Drillmaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Veteran_Drillmaster"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    26,
+    37,
+    68,
+    78,
+    87,
+    120,
+    122,
+    123,
+    125,
+    127,
+    132,
+    137,
+    140,
+    149,
+    150,
+    155,
+    156,
+    161
+   ],
+   "loc": [
+    415.0,
+    166.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "a Veteran Overseer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Veteran_Overseer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    283.0,
+    388.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "a Veteran Underboss",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Veteran_Underboss"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    21,
+    63,
+    117
+   ],
+   "loc": [
+    90.0,
+    6.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "a Wizened Herb Collector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Wizened_Herb_Collector"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always"
+   ],
+   "drops": [
+    46,
+    56,
+    109
+   ],
+   "loc": [
+    -596.0,
+    -224.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "an Ancient Guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Ancient_Guardian"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    55,
+    161
+   ],
+   "loc": [
+    159.0,
+    88.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "an Apprentice Herbalist",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Apprentice_Herbalist"
+  },
+  {
+   "dr": [
+    "Rare",
+    null,
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    4,
+    9,
+    30,
+    83,
+    87,
+    149
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "an apprentice kennelmaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_apprentice_kennelmaster"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1",
+   "n": "an enraged slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_enraged_slave"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    13,
+    113
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "An Enslaved Iksar Miner",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/An_Enslaved_Iksar_Miner"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    90
+   ],
+   "loc": [
+    -325.0,
+    -25.0,
+    null
+   ],
+   "lvl": "52-53",
+   "n": "an iksar betrayer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_iksar_betrayer"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    13
+   ],
+   "loc": null,
+   "lvl": "52-55",
+   "n": "an iksar collaborator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_iksar_collaborator"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55?",
+   "n": "an Iksar Overseer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sarnak_Overseer"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    32,
+    34
+   ],
+   "loc": [
+    553.0,
+    -316.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "An Iksar Trustee",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/An_Iksar_Trustee"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "50-51",
+   "n": "an imperial construct",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_imperial_construct"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "46-47",
+   "n": "an Imperial Courier",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Imperial_Courier"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "53",
+   "n": "an Imperial Gravemaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Imperial_Gravemaster"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "57",
+   "n": "an Imperial Inspector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Imperial_Inspector"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -589.0,
+    -365.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "an Imperial Interrogator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Imperial_Interrogator"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "57",
+   "n": "an Imperial Officer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Imperial_Officer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "54-55",
+   "n": "an Imperial Wardog",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Imperial_Wardog"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1",
+   "n": "an insane slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_insane_slave"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "56",
+   "n": "an off duty Accountant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Off_Duty_Accountant"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "an off duty Overseer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_off_duty_Overseer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "an off duty Pitboss",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_off_duty_Pitboss"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "an off duty Researcher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_off_duty_Researcher"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "53-54",
+   "n": "an off duty Scribe",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_off_duty_Scribe"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "52-53",
+   "n": "an off duty Slavemaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_off_duty_Slavemaster"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "6-8",
+   "n": "an unhappyslave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_unhappy_slave"
+  },
+  {
+   "dr": [
+    "Rare",
+    null
+   ],
+   "drops": [
+    14,
+    46
+   ],
+   "loc": null,
+   "lvl": "57",
+   "n": "Ancient Guardian",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ancient_Guardian"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    29,
+    105,
+    126
+   ],
+   "loc": [
+    -589.0,
+    -367.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Arch Inspector Nibi`zi",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Arch_Inspector_Nibi%60zi"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Common",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    85,
+    94,
+    136,
+    145,
+    146
+   ],
+   "loc": [
+    -427.0,
+    351.0,
+    null
+   ],
+   "lvl": "54",
+   "n": "Battle Master Ska`tu",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Battle_Master_Ska%60tu"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    36,
+    59
+   ],
+   "loc": [
+    167.0,
+    378.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "Captain Di`ouz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Captain_Di%60ouz"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    15,
+    69,
+    110
+   ],
+   "loc": [
+    10.0,
+    500.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Deathfang",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Deathfang"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "57",
+   "n": "Di`zok elite guard",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Di%60zok_elite_guard"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    44,
+    48,
+    78,
+    124
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "Di`zok royal guard",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Di%60zok_royal_guard"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    41,
+    133,
+    134,
+    135
+   ],
+   "loc": [
+    -207.0,
+    -97.0,
+    null
+   ],
+   "lvl": "54",
+   "n": "Drill Master Dih`roul",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Drill_Master_Dih%60roul"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    11,
+    89,
+    131
+   ],
+   "loc": [
+    -231.0,
+    -123.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Foreman Ku`lul",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Foreman_Ku%60lul"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    43,
+    53,
+    157
+   ],
+   "loc": [
+    435.0,
+    -391.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Foreman Mirt`akk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Foreman_Mirt%60akk"
+  },
+  {
+   "dr": [
+    "Ultra Rare"
+   ],
+   "drops": [
+    144
+   ],
+   "loc": [
+    -1084.0,
+    1002.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "Grand Advisor Zum`uul",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grand_Advisor_Zum%60uul"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Uncommon",
+    "Ultra Rare"
+   ],
+   "drops": [
+    82,
+    88,
+    130,
+    142
+   ],
+   "loc": [
+    161.0,
+    31.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Grand Herbalist Mak`ha",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grand_Herbalist_Mak%60ha"
+  },
+  {
+   "dr": [
+    "Common",
+    "Ultra Rare",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    17,
+    108,
+    151,
+    153
+   ],
+   "loc": [
+    -819.0,
+    975.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "Grand Lorekeeper Kino Shai`din",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grand_Lorekeeper_Kino_Shai%60din"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    19,
+    31,
+    39,
+    61
+   ],
+   "loc": [
+    -622.0,
+    428.0,
+    null
+   ],
+   "lvl": "54",
+   "n": "Grave Master Zo`lun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grave_Master_Zo%60lun"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -32.0,
+    860.0,
+    null
+   ],
+   "lvl": "4",
+   "n": "Herald Telcha",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Herald_Telcha"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    95,
+    100,
+    112
+   ],
+   "loc": [
+    -527.0,
+    -364.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Interrogator Gi`mok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Interrogator_Gi%60mok"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    9,
+    13,
+    47,
+    120,
+    124,
+    149
+   ],
+   "loc": [
+    -1059.0,
+    990.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "judicator of Di`zok",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Judicator_of_Di%60zok"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare"
+   ],
+   "drops": [
+    60,
+    65,
+    106
+   ],
+   "loc": [
+    -60.0,
+    581.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Kennel Master Al`ele",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kennel_Master_Al%60ele"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    72,
+    74,
+    80,
+    164,
+    165
+   ],
+   "loc": [
+    -559.0,
+    -373.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Korocust",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Korocust"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    18,
+    86,
+    141,
+    166
+   ],
+   "loc": [
+    -608.0,
+    -331.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Korucust`s Courier",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Korucust%60s_Courier"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    3,
+    64,
+    77,
+    93,
+    153
+   ],
+   "loc": [
+    -819.0,
+    975.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "Loremaster Piza`tak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Loremaster_Piza%60tak"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    506.0,
+    -107.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Niblek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Niblek"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    6,
+    42,
+    92
+   ],
+   "loc": [
+    -30.0,
+    -307.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "Observer Aq`touz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Observer_Aq%60touz"
+  },
+  {
+   "dr": [
+    "Always",
+    "Common",
+    "Common",
+    "Rare",
+    "Common",
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    1,
+    4,
+    5,
+    71,
+    99,
+    158,
+    160
+   ],
+   "loc": [
+    -839.0,
+    960.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Overking Bathezid",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Overking_Bathezid"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    23,
+    66,
+    102,
+    121
+   ],
+   "loc": [
+    415.0,
+    166.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Overseer Dal`guur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Overseer_Dal%60guur"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Always",
+    "Rare",
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    24,
+    62,
+    70,
+    83,
+    103
+   ],
+   "loc": [
+    -560.0,
+    1360.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Prince Selrach Di`zok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Prince_Selrach_Di'zok"
+  },
+  {
+   "dr": [
+    "Always",
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    2,
+    73,
+    76,
+    138
+   ],
+   "loc": [
+    -1081.0,
+    990.0,
+    null
+   ],
+   "lvl": "62",
+   "n": "Queen Velazul Di`zok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Queen_Velazul_Di%60zok"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    88,
+    149
+   ],
+   "loc": null,
+   "lvl": "51-52",
+   "n": "Royal Sarnak Herbalist",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Sarnak_Herbalist"
+  },
+  {
+   "dr": [
+    "Common",
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    22,
+    54,
+    67
+   ],
+   "loc": [
+    -56.0,
+    -104.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Sarnak Collective Auditor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sarnak_Collective_Auditor"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    122,
+    123,
+    124
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "sorcerer of Di`zok",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Sorcerer_of_Di%60zok"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    28,
+    75,
+    83,
+    147
+   ],
+   "loc": [
+    -290.0,
+    -100.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "The Bridge Keeper",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Bridge_Keeper"
+  },
+  {
+   "dr": [
+    "Common",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    96,
+    129,
+    152
+   ],
+   "loc": [
+    283.0,
+    388.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Underboss Myli`ki",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Underboss_Myli%60ki"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -63.0,
+    -124.0,
+    -254.9
+   ],
+   "lvl": "?",
+   "n": "Vault Master Shu`zo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vault_Master_Shu%60zo"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    33,
+    35,
+    81,
+    140
+   ],
+   "loc": [
+    -202.0,
+    -15.0,
+    null
+   ],
+   "lvl": "54",
+   "n": "Watch Captain Hir`roul",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Watch_Captain_Hir%60roul"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    25,
+    97,
+    128
+   ],
+   "loc": [
+    167.0,
+    378.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "Watch Sergeant Riz`oul",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Watch_Sergeant_Riz%60oul"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "53-54",
+   "n": "Wraith of a Di`zok Hero",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wraith_of_a_Di%60zok_Hero"
+  }
+ ],
+ "updated": "2026-06-04T14:24:22Z",
+ "wikiTitle": "Chardok",
+ "wikiUrl": "https://eqlwiki.com/index.php/Chardok",
+ "zone": "chardok"
+}

@@ -1,0 +1,1730 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "A Crude Stein",
+   "u": "https://eqlwiki.com/index.php/A_Crude_Stein"
+  },
+  {
+   "n": "A Faded Salil's Writ Page",
+   "u": "https://eqlwiki.com/index.php/A_Faded_Salil's_Writ_Page"
+  },
+  {
+   "g": 1,
+   "n": "Allize Volew Medicine Bag",
+   "u": "https://eqlwiki.com/index.php/Allize_Volew_Medicine_Bag"
+  },
+  {
+   "n": "Amber",
+   "u": "https://eqlwiki.com/index.php/Amber"
+  },
+  {
+   "n": "Bear Meat",
+   "u": "https://eqlwiki.com/index.php/Bear_Meat"
+  },
+  {
+   "n": "Bear Parts",
+   "u": "https://eqlwiki.com/index.php/Bear_Parts"
+  },
+  {
+   "n": "Black Wolf Skin",
+   "u": "https://eqlwiki.com/index.php/Black_Wolf_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Bloodstone Ring",
+   "u": "https://eqlwiki.com/index.php/Bloodstone_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Bloody Dirk",
+   "u": "https://eqlwiki.com/index.php/Bloody_Dirk"
+  },
+  {
+   "g": 1,
+   "n": "Bloody Mantle",
+   "u": "https://eqlwiki.com/index.php/Bloody_Mantle"
+  },
+  {
+   "n": "Breath of Solusek",
+   "u": "https://eqlwiki.com/index.php/Breath_of_Solusek"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Axe",
+   "u": "https://eqlwiki.com/index.php/Bronze_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Bastard Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Bastard_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Brazier",
+   "u": "https://eqlwiki.com/index.php/Bronze_Brazier"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Dagger",
+   "u": "https://eqlwiki.com/index.php/Bronze_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Flail",
+   "u": "https://eqlwiki.com/index.php/Bronze_Flail"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Jutte",
+   "u": "https://eqlwiki.com/index.php/Bronze_Jutte"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Main Gauche",
+   "u": "https://eqlwiki.com/index.php/Bronze_Main_Gauche"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Morning Star",
+   "u": "https://eqlwiki.com/index.php/Bronze_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Rapier",
+   "u": "https://eqlwiki.com/index.php/Bronze_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Scimitar",
+   "u": "https://eqlwiki.com/index.php/Bronze_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Short Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Shortened Spear",
+   "u": "https://eqlwiki.com/index.php/Bronze_Shortened_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Spear",
+   "u": "https://eqlwiki.com/index.php/Bronze_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Warclub",
+   "u": "https://eqlwiki.com/index.php/Bronze_Warclub"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "n": "Chunk of Meat",
+   "u": "https://eqlwiki.com/index.php/Chunk_of_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Cap",
+   "u": "https://eqlwiki.com/index.php/Cloth_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Cape",
+   "u": "https://eqlwiki.com/index.php/Cloth_Cape"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Choker",
+   "u": "https://eqlwiki.com/index.php/Cloth_Choker"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Cord",
+   "u": "https://eqlwiki.com/index.php/Cloth_Cord"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Gloves",
+   "u": "https://eqlwiki.com/index.php/Cloth_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Pants",
+   "u": "https://eqlwiki.com/index.php/Cloth_Pants"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Sandals",
+   "u": "https://eqlwiki.com/index.php/Cloth_Sandals"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Shawl",
+   "u": "https://eqlwiki.com/index.php/Cloth_Shawl"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Shirt",
+   "u": "https://eqlwiki.com/index.php/Cloth_Shirt"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Sleeves",
+   "u": "https://eqlwiki.com/index.php/Cloth_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Veil",
+   "u": "https://eqlwiki.com/index.php/Cloth_Veil"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Wristband",
+   "u": "https://eqlwiki.com/index.php/Cloth_Wristband"
+  },
+  {
+   "n": "Clump of Gorilla Hair",
+   "u": "https://eqlwiki.com/index.php/Clump_of_Gorilla_Hair"
+  },
+  {
+   "g": 1,
+   "n": "Cracked Staff",
+   "u": "https://eqlwiki.com/index.php/Cracked_Staff"
+  },
+  {
+   "n": "Crystallized Sulfur",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
+  },
+  {
+   "g": 1,
+   "n": "Dagger",
+   "u": "https://eqlwiki.com/index.php/Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Emerald Ring",
+   "u": "https://eqlwiki.com/index.php/Emerald_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Fading Shadow Dagger",
+   "u": "https://eqlwiki.com/index.php/Fading_Shadow_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Dagger",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Great Staff",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Long Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Morning Star",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Rapier",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Scimitar",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Short Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Spear",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Fire Beetle Eye",
+   "u": "https://eqlwiki.com/index.php/Fire_Beetle_Eye"
+  },
+  {
+   "n": "Fire Beetle Leg",
+   "u": "https://eqlwiki.com/index.php/Fire_Beetle_Leg"
+  },
+  {
+   "n": "Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
+  },
+  {
+   "n": "Flame Agate",
+   "u": "https://eqlwiki.com/index.php/Flame_Agate"
+  },
+  {
+   "g": 1,
+   "n": "Froglok Blood",
+   "u": "https://eqlwiki.com/index.php/Froglok_Blood"
+  },
+  {
+   "n": "Froglok Meat",
+   "u": "https://eqlwiki.com/index.php/Froglok_Meat"
+  },
+  {
+   "n": "Froglok Tad Tongue",
+   "u": "https://eqlwiki.com/index.php/Froglok_Tad_Tongue"
+  },
+  {
+   "n": "Froglok Tadpole Eye",
+   "u": "https://eqlwiki.com/index.php/Froglok_Tadpole_Eye"
+  },
+  {
+   "n": "Froglok Tadpole Flesh",
+   "u": "https://eqlwiki.com/index.php/Froglok_Tadpole_Flesh"
+  },
+  {
+   "g": 1,
+   "n": "Gold Ring",
+   "u": "https://eqlwiki.com/index.php/Gold_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Golden Earring",
+   "u": "https://eqlwiki.com/index.php/Golden_Earring"
+  },
+  {
+   "n": "High Quality Bear Skin",
+   "u": "https://eqlwiki.com/index.php/High_Quality_Bear_Skin"
+  },
+  {
+   "n": "High Quality Wolf Skin",
+   "u": "https://eqlwiki.com/index.php/High_Quality_Wolf_Skin"
+  },
+  {
+   "n": "Ivory",
+   "u": "https://eqlwiki.com/index.php/Ivory"
+  },
+  {
+   "n": "Jade",
+   "u": "https://eqlwiki.com/index.php/Jade"
+  },
+  {
+   "g": 1,
+   "n": "Jade Earring",
+   "u": "https://eqlwiki.com/index.php/Jade_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Cap",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Cape",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Cape"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Choker",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Choker"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Cord",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Cord"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Gloves",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Pants",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Pants"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Sandals",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Sandals"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Shawl",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Shawl"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Shirt",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Shirt"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Sleeves",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Veil",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Veil"
+  },
+  {
+   "g": 1,
+   "n": "Large Cloth Wristband",
+   "u": "https://eqlwiki.com/index.php/Large_Cloth_Wristband"
+  },
+  {
+   "n": "Lizard Meat",
+   "u": "https://eqlwiki.com/index.php/Lizard_Meat"
+  },
+  {
+   "n": "Lizard Tail",
+   "u": "https://eqlwiki.com/index.php/Lizard_Tail"
+  },
+  {
+   "n": "Lizardman Scout Fife",
+   "u": "https://eqlwiki.com/index.php/Lizardman_Scout_Fife"
+  },
+  {
+   "n": "Low Quality Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Low_Quality_Bear_Skin"
+  },
+  {
+   "n": "Low Quality Wolf Skin",
+   "u": "https://eqlwiki.com/index.php/Low_Quality_Wolf_Skin"
+  },
+  {
+   "n": "Medium Quality Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Medium_Quality_Bear_Skin"
+  },
+  {
+   "n": "Medium Quality Wolf Skin",
+   "u": "https://eqlwiki.com/index.php/Medium_Quality_Wolf_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Amulet",
+   "u": "https://eqlwiki.com/index.php/Mithril_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Earring",
+   "u": "https://eqlwiki.com/index.php/Mithril_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Mystic Doll",
+   "u": "https://eqlwiki.com/index.php/Mystic_Doll"
+  },
+  {
+   "g": 1,
+   "n": "Opal Bracelet",
+   "u": "https://eqlwiki.com/index.php/Opal_Bracelet"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Earring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Necklace",
+   "u": "https://eqlwiki.com/index.php/Pearl_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Ring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Ring"
+  },
+  {
+   "n": "Peridot",
+   "u": "https://eqlwiki.com/index.php/Peridot"
+  },
+  {
+   "n": "Pristine Lizard Scale",
+   "u": "https://eqlwiki.com/index.php/Pristine_Lizard_Scale"
+  },
+  {
+   "g": 1,
+   "n": "Round Shield",
+   "u": "https://eqlwiki.com/index.php/Round_Shield"
+  },
+  {
+   "n": "Ruined Bear Pelt",
+   "u": "https://eqlwiki.com/index.php/Ruined_Bear_Pelt"
+  },
+  {
+   "n": "Ruined Wolf Pelt",
+   "u": "https://eqlwiki.com/index.php/Ruined_Wolf_Pelt"
+  },
+  {
+   "n": "Rune of Al'Kabor",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Al'Kabor"
+  },
+  {
+   "n": "Rune of Arrest",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Arrest"
+  },
+  {
+   "n": "Rune of Concussion",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Concussion"
+  },
+  {
+   "n": "Rune of Consumption",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Consumption"
+  },
+  {
+   "n": "Rune of Contortion",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Contortion"
+  },
+  {
+   "n": "Rune of Howling",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Howling"
+  },
+  {
+   "n": "Rune of Infraction",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Infraction"
+  },
+  {
+   "n": "Rune of Solusek Ro",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Solusek_Ro"
+  },
+  {
+   "n": "Rune of Sorcery",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Sorcery"
+  },
+  {
+   "n": "Rune of the Cyclone",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Cyclone"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Rusty_Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Dagger",
+   "u": "https://eqlwiki.com/index.php/Rusty_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Flail",
+   "u": "https://eqlwiki.com/index.php/Rusty_Flail"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Knuckles",
+   "u": "https://eqlwiki.com/index.php/Rusty_Knuckles"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Long Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Mace",
+   "u": "https://eqlwiki.com/index.php/Rusty_Mace"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Morning Star",
+   "u": "https://eqlwiki.com/index.php/Rusty_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Rapier",
+   "u": "https://eqlwiki.com/index.php/Rusty_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Scythe",
+   "u": "https://eqlwiki.com/index.php/Rusty_Scythe"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Shortened Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Shortened_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Two Handed Hammer",
+   "u": "https://eqlwiki.com/index.php/Rusty_Two_Handed_Hammer"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Warhammer",
+   "u": "https://eqlwiki.com/index.php/Rusty_Warhammer"
+  },
+  {
+   "n": "Salil's Writ Pg. 153 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._153_(Left)"
+  },
+  {
+   "n": "Salil's Writ Pg. 60 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._60_(Left)"
+  },
+  {
+   "n": "Salil's Writ Pg. 64 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._64_(Left)"
+  },
+  {
+   "n": "Salil's Writ Pg. 90 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._90_(Left)"
+  },
+  {
+   "n": "Sapphire",
+   "u": "https://eqlwiki.com/index.php/Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Silver Ring",
+   "u": "https://eqlwiki.com/index.php/Silver_Ring"
+  },
+  {
+   "n": "Snake Egg",
+   "u": "https://eqlwiki.com/index.php/Snake_Egg"
+  },
+  {
+   "n": "Snake Fang",
+   "u": "https://eqlwiki.com/index.php/Snake_Fang"
+  },
+  {
+   "n": "Snake Scales",
+   "u": "https://eqlwiki.com/index.php/Snake_Scales"
+  },
+  {
+   "n": "Spider Legs",
+   "u": "https://eqlwiki.com/index.php/Spider_Legs"
+  },
+  {
+   "n": "Spider Silk",
+   "u": "https://eqlwiki.com/index.php/Spider_Silk"
+  },
+  {
+   "n": "Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
+  },
+  {
+   "g": 1,
+   "n": "Star Ruby Earring",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby_Earring"
+  },
+  {
+   "n": "Swollen Flesh",
+   "u": "https://eqlwiki.com/index.php/Swollen_Flesh"
+  },
+  {
+   "n": "The Scent of Marr",
+   "u": "https://eqlwiki.com/index.php/The_Scent_of_Marr"
+  },
+  {
+   "n": "Thick Grizzly Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Thick_Grizzly_Bear_Skin"
+  },
+  {
+   "n": "Topaz",
+   "u": "https://eqlwiki.com/index.php/Topaz"
+  },
+  {
+   "n": "Wolf Meat",
+   "u": "https://eqlwiki.com/index.php/Wolf_Meat"
+  },
+  {
+   "n": "Words of Abatement",
+   "u": "https://eqlwiki.com/index.php/Words_of_Abatement"
+  },
+  {
+   "n": "Words of Cazic-Thule",
+   "u": "https://eqlwiki.com/index.php/Words_of_Cazic-Thule"
+  },
+  {
+   "n": "Words of Dark Paths",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dark_Paths"
+  },
+  {
+   "n": "Words of Descrying",
+   "u": "https://eqlwiki.com/index.php/Words_of_Descrying"
+  },
+  {
+   "n": "Words of Detention",
+   "u": "https://eqlwiki.com/index.php/Words_of_Detention"
+  },
+  {
+   "n": "Words of Disillusion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Disillusion"
+  },
+  {
+   "n": "Words of Duration",
+   "u": "https://eqlwiki.com/index.php/Words_of_Duration"
+  },
+  {
+   "n": "Words of Duress",
+   "u": "https://eqlwiki.com/index.php/Words_of_Duress"
+  },
+  {
+   "n": "Words of Efficacy",
+   "u": "https://eqlwiki.com/index.php/Words_of_Efficacy"
+  },
+  {
+   "n": "Words of Endurance",
+   "u": "https://eqlwiki.com/index.php/Words_of_Endurance"
+  },
+  {
+   "n": "Words of Haunting",
+   "u": "https://eqlwiki.com/index.php/Words_of_Haunting"
+  },
+  {
+   "n": "Words of Motion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Motion"
+  },
+  {
+   "n": "Words of Neglect",
+   "u": "https://eqlwiki.com/index.php/Words_of_Neglect"
+  },
+  {
+   "n": "Words of Quivering",
+   "u": "https://eqlwiki.com/index.php/Words_of_Quivering"
+  },
+  {
+   "n": "Words of Resolve",
+   "u": "https://eqlwiki.com/index.php/Words_of_Resolve"
+  },
+  {
+   "n": "Words of the Suffering",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Suffering"
+  },
+  {
+   "g": 1,
+   "n": "Worn Great Staff",
+   "u": "https://eqlwiki.com/index.php/Worn_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Worn Weighted Gloves",
+   "u": "https://eqlwiki.com/index.php/Worn_Weighted_Gloves"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    6,
+    26,
+    67,
+    87,
+    89,
+    102,
+    145
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a black wolf",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Black_Wolf"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    59,
+    60,
+    61,
+    62,
+    63
+   ],
+   "loc": null,
+   "lvl": "1-2 or 1-5",
+   "n": "a froglok tad",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_tad"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    39
+   ],
+   "loc": [
+    -1376.0,
+    -78.0,
+    null
+   ],
+   "lvl": "19",
+   "n": "a gorilla",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_gorilla"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    134,
+    135,
+    136
+   ],
+   "loc": [
+    388.0,
+    132.0,
+    null
+   ],
+   "lvl": "1",
+   "n": "a green snake",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_green_snake"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "8",
+   "n": "a hatchling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Hatchling"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    137,
+    138
+   ],
+   "loc": null,
+   "lvl": "3 - 5",
+   "n": "a jungle spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_jungle_spider"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1 - 3",
+   "n": "a jungle spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_jungle_spiderling"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Always",
+    "Always",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    83,
+    84,
+    92
+   ],
+   "loc": null,
+   "lvl": "9-11 / 3-11",
+   "n": "a lizard man mystic",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_man_mystic"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    40,
+    72,
+    74,
+    75,
+    76,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    117,
+    118,
+    120,
+    121,
+    122,
+    123,
+    125,
+    162,
+    163
+   ],
+   "loc": [
+    367.0,
+    443.0,
+    null
+   ],
+   "lvl": "4",
+   "n": "a lizardman forager",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizardman_forager"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    19,
+    22,
+    71,
+    73,
+    74,
+    75,
+    77,
+    78,
+    80,
+    82,
+    83,
+    84,
+    92,
+    115,
+    118,
+    119,
+    124,
+    126,
+    162
+   ],
+   "loc": [
+    -599.0,
+    2512.0,
+    null
+   ],
+   "lvl": "3-11",
+   "n": "a lizardman mystic",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Lizardman_mystic"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    40,
+    71,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    85,
+    99,
+    113,
+    116,
+    117,
+    118,
+    120,
+    121,
+    122,
+    123,
+    125,
+    126,
+    162,
+    163
+   ],
+   "loc": [
+    984.0,
+    2323.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "a lizardman scout",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_man_scout"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    83,
+    85
+   ],
+   "loc": null,
+   "lvl": "3",
+   "n": "a lizardman scout",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizardman_scout"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    72,
+    75,
+    76,
+    77,
+    78,
+    79,
+    82,
+    83,
+    113,
+    117,
+    122,
+    123,
+    125,
+    162
+   ],
+   "loc": [
+    -1213.0,
+    2534.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "a lizardman watcher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizardman_watcher"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    4,
+    66,
+    86,
+    88,
+    101,
+    143
+   ],
+   "loc": null,
+   "lvl": "11",
+   "n": "a marsh bear",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Marsh_Bear"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    5,
+    26,
+    66,
+    86,
+    88
+   ],
+   "loc": [
+    91.0,
+    -2880.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "a marsh bear cub",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_marsh_bear_cub"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    55,
+    56
+   ],
+   "loc": null,
+   "lvl": "4",
+   "n": "a minor scarab",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_minor_scarab"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -2419.0,
+    2797.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Annaelia Wylassi",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Annaelia_Wylassi"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1460.0,
+    1046.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Aqaar Aluram",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Aqaar_Aluram"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Always",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    0,
+    3,
+    7,
+    25,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    58,
+    64,
+    65,
+    68,
+    70,
+    94,
+    95,
+    96,
+    97,
+    100,
+    104,
+    105,
+    106,
+    110,
+    111,
+    128,
+    132,
+    133,
+    139,
+    144,
+    146,
+    152,
+    153,
+    154,
+    155,
+    158,
+    159
+   ],
+   "loc": [
+    -1041.0,
+    813.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Bouncer Flerb",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Flerb"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    45,
+    47,
+    51,
+    52,
+    100
+   ],
+   "loc": [
+    1467.0,
+    876.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Bouncer Fug",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Fug"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Always",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    0,
+    1,
+    3,
+    7,
+    10,
+    25,
+    41,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    58,
+    64,
+    65,
+    69,
+    70,
+    91,
+    94,
+    95,
+    96,
+    97,
+    100,
+    104,
+    106,
+    107,
+    108,
+    111,
+    112,
+    128,
+    129,
+    130,
+    139,
+    142,
+    146,
+    147,
+    148,
+    150,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161
+   ],
+   "loc": [
+    -175.0,
+    55.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Bouncer Hurd",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Hurd"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    45,
+    47,
+    51,
+    52,
+    100
+   ],
+   "loc": [
+    1470.0,
+    930.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Bouncer Prud",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bouncer_Prud"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    null,
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    42,
+    43,
+    57,
+    90,
+    93,
+    96,
+    98,
+    103,
+    109,
+    114,
+    127,
+    131,
+    140,
+    147,
+    149,
+    151
+   ],
+   "loc": [
+    -2370.0,
+    2604.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Cyndreela",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cyndreela"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    9,
+    44
+   ],
+   "loc": null,
+   "lvl": "50",
+   "n": "Dark Assassin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dark_Assassin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1128.0,
+    -2923.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Drizda Tunesinger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Drizda_Tunesinger"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1131.0,
+    569.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Duga",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Duga"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1461.0,
+    1063.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Eleann Morkul",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Eleann_Morkul"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1116.0,
+    637.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Grak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grak"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    141
+   ],
+   "loc": [
+    -629.0,
+    738.0,
+    null
+   ],
+   "lvl": "11",
+   "n": "Greenblood zombie",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_drowned_caravan_guard"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    83,
+    84
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "lizard man broodling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Lizard_man_broodling"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    804.0,
+    1153.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Oknoggin Stonesmacker",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Oknoggin_Stonesmacker"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    83
+   ],
+   "loc": null,
+   "lvl": "49",
+   "n": "Roror",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Roror"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1444.0,
+    1055.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Spanner Scrapsnatcher",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Spanner_Scrapsnatcher"
+  }
+ ],
+ "updated": "2026-07-18T14:55:30Z",
+ "wikiTitle": "The Feerrott",
+ "wikiUrl": "https://eqlwiki.com/index.php/The_Feerrott",
+ "zone": "feerrott"
+}

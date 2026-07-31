@@ -1,0 +1,4189 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "A Black Crown",
+   "u": "https://eqlwiki.com/index.php/A_Black_Crown"
+  },
+  {
+   "g": 1,
+   "n": "A Black Knight",
+   "u": "https://eqlwiki.com/index.php/A_Black_Knight"
+  },
+  {
+   "g": 1,
+   "n": "A Black Squire",
+   "u": "https://eqlwiki.com/index.php/A_Black_Squire"
+  },
+  {
+   "g": 1,
+   "n": "A Black Throne",
+   "u": "https://eqlwiki.com/index.php/A_Black_Throne"
+  },
+  {
+   "g": 1,
+   "n": "A Blue Crown",
+   "u": "https://eqlwiki.com/index.php/A_Blue_Crown"
+  },
+  {
+   "g": 1,
+   "n": "A Blue Knight",
+   "u": "https://eqlwiki.com/index.php/A_Blue_Knight"
+  },
+  {
+   "g": 1,
+   "n": "A Blue Squire",
+   "u": "https://eqlwiki.com/index.php/A_Blue_Squire"
+  },
+  {
+   "g": 1,
+   "n": "A Blue Throne",
+   "u": "https://eqlwiki.com/index.php/A_Blue_Throne"
+  },
+  {
+   "g": 1,
+   "n": "A King Cod Card",
+   "u": "https://eqlwiki.com/index.php/A_King_Cod_Card"
+  },
+  {
+   "n": "A Library Card",
+   "u": "https://eqlwiki.com/index.php/A_Library_Card"
+  },
+  {
+   "g": 1,
+   "n": "A Rabbit Foot",
+   "u": "https://eqlwiki.com/index.php/A_Rabbit_Foot"
+  },
+  {
+   "g": 1,
+   "n": "A Red Crown",
+   "u": "https://eqlwiki.com/index.php/A_Red_Crown"
+  },
+  {
+   "g": 1,
+   "n": "A Red Knight",
+   "u": "https://eqlwiki.com/index.php/A_Red_Knight"
+  },
+  {
+   "g": 1,
+   "n": "A Red Squire",
+   "u": "https://eqlwiki.com/index.php/A_Red_Squire"
+  },
+  {
+   "g": 1,
+   "n": "A Red Throne",
+   "u": "https://eqlwiki.com/index.php/A_Red_Throne"
+  },
+  {
+   "g": 1,
+   "n": "A White Crown",
+   "u": "https://eqlwiki.com/index.php/A_White_Crown"
+  },
+  {
+   "g": 1,
+   "n": "A White Knight",
+   "u": "https://eqlwiki.com/index.php/A_White_Knight"
+  },
+  {
+   "g": 1,
+   "n": "A White Squire",
+   "u": "https://eqlwiki.com/index.php/A_White_Squire"
+  },
+  {
+   "g": 1,
+   "n": "A White Throne",
+   "u": "https://eqlwiki.com/index.php/A_White_Throne"
+  },
+  {
+   "g": 1,
+   "n": "Blam Stick",
+   "u": "https://eqlwiki.com/index.php/Blam_Stick"
+  },
+  {
+   "n": "Diamond",
+   "u": "https://eqlwiki.com/index.php/Diamond"
+  },
+  {
+   "n": "Electrum Bar",
+   "u": "https://eqlwiki.com/index.php/Electrum_Bar"
+  },
+  {
+   "n": "Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
+  },
+  {
+   "n": "Fire Opal",
+   "u": "https://eqlwiki.com/index.php/Fire_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Fishing Pole",
+   "u": "https://eqlwiki.com/index.php/Fishing_Pole"
+  },
+  {
+   "n": "Gnome Meat",
+   "u": "https://eqlwiki.com/index.php/Gnome_Meat"
+  },
+  {
+   "n": "Gold Bar",
+   "u": "https://eqlwiki.com/index.php/Gold_Bar"
+  },
+  {
+   "n": "Jester",
+   "u": "https://eqlwiki.com/index.php/Jester"
+  },
+  {
+   "g": 1,
+   "n": "Jester (PoM)",
+   "u": "https://eqlwiki.com/index.php/Jester_(PoM)"
+  },
+  {
+   "n": "Library Card",
+   "u": "https://eqlwiki.com/index.php/Library_Card"
+  },
+  {
+   "g": 1,
+   "n": "Lithiniaths Horn",
+   "u": "https://eqlwiki.com/index.php/Lithiniaths_Horn"
+  },
+  {
+   "g": 1,
+   "n": "Lucky Skunk Foot",
+   "u": "https://eqlwiki.com/index.php/Lucky_Skunk_Foot"
+  },
+  {
+   "n": "Malachite",
+   "u": "https://eqlwiki.com/index.php/Malachite"
+  },
+  {
+   "n": "Mischief Mushroom Spores",
+   "u": "https://eqlwiki.com/index.php/Mischief_Mushroom_Spores"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "n": "Peridot",
+   "u": "https://eqlwiki.com/index.php/Peridot"
+  },
+  {
+   "n": "Platinum Bar",
+   "u": "https://eqlwiki.com/index.php/Platinum_Bar"
+  },
+  {
+   "g": 1,
+   "n": "Red Knight",
+   "u": "https://eqlwiki.com/index.php/Red_Knight"
+  },
+  {
+   "n": "Ruby",
+   "u": "https://eqlwiki.com/index.php/Ruby"
+  },
+  {
+   "n": "Rune of Gale",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Gale"
+  },
+  {
+   "n": "Sapphire",
+   "u": "https://eqlwiki.com/index.php/Sapphire"
+  },
+  {
+   "n": "Silver Bar",
+   "u": "https://eqlwiki.com/index.php/Silver_Bar"
+  },
+  {
+   "n": "Star Ruby",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Super Sweet Fishing Grubs",
+   "u": "https://eqlwiki.com/index.php/Super_Sweet_Fishing_Grubs"
+  },
+  {
+   "g": 1,
+   "n": "Tasty Candy",
+   "u": "https://eqlwiki.com/index.php/Tasty_Candy"
+  },
+  {
+   "g": 1,
+   "n": "Words of Wealth: Bottom Left",
+   "u": "https://eqlwiki.com/index.php/Words_of_Wealth%3A_Bottom_Left"
+  },
+  {
+   "g": 1,
+   "n": "Words of Wealth: Bottom Right",
+   "u": "https://eqlwiki.com/index.php/Words_of_Wealth%3A_Bottom_Right"
+  },
+  {
+   "g": 1,
+   "n": "Words of Wealth: Top Left",
+   "u": "https://eqlwiki.com/index.php/Words_of_Wealth%3A_Top_Left"
+  },
+  {
+   "g": 1,
+   "n": "Words of Wealth: Top Right",
+   "u": "https://eqlwiki.com/index.php/Words_of_Wealth%3A_Top_Right"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    27,
+    37
+   ],
+   "loc": [
+    850.0,
+    -945.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "a bishop thingy",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_bishop_thingy"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "57",
+   "n": "a clever sphinx",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Clever_Sphinx"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    20,
+    22,
+    23,
+    27,
+    37,
+    38,
+    40,
+    42
+   ],
+   "loc": [
+    -6.0,
+    -466.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "a dastardly rascal",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Dastardly_Rascal"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    22,
+    23,
+    27,
+    37,
+    38,
+    40,
+    42
+   ],
+   "loc": [
+    97.0,
+    -841.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "a false treasure chest",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_False_Treasure_Chest"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "59-61",
+   "n": "a hedge wizard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_hedge_wizard"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    210.0,
+    -415.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "A jovial white knight",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_jovial_white_knight"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    "Common",
+    null,
+    null,
+    null,
+    "Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17,
+    25,
+    35,
+    36,
+    43,
+    47
+   ],
+   "loc": null,
+   "lvl": "35",
+   "n": "a lost gnome",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lost_gnome"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    210.0,
+    -415.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "a maniacal dark knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_maniacal_dark_knight"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare"
+   ],
+   "drops": [
+    22,
+    23,
+    33,
+    38
+   ],
+   "loc": [
+    -728.0,
+    -299.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "a merry mushroom man",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_merry_mushroom_man"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    33
+   ],
+   "loc": [
+    -793.0,
+    75.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "a mirthful mushroom man",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_mirthful_mushroom_man"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    227.0,
+    -1091.0,
+    null
+   ],
+   "lvl": "59",
+   "n": "a misplaced hand",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_misplaced_hand"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "57",
+   "n": "a moldy sausage",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_moldy_sausage"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "53",
+   "n": "a petal pusher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_petal_pusher"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    20,
+    22,
+    23,
+    33,
+    39,
+    40,
+    42
+   ],
+   "loc": [
+    -1148.0,
+    -633.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "a puckish mushroom",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_puckish_mushroom"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    27,
+    37
+   ],
+   "loc": [
+    769.0,
+    -927.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "a random piece",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_random_piece"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    17,
+    37,
+    47
+   ],
+   "loc": null,
+   "lvl": "48",
+   "n": "a Ratfink",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Ratfink"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": null,
+   "lvl": "46",
+   "n": "a Ratling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Ratling"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "54",
+   "n": "a stalker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_stalker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a sunny day",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sunny_day"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "52",
+   "n": "a vinecator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_vinecator"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -116.0,
+    519.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "a white stallion",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_White_Stallion"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    1824.0,
+    -718.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Abbis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Abbis"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    27,
+    37
+   ],
+   "loc": [
+    851.0,
+    -988.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "another piece",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Another_piece"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    75.0,
+    -670.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Ashley",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ashley"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    252.0,
+    76.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Bit",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bit"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    -633.0,
+    -119.0,
+    null
+   ],
+   "lvl": "43",
+   "n": "Bizzznawa",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bizzznawa"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    19,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    14.0,
+    -485.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Blich",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Blich"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17
+   ],
+   "loc": [
+    15.0,
+    -450.0,
+    null
+   ],
+   "lvl": "49",
+   "n": "Bob the Painter",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bob_the_Painter"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    100.0,
+    -835.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Bombardier Bixie Bernice",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bombadier_Bixie_Bernice"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    126.0,
+    -25.0,
+    118.0
+   ],
+   "lvl": "53",
+   "n": "Bozer the Bear",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bozer_the_Bear"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    403.0,
+    66.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Brendaine",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Brendaine"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": null,
+   "lvl": "51-57",
+   "n": "Brenn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Brenn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    552.0,
+    164.0,
+    null
+   ],
+   "lvl": "64",
+   "n": "Bristlebane",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bristlebane_(God)"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    34,
+    37,
+    41,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    606.0,
+    173.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Bristlebane Puppet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bristlebane_Puppet"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    70.0,
+    -690.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Brittina",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Brittina"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "Carrot Top",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Carrot_Top"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17
+   ],
+   "loc": [
+    147.0,
+    -150.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "Chesnut",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Chesnut"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    61.0,
+    -178.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Chuckles",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Chuckles"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    557.0,
+    151.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Chuckles the Great",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Chuckles_the_Great"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    1654.0,
+    -541.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Dabbis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dabbis"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    31
+   ],
+   "loc": [
+    1750.0,
+    -2320.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Debbis the Fish",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Debbis_the_Fish"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    50.0,
+    -670.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Diana",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Diana"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    8
+   ],
+   "loc": [
+    243.0,
+    76.0,
+    null
+   ],
+   "lvl": "1",
+   "n": "Dinner",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dinner"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17
+   ],
+   "loc": null,
+   "lvl": "41",
+   "n": "Dolep Dopp",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dolep_Dopp"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    4,
+    5,
+    11,
+    15,
+    16,
+    27,
+    37
+   ],
+   "loc": [
+    384.0,
+    -117.0,
+    170.0
+   ],
+   "lvl": "55",
+   "n": "Donk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Donk"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    0.0,
+    0.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "Doo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Doo"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    1656.0,
+    -530.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Doobis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Doobis"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17
+   ],
+   "loc": null,
+   "lvl": "39",
+   "n": "Dop Dop",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dop_Dop"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17
+   ],
+   "loc": null,
+   "lvl": "39",
+   "n": "Dopple Pop",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dopple_Pop"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    0.0,
+    0.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "Dree",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dree"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    19,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    149.0,
+    -312.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Dupple",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dupple"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17,
+    21,
+    26,
+    32,
+    35,
+    36,
+    43,
+    44
+   ],
+   "loc": [
+    175.0,
+    -175.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "EightySix",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/EightySix"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    34,
+    37,
+    41,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    625.0,
+    157.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Erollisi Puppet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Erollisi_Puppet"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "65",
+   "n": "Ferjeneror",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ferjeneror"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    11,
+    13,
+    15,
+    16,
+    17,
+    37,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "Geb",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Geb"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": null,
+   "lvl": "51 - 57",
+   "n": "Glonk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Glonk"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    53.0,
+    -29.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Gono",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gono"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    29,
+    37
+   ],
+   "loc": [
+    119.0,
+    -669.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "Gorilla Scholar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gorilla_Scholar"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    1271.0,
+    -880.0,
+    null
+   ],
+   "lvl": "51-57",
+   "n": "Grenn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grenn"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": null,
+   "lvl": "51-57",
+   "n": "Grink",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grink"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    -40.0,
+    -380.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Guard McSprayel",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_McSprayel"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    -40.0,
+    -405.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Guard McStinkles",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_McStinkles"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    62.0,
+    -122.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "Guard Roses",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Roses"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    100.0,
+    -835.0,
+    null
+   ],
+   "lvl": "55? (Blue at 60, summons)",
+   "n": "Hall Monitor Willy",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hall_Monitor_Willy"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    34,
+    37,
+    41,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    625.0,
+    147.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Innoruuk Puppet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Innoruuk_Puppet"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    141.0,
+    215.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Jumbo Gorilla King",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jumbo_Gorilla_King"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    66.0,
+    -43.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Keel",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Keel"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    19,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    50.0,
+    -301.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Kitch",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kitch"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    -255.0,
+    575.0,
+    null
+   ],
+   "lvl": "46",
+   "n": "Klia",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Klia"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    19,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    5.0,
+    -439.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Krupple",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Krupple"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    100.0,
+    -835.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Life",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Life"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always"
+   ],
+   "drops": [
+    0,
+    4,
+    11,
+    15,
+    27,
+    30
+   ],
+   "loc": [
+    -88.0,
+    395.0,
+    null
+   ],
+   "lvl": "64",
+   "n": "Lithiniath",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lithiniath_(Black_Version)"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    3,
+    4,
+    7,
+    11,
+    14,
+    15,
+    18,
+    27
+   ],
+   "loc": [
+    -88.0,
+    395.0,
+    null
+   ],
+   "lvl": "64",
+   "n": "Lithiniath",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lithiniath_(White_Version)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    0.0,
+    0.0,
+    null
+   ],
+   "lvl": "49",
+   "n": "LosCountAhAhAh",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/LosCountAhAhAh"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    67.0,
+    -28.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Mees",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mees"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    100.0,
+    -835.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Mister Malodor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mister_Malodor"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    235.0,
+    75.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Mizer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mizer"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    -255.0,
+    540.0,
+    null
+   ],
+   "lvl": "46",
+   "n": "Mnyup",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mnyup"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37,
+    41
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "My Finger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/My_Finger"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    4,
+    11,
+    15,
+    27
+   ],
+   "loc": [
+    690.0,
+    -125.0,
+    null
+   ],
+   "lvl": "63",
+   "n": "My Right Hand",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/My_Right_Hand"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    4,
+    11,
+    15,
+    27
+   ],
+   "loc": [
+    195.0,
+    85.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "NOT",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/NOT"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17
+   ],
+   "loc": null,
+   "lvl": "44",
+   "n": "Not Poddle Pop",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Not_Poddle_Pop"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Always"
+   ],
+   "drops": [
+    17,
+    43
+   ],
+   "loc": null,
+   "lvl": "51",
+   "n": "Not Yours",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Not_Yours"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    19,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    189.0,
+    -341.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Nupple",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nupple"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    187.0,
+    -306.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "One",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/One"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    403.0,
+    66.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Osfof",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Osfof"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    4,
+    11,
+    15,
+    27
+   ],
+   "loc": [
+    195.0,
+    95.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "PASS",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/PASS"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    -341.0,
+    -363.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "Peachy D`Vicci",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Peachy_D%60Vicci"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    -255.0,
+    540.0,
+    null
+   ],
+   "lvl": "46",
+   "n": "Pela",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Pela"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    null,
+    null
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17,
+    34,
+    43
+   ],
+   "loc": [
+    122.0,
+    275.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Petunia the Doll",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Petunia_the_Doll"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    60.0,
+    -790.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Pinky Ekkolofezznaboten III",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Pinky_Ekkolofezznaboten_III"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17
+   ],
+   "loc": null,
+   "lvl": "43",
+   "n": "pod dop pop",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Pod_Dop_Pop"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17
+   ],
+   "loc": null,
+   "lvl": "40",
+   "n": "Poddle Dod",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Poddle_Dod"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17,
+    43
+   ],
+   "loc": null,
+   "lvl": "Below 40",
+   "n": "Poddle Dop",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Popple_Dop"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    197.0,
+    -1015.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Posie the Librarian",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Posie_the_Librarian"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    19,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    44.0,
+    -478.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Pupple",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Plupple"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    1,
+    13
+   ],
+   "loc": [
+    251.0,
+    -112.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Raesar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Raesar"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    97.0,
+    199.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Raisin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Raisin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    34,
+    37,
+    41,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    625.0,
+    168.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Rallos Puppet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rallos_Puppet"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    17,
+    37,
+    45
+   ],
+   "loc": null,
+   "lvl": "47",
+   "n": "Ratman Rager",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ratman_Rager"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    11,
+    13,
+    15,
+    16,
+    17,
+    37,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    299.0,
+    -63.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Ratmlet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ratmlet"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    97.0,
+    201.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Ricoculous",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ricoculous"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    -633.0,
+    -119.0,
+    null
+   ],
+   "lvl": "44",
+   "n": "Rissa",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rissa"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    50.0,
+    -690.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Roxxanne",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Roxxanne"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    11,
+    13,
+    15,
+    16,
+    17,
+    37,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    236.0,
+    -96.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Ruttus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ruttus"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    0.0,
+    0.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "Seeks",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Seeks"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    403.0,
+    259.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Selvz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Selvz"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    4,
+    11,
+    15,
+    27
+   ],
+   "loc": [
+    195.0,
+    75.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "SHALL",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/SHALL"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "16",
+   "n": "Sniffles",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sniffles"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    19,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    178.0,
+    -442.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Snitch",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Snitch_(PoM)"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    34,
+    37,
+    41,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    627.0,
+    184.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Solusek Puppet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Solusek_Puppet"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    27,
+    37
+   ],
+   "loc": [
+    808.0,
+    -963.0,
+    null
+   ],
+   "lvl": "58",
+   "n": "some other piece",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Some_other_piece"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    16,
+    17,
+    19,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    19.0,
+    -343.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Stitch",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Stitch"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    10
+   ],
+   "loc": null,
+   "lvl": "63",
+   "n": "Stomples",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Stomples"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    13,
+    17
+   ],
+   "loc": [
+    142.0,
+    120.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Teence the Naysayer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Teence_the_Naysayer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "Terana",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Terana"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    12,
+    13,
+    16,
+    17,
+    45,
+    48
+   ],
+   "loc": null,
+   "lvl": "49",
+   "n": "Teriling",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Teriling"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    3.0,
+    -483.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Three",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Three"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    11,
+    13,
+    15,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    -237.0,
+    557.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Treasure Chest",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Treasure_Chest"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    34,
+    37,
+    41,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    625.0,
+    132.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Tribunal Puppet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tribunal_Puppet"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    34,
+    37,
+    41,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": [
+    606.0,
+    151.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Tunare Puppet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tunare_Puppet"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    26,
+    32,
+    35,
+    36,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+   ],
+   "loc": null,
+   "lvl": "53-60",
+   "n": "TwentyTwo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/TwentyTwo"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    187.0,
+    -306.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Two",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Two"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    54.0,
+    -43.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Uuuz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Uuuz"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "35-45 (see discussion)",
+   "n": "Various",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Pansies"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    24,
+    37
+   ],
+   "loc": null,
+   "lvl": "48",
+   "n": "Vinny V. D`vicci",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vinny_V._D%60vicci"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    0.0,
+    0.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "Vive",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vive"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    0.0,
+    0.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "Vour",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vour"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    0.0,
+    0.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "Vun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vun"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    16,
+    37
+   ],
+   "loc": [
+    97.0,
+    -117.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Walnut",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Walnut"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    16,
+    17,
+    37
+   ],
+   "loc": [
+    -220.0,
+    540.0,
+    null
+   ],
+   "lvl": "46",
+   "n": "Xnyl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Xnyl"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    4,
+    11,
+    15,
+    28
+   ],
+   "loc": [
+    195.0,
+    65.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "YOU",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/YOU"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    3.0,
+    -306.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Zero",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Zero"
+  }
+ ],
+ "updated": "2026-04-20T20:33:03Z",
+ "wikiTitle": "Plane of Mischief",
+ "wikiUrl": "https://eqlwiki.com/index.php/Plane_of_Mischief",
+ "zone": "mischiefplane"
+}

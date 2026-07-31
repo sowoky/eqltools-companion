@@ -1,0 +1,872 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Armband of Serrated Teeth",
+   "u": "https://eqlwiki.com/index.php/Armband_of_Serrated_Teeth"
+  },
+  {
+   "g": 1,
+   "n": "Bandolier of Teeth",
+   "u": "https://eqlwiki.com/index.php/Bandolier_of_Teeth"
+  },
+  {
+   "n": "Black Heart",
+   "u": "https://eqlwiki.com/index.php/Black_Heart"
+  },
+  {
+   "n": "Blue Orc Head",
+   "u": "https://eqlwiki.com/index.php/Blue_Orc_Head"
+  },
+  {
+   "g": 1,
+   "n": "Bracers of Battle",
+   "u": "https://eqlwiki.com/index.php/Bracers_of_Battle"
+  },
+  {
+   "g": 1,
+   "n": "Brass Earring",
+   "u": "https://eqlwiki.com/index.php/Brass_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Dagger",
+   "u": "https://eqlwiki.com/index.php/Bronze_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Main Gauche",
+   "u": "https://eqlwiki.com/index.php/Bronze_Main_Gauche"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Rapier",
+   "u": "https://eqlwiki.com/index.php/Bronze_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Shortened Spear",
+   "u": "https://eqlwiki.com/index.php/Bronze_Shortened_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Spear",
+   "u": "https://eqlwiki.com/index.php/Bronze_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Carved Walking Stick",
+   "u": "https://eqlwiki.com/index.php/Carved_Walking_Stick"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Hand Guards",
+   "u": "https://eqlwiki.com/index.php/Corroded_Hand_Guards"
+  },
+  {
+   "g": 1,
+   "n": "Crown of Crush",
+   "u": "https://eqlwiki.com/index.php/Crown_of_Crush"
+  },
+  {
+   "g": 1,
+   "n": "Crushbone Battle Beads",
+   "u": "https://eqlwiki.com/index.php/Crushbone_Battle_Beads"
+  },
+  {
+   "g": 1,
+   "n": "Crushbone Belt",
+   "u": "https://eqlwiki.com/index.php/Crushbone_Belt"
+  },
+  {
+   "g": 1,
+   "n": "Crushbone Cadet's Grimoire",
+   "u": "https://eqlwiki.com/index.php/Crushbone_Cadet's_Grimoire"
+  },
+  {
+   "g": 1,
+   "n": "Crushbone Fetish",
+   "u": "https://eqlwiki.com/index.php/Crushbone_Fetish"
+  },
+  {
+   "g": 1,
+   "n": "Crushbone Shoulderpads",
+   "u": "https://eqlwiki.com/index.php/Crushbone_Shoulderpads"
+  },
+  {
+   "n": "Dark Elf Parts",
+   "u": "https://eqlwiki.com/index.php/Dark_Elf_Parts"
+  },
+  {
+   "g": 1,
+   "n": "Deteriorated Ancient Faydark Longbow",
+   "u": "https://eqlwiki.com/index.php/Deteriorated_Ancient_Faydark_Longbow"
+  },
+  {
+   "g": 1,
+   "n": "Disgusting Padded Shirt",
+   "u": "https://eqlwiki.com/index.php/Disgusting_Padded_Shirt"
+  },
+  {
+   "g": 1,
+   "n": "Dragoon Dirk",
+   "u": "https://eqlwiki.com/index.php/Dragoon_Dirk"
+  },
+  {
+   "g": 1,
+   "n": "Dwarven Axe",
+   "u": "https://eqlwiki.com/index.php/Dwarven_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Dwarven Blood",
+   "u": "https://eqlwiki.com/index.php/Dwarven_Blood"
+  },
+  {
+   "g": 1,
+   "n": "Dwarven Ringmail Tunic",
+   "u": "https://eqlwiki.com/index.php/Dwarven_Ringmail_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Dwarven Two-Handed Axe",
+   "u": "https://eqlwiki.com/index.php/Dwarven_Two-Handed_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Elven Blood",
+   "u": "https://eqlwiki.com/index.php/Elven_Blood"
+  },
+  {
+   "n": "Gnome Meat",
+   "u": "https://eqlwiki.com/index.php/Gnome_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Grimy Black Silk Robe",
+   "u": "https://eqlwiki.com/index.php/Grimy_Black_Silk_Robe"
+  },
+  {
+   "g": 1,
+   "n": "Headsplitter",
+   "u": "https://eqlwiki.com/index.php/Headsplitter"
+  },
+  {
+   "n": "Illegible Scroll",
+   "u": "https://eqlwiki.com/index.php/Illegible_Scroll"
+  },
+  {
+   "g": 1,
+   "n": "Leather Whip",
+   "u": "https://eqlwiki.com/index.php/Leather_Whip"
+  },
+  {
+   "g": 1,
+   "n": "Legionnaire's Bracer",
+   "u": "https://eqlwiki.com/index.php/Legionnaire's_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Orc Hatchet",
+   "u": "https://eqlwiki.com/index.php/Orc_Hatchet"
+  },
+  {
+   "g": 1,
+   "n": "Ornament of the Oracle",
+   "u": "https://eqlwiki.com/index.php/Ornament_of_the_Oracle"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Belt",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Belt"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Boots",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Cloak",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Gloves",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Gorget",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Gorget"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Leggings",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Mask",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Shoulderpads",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Shoulderpads"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Skullcap",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Skullcap"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Sleeves",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Tunic",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Wristbands",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Wristbands"
+  },
+  {
+   "g": 1,
+   "n": "Rib-bone Stiletto",
+   "u": "https://eqlwiki.com/index.php/Rib-bone_Stiletto"
+  },
+  {
+   "n": "Rondo's Tongue",
+   "u": "https://eqlwiki.com/index.php/Rondo's_Tongue"
+  },
+  {
+   "g": 1,
+   "n": "Rotting Faydark Mask",
+   "u": "https://eqlwiki.com/index.php/Rotting_Faydark_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Mining Pick",
+   "u": "https://eqlwiki.com/index.php/Rusty_Mining_Pick"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Spear"
+  },
+  {
+   "n": "Shackle Key 15",
+   "u": "https://eqlwiki.com/index.php/Shackle_Key_15"
+  },
+  {
+   "n": "Shackle Key 16",
+   "u": "https://eqlwiki.com/index.php/Shackle_Key_16"
+  },
+  {
+   "n": "Shackle Key 17",
+   "u": "https://eqlwiki.com/index.php/Shackle_Key_17"
+  },
+  {
+   "n": "Shackle Key 18",
+   "u": "https://eqlwiki.com/index.php/Shackle_Key_18"
+  },
+  {
+   "n": "Shackle Key 19",
+   "u": "https://eqlwiki.com/index.php/Shackle_Key_19"
+  },
+  {
+   "n": "Shackle Key 20",
+   "u": "https://eqlwiki.com/index.php/Shackle_Key_20"
+  },
+  {
+   "n": "Shackle Key 21",
+   "u": "https://eqlwiki.com/index.php/Shackle_Key_21"
+  },
+  {
+   "n": "Shackle Key 22",
+   "u": "https://eqlwiki.com/index.php/Shackle_Key_22"
+  },
+  {
+   "n": "Shackle Key 23",
+   "u": "https://eqlwiki.com/index.php/Shackle_Key_23"
+  },
+  {
+   "n": "Shackle Key 24",
+   "u": "https://eqlwiki.com/index.php/Shackle_Key_24"
+  },
+  {
+   "g": 1,
+   "n": "Shiny Brass Shield",
+   "u": "https://eqlwiki.com/index.php/Shiny_Brass_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Spiky Splintmail",
+   "u": "https://eqlwiki.com/index.php/Spiky_Splintmail"
+  },
+  {
+   "n": "Tergon's Spellbook",
+   "u": "https://eqlwiki.com/index.php/Tergon's_Spellbook"
+  },
+  {
+   "g": 1,
+   "n": "Torn Elvish Tapestry",
+   "u": "https://eqlwiki.com/index.php/Torn_Elvish_Tapestry"
+  },
+  {
+   "n": "Vol 3 of the Chronicles of Wu",
+   "u": "https://eqlwiki.com/index.php/Vol_3_of_the_Chronicles_of_Wu"
+  },
+  {
+   "g": 1,
+   "n": "Wood Elf Scout Bauble",
+   "u": "https://eqlwiki.com/index.php/Wood_Elf_Scout_Bauble"
+  },
+  {
+   "g": 1,
+   "n": "Wood Elf Scout Shoes",
+   "u": "https://eqlwiki.com/index.php/Wood_Elf_Scout_Shoes"
+  },
+  {
+   "n": "Words of Possession",
+   "u": "https://eqlwiki.com/index.php/Words_of_Possession"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    51
+   ],
+   "loc": [
+    103.0,
+    398.0,
+    null
+   ],
+   "lvl": "2",
+   "n": "a dwarven slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_dwarven_slave"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    58.0,
+    761.0,
+    null
+   ],
+   "lvl": "3 - 5",
+   "n": "a dwarven smith",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_dwarven_smith"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    2,
+    19,
+    22,
+    27,
+    69
+   ],
+   "loc": [
+    76.0,
+    -72.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Ambassador Dvinn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ambassador_DVinn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    84.0,
+    744.0,
+    null
+   ],
+   "lvl": "??",
+   "n": "an elven priest",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Elven_Priest"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    51
+   ],
+   "loc": [
+    3.0,
+    387.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "an elven slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_elven_slave"
+  },
+  {
+   "dr": [
+    "27%",
+    "63%",
+    null
+   ],
+   "drops": [
+    18,
+    33,
+    67
+   ],
+   "loc": null,
+   "lvl": "12-13",
+   "n": "an orc legionnaire",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Orc_Legionnaire_(Crushbone)"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    48,
+    64
+   ],
+   "loc": [
+    288.0,
+    -70.0,
+    4.0
+   ],
+   "lvl": "~19",
+   "n": "Bloodgurgler",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bloodgurgler"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    12,
+    30
+   ],
+   "loc": [
+    154.0,
+    163.0,
+    null
+   ],
+   "lvl": "~18",
+   "n": "Bonefire",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bonefire"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    0,
+    11
+   ],
+   "loc": [
+    185.0,
+    -4.0,
+    4.0
+   ],
+   "lvl": "~20",
+   "n": "Chokehold",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Chokehold"
+  },
+  {
+   "dr": [
+    null,
+    "Common"
+   ],
+   "drops": [
+    13,
+    25
+   ],
+   "loc": [
+    86.0,
+    -74.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Emperor Crush",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Emperor_Crush"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    51
+   ],
+   "loc": [
+    3.0,
+    387.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "Kelynn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kelynn"
+  },
+  {
+   "dr": [
+    null,
+    "Rare",
+    null,
+    null
+   ],
+   "drops": [
+    1,
+    23,
+    26,
+    66
+   ],
+   "loc": [
+    250.0,
+    90.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Lord Darish",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Darish"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    29,
+    68
+   ],
+   "loc": [
+    87.0,
+    -100.0,
+    4.0
+   ],
+   "lvl": "19-21",
+   "n": "Marrowbane",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marrowbane"
+  },
+  {
+   "dr": [
+    "28%"
+   ],
+   "drops": [
+    15
+   ],
+   "loc": null,
+   "lvl": "3-10",
+   "n": "orc centurion",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Orc_Centurion_(Crushbone)"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    14,
+    18,
+    52
+   ],
+   "loc": [
+    136.0,
+    84.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "orc emissary",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Orc_Emissary"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    15,
+    31
+   ],
+   "loc": null,
+   "lvl": "9",
+   "n": "orc oracle",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Orc_Oracle_(Crushbone)"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    17,
+    35
+   ],
+   "loc": [
+    113.0,
+    17.2,
+    3.5
+   ],
+   "lvl": "19-21",
+   "n": "orc oracle",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Orc_oracle"
+  },
+  {
+   "dr": [
+    "9.5%"
+   ],
+   "drops": [
+    34
+   ],
+   "loc": null,
+   "lvl": "1 - 2",
+   "n": "orc pawn",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Orc_Pawn_(Crushbone)"
+  },
+  {
+   "dr": [
+    "3.9%",
+    "2.9%",
+    "1.9%",
+    "1.9%",
+    "3.9%",
+    "4.9%",
+    "1%",
+    "3.9%",
+    "3.9%",
+    "2.9%"
+   ],
+   "drops": [
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62
+   ],
+   "loc": [
+    67.0,
+    415.0,
+    null
+   ],
+   "lvl": "10-12",
+   "n": "orc slaver",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Orc_Slaver"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    5,
+    32
+   ],
+   "loc": [
+    245.0,
+    -152.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "orc taskmaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Orc_Taskmaster"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    15,
+    16,
+    63
+   ],
+   "loc": [
+    -151.0,
+    40.0,
+    null
+   ],
+   "lvl": "13",
+   "n": "orc trainer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Orc_Trainer"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    null
+   ],
+   "drops": [
+    4,
+    20
+   ],
+   "loc": [
+    192.0,
+    -22.0,
+    null
+   ],
+   "lvl": "16",
+   "n": "orc warlord",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Orc_Warlord"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    28
+   ],
+   "loc": [
+    274.0,
+    -136.0,
+    null
+   ],
+   "lvl": "16",
+   "n": "Retlon Brenclog",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Retlon_Brenclog"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    24,
+    49
+   ],
+   "loc": [
+    97.0,
+    396.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "Rondo Dunfire",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rondo_Dunfire"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    70
+   ],
+   "loc": [
+    102.0,
+    -31.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "royal guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Royal_Guard"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    3,
+    21,
+    50,
+    65
+   ],
+   "loc": [
+    86.0,
+    -62.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "The Prophet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Prophet"
+  }
+ ],
+ "updated": "2026-07-19T02:24:10Z",
+ "wikiTitle": "Crushbone",
+ "wikiUrl": "https://eqlwiki.com/index.php/Crushbone",
+ "zone": "crushbone"
+}

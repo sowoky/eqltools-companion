@@ -1,0 +1,1790 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "A Vile Substance",
+   "u": "https://eqlwiki.com/index.php/A_Vile_Substance"
+  },
+  {
+   "n": "Ale",
+   "u": "https://eqlwiki.com/index.php/Ale"
+  },
+  {
+   "n": "Amber",
+   "u": "https://eqlwiki.com/index.php/Amber"
+  },
+  {
+   "g": 1,
+   "n": "Animated Shield",
+   "u": "https://eqlwiki.com/index.php/Animated_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Animated Sword2",
+   "u": "https://eqlwiki.com/index.php/Animated_Sword2"
+  },
+  {
+   "g": 1,
+   "n": "Animated Sword3",
+   "u": "https://eqlwiki.com/index.php/Animated_Sword3"
+  },
+  {
+   "n": "Bag of Bread Loaves",
+   "u": "https://eqlwiki.com/index.php/Bag_of_Bread_Loaves"
+  },
+  {
+   "n": "Bandages",
+   "u": "https://eqlwiki.com/index.php/Bandages"
+  },
+  {
+   "g": 1,
+   "n": "Bead Necklace",
+   "u": "https://eqlwiki.com/index.php/Bead_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Beaded Slime Necklace",
+   "u": "https://eqlwiki.com/index.php/Beaded_Slime_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Black Alloy Girdle",
+   "u": "https://eqlwiki.com/index.php/Black_Alloy_Girdle"
+  },
+  {
+   "g": 1,
+   "n": "Black Alloy Medallion",
+   "u": "https://eqlwiki.com/index.php/Black_Alloy_Medallion"
+  },
+  {
+   "g": 1,
+   "n": "Black Iron Girdle",
+   "u": "https://eqlwiki.com/index.php/Black_Iron_Girdle"
+  },
+  {
+   "g": 1,
+   "n": "Black Iron Medallion",
+   "u": "https://eqlwiki.com/index.php/Black_Iron_Medallion"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Armplates",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Armplates"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Bastard Sword",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Bastard_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Boots",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Coif",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Coif"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Collar",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Collar"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Gloves",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Legplates",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Legplates"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Longsword",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Longsword"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Mail",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Mail"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Spaulder",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Spaulder"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Alloy Waistband",
+   "u": "https://eqlwiki.com/index.php/Blackened_Alloy_Waistband"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Armplates",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Armplates"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Bastard Sword",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Bastard_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Boots",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Bracers",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Bracers"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Collar",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Collar"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Crown",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Crown"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Eye Totem",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Eye_Totem"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Gloves",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Legplates",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Legplates"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Spaulder",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Spaulder"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Iron Waistband",
+   "u": "https://eqlwiki.com/index.php/Blackened_Iron_Waistband"
+  },
+  {
+   "g": 1,
+   "n": "Blackened Wand",
+   "u": "https://eqlwiki.com/index.php/Blackened_Wand"
+  },
+  {
+   "n": "Bloodstone",
+   "u": "https://eqlwiki.com/index.php/Bloodstone"
+  },
+  {
+   "n": "Blue Diamond",
+   "u": "https://eqlwiki.com/index.php/Blue_Diamond"
+  },
+  {
+   "n": "Bottle of Kalish",
+   "u": "https://eqlwiki.com/index.php/Bottle_of_Kalish"
+  },
+  {
+   "n": "Bottom of a Fractured Rune",
+   "u": "https://eqlwiki.com/index.php/Bottom_of_a_Fractured_Rune"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Long Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Spear",
+   "u": "https://eqlwiki.com/index.php/Bronze_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Bunch of Optic Nerves",
+   "u": "https://eqlwiki.com/index.php/Bunch_of_Optic_Nerves"
+  },
+  {
+   "g": 1,
+   "n": "Cat Skull Cap",
+   "u": "https://eqlwiki.com/index.php/Cat_Skull_Cap"
+  },
+  {
+   "n": "Cat's Eye Agate",
+   "u": "https://eqlwiki.com/index.php/Cat's_Eye_Agate"
+  },
+  {
+   "g": 1,
+   "n": "Clay Totem",
+   "u": "https://eqlwiki.com/index.php/Clay_Totem"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Shirt",
+   "u": "https://eqlwiki.com/index.php/Cloth_Shirt"
+  },
+  {
+   "g": 1,
+   "n": "Copper Amulet",
+   "u": "https://eqlwiki.com/index.php/Copper_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Copper Band",
+   "u": "https://eqlwiki.com/index.php/Copper_Band"
+  },
+  {
+   "g": 1,
+   "n": "Cracked Staff",
+   "u": "https://eqlwiki.com/index.php/Cracked_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Dark Muslin Collar",
+   "u": "https://eqlwiki.com/index.php/Dark_Muslin_Collar"
+  },
+  {
+   "g": 1,
+   "n": "Emerald Ring",
+   "u": "https://eqlwiki.com/index.php/Emerald_Ring"
+  },
+  {
+   "n": "Evil Eye Eyestalk",
+   "u": "https://eqlwiki.com/index.php/Evil_Eye_Eyestalk"
+  },
+  {
+   "g": 1,
+   "n": "Evil Eye Lens",
+   "u": "https://eqlwiki.com/index.php/Evil_Eye_Lens"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Dagger",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Dagger"
+  },
+  {
+   "n": "Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
+  },
+  {
+   "n": "Flame of Vox",
+   "u": "https://eqlwiki.com/index.php/Flame_of_Vox"
+  },
+  {
+   "g": 1,
+   "n": "Flawless Aquamarine",
+   "u": "https://eqlwiki.com/index.php/Flawless_Aquamarine"
+  },
+  {
+   "g": 1,
+   "n": "Fractured Femur",
+   "u": "https://eqlwiki.com/index.php/Fractured_Femur"
+  },
+  {
+   "n": "Goblin Parts",
+   "u": "https://eqlwiki.com/index.php/Goblin_Parts"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Sticker",
+   "u": "https://eqlwiki.com/index.php/Goblin_Sticker"
+  },
+  {
+   "g": 1,
+   "n": "Grotesque Alloy Mask",
+   "u": "https://eqlwiki.com/index.php/Grotesque_Alloy_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Grotesque Mask",
+   "u": "https://eqlwiki.com/index.php/Grotesque_Mask"
+  },
+  {
+   "n": "Hematite",
+   "u": "https://eqlwiki.com/index.php/Hematite"
+  },
+  {
+   "n": "Ice of Velious",
+   "u": "https://eqlwiki.com/index.php/Ice_of_Velious"
+  },
+  {
+   "g": 1,
+   "n": "Icon of the Constant",
+   "u": "https://eqlwiki.com/index.php/Icon_of_the_Constant"
+  },
+  {
+   "n": "Iron Ration",
+   "u": "https://eqlwiki.com/index.php/Iron_Ration"
+  },
+  {
+   "n": "Ivory",
+   "u": "https://eqlwiki.com/index.php/Ivory"
+  },
+  {
+   "n": "Jacinth",
+   "u": "https://eqlwiki.com/index.php/Jacinth"
+  },
+  {
+   "n": "Jade",
+   "u": "https://eqlwiki.com/index.php/Jade"
+  },
+  {
+   "n": "Jade Shard",
+   "u": "https://eqlwiki.com/index.php/Jade_Shard"
+  },
+  {
+   "n": "Jasper",
+   "u": "https://eqlwiki.com/index.php/Jasper"
+  },
+  {
+   "n": "Large Brick of High Quality Ore",
+   "u": "https://eqlwiki.com/index.php/Large_Brick_of_High_Quality_Ore"
+  },
+  {
+   "n": "Loaf of Bread",
+   "u": "https://eqlwiki.com/index.php/Loaf_of_Bread"
+  },
+  {
+   "n": "Malachite",
+   "u": "https://eqlwiki.com/index.php/Malachite"
+  },
+  {
+   "n": "Middle of a Fractured Rune",
+   "u": "https://eqlwiki.com/index.php/Middle_of_a_Fractured_Rune"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Amulet",
+   "u": "https://eqlwiki.com/index.php/Mithril_Amulet"
+  },
+  {
+   "n": "Onyx",
+   "u": "https://eqlwiki.com/index.php/Onyx"
+  },
+  {
+   "g": 1,
+   "n": "Onyx Ring",
+   "u": "https://eqlwiki.com/index.php/Onyx_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Opal Bracelet",
+   "u": "https://eqlwiki.com/index.php/Opal_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Orb of Slime",
+   "u": "https://eqlwiki.com/index.php/Orb_of_Slime"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 26 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._26_(Left)"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Necklace",
+   "u": "https://eqlwiki.com/index.php/Pearl_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Polished Bone Bracelet",
+   "u": "https://eqlwiki.com/index.php/Polished_Bone_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Polished Bone Hoop",
+   "u": "https://eqlwiki.com/index.php/Polished_Bone_Hoop"
+  },
+  {
+   "n": "Ration",
+   "u": "https://eqlwiki.com/index.php/Ration"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Gloves",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Ring of Slime",
+   "u": "https://eqlwiki.com/index.php/Ring_of_Slime"
+  },
+  {
+   "g": 1,
+   "n": "Ruby Crown",
+   "u": "https://eqlwiki.com/index.php/Ruby_Crown"
+  },
+  {
+   "n": "Rune of Attraction",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Attraction"
+  },
+  {
+   "n": "Rune of Concussion",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Concussion"
+  },
+  {
+   "n": "Rune of Disassociation",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Disassociation"
+  },
+  {
+   "n": "Rune of Presence",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Presence"
+  },
+  {
+   "n": "Rune of Trauma",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Trauma"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Bastard Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Bastard_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Rusty_Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Broad Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Broad_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Long Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Mace",
+   "u": "https://eqlwiki.com/index.php/Rusty_Mace"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Rapier",
+   "u": "https://eqlwiki.com/index.php/Rusty_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Scimitar",
+   "u": "https://eqlwiki.com/index.php/Rusty_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Short Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Shortened Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Shortened_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Two_Handed_Sword"
+  },
+  {
+   "n": "Sapphire",
+   "u": "https://eqlwiki.com/index.php/Sapphire"
+  },
+  {
+   "n": "Short Beer",
+   "u": "https://eqlwiki.com/index.php/Short_Beer"
+  },
+  {
+   "g": 1,
+   "n": "Sleek Black Cape",
+   "u": "https://eqlwiki.com/index.php/Sleek_Black_Cape"
+  },
+  {
+   "n": "Small Bag",
+   "u": "https://eqlwiki.com/index.php/Small_Bag"
+  },
+  {
+   "n": "Small Brick of High Quality Ore",
+   "u": "https://eqlwiki.com/index.php/Small_Brick_of_High_Quality_Ore"
+  },
+  {
+   "g": 1,
+   "n": "Small Cloth Cap",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Small Cloth Cape",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Cape"
+  },
+  {
+   "n": "Small Cloth Choker",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Choker"
+  },
+  {
+   "g": 1,
+   "n": "Small Cloth Cord",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Cord"
+  },
+  {
+   "g": 1,
+   "n": "Small Cloth Gloves",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Small Cloth Pants",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Pants"
+  },
+  {
+   "g": 1,
+   "n": "Small Cloth Sandals",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Sandals"
+  },
+  {
+   "g": 1,
+   "n": "Small Cloth Shawl",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Shawl"
+  },
+  {
+   "g": 1,
+   "n": "Small Cloth Sleeves",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Small Cloth Veil",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Veil"
+  },
+  {
+   "g": 1,
+   "n": "Small Cloth Wristband",
+   "u": "https://eqlwiki.com/index.php/Small_Cloth_Wristband"
+  },
+  {
+   "n": "Small Piece of High Quality Ore",
+   "u": "https://eqlwiki.com/index.php/Small_Piece_of_High_Quality_Ore"
+  },
+  {
+   "g": 1,
+   "n": "Splintering Club",
+   "u": "https://eqlwiki.com/index.php/Splintering_Club"
+  },
+  {
+   "g": 1,
+   "n": "Sporali Defender's Blade",
+   "u": "https://eqlwiki.com/index.php/Sporali_Defender's_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Sporali Gloves",
+   "u": "https://eqlwiki.com/index.php/Sporali_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Sporestrand Shield",
+   "u": "https://eqlwiki.com/index.php/Sporestrand_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Supple Black Cloak",
+   "u": "https://eqlwiki.com/index.php/Supple_Black_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Tarnished Bastard Sword",
+   "u": "https://eqlwiki.com/index.php/Tarnished_Bastard_Sword"
+  },
+  {
+   "n": "Top of a Fractured Rune",
+   "u": "https://eqlwiki.com/index.php/Top_of_a_Fractured_Rune"
+  },
+  {
+   "n": "Topaz",
+   "u": "https://eqlwiki.com/index.php/Topaz"
+  },
+  {
+   "n": "Turquoise",
+   "u": "https://eqlwiki.com/index.php/Turquoise"
+  },
+  {
+   "n": "Water Flask",
+   "u": "https://eqlwiki.com/index.php/Water_Flask"
+  },
+  {
+   "n": "Words of Cloudburst",
+   "u": "https://eqlwiki.com/index.php/Words_of_Cloudburst"
+  },
+  {
+   "n": "Words of Dimension",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dimension"
+  },
+  {
+   "n": "Words of Mistbreath",
+   "u": "https://eqlwiki.com/index.php/Words_of_Mistbreath"
+  },
+  {
+   "n": "Words of Possession",
+   "u": "https://eqlwiki.com/index.php/Words_of_Possession"
+  },
+  {
+   "n": "Words of the Sentient (Azia)",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Sentient_(Azia)"
+  },
+  {
+   "n": "Words of the Sentient (Beza)",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Sentient_(Beza)"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    44,
+    45,
+    47,
+    48,
+    49,
+    64,
+    75,
+    132
+   ],
+   "loc": [
+    343.0,
+    344.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "a gelatinous cube",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gelatinous_Cube_(Runnyeye_Citadel)"
+  },
+  {
+   "dr": [
+    "0.7%",
+    "3.6%",
+    "2.9%",
+    "1.5%",
+    "0.7%",
+    "2.2%",
+    "3.6%",
+    "1.5%",
+    "0.7%",
+    "1.5%",
+    "0.7%",
+    "2.2%",
+    "2.2%",
+    "2.9%",
+    "1.5%",
+    "0.7%",
+    "0.7%",
+    "2.2%",
+    "2.2%",
+    "0.7%",
+    "2.2%",
+    "0.7%",
+    "1.5%",
+    "1.5%",
+    "2.2%",
+    "1.5%",
+    "1.5%",
+    "2.9%",
+    "1.5%",
+    "0.7%",
+    "1.5%",
+    "0.7%",
+    "0.7%"
+   ],
+   "drops": [
+    1,
+    7,
+    39,
+    50,
+    67,
+    74,
+    87,
+    88,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    108,
+    110,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    124,
+    133
+   ],
+   "loc": null,
+   "lvl": "4 - 28",
+   "n": "a goblin",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin"
+  },
+  {
+   "dr": [
+    "0.7%"
+   ],
+   "drops": [
+    133
+   ],
+   "loc": [
+    -1165.0,
+    628.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "a goblin",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Overseer"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    87,
+    105,
+    114,
+    133
+   ],
+   "loc": null,
+   "lvl": "~8",
+   "n": "a goblin",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_(Clan_RunnyEye)"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    87,
+    133
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a goblin",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_worker_(Clan_RunnyEye)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    13.0,
+    83.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "a goblin banker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_banker"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    59
+   ],
+   "loc": null,
+   "lvl": "25",
+   "n": "a goblin captain",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Captain"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    26
+   ],
+   "loc": null,
+   "lvl": "22",
+   "n": "a goblin knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Knight"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "?",
+   "n": "a goblin neophyte",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_neophyte"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "11 - 12",
+   "n": "a goblin peon",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_peon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    54.0,
+    177.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "a goblin runt",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_runt"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "11",
+   "n": "a goblin shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_shaman_(Clan_RunnyEye)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "10",
+   "n": "a goblin trainee",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_trainee"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    2,
+    37,
+    45,
+    58,
+    68,
+    70,
+    71,
+    72,
+    78,
+    83,
+    109,
+    131
+   ],
+   "loc": null,
+   "lvl": "28",
+   "n": "a goblin warlord",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Warlord"
+  },
+  {
+   "dr": [
+    null,
+    "Uncommon"
+   ],
+   "drops": [
+    46,
+    60
+   ],
+   "loc": null,
+   "lvl": "11",
+   "n": "a goblin wizard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Wizard"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    99,
+    103
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a goblin worker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Worker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    20.0,
+    55.0,
+    null
+   ],
+   "lvl": "1",
+   "n": "a mimic",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_mimic_(Clan_RunnyEye)"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    null
+   ],
+   "drops": [
+    6,
+    137
+   ],
+   "loc": null,
+   "lvl": "18",
+   "n": "a Pickclaw Ambushbaiter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Ambushbaiter"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    6,
+    27,
+    29,
+    32,
+    33,
+    35,
+    65,
+    91,
+    93,
+    94,
+    95,
+    109,
+    134,
+    135,
+    136,
+    137,
+    139
+   ],
+   "loc": [
+    125.0,
+    -116.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "a Pickclaw Arroweater",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Arroweater"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "13 - 15",
+   "n": "a Pickclaw Bladestopper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Bladestopper"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    59
+   ],
+   "loc": null,
+   "lvl": "17",
+   "n": "a Pickclaw bonemender",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_bonemender"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    26
+   ],
+   "loc": null,
+   "lvl": "25?",
+   "n": "a Pickclaw Crusader",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Crusader"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    21
+   ],
+   "loc": null,
+   "lvl": "19-22",
+   "n": "a Pickclaw Destroyer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Destroyer"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    6
+   ],
+   "loc": null,
+   "lvl": "16",
+   "n": "a Pickclaw Fleshburner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Fleshburner"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    28,
+    33
+   ],
+   "loc": null,
+   "lvl": "20?",
+   "n": "a Pickclaw Foechopper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Foechopper"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    10,
+    14,
+    16
+   ],
+   "loc": null,
+   "lvl": "22?",
+   "n": "a Pickclaw Foeseeker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Foeseeker"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    27,
+    28
+   ],
+   "loc": null,
+   "lvl": "21?",
+   "n": "a Pickclaw Foeslicer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Foeslicer"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    32,
+    44
+   ],
+   "loc": null,
+   "lvl": "16?",
+   "n": "a Pickclaw mindripper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Mindripper"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    null,
+    null
+   ],
+   "drops": [
+    6,
+    11,
+    51
+   ],
+   "loc": [
+    -94.0,
+    -101.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "a Pickclaw Slayspell",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Slayspell"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "11?",
+   "n": "a Pickclaw Thoughtshaper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Thoughtshaper"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    10,
+    14,
+    15,
+    20,
+    21,
+    23,
+    24,
+    128
+   ],
+   "loc": [
+    -34.0,
+    -168.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "a Pickclaw veteran",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_veteran"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    25,
+    27,
+    29,
+    32,
+    34,
+    102,
+    106
+   ],
+   "loc": null,
+   "lvl": "22?",
+   "n": "a Pickclaw Zekspeaker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pickclaw_Zekspeaker"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    6
+   ],
+   "loc": null,
+   "lvl": "?",
+   "n": "a Runnyeye Conscript",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Runnyeye_Conscript"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -18.0,
+    -18.0,
+    null
+   ],
+   "lvl": "10?",
+   "n": "a Runnyeye Trustee",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Runnyeye_Trustee"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    81,
+    89
+   ],
+   "loc": [
+    326.0,
+    -60.0,
+    null
+   ],
+   "lvl": "24-26",
+   "n": "a slime elemental",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_slime_elemental"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    null,
+    null
+   ],
+   "drops": [
+    6,
+    111,
+    125
+   ],
+   "loc": null,
+   "lvl": "22",
+   "n": "a Sporali Defender",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sporali_Defender"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    6
+   ],
+   "loc": null,
+   "lvl": "17",
+   "n": "a Sporali gatherer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sporali_Gatherer"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    73,
+    111,
+    127,
+    138
+   ],
+   "loc": null,
+   "lvl": "20",
+   "n": "a Sporali Miner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sporali_Miner"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    127
+   ],
+   "loc": null,
+   "lvl": "21",
+   "n": "a Sporali Scavenger",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sporali_Scavenger"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    127
+   ],
+   "loc": null,
+   "lvl": "21?",
+   "n": "a Sporali worker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sporali_worker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "20",
+   "n": "a sporeling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sporeling"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Common",
+    null,
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    40,
+    43,
+    53,
+    57,
+    76,
+    130
+   ],
+   "loc": [
+    79.0,
+    -95.0,
+    null
+   ],
+   "lvl": "32+ ? (Blue to 46)",
+   "n": "an Evil Eye",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Evil_Eye_(Runnyeye)"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    40,
+    43,
+    53,
+    54,
+    76,
+    79,
+    85,
+    86,
+    130
+   ],
+   "loc": [
+    79.0,
+    -95.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "an Evil Eye prisoner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Evil_Eye_prisoner"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    334.0,
+    -63.0,
+    null
+   ],
+   "lvl": "22-24",
+   "n": "an ooze crawler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_ooze_crawler"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    11,
+    14,
+    15,
+    16,
+    21,
+    22,
+    24,
+    77
+   ],
+   "loc": [
+    -35.0,
+    -201.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "Battlelord Paluk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Battlelord_Paluk"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    11,
+    80,
+    92,
+    107
+   ],
+   "loc": [
+    -10.0,
+    10.0,
+    null
+   ],
+   "lvl": "32-33",
+   "n": "Battlewizard Unak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Battlewizard_Unak"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    54
+   ],
+   "loc": null,
+   "lvl": "30-35",
+   "n": "Borxx",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Borxx"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    42
+   ],
+   "loc": null,
+   "lvl": "21",
+   "n": "Dazed Goblin Guard",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dazed_goblin_guard"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    61
+   ],
+   "loc": null,
+   "lvl": "21?",
+   "n": "dazed goblin javelineer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Dazed_goblin_javelineer"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    42
+   ],
+   "loc": null,
+   "lvl": "21?",
+   "n": "dazed goblin shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Dazed_goblin_shaman"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    "Common"
+   ],
+   "drops": [
+    27,
+    41,
+    55
+   ],
+   "loc": null,
+   "lvl": "~27",
+   "n": "Goblin Elite Guard",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Goblin_Elite_Guard_(Runnyeye)"
+  },
+  {
+   "dr": [
+    "Always",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    123
+   ],
+   "loc": [
+    -186.0,
+    111.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "goblin janitor",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Goblin_Janitor"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    109,
+    128
+   ],
+   "loc": [
+    -135.0,
+    -160.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "goblin warlord",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Goblin_Warlord_(Clan_Runnyeye)"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    null,
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    10,
+    11,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    23,
+    52,
+    62,
+    128,
+    129
+   ],
+   "loc": [
+    -45.0,
+    -172.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Lord Pickclaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Pickclaw"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always"
+   ],
+   "drops": [
+    0,
+    31,
+    66
+   ],
+   "loc": [
+    9.0,
+    -1.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Sludge Dankmire",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sludge_Dankmire"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    3,
+    4,
+    5
+   ],
+   "loc": null,
+   "lvl": "??",
+   "n": "Summoned Pet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/An_Evil_Eye_Pet"
+  },
+  {
+   "dr": [
+    null,
+    "Common",
+    null,
+    "Rare",
+    null,
+    null,
+    "Uncommon"
+   ],
+   "drops": [
+    12,
+    13,
+    26,
+    30,
+    31,
+    36,
+    63
+   ],
+   "loc": [
+    100.0,
+    -100.0,
+    null
+   ],
+   "lvl": "25-27",
+   "n": "The Goblin King",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Goblin_King"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    38,
+    52,
+    56,
+    69,
+    80,
+    82,
+    84,
+    90,
+    107,
+    125,
+    126,
+    127
+   ],
+   "loc": [
+    106.0,
+    127.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "The Sporali Moldmaster",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Sporali_Moldmaster"
+  }
+ ],
+ "updated": "2026-07-16T21:54:04Z",
+ "wikiTitle": "RunnyEye Citadel",
+ "wikiUrl": "https://eqlwiki.com/index.php/RunnyEye_Citadel",
+ "zone": "runnyeye"
+}

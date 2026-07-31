@@ -1,0 +1,495 @@
+{
+ "items": [
+  {
+   "n": "Barbarian Head (Talym's Head)",
+   "u": "https://eqlwiki.com/index.php/Barbarian_Head_(Talym's_Head)"
+  },
+  {
+   "n": "Bayle List II",
+   "u": "https://eqlwiki.com/index.php/Bayle_List_II"
+  },
+  {
+   "n": "Bear Meat",
+   "u": "https://eqlwiki.com/index.php/Bear_Meat"
+  },
+  {
+   "n": "Chunk of Meat",
+   "u": "https://eqlwiki.com/index.php/Chunk_of_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Short Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Short_Sword"
+  },
+  {
+   "n": "Fish Scales",
+   "u": "https://eqlwiki.com/index.php/Fish_Scales"
+  },
+  {
+   "n": "Fresh Piranha",
+   "u": "https://eqlwiki.com/index.php/Fresh_Piranha"
+  },
+  {
+   "n": "Gnoll Head",
+   "u": "https://eqlwiki.com/index.php/Gnoll_Head"
+  },
+  {
+   "g": 1,
+   "n": "Great Staff",
+   "u": "https://eqlwiki.com/index.php/Great_Staff"
+  },
+  {
+   "n": "Grizzly Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Grizzly_Bear_Skin"
+  },
+  {
+   "n": "High Quality Bear Skin",
+   "u": "https://eqlwiki.com/index.php/High_Quality_Bear_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Human Blood",
+   "u": "https://eqlwiki.com/index.php/Human_Blood"
+  },
+  {
+   "n": "Low Quality Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Low_Quality_Bear_Skin"
+  },
+  {
+   "n": "Mammoth's Hide",
+   "u": "https://eqlwiki.com/index.php/Mammoth's_Hide"
+  },
+  {
+   "n": "Medium Quality Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Medium_Quality_Bear_Skin"
+  },
+  {
+   "n": "Patch of Gnoll Fur",
+   "u": "https://eqlwiki.com/index.php/Patch_of_Gnoll_Fur"
+  },
+  {
+   "n": "Poacher's Head",
+   "u": "https://eqlwiki.com/index.php/Poacher's_Head"
+  },
+  {
+   "g": 1,
+   "n": "Rough Elm Recurve Bow",
+   "u": "https://eqlwiki.com/index.php/Rough_Elm_Recurve_Bow"
+  },
+  {
+   "n": "Ruined Bear Pelt",
+   "u": "https://eqlwiki.com/index.php/Ruined_Bear_Pelt"
+  },
+  {
+   "g": 1,
+   "n": "Staff",
+   "u": "https://eqlwiki.com/index.php/Staff"
+  },
+  {
+   "n": "Thick Grizzly Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Thick_Grizzly_Bear_Skin"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "2",
+   "n": "a bear cub",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Bear_Cub"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1",
+   "n": "a fish",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_fish"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    3,
+    9,
+    10,
+    12,
+    14,
+    18,
+    20
+   ],
+   "loc": null,
+   "lvl": "9-11",
+   "n": "A Grizzly Bear",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Grizzly_Bear"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    5,
+    6
+   ],
+   "loc": null,
+   "lvl": "2",
+   "n": "a piranha",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_piranha"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Always"
+   ],
+   "drops": [
+    14,
+    16
+   ],
+   "loc": [
+    143.0,
+    -419.0,
+    null
+   ],
+   "lvl": "7-9",
+   "n": "a poacher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Poacher"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    239.0,
+    -178.0,
+    null
+   ],
+   "lvl": "7",
+   "n": "Bren Treeclimber",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bren_Treeclimber"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    19
+   ],
+   "loc": [
+    67.0,
+    -192.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "Corun Finisc",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Corun_Finisc"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    177.0,
+    -7.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Errin Pinewhisper",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Errin_Pinewhisper"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -103.0,
+    -303.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Frenway Marthank",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Frenway_Marthank"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -177.0,
+    -396.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Gerael Woodone",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gerael_Woodone"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    17
+   ],
+   "loc": [
+    179.0,
+    -36.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Gillarian Naelev",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gillarian_Naelev"
+  },
+  {
+   "dr": [
+    "Always",
+    "Common"
+   ],
+   "drops": [
+    7,
+    15
+   ],
+   "loc": [
+    143.0,
+    -419.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Gnoll Poacher",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gnoll_Poacher"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    108.0,
+    84.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Hager Sureshot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hager_Sureshot"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    4
+   ],
+   "loc": [
+    -9.8,
+    -78.7,
+    2.8
+   ],
+   "lvl": "30",
+   "n": "Krystal Aspen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Krystal_Aspen"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    244.0,
+    -18.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Larsk Juton",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Larsk_Juton"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    1,
+    13
+   ],
+   "loc": [
+    225.0,
+    -180.0,
+    null
+   ],
+   "lvl": "20 - 25",
+   "n": "Mammoth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mammoth"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    243.0,
+    -70.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Merdan Fleetfoot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Merdan_Fleetfoot"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    138.0,
+    -106.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Merona Castekin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Merona_Castekin"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    111.3,
+    -188.2,
+    1.9
+   ],
+   "lvl": "40",
+   "n": "Niera Farbreeze",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Niera_Farbreeze"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": null,
+   "lvl": "6-9",
+   "n": "Poacher",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Poacher"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    8
+   ],
+   "loc": [
+    -37.0,
+    147.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Ran Walker",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ran_Walker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -209.0,
+    -441.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Salmekia Treherth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Salmekia_Treherth"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    118.0,
+    -64.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Sivina Lutewhisper",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sivina_Lutewhisper"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    144.0,
+    -415.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Talym Shoontar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Talym_Shoontar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -209.0,
+    -441.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Te`Anara",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Te%60Anara"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -122.0,
+    -302.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Vesteri Nomanoi",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vesteri_Nomanoi"
+  }
+ ],
+ "updated": "2026-05-27T00:35:12Z",
+ "wikiTitle": "Surefall Glade",
+ "wikiUrl": "https://eqlwiki.com/index.php/Surefall_Glade",
+ "zone": "qrg"
+}

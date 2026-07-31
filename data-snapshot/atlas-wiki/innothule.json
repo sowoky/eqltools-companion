@@ -1,0 +1,1539 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "A Noble's Crest",
+   "u": "https://eqlwiki.com/index.php/A_Noble's_Crest"
+  },
+  {
+   "g": 1,
+   "n": "A shadowed knife",
+   "u": "https://eqlwiki.com/index.php/A_shadowed_knife"
+  },
+  {
+   "g": 1,
+   "n": "A Shining Stone",
+   "u": "https://eqlwiki.com/index.php/A_Shining_Stone"
+  },
+  {
+   "n": "A Spore Mushroom",
+   "u": "https://eqlwiki.com/index.php/A_Spore_Mushroom"
+  },
+  {
+   "n": "A Very Large Pelt",
+   "u": "https://eqlwiki.com/index.php/A_Very_Large_Pelt"
+  },
+  {
+   "n": "Ale",
+   "u": "https://eqlwiki.com/index.php/Ale"
+  },
+  {
+   "n": "Alligator Skin",
+   "u": "https://eqlwiki.com/index.php/Alligator_Skin"
+  },
+  {
+   "n": "Alligator Tooth",
+   "u": "https://eqlwiki.com/index.php/Alligator_Tooth"
+  },
+  {
+   "n": "An Alligator Tooth",
+   "u": "https://eqlwiki.com/index.php/An_Alligator_Tooth"
+  },
+  {
+   "n": "Backpack",
+   "u": "https://eqlwiki.com/index.php/Backpack"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Short Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Short_Sword"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "n": "Chunk of Meat",
+   "u": "https://eqlwiki.com/index.php/Chunk_of_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Club",
+   "u": "https://eqlwiki.com/index.php/Club"
+  },
+  {
+   "g": 1,
+   "n": "Cracked Staff",
+   "u": "https://eqlwiki.com/index.php/Cracked_Staff"
+  },
+  {
+   "n": "Dwarf Meat",
+   "u": "https://eqlwiki.com/index.php/Dwarf_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Essence of Shadow",
+   "u": "https://eqlwiki.com/index.php/Essence_of_Shadow"
+  },
+  {
+   "g": 1,
+   "n": "Eye of Shadow",
+   "u": "https://eqlwiki.com/index.php/Eye_of_Shadow"
+  },
+  {
+   "n": "Faded Velishoul's Tome Page",
+   "u": "https://eqlwiki.com/index.php/Faded_Velishoul's_Tome_Page"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Frog Eye Necklace",
+   "u": "https://eqlwiki.com/index.php/Frog_Eye_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Froglok Blood",
+   "u": "https://eqlwiki.com/index.php/Froglok_Blood"
+  },
+  {
+   "n": "Froglok Head",
+   "u": "https://eqlwiki.com/index.php/Froglok_Head"
+  },
+  {
+   "n": "Froglok Meat",
+   "u": "https://eqlwiki.com/index.php/Froglok_Meat"
+  },
+  {
+   "n": "Froglok Tad Tongue",
+   "u": "https://eqlwiki.com/index.php/Froglok_Tad_Tongue"
+  },
+  {
+   "n": "Froglok Tadpole Eye",
+   "u": "https://eqlwiki.com/index.php/Froglok_Tadpole_Eye"
+  },
+  {
+   "n": "Froglok Tadpole Flesh",
+   "u": "https://eqlwiki.com/index.php/Froglok_Tadpole_Flesh"
+  },
+  {
+   "n": "Gator Meat",
+   "u": "https://eqlwiki.com/index.php/Gator_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Giant Snake Fang",
+   "u": "https://eqlwiki.com/index.php/Giant_Snake_Fang"
+  },
+  {
+   "n": "Giant Snake Rattle",
+   "u": "https://eqlwiki.com/index.php/Giant_Snake_Rattle"
+  },
+  {
+   "g": 1,
+   "n": "Globe of Shadow",
+   "u": "https://eqlwiki.com/index.php/Globe_of_Shadow"
+  },
+  {
+   "g": 1,
+   "n": "Glowing Gloves",
+   "u": "https://eqlwiki.com/index.php/Glowing_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Hand of Shadow",
+   "u": "https://eqlwiki.com/index.php/Hand_of_Shadow"
+  },
+  {
+   "n": "High Elf Flesh",
+   "u": "https://eqlwiki.com/index.php/High_Elf_Flesh"
+  },
+  {
+   "n": "High Elf Parts",
+   "u": "https://eqlwiki.com/index.php/High_Elf_Parts"
+  },
+  {
+   "n": "Huge Mushroom Head",
+   "u": "https://eqlwiki.com/index.php/Huge_Mushroom_Head"
+  },
+  {
+   "g": 1,
+   "n": "Human Blood",
+   "u": "https://eqlwiki.com/index.php/Human_Blood"
+  },
+  {
+   "n": "Human Flesh",
+   "u": "https://eqlwiki.com/index.php/Human_Flesh"
+  },
+  {
+   "n": "Human Parts",
+   "u": "https://eqlwiki.com/index.php/Human_Parts"
+  },
+  {
+   "g": 1,
+   "n": "Hunting Bow",
+   "u": "https://eqlwiki.com/index.php/Hunting_Bow"
+  },
+  {
+   "n": "Ice of Velious",
+   "u": "https://eqlwiki.com/index.php/Ice_of_Velious"
+  },
+  {
+   "n": "Innothule Mushroom",
+   "u": "https://eqlwiki.com/index.php/Innothule_Mushroom"
+  },
+  {
+   "g": 1,
+   "n": "Intestine Necklace",
+   "u": "https://eqlwiki.com/index.php/Intestine_Necklace"
+  },
+  {
+   "n": "Jade Shard",
+   "u": "https://eqlwiki.com/index.php/Jade_Shard"
+  },
+  {
+   "n": "Large Bag",
+   "u": "https://eqlwiki.com/index.php/Large_Bag"
+  },
+  {
+   "g": 1,
+   "n": "Large Ruby (Eye of Toque)",
+   "u": "https://eqlwiki.com/index.php/Large_Ruby_(Eye_of_Toque)"
+  },
+  {
+   "g": 1,
+   "n": "Mask of Shadow",
+   "u": "https://eqlwiki.com/index.php/Mask_of_Shadow"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Gorget",
+   "u": "https://eqlwiki.com/index.php/Mesh_Gorget"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Helm",
+   "u": "https://eqlwiki.com/index.php/Mesh_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Leggings",
+   "u": "https://eqlwiki.com/index.php/Mesh_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Mesh Mantle",
+   "u": "https://eqlwiki.com/index.php/Mesh_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Netted Cap",
+   "u": "https://eqlwiki.com/index.php/Netted_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Netted Cape",
+   "u": "https://eqlwiki.com/index.php/Netted_Cape"
+  },
+  {
+   "g": 1,
+   "n": "Netted Choker",
+   "u": "https://eqlwiki.com/index.php/Netted_Choker"
+  },
+  {
+   "g": 1,
+   "n": "Netted Girth",
+   "u": "https://eqlwiki.com/index.php/Netted_Girth"
+  },
+  {
+   "g": 1,
+   "n": "Netted Gloves",
+   "u": "https://eqlwiki.com/index.php/Netted_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Netted Mantle",
+   "u": "https://eqlwiki.com/index.php/Netted_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Netted Mask",
+   "u": "https://eqlwiki.com/index.php/Netted_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Netted Pants",
+   "u": "https://eqlwiki.com/index.php/Netted_Pants"
+  },
+  {
+   "g": 1,
+   "n": "Netted Shirt",
+   "u": "https://eqlwiki.com/index.php/Netted_Shirt"
+  },
+  {
+   "g": 1,
+   "n": "Netted Sleeves",
+   "u": "https://eqlwiki.com/index.php/Netted_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Netted Wristband",
+   "u": "https://eqlwiki.com/index.php/Netted_Wristband"
+  },
+  {
+   "n": "Ogre Arm",
+   "u": "https://eqlwiki.com/index.php/Ogre_Arm"
+  },
+  {
+   "n": "Ornate Tin Box",
+   "u": "https://eqlwiki.com/index.php/Ornate_Tin_Box"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 375 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._375_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 390 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._390_(Left)"
+  },
+  {
+   "g": 1,
+   "n": "Patch of Shadow",
+   "u": "https://eqlwiki.com/index.php/Patch_of_Shadow"
+  },
+  {
+   "g": 1,
+   "n": "Round Shield",
+   "u": "https://eqlwiki.com/index.php/Round_Shield"
+  },
+  {
+   "n": "Rune of Attraction",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Attraction"
+  },
+  {
+   "n": "Rune of Karana",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Karana"
+  },
+  {
+   "n": "Rune of Presence",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Presence"
+  },
+  {
+   "n": "Rune of Velious",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Velious"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Shortened Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Shortened_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Warhammer",
+   "u": "https://eqlwiki.com/index.php/Rusty_Warhammer"
+  },
+  {
+   "n": "Sarcoscypha Fungus",
+   "u": "https://eqlwiki.com/index.php/Sarcoscypha_Fungus"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Ball",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Ball"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Book",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Book"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Halberd",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Halberd"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Long Sword",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Mace",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Mace"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Morning Star",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Rapier",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Scimitar",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Scythe",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Scythe"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Spear",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Two Handed Hammer",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Two_Handed_Hammer"
+  },
+  {
+   "g": 1,
+   "n": "Shadowed Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Shadowed_Two_Handed_Sword"
+  },
+  {
+   "n": "Snake Egg",
+   "u": "https://eqlwiki.com/index.php/Snake_Egg"
+  },
+  {
+   "n": "Snake Fang",
+   "u": "https://eqlwiki.com/index.php/Snake_Fang"
+  },
+  {
+   "n": "Snake Meat",
+   "u": "https://eqlwiki.com/index.php/Snake_Meat"
+  },
+  {
+   "n": "Snake Scales",
+   "u": "https://eqlwiki.com/index.php/Snake_Scales"
+  },
+  {
+   "n": "Snake Venom Sac",
+   "u": "https://eqlwiki.com/index.php/Snake_Venom_Sac"
+  },
+  {
+   "g": 1,
+   "n": "Splintering Club",
+   "u": "https://eqlwiki.com/index.php/Splintering_Club"
+  },
+  {
+   "g": 1,
+   "n": "Tattered Parchment",
+   "u": "https://eqlwiki.com/index.php/Tattered_Parchment"
+  },
+  {
+   "n": "Troll Parts",
+   "u": "https://eqlwiki.com/index.php/Troll_Parts"
+  },
+  {
+   "n": "Undead Froglok Tongue",
+   "u": "https://eqlwiki.com/index.php/Undead_Froglok_Tongue"
+  },
+  {
+   "n": "Very Large Pelt",
+   "u": "https://eqlwiki.com/index.php/Very_Large_Pelt"
+  },
+  {
+   "n": "Words of Absorption",
+   "u": "https://eqlwiki.com/index.php/Words_of_Absorption"
+  },
+  {
+   "n": "Words of Allure",
+   "u": "https://eqlwiki.com/index.php/Words_of_Allure"
+  },
+  {
+   "n": "Words of Cazic-Thule",
+   "u": "https://eqlwiki.com/index.php/Words_of_Cazic-Thule"
+  },
+  {
+   "n": "Words of Dominion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dominion"
+  },
+  {
+   "n": "Words of Enlightenment",
+   "u": "https://eqlwiki.com/index.php/Words_of_Enlightenment"
+  },
+  {
+   "n": "Words of Eventide",
+   "u": "https://eqlwiki.com/index.php/Words_of_Eventide"
+  },
+  {
+   "n": "Words of Imitation",
+   "u": "https://eqlwiki.com/index.php/Words_of_Imitation"
+  },
+  {
+   "n": "Words of Mistbreath",
+   "u": "https://eqlwiki.com/index.php/Words_of_Mistbreath"
+  },
+  {
+   "n": "Words of the Quickening",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Quickening"
+  },
+  {
+   "n": "Words of Transcendence",
+   "u": "https://eqlwiki.com/index.php/Words_of_Transcendence"
+  },
+  {
+   "g": 1,
+   "n": "Woven Cap",
+   "u": "https://eqlwiki.com/index.php/Woven_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Woven Cape",
+   "u": "https://eqlwiki.com/index.php/Woven_Cape"
+  },
+  {
+   "g": 1,
+   "n": "Woven Collar",
+   "u": "https://eqlwiki.com/index.php/Woven_Collar"
+  },
+  {
+   "g": 1,
+   "n": "Woven Girth",
+   "u": "https://eqlwiki.com/index.php/Woven_Girth"
+  },
+  {
+   "g": 1,
+   "n": "Woven Gloves",
+   "u": "https://eqlwiki.com/index.php/Woven_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Woven Leggings",
+   "u": "https://eqlwiki.com/index.php/Woven_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Woven Mantle",
+   "u": "https://eqlwiki.com/index.php/Woven_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Woven Sleeves",
+   "u": "https://eqlwiki.com/index.php/Woven_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Woven Tunic",
+   "u": "https://eqlwiki.com/index.php/Woven_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Woven Wristbands",
+   "u": "https://eqlwiki.com/index.php/Woven_Wristbands"
+  },
+  {
+   "n": "Zimbittle's Pouch",
+   "u": "https://eqlwiki.com/index.php/Zimbittle's_Pouch"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    6,
+    8,
+    27
+   ],
+   "loc": [
+    1798.0,
+    528.0,
+    null
+   ],
+   "lvl": "8 -10",
+   "n": "a bull alligator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_bull_alligator"
+  },
+  {
+   "dr": [
+    "Rare",
+    null,
+    "Always"
+   ],
+   "drops": [
+    6,
+    8,
+    62
+   ],
+   "loc": [
+    587.0,
+    -3.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "a fat alligator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_fat_alligator"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Common",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    5,
+    9,
+    21,
+    23,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    72,
+    97
+   ],
+   "loc": null,
+   "lvl": "3",
+   "n": "a froglok",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    21,
+    23,
+    44,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    94
+   ],
+   "loc": null,
+   "lvl": "4-6",
+   "n": "a froglok fisherman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Fisherman"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    21,
+    23,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118
+   ],
+   "loc": null,
+   "lvl": "6",
+   "n": "a froglok forager",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Forager"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    21,
+    23,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    74,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118
+   ],
+   "loc": null,
+   "lvl": "4-6, ~12",
+   "n": "a froglok guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Guard"
+  },
+  {
+   "dr": [
+    "Very Rare",
+    "Always",
+    "Common",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    21,
+    22,
+    23,
+    41,
+    63
+   ],
+   "loc": null,
+   "lvl": "18",
+   "n": "a froglok outlander",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_outlander"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    21,
+    23,
+    24,
+    25,
+    26
+   ],
+   "loc": null,
+   "lvl": "1-2 or 1-5",
+   "n": "a froglok tad",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_tad"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    75
+   ],
+   "loc": null,
+   "lvl": "4-6",
+   "n": "a fungus man tracker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Fungus_man_tracker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "8",
+   "n": "a fungus man watcher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_fungus_man_watcher"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    3
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a fungus spore",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_fungus_spore"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    28,
+    29,
+    89,
+    91,
+    93
+   ],
+   "loc": [
+    6.0,
+    152.0,
+    null
+   ],
+   "lvl": "7-9",
+   "n": "a giant moccasin",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_giant_moccasin"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    5
+   ],
+   "loc": [
+    2007.0,
+    633.0,
+    null
+   ],
+   "lvl": "7-8",
+   "n": "a kobold hunter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kobold_hunter"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "2",
+   "n": "a lesser kobold",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Lesser_Kobold"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    1,
+    2,
+    11,
+    16,
+    17,
+    18,
+    30,
+    31,
+    32,
+    40,
+    43,
+    46,
+    64,
+    65,
+    66,
+    68,
+    69,
+    70,
+    71,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108
+   ],
+   "loc": [
+    -430.0,
+    980.0,
+    null
+   ],
+   "lvl": "24-26",
+   "n": "a shadowed man",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_shadowed_man_(Innothule_Swamp)"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    89,
+    90,
+    92
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a snake",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_snake"
+  },
+  {
+   "dr": [
+    null,
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    12,
+    27
+   ],
+   "loc": null,
+   "lvl": "4",
+   "n": "a swamp alligator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_swamp_alligator"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    10,
+    20,
+    96
+   ],
+   "loc": [
+    110.0,
+    100.0,
+    null
+   ],
+   "lvl": "7-11",
+   "n": "a troll slayer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Troll_Slayer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "6",
+   "n": "a water moccasin",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_water_moccasin"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    89,
+    90,
+    92
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a young water moccasin",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_young_water_moccasin"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    42
+   ],
+   "loc": [
+    1497.0,
+    1096.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Basher Nkekta",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Nkekta"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    19,
+    42,
+    67
+   ],
+   "loc": [
+    -2614.0,
+    -501.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Basher Oggrik",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Oggrik"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    42
+   ],
+   "loc": [
+    -2568.0,
+    -321.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Basher Sklama",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Sklama"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    19,
+    42,
+    67
+   ],
+   "loc": [
+    -2572.0,
+    -624.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Basher Smag",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Smag"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    19,
+    42,
+    67
+   ],
+   "loc": [
+    -2551.0,
+    -620.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Basher Trak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basher_Trak"
+  },
+  {
+   "dr": [
+    null,
+    "Always",
+    "Uncommon"
+   ],
+   "drops": [
+    0,
+    15,
+    73
+   ],
+   "loc": [
+    216.0,
+    -319.0,
+    null
+   ],
+   "lvl": "13",
+   "n": "Bunk Odon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bunk_Odon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -2597.0,
+    175.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Dark Deathsinger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dark_Deathsinger"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    550.0,
+    -98.0,
+    null
+   ],
+   "lvl": "10-12",
+   "n": "Fandl Arathin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Fandl_Arathin"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    "Ultra Rare",
+    "Ultra Rare",
+    null
+   ],
+   "drops": [
+    14,
+    21,
+    23,
+    56,
+    57,
+    73
+   ],
+   "loc": [
+    74.0,
+    -299.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "Forager Grikk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Forager_Grikk"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    28,
+    93
+   ],
+   "loc": [
+    1798.0,
+    528.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "giant water moccasin",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Giant_water_moccasin"
+  },
+  {
+   "dr": [
+    null,
+    "Always",
+    "Uncommon"
+   ],
+   "drops": [
+    0,
+    38,
+    39
+   ],
+   "loc": [
+    -37.0,
+    -494.0,
+    null
+   ],
+   "lvl": "11",
+   "n": "Gwynn Marthank",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gwynn_Marthank"
+  },
+  {
+   "dr": [
+    null,
+    "Uncommon",
+    "Always"
+   ],
+   "drops": [
+    0,
+    33,
+    34
+   ],
+   "loc": [
+    -306.0,
+    -519.0,
+    null
+   ],
+   "lvl": "12",
+   "n": "Hogus Durmas",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hogus_Durmas"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    110.0,
+    -499.0,
+    null
+   ],
+   "lvl": "11",
+   "n": "Jars Legola",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jars_Legola"
+  },
+  {
+   "dr": [
+    "Always",
+    "Common"
+   ],
+   "drops": [
+    4,
+    98
+   ],
+   "loc": [
+    1832.0,
+    0.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "Jojongua",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jojongua"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    0,
+    33,
+    34
+   ],
+   "loc": [
+    -991.0,
+    -610.0,
+    null
+   ],
+   "lvl": "8",
+   "n": "Jyle Windstorm",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jyle_Windstorm"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Always"
+   ],
+   "drops": [
+    13,
+    45
+   ],
+   "loc": [
+    -181.0,
+    -340.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Lynuga",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lynuga"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    36,
+    39,
+    95
+   ],
+   "loc": [
+    -1470.0,
+    47.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Rell Ostodl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rell_Ostodl"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    110.0,
+    100.0,
+    null
+   ],
+   "lvl": "14-16",
+   "n": "Slayer Captain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Slayer_Captain"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    85.0,
+    -385.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Spore Guardian",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Spore_Guardian"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "13",
+   "n": "Sylp Tyanathin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sylp_Tyanathin"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    -1470.0,
+    47.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Tal Godin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tal_Godin"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    362.0,
+    -436.0,
+    null
+   ],
+   "lvl": "13",
+   "n": "Tann Cellus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tann_Cellus"
+  },
+  {
+   "dr": [
+    null,
+    "Uncommon",
+    null
+   ],
+   "drops": [
+    0,
+    28,
+    37
+   ],
+   "loc": [
+    -1470.0,
+    47.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "Zepin Winsle",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Zepin_Winsle"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    119
+   ],
+   "loc": null,
+   "lvl": "10",
+   "n": "Zimbittle",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Zimbittle"
+  }
+ ],
+ "updated": "2026-05-25T18:01:18Z",
+ "wikiTitle": "Innothule Swamp",
+ "wikiUrl": "https://eqlwiki.com/index.php/Innothule_Swamp",
+ "zone": "innothule"
+}

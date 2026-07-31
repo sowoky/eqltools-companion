@@ -1,0 +1,938 @@
+{
+ "items": [
+  {
+   "n": "A Spider Venom Sac",
+   "u": "https://eqlwiki.com/index.php/A_Spider_Venom_Sac"
+  },
+  {
+   "g": 1,
+   "n": "A Tattered Note",
+   "u": "https://eqlwiki.com/index.php/A_Tattered_Note"
+  },
+  {
+   "n": "Ancient Coin",
+   "u": "https://eqlwiki.com/index.php/Ancient_Coin"
+  },
+  {
+   "g": 1,
+   "n": "Blade of Fiery Lamentations",
+   "u": "https://eqlwiki.com/index.php/Blade_of_Fiery_Lamentations"
+  },
+  {
+   "g": 1,
+   "n": "Blade of Xalgoz",
+   "u": "https://eqlwiki.com/index.php/Blade_of_Xalgoz"
+  },
+  {
+   "g": 1,
+   "n": "Cryptrobber's Knife",
+   "u": "https://eqlwiki.com/index.php/Cryptrobber's_Knife"
+  },
+  {
+   "n": "Crystallized Sulfur",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
+  },
+  {
+   "g": 1,
+   "n": "Dagger of Frost",
+   "u": "https://eqlwiki.com/index.php/Dagger_of_Frost"
+  },
+  {
+   "g": 1,
+   "n": "Deadwood Stave",
+   "u": "https://eqlwiki.com/index.php/Deadwood_Stave"
+  },
+  {
+   "g": 1,
+   "n": "Deathwatch Sword",
+   "u": "https://eqlwiki.com/index.php/Deathwatch_Sword"
+  },
+  {
+   "n": "Dusty Ransacker's Pack",
+   "u": "https://eqlwiki.com/index.php/Dusty_Ransacker's_Pack"
+  },
+  {
+   "n": "Faded Velishoul's Tome Page",
+   "u": "https://eqlwiki.com/index.php/Faded_Velishoul's_Tome_Page"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Great Staff",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Long Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Spear",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Flayed Skin Bracers",
+   "u": "https://eqlwiki.com/index.php/Flayed_Skin_Bracers"
+  },
+  {
+   "g": 1,
+   "n": "Frenzied Gnawer Tail",
+   "u": "https://eqlwiki.com/index.php/Frenzied_Gnawer_Tail"
+  },
+  {
+   "n": "Glove of Rallos Zek",
+   "u": "https://eqlwiki.com/index.php/Glove_of_Rallos_Zek"
+  },
+  {
+   "g": 1,
+   "n": "Golden Pendant",
+   "u": "https://eqlwiki.com/index.php/Golden_Pendant"
+  },
+  {
+   "g": 1,
+   "n": "Icy Blade",
+   "u": "https://eqlwiki.com/index.php/Icy_Blade"
+  },
+  {
+   "n": "Illegible Scroll",
+   "u": "https://eqlwiki.com/index.php/Illegible_Scroll"
+  },
+  {
+   "g": 1,
+   "n": "Kunzar Cloak",
+   "u": "https://eqlwiki.com/index.php/Kunzar_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Kunzar Mantle",
+   "u": "https://eqlwiki.com/index.php/Kunzar_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Kylong Hunting Knife",
+   "u": "https://eqlwiki.com/index.php/Kylong_Hunting_Knife"
+  },
+  {
+   "g": 1,
+   "n": "Kylong War Dagger",
+   "u": "https://eqlwiki.com/index.php/Kylong_War_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Luminary Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Luminary_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Mask of the Eight Eyes",
+   "u": "https://eqlwiki.com/index.php/Mask_of_the_Eight_Eyes"
+  },
+  {
+   "n": "Onyx",
+   "u": "https://eqlwiki.com/index.php/Onyx"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Earring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Power of Water",
+   "u": "https://eqlwiki.com/index.php/Power_of_Water"
+  },
+  {
+   "g": 1,
+   "n": "Ravener Tail Whip",
+   "u": "https://eqlwiki.com/index.php/Ravener_Tail_Whip"
+  },
+  {
+   "g": 1,
+   "n": "Rod of Battle",
+   "u": "https://eqlwiki.com/index.php/Rod_of_Battle"
+  },
+  {
+   "n": "Rune of Arrest",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Arrest"
+  },
+  {
+   "n": "Rune of Karana",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Karana"
+  },
+  {
+   "n": "Rune of Xegony",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Xegony"
+  },
+  {
+   "g": 1,
+   "n": "Sage's Battle Staff",
+   "u": "https://eqlwiki.com/index.php/Sage's_Battle_Staff"
+  },
+  {
+   "n": "Salil's Writ Pg. 90 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._90_(Left)"
+  },
+  {
+   "g": 1,
+   "n": "Shield of Spectral Essence",
+   "u": "https://eqlwiki.com/index.php/Shield_of_Spectral_Essence"
+  },
+  {
+   "g": 1,
+   "n": "Spear of Mortification",
+   "u": "https://eqlwiki.com/index.php/Spear_of_Mortification"
+  },
+  {
+   "n": "Spectral Pestle",
+   "u": "https://eqlwiki.com/index.php/Spectral_Pestle"
+  },
+  {
+   "g": 1,
+   "n": "Spectral Shroud",
+   "u": "https://eqlwiki.com/index.php/Spectral_Shroud"
+  },
+  {
+   "n": "Spider Legs",
+   "u": "https://eqlwiki.com/index.php/Spider_Legs"
+  },
+  {
+   "n": "Spider Silk",
+   "u": "https://eqlwiki.com/index.php/Spider_Silk"
+  },
+  {
+   "g": 1,
+   "n": "Spine Piercer",
+   "u": "https://eqlwiki.com/index.php/Spine_Piercer"
+  },
+  {
+   "g": 1,
+   "n": "Spirit Tome",
+   "u": "https://eqlwiki.com/index.php/Spirit_Tome"
+  },
+  {
+   "g": 1,
+   "n": "Staff of the Dreaded Gaze",
+   "u": "https://eqlwiki.com/index.php/Staff_of_the_Dreaded_Gaze"
+  },
+  {
+   "g": 1,
+   "n": "Strathbone Anti-Venom",
+   "u": "https://eqlwiki.com/index.php/Strathbone_Anti-Venom"
+  },
+  {
+   "g": 1,
+   "n": "Strathbone Shell Shield",
+   "u": "https://eqlwiki.com/index.php/Strathbone_Shell_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Strathbone Silk",
+   "u": "https://eqlwiki.com/index.php/Strathbone_Silk"
+  },
+  {
+   "n": "The Scent of Marr",
+   "u": "https://eqlwiki.com/index.php/The_Scent_of_Marr"
+  },
+  {
+   "g": 1,
+   "n": "Tombcarver",
+   "u": "https://eqlwiki.com/index.php/Tombcarver"
+  },
+  {
+   "g": 1,
+   "n": "Truesilver Mail Boots",
+   "u": "https://eqlwiki.com/index.php/Truesilver_Mail_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Truesilver Mail Bracelets",
+   "u": "https://eqlwiki.com/index.php/Truesilver_Mail_Bracelets"
+  },
+  {
+   "g": 1,
+   "n": "Truesilver Mail Coif",
+   "u": "https://eqlwiki.com/index.php/Truesilver_Mail_Coif"
+  },
+  {
+   "g": 1,
+   "n": "Truesilver Mail Gloves",
+   "u": "https://eqlwiki.com/index.php/Truesilver_Mail_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Truesilver Mail Pants",
+   "u": "https://eqlwiki.com/index.php/Truesilver_Mail_Pants"
+  },
+  {
+   "g": 1,
+   "n": "Truesilver Mail Shirt",
+   "u": "https://eqlwiki.com/index.php/Truesilver_Mail_Shirt"
+  },
+  {
+   "g": 1,
+   "n": "Truesilver Mail Sleeves",
+   "u": "https://eqlwiki.com/index.php/Truesilver_Mail_Sleeves"
+  },
+  {
+   "n": "Velishoul's Tome Pg.43",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg.43"
+  },
+  {
+   "n": "Velishoul's Tome Pg.44",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg.44"
+  },
+  {
+   "n": "Words of Acquisition (Azia)",
+   "u": "https://eqlwiki.com/index.php/Words_of_Acquisition_(Azia)"
+  },
+  {
+   "n": "Words of Coercion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Coercion"
+  },
+  {
+   "n": "Words of Dark Paths",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dark_Paths"
+  },
+  {
+   "n": "Words of Dissemination",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dissemination"
+  },
+  {
+   "n": "Words of Duress",
+   "u": "https://eqlwiki.com/index.php/Words_of_Duress"
+  },
+  {
+   "n": "Words of Haunting",
+   "u": "https://eqlwiki.com/index.php/Words_of_Haunting"
+  },
+  {
+   "n": "Words of Motion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Motion"
+  },
+  {
+   "n": "Words of the Incorporeal",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Incorporeal"
+  },
+  {
+   "g": 1,
+   "n": "Xalgozian Fang",
+   "u": "https://eqlwiki.com/index.php/Xalgozian_Fang"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    51
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "A Freed Soul",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Freed_Soul"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    17
+   ],
+   "loc": null,
+   "lvl": "37",
+   "n": "a frenzied gnawer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_frenzied_gnawer"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    0,
+    7,
+    42,
+    43,
+    47
+   ],
+   "loc": null,
+   "lvl": "32-35",
+   "n": "briarweb spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Briarweb_spider"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare",
+    "Common",
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    7,
+    34,
+    42,
+    43,
+    48,
+    68
+   ],
+   "loc": [
+    136.0,
+    170.0,
+    null
+   ],
+   "lvl": "29-32",
+   "n": "bristleweb spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Bristleweb_Spider"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    30
+   ],
+   "loc": [
+    341.0,
+    -98.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "enraged ravener",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Enraged_ravener"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    36,
+    41,
+    45
+   ],
+   "loc": null,
+   "lvl": "35",
+   "n": "enraged spectral librarian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Enraged_spectral_librarian"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    21,
+    24,
+    39
+   ],
+   "loc": [
+    -161.0,
+    654.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "failed crypt raider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Failed_crypt_raider"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    30,
+    52
+   ],
+   "loc": [
+    -224.0,
+    281.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "famished ravener",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Famished_ravener"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    5,
+    7,
+    27,
+    30,
+    47,
+    48,
+    58
+   ],
+   "loc": [
+    126.0,
+    -83.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "frenzied strathbone",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Frenzied_Strathbone"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    30
+   ],
+   "loc": [
+    181.0,
+    -647.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "gorged ravener",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Gorged_ravener"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    19,
+    50,
+    51,
+    67
+   ],
+   "loc": [
+    -48.0,
+    568.0,
+    null
+   ],
+   "lvl": "33-38",
+   "n": "guardian of Xalgoz",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Guardian_Of_Xalgoz"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    20,
+    26,
+    30
+   ],
+   "loc": [
+    181.0,
+    -647.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "hungered ravener",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Hungered_Ravener"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    9,
+    12,
+    33,
+    53,
+    54,
+    57
+   ],
+   "loc": [
+    56.0,
+    536.0,
+    null
+   ],
+   "lvl": "31 - 35",
+   "n": "minion of Xalgoz",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Minion_of_Xalgoz"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    30,
+    31
+   ],
+   "loc": [
+    145.0,
+    62.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "Ravener",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ravener"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    9,
+    32,
+    56,
+    57
+   ],
+   "loc": [
+    -79.0,
+    703.0,
+    null
+   ],
+   "lvl": "39-40",
+   "n": "reaver of Xalgoz",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Reaver_of_Xalgoz"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    13,
+    14,
+    15,
+    16,
+    28
+   ],
+   "loc": [
+    -120.0,
+    536.0,
+    null
+   ],
+   "lvl": "34 / KC: 41 - 46 ?",
+   "n": "skeletal guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Skeletal_Guardian"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    93.0,
+    -440.0,
+    null
+   ],
+   "lvl": "29-33",
+   "n": "skeletal minion",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Skeletal_Minion"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    18,
+    34,
+    35,
+    59,
+    60,
+    61,
+    62,
+    64
+   ],
+   "loc": [
+    -55.0,
+    -236.0,
+    null
+   ],
+   "lvl": "29-33",
+   "n": "skeletal warder",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Skeletal_Warder"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    10,
+    38,
+    40,
+    51,
+    54,
+    63,
+    66
+   ],
+   "loc": null,
+   "lvl": "30-35",
+   "n": "spectral guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Spectral_Guardian"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    22,
+    23,
+    36,
+    41,
+    45
+   ],
+   "loc": [
+    116.0,
+    -415.0,
+    null
+   ],
+   "lvl": "33-35",
+   "n": "spectral librarian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Spectral_librarian"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    7,
+    33,
+    37,
+    42,
+    43,
+    47,
+    48,
+    49,
+    57,
+    65,
+    67
+   ],
+   "loc": [
+    135.0,
+    40.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "strathbone healer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Strathbone_Healer"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    25,
+    47
+   ],
+   "loc": [
+    175.0,
+    71.0,
+    null
+   ],
+   "lvl": "35-37",
+   "n": "strathbone runelord",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Strathbone_Runelord"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    0,
+    42,
+    47,
+    48,
+    49,
+    54,
+    58
+   ],
+   "loc": null,
+   "lvl": "30-34",
+   "n": "strathbone spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Strathbone_spider"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    23,
+    36,
+    45
+   ],
+   "loc": [
+    115.0,
+    -395.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "tortured librarian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Tortured_librarian"
+  },
+  {
+   "dr": [
+    null,
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    29,
+    44,
+    55
+   ],
+   "loc": [
+    62.0,
+    -516.0,
+    -108.0
+   ],
+   "lvl": "34-36",
+   "n": "warder of Xalgoz",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Warder_of_Xalgoz"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    4,
+    40,
+    46,
+    69
+   ],
+   "loc": [
+    -112.0,
+    560.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Xalgoz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Xalgoz"
+  }
+ ],
+ "updated": "2026-05-25T18:17:58Z",
+ "wikiTitle": "Kaesora",
+ "wikiUrl": "https://eqlwiki.com/index.php/Kaesora",
+ "zone": "kaesora"
+}

@@ -1,0 +1,53 @@
+{
+  "name": "eqltools-companion",
+  "productName": "EQL Tools Companion",
+  "version": "0.1.0",
+  "description": "EQL Tools companion — live log reader, kill tracker, quest-item loot alerts, optional in-game overlay.",
+  "main": "main.js",
+  "author": "eqltools.com",
+  "license": "AGPL-3.0",
+  "scripts": {
+    "sync": "node scripts/sync-vendor.mjs",
+    "predev": "npm run sync",
+    "dev": "electron .",
+    "simulate": "node scripts/simulate-log.mjs",
+    "predist:win": "npm run sync",
+    "dist:win": "electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "^38.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.eqltools.companion",
+    "productName": "EQL Tools Companion",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**",
+      "overlay/**",
+      "vendor/**"
+    ],
+    "extraResources": [
+      {
+        "from": "data-snapshot",
+        "to": "data"
+      }
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

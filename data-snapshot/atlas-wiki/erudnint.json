@@ -1,0 +1,754 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Bamboo Tanto Bo",
+   "u": "https://eqlwiki.com/index.php/Bamboo_Tanto_Bo"
+  },
+  {
+   "g": 1,
+   "n": "Bamboo Wakizashi Bo",
+   "u": "https://eqlwiki.com/index.php/Bamboo_Wakizashi_Bo"
+  },
+  {
+   "g": 1,
+   "n": "Battle Staff",
+   "u": "https://eqlwiki.com/index.php/Battle_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Cast-Iron Rapier",
+   "u": "https://eqlwiki.com/index.php/Cast-Iron_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Forged Dagger",
+   "u": "https://eqlwiki.com/index.php/Forged_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Tattered Gnomish Cloak",
+   "u": "https://eqlwiki.com/index.php/Tattered_Gnomish_Cloak"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    892.0,
+    761.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Akbaq Salid",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Akbaq_Salid"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    744.0,
+    919.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Chief Adair",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Chief_Adair"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    711.0,
+    920.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Dalles Cekus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dalles_Cekus"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    887.0,
+    712.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Ghanlin Skyphire",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ghanlin_Skyphire"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    917.0,
+    744.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Josper Kenshed",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Josper_Kenshed"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    537.0,
+    776.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Lanken Rjarn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lanken_Rjarn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    761.0,
+    556.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Mairee Silentone",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mairee_Silentone"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    740.0,
+    890.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Markus Jaevins",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Markus_Jaevins"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    503.0,
+    744.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Nikina Sparlek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nikina_Sparlek"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "61",
+   "n": "Nolusia Finharn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nolusia_Finharn"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    6
+   ],
+   "loc": [
+    718.0,
+    804.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Raskena Djor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Raskena_Djor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    742.0,
+    912.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Reba Garus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Reba_Garus"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    764.0,
+    834.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Sahana Heartlyn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sahana_Heartlyn"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    715.0,
+    628.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Balthar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Balthar"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    4
+   ],
+   "loc": [
+    514.0,
+    751.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Charin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Charin"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    5
+   ],
+   "loc": [
+    635.0,
+    850.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Cholis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Cholis"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    5
+   ],
+   "loc": [
+    696.0,
+    795.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Colm",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Colm"
+  },
+  {
+   "dr": [
+    "Rare",
+    null,
+    "Rare"
+   ],
+   "drops": [
+    0,
+    2,
+    3
+   ],
+   "loc": [
+    712.0,
+    825.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Corin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Corin"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    877.0,
+    763.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Dadil",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Dadil"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    624.0,
+    729.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Desde",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Desde"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    691.0,
+    922.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Edan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Edan"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    715.0,
+    898.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Golas",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Golas"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    713.0,
+    646.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Hylin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Hylin"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    535.0,
+    724.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Jeast",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Jeast"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    4
+   ],
+   "loc": [
+    751.0,
+    864.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Knox",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Knox"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    4
+   ],
+   "loc": [
+    716.0,
+    647.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Laphis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Laphis"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    null
+   ],
+   "drops": [
+    0,
+    2
+   ],
+   "loc": [
+    710.0,
+    822.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Lixen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Lixen"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    799.0,
+    795.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Nolbain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Nolbain"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    725.0,
+    584.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Ogen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Ogen"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    723.0,
+    793.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Phis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Phis"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    544.0,
+    862.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Rysin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Rysin"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    858.0,
+    741.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Thron",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Thron"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    3
+   ],
+   "loc": [
+    716.0,
+    776.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Tigonus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Tigonus"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    618.0,
+    867.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Vanil",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Vanil"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    3
+   ],
+   "loc": [
+    558.0,
+    862.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Sentinel Wren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Wren"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    603.0,
+    814.0,
+    null
+   ],
+   "lvl": "11",
+   "n": "Shondo Billin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shondo_Billin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    683.0,
+    575.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Slansin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Slansin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    683.0,
+    575.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Slansin Denvin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Slansin_Denvin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    727.0,
+    805.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Toresian Fhabel",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Toresian_Fhabel"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    531.0,
+    722.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Trilani Parlone",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trilani_Parlone"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    726.0,
+    856.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Tyrena Monosty",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tyrena_Monosty"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    719.0,
+    884.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Vasile Jahnir",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vasile_Jahnir"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    571.0,
+    861.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Warden Lius",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Warden_Lius"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    6
+   ],
+   "loc": [
+    810.0,
+    777.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Whes Nareya",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Whes_Nareya"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    783.0,
+    834.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Wick Ashfield",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wick_Ashfield"
+  }
+ ],
+ "updated": "2026-05-19T09:18:57Z",
+ "wikiTitle": "Erudin Palace",
+ "wikiUrl": "https://eqlwiki.com/index.php/Erudin_Palace",
+ "zone": "erudnint"
+}

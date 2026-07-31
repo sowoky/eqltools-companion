@@ -1,0 +1,630 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Bamboo Wakizashi Bo",
+   "u": "https://eqlwiki.com/index.php/Bamboo_Wakizashi_Bo"
+  },
+  {
+   "n": "Essence of Rathe",
+   "u": "https://eqlwiki.com/index.php/Essence_of_Rathe"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Morning Star",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Rapier",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Scimitar",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Spear",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Forged Bastard Sword",
+   "u": "https://eqlwiki.com/index.php/Forged_Bastard_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Large Round Shield",
+   "u": "https://eqlwiki.com/index.php/Large_Round_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Long Sword",
+   "u": "https://eqlwiki.com/index.php/Long_Sword"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 378",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._378"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 379",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._379"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 400",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._400"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 401",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._401"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 415",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._415"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 416",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._416"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 449",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._449"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 450",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._450"
+  },
+  {
+   "n": "Ogre Head",
+   "u": "https://eqlwiki.com/index.php/Ogre_Head"
+  },
+  {
+   "g": 1,
+   "n": "Robe of Enshroudment",
+   "u": "https://eqlwiki.com/index.php/Robe_of_Enshroudment"
+  },
+  {
+   "g": 1,
+   "n": "Round Shield",
+   "u": "https://eqlwiki.com/index.php/Round_Shield"
+  },
+  {
+   "n": "Rune of Frost",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Frost"
+  },
+  {
+   "n": "Rune of the Astral",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Astral"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Small Round Shield",
+   "u": "https://eqlwiki.com/index.php/Small_Round_Shield"
+  },
+  {
+   "n": "Troll Head",
+   "u": "https://eqlwiki.com/index.php/Troll_Head"
+  },
+  {
+   "n": "Words of Acquisition (Beza)",
+   "u": "https://eqlwiki.com/index.php/Words_of_Acquisition_(Beza)"
+  },
+  {
+   "n": "Words of Bondage",
+   "u": "https://eqlwiki.com/index.php/Words_of_Bondage"
+  },
+  {
+   "n": "Words of Crippling Force",
+   "u": "https://eqlwiki.com/index.php/Words_of_Crippling_Force"
+  },
+  {
+   "n": "Words of Grappling",
+   "u": "https://eqlwiki.com/index.php/Words_of_Grappling"
+  },
+  {
+   "n": "Words of Odus",
+   "u": "https://eqlwiki.com/index.php/Words_of_Odus"
+  },
+  {
+   "n": "Words of Requisition",
+   "u": "https://eqlwiki.com/index.php/Words_of_Requisition"
+  },
+  {
+   "n": "Words of the Ethereal",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Ethereal"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -372.0,
+    -222.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Capee",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Capee"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    0.0,
+    -115.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Divn L`Crit",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Divn_L%60Crit"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    5,
+    10,
+    21,
+    24
+   ],
+   "loc": [
+    -15.0,
+    0.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Guard F`Lok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_F%60Lok"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    21
+   ],
+   "loc": [
+    -190.0,
+    -121.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Guard Ixtaz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Ixtaz"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    26
+   ],
+   "loc": [
+    -557.0,
+    -418.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Guard Lumpin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Lumpin"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    9
+   ],
+   "loc": [
+    -15.0,
+    0.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Guard N`Mar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_N%60Mar"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    21
+   ],
+   "loc": [
+    203.0,
+    -178.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Guard Punox",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Punox"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    21
+   ],
+   "loc": [
+    -1.0,
+    -22.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard S'Lon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_S'Lon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    15.0,
+    1.0,
+    null
+   ],
+   "lvl": "??",
+   "n": "Guard S`Kor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_S%60Kor"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    6,
+    21
+   ],
+   "loc": [
+    -253.0,
+    -289.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Guard Swang",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Swang"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    25
+   ],
+   "loc": [
+    0.0,
+    -109.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Guard T`Kix",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_T%60Kix"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    9
+   ],
+   "loc": [
+    15.0,
+    0.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Guard Tolax",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Tolax"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    10,
+    21
+   ],
+   "loc": [
+    203.0,
+    -178.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Zexus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Zexus"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    null,
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    22,
+    23,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33
+   ],
+   "loc": [
+    -261.0,
+    -237.0,
+    null
+   ],
+   "lvl": "44",
+   "n": "Jacker",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jacker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -310.0,
+    -315.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "Karnan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Karnan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -32.0,
+    -108.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Lisv D`Unnar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lisv_D%60Unnar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -311.0,
+    -222.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "Mrak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mrak"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -367.0,
+    -438.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Oosa Shadowthumper",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Oosa_Shadowthumper"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    31.0,
+    -110.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Psal G`Noir",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Psal_G%60Noir"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    19
+   ],
+   "loc": [
+    -336.0,
+    -338.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Pungla",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Pungla"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    3
+   ],
+   "loc": [
+    234.0,
+    -88.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Rolynn Bdoph",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rolynn_Bdoph"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -340.0,
+    -209.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Svunsa",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Svunsa"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -372.0,
+    -317.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Uglan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Uglan"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    0.0,
+    -30.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "X`Ta Tempi",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/X%60Ta_Tempi"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    1.0,
+    -37.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "X`Ta Timpi",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/X%60Ta_Timpi"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    -13.0,
+    -50.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "X`Ta Tompi",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/X%60Ta_Tompi"
+  }
+ ],
+ "updated": "2026-05-07T07:52:34Z",
+ "wikiTitle": "Neriak Foreign Quarter",
+ "wikiUrl": "https://eqlwiki.com/index.php/Neriak_Foreign_Quarter",
+ "zone": "neriaka"
+}

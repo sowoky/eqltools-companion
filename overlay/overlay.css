@@ -1,0 +1,50 @@
+/* Overlay — readable over game footage: dark translucent panel, hard text
+   shadows, nothing subtle. The whole window is transparent; #panel is the
+   visible surface. */
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; background: transparent; overflow: hidden; }
+body {
+  font: 13px/1.4 "Segoe UI", system-ui, sans-serif;
+  color: #ece8f7;
+  text-shadow: 0 1px 2px rgba(0,0,0,.9);
+  user-select: none;
+}
+#panel {
+  height: 100%; display: flex; flex-direction: column;
+  background: rgba(11, 9, 19, .78);
+  border: 1px solid rgba(201, 149, 42, .55);
+  border-radius: 8px; overflow: hidden;
+}
+#bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 9px;
+  background: rgba(23, 18, 39, .9);
+  border-bottom: 1px solid rgba(201, 149, 42, .35);
+  -webkit-app-region: drag;            /* the whole bar drags the window */
+  font-weight: 600; color: #e7b94e; font-size: 12px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#bar span { flex: 1; overflow: hidden; text-overflow: ellipsis; }
+#btnPin {
+  -webkit-app-region: no-drag;
+  background: none; border: 1px solid rgba(201,149,42,.4); border-radius: 5px;
+  color: #e7b94e; cursor: pointer; font-size: 11px; padding: 1px 6px;
+}
+#btnPin:hover { border-color: #e7b94e; }
+body.through #btnPin { display: none; }  /* unreachable anyway — the hotkey is the way back */
+
+#feed { list-style: none; padding: 4px 8px; overflow: hidden; flex: 1; }
+#feed li { padding: 3px 0; border-bottom: 1px solid rgba(44, 37, 69, .6); }
+#feed li:last-child { border-bottom: none; }
+#feed .kill { color: #9086ad; font-size: 12px; }
+#feed .loot { color: #ccc4de; }
+#feed .quest {
+  color: #f6dfa0;
+  background: rgba(201, 149, 42, .14);
+  border-left: 3px solid #e7b94e;
+  padding: 4px 6px; border-radius: 4px; margin: 2px 0;
+}
+#feed .quest b { color: #fff; }
+#feed .qn { color: #9ccc9c; cursor: pointer; text-decoration: underline; text-decoration-color: rgba(156,204,156,.5); }
+#feed .qn:hover { color: #f6dfa0; }
+#feed .rew { display: block; font-size: 12px; color: #ccc4de; }

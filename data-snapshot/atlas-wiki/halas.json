@@ -1,0 +1,465 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Club",
+   "u": "https://eqlwiki.com/index.php/Club"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    617.0,
+    314.0,
+    null
+   ],
+   "lvl": "3 - 5",
+   "n": "a Sled Dog",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sled_Dog"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    640.0,
+    -460.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Adon McMarrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Adon_McMarrin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    487.0,
+    230.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Alec McMarrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Alec_McMarrin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    548.0,
+    58.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Andres McMarrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Andres_McMarrin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    354.0,
+    356.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Arantir Karondor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Arantir_Karondor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    204.0,
+    172.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Cappi McTarnigal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cappi_McTarnigal"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    367.0,
+    -331.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Cet Hydorn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cet_Hydorn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    487.0,
+    230.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Cian McMarrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cian_McMarrin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    90.0,
+    -262.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Conner O'Cooper",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Conner_O'Cooper"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    471.0,
+    -450.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Dargon McPherson",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dargon_McPherson"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    277.0,
+    165.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Dun McDowell",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dun_McDowell"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    571.0,
+    191.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Elgar Donbrand",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Elgar_Donbrand"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    274.0,
+    179.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Elyn Connoy",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Elyn_Connoy"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    596.0,
+    184.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Field Priest Keven",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Field_Priest_Keven"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    128.0,
+    390.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Gorth Bearsoul",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gorth_Bearsoul"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    312.0,
+    444.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Jinkus Felligan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jinkus_Felligan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    199.0,
+    112.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Kevon McTarnigal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kevon_McTarnigal"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    561.0,
+    -493.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Kylan O`Danos",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kylan_O%60Danos"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    369.0,
+    -287.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Lakgara the Righteous",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lakgara_the_Righteous"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    567.0,
+    -411.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Lysbith McNaff",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lysbith_McNaff"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    334.0,
+    485.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Margyn McCann",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Margyn_McCann"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    212.0,
+    166.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Marton Stringsinger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marton_Stringsinger"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    13.0,
+    17.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Mils McMarrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mils_McMarrin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    193.0,
+    109.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Nal McMarrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nal_McMarrin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    11.0,
+    -15.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Oli McMarrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Oli_McMarrin"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    361.0,
+    -251.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Raven",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Raven"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    365.0,
+    -278.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Renth McLanis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Renth_McLanis"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    333.0,
+    358.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Shamus Felligan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shamus_Felligan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    568.0,
+    333.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Shannis MacDarren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shanis_MacDarren"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    296.0,
+    339.0,
+    null
+   ],
+   "lvl": "1",
+   "n": "Soulbinder Jarle",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Soulbinder_Jarle"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    105.0,
+    -202.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Thadres Thyme",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Thadres_Thyme"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -467.0,
+    12.0,
+    null
+   ],
+   "lvl": "1",
+   "n": "The Gwenavyne",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Gwenavyne"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    288.0,
+    374.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Waltor Felligan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Waltor_Felligan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    184.0,
+    157.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Ysanna MacGibbon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ysanna_MacGibbon"
+  }
+ ],
+ "updated": "2026-05-26T09:46:37Z",
+ "wikiTitle": "Halas",
+ "wikiUrl": "https://eqlwiki.com/index.php/Halas",
+ "zone": "halas"
+}

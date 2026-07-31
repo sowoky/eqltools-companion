@@ -1,0 +1,1239 @@
+{
+ "items": [
+  {
+   "n": "Ale",
+   "u": "https://eqlwiki.com/index.php/Ale"
+  },
+  {
+   "n": "Baby Joseph Sayer",
+   "u": "https://eqlwiki.com/index.php/Baby_Joseph_Sayer"
+  },
+  {
+   "g": 1,
+   "n": "Balanced Rat Tooth",
+   "u": "https://eqlwiki.com/index.php/Balanced_Rat_Tooth"
+  },
+  {
+   "g": 1,
+   "n": "Bark Splinted Shoulderpads",
+   "u": "https://eqlwiki.com/index.php/Bark_Splinted_Shoulderpads"
+  },
+  {
+   "g": 1,
+   "n": "Bead Necklace",
+   "u": "https://eqlwiki.com/index.php/Bead_Necklace"
+  },
+  {
+   "n": "Bear Meat",
+   "u": "https://eqlwiki.com/index.php/Bear_Meat"
+  },
+  {
+   "n": "Blackburrow Cask",
+   "u": "https://eqlwiki.com/index.php/Blackburrow_Cask"
+  },
+  {
+   "n": "Blackburrow Gnoll Pelt",
+   "u": "https://eqlwiki.com/index.php/Blackburrow_Gnoll_Pelt"
+  },
+  {
+   "n": "Blackburrow Gnoll Skin",
+   "u": "https://eqlwiki.com/index.php/Blackburrow_Gnoll_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Bloodstone Ring",
+   "u": "https://eqlwiki.com/index.php/Bloodstone_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Burrowing Goggles",
+   "u": "https://eqlwiki.com/index.php/Burrowing_Goggles"
+  },
+  {
+   "n": "Cat's Eye Agate",
+   "u": "https://eqlwiki.com/index.php/Cat's_Eye_Agate"
+  },
+  {
+   "n": "Chunk of Meat",
+   "u": "https://eqlwiki.com/index.php/Chunk_of_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Clay Totem",
+   "u": "https://eqlwiki.com/index.php/Clay_Totem"
+  },
+  {
+   "g": 1,
+   "n": "Copper Band",
+   "u": "https://eqlwiki.com/index.php/Copper_Band"
+  },
+  {
+   "g": 1,
+   "n": "Cracked Staff",
+   "u": "https://eqlwiki.com/index.php/Cracked_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Crude Arrow",
+   "u": "https://eqlwiki.com/index.php/Crude_Arrow"
+  },
+  {
+   "g": 1,
+   "n": "Dark Runed Leggings",
+   "u": "https://eqlwiki.com/index.php/Dark_Runed_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Darkpaw Sash",
+   "u": "https://eqlwiki.com/index.php/Darkpaw_Sash"
+  },
+  {
+   "g": 1,
+   "n": "Elven Charm Necklace",
+   "u": "https://eqlwiki.com/index.php/Elven_Charm_Necklace"
+  },
+  {
+   "n": "Flawless Gnoll Hides",
+   "u": "https://eqlwiki.com/index.php/Flawless_Gnoll_Hides"
+  },
+  {
+   "g": 1,
+   "n": "Giant Snake Fang",
+   "u": "https://eqlwiki.com/index.php/Giant_Snake_Fang"
+  },
+  {
+   "n": "Giant Snake Rattle",
+   "u": "https://eqlwiki.com/index.php/Giant_Snake_Rattle"
+  },
+  {
+   "n": "Gnoll Fang",
+   "u": "https://eqlwiki.com/index.php/Gnoll_Fang"
+  },
+  {
+   "n": "Gnoll Head",
+   "u": "https://eqlwiki.com/index.php/Gnoll_Head"
+  },
+  {
+   "g": 1,
+   "n": "Gnoll Hide Lariat",
+   "u": "https://eqlwiki.com/index.php/Gnoll_Hide_Lariat"
+  },
+  {
+   "n": "Gnoll Pup Scalp",
+   "u": "https://eqlwiki.com/index.php/Gnoll_Pup_Scalp"
+  },
+  {
+   "n": "Gnoll Scalp",
+   "u": "https://eqlwiki.com/index.php/Gnoll_Scalp"
+  },
+  {
+   "n": "Grizzly Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Grizzly_Bear_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Hardened Bark Breastplate",
+   "u": "https://eqlwiki.com/index.php/Hardened_Bark_Breastplate"
+  },
+  {
+   "n": "High Quality Bear Skin",
+   "u": "https://eqlwiki.com/index.php/High_Quality_Bear_Skin"
+  },
+  {
+   "n": "High Quality Gnoll Fur",
+   "u": "https://eqlwiki.com/index.php/High_Quality_Gnoll_Fur"
+  },
+  {
+   "g": 1,
+   "n": "Ill-Fitting Robes",
+   "u": "https://eqlwiki.com/index.php/Ill-Fitting_Robes"
+  },
+  {
+   "g": 1,
+   "n": "Ill-Fitting Slippers",
+   "u": "https://eqlwiki.com/index.php/Ill-Fitting_Slippers"
+  },
+  {
+   "g": 1,
+   "n": "Keg Mallet",
+   "u": "https://eqlwiki.com/index.php/Keg_Mallet"
+  },
+  {
+   "g": 1,
+   "n": "Leather Whip",
+   "u": "https://eqlwiki.com/index.php/Leather_Whip"
+  },
+  {
+   "n": "Low Quality Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Low_Quality_Bear_Skin"
+  },
+  {
+   "n": "Malachite",
+   "u": "https://eqlwiki.com/index.php/Malachite"
+  },
+  {
+   "n": "Medium Quality Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Medium_Quality_Bear_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Onyx Earring",
+   "u": "https://eqlwiki.com/index.php/Onyx_Earring"
+  },
+  {
+   "n": "Patch of Gnoll Fur",
+   "u": "https://eqlwiki.com/index.php/Patch_of_Gnoll_Fur"
+  },
+  {
+   "n": "Perfect Gnoll Skin",
+   "u": "https://eqlwiki.com/index.php/Perfect_Gnoll_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Pub Pants",
+   "u": "https://eqlwiki.com/index.php/Pub_Pants"
+  },
+  {
+   "n": "Rain Water",
+   "u": "https://eqlwiki.com/index.php/Rain_Water"
+  },
+  {
+   "g": 1,
+   "n": "Rat Paw Talisman",
+   "u": "https://eqlwiki.com/index.php/Rat_Paw_Talisman"
+  },
+  {
+   "n": "Ration",
+   "u": "https://eqlwiki.com/index.php/Ration"
+  },
+  {
+   "g": 1,
+   "n": "Raw-Hide Arm Guard",
+   "u": "https://eqlwiki.com/index.php/Raw-Hide_Arm_Guard"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Boots",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Cloak",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Gloves",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Gorget",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Gorget"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Shoulderpads",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Shoulderpads"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Sleeves",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Refugee Shroud",
+   "u": "https://eqlwiki.com/index.php/Refugee_Shroud"
+  },
+  {
+   "n": "Ruined Bear Pelt",
+   "u": "https://eqlwiki.com/index.php/Ruined_Bear_Pelt"
+  },
+  {
+   "n": "Ruined Blackburrow Gnoll Pelt",
+   "u": "https://eqlwiki.com/index.php/Ruined_Blackburrow_Gnoll_Pelt"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Gnoll Chain Bracelet",
+   "u": "https://eqlwiki.com/index.php/Ruined_Gnoll_Chain_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Gnoll Chain Coif",
+   "u": "https://eqlwiki.com/index.php/Ruined_Gnoll_Chain_Coif"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Gnoll Leather Boots",
+   "u": "https://eqlwiki.com/index.php/Ruined_Gnoll_Leather_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Gnoll Leather Gloves",
+   "u": "https://eqlwiki.com/index.php/Ruined_Gnoll_Leather_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Gnoll Leather Sleeves",
+   "u": "https://eqlwiki.com/index.php/Ruined_Gnoll_Leather_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Gnoll Leather Tunic",
+   "u": "https://eqlwiki.com/index.php/Ruined_Gnoll_Leather_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Gnoll Leather Wristbands",
+   "u": "https://eqlwiki.com/index.php/Ruined_Gnoll_Leather_Wristbands"
+  },
+  {
+   "g": 1,
+   "n": "Runed Sabertooth Girdle",
+   "u": "https://eqlwiki.com/index.php/Runed_Sabertooth_Girdle"
+  },
+  {
+   "g": 1,
+   "n": "Runed Shawl",
+   "u": "https://eqlwiki.com/index.php/Runed_Shawl"
+  },
+  {
+   "g": 1,
+   "n": "Runed Totem Staff",
+   "u": "https://eqlwiki.com/index.php/Runed_Totem_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Rusty_Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Knuckles",
+   "u": "https://eqlwiki.com/index.php/Rusty_Knuckles"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Long Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Mace",
+   "u": "https://eqlwiki.com/index.php/Rusty_Mace"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Morning Star",
+   "u": "https://eqlwiki.com/index.php/Rusty_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Rapier",
+   "u": "https://eqlwiki.com/index.php/Rusty_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Scimitar",
+   "u": "https://eqlwiki.com/index.php/Rusty_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Scythe",
+   "u": "https://eqlwiki.com/index.php/Rusty_Scythe"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Shortened Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Shortened_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Spiked Shoulderpads",
+   "u": "https://eqlwiki.com/index.php/Rusty_Spiked_Shoulderpads"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Warhammer",
+   "u": "https://eqlwiki.com/index.php/Rusty_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Sabertooth Short Bow",
+   "u": "https://eqlwiki.com/index.php/Sabertooth_Short_Bow"
+  },
+  {
+   "n": "Severed Gnoll Foot",
+   "u": "https://eqlwiki.com/index.php/Severed_Gnoll_Foot"
+  },
+  {
+   "g": 1,
+   "n": "Sharp Claws",
+   "u": "https://eqlwiki.com/index.php/Sharp_Claws"
+  },
+  {
+   "g": 1,
+   "n": "Sharpshooter's Bandana",
+   "u": "https://eqlwiki.com/index.php/Sharpshooter's_Bandana"
+  },
+  {
+   "n": "Short Beer",
+   "u": "https://eqlwiki.com/index.php/Short_Beer"
+  },
+  {
+   "g": 1,
+   "n": "Silver Earring",
+   "u": "https://eqlwiki.com/index.php/Silver_Earring"
+  },
+  {
+   "n": "Snake Egg",
+   "u": "https://eqlwiki.com/index.php/Snake_Egg"
+  },
+  {
+   "n": "Snake Fang",
+   "u": "https://eqlwiki.com/index.php/Snake_Fang"
+  },
+  {
+   "n": "Snake Meat",
+   "u": "https://eqlwiki.com/index.php/Snake_Meat"
+  },
+  {
+   "n": "Snake Venom Sac",
+   "u": "https://eqlwiki.com/index.php/Snake_Venom_Sac"
+  },
+  {
+   "g": 1,
+   "n": "Snakeskin Gloves",
+   "u": "https://eqlwiki.com/index.php/Snakeskin_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Snakeskin Mask",
+   "u": "https://eqlwiki.com/index.php/Snakeskin_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Spiked Buckler",
+   "u": "https://eqlwiki.com/index.php/Spiked_Buckler"
+  },
+  {
+   "g": 1,
+   "n": "Spiked Collar",
+   "u": "https://eqlwiki.com/index.php/Spiked_Collar"
+  },
+  {
+   "g": 1,
+   "n": "Studded Leather Collar",
+   "u": "https://eqlwiki.com/index.php/Studded_Leather_Collar"
+  },
+  {
+   "n": "Thick Grizzly Bear Skin",
+   "u": "https://eqlwiki.com/index.php/Thick_Grizzly_Bear_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Vagrant's Tunic",
+   "u": "https://eqlwiki.com/index.php/Vagrant's_Tunic"
+  },
+  {
+   "n": "Vial of Gnoll Blood",
+   "u": "https://eqlwiki.com/index.php/Vial_of_Gnoll_Blood"
+  },
+  {
+   "g": 1,
+   "n": "Well Worn Boots",
+   "u": "https://eqlwiki.com/index.php/Well_Worn_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Wicked Sallet",
+   "u": "https://eqlwiki.com/index.php/Wicked_Sallet"
+  },
+  {
+   "g": 1,
+   "n": "Worn Great Staff",
+   "u": "https://eqlwiki.com/index.php/Worn_Great_Staff"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Common",
+    null,
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare"
+   ],
+   "drops": [
+    7,
+    23,
+    27,
+    31,
+    40,
+    55,
+    57,
+    66,
+    68,
+    69,
+    70,
+    71,
+    73,
+    74,
+    76,
+    77,
+    82,
+    98
+   ],
+   "loc": [
+    144.0,
+    356.0,
+    null
+   ],
+   "lvl": "7-9",
+   "n": "a burly gnoll",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Burly_Gnoll"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    2,
+    44
+   ],
+   "loc": [
+    126.0,
+    -201.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "a giant plague rat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_giant_plague_rat"
+  },
+  {
+   "dr": [
+    "27.7%",
+    "28.7%",
+    "7.9%",
+    "4%",
+    "5.9%",
+    "7.9%"
+   ],
+   "drops": [
+    21,
+    22,
+    84,
+    85,
+    86,
+    87
+   ],
+   "loc": [
+    187.0,
+    88.0,
+    null
+   ],
+   "lvl": "7-9",
+   "n": "a giant snake",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Giant_Snake_(Blackburrow)"
+  },
+  {
+   "dr": [
+    "10.9%",
+    "31.3%",
+    "21.5%"
+   ],
+   "drops": [
+    7,
+    23,
+    40
+   ],
+   "loc": null,
+   "lvl": "5-7",
+   "n": "a gnoll",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gnoll"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    6,
+    7,
+    23,
+    40
+   ],
+   "loc": [
+    53.0,
+    356.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "a gnoll brewer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gnoll_Brewer"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    7,
+    8,
+    23,
+    31,
+    40,
+    75,
+    91
+   ],
+   "loc": [
+    23.0,
+    -341.0,
+    null
+   ],
+   "lvl": "13-15",
+   "n": "a gnoll commander",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gnoll_Commander"
+  },
+  {
+   "dr": [
+    "7.8%",
+    "32.6%",
+    "13.2%"
+   ],
+   "drops": [
+    7,
+    23,
+    40
+   ],
+   "loc": null,
+   "lvl": "5-15",
+   "n": "a gnoll guardsman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gnoll_Guardsman"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    23,
+    31,
+    45,
+    48,
+    65,
+    88,
+    89
+   ],
+   "loc": null,
+   "lvl": "15-17",
+   "n": "a gnoll high shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gnoll_High_Shaman"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    0,
+    7,
+    23,
+    26,
+    40,
+    72,
+    82
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a gnoll pup",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_gnoll_pup"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    92
+   ],
+   "loc": null,
+   "lvl": "7-11",
+   "n": "A gnoll shaman",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_gnoll_shaman_(Blackburrow)"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    7,
+    8,
+    20,
+    23,
+    31,
+    39,
+    40,
+    41,
+    52,
+    66,
+    68,
+    69,
+    71,
+    73,
+    74,
+    76,
+    77,
+    79,
+    95,
+    98
+   ],
+   "loc": [
+    -86.0,
+    117.0,
+    null
+   ],
+   "lvl": "13-15",
+   "n": "a gnoll tactician",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gnoll_Tactician"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    5,
+    12,
+    28,
+    30,
+    36,
+    38,
+    54,
+    93
+   ],
+   "loc": null,
+   "lvl": "9-11",
+   "n": "A Grizzly Bear",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Grizzly_Bear"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Always",
+    "Ultra Rare",
+    "Always",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    7,
+    23,
+    40,
+    56,
+    58,
+    59,
+    60,
+    61,
+    62,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    73,
+    74,
+    76,
+    77,
+    98
+   ],
+   "loc": null,
+   "lvl": "5-7",
+   "n": "a patrolling gnoll",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Patrolling_Gnoll"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    6.0,
+    -119.0,
+    null
+   ],
+   "lvl": "4-8",
+   "n": "a razorgill",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Razorgill"
+  },
+  {
+   "dr": [
+    "5.7%",
+    "34.3%",
+    "15.2%"
+   ],
+   "drops": [
+    7,
+    23,
+    40
+   ],
+   "loc": null,
+   "lvl": "3-5",
+   "n": "a scrawny gnoll",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Scrawny_Gnoll"
+  },
+  {
+   "dr": [
+    "22.4%",
+    "2.4%",
+    "35.3%",
+    "3.5%",
+    "3.5%"
+   ],
+   "drops": [
+    7,
+    8,
+    23,
+    91,
+    92
+   ],
+   "loc": null,
+   "lvl": "11-13",
+   "n": "an elite gnoll guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Elite_Gnoll_Guard"
+  },
+  {
+   "dr": [
+    "Always",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    17,
+    97
+   ],
+   "loc": [
+    160.0,
+    -385.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "Lord Elgnub",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Elgnub"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Uncommon",
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    23,
+    39,
+    83,
+    90,
+    91
+   ],
+   "loc": [
+    265.0,
+    -124.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Mannan of the Sabertooth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mannan_of_the_Sabertooth"
+  },
+  {
+   "dr": [
+    "Always",
+    "Rare",
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    6,
+    7,
+    34,
+    42
+   ],
+   "loc": [
+    53.0,
+    386.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Master Brewer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Master_Brewer"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    7,
+    15,
+    23,
+    48,
+    50,
+    64,
+    88
+   ],
+   "loc": [
+    89.0,
+    -147.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Refugee Splitpaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Refugee_Splitpaw"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    53,
+    55,
+    80
+   ],
+   "loc": [
+    -162.0,
+    452.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Refugee Splitpaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Refugee_Splitpaw_(Monk)"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    32,
+    33
+   ],
+   "loc": [
+    189.0,
+    140.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Sabertooth Clan Necromancer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sabertooth_Clan_Necromancer"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    29,
+    63
+   ],
+   "loc": [
+    -150.0,
+    384.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Sabertooth Overseer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sabertooth_Overseer"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    78,
+    81
+   ],
+   "loc": [
+    49.0,
+    357.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Sabertooth Overseer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Splitpaw_Sharpshooter"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    18,
+    23,
+    94
+   ],
+   "loc": [
+    -85.0,
+    -286.0,
+    null
+   ],
+   "lvl": "13",
+   "n": "Socho Darkpaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Socho_Darkpaw"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    7,
+    14,
+    23,
+    25,
+    35,
+    37,
+    39,
+    43,
+    47,
+    51,
+    75
+   ],
+   "loc": [
+    -97.0,
+    -38.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Splitpaw Commander",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Splitpaw_Commander"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    10,
+    96
+   ],
+   "loc": [
+    164.0,
+    157.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Splitpaw Explorer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Splitpaw_Explorer"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    16,
+    46
+   ],
+   "loc": [
+    66.0,
+    -21.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Splitpaw Sentry",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Splitpaw_Sentry"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    8,
+    13,
+    19,
+    24
+   ],
+   "loc": [
+    55.0,
+    -320.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "the gnoll high shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/The_gnoll_high_shaman"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    9,
+    11,
+    39,
+    49,
+    60,
+    75
+   ],
+   "loc": [
+    1210.0,
+    480.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Tranixx Darkpaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tranixx_Darkpaw"
+  }
+ ],
+ "updated": "2026-07-14T17:15:47Z",
+ "wikiTitle": "Blackburrow",
+ "wikiUrl": "https://eqlwiki.com/index.php/Blackburrow",
+ "zone": "blackburrow"
+}

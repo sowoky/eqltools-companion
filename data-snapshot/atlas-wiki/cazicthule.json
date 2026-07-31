@@ -1,0 +1,718 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "A Broom",
+   "u": "https://eqlwiki.com/index.php/A_Broom"
+  },
+  {
+   "g": 1,
+   "n": "A Shovel",
+   "u": "https://eqlwiki.com/index.php/A_Shovel"
+  },
+  {
+   "g": 1,
+   "n": "A Torch",
+   "u": "https://eqlwiki.com/index.php/A_Torch"
+  },
+  {
+   "g": 1,
+   "n": "Ball of Golem Clay",
+   "u": "https://eqlwiki.com/index.php/Ball_of_Golem_Clay"
+  },
+  {
+   "g": 1,
+   "n": "Bladed Thulian Claws",
+   "u": "https://eqlwiki.com/index.php/Bladed_Thulian_Claws"
+  },
+  {
+   "n": "Chunk of Meat",
+   "u": "https://eqlwiki.com/index.php/Chunk_of_Meat"
+  },
+  {
+   "n": "Clump of Gorilla Hair",
+   "u": "https://eqlwiki.com/index.php/Clump_of_Gorilla_Hair"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Shin Splinter",
+   "u": "https://eqlwiki.com/index.php/Goblin_Shin_Splinter"
+  },
+  {
+   "g": 1,
+   "n": "Golem Metal Rod",
+   "u": "https://eqlwiki.com/index.php/Golem_Metal_Rod"
+  },
+  {
+   "g": 1,
+   "n": "Grimy Lance",
+   "u": "https://eqlwiki.com/index.php/Grimy_Lance"
+  },
+  {
+   "g": 1,
+   "n": "Lizard Blood Potion",
+   "u": "https://eqlwiki.com/index.php/Lizard_Blood_Potion"
+  },
+  {
+   "n": "Lizard Meat",
+   "u": "https://eqlwiki.com/index.php/Lizard_Meat"
+  },
+  {
+   "n": "Lizard Tail",
+   "u": "https://eqlwiki.com/index.php/Lizard_Tail"
+  },
+  {
+   "g": 1,
+   "n": "Lizardscale Belt",
+   "u": "https://eqlwiki.com/index.php/Lizardscale_Belt"
+  },
+  {
+   "g": 1,
+   "n": "Lizardscale Cloak",
+   "u": "https://eqlwiki.com/index.php/Lizardscale_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Lizardscale Mantle",
+   "u": "https://eqlwiki.com/index.php/Lizardscale_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Lizardskin Tribal Mask",
+   "u": "https://eqlwiki.com/index.php/Lizardskin_Tribal_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Mudwater Rune",
+   "u": "https://eqlwiki.com/index.php/Mudwater_Rune"
+  },
+  {
+   "g": 1,
+   "n": "Ogreskin Chamois",
+   "u": "https://eqlwiki.com/index.php/Ogreskin_Chamois"
+  },
+  {
+   "g": 1,
+   "n": "Radiant Gloves",
+   "u": "https://eqlwiki.com/index.php/Radiant_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Ravenscale Armguards",
+   "u": "https://eqlwiki.com/index.php/Ravenscale_Armguards"
+  },
+  {
+   "g": 1,
+   "n": "Ravenscale Boots",
+   "u": "https://eqlwiki.com/index.php/Ravenscale_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Ravenscale Bracer",
+   "u": "https://eqlwiki.com/index.php/Ravenscale_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Ravenscale Chestguard",
+   "u": "https://eqlwiki.com/index.php/Ravenscale_Chestguard"
+  },
+  {
+   "g": 1,
+   "n": "Ravenscale Coif",
+   "u": "https://eqlwiki.com/index.php/Ravenscale_Coif"
+  },
+  {
+   "g": 1,
+   "n": "Ravenscale Gloves",
+   "u": "https://eqlwiki.com/index.php/Ravenscale_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Ravenscale Leggings",
+   "u": "https://eqlwiki.com/index.php/Ravenscale_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Ring of Evoluoy",
+   "u": "https://eqlwiki.com/index.php/Ring_of_Evoluoy"
+  },
+  {
+   "g": 1,
+   "n": "Rubicite Boots",
+   "u": "https://eqlwiki.com/index.php/Rubicite_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Rubicite Bracers",
+   "u": "https://eqlwiki.com/index.php/Rubicite_Bracers"
+  },
+  {
+   "g": 1,
+   "n": "Rubicite Breastplate",
+   "u": "https://eqlwiki.com/index.php/Rubicite_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Rubicite Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Rubicite_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Rubicite Greaves",
+   "u": "https://eqlwiki.com/index.php/Rubicite_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Rubicite Helm",
+   "u": "https://eqlwiki.com/index.php/Rubicite_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Rubicite Vambraces",
+   "u": "https://eqlwiki.com/index.php/Rubicite_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Shard of Golem Stone",
+   "u": "https://eqlwiki.com/index.php/Shard_of_Golem_Stone"
+  },
+  {
+   "g": 1,
+   "n": "Short Sword",
+   "u": "https://eqlwiki.com/index.php/Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Silver Wand",
+   "u": "https://eqlwiki.com/index.php/Silver_Wand"
+  },
+  {
+   "g": 1,
+   "n": "Steel Knuckles",
+   "u": "https://eqlwiki.com/index.php/Steel_Knuckles"
+  },
+  {
+   "g": 1,
+   "n": "Stein (of Water)",
+   "u": "https://eqlwiki.com/index.php/Stein_(of_Water)"
+  },
+  {
+   "g": 1,
+   "n": "Torn Page of Mastery Earth",
+   "u": "https://eqlwiki.com/index.php/Torn_Page_of_Mastery_Earth"
+  },
+  {
+   "g": 1,
+   "n": "Torn Page of Mastery Fire",
+   "u": "https://eqlwiki.com/index.php/Torn_Page_of_Mastery_Fire"
+  },
+  {
+   "g": 1,
+   "n": "Torn Page of Mastery Water",
+   "u": "https://eqlwiki.com/index.php/Torn_Page_of_Mastery_Water"
+  },
+  {
+   "g": 1,
+   "n": "Torn Page of Mastery Wind",
+   "u": "https://eqlwiki.com/index.php/Torn_Page_of_Mastery_Wind"
+  },
+  {
+   "n": "Velishoul's Tome Pg. 43",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg._43"
+  },
+  {
+   "n": "Words of Abatement",
+   "u": "https://eqlwiki.com/index.php/Words_of_Abatement"
+  },
+  {
+   "n": "Words of Allure",
+   "u": "https://eqlwiki.com/index.php/Words_of_Allure"
+  },
+  {
+   "n": "Words of Coercion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Coercion"
+  },
+  {
+   "n": "Words of Detention",
+   "u": "https://eqlwiki.com/index.php/Words_of_Detention"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    16
+   ],
+   "loc": [
+    575.0,
+    -305.0,
+    null
+   ],
+   "lvl": "23-25",
+   "n": "a clay golem",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_clay_golem"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1",
+   "n": "a dwarven mercenary",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_dwarven_mercenary"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "1",
+   "n": "a gnomish mage",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_gnomish_mage"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    6
+   ],
+   "loc": null,
+   "lvl": "24-28",
+   "n": "A Hulking Gorilla",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_hulking_gorilla"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "9-11",
+   "n": "a lizard broodling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_broodling"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "35",
+   "n": "a lizard champion",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_champion"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    281.0,
+    386.0,
+    null
+   ],
+   "lvl": "30-32",
+   "n": "a lizard crusader",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_crusader"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    44
+   ],
+   "loc": null,
+   "lvl": "21-23",
+   "n": "a lizard defender",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_defender"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    17
+   ],
+   "loc": [
+    1100.0,
+    -100.0,
+    null
+   ],
+   "lvl": "30-32",
+   "n": "A Lizard Fanatic",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_lizard_fanatic"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "26-28",
+   "n": "a lizard herald",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_herald"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    45,
+    47,
+    48
+   ],
+   "loc": [
+    1100.0,
+    -120.0,
+    null
+   ],
+   "lvl": "32-34",
+   "n": "a lizard judicator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_judicator"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1100.0,
+    -120.0,
+    null
+   ],
+   "lvl": "29-31",
+   "n": "a lizard justicar",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_justicar"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    18,
+    46
+   ],
+   "loc": null,
+   "lvl": "23-25",
+   "n": "A Lizard Page",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_lizard_page"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "20-22",
+   "n": "a lizard probationer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_probationer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "14-16",
+   "n": "a lizard proselyte",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_proselyte"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "27-29",
+   "n": "a lizard protector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_protector"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    9
+   ],
+   "loc": [
+    -65.0,
+    -492.0,
+    16.0
+   ],
+   "lvl": "30-31",
+   "n": "A Lizard Ritualist",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_lizard_ritualist"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    11,
+    12
+   ],
+   "loc": null,
+   "lvl": "18-20",
+   "n": "a lizard warder",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_warder"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "24-26",
+   "n": "a lizard warrior",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_sentinel"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    17
+   ],
+   "loc": [
+    1100.0,
+    -100.0,
+    null
+   ],
+   "lvl": "32-34",
+   "n": "a lizard zealot",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lizard_zealot"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    37
+   ],
+   "loc": [
+    945.0,
+    587.0,
+    5.0
+   ],
+   "lvl": "25-27",
+   "n": "a silvered guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_silvered_guard"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    25,
+    31
+   ],
+   "loc": [
+    188.0,
+    -279.0,
+    null
+   ],
+   "lvl": "35-37",
+   "n": "a steel golem",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_steel_golem"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    24,
+    33,
+    35
+   ],
+   "loc": null,
+   "lvl": "29-31",
+   "n": "A Stone Golem",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Stone_Golem"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Very Rare",
+    "Very Rare",
+    "Very Rare",
+    "Very Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    2,
+    5,
+    27,
+    39,
+    40,
+    41,
+    42,
+    43
+   ],
+   "loc": null,
+   "lvl": "20-33",
+   "n": "an alligator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_alligator"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    23,
+    30
+   ],
+   "loc": [
+    1085.0,
+    590.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Avatar Of Fear",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Avatar_of_Fear"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    10,
+    21,
+    28
+   ],
+   "loc": [
+    1092.0,
+    620.0,
+    null
+   ],
+   "lvl": "35-37",
+   "n": "Cazic Cenobite",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cazic_Cenobite"
+  },
+  {
+   "dr": [
+    "Always",
+    "Rare"
+   ],
+   "drops": [
+    19,
+    38
+   ],
+   "loc": [
+    358.0,
+    -107.0,
+    null
+   ],
+   "lvl": "21-23",
+   "n": "Radiant",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Radiant"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    13,
+    20,
+    34,
+    36
+   ],
+   "loc": [
+    930.0,
+    -280.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Tae Ew Archon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tae_Ew_Archon"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    null,
+    null
+   ],
+   "drops": [
+    15,
+    22,
+    29
+   ],
+   "loc": [
+    352.0,
+    364.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "Tae Ew Diviner",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tae_Ew_Diviner"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Rare",
+    null
+   ],
+   "drops": [
+    7,
+    14,
+    26,
+    32
+   ],
+   "loc": [
+    302.0,
+    404.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Tae Ew Templar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tae_Ew_Templar"
+  }
+ ],
+ "updated": "2026-07-12T15:24:23Z",
+ "wikiTitle": "Cazic Thule",
+ "wikiUrl": "https://eqlwiki.com/index.php/Cazic_Thule",
+ "zone": "cazicthule"
+}

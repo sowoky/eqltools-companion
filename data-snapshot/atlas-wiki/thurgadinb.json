@@ -1,0 +1,1388 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Aegis of Ice",
+   "u": "https://eqlwiki.com/index.php/Aegis_of_Ice"
+  },
+  {
+   "g": 1,
+   "n": "Amulet of Insight",
+   "u": "https://eqlwiki.com/index.php/Amulet_of_Insight"
+  },
+  {
+   "g": 1,
+   "n": "Bindings of the Scribe",
+   "u": "https://eqlwiki.com/index.php/Bindings_of_the_Scribe"
+  },
+  {
+   "g": 1,
+   "n": "Blade of the Seneschal",
+   "u": "https://eqlwiki.com/index.php/Blade_of_the_Seneschal"
+  },
+  {
+   "n": "Block of Velium",
+   "u": "https://eqlwiki.com/index.php/Block_of_Velium"
+  },
+  {
+   "n": "Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Bone_Chips"
+  },
+  {
+   "g": 1,
+   "n": "Boots of the Huntsman",
+   "u": "https://eqlwiki.com/index.php/Boots_of_the_Huntsman"
+  },
+  {
+   "g": 1,
+   "n": "Cloak of the Cave Bear",
+   "u": "https://eqlwiki.com/index.php/Cloak_of_the_Cave_Bear"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Black Marble",
+   "u": "https://eqlwiki.com/index.php/Crushed_Black_Marble"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Chrysolite",
+   "u": "https://eqlwiki.com/index.php/Crushed_Chrysolite"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Coral",
+   "u": "https://eqlwiki.com/index.php/Crushed_Coral"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Diamond Dust",
+   "u": "https://eqlwiki.com/index.php/Crushed_Diamond_Dust"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Emerald",
+   "u": "https://eqlwiki.com/index.php/Crushed_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Flame Emerald",
+   "u": "https://eqlwiki.com/index.php/Crushed_Flame_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Flame Opal",
+   "u": "https://eqlwiki.com/index.php/Crushed_Flame_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Jaundice Gem",
+   "u": "https://eqlwiki.com/index.php/Crushed_Jaundice_Gem"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Lava Ruby",
+   "u": "https://eqlwiki.com/index.php/Crushed_Lava_Ruby"
+  },
+  {
+   "n": "Crushed Nephrite",
+   "u": "https://eqlwiki.com/index.php/Crushed_Nephrite"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Onyx Sapphire",
+   "u": "https://eqlwiki.com/index.php/Crushed_Onyx_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Opal",
+   "u": "https://eqlwiki.com/index.php/Crushed_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Sea Sapphire",
+   "u": "https://eqlwiki.com/index.php/Crushed_Sea_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Crushed Topaz",
+   "u": "https://eqlwiki.com/index.php/Crushed_Topaz"
+  },
+  {
+   "n": "Dain Frostreaver's Head",
+   "u": "https://eqlwiki.com/index.php/Dain_Frostreaver's_Head"
+  },
+  {
+   "g": 1,
+   "n": "Frostreaver",
+   "u": "https://eqlwiki.com/index.php/Frostreaver"
+  },
+  {
+   "g": 1,
+   "n": "Frostreaver's Embroidered Cloak",
+   "u": "https://eqlwiki.com/index.php/Frostreaver's_Embroidered_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Frostreaver's Velium Crown",
+   "u": "https://eqlwiki.com/index.php/Frostreaver's_Velium_Crown"
+  },
+  {
+   "g": 1,
+   "n": "Gown of the Chamberlain",
+   "u": "https://eqlwiki.com/index.php/Gown_of_the_Chamberlain"
+  },
+  {
+   "g": 1,
+   "n": "Grizznot's Claws",
+   "u": "https://eqlwiki.com/index.php/Grizznot's_Claws"
+  },
+  {
+   "g": 1,
+   "n": "Head of the Huntsman",
+   "u": "https://eqlwiki.com/index.php/Head_of_the_Huntsman"
+  },
+  {
+   "g": 1,
+   "n": "Head of the Royal Scribe",
+   "u": "https://eqlwiki.com/index.php/Head_of_the_Royal_Scribe"
+  },
+  {
+   "g": 1,
+   "n": "Improved Invis vs Undead",
+   "u": "https://eqlwiki.com/index.php/Improved_Invis_vs_Undead"
+  },
+  {
+   "g": 1,
+   "n": "Incandescent Bracer",
+   "u": "https://eqlwiki.com/index.php/Incandescent_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Jagged Ice Shard",
+   "u": "https://eqlwiki.com/index.php/Jagged_Ice_Shard"
+  },
+  {
+   "n": "Juliah's Head",
+   "u": "https://eqlwiki.com/index.php/Juliah's_Head"
+  },
+  {
+   "n": "Large Brick of Velium",
+   "u": "https://eqlwiki.com/index.php/Large_Brick_of_Velium"
+  },
+  {
+   "g": 1,
+   "n": "Ornate Velium Pendant",
+   "u": "https://eqlwiki.com/index.php/Ornate_Velium_Pendant"
+  },
+  {
+   "n": "Peridot",
+   "u": "https://eqlwiki.com/index.php/Peridot"
+  },
+  {
+   "g": 1,
+   "n": "Ring of Winter",
+   "u": "https://eqlwiki.com/index.php/Ring_of_Winter"
+  },
+  {
+   "g": 1,
+   "n": "Royal Velium Frosted Boots",
+   "u": "https://eqlwiki.com/index.php/Royal_Velium_Frosted_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Royal Velium Frosted Bracer",
+   "u": "https://eqlwiki.com/index.php/Royal_Velium_Frosted_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Royal Velium Frosted Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Royal_Velium_Frosted_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Royal Velium Frosted Greaves",
+   "u": "https://eqlwiki.com/index.php/Royal_Velium_Frosted_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Royal Velium Frosted Helmet",
+   "u": "https://eqlwiki.com/index.php/Royal_Velium_Frosted_Helmet"
+  },
+  {
+   "g": 1,
+   "n": "Royal Velium Frosted Plate",
+   "u": "https://eqlwiki.com/index.php/Royal_Velium_Frosted_Plate"
+  },
+  {
+   "g": 1,
+   "n": "Royal Velium Frosted Vambraces",
+   "u": "https://eqlwiki.com/index.php/Royal_Velium_Frosted_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Shield of the Seneschal",
+   "u": "https://eqlwiki.com/index.php/Shield_of_the_Seneschal"
+  },
+  {
+   "n": "Small Brick of Velium",
+   "u": "https://eqlwiki.com/index.php/Small_Brick_of_Velium"
+  },
+  {
+   "n": "Small Piece of Velium",
+   "u": "https://eqlwiki.com/index.php/Small_Piece_of_Velium"
+  },
+  {
+   "g": 1,
+   "n": "Staff of the Chamberlain",
+   "u": "https://eqlwiki.com/index.php/Staff_of_the_Chamberlain"
+  },
+  {
+   "g": 1,
+   "n": "Tri-Plated Golden Hackle Hammer",
+   "u": "https://eqlwiki.com/index.php/Tri-Plated_Golden_Hackle_Hammer"
+  },
+  {
+   "g": 1,
+   "n": "Velium Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Velium_Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Velium Dagger",
+   "u": "https://eqlwiki.com/index.php/Velium_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Velium Great Staff",
+   "u": "https://eqlwiki.com/index.php/Velium_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Velium Long Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium Morning Star",
+   "u": "https://eqlwiki.com/index.php/Velium_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Velium Rapier",
+   "u": "https://eqlwiki.com/index.php/Velium_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Velium Round Shield",
+   "u": "https://eqlwiki.com/index.php/Velium_Round_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Velium Scimitar",
+   "u": "https://eqlwiki.com/index.php/Velium_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Velium Short Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium Spear",
+   "u": "https://eqlwiki.com/index.php/Velium_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Velium Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium Warhammer",
+   "u": "https://eqlwiki.com/index.php/Velium_Warhammer"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Always",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    5,
+    32,
+    51,
+    52,
+    53,
+    54,
+    55,
+    57,
+    58,
+    59,
+    60,
+    61
+   ],
+   "loc": [
+    433.0,
+    339.0,
+    null
+   ],
+   "lvl": "49-51",
+   "n": "a coldain skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Coldain_Skeleton"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Always"
+   ],
+   "drops": [
+    11,
+    36
+   ],
+   "loc": [
+    -149.0,
+    -278.0,
+    null
+   ],
+   "lvl": "54",
+   "n": "a frost spike",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Frost_Spike"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    4,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    30,
+    34,
+    46,
+    47
+   ],
+   "loc": [
+    474.0,
+    352.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "an avalanche golem",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Avalanche_Golem"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
+   ],
+   "loc": null,
+   "lvl": "51-53",
+   "n": "an Icewell Sentinel",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Icewell_Sentinel"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    null,
+    null
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    50,
+    56
+   ],
+   "loc": [
+    566.0,
+    -8.0,
+    null
+   ],
+   "lvl": "47 - 49",
+   "n": "an Icewell Sentry",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Icewell_Sentry"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    26,
+    48
+   ],
+   "loc": [
+    693.0,
+    12.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Chamberlain Krystorf",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Chamberlain_Krystorf"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    664.0,
+    108.0,
+    null
+   ],
+   "lvl": "46",
+   "n": "Councilor Amberfeld",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Amberfeld"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    655.0,
+    92.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Councilor Coldember",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Coldember"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    655.0,
+    -79.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "Councilor Darakor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Darakor"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    886.0,
+    -4.0,
+    null
+   ],
+   "lvl": "44",
+   "n": "Councilor Darkfrost",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Darkfrost"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    703.0,
+    91.0,
+    null
+   ],
+   "lvl": "46",
+   "n": "Councilor Deynekn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Deynekn"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    702.0,
+    -103.0,
+    null
+   ],
+   "lvl": "46",
+   "n": "Councilor Dirkins",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Dirkins"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": null,
+   "lvl": "43",
+   "n": "Councilor Glacierbane",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Glacierbane"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    703.0,
+    67.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Councilor Icelok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Icelok"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    701.0,
+    116.0,
+    null
+   ],
+   "lvl": "43",
+   "n": "Councilor Icepike",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Icepike"
+  },
+  {
+   "dr": [
+    "Always",
+    "Rare"
+   ],
+   "drops": [
+    33,
+    35
+   ],
+   "loc": [
+    883.0,
+    13.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Councilor Juliash Lockhear",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Juliash_Lockhear"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    703.0,
+    -53.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "Councilor Thubins",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Thubins"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    35
+   ],
+   "loc": [
+    895.0,
+    5.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "Councilor Wintershade",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Councilor_Wintershade"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    0,
+    22,
+    23,
+    24,
+    25,
+    37,
+    49
+   ],
+   "loc": [
+    690.0,
+    4.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Dain Frostreaver IV",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dain_Frostreaver_IV"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    4,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    30,
+    34,
+    46,
+    47
+   ],
+   "loc": [
+    -3.0,
+    591.0,
+    null
+   ],
+   "lvl": "51-54",
+   "n": "Frosticube",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Frosticube"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    31
+   ],
+   "loc": [
+    -3.0,
+    591.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Glucose",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Glucose"
+  },
+  {
+   "dr": [
+    "Always",
+    "Common"
+   ],
+   "drops": [
+    6,
+    28
+   ],
+   "loc": [
+    660.0,
+    111.0,
+    null
+   ],
+   "lvl": "49",
+   "n": "Grand Huntsman Darral",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grand_Huntsman_Darral"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    7,
+    27
+   ],
+   "loc": [
+    474.0,
+    352.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Grizznot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grizznot"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    730.0,
+    209.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Loremaster Solstrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Loremaster_Solstrin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    694.0,
+    76.0,
+    null
+   ],
+   "lvl": "49",
+   "n": "Royal Armorer Slade",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Armorer_Slade"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    56
+   ],
+   "loc": [
+    708.0,
+    13.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Royal Guardsman Braxis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Guardsman_Braxis"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    56
+   ],
+   "loc": [
+    747.0,
+    14.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Royal Guardsman Hauten",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Guardsman_Hauten"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    44
+   ],
+   "loc": [
+    747.0,
+    -4.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Royal Guardsman Horix",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Guardsman_Horix"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    56
+   ],
+   "loc": [
+    685.0,
+    -6.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Royal Guardsman Nial",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Guardsman_Nial"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    56
+   ],
+   "loc": [
+    708.0,
+    -3.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Royal Guardsman Raxine",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Guardsman_Raxine"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    56
+   ],
+   "loc": [
+    685.0,
+    15.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Royal Guardsman Rhion",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Guardsman_Rhion"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    1,
+    2,
+    29
+   ],
+   "loc": [
+    681.0,
+    -88.0,
+    null
+   ],
+   "lvl": "49",
+   "n": "Royal Scribe Kaavin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Scribe_Kaavin"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    3,
+    45
+   ],
+   "loc": [
+    780.0,
+    4.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Seneschal Aldikar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Seneschal_Aldikar_(Icewell_Keep)"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    50,
+    56
+   ],
+   "loc": [
+    688.0,
+    -28.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "Sentinel Anderin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Anderin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    50,
+    56
+   ],
+   "loc": [
+    672.0,
+    38.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Sentinel Fridmar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Fridmar"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    50,
+    56
+   ],
+   "loc": [
+    749.0,
+    -32.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Sentinel Paxin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Paxin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    50,
+    56
+   ],
+   "loc": [
+    686.0,
+    38.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Sentinel Saedis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Saedis"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    50,
+    56
+   ],
+   "loc": [
+    671.0,
+    -28.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Sentinel Sheila",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentinel_Sheila"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    56
+   ],
+   "loc": [
+    865.0,
+    59.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "Sentry Ellison",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentry_Ellison"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    50,
+    56
+   ],
+   "loc": [
+    743.0,
+    15.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Staff Sergeant Bayard",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Staff_Sergeant_Bayard"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    50,
+    56
+   ],
+   "loc": [
+    740.0,
+    31.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Watcher Devin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Watcher_Devin"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    50,
+    56
+   ],
+   "loc": [
+    759.0,
+    12.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Watcher Scots",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Watcher_Scots"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    50,
+    56
+   ],
+   "loc": [
+    745.0,
+    -78.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Watcher Sprin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Watcher_Sprin"
+  }
+ ],
+ "updated": "2026-04-13T08:36:03Z",
+ "wikiTitle": "Icewell Keep",
+ "wikiUrl": "https://eqlwiki.com/index.php/Icewell_Keep",
+ "zone": "thurgadinb"
+}

@@ -1,0 +1,2539 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Berserker's Axe",
+   "u": "https://eqlwiki.com/index.php/Berserker's_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Black Steel Wrap",
+   "u": "https://eqlwiki.com/index.php/Black_Steel_Wrap"
+  },
+  {
+   "g": 1,
+   "n": "Blade of the Seneschal",
+   "u": "https://eqlwiki.com/index.php/Blade_of_the_Seneschal"
+  },
+  {
+   "g": 1,
+   "n": "Bladesman's Sword",
+   "u": "https://eqlwiki.com/index.php/Bladesman's_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Blizzent's Fang",
+   "u": "https://eqlwiki.com/index.php/Blizzent's_Fang"
+  },
+  {
+   "g": 1,
+   "n": "Blood Wolf Harness",
+   "u": "https://eqlwiki.com/index.php/Blood_Wolf_Harness"
+  },
+  {
+   "g": 1,
+   "n": "Bracer of Scale",
+   "u": "https://eqlwiki.com/index.php/Bracer_of_Scale"
+  },
+  {
+   "g": 1,
+   "n": "Braided Beard of the Coldain",
+   "u": "https://eqlwiki.com/index.php/Braided_Beard_of_the_Coldain"
+  },
+  {
+   "g": 1,
+   "n": "Coldain Head",
+   "u": "https://eqlwiki.com/index.php/Coldain_Head"
+  },
+  {
+   "g": 1,
+   "n": "Coldain Military Wristguard",
+   "u": "https://eqlwiki.com/index.php/Coldain_Military_Wristguard"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Breastplate",
+   "u": "https://eqlwiki.com/index.php/Corroded_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Chain Boots",
+   "u": "https://eqlwiki.com/index.php/Corroded_Chain_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Chain Bracer",
+   "u": "https://eqlwiki.com/index.php/Corroded_Chain_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Chain Coif",
+   "u": "https://eqlwiki.com/index.php/Corroded_Chain_Coif"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Chain Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Corroded_Chain_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Chain Leggings",
+   "u": "https://eqlwiki.com/index.php/Corroded_Chain_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Chain Sleeves",
+   "u": "https://eqlwiki.com/index.php/Corroded_Chain_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Chain Tunic",
+   "u": "https://eqlwiki.com/index.php/Corroded_Chain_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Plate Boots",
+   "u": "https://eqlwiki.com/index.php/Corroded_Plate_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Plate Bracer",
+   "u": "https://eqlwiki.com/index.php/Corroded_Plate_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Plate Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Corroded_Plate_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Plate Greaves",
+   "u": "https://eqlwiki.com/index.php/Corroded_Plate_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Plate Helmet",
+   "u": "https://eqlwiki.com/index.php/Corroded_Plate_Helmet"
+  },
+  {
+   "g": 1,
+   "n": "Corroded Plate Vambraces",
+   "u": "https://eqlwiki.com/index.php/Corroded_Plate_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Crested Blood Wolf Harness",
+   "u": "https://eqlwiki.com/index.php/Crested_Blood_Wolf_Harness"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Claw Dagger",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Claw_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Eye",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Eye"
+  },
+  {
+   "g": 1,
+   "n": "Cured Tizmak Gloves",
+   "u": "https://eqlwiki.com/index.php/Cured_Tizmak_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Cured Tizmak Surcoat",
+   "u": "https://eqlwiki.com/index.php/Cured_Tizmak_Surcoat"
+  },
+  {
+   "g": 1,
+   "n": "Drakkel Forged Bastard Sword",
+   "u": "https://eqlwiki.com/index.php/Drakkel_Forged_Bastard_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Drakkel Forged Sledgehammer",
+   "u": "https://eqlwiki.com/index.php/Drakkel_Forged_Sledgehammer"
+  },
+  {
+   "g": 1,
+   "n": "Drakkel Icegrinder",
+   "u": "https://eqlwiki.com/index.php/Drakkel_Icegrinder"
+  },
+  {
+   "g": 1,
+   "n": "Drakkel Icereaver",
+   "u": "https://eqlwiki.com/index.php/Drakkel_Icereaver"
+  },
+  {
+   "g": 1,
+   "n": "Drakkel Wolf Whisker",
+   "u": "https://eqlwiki.com/index.php/Drakkel_Wolf_Whisker"
+  },
+  {
+   "g": 1,
+   "n": "Edge of the Taskmaster",
+   "u": "https://eqlwiki.com/index.php/Edge_of_the_Taskmaster"
+  },
+  {
+   "g": 1,
+   "n": "Emerald Ring",
+   "u": "https://eqlwiki.com/index.php/Emerald_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Eroded Leather Boots",
+   "u": "https://eqlwiki.com/index.php/Eroded_Leather_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Eroded Leather Bracelet",
+   "u": "https://eqlwiki.com/index.php/Eroded_Leather_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Eroded Leather Cap",
+   "u": "https://eqlwiki.com/index.php/Eroded_Leather_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Eroded Leather Gloves",
+   "u": "https://eqlwiki.com/index.php/Eroded_Leather_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Eroded Leather Leggings",
+   "u": "https://eqlwiki.com/index.php/Eroded_Leather_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Eroded Leather Sleeves",
+   "u": "https://eqlwiki.com/index.php/Eroded_Leather_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Eroded Leather Tunic",
+   "u": "https://eqlwiki.com/index.php/Eroded_Leather_Tunic"
+  },
+  {
+   "n": "Eye of Serilis",
+   "u": "https://eqlwiki.com/index.php/Eye_of_Serilis"
+  },
+  {
+   "n": "Faded Salil's Writ Page",
+   "u": "https://eqlwiki.com/index.php/Faded_Salil's_Writ_Page"
+  },
+  {
+   "n": "Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
+  },
+  {
+   "n": "Fire Opal",
+   "u": "https://eqlwiki.com/index.php/Fire_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Frost Giant Femur",
+   "u": "https://eqlwiki.com/index.php/Frost_Giant_Femur"
+  },
+  {
+   "n": "Frost Giant Meat",
+   "u": "https://eqlwiki.com/index.php/Frost_Giant_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Frost Giant Scout Beard",
+   "u": "https://eqlwiki.com/index.php/Frost_Giant_Scout_Beard"
+  },
+  {
+   "n": "Frost Giant Toes",
+   "u": "https://eqlwiki.com/index.php/Frost_Giant_Toes"
+  },
+  {
+   "g": 1,
+   "n": "Frosted Gem",
+   "u": "https://eqlwiki.com/index.php/Frosted_Gem"
+  },
+  {
+   "g": 1,
+   "n": "Frozen Mantle",
+   "u": "https://eqlwiki.com/index.php/Frozen_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Gauntlets of Power",
+   "u": "https://eqlwiki.com/index.php/Gauntlets_of_Power"
+  },
+  {
+   "g": 1,
+   "n": "Giant Shard Wurm Tooth",
+   "u": "https://eqlwiki.com/index.php/Giant_Shard_Wurm_Tooth"
+  },
+  {
+   "g": 1,
+   "n": "Giant Warrior Helmet",
+   "u": "https://eqlwiki.com/index.php/Giant_Warrior_Helmet"
+  },
+  {
+   "n": "Glove of Rallos Zek",
+   "u": "https://eqlwiki.com/index.php/Glove_of_Rallos_Zek"
+  },
+  {
+   "g": 1,
+   "n": "Glowing Velium Axe",
+   "u": "https://eqlwiki.com/index.php/Glowing_Velium_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Glowing Worm Bile",
+   "u": "https://eqlwiki.com/index.php/Glowing_Worm_Bile"
+  },
+  {
+   "g": 1,
+   "n": "Hardened Kodiak Leather Bracer",
+   "u": "https://eqlwiki.com/index.php/Hardened_Kodiak_Leather_Bracer"
+  },
+  {
+   "n": "Head of the Taskmaster",
+   "u": "https://eqlwiki.com/index.php/Head_of_the_Taskmaster"
+  },
+  {
+   "g": 1,
+   "n": "High Quality Dire Wolf Fur",
+   "u": "https://eqlwiki.com/index.php/High_Quality_Dire_Wolf_Fur"
+  },
+  {
+   "g": 1,
+   "n": "Ice Weave",
+   "u": "https://eqlwiki.com/index.php/Ice_Weave"
+  },
+  {
+   "g": 1,
+   "n": "Icetooth's Claws",
+   "u": "https://eqlwiki.com/index.php/Icetooth's_Claws"
+  },
+  {
+   "g": 1,
+   "n": "Icetooth`s Pelt",
+   "u": "https://eqlwiki.com/index.php/Icetooth%60s_Pelt"
+  },
+  {
+   "g": 1,
+   "n": "Kodiak Claws",
+   "u": "https://eqlwiki.com/index.php/Kodiak_Claws"
+  },
+  {
+   "g": 1,
+   "n": "Kodiak Pelt",
+   "u": "https://eqlwiki.com/index.php/Kodiak_Pelt"
+  },
+  {
+   "g": 1,
+   "n": "Kromrif Bones",
+   "u": "https://eqlwiki.com/index.php/Kromrif_Bones"
+  },
+  {
+   "g": 1,
+   "n": "Kromrif Head",
+   "u": "https://eqlwiki.com/index.php/Kromrif_Head"
+  },
+  {
+   "g": 1,
+   "n": "Low Quality Dire Wolf Fur",
+   "u": "https://eqlwiki.com/index.php/Low_Quality_Dire_Wolf_Fur"
+  },
+  {
+   "g": 1,
+   "n": "Medium Quality Dire Wolf Fur",
+   "u": "https://eqlwiki.com/index.php/Medium_Quality_Dire_Wolf_Fur"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Amulet",
+   "u": "https://eqlwiki.com/index.php/Mithril_Amulet"
+  },
+  {
+   "n": "Murdrick's head",
+   "u": "https://eqlwiki.com/index.php/Murdrick's_head"
+  },
+  {
+   "n": "Murdrick's Plan",
+   "u": "https://eqlwiki.com/index.php/Murdrick's_Plan"
+  },
+  {
+   "n": "Narandi's head",
+   "u": "https://eqlwiki.com/index.php/Narandi's_head"
+  },
+  {
+   "g": 1,
+   "n": "Narandi's Lance",
+   "u": "https://eqlwiki.com/index.php/Narandi's_Lance"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 378",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._378"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 400",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._400"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 415",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._415"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 416",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._416"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 450",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._450"
+  },
+  {
+   "g": 1,
+   "n": "Old Worn Talisman",
+   "u": "https://eqlwiki.com/index.php/Old_Worn_Talisman"
+  },
+  {
+   "g": 1,
+   "n": "Opal Bracelet",
+   "u": "https://eqlwiki.com/index.php/Opal_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Necklace",
+   "u": "https://eqlwiki.com/index.php/Pearl_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Ring of Frost",
+   "u": "https://eqlwiki.com/index.php/Ring_of_Frost"
+  },
+  {
+   "n": "Rune of Al'Kabor",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Al'Kabor"
+  },
+  {
+   "n": "Rune of Banding",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Banding"
+  },
+  {
+   "n": "Rune of Concussion",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Concussion"
+  },
+  {
+   "n": "Rune of Crippling",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Crippling"
+  },
+  {
+   "n": "Rune of Frost",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Frost"
+  },
+  {
+   "n": "Rune of Petrification",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Petrification"
+  },
+  {
+   "n": "Rune of Rathe",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Rathe"
+  },
+  {
+   "n": "Rune of the Astral",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Astral"
+  },
+  {
+   "n": "Rune of the Catalyst",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Catalyst"
+  },
+  {
+   "n": "Rune of the Cyclone",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Cyclone"
+  },
+  {
+   "g": 1,
+   "n": "Runebranded Stone Buckler",
+   "u": "https://eqlwiki.com/index.php/Runebranded_Stone_Buckler"
+  },
+  {
+   "n": "Salil's Writ Pg. 60 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._60_(Left)"
+  },
+  {
+   "n": "Salil's Writ Pg. 90 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._90_(Left)"
+  },
+  {
+   "n": "Sapphire",
+   "u": "https://eqlwiki.com/index.php/Sapphire"
+  },
+  {
+   "n": "Section of a Draconic Tome",
+   "u": "https://eqlwiki.com/index.php/Section_of_a_Draconic_Tome"
+  },
+  {
+   "g": 1,
+   "n": "Shard Wurm Fang",
+   "u": "https://eqlwiki.com/index.php/Shard_Wurm_Fang"
+  },
+  {
+   "g": 1,
+   "n": "Shardtooth's Flayed Skin",
+   "u": "https://eqlwiki.com/index.php/Shardtooth's_Flayed_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Shardwurm Claw",
+   "u": "https://eqlwiki.com/index.php/Shardwurm_Claw"
+  },
+  {
+   "g": 1,
+   "n": "Shardwurm Eye",
+   "u": "https://eqlwiki.com/index.php/Shardwurm_Eye"
+  },
+  {
+   "g": 1,
+   "n": "Shardwurm Skin",
+   "u": "https://eqlwiki.com/index.php/Shardwurm_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Shardwurm Stinger",
+   "u": "https://eqlwiki.com/index.php/Shardwurm_Stinger"
+  },
+  {
+   "g": 1,
+   "n": "Shield of the Seneschal",
+   "u": "https://eqlwiki.com/index.php/Shield_of_the_Seneschal"
+  },
+  {
+   "g": 1,
+   "n": "Spell: Boon of the Garou",
+   "u": "https://eqlwiki.com/index.php/Spell%3A_Boon_of_the_Garou"
+  },
+  {
+   "g": 1,
+   "n": "Spiked Steel Wrap",
+   "u": "https://eqlwiki.com/index.php/Spiked_Steel_Wrap"
+  },
+  {
+   "n": "Star Ruby",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Studded Leather Wolf Collar",
+   "u": "https://eqlwiki.com/index.php/Studded_Leather_Wolf_Collar"
+  },
+  {
+   "g": 1,
+   "n": "Tarnished Mining Pick",
+   "u": "https://eqlwiki.com/index.php/Tarnished_Mining_Pick"
+  },
+  {
+   "n": "The Scent of Marr",
+   "u": "https://eqlwiki.com/index.php/The_Scent_of_Marr"
+  },
+  {
+   "g": 1,
+   "n": "Tizmak Leggings",
+   "u": "https://eqlwiki.com/index.php/Tizmak_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Tizmak Sleeves",
+   "u": "https://eqlwiki.com/index.php/Tizmak_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Tizmak Tunic",
+   "u": "https://eqlwiki.com/index.php/Tizmak_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Torn Enchanted Silk Boots",
+   "u": "https://eqlwiki.com/index.php/Torn_Enchanted_Silk_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Torn Enchanted Silk Gloves",
+   "u": "https://eqlwiki.com/index.php/Torn_Enchanted_Silk_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Torn Enchanted Silk Pantaloons",
+   "u": "https://eqlwiki.com/index.php/Torn_Enchanted_Silk_Pantaloons"
+  },
+  {
+   "g": 1,
+   "n": "Torn Enchanted Silk Robe",
+   "u": "https://eqlwiki.com/index.php/Torn_Enchanted_Silk_Robe"
+  },
+  {
+   "g": 1,
+   "n": "Torn Enchanted Silk Sleeves",
+   "u": "https://eqlwiki.com/index.php/Torn_Enchanted_Silk_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Torn Enchanted Silk Turban",
+   "u": "https://eqlwiki.com/index.php/Torn_Enchanted_Silk_Turban"
+  },
+  {
+   "g": 1,
+   "n": "Torn Enchanted Silk Wristband",
+   "u": "https://eqlwiki.com/index.php/Torn_Enchanted_Silk_Wristband"
+  },
+  {
+   "g": 1,
+   "n": "Torque of Hoar Frost",
+   "u": "https://eqlwiki.com/index.php/Torque_of_Hoar_Frost"
+  },
+  {
+   "n": "Velishoul's Tome Pg. 43",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg._43"
+  },
+  {
+   "n": "Velishoul's Tome Pg.67",
+   "u": "https://eqlwiki.com/index.php/Velishoul's_Tome_Pg.67"
+  },
+  {
+   "g": 1,
+   "n": "Velium Battle Axe",
+   "u": "https://eqlwiki.com/index.php/Velium_Battle_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Velium Bolt",
+   "u": "https://eqlwiki.com/index.php/Velium_Bolt"
+  },
+  {
+   "g": 1,
+   "n": "Velium Dagger",
+   "u": "https://eqlwiki.com/index.php/Velium_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Velium Etched Stone Mace",
+   "u": "https://eqlwiki.com/index.php/Velium_Etched_Stone_Mace"
+  },
+  {
+   "g": 1,
+   "n": "Velium Great Staff",
+   "u": "https://eqlwiki.com/index.php/Velium_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Velium Long Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium Morning Star",
+   "u": "https://eqlwiki.com/index.php/Velium_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Velium Rapier",
+   "u": "https://eqlwiki.com/index.php/Velium_Rapier"
+  },
+  {
+   "g": 1,
+   "n": "Velium Scimitar",
+   "u": "https://eqlwiki.com/index.php/Velium_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Velium Short Blade",
+   "u": "https://eqlwiki.com/index.php/Velium_Short_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Velium Short Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium Shuriken",
+   "u": "https://eqlwiki.com/index.php/Velium_Shuriken"
+  },
+  {
+   "g": 1,
+   "n": "Velium Spear",
+   "u": "https://eqlwiki.com/index.php/Velium_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Velium Spear of Impaling",
+   "u": "https://eqlwiki.com/index.php/Velium_Spear_of_Impaling"
+  },
+  {
+   "g": 1,
+   "n": "Velium Throwing Knife",
+   "u": "https://eqlwiki.com/index.php/Velium_Throwing_Knife"
+  },
+  {
+   "g": 1,
+   "n": "Velium Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium War Maul",
+   "u": "https://eqlwiki.com/index.php/Velium_War_Maul"
+  },
+  {
+   "g": 1,
+   "n": "Velium Warhammer",
+   "u": "https://eqlwiki.com/index.php/Velium_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Vluudeen's Tail",
+   "u": "https://eqlwiki.com/index.php/Vluudeen's_Tail"
+  },
+  {
+   "g": 1,
+   "n": "War Wolf Choker",
+   "u": "https://eqlwiki.com/index.php/War_Wolf_Choker"
+  },
+  {
+   "g": 1,
+   "n": "White Scaled Leggings",
+   "u": "https://eqlwiki.com/index.php/White_Scaled_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "White Scaled Tunic",
+   "u": "https://eqlwiki.com/index.php/White_Scaled_Tunic"
+  },
+  {
+   "n": "Wing of Xegony",
+   "u": "https://eqlwiki.com/index.php/Wing_of_Xegony"
+  },
+  {
+   "n": "Words of Acquisition (Azia)",
+   "u": "https://eqlwiki.com/index.php/Words_of_Acquisition_(Azia)"
+  },
+  {
+   "n": "Words of Acquisition (Beza)",
+   "u": "https://eqlwiki.com/index.php/Words_of_Acquisition_(Beza)"
+  },
+  {
+   "n": "Words of Bidding",
+   "u": "https://eqlwiki.com/index.php/Words_of_Bidding"
+  },
+  {
+   "n": "Words of Cazic-Thule",
+   "u": "https://eqlwiki.com/index.php/Words_of_Cazic-Thule"
+  },
+  {
+   "n": "Words of Coercion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Coercion"
+  },
+  {
+   "n": "Words of Collection (Caza)",
+   "u": "https://eqlwiki.com/index.php/Words_of_Collection_(Caza)"
+  },
+  {
+   "n": "Words of Crippling Force",
+   "u": "https://eqlwiki.com/index.php/Words_of_Crippling_Force"
+  },
+  {
+   "n": "Words of Dark Paths",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dark_Paths"
+  },
+  {
+   "n": "Words of Discernment",
+   "u": "https://eqlwiki.com/index.php/Words_of_Discernment"
+  },
+  {
+   "n": "Words of Grappling",
+   "u": "https://eqlwiki.com/index.php/Words_of_Grappling"
+  },
+  {
+   "n": "Words of Projection",
+   "u": "https://eqlwiki.com/index.php/Words_of_Projection"
+  },
+  {
+   "n": "Words of Requisition",
+   "u": "https://eqlwiki.com/index.php/Words_of_Requisition"
+  },
+  {
+   "n": "Words of Sight",
+   "u": "https://eqlwiki.com/index.php/Words_of_Sight"
+  },
+  {
+   "g": 1,
+   "n": "Woven Frost Giant Beard",
+   "u": "https://eqlwiki.com/index.php/Woven_Frost_Giant_Beard"
+  },
+  {
+   "n": "Wurm Meat",
+   "u": "https://eqlwiki.com/index.php/Wurm_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Wurm Tendon Whip",
+   "u": "https://eqlwiki.com/index.php/Wurm_Tendon_Whip"
+  },
+  {
+   "g": 1,
+   "n": "Yakman Parts",
+   "u": "https://eqlwiki.com/index.php/Yakman_Parts"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Always"
+   ],
+   "drops": [
+    7,
+    8,
+    111
+   ],
+   "loc": [
+    -4953.0,
+    -3276.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "a coldain miner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_coldain_miner"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    61,
+    69,
+    70,
+    110
+   ],
+   "loc": [
+    -2103.0,
+    1176.0,
+    null
+   ],
+   "lvl": "29-33",
+   "n": "a coldain tracking wolf",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_coldain_tracking_wolf"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    7,
+    8,
+    128,
+    130,
+    131,
+    132,
+    133,
+    134,
+    136,
+    138,
+    141,
+    143
+   ],
+   "loc": [
+    -1038.0,
+    -289.0,
+    null
+   ],
+   "lvl": "30-35",
+   "n": "a coldain wolfmaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_coldain_wolfmaster"
+  },
+  {
+   "dr": [
+    null,
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    null,
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    46,
+    100,
+    103,
+    104,
+    105,
+    109,
+    146,
+    147
+   ],
+   "loc": [
+    -4265.0,
+    -1264.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "a crystaline shardwurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crystaline_shardwurm"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    5
+   ],
+   "loc": null,
+   "lvl": "31 - 36",
+   "n": "A Drakkel Blood Wolf",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Drakkel_Blood_Wolf"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    33,
+    61,
+    69,
+    70,
+    108
+   ],
+   "loc": null,
+   "lvl": "31-34? (Many still blue at 45)",
+   "n": "a drakkel dire wolf",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_drakkel_dire_wolf"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    59,
+    65,
+    66
+   ],
+   "loc": [
+    -5218.0,
+    3790.0,
+    null
+   ],
+   "lvl": "30 - 32",
+   "n": "a feral cave kodiak",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_feral_cave_kodiak"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    59,
+    65,
+    66
+   ],
+   "loc": [
+    -6207.0,
+    3180.0,
+    null
+   ],
+   "lvl": "34 - 36",
+   "n": "a ferocious cave kodiak",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_ferocious_cave_kodiak"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Always",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    3,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    47,
+    48,
+    50,
+    55,
+    67,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    138,
+    162
+   ],
+   "loc": null,
+   "lvl": "37 - 40",
+   "n": "a frost giant berserker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Frost_Giant_Berserker"
+  },
+  {
+   "dr": [
+    "Very Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    null,
+    "Rare",
+    null,
+    "Common",
+    "Rare",
+    null,
+    "Rare",
+    null,
+    "Rare"
+   ],
+   "drops": [
+    31,
+    32,
+    47,
+    48,
+    51,
+    52,
+    55,
+    68,
+    84,
+    85,
+    123,
+    152,
+    162
+   ],
+   "loc": null,
+   "lvl": "34-45",
+   "n": "a frost giant elite",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Frost_Giant_Elite"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common",
+    "Common",
+    "Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Common",
+    "Common",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    29,
+    30,
+    31,
+    47,
+    48,
+    49,
+    50,
+    51,
+    55,
+    56,
+    67,
+    68,
+    84,
+    85,
+    93,
+    94,
+    96,
+    97,
+    112,
+    124,
+    128,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    138,
+    143,
+    149,
+    156,
+    161,
+    162
+   ],
+   "loc": null,
+   "lvl": "Iceclad Ocean 30 - 34, Great Divide: 34 - 36, Eastern Wastes 35 to 36",
+   "n": "a frost giant scout",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Frost_Giant_Scout"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    28,
+    113,
+    114,
+    115,
+    128,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    141,
+    143,
+    165
+   ],
+   "loc": [
+    -1545.0,
+    2406.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "a furious tizmak warrior",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Furious_Tizmak_Warrior"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    35,
+    45,
+    46,
+    71,
+    82,
+    83,
+    98,
+    100,
+    103,
+    104,
+    105,
+    109,
+    146,
+    147
+   ],
+   "loc": [
+    -3519.0,
+    -1162.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "a guardian shardwurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_guardian_shardwurm"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    59,
+    65,
+    66
+   ],
+   "loc": [
+    -6096.0,
+    3229.0,
+    null
+   ],
+   "lvl": "32 - 34",
+   "n": "a savage cave kodiak",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_savage_cave_kodiak"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    27,
+    28,
+    113,
+    114,
+    115,
+    130,
+    165
+   ],
+   "loc": null,
+   "lvl": "28",
+   "n": "a tizmak augur",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Tizmak_Augur"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    28,
+    113,
+    114,
+    115,
+    128,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    141,
+    143,
+    165
+   ],
+   "loc": [
+    -1545.0,
+    2406.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "a tizmak champion",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Tizmak_Champion"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    28,
+    113,
+    114,
+    115,
+    165
+   ],
+   "loc": [
+    -1604.0,
+    3160.0,
+    null
+   ],
+   "lvl": "27",
+   "n": "a tizmak shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Tizmak_Shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    28,
+    113,
+    114,
+    115,
+    165
+   ],
+   "loc": [
+    -1120.0,
+    2299.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "a tizmak spiritcaller",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Tizmak_Spiritcaller"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Always",
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    28,
+    113,
+    114,
+    115,
+    128,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    141,
+    143,
+    157,
+    165
+   ],
+   "loc": [
+    -1517.0,
+    1706.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "a tizmak warrior",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Tizmak_Warrior"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a tower guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_tower_guard_(Great_Divide)"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Always"
+   ],
+   "drops": [
+    8,
+    111
+   ],
+   "loc": [
+    -5676.0,
+    -3321.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "a velium miner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_velium_miner"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    58,
+    100,
+    102,
+    103,
+    104,
+    105,
+    146,
+    147,
+    163
+   ],
+   "loc": [
+    -6798.0,
+    1111.0,
+    null
+   ],
+   "lvl": "28 - 33",
+   "n": "a young shardwurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_young_shardwurm"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    100,
+    102,
+    103,
+    104,
+    105,
+    107,
+    146,
+    147
+   ],
+   "loc": null,
+   "lvl": "36 - 40",
+   "n": "an ancient shardwurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_ancient_shardwurm"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    54
+   ],
+   "loc": [
+    -3011.0,
+    -2776.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "an angry shardwurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_angry_shardwurm"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    58,
+    100,
+    102,
+    105,
+    146,
+    147,
+    163
+   ],
+   "loc": null,
+   "lvl": "33 - 36",
+   "n": "an elder shardwurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_elder_shardwurm"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    8
+   ],
+   "loc": [
+    -5034.0,
+    -3240.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "an expedition guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_expedition_guard"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    43,
+    48,
+    125,
+    149,
+    153
+   ],
+   "loc": [
+    -3011.0,
+    -2776.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Bekerak Coldbones",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bekerak_Coldbones"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    4
+   ],
+   "loc": null,
+   "lvl": "45",
+   "n": "Blizzent",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Blizzent"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    65,
+    66
+   ],
+   "loc": [
+    -5940.0,
+    3202.0,
+    -105.0
+   ],
+   "lvl": "1",
+   "n": "Bloodmaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bloodmaw"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -5929.0,
+    3172.0,
+    -103.0
+   ],
+   "lvl": "1",
+   "n": "bloody gnome captive",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Bloody_gnome_captive"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    126,
+    131
+   ],
+   "loc": [
+    -1093.0,
+    -176.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Captain Stonefist",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Captain_Stonefist"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    142
+   ],
+   "loc": null,
+   "lvl": "45",
+   "n": "Cleric of Zek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cleric_of_Zek"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    145
+   ],
+   "loc": null,
+   "lvl": "35",
+   "n": "Coldain War Wolf",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Coldain_War_Wolf"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -5598.0,
+    3644.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Davin Fatfist",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Davin_Fatfist"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    5,
+    24,
+    69
+   ],
+   "loc": null,
+   "lvl": "37?",
+   "n": "Drakkel Blood Wolf",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Drakkel_Blood_Wolf"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    48,
+    86,
+    99
+   ],
+   "loc": [
+    -2922.0,
+    -2590.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Fergul Frostsky",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Fergul_Frostsky"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    136,
+    162
+   ],
+   "loc": [
+    -5862.0,
+    3595.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Fomgrut Borkel",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Fomgrut_Borkel"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    8
+   ],
+   "loc": [
+    -5880.0,
+    3710.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Gerton Dumkin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gerton_Dumkin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -5929.0,
+    3172.0,
+    -103.0
+   ],
+   "lvl": "1",
+   "n": "gnomish captive",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Gnomish_captive"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -3918.0,
+    -563.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "gnomish deserter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Gnomish_Deserter"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    48,
+    62,
+    68,
+    95,
+    128,
+    132,
+    136,
+    141,
+    162
+   ],
+   "loc": [
+    -4157.0,
+    -2197.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "Gorul Longshanks",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gorul_Longshanks"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    99
+   ],
+   "loc": [
+    -2924.0,
+    -2633.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Gralk Dwarfkiller",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gralk_Dwarfkiller"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    77,
+    78,
+    80,
+    87,
+    89,
+    91,
+    130,
+    131,
+    132,
+    136
+   ],
+   "loc": [
+    5.0,
+    -93.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Guard Korik",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Korik"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    7,
+    8,
+    76,
+    79,
+    88,
+    92,
+    128,
+    130,
+    138,
+    141,
+    143,
+    148,
+    150,
+    155,
+    158,
+    160
+   ],
+   "loc": [
+    6.0,
+    -129.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Guard Krag",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Krag"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    8,
+    44,
+    90,
+    136,
+    141,
+    159,
+    162
+   ],
+   "loc": [
+    -5940.0,
+    3670.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Herga Ratgur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Herga_Ratgur"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    142
+   ],
+   "loc": null,
+   "lvl": "58",
+   "n": "High Priest of Zek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/High_Priest_of_Zek"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    63,
+    64
+   ],
+   "loc": [
+    -6320.0,
+    3246.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Icetooth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Icetooth"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -3939.0,
+    -1298.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Kardakor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kardakor"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    7,
+    9
+   ],
+   "loc": [
+    -5079.0,
+    -3504.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Korf Brokenhammer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Korf_Brokenhammer"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    141
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "Kromrif Captain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kromrif_Captain"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    57
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "Kromrif General",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kromrif_General"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    141
+   ],
+   "loc": null,
+   "lvl": "48",
+   "n": "Kromrif Recruit",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kromrif_Recruit"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    139
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "Kromrif Spearman",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kromrif_Spearman"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    141
+   ],
+   "loc": null,
+   "lvl": "58",
+   "n": "Kromrif Veteran",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kromrif_Veteran"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    141
+   ],
+   "loc": null,
+   "lvl": "60",
+   "n": "Kromrif Warlord",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kromrif_Warlord"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    57
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "Kromrif Warrior",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kromrif_Warrior"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    7,
+    8,
+    134,
+    151,
+    162
+   ],
+   "loc": [
+    -5960.0,
+    3605.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Laima Ratgur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Laima_Ratgur"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    134,
+    162
+   ],
+   "loc": [
+    -5900.0,
+    3670.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Lapker Geynion",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lapker_Geynion"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Common"
+   ],
+   "drops": [
+    72,
+    73,
+    154
+   ],
+   "loc": [
+    -5920.0,
+    3715.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Murdrick Tardok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Murdrick_Tardok"
+  },
+  {
+   "dr": [
+    "Common",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    48,
+    74,
+    75
+   ],
+   "loc": [
+    -19.0,
+    -74.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Narandi the Wretched",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Narandi_the_Wretched"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    142
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "Priest of Zek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Priest_of_Zek"
+  },
+  {
+   "dr": [
+    "Very Rare"
+   ],
+   "drops": [
+    8
+   ],
+   "loc": [
+    -4899.0,
+    -3510.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Relik",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Relik"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "36 or 50",
+   "n": "Royal Archer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Royal_Archer"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    2,
+    106
+   ],
+   "loc": null,
+   "lvl": "65",
+   "n": "Seneschal Aldikar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Seneschal_Aldikar_(Great_Divide)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "Sentry Badain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentry_Badain"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    26,
+    101
+   ],
+   "loc": [
+    -3944.0,
+    -1219.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Shardtooth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shardtooth"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    100,
+    105,
+    147,
+    163
+   ],
+   "loc": [
+    -3302.0,
+    -1165.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "shardwurm broodmother",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Shardwurm_Broodmother"
+  },
+  {
+   "dr": [
+    "Very Common",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    25,
+    100,
+    104,
+    105,
+    146,
+    147,
+    164
+   ],
+   "loc": [
+    -4341.0,
+    -1293.0,
+    -333.0
+   ],
+   "lvl": "45",
+   "n": "Shardwurm Matriarch",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shardwurm_Matriarch"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    34,
+    60,
+    81
+   ],
+   "loc": [
+    -4913.0,
+    792.0,
+    null
+   ],
+   "lvl": "62",
+   "n": "Taskmaster Abyott",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Taskmaster_Abyott"
+  },
+  {
+   "dr": [
+    "Always",
+    null
+   ],
+   "drops": [
+    144,
+    163
+   ],
+   "loc": [
+    -4796.0,
+    -659.0,
+    null
+   ],
+   "lvl": "49",
+   "n": "Vluudeen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vluudeen"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -6908.0,
+    513.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Vores the Hunter",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vores_the_Hunter"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1950.0,
+    -2650.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Windscribe Thaloria",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Windscribe_Thaloria"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -493.0,
+    88.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Wolfmaster Berglind",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wolfmaster_Berglind"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -490.0,
+    -135.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Wolfmaster Gunnar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wolfmaster_Gunnar"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    53,
+    129
+   ],
+   "loc": [
+    -2264.0,
+    3124.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Yaka Razorhoof",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Yaka_Razorhoof"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    127,
+    128,
+    140
+   ],
+   "loc": [
+    104.0,
+    -420.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Zrelik the Scout",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Zrelik_the_Scout"
+  }
+ ],
+ "updated": "2026-06-17T19:55:00Z",
+ "wikiTitle": "Great Divide",
+ "wikiUrl": "https://eqlwiki.com/index.php/Great_Divide",
+ "zone": "greatdivide"
+}

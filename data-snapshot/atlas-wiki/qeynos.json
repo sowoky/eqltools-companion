@@ -1,0 +1,1516 @@
+{
+ "items": [
+  {
+   "n": "Belt Pouch",
+   "u": "https://eqlwiki.com/index.php/Belt_Pouch"
+  },
+  {
+   "g": 1,
+   "n": "Black Wood Chip",
+   "u": "https://eqlwiki.com/index.php/Black_Wood_Chip"
+  },
+  {
+   "n": "Blackburrow Gnoll Pelt",
+   "u": "https://eqlwiki.com/index.php/Blackburrow_Gnoll_Pelt"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Axe",
+   "u": "https://eqlwiki.com/index.php/Bronze_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Club",
+   "u": "https://eqlwiki.com/index.php/Club"
+  },
+  {
+   "n": "Dwarf Head",
+   "u": "https://eqlwiki.com/index.php/Dwarf_Head"
+  },
+  {
+   "n": "Dwarf Meat",
+   "u": "https://eqlwiki.com/index.php/Dwarf_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Elven Blood",
+   "u": "https://eqlwiki.com/index.php/Elven_Blood"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Fishing Pole",
+   "u": "https://eqlwiki.com/index.php/Fishing_Pole"
+  },
+  {
+   "n": "Gnoll Fang",
+   "u": "https://eqlwiki.com/index.php/Gnoll_Fang"
+  },
+  {
+   "n": "Head of Donally Stultz",
+   "u": "https://eqlwiki.com/index.php/Head_of_Donally_Stultz"
+  },
+  {
+   "g": 1,
+   "n": "Human Blood",
+   "u": "https://eqlwiki.com/index.php/Human_Blood"
+  },
+  {
+   "n": "Jade Shard",
+   "u": "https://eqlwiki.com/index.php/Jade_Shard"
+  },
+  {
+   "n": "Mead",
+   "u": "https://eqlwiki.com/index.php/Mead"
+  },
+  {
+   "n": "Patch of Gnoll Fur",
+   "u": "https://eqlwiki.com/index.php/Patch_of_Gnoll_Fur"
+  },
+  {
+   "n": "Ration",
+   "u": "https://eqlwiki.com/index.php/Ration"
+  },
+  {
+   "n": "Riley's Confession",
+   "u": "https://eqlwiki.com/index.php/Riley's_Confession"
+  },
+  {
+   "g": 1,
+   "n": "Runed Branding Iron",
+   "u": "https://eqlwiki.com/index.php/Runed_Branding_Iron"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Dagger",
+   "u": "https://eqlwiki.com/index.php/Rusty_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Long Sword",
+   "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Shortened Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Shortened_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Spear"
+  },
+  {
+   "n": "Short Beer",
+   "u": "https://eqlwiki.com/index.php/Short_Beer"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "10.9%",
+    "31.3%",
+    "21.5%"
+   ],
+   "drops": [
+    2,
+    10,
+    15
+   ],
+   "loc": null,
+   "lvl": "5-7",
+   "n": "a gnoll",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gnoll"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    18
+   ],
+   "loc": null,
+   "lvl": "10-12",
+   "n": "A Rude Individual",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_rude_individual"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -215.0,
+    -525.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Adax Rhengst",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Adax_Rhengst"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    163.0,
+    -40.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "an investigator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_investigator"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    120.0,
+    -119.0,
+    null
+   ],
+   "lvl": "23",
+   "n": "Anehan Treol",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Anehan_Treol"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "30",
+   "n": "Arthon Spiritsight",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Arthon_Spiritsight"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    360.0,
+    -614.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Basten Ghunret",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Basten_Ghunret"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    120.0,
+    -119.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Behroe Dlexon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Behroe_Dlexon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    509.0,
+    -141.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Belious Naliedin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Belious_Naliedin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "10",
+   "n": "Brian Willman",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Brian_Willman"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    81.0,
+    -587.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Brin Stolunger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Brin_Stolunger"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    4,
+    12
+   ],
+   "loc": [
+    -263.0,
+    -230.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Bruno Barstomper",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bruno_Barstomper"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    37.0,
+    -512.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Captain Tillin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Captain_Tillin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    517.0,
+    -147.0,
+    null
+   ],
+   "lvl": "20-21",
+   "n": "Cassius Messus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cassius_Messus"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -282.0,
+    -495.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Chesgard Sydwenc",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Chesgard_Sydwen"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "?",
+   "n": "Cras Snyder",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cras_Snyder"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -176.0,
+    -544.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Daedet Losaren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Daedet_Losaren"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    282.0,
+    -632.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Daenor Casthopur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Daenor_Casthopur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -238.0,
+    -10.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Danaria Hollin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Danaria_Hollin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -110.0,
+    46.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "Den Magason",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Den_Magason"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    406.0,
+    -346.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Dionna",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dionna"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    -340.0,
+    55.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Donally Stultz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Donally_Stultz"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    8
+   ],
+   "loc": [
+    304.0,
+    -445.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Dun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dun"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    12
+   ],
+   "loc": [
+    375.0,
+    -499.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Edvard Tommels",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Edvard_Tommels"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    363.0,
+    -111.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Ellisha",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ellisha"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    363.0,
+    -515.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Endric",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Endric"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    8
+   ],
+   "loc": [
+    312.0,
+    -448.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Eracon Krengon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Eracon_Krengon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    286.0,
+    -614.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Esdia Moeba",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Esdia_Moeba"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    527.0,
+    -124.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Eve Marsinger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Eve_Marsinger"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    3
+   ],
+   "loc": null,
+   "lvl": "30",
+   "n": "Executioner",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Executioner"
+  },
+  {
+   "dr": [
+    null,
+    "Uncommon"
+   ],
+   "drops": [
+    9,
+    12
+   ],
+   "loc": [
+    -173.0,
+    120.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "Faren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Faren"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    314.0,
+    -670.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Gahlith Wrannstad",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gahlith_Wrannstad"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    368.0,
+    -87.0,
+    null
+   ],
+   "lvl": "8",
+   "n": "Gash Flockwalker",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gash_Flockwalker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -201.0,
+    -428.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Gehna Solbenya",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gehna_Solbenya"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    464.0,
+    -317.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Gharin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gharin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    72.0,
+    -511.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Ginleen Harltop",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ebon_Strongbear"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    6.0,
+    -437.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Ginleen Harltop",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ginleen_Harltop"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -33.0,
+    -470.0,
+    -24.0
+   ],
+   "lvl": "61",
+   "n": "Grahan Rothkar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grahan_Rothkar"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    -99.0,
+    -386.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Guard Augos",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Augos"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -247.0,
+    -145.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Guard Beren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Beren"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    -282.0,
+    -525.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "Guard Calik",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Calik"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -200.0,
+    -145.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Guard Corshin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Corshin"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    74.0,
+    -83.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Guard Cyrillian",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Cyrillian"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    406.0,
+    -402.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "Guard Dunix",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Dunix"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    42.0,
+    -117.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Guard Forbly",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Forbly"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    406.0,
+    -402.0,
+    null
+   ],
+   "lvl": "7",
+   "n": "Guard Jerith",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Jerith"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    183.0,
+    -66.0,
+    null
+   ],
+   "lvl": "8",
+   "n": "Guard Kwint",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kwint"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    454.0,
+    -292.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Guard Lasen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Lasen"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    74.0,
+    -83.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Guard Mezzt",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Mezzt"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -313.0,
+    -83.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Guard Naret",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Naret"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "9",
+   "n": "Guard Oleph",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Oleph"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    -98.0,
+    -382.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Guard Perin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Perin"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    74.0,
+    -83.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Guard Phaeton",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Phaeton"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    78.0,
+    -117.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Guard Quedal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Quedal"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    455.0,
+    -292.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Guard Relam",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Relam"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    20
+   ],
+   "loc": [
+    553.0,
+    -52.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Guard Tyrak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Tyrak"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    68.0,
+    -59.0,
+    null
+   ],
+   "lvl": "7",
+   "n": "Guard Urius",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Urius"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    77.0,
+    -19.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "Guard Wenbie",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Wenbie"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    281.0,
+    -353.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Hansl Bigroon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hansl_Bigroon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    312.0,
+    -488.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Indaria",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Indaria"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    544.0,
+    -142.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Joffrey Clay",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Joffrey_Clay"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    553.0,
+    -123.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Jusean Evanesque",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jusean_Evanesque"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    267.0,
+    -179.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Karl Verhey",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Karl_Verhey"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -246.0,
+    -477.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Kasine Paegra",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kasine_Paegra"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    329.0,
+    -633.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Kazlo Naedra",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kazlo_Naedra"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    339.0,
+    -439.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Kendall Copperhold",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kendall_Copperhold"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    307.0,
+    -664.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Kinloc Flamepaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kinloc_Flamepaw"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -301.0,
+    -259.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Klieb Torne",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Klieb_Torne"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    9
+   ],
+   "loc": [
+    12.0,
+    62.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Largon Welsh",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Largon_Welsh"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    42.0,
+    -86.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Lieutenant Arathur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lieutenant_Arathur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    20.0,
+    -48.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "Lomarc",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lomarc"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    7
+   ],
+   "loc": [
+    365.0,
+    -118.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Lylanthian",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lylanthian"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -38.0,
+    -64.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Madame Serena",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Madame_Serena"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    12.0,
+    62.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Marlin Bizmite",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marlin_Bizmite"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -324.0,
+    -84.0,
+    null
+   ],
+   "lvl": "14",
+   "n": "Menkes Tabolet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Menkes_Tabolet"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    320.0,
+    -664.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Mespha Tevalian",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mespha_Tevalian"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -316.0,
+    -268.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Micc Koter",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Micc_Koter"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -230.0,
+    -279.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Morty Prysmith",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Morty_Prysmith"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    35.0,
+    -102.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Nostahla Westfend",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nostahla_Westfend"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    267.0,
+    -179.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Philip Tallman",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Philip_Tallman"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    1,
+    19
+   ],
+   "loc": null,
+   "lvl": "10",
+   "n": "Raffel Minnmorn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Raffel_Minnmorn"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    14
+   ],
+   "loc": [
+    -345.0,
+    38.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Raz The Rat Misk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Raz_The_Rat_Misk"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -149.0,
+    -440.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Renic Losaren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Renic_Losaren"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    17
+   ],
+   "loc": [
+    200.0,
+    -330.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Riley Shplots",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Riley_Shplots"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -150.0,
+    -520.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Runethar Hamest",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Runethar_Hamest"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    523.0,
+    -157.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Sollari Bekines",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sollari_Bekines"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    319.0,
+    -439.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Sorn Copperhold",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sorn_Copperhold"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    65.0,
+    -507.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Tabure Ahendle",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tabure_Ahendle"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    303.0,
+    -623.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Tinshen Brinth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tinshen_Brinth"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    4
+   ],
+   "loc": [
+    297.0,
+    -203.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Tomas Zelnik",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tomas_Zelnik"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    518.0,
+    -123.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Tralyn Marsinger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tralyn_Marsinger"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    5,
+    6,
+    19
+   ],
+   "loc": [
+    -309.0,
+    -261.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Trumpy Irontoe",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trumpy_Irontoe_(NPC)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    286.0,
+    -684.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Unsar Koldhagon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Unsar_Koldhagon"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -167.0,
+    -498.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Vansted Rohenga",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vansted_Rohenga"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    0,
+    13,
+    16,
+    19,
+    21,
+    22,
+    23
+   ],
+   "loc": [
+    288.0,
+    -286.0,
+    null
+   ],
+   "lvl": "26",
+   "n": "Vicus Nonad",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vicus_Nonad"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -4.1,
+    -416.0,
+    -24.2
+   ],
+   "lvl": "16",
+   "n": "Willie Garrote",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Willie_Garrote"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -189.0,
+    -553.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Wolten Grafe",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wolten_Grafe"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    77.0,
+    -441.0,
+    24.0
+   ],
+   "lvl": "35",
+   "n": "Wylin Dodmil",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wylin_Dodmil"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    318.0,
+    -591.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Yestura Rhamrey",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Yestura_Rhamrey"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    149.0,
+    -395.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "Zamel",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Zamel"
+  }
+ ],
+ "updated": "2026-06-04T14:42:06Z",
+ "wikiTitle": "South Qeynos",
+ "wikiUrl": "https://eqlwiki.com/index.php/South_Qeynos",
+ "zone": "qeynos"
+}

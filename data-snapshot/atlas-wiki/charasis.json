@@ -1,0 +1,1328 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Acid Etched War Sword",
+   "u": "https://eqlwiki.com/index.php/Acid_Etched_War_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Adamantite Armband",
+   "u": "https://eqlwiki.com/index.php/Adamantite_Armband"
+  },
+  {
+   "g": 1,
+   "n": "Adamantite Club",
+   "u": "https://eqlwiki.com/index.php/Adamantite_Club"
+  },
+  {
+   "g": 1,
+   "n": "Balanced Fer`Esh",
+   "u": "https://eqlwiki.com/index.php/Balanced_Fer%60Esh"
+  },
+  {
+   "g": 1,
+   "n": "Balanced Shan`Tok",
+   "u": "https://eqlwiki.com/index.php/Balanced_Shan%60Tok"
+  },
+  {
+   "g": 1,
+   "n": "Balanced Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Balanced_Sheer_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Blood Point",
+   "u": "https://eqlwiki.com/index.php/Blood_Point"
+  },
+  {
+   "n": "Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Bone_Chips"
+  },
+  {
+   "n": "Brittle Bone",
+   "u": "https://eqlwiki.com/index.php/Brittle_Bone"
+  },
+  {
+   "g": 1,
+   "n": "Broken Sacrificial Dagger",
+   "u": "https://eqlwiki.com/index.php/Broken_Sacrificial_Dagger"
+  },
+  {
+   "n": "Dusty Iksar Skull",
+   "u": "https://eqlwiki.com/index.php/Dusty_Iksar_Skull"
+  },
+  {
+   "g": 1,
+   "n": "Dusty Rusted Shackles",
+   "u": "https://eqlwiki.com/index.php/Dusty_Rusted_Shackles"
+  },
+  {
+   "g": 1,
+   "n": "Dusty Rusted Vambraces",
+   "u": "https://eqlwiki.com/index.php/Dusty_Rusted_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Ebonwood Cudgel",
+   "u": "https://eqlwiki.com/index.php/Ebonwood_Cudgel"
+  },
+  {
+   "g": 1,
+   "n": "Elder Spiritist's Boots",
+   "u": "https://eqlwiki.com/index.php/Elder_Spiritist's_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Emerald Ring",
+   "u": "https://eqlwiki.com/index.php/Emerald_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Enshrouded Veil",
+   "u": "https://eqlwiki.com/index.php/Enshrouded_Veil"
+  },
+  {
+   "n": "Essence of Rathe",
+   "u": "https://eqlwiki.com/index.php/Essence_of_Rathe"
+  },
+  {
+   "g": 1,
+   "n": "Fayguard Parrying Dagger",
+   "u": "https://eqlwiki.com/index.php/Fayguard_Parrying_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Finely Crafted Fer`Esh",
+   "u": "https://eqlwiki.com/index.php/Finely_Crafted_Fer%60Esh"
+  },
+  {
+   "g": 1,
+   "n": "Finely Crafted Shan`Tok",
+   "u": "https://eqlwiki.com/index.php/Finely_Crafted_Shan%60Tok"
+  },
+  {
+   "g": 1,
+   "n": "Finely Crafted Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Finely_Crafted_Sheer_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Finely Crafted Targ Shield",
+   "u": "https://eqlwiki.com/index.php/Finely_Crafted_Targ_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Fingerbone Hoop",
+   "u": "https://eqlwiki.com/index.php/Fingerbone_Hoop"
+  },
+  {
+   "n": "Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
+  },
+  {
+   "n": "Fire Opal",
+   "u": "https://eqlwiki.com/index.php/Fire_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Gem Inlaid Band",
+   "u": "https://eqlwiki.com/index.php/Gem_Inlaid_Band"
+  },
+  {
+   "g": 1,
+   "n": "Glob of Gooey Goo",
+   "u": "https://eqlwiki.com/index.php/Glob_of_Gooey_Goo"
+  },
+  {
+   "n": "Glowing Iksar Skull",
+   "u": "https://eqlwiki.com/index.php/Glowing_Iksar_Skull"
+  },
+  {
+   "g": 1,
+   "n": "Golden Bracer",
+   "u": "https://eqlwiki.com/index.php/Golden_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Golden Pendant",
+   "u": "https://eqlwiki.com/index.php/Golden_Pendant"
+  },
+  {
+   "g": 1,
+   "n": "Gravebinder",
+   "u": "https://eqlwiki.com/index.php/Gravebinder"
+  },
+  {
+   "g": 1,
+   "n": "Guardians Mace",
+   "u": "https://eqlwiki.com/index.php/Guardians_Mace"
+  },
+  {
+   "g": 1,
+   "n": "Hand of the Reaper",
+   "u": "https://eqlwiki.com/index.php/Hand_of_the_Reaper"
+  },
+  {
+   "g": 1,
+   "n": "Helot Skull Helm",
+   "u": "https://eqlwiki.com/index.php/Helot_Skull_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Jagged Long Sword",
+   "u": "https://eqlwiki.com/index.php/Jagged_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Kunzar Hex Amulet",
+   "u": "https://eqlwiki.com/index.php/Kunzar_Hex_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Kylong Arm Guards",
+   "u": "https://eqlwiki.com/index.php/Kylong_Arm_Guards"
+  },
+  {
+   "g": 1,
+   "n": "Kylong Boots",
+   "u": "https://eqlwiki.com/index.php/Kylong_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Kylong Chestplate",
+   "u": "https://eqlwiki.com/index.php/Kylong_Chestplate"
+  },
+  {
+   "g": 1,
+   "n": "Kylong Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Kylong_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Kylong Greaves",
+   "u": "https://eqlwiki.com/index.php/Kylong_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Kylong War Helm",
+   "u": "https://eqlwiki.com/index.php/Kylong_War_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Kylong Wrist Guards",
+   "u": "https://eqlwiki.com/index.php/Kylong_Wrist_Guards"
+  },
+  {
+   "g": 1,
+   "n": "Mask of Obtenebration",
+   "u": "https://eqlwiki.com/index.php/Mask_of_Obtenebration"
+  },
+  {
+   "g": 1,
+   "n": "Mask of Wurms",
+   "u": "https://eqlwiki.com/index.php/Mask_of_Wurms"
+  },
+  {
+   "g": 1,
+   "n": "Melodious Truncheon",
+   "u": "https://eqlwiki.com/index.php/Melodious_Truncheon"
+  },
+  {
+   "n": "Mirror of Self-loathing",
+   "u": "https://eqlwiki.com/index.php/Mirror_of_Self-loathing"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Amulet",
+   "u": "https://eqlwiki.com/index.php/Mithril_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Mucilaginous Girdle",
+   "u": "https://eqlwiki.com/index.php/Mucilaginous_Girdle"
+  },
+  {
+   "g": 1,
+   "n": "Necklace of Superiority",
+   "u": "https://eqlwiki.com/index.php/Necklace_of_Superiority"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 115",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._115"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 116",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._116"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 300",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._300"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 301",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._301"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 35",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._35"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 351",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._351"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 352",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._352"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 36",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._36"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 379",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._379"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 400",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._400"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 450",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._450"
+  },
+  {
+   "g": 1,
+   "n": "Obtenebrate Short Sword",
+   "u": "https://eqlwiki.com/index.php/Obtenebrate_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Opal Bracelet",
+   "u": "https://eqlwiki.com/index.php/Opal_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Opalescent Hide",
+   "u": "https://eqlwiki.com/index.php/Opalescent_Hide"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Necklace",
+   "u": "https://eqlwiki.com/index.php/Pearl_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Rapier of Oriin",
+   "u": "https://eqlwiki.com/index.php/Rapier_of_Oriin"
+  },
+  {
+   "g": 1,
+   "n": "Rod of Faith",
+   "u": "https://eqlwiki.com/index.php/Rod_of_Faith"
+  },
+  {
+   "g": 1,
+   "n": "Rod of Oblations",
+   "u": "https://eqlwiki.com/index.php/Rod_of_Oblations"
+  },
+  {
+   "g": 1,
+   "n": "Rotbone Bracelet",
+   "u": "https://eqlwiki.com/index.php/Rotbone_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Rotbone Sleeves",
+   "u": "https://eqlwiki.com/index.php/Rotbone_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Scaled Coat",
+   "u": "https://eqlwiki.com/index.php/Ruined_Scaled_Coat"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Scaled Mantle",
+   "u": "https://eqlwiki.com/index.php/Ruined_Scaled_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Scaled Pants",
+   "u": "https://eqlwiki.com/index.php/Ruined_Scaled_Pants"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Scaled Skirt",
+   "u": "https://eqlwiki.com/index.php/Ruined_Scaled_Skirt"
+  },
+  {
+   "g": 1,
+   "n": "Ruined Scaled Sleeves",
+   "u": "https://eqlwiki.com/index.php/Ruined_Scaled_Sleeves"
+  },
+  {
+   "n": "Rune of Ap`Sagor",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Ap%60Sagor"
+  },
+  {
+   "n": "Rune of Attraction",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Attraction"
+  },
+  {
+   "n": "Rune of Crippling",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Crippling"
+  },
+  {
+   "n": "Rune of Rathe",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Rathe"
+  },
+  {
+   "n": "Rune of The Inverse",
+   "u": "https://eqlwiki.com/index.php/Rune_of_The_Inverse"
+  },
+  {
+   "n": "Runed Brass Disk",
+   "u": "https://eqlwiki.com/index.php/Runed_Brass_Disk"
+  },
+  {
+   "g": 1,
+   "n": "Runed Morning Star",
+   "u": "https://eqlwiki.com/index.php/Runed_Morning_Star"
+  },
+  {
+   "n": "Salil's Writ Pg. 288 (Left)",
+   "u": "https://eqlwiki.com/index.php/Salil's_Writ_Pg._288_(Left)"
+  },
+  {
+   "n": "Sapphire",
+   "u": "https://eqlwiki.com/index.php/Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Hide Girdle",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Hide_Girdle"
+  },
+  {
+   "g": 1,
+   "n": "Sash of the Dragonborn",
+   "u": "https://eqlwiki.com/index.php/Sash_of_the_Dragonborn"
+  },
+  {
+   "g": 1,
+   "n": "Scorpikis Claw Impaler",
+   "u": "https://eqlwiki.com/index.php/Scorpikis_Claw_Impaler"
+  },
+  {
+   "g": 1,
+   "n": "Sigil of the Calendar",
+   "u": "https://eqlwiki.com/index.php/Sigil_of_the_Calendar"
+  },
+  {
+   "g": 1,
+   "n": "Siren Scale Robe",
+   "u": "https://eqlwiki.com/index.php/Siren_Scale_Robe"
+  },
+  {
+   "g": 1,
+   "n": "Spirit Wracked Urn",
+   "u": "https://eqlwiki.com/index.php/Spirit_Wracked_Urn"
+  },
+  {
+   "n": "Star Ruby",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Steel Hilted Flint Dagger",
+   "u": "https://eqlwiki.com/index.php/Steel_Hilted_Flint_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Stein of Tears",
+   "u": "https://eqlwiki.com/index.php/Stein_of_Tears"
+  },
+  {
+   "g": 1,
+   "n": "Tallow-marked Candle",
+   "u": "https://eqlwiki.com/index.php/Tallow-marked_Candle"
+  },
+  {
+   "n": "Tears of Prexus",
+   "u": "https://eqlwiki.com/index.php/Tears_of_Prexus"
+  },
+  {
+   "n": "The Scent of Marr",
+   "u": "https://eqlwiki.com/index.php/The_Scent_of_Marr"
+  },
+  {
+   "g": 1,
+   "n": "Thorny Blackjack",
+   "u": "https://eqlwiki.com/index.php/Thorny_Blackjack"
+  },
+  {
+   "g": 1,
+   "n": "Warding Star",
+   "u": "https://eqlwiki.com/index.php/Warding_Star"
+  },
+  {
+   "n": "Words of Acquisition (Beza)",
+   "u": "https://eqlwiki.com/index.php/Words_of_Acquisition_(Beza)"
+  },
+  {
+   "n": "Words of Burnishing",
+   "u": "https://eqlwiki.com/index.php/Words_of_Burnishing"
+  },
+  {
+   "n": "Words of Cazic-Thule",
+   "u": "https://eqlwiki.com/index.php/Words_of_Cazic-Thule"
+  },
+  {
+   "n": "Words of Collection (Azia)",
+   "u": "https://eqlwiki.com/index.php/Words_of_Collection_(Azia)"
+  },
+  {
+   "n": "Words of Collection (Caza)",
+   "u": "https://eqlwiki.com/index.php/Words_of_Collection_(Caza)"
+  },
+  {
+   "n": "Words of Descrying",
+   "u": "https://eqlwiki.com/index.php/Words_of_Descrying"
+  },
+  {
+   "n": "Words of Grappling",
+   "u": "https://eqlwiki.com/index.php/Words_of_Grappling"
+  },
+  {
+   "n": "Words of Incarceration",
+   "u": "https://eqlwiki.com/index.php/Words_of_Incarceration"
+  },
+  {
+   "n": "Words of Obligation",
+   "u": "https://eqlwiki.com/index.php/Words_of_Obligation"
+  },
+  {
+   "n": "Words of Requisition",
+   "u": "https://eqlwiki.com/index.php/Words_of_Requisition"
+  },
+  {
+   "n": "Words of the Psyche",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Psyche"
+  },
+  {
+   "n": "Words of the Spectre",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Spectre"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    11,
+    27,
+    59,
+    84,
+    91
+   ],
+   "loc": null,
+   "lvl": "44 - 49",
+   "n": "a bile golem",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Bile_Golem"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    64
+   ],
+   "loc": null,
+   "lvl": "46-54(HS), 45-48(SF)",
+   "n": "a bottomless devourer (Howling Stones)",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Bottomless_Devourer"
+  },
+  {
+   "dr": [
+    null,
+    "Always"
+   ],
+   "drops": [
+    91,
+    94
+   ],
+   "loc": null,
+   "lvl": "42 - 45",
+   "n": "A Bottomless Feaster",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Bottomless_Feaster"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    1,
+    13,
+    15,
+    24,
+    25,
+    26,
+    48,
+    63,
+    65,
+    84,
+    85,
+    87,
+    91,
+    94
+   ],
+   "loc": [
+    296.0,
+    33.0,
+    null
+   ],
+   "lvl": "44",
+   "n": "a bottomless feaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_bottomless_feaster_(Howling_Stones)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    239.0,
+    138.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "a crypt golem",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crypt_Golem"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    81
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "a crypt guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crypt_guardian"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    29,
+    35,
+    86
+   ],
+   "loc": null,
+   "lvl": "50",
+   "n": "a crypt spectre",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crypt_Spectre"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    13,
+    45
+   ],
+   "loc": [
+    239.0,
+    138.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "a crypt wurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_crypt_wurm"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "50-54",
+   "n": "A Hamal Skeleton",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Hamal_Skeleton"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always"
+   ],
+   "drops": [
+    8,
+    28,
+    61
+   ],
+   "loc": null,
+   "lvl": "47-53",
+   "n": "a helot skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_helot_skeleton"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    10
+   ],
+   "loc": null,
+   "lvl": "49 - 54",
+   "n": "a helot spectre",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_helot_spectre"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    10
+   ],
+   "loc": [
+    152.0,
+    -440.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "a helot spirit",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_helot_spirit"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    1,
+    62,
+    67
+   ],
+   "loc": null,
+   "lvl": "54",
+   "n": "A Howling Spectre",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Howling_Spectre"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    12
+   ],
+   "loc": null,
+   "lvl": "50 - 54",
+   "n": "a mortiferous golem",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Mortiferous_Golem"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "50-54",
+   "n": "A Pulsating Bile",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Pulsating_Bile"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    11,
+    12,
+    24,
+    25,
+    48,
+    63,
+    81
+   ],
+   "loc": null,
+   "lvl": "42 - 47",
+   "n": "a pyre golem",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pyre_Golem"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    5,
+    8,
+    17,
+    19,
+    20,
+    21,
+    28,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    60,
+    77,
+    78,
+    79,
+    80,
+    95,
+    96,
+    100,
+    103,
+    105,
+    106,
+    107,
+    108,
+    109
+   ],
+   "loc": null,
+   "lvl": "42 - 53",
+   "n": "a sepulcher skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sepulcher_skeleton"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "42 - 54",
+   "n": "a sepulcher spectre",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sepulcher_spectre"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "42 - 54",
+   "n": "a sepulcher spirit",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sepulcher_spirit"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    7,
+    28,
+    99
+   ],
+   "loc": [
+    -333.0,
+    -8.0,
+    null
+   ],
+   "lvl": "47-49",
+   "n": "a skeletal watchman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_skeletal_watchman"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    68,
+    69,
+    70
+   ],
+   "loc": [
+    622.0,
+    29.0,
+    null
+   ],
+   "lvl": "42 - 47",
+   "n": "an undead oblation",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_undead_oblation"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    7,
+    28,
+    69
+   ],
+   "loc": null,
+   "lvl": "50-54",
+   "n": "an undertaker skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_undertaker_skeleton"
+  },
+  {
+   "dr": [
+    "Always",
+    "Ultra Rare",
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    47,
+    50,
+    68,
+    82,
+    90
+   ],
+   "loc": [
+    279.0,
+    -534.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Drusella Sathir",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Drusella_Sathir"
+  },
+  {
+   "dr": [
+    null,
+    "Common"
+   ],
+   "drops": [
+    22,
+    76
+   ],
+   "loc": null,
+   "lvl": "49-54",
+   "n": "Elementalbone Skeleton",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Elementalbone_skeleton"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    16,
+    23,
+    33
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "Embalming Fluid",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Embalming_Fluid"
+  },
+  {
+   "dr": [
+    "Common",
+    null,
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    15,
+    22,
+    30,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    83,
+    101,
+    102,
+    104,
+    110
+   ],
+   "loc": null,
+   "lvl": "39-43",
+   "n": "greater plaguebone",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Greater_plaguebone"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    20,
+    71,
+    72,
+    73,
+    74,
+    75
+   ],
+   "loc": [
+    1165.0,
+    -473.0,
+    null
+   ],
+   "lvl": "42 - 49",
+   "n": "greater war boned skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Greater_War_Boned_Skeleton_(Howling_Stones)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "50-54",
+   "n": "Hexbone Skeleton",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hexbone_Skeleton"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    11,
+    14
+   ],
+   "loc": [
+    294.0,
+    -524.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Mortiferous Protector",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mortiferous_Protector"
+  },
+  {
+   "dr": [
+    "Common",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    26,
+    31,
+    36
+   ],
+   "loc": null,
+   "lvl": "54",
+   "n": "Reanimated Plaguebone",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Reanimated_Plaguebone"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    46,
+    49,
+    93
+   ],
+   "loc": [
+    239.0,
+    138.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "Sentient Bile",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sentient_Bile"
+  },
+  {
+   "dr": [
+    "Always",
+    "Common",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    9,
+    39,
+    44,
+    66
+   ],
+   "loc": [
+    -90.0,
+    675.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "Skeletal Procurator",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Skeletal_Procurator"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    27
+   ],
+   "loc": [
+    244.0,
+    117.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "swirling goo",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Swirling_Goo"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    34,
+    85
+   ],
+   "loc": null,
+   "lvl": "54",
+   "n": "The Crypt Excavator",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Crypt_Excavator"
+  },
+  {
+   "dr": [
+    "Rare",
+    null,
+    null,
+    "Ultra Rare"
+   ],
+   "drops": [
+    6,
+    25,
+    91,
+    92
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "The Crypt Feaster",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Crypt_Feaster"
+  },
+  {
+   "dr": [
+    "Common",
+    "Always",
+    "Rare"
+   ],
+   "drops": [
+    18,
+    88,
+    89
+   ],
+   "loc": [
+    549.0,
+    112.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "The Crypt Keeper",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Crypt_Keeper"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    38,
+    87
+   ],
+   "loc": [
+    7.0,
+    565.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "The Golem Master",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Golem_Master"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "No Longer Drops"
+   ],
+   "drops": [
+    32,
+    42,
+    98
+   ],
+   "loc": null,
+   "lvl": "50",
+   "n": "The Skeleton Sepulcher",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Skeleton_Sepulcher"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    2,
+    37
+   ],
+   "loc": [
+    157.0,
+    189.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "The Spectre Sepulcher",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Spectre_Sepulcher"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    41,
+    43
+   ],
+   "loc": null,
+   "lvl": "54",
+   "n": "The Spectre Spiritualist",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Spectre_Spiritualist"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    40,
+    97
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "The Undertaker Lord",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Undertaker_Lord"
+  }
+ ],
+ "updated": "2026-06-06T00:39:16Z",
+ "wikiTitle": "Howling Stones",
+ "wikiUrl": "https://eqlwiki.com/index.php/Howling_Stones",
+ "zone": "charasis"
+}

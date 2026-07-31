@@ -1,0 +1,750 @@
+{
+ "items": [
+  {
+   "n": "Chromadrac Wing",
+   "u": "https://eqlwiki.com/index.php/Chromadrac_Wing"
+  },
+  {
+   "g": 1,
+   "n": "Chromodrac Gut",
+   "u": "https://eqlwiki.com/index.php/Chromodrac_Gut"
+  },
+  {
+   "g": 1,
+   "n": "Cloak of Flames",
+   "u": "https://eqlwiki.com/index.php/Cloak_of_Flames"
+  },
+  {
+   "n": "Crystallized Sulfur",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
+  },
+  {
+   "n": "Diamond",
+   "u": "https://eqlwiki.com/index.php/Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Dragon Bone Bracelet",
+   "u": "https://eqlwiki.com/index.php/Dragon_Bone_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Dragon Hero Bracer",
+   "u": "https://eqlwiki.com/index.php/Dragon_Hero_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Emerald Ring",
+   "u": "https://eqlwiki.com/index.php/Emerald_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Essence of Sunlight",
+   "u": "https://eqlwiki.com/index.php/Essence_of_Sunlight"
+  },
+  {
+   "n": "Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
+  },
+  {
+   "n": "Fire Opal",
+   "u": "https://eqlwiki.com/index.php/Fire_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Gauntlets of Fiery Might",
+   "u": "https://eqlwiki.com/index.php/Gauntlets_of_Fiery_Might"
+  },
+  {
+   "g": 1,
+   "n": "Halcyon Broadsword",
+   "u": "https://eqlwiki.com/index.php/Halcyon_Broadsword"
+  },
+  {
+   "n": "Immortals",
+   "u": "https://eqlwiki.com/index.php/Immortals"
+  },
+  {
+   "n": "Jasper",
+   "u": "https://eqlwiki.com/index.php/Jasper"
+  },
+  {
+   "g": 1,
+   "n": "Kavruul`s Mystic Pouch",
+   "u": "https://eqlwiki.com/index.php/Kavruul%60s_Mystic_Pouch"
+  },
+  {
+   "g": 1,
+   "n": "Lava Rock",
+   "u": "https://eqlwiki.com/index.php/Lava_Rock"
+  },
+  {
+   "g": 1,
+   "n": "McVaxius` Horn of War",
+   "u": "https://eqlwiki.com/index.php/McVaxius%60_Horn_of_War"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Amulet",
+   "u": "https://eqlwiki.com/index.php/Mithril_Amulet"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 379",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._379"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 401",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._401"
+  },
+  {
+   "n": "Onyx",
+   "u": "https://eqlwiki.com/index.php/Onyx"
+  },
+  {
+   "g": 1,
+   "n": "Opal Bracelet",
+   "u": "https://eqlwiki.com/index.php/Opal_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Opalescent Hide",
+   "u": "https://eqlwiki.com/index.php/Opalescent_Hide"
+  },
+  {
+   "g": 1,
+   "n": "Orb of Tishan",
+   "u": "https://eqlwiki.com/index.php/Orb_of_Tishan"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Necklace",
+   "u": "https://eqlwiki.com/index.php/Pearl_Necklace"
+  },
+  {
+   "n": "Peridot",
+   "u": "https://eqlwiki.com/index.php/Peridot"
+  },
+  {
+   "g": 1,
+   "n": "Red Dragon Scales",
+   "u": "https://eqlwiki.com/index.php/Red_Dragon_Scales"
+  },
+  {
+   "n": "Rune of Rathe",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Rathe"
+  },
+  {
+   "n": "Rune of The Inverse",
+   "u": "https://eqlwiki.com/index.php/Rune_of_The_Inverse"
+  },
+  {
+   "g": 1,
+   "n": "Runed Bolster Belt",
+   "u": "https://eqlwiki.com/index.php/Runed_Bolster_Belt"
+  },
+  {
+   "n": "Sapphire",
+   "u": "https://eqlwiki.com/index.php/Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Selo`s Drums of the March",
+   "u": "https://eqlwiki.com/index.php/Selo%60s_Drums_of_the_March"
+  },
+  {
+   "g": 1,
+   "n": "Shield of the Red Dragon",
+   "u": "https://eqlwiki.com/index.php/Shield_of_the_Red_Dragon"
+  },
+  {
+   "n": "Skyash Bile",
+   "u": "https://eqlwiki.com/index.php/Skyash_Bile"
+  },
+  {
+   "n": "Star Ruby",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby"
+  },
+  {
+   "n": "Tears of Prexus",
+   "u": "https://eqlwiki.com/index.php/Tears_of_Prexus"
+  },
+  {
+   "g": 1,
+   "n": "Tobrin's Mystical Eyepatch",
+   "u": "https://eqlwiki.com/index.php/Tobrin's_Mystical_Eyepatch"
+  },
+  {
+   "n": "Torn, burnt book",
+   "u": "https://eqlwiki.com/index.php/Torn,_burnt_book"
+  },
+  {
+   "g": 1,
+   "n": "Treasure Hunter`s Satchel",
+   "u": "https://eqlwiki.com/index.php/Treasure_Hunter%60s_Satchel"
+  },
+  {
+   "n": "Wing of Xegony",
+   "u": "https://eqlwiki.com/index.php/Wing_of_Xegony"
+  },
+  {
+   "n": "Words of Requisition",
+   "u": "https://eqlwiki.com/index.php/Words_of_Requisition"
+  },
+  {
+   "n": "Words of the Ethereal",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Ethereal"
+  },
+  {
+   "n": "Wurm Meat",
+   "u": "https://eqlwiki.com/index.php/Wurm_Meat"
+  },
+  {
+   "n": "Wurm Scale",
+   "u": "https://eqlwiki.com/index.php/Wurm_Scale"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    23
+   ],
+   "loc": null,
+   "lvl": "46-54(HS), 45-48(SF)",
+   "n": "a bottomless devourer (Howling Stones)",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Bottomless_Devourer"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    9,
+    10,
+    14,
+    18,
+    21,
+    22,
+    25,
+    26,
+    31,
+    35
+   ],
+   "loc": [
+    -837.0,
+    -1892.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "a bottomless feaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_bottomless_feaster_(Skyfire_Mountains)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -3250.0,
+    656.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "a bottomless gnawer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_bottomless_gnawer"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    0,
+    8
+   ],
+   "loc": null,
+   "lvl": "44",
+   "n": "a chromadrac",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Chromadrac"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    3,
+    7,
+    9,
+    10,
+    18,
+    22,
+    25,
+    31,
+    35,
+    36,
+    40,
+    43
+   ],
+   "loc": [
+    2437.0,
+    3070.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "a guardian wurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Guardian_Wurm"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    13
+   ],
+   "loc": [
+    -3342.0,
+    782.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "a lava walker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lava_walker"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    0,
+    8,
+    19,
+    20,
+    41
+   ],
+   "loc": [
+    616.0,
+    -210.0,
+    null
+   ],
+   "lvl": "45-49",
+   "n": "a mature chromadrac",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Mature_Chromadrac"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    null
+   ],
+   "drops": [
+    13,
+    43,
+    44
+   ],
+   "loc": null,
+   "lvl": "45",
+   "n": "a mature wurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Mature_Wurm"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": null,
+   "lvl": "44-47",
+   "n": "a mature wyvern",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Mature_Wyvern"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    13,
+    34,
+    35
+   ],
+   "loc": [
+    -3342.0,
+    782.0,
+    null
+   ],
+   "lvl": "47-51",
+   "n": "a shadow drake",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Shadow_Drake"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    34
+   ],
+   "loc": null,
+   "lvl": "39 - 46",
+   "n": "a skyash drake",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Skyash_Drake"
+  },
+  {
+   "dr": [
+    null,
+    "Ultra Rare"
+   ],
+   "drops": [
+    34,
+    42
+   ],
+   "loc": null,
+   "lvl": "43-47",
+   "n": "a skycinder drake",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Skycinder_Drake"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    34
+   ],
+   "loc": [
+    -119.1,
+    -2176.0,
+    -90.0
+   ],
+   "lvl": "47 ~ 51",
+   "n": "a skyfire drake",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_skyfire_drake"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    13,
+    28,
+    29
+   ],
+   "loc": [
+    -3342.0,
+    782.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "a soul devourer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Soul_Devourer"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    13,
+    43
+   ],
+   "loc": null,
+   "lvl": "47",
+   "n": "a wandering wurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Wandering_Wurm"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    null
+   ],
+   "drops": [
+    43,
+    44
+   ],
+   "loc": null,
+   "lvl": "40 - 44",
+   "n": "a wurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Wurm"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    13
+   ],
+   "loc": [
+    -3342.0,
+    782.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "a wurm spirit",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Wurm_Spirit"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": null,
+   "lvl": "40-44",
+   "n": "a wyvern",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Wyvern"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    12
+   ],
+   "loc": null,
+   "lvl": "60",
+   "n": "an ancient wyvern",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Ancient_Wyvern"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    16,
+    18
+   ],
+   "loc": [
+    2427.0,
+    3068.0,
+    null
+   ],
+   "lvl": "48-52",
+   "n": "an elder wyvern",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Elder_Wyvern"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    25,
+    43
+   ],
+   "loc": [
+    1418.0,
+    -1774.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "an old wurm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Old_Wurm"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Always"
+   ],
+   "drops": [
+    13,
+    34
+   ],
+   "loc": [
+    -3342.0,
+    782.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Black Scar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Black_Scar"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    13
+   ],
+   "loc": null,
+   "lvl": "51",
+   "n": "Eldrig the Old",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Eldrig_the_Old"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    0,
+    13
+   ],
+   "loc": [
+    -3342.0,
+    782.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "Faerie of Dismay",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Faerie_of_Dismay"
+  },
+  {
+   "dr": [
+    null,
+    "Rare"
+   ],
+   "drops": [
+    0,
+    13
+   ],
+   "loc": [
+    -3604.0,
+    957.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Felia Goldenwing",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Felia_Goldenwing"
+  },
+  {
+   "dr": [
+    "Ultra Rare"
+   ],
+   "drops": [
+    13
+   ],
+   "loc": [
+    2202.0,
+    -3663.0,
+    null
+   ],
+   "lvl": "44",
+   "n": "Guardian of Felia",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guardian_of_Felia"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    4175.0,
+    2860.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Jennus Lyklobar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jennus_Lyklobar"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    2,
+    5,
+    6,
+    11,
+    15,
+    17,
+    24,
+    27,
+    30,
+    32,
+    33,
+    37,
+    38,
+    39
+   ],
+   "loc": [
+    3287.0,
+    1824.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Talendor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Talendor"
+  }
+ ],
+ "updated": "2026-06-03T14:53:10Z",
+ "wikiTitle": "Skyfire Mountains",
+ "wikiUrl": "https://eqlwiki.com/index.php/Skyfire_Mountains",
+ "zone": "skyfire"
+}

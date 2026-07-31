@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
+<title>EQL Tools Companion</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="top__brand">EQL Tools <span>Companion</span></div>
+  <div class="top__status" id="status">starting…</div>
+  <button id="btnOverlay" class="btn">Overlay</button>
+</header>
+
+<nav class="tabs">
+  <button class="tab on" data-tab="live">Live</button>
+  <button class="tab" data-tab="zone">Zone</button>
+  <button class="tab" data-tab="tracker">Kill tracker</button>
+  <button class="tab" data-tab="settings">Settings</button>
+</nav>
+
+<main>
+  <section id="tab-live" class="pane on">
+    <div id="liveBanner" class="banner" hidden></div>
+    <div class="feedhead">
+      <label class="chk"><input type="checkbox" id="onlyQuest"> quest items only</label>
+      <span id="feedCount" class="dim"></span>
+    </div>
+    <ul id="feed" class="feed"></ul>
+    <p id="feedEmpty" class="empty">Waiting for log lines. Loot something in game — quest items light up here.<br>
+    <span class="dim">Logging must be on in game: <code>/log</code></span></p>
+  </section>
+
+  <section id="tab-zone" class="pane">
+    <div class="feedhead">
+      <select id="zoneSel"></select>
+      <label class="chk"><input type="checkbox" id="zoneFollow" checked> follow my character</label>
+      <span id="zoneMeta" class="dim"></span>
+    </div>
+    <div id="zoneBanner" class="banner" hidden></div>
+    <div id="zoneBody" class="zonegrid"></div>
+  </section>
+
+  <section id="tab-tracker" class="pane">
+    <div id="trackerBanner" class="banner" hidden></div>
+    <div id="trackerHead" class="thead"></div>
+    <div id="zones"></div>
+  </section>
+
+  <section id="tab-settings" class="pane">
+    <h2>Log folder</h2>
+    <p class="row"><code id="setLogDir">—</code> <button id="btnPickDir" class="btn">Change…</button></p>
+    <p class="dim" id="setLogStatus"></p>
+
+    <h2>Overlay</h2>
+    <p class="row">
+      <button id="btnOverlay2" class="btn">Show overlay</button>
+      <label class="chk"><input type="checkbox" id="setClickThrough"> click-through (game gets the mouse)</label>
+    </p>
+    <p class="row"><label class="dim" for="setOpacity">Opacity</label> <input type="range" id="setOpacity" min="0.2" max="1" step="0.05"></p>
+    <p class="dim">Hotkeys anywhere, even with the game focused: <code>Ctrl+Shift+O</code> show/hide · <code>Ctrl+Shift+L</code> click-through.<br>
+    The overlay can only sit over the game in <b>windowed or borderless</b> display mode — exclusive fullscreen draws past every other window.</p>
+
+    <h2>Kill tracker</h2>
+    <p class="row"><label class="chk"><input type="checkbox" id="setCities"> ignore city zones</label></p>
+    <p class="row"><label class="chk"><input type="checkbox" id="setGeneric"> generic kills count in every zone listing them</label></p>
+    <p class="row"><label class="chk"><input type="checkbox" id="setWitnessed"> count witnessed kills (no XP line)</label></p>
+    <p class="row"><button id="btnReset" class="btn btn--danger">Reset tracker state</button></p>
+
+    <h2>Data</h2>
+    <div id="dataStatus" class="dim"></div>
+    <p class="row"><button id="btnRefresh" class="btn">Refresh from eqltools.com</button></p>
+    <p class="dim" id="verLine"></p>
+  </section>
+</main>
+
+<script src="../vendor/shared.js"></script>
+<script src="../vendor/parse.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

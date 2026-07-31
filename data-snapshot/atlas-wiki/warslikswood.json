@@ -1,0 +1,1437 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "A Froglok Hex Doll",
+   "u": "https://eqlwiki.com/index.php/A_Froglok_Hex_Doll"
+  },
+  {
+   "g": 1,
+   "n": "A Koada'Dal Blood Doll",
+   "u": "https://eqlwiki.com/index.php/A_Koada'Dal_Blood_Doll"
+  },
+  {
+   "n": "A Page of A Poem",
+   "u": "https://eqlwiki.com/index.php/A_Page_of_A_Poem"
+  },
+  {
+   "g": 1,
+   "n": "A Weighted Axe",
+   "u": "https://eqlwiki.com/index.php/A_Weighted_Axe"
+  },
+  {
+   "n": "Amber",
+   "u": "https://eqlwiki.com/index.php/Amber"
+  },
+  {
+   "n": "An Illegible Note",
+   "u": "https://eqlwiki.com/index.php/An_Illegible_Note"
+  },
+  {
+   "g": 1,
+   "n": "Axe of the Iron Back",
+   "u": "https://eqlwiki.com/index.php/Axe_of_the_Iron_Back"
+  },
+  {
+   "g": 1,
+   "n": "Balanced Fer`Esh",
+   "u": "https://eqlwiki.com/index.php/Balanced_Fer%60Esh"
+  },
+  {
+   "g": 1,
+   "n": "Balanced Shan`Tok",
+   "u": "https://eqlwiki.com/index.php/Balanced_Shan%60Tok"
+  },
+  {
+   "g": 1,
+   "n": "Balanced Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Balanced_Sheer_Blade"
+  },
+  {
+   "n": "Bloodstone",
+   "u": "https://eqlwiki.com/index.php/Bloodstone"
+  },
+  {
+   "g": 1,
+   "n": "Bloodstone Ring",
+   "u": "https://eqlwiki.com/index.php/Bloodstone_Ring"
+  },
+  {
+   "n": "Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Bone_Chips"
+  },
+  {
+   "g": 1,
+   "n": "Bracer of Scavenging",
+   "u": "https://eqlwiki.com/index.php/Bracer_of_Scavenging"
+  },
+  {
+   "n": "Brittle Iksar Skull",
+   "u": "https://eqlwiki.com/index.php/Brittle_Iksar_Skull"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Dagger",
+   "u": "https://eqlwiki.com/index.php/Bronze_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Short Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Short_Sword"
+  },
+  {
+   "n": "Brute Hide",
+   "u": "https://eqlwiki.com/index.php/Brute_Hide"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "n": "Cat's Eye Agate",
+   "u": "https://eqlwiki.com/index.php/Cat's_Eye_Agate"
+  },
+  {
+   "g": 1,
+   "n": "Cloth Sandals",
+   "u": "https://eqlwiki.com/index.php/Cloth_Sandals"
+  },
+  {
+   "g": 1,
+   "n": "Diseased Tongue",
+   "u": "https://eqlwiki.com/index.php/Diseased_Tongue"
+  },
+  {
+   "g": 1,
+   "n": "Earring of Grachnist",
+   "u": "https://eqlwiki.com/index.php/Earring_of_Grachnist"
+  },
+  {
+   "g": 1,
+   "n": "Evergreen Ivy Ringband",
+   "u": "https://eqlwiki.com/index.php/Evergreen_Ivy_Ringband"
+  },
+  {
+   "n": "Exiled Iksar Head",
+   "u": "https://eqlwiki.com/index.php/Exiled_Iksar_Head"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Two Handed Sword",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Two_Handed_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Finely Crafted Fer`Esh",
+   "u": "https://eqlwiki.com/index.php/Finely_Crafted_Fer%60Esh"
+  },
+  {
+   "g": 1,
+   "n": "Finely Crafted Shan`Tok",
+   "u": "https://eqlwiki.com/index.php/Finely_Crafted_Shan%60Tok"
+  },
+  {
+   "g": 1,
+   "n": "Finely Crafted Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Finely_Crafted_Sheer_Blade"
+  },
+  {
+   "n": "Flame Agate",
+   "u": "https://eqlwiki.com/index.php/Flame_Agate"
+  },
+  {
+   "g": 1,
+   "n": "Forest Giant Hammer",
+   "u": "https://eqlwiki.com/index.php/Forest_Giant_Hammer"
+  },
+  {
+   "g": 1,
+   "n": "Forest Loop",
+   "u": "https://eqlwiki.com/index.php/Forest_Loop"
+  },
+  {
+   "g": 1,
+   "n": "Forsaken Pariah Mask",
+   "u": "https://eqlwiki.com/index.php/Forsaken_Pariah_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Giant Foreman's Tunic",
+   "u": "https://eqlwiki.com/index.php/Giant_Foreman's_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Giant Grub Digger",
+   "u": "https://eqlwiki.com/index.php/Giant_Grub_Digger"
+  },
+  {
+   "g": 1,
+   "n": "Giant Lord's Tunic",
+   "u": "https://eqlwiki.com/index.php/Giant_Lord's_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Giant Tree Flayer",
+   "u": "https://eqlwiki.com/index.php/Giant_Tree_Flayer"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Scout Beads",
+   "u": "https://eqlwiki.com/index.php/Goblin_Scout_Beads"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Slaver's Whip",
+   "u": "https://eqlwiki.com/index.php/Goblin_Slaver's_Whip"
+  },
+  {
+   "g": 1,
+   "n": "Goblin Sparring Gloves",
+   "u": "https://eqlwiki.com/index.php/Goblin_Sparring_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Gold Ring",
+   "u": "https://eqlwiki.com/index.php/Gold_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Golden Earring",
+   "u": "https://eqlwiki.com/index.php/Golden_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Grachnist's Head",
+   "u": "https://eqlwiki.com/index.php/Grachnist's_Head"
+  },
+  {
+   "g": 1,
+   "n": "Green Goblin Skin",
+   "u": "https://eqlwiki.com/index.php/Green_Goblin_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Hammer of Flattening",
+   "u": "https://eqlwiki.com/index.php/Hammer_of_Flattening"
+  },
+  {
+   "n": "High Quality Brute Hide",
+   "u": "https://eqlwiki.com/index.php/High_Quality_Brute_Hide"
+  },
+  {
+   "n": "Ice of Velious",
+   "u": "https://eqlwiki.com/index.php/Ice_of_Velious"
+  },
+  {
+   "g": 1,
+   "n": "Idol of Woven Grass",
+   "u": "https://eqlwiki.com/index.php/Idol_of_Woven_Grass"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Blood",
+   "u": "https://eqlwiki.com/index.php/Iksar_Blood"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Scaled Gloves",
+   "u": "https://eqlwiki.com/index.php/Iksar_Scaled_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Targ Shield",
+   "u": "https://eqlwiki.com/index.php/Iksar_Targ_Shield"
+  },
+  {
+   "n": "Intact Brutling Choppers",
+   "u": "https://eqlwiki.com/index.php/Intact_Brutling_Choppers"
+  },
+  {
+   "n": "Intact Pygmy Brute Choppers",
+   "u": "https://eqlwiki.com/index.php/Intact_Pygmy_Brute_Choppers"
+  },
+  {
+   "n": "Ivory",
+   "u": "https://eqlwiki.com/index.php/Ivory"
+  },
+  {
+   "n": "Jade",
+   "u": "https://eqlwiki.com/index.php/Jade"
+  },
+  {
+   "g": 1,
+   "n": "Jade Earring",
+   "u": "https://eqlwiki.com/index.php/Jade_Earring"
+  },
+  {
+   "n": "Jade Shard",
+   "u": "https://eqlwiki.com/index.php/Jade_Shard"
+  },
+  {
+   "n": "Jasper",
+   "u": "https://eqlwiki.com/index.php/Jasper"
+  },
+  {
+   "g": 1,
+   "n": "Leg-Chopper",
+   "u": "https://eqlwiki.com/index.php/Leg-Chopper"
+  },
+  {
+   "n": "Loose Scale",
+   "u": "https://eqlwiki.com/index.php/Loose_Scale"
+  },
+  {
+   "g": 1,
+   "n": "Lumberjack's Cap",
+   "u": "https://eqlwiki.com/index.php/Lumberjack's_Cap"
+  },
+  {
+   "n": "Misscribed Gate",
+   "u": "https://eqlwiki.com/index.php/Misscribed_Gate"
+  },
+  {
+   "n": "Misscribed Lifetap",
+   "u": "https://eqlwiki.com/index.php/Misscribed_Lifetap"
+  },
+  {
+   "g": 1,
+   "n": "Mithril Earring",
+   "u": "https://eqlwiki.com/index.php/Mithril_Earring"
+  },
+  {
+   "n": "Onyx",
+   "u": "https://eqlwiki.com/index.php/Onyx"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 30 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._30_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 30 (Right)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._30_(Right)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 312 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._312_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 312 (Right)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._312_(Right)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 375 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._375_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 375 (Right)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._375_(Right)"
+  },
+  {
+   "n": "Pearl",
+   "u": "https://eqlwiki.com/index.php/Pearl"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Earring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Necklace",
+   "u": "https://eqlwiki.com/index.php/Pearl_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Ring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Ring"
+  },
+  {
+   "n": "Pearl Shard",
+   "u": "https://eqlwiki.com/index.php/Pearl_Shard"
+  },
+  {
+   "n": "Peridot",
+   "u": "https://eqlwiki.com/index.php/Peridot"
+  },
+  {
+   "g": 1,
+   "n": "Red Headband (Kunark)",
+   "u": "https://eqlwiki.com/index.php/Red_Headband_(Kunark)"
+  },
+  {
+   "n": "Rune of Al'Kabor",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Al'Kabor"
+  },
+  {
+   "n": "Rune of Neglect",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Neglect"
+  },
+  {
+   "n": "Rune of Oppression",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Oppression"
+  },
+  {
+   "n": "Rune of Periphery",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Periphery"
+  },
+  {
+   "n": "Rune of Velious",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Velious"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Fer`Esh",
+   "u": "https://eqlwiki.com/index.php/Rusty_Fer%60Esh"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Shan`Tok",
+   "u": "https://eqlwiki.com/index.php/Rusty_Shan%60Tok"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Rusty_Sheer_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Scale Wolf Hide Boots",
+   "u": "https://eqlwiki.com/index.php/Scale_Wolf_Hide_Boots"
+  },
+  {
+   "n": "Scaled Wolf Hide",
+   "u": "https://eqlwiki.com/index.php/Scaled_Wolf_Hide"
+  },
+  {
+   "n": "Shattered Choppers",
+   "u": "https://eqlwiki.com/index.php/Shattered_Choppers"
+  },
+  {
+   "g": 1,
+   "n": "Shrunken Goblin Skull Earring",
+   "u": "https://eqlwiki.com/index.php/Shrunken_Goblin_Skull_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Silver Amulet",
+   "u": "https://eqlwiki.com/index.php/Silver_Amulet"
+  },
+  {
+   "g": 1,
+   "n": "Straw Spun Belt",
+   "u": "https://eqlwiki.com/index.php/Straw_Spun_Belt"
+  },
+  {
+   "g": 1,
+   "n": "Tarnished Fer`Esh",
+   "u": "https://eqlwiki.com/index.php/Tarnished_Fer%60Esh"
+  },
+  {
+   "g": 1,
+   "n": "Tarnished Shan`Tok",
+   "u": "https://eqlwiki.com/index.php/Tarnished_Shan%60Tok"
+  },
+  {
+   "g": 1,
+   "n": "Tarnished Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Tarnished_Sheer_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Teir`Dal Sooth Doll",
+   "u": "https://eqlwiki.com/index.php/Teir%60Dal_Sooth_Doll"
+  },
+  {
+   "g": 1,
+   "n": "Tiny Glowing Skull",
+   "u": "https://eqlwiki.com/index.php/Tiny_Glowing_Skull"
+  },
+  {
+   "n": "Topaz",
+   "u": "https://eqlwiki.com/index.php/Topaz"
+  },
+  {
+   "g": 1,
+   "n": "Totem of the Warrior Spirit",
+   "u": "https://eqlwiki.com/index.php/Totem_of_the_Warrior_Spirit"
+  },
+  {
+   "n": "Words of Absorption",
+   "u": "https://eqlwiki.com/index.php/Words_of_Absorption"
+  },
+  {
+   "n": "Words of Cazic-Thule",
+   "u": "https://eqlwiki.com/index.php/Words_of_Cazic-Thule"
+  },
+  {
+   "n": "Words of Dominion",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dominion"
+  },
+  {
+   "n": "Words of Enlightenment",
+   "u": "https://eqlwiki.com/index.php/Words_of_Enlightenment"
+  },
+  {
+   "n": "Words of Radiance",
+   "u": "https://eqlwiki.com/index.php/Words_of_Radiance"
+  },
+  {
+   "n": "Words of Refuge",
+   "u": "https://eqlwiki.com/index.php/Words_of_Refuge"
+  },
+  {
+   "n": "Words of the Extinct",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Extinct"
+  },
+  {
+   "n": "Words of the Quickening",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Quickening"
+  },
+  {
+   "n": "Words of Tyranny",
+   "u": "https://eqlwiki.com/index.php/Words_of_Tyranny"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    30,
+    31,
+    34,
+    44,
+    58,
+    60
+   ],
+   "loc": [
+    -957.0,
+    1087.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "a forest giant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Forest_Giant"
+  },
+  {
+   "dr": [
+    "0.7%",
+    "0.7%",
+    "100%",
+    "2.9%",
+    null,
+    "0.7%",
+    "0.7%",
+    "1.5%"
+   ],
+   "drops": [
+    3,
+    6,
+    23,
+    30,
+    31,
+    34,
+    35,
+    60
+   ],
+   "loc": [
+    -506.0,
+    1316.0,
+    null
+   ],
+   "lvl": "22-27",
+   "n": "a forest giant evergreen",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Forest_Giant_Evergreen"
+  },
+  {
+   "dr": [
+    "0.4%",
+    "0.4%",
+    "100%",
+    "1.8%",
+    "0.4%",
+    "0.4%",
+    "1.1%",
+    "0.4%",
+    "0.4%",
+    "0.4%",
+    "0.7%",
+    "1.1%",
+    "0.7%"
+   ],
+   "drops": [
+    3,
+    6,
+    23,
+    30,
+    31,
+    33,
+    34,
+    35,
+    36,
+    44,
+    58,
+    60,
+    91
+   ],
+   "loc": [
+    -957.0,
+    1087.0,
+    null
+   ],
+   "lvl": "19 - 23",
+   "n": "a forest giant greenwood",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Forest_Giant_Greenwood"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    30,
+    31,
+    34,
+    44,
+    58,
+    60,
+    61,
+    62,
+    107
+   ],
+   "loc": [
+    -951.0,
+    1335.0,
+    null
+   ],
+   "lvl": "17-19",
+   "n": "a forest giant sapling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Forest_Giant_Sapling"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    4,
+    29,
+    40,
+    43,
+    46,
+    53,
+    54,
+    55,
+    56,
+    63,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    75,
+    78,
+    79,
+    80,
+    81,
+    82,
+    90,
+    97,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106
+   ],
+   "loc": [
+    2788.0,
+    -116.0,
+    null
+   ],
+   "lvl": "19",
+   "n": "a goblin agressor",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_agressor"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    95,
+    96
+   ],
+   "loc": [
+    3190.0,
+    -336.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "a goblin bloodtracer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_bloodtracer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -2167.0,
+    3371.0,
+    null
+   ],
+   "lvl": "10",
+   "n": "a goblin bonecaster",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_bonecaster"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    -2000.0,
+    1000.0,
+    null
+   ],
+   "lvl": "7-8",
+   "n": "a goblin hextracer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Hextracer"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    77
+   ],
+   "loc": [
+    -1694.0,
+    2649.0,
+    null
+   ],
+   "lvl": "5-6",
+   "n": "a goblin outrider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_outrider"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    39
+   ],
+   "loc": [
+    2928.0,
+    -26.0,
+    null
+   ],
+   "lvl": "16",
+   "n": "a goblin pit fighter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_pit_fighter"
+  },
+  {
+   "dr": [
+    "1.5%",
+    "30.9%"
+   ],
+   "drops": [
+    2,
+    37
+   ],
+   "loc": null,
+   "lvl": "2-4",
+   "n": "a goblin scout",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Scout"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    10,
+    11,
+    41
+   ],
+   "loc": [
+    3633.0,
+    -2242.0,
+    null
+   ],
+   "lvl": "12",
+   "n": "a goblin skirmisher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Skirmisher"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    5,
+    43,
+    47
+   ],
+   "loc": null,
+   "lvl": "20 - 21+",
+   "n": "a goblin soothsayer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Soothsayer"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    2,
+    43
+   ],
+   "loc": [
+    -2133.0,
+    328.0,
+    null
+   ],
+   "lvl": "4",
+   "n": "a goblin thief",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_goblin_thief"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "13-15",
+   "n": "a goblin witchdoctor",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Goblin_Witchdoctor"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    17,
+    52,
+    88
+   ],
+   "loc": [
+    681.0,
+    559.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "a pygmy skulking brute",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_pygmy_skulking_brute"
+  },
+  {
+   "dr": [
+    "Rare",
+    null,
+    "Rare"
+   ],
+   "drops": [
+    59,
+    86,
+    87
+   ],
+   "loc": [
+    2291.0,
+    -143.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "a scaled wolf elder",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_scaled_wolf_elder"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1647.0,
+    -1134.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "a shady goblin",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_shady_goblin"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    12,
+    14,
+    15,
+    20,
+    50,
+    83,
+    84,
+    85,
+    92,
+    93,
+    94
+   ],
+   "loc": null,
+   "lvl": "4",
+   "n": "a skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_skeleton_(Iksar)"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    10,
+    17,
+    18,
+    19,
+    29,
+    40,
+    45,
+    53,
+    54,
+    55,
+    56,
+    57,
+    63,
+    64,
+    71,
+    90,
+    97
+   ],
+   "loc": null,
+   "lvl": "22-25",
+   "n": "a skulking brute",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Skulking_Brute"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    51,
+    88
+   ],
+   "loc": [
+    -1920.5,
+    1718.8,
+    153.1
+   ],
+   "lvl": "13",
+   "n": "a skulking brutling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Skulking_Brutling"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -2942.0,
+    854.0,
+    null
+   ],
+   "lvl": "7-9",
+   "n": "a skulking runtling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Skulking_runtling"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    null
+   ],
+   "drops": [
+    50,
+    92
+   ],
+   "loc": null,
+   "lvl": "5",
+   "n": "an iksar footpad",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_iksar_footpad"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -2023.0,
+    -719.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "an Iksar knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_iksar_knight"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -2206.0,
+    -583.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Captain Gideen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Captain_Gideen"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1643.0,
+    -743.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Eaxl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Eaxl"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -2349.0,
+    -1017.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Myxl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Myxl"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    5,
+    47
+   ],
+   "loc": null,
+   "lvl": "22-24",
+   "n": "goblin spirit caller",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Goblin_Spirit_Caller"
+  },
+  {
+   "dr": [
+    null,
+    "Rare",
+    "Rare",
+    "Always",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    22,
+    38,
+    42,
+    49,
+    89,
+    98
+   ],
+   "loc": [
+    2883.8,
+    -85.9,
+    null
+   ],
+   "lvl": "32",
+   "n": "Grachnist the Destroyer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grachnist_the_Destroyer"
+  },
+  {
+   "dr": [
+    "Always",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    13,
+    32,
+    48
+   ],
+   "loc": [
+    590.0,
+    2480.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Iksar Bandit Lord",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Iksar_Bandit_Lord"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    8,
+    9,
+    18,
+    24,
+    26,
+    27,
+    28,
+    41,
+    55,
+    71,
+    72,
+    73,
+    76
+   ],
+   "loc": [
+    537.0,
+    2431.0,
+    null
+   ],
+   "lvl": "22-26",
+   "n": "Iksar exile",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Iksar_exile"
+  },
+  {
+   "dr": [
+    "Always",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    32,
+    53,
+    74,
+    99
+   ],
+   "loc": null,
+   "lvl": "19",
+   "n": "Iksar pariah",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Iksar_Pariah"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    21
+   ],
+   "loc": null,
+   "lvl": "33",
+   "n": "Pit Fighter Dob",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Pit_Fighter_Dob"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    4014.0,
+    402.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Ssolet Dnaas",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ssolet_Dnaas"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    -2393.0,
+    -613.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Agash",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Agash"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    -1682.0,
+    -836.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Gepwyz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Gepwyz"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    -2271.0,
+    -902.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Kroniz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Kroniz"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    -2004.0,
+    -981.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Lunmiz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Lunmiz"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    -1485.0,
+    -1145.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Melzok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Melzok"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    -1606.0,
+    -730.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Olon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Olon"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    -1709.0,
+    -581.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Roklon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Roklon"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    -2358.0,
+    -998.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Syldon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Syldon"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    -2539.0,
+    -406.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Walrun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Walrun"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    25
+   ],
+   "loc": [
+    -1863.0,
+    -885.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "Warlord Vyzer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Warlord_Vyzer"
+  }
+ ],
+ "updated": "2026-06-06T22:38:15Z",
+ "wikiTitle": "Warsliks Woods",
+ "wikiUrl": "https://eqlwiki.com/index.php/Warsliks_Woods",
+ "zone": "warslikswood"
+}

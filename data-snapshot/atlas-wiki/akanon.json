@@ -1,0 +1,2198 @@
+{
+ "items": [
+  {
+   "n": "Bandages",
+   "u": "https://eqlwiki.com/index.php/Bandages"
+  },
+  {
+   "n": "Blackbox A Series",
+   "u": "https://eqlwiki.com/index.php/Blackbox_A_Series"
+  },
+  {
+   "n": "Blackbox B Series",
+   "u": "https://eqlwiki.com/index.php/Blackbox_B_Series"
+  },
+  {
+   "n": "Blackbox C Series",
+   "u": "https://eqlwiki.com/index.php/Blackbox_C_Series"
+  },
+  {
+   "n": "Blackbox D Series",
+   "u": "https://eqlwiki.com/index.php/Blackbox_D_Series"
+  },
+  {
+   "n": "Blackbox E Series",
+   "u": "https://eqlwiki.com/index.php/Blackbox_E_Series"
+  },
+  {
+   "n": "Blackbox Fragment",
+   "u": "https://eqlwiki.com/index.php/Blackbox_Fragment"
+  },
+  {
+   "n": "Blackbox X Series",
+   "u": "https://eqlwiki.com/index.php/Blackbox_X_Series"
+  },
+  {
+   "n": "Blackbox Z Series",
+   "u": "https://eqlwiki.com/index.php/Blackbox_Z_Series"
+  },
+  {
+   "n": "Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Bone_Chips"
+  },
+  {
+   "n": "Chunk of Meat",
+   "u": "https://eqlwiki.com/index.php/Chunk_of_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Dark Gold Sr Apprentice Robe*",
+   "u": "https://eqlwiki.com/index.php/Dark_Gold_Sr_Apprentice_Robe%2A"
+  },
+  {
+   "n": "Gnome Decapitated Head",
+   "u": "https://eqlwiki.com/index.php/Gnome_Decapitated_Head"
+  },
+  {
+   "n": "Incomplete Blackbox",
+   "u": "https://eqlwiki.com/index.php/Incomplete_Blackbox"
+  },
+  {
+   "g": 1,
+   "n": "Large Lantern",
+   "u": "https://eqlwiki.com/index.php/Large_Lantern"
+  },
+  {
+   "g": 1,
+   "n": "Minotaur Horn",
+   "u": "https://eqlwiki.com/index.php/Minotaur_Horn"
+  },
+  {
+   "n": "Ration",
+   "u": "https://eqlwiki.com/index.php/Ration"
+  },
+  {
+   "n": "Scrap Metal",
+   "u": "https://eqlwiki.com/index.php/Scrap_Metal"
+  },
+  {
+   "g": 1,
+   "n": "Short Sword",
+   "u": "https://eqlwiki.com/index.php/Short_Sword"
+  },
+  {
+   "n": "Silver Cylinder",
+   "u": "https://eqlwiki.com/index.php/Silver_Cylinder"
+  },
+  {
+   "n": "Size 4 Sprocket",
+   "u": "https://eqlwiki.com/index.php/Size_4_Sprocket"
+  },
+  {
+   "n": "Size 5 Sprocket",
+   "u": "https://eqlwiki.com/index.php/Size_5_Sprocket"
+  },
+  {
+   "n": "Size 6 Sprocket",
+   "u": "https://eqlwiki.com/index.php/Size_6_Sprocket"
+  },
+  {
+   "g": 1,
+   "n": "Small Round Shield",
+   "u": "https://eqlwiki.com/index.php/Small_Round_Shield"
+  },
+  {
+   "n": "Snake Egg",
+   "u": "https://eqlwiki.com/index.php/Snake_Egg"
+  },
+  {
+   "n": "Snake Fang",
+   "u": "https://eqlwiki.com/index.php/Snake_Fang"
+  },
+  {
+   "n": "Spiderling Silk",
+   "u": "https://eqlwiki.com/index.php/Spiderling_Silk"
+  },
+  {
+   "n": "Sprockets",
+   "u": "https://eqlwiki.com/index.php/Sprockets"
+  },
+  {
+   "n": "Tiger Skin",
+   "u": "https://eqlwiki.com/index.php/Tiger_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Weighted Gloves",
+   "u": "https://eqlwiki.com/index.php/Weighted_Gloves"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1348.0,
+    -862.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "a clockwork banker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Clockwork_Banker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    813.0,
+    -200.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "a clockwork receptionist",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_clockwork_receptionist"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    816.0,
+    -108.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "a clockwork torturer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Clockwork_Torturer"
+  },
+  {
+   "dr": [
+    "54.3%"
+   ],
+   "drops": [
+    9
+   ],
+   "loc": [
+    2171.0,
+    -437.0,
+    null
+   ],
+   "lvl": "1",
+   "n": "a decaying gnome skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Decaying_Gnome_Skeleton"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    15
+   ],
+   "loc": [
+    1305.0,
+    -747.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "a lesser minotaur",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lesser_minotaur"
+  },
+  {
+   "dr": [
+    "Always",
+    "Uncommon"
+   ],
+   "drops": [
+    27,
+    29
+   ],
+   "loc": [
+    1482.0,
+    -192.0,
+    null
+   ],
+   "lvl": "27",
+   "n": "a mechanic",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Mechanic"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    24,
+    25
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a rock snake",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_rock_snake"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    26
+   ],
+   "loc": null,
+   "lvl": "2",
+   "n": "a rock spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_rock_spider"
+  },
+  {
+   "dr": [
+    "Always",
+    "Common"
+   ],
+   "drops": [
+    10,
+    28
+   ],
+   "loc": null,
+   "lvl": "8",
+   "n": "a tiger",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_tiger_(Ak'Anon_Zoo)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    848.0,
+    -429.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Baxok Curhunter",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Baxok_Curhunter"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    788.0,
+    -175.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "Cleaner X",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cleaner_X"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1165.0,
+    -723.0,
+    null
+   ],
+   "lvl": "12",
+   "n": "clockwork cleaner",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Clockwork_cleaner"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1273.0,
+    -798.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Clockwork IIIZ",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_IIIZ"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1273.0,
+    -798.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Clockwork IIIZ",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_IIZ"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1273.0,
+    -798.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Clockwork IIIZ",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_IZ"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1268.0,
+    -507.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Clockwork IVB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_IVB"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "32",
+   "n": "Clockwork MM",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_MM"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": null,
+   "lvl": "40",
+   "n": "Clockwork MX",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_MX"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    336.0,
+    21.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "clockwork scrubber",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Clockwork_Scrubber"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    700.0,
+    154.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "clockwork sweeper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Clockwork_Sweeper"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    2027.0,
+    -517.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Clockwork VIIX",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_VIIX"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1281.0,
+    -780.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Clockwork XIB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XIB"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    229.0,
+    50.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "Clockwork XIE",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XIE"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1313.0,
+    -380.0,
+    null
+   ],
+   "lvl": "38~42",
+   "n": "Clockwork XIIC",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XIIC"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    -21.0,
+    -17.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Clockwork XIIE",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XIIE"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    470.0,
+    -51.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Clockwork XIIIB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XIIIB"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    722.0,
+    -120.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Clockwork XIVE",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XIVE"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    238.0,
+    -46.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Clockwork XIXA",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XIXA"
+  },
+  {
+   "dr": [
+    null,
+    "Rare",
+    null,
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    null
+   ],
+   "drops": [
+    5,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+   ],
+   "loc": [
+    258.0,
+    32.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Clockwork XVE",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVE"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    811.0,
+    -148.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "Clockwork XVIB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVIB"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    760.0,
+    -155.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Clockwork XVID",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVID"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    5,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1299.0,
+    -896.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Clockwork XVIE",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVIE"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1165.0,
+    -723.0,
+    null
+   ],
+   "lvl": "18",
+   "n": "Clockwork XVIIA",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVIIA"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    2045.0,
+    -354.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Clockwork XVIIC",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVIIC"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    826.0,
+    -142.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Clockwork XVIIIB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVIIIB"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    741.0,
+    -115.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Clockwork XVIIIE",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVIIIE"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    202.0,
+    21.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "Clockwork XXA",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXA"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1307.0,
+    -780.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Clockwork XXB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXB"
+  },
+  {
+   "dr": [
+    null,
+    "Rare",
+    null,
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    null
+   ],
+   "drops": [
+    4,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+   ],
+   "loc": [
+    1364.0,
+    -867.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Clockwork XXD",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVD"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    796.0,
+    -208.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Clockwork XXE",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XE"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    5,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    796.0,
+    -208.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Clockwork XXE",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXE"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    764.0,
+    -126.0,
+    null
+   ],
+   "lvl": "9",
+   "n": "Clockwork XXIA",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXIA"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1281.0,
+    -780.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Clockwork XXIB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXIB"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    248.0,
+    35.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Clockwork XXID",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXID"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": null,
+   "lvl": "29",
+   "n": "Clockwork XXIIB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XIIB"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": null,
+   "lvl": "29",
+   "n": "Clockwork XXIIB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXIIB"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    818.0,
+    -110.0,
+    null
+   ],
+   "lvl": "12",
+   "n": "Clockwork XXIIIA",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXIIIA"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    4,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    729.0,
+    -193.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Clockwork XXIVD",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXIVD"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1921.0,
+    -224.0,
+    null
+   ],
+   "lvl": "28",
+   "n": "Clockwork XXIXB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXIXB"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    763.0,
+    -187.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "Clockwork XXVA",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVA"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    1,
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    763.0,
+    -187.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "Clockwork XXVA",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXVA"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1364.0,
+    -867.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Clockwork XXVD",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXVD"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    763.0,
+    -175.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Clockwork XXVIC",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXVIC"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1841.0,
+    -429.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Clockwork XXVIIB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XVIIB"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1841.0,
+    -429.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Clockwork XXVIIB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXVIIB"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1973.0,
+    -242.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Clockwork XXVIIC",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXVIIC"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    1979.0,
+    -336.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Clockwork XXVIIIB",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXVIIIB"
+  },
+  {
+   "dr": [
+    null,
+    "Rare",
+    null,
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    null
+   ],
+   "drops": [
+    4,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+   ],
+   "loc": [
+    988.0,
+    -459.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Clockwork XXXD",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXD"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    17,
+    19,
+    20,
+    21,
+    22
+   ],
+   "loc": [
+    988.0,
+    -459.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Clockwork XXXD",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clockwork_XXXD"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    2082.0,
+    -388.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Dewis Caneal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dewis_Caneal"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1183.0,
+    -538.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Digetha Chogaller",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Digetha_Chogaller"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1240.0,
+    -915.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Drigaz Grumblegrowl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Drigaz_Grumblegrowl"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    17
+   ],
+   "loc": [
+    788.0,
+    -175.0,
+    null
+   ],
+   "lvl": "6",
+   "n": "Duster V",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Duster_V"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    17
+   ],
+   "loc": [
+    1916.0,
+    -372.0,
+    -124.0
+   ],
+   "lvl": "8",
+   "n": "Duster X",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Duster_X"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    2100.0,
+    -407.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Eonis Mournunder",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Eonis_Mournunder"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    2099.0,
+    -388.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Evah Xokez",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Evah_Xokez"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    9.0,
+    -15.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Exterminator VIII",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Exterminator_VII"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    14,
+    17
+   ],
+   "loc": [
+    788.0,
+    -385.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Guide I",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guide_I"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    14,
+    17
+   ],
+   "loc": [
+    1392.0,
+    -525.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Guide II",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guide_II"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    14,
+    17
+   ],
+   "loc": [
+    1310.0,
+    -735.0,
+    null
+   ],
+   "lvl": "29",
+   "n": "Guide III",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guide_III"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    14,
+    17
+   ],
+   "loc": [
+    662.0,
+    144.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Guide IV",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guide_IV"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    14,
+    17
+   ],
+   "loc": [
+    601.0,
+    -374.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Guide V",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guide_V"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    14,
+    17
+   ],
+   "loc": [
+    230.0,
+    7.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Guide VI",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guide_VI"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1191.0,
+    -577.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Iony Gredlong",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Iony_Gredlong"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1096.0,
+    -978.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Juline Urncaller",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Juline_Urncaller"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    2069.0,
+    -509.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Kaxon Frennor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kaxon_Frennor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1335.0,
+    -795.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Kimble Nogflop",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kimble_Nogflop"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    807.0,
+    -206.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "King Ak`Anon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/King_Ak%60Anon"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    12
+   ],
+   "loc": [
+    -21.0,
+    -17.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Kozyn Gigglephizz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kozyn_Gigglephizz"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1029.0,
+    -978.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Larkon Theardor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Larkon_Theardor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1168.0,
+    -615.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Lobal Postugger",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lobal_Postugger"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1254.0,
+    -770.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Lyra Lyrestringer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lyra_Lyrestringer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    902.0,
+    -470.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Manik Compolten",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Manik_Compolten"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    847.0,
+    -441.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Narron Jenork",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Narron_Jenork"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    2107.0,
+    -503.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Naygog Mitope",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Naygog_Mitope"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1076.0,
+    -1011.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Nonnie Texaker",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nonnie_Texaker"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    6
+   ],
+   "loc": [
+    2020.0,
+    -532.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "obsolete model",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Obsolete_model"
+  },
+  {
+   "dr": [
+    null,
+    "Common"
+   ],
+   "drops": [
+    6,
+    13
+   ],
+   "loc": [
+    2020.0,
+    -628.0,
+    null
+   ],
+   "lvl": "5",
+   "n": "Red V",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Red_V"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    2024.0,
+    -579.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Rilgor Plegnog",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rilgor_Plegnog"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    2020.0,
+    -231.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Sanfyrd Featherhead",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sanfyrd_Featherhead"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    788.0,
+    -175.0,
+    null
+   ],
+   "lvl": "11",
+   "n": "Scrubber IV",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Scrubber_IV"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    2009.0,
+    -262.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Silox Azrix",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Silox_Azrix"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1081.0,
+    -1033.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Tergon Brenclog",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tergon_Brenclog"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1049.0,
+    -989.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Tobon Starpyre",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tobon_Starpyre"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1049.0,
+    -1008.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Useah Harnbock",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Useah_Harnbock"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    2020.0,
+    -590.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Vaenor Husga",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vaenor_Husga"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    2031.0,
+    -595.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Velena Corgtec",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Velena_Corgtec"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    830.0,
+    -174.0,
+    null
+   ],
+   "lvl": "?",
+   "n": "Watchman Hodl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Watchman_Hodl"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    812.0,
+    -193.0,
+    null
+   ],
+   "lvl": "?",
+   "n": "Watchman Lyl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Watchman_Lyl"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    828.0,
+    -143.0,
+    null
+   ],
+   "lvl": "?",
+   "n": "Watchman Lyl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Watchman_Qiz"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1240.0,
+    -598.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Welno Tanboots",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Welno_Tanboots"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1108.0,
+    -1025.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Wuggan Azusphere",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wuggan_Azusphere"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1081.0,
+    -1039.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Xalirilan Zarinokosalio",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Xalirilan_Zarinokosalio"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    485.0,
+    -127.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Zapho the Ancient",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Zapho_the_Ancient"
+  }
+ ],
+ "updated": "2026-06-30T00:12:50Z",
+ "wikiTitle": "Ak'Anon",
+ "wikiUrl": "https://eqlwiki.com/index.php/Ak'Anon",
+ "zone": "akanon"
+}

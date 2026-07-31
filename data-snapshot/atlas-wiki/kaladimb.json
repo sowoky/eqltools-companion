@@ -1,0 +1,462 @@
+{
+ "items": [
+  {
+   "n": "Dwarf Decapitated Head",
+   "u": "https://eqlwiki.com/index.php/Dwarf_Decapitated_Head"
+  },
+  {
+   "g": 1,
+   "n": "Dwarven Axe",
+   "u": "https://eqlwiki.com/index.php/Dwarven_Axe"
+  },
+  {
+   "n": "Giant Rat Ear",
+   "u": "https://eqlwiki.com/index.php/Giant_Rat_Ear"
+  },
+  {
+   "n": "Giant Rat Pelt",
+   "u": "https://eqlwiki.com/index.php/Giant_Rat_Pelt"
+  },
+  {
+   "g": 1,
+   "n": "Pick",
+   "u": "https://eqlwiki.com/index.php/Pick"
+  },
+  {
+   "n": "Piece of Rat Fur",
+   "u": "https://eqlwiki.com/index.php/Piece_of_Rat_Fur"
+  },
+  {
+   "n": "Rat Ears",
+   "u": "https://eqlwiki.com/index.php/Rat_Ears"
+  },
+  {
+   "n": "Rat Meat",
+   "u": "https://eqlwiki.com/index.php/Rat_Meat"
+  },
+  {
+   "n": "Rat Whiskers",
+   "u": "https://eqlwiki.com/index.php/Rat_Whiskers"
+  },
+  {
+   "n": "Scrap Metal",
+   "u": "https://eqlwiki.com/index.php/Scrap_Metal"
+  },
+  {
+   "g": 1,
+   "n": "Stained Parchment Top",
+   "u": "https://eqlwiki.com/index.php/Stained_Parchment_Top"
+  },
+  {
+   "n": "Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    6,
+    8
+   ],
+   "loc": null,
+   "lvl": "2",
+   "n": "an infected rat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Infected_Rat"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    4
+   ],
+   "loc": [
+    696.0,
+    199.0,
+    null
+   ],
+   "lvl": "9 - 11",
+   "n": "Atheki Norkhitter",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Atheki_Norkhitter"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1383.0,
+    132.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Bumle Reminjar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bumle_Reminjar"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    9
+   ],
+   "loc": [
+    761.0,
+    289.0,
+    null
+   ],
+   "lvl": "4",
+   "n": "Cleaner VII",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cleaner_VII"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1337.0,
+    133.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Datur Nightseer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Datur_Nightseer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    659.0,
+    304.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Diggins",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Diggins"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    618.0,
+    194.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Donnel Ratsbome",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Donnel_Ratsbome"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1213.0,
+    118.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Dunony Chestire",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dunony_Chestire"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    10
+   ],
+   "loc": [
+    532.0,
+    317.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Founy Jestands",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Founy_Jestands"
+  },
+  {
+   "dr": [
+    "17.5%",
+    "67.5%",
+    "18.4%",
+    "18.4%"
+   ],
+   "drops": [
+    2,
+    3,
+    5,
+    7
+   ],
+   "loc": null,
+   "lvl": "2",
+   "n": "Giant Rat",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Giant_Rat"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    1315.0,
+    80.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Guard Ainamar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Ainamar"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    1139.0,
+    129.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Dalammer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Dalammer"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    448.0,
+    -38.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Dalthur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Dalthur"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    448.0,
+    -38.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Doradek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Doradek"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    844.0,
+    132.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Guard Kaldolar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kaldolar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1315.0,
+    158.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Gunlok Jure",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gunlok_Jure"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    705.0,
+    215.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Jark",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jark"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    563.0,
+    193.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Jeet",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jeet"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    4,
+    11
+   ],
+   "loc": [
+    701.0,
+    389.0,
+    null
+   ],
+   "lvl": "9 or 11",
+   "n": "Kalamin Norkhitter",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kalamin_Norkhitter"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    347.0,
+    -178.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Kinlo Strongarm",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kinlo_Strongarm"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    560.0,
+    205.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Mater",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mater"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    677.0,
+    115.0,
+    null
+   ],
+   "lvl": "??",
+   "n": "Nella Stonebraids",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nella_Stonebraids"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    797.0,
+    158.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Nultal Malfoot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nultal_Malfoot"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    788.0,
+    134.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Priestess Ghalea",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Priestess_Ghalea"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    778.0,
+    107.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Resron Silvern",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Resron_Silvern"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    493.0,
+    -205.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Trantor Everhot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trantor_Everhot"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "Usbak the Old",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Usbak_the_Old"
+  }
+ ],
+ "updated": "2026-06-19T21:08:27Z",
+ "wikiTitle": "North Kaladim",
+ "wikiUrl": "https://eqlwiki.com/index.php/North_Kaladim",
+ "zone": "kaladimb"
+}

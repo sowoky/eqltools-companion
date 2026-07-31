@@ -1,0 +1,1721 @@
+{
+ "items": [
+  {
+   "g": 1,
+   "n": "Assassin's Boots",
+   "u": "https://eqlwiki.com/index.php/Assassin's_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Assassin's Bracer",
+   "u": "https://eqlwiki.com/index.php/Assassin's_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Assassin's Chain Leggings",
+   "u": "https://eqlwiki.com/index.php/Assassin's_Chain_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Assassin's Chain Sleeves",
+   "u": "https://eqlwiki.com/index.php/Assassin's_Chain_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Assassin's Chestguard",
+   "u": "https://eqlwiki.com/index.php/Assassin's_Chestguard"
+  },
+  {
+   "g": 1,
+   "n": "Assassin's Coif",
+   "u": "https://eqlwiki.com/index.php/Assassin's_Coif"
+  },
+  {
+   "g": 1,
+   "n": "Assassin's Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Assassin's_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Berserker's Boots",
+   "u": "https://eqlwiki.com/index.php/Berserker's_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Berserker's Bracer",
+   "u": "https://eqlwiki.com/index.php/Berserker's_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Berserker's Breastplate",
+   "u": "https://eqlwiki.com/index.php/Berserker's_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Berserker's Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Berserker's_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Berserker's Greaves",
+   "u": "https://eqlwiki.com/index.php/Berserker's_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Berserker's Helm",
+   "u": "https://eqlwiki.com/index.php/Berserker's_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Berserker's Vambraces",
+   "u": "https://eqlwiki.com/index.php/Berserker's_Vambraces"
+  },
+  {
+   "n": "Black Sapphire",
+   "u": "https://eqlwiki.com/index.php/Black_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Blade of the Swarm",
+   "u": "https://eqlwiki.com/index.php/Blade_of_the_Swarm"
+  },
+  {
+   "n": "Blue Diamond",
+   "u": "https://eqlwiki.com/index.php/Blue_Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Boots of Conjuration",
+   "u": "https://eqlwiki.com/index.php/Boots_of_Conjuration"
+  },
+  {
+   "g": 1,
+   "n": "Boots of Stability",
+   "u": "https://eqlwiki.com/index.php/Boots_of_Stability"
+  },
+  {
+   "g": 1,
+   "n": "Boots of the Bonecaster",
+   "u": "https://eqlwiki.com/index.php/Boots_of_the_Bonecaster"
+  },
+  {
+   "g": 1,
+   "n": "Bracer of Stability",
+   "u": "https://eqlwiki.com/index.php/Bracer_of_Stability"
+  },
+  {
+   "g": 1,
+   "n": "Braid of Golden Hair",
+   "u": "https://eqlwiki.com/index.php/Braid_of_Golden_Hair"
+  },
+  {
+   "g": 1,
+   "n": "Chestplate of Stability",
+   "u": "https://eqlwiki.com/index.php/Chestplate_of_Stability"
+  },
+  {
+   "g": 1,
+   "n": "Circlet of Conjuration",
+   "u": "https://eqlwiki.com/index.php/Circlet_of_Conjuration"
+  },
+  {
+   "g": 1,
+   "n": "Crown of Stability",
+   "u": "https://eqlwiki.com/index.php/Crown_of_Stability"
+  },
+  {
+   "g": 1,
+   "n": "Crown of the Bonecaster",
+   "u": "https://eqlwiki.com/index.php/Crown_of_the_Bonecaster"
+  },
+  {
+   "n": "Crystallized Sulfur",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
+  },
+  {
+   "n": "Diamond",
+   "u": "https://eqlwiki.com/index.php/Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Essence of Nature",
+   "u": "https://eqlwiki.com/index.php/Essence_of_Nature"
+  },
+  {
+   "g": 1,
+   "n": "Fire Emerald Ring",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Fist of Nature",
+   "u": "https://eqlwiki.com/index.php/Fist_of_Nature"
+  },
+  {
+   "g": 1,
+   "n": "Fist of the Silver Moon",
+   "u": "https://eqlwiki.com/index.php/Fist_of_the_Silver_Moon"
+  },
+  {
+   "g": 1,
+   "n": "Flute of the Sacred Glade",
+   "u": "https://eqlwiki.com/index.php/Flute_of_the_Sacred_Glade"
+  },
+  {
+   "g": 1,
+   "n": "Gauntlets of Stability",
+   "u": "https://eqlwiki.com/index.php/Gauntlets_of_Stability"
+  },
+  {
+   "g": 1,
+   "n": "Girdle of Living Thorns",
+   "u": "https://eqlwiki.com/index.php/Girdle_of_Living_Thorns"
+  },
+  {
+   "g": 1,
+   "n": "Gloves of Conjuration",
+   "u": "https://eqlwiki.com/index.php/Gloves_of_Conjuration"
+  },
+  {
+   "g": 1,
+   "n": "Gloves of the Bonecaster",
+   "u": "https://eqlwiki.com/index.php/Gloves_of_the_Bonecaster"
+  },
+  {
+   "g": 1,
+   "n": "Golden Leaf Earring",
+   "u": "https://eqlwiki.com/index.php/Golden_Leaf_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Greaves of Stability",
+   "u": "https://eqlwiki.com/index.php/Greaves_of_Stability"
+  },
+  {
+   "g": 1,
+   "n": "Improved Invis vs Undead",
+   "u": "https://eqlwiki.com/index.php/Improved_Invis_vs_Undead"
+  },
+  {
+   "n": "Jacinth",
+   "u": "https://eqlwiki.com/index.php/Jacinth"
+  },
+  {
+   "g": 1,
+   "n": "Lock of Blessed Unicorn Hair",
+   "u": "https://eqlwiki.com/index.php/Lock_of_Blessed_Unicorn_Hair"
+  },
+  {
+   "g": 1,
+   "n": "Maple Leaf Mask",
+   "u": "https://eqlwiki.com/index.php/Maple_Leaf_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Massive Heartwood Thorn",
+   "u": "https://eqlwiki.com/index.php/Massive_Heartwood_Thorn"
+  },
+  {
+   "g": 1,
+   "n": "Melodic Boots",
+   "u": "https://eqlwiki.com/index.php/Melodic_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Melodic Bracer",
+   "u": "https://eqlwiki.com/index.php/Melodic_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Melodic Breastplate",
+   "u": "https://eqlwiki.com/index.php/Melodic_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Melodic Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Melodic_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Melodic Greaves",
+   "u": "https://eqlwiki.com/index.php/Melodic_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Melodic Helm",
+   "u": "https://eqlwiki.com/index.php/Melodic_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Melodic Vambraces",
+   "u": "https://eqlwiki.com/index.php/Melodic_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Nature's Melody",
+   "u": "https://eqlwiki.com/index.php/Nature's_Melody"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 379",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._379"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 450",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._450"
+  },
+  {
+   "g": 1,
+   "n": "Noctivagant Boots",
+   "u": "https://eqlwiki.com/index.php/Noctivagant_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Noctivagant Bracer",
+   "u": "https://eqlwiki.com/index.php/Noctivagant_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Noctivagant Breastplate",
+   "u": "https://eqlwiki.com/index.php/Noctivagant_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Noctivagant Crown",
+   "u": "https://eqlwiki.com/index.php/Noctivagant_Crown"
+  },
+  {
+   "g": 1,
+   "n": "Noctivagant Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Noctivagant_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Noctivagant Greaves",
+   "u": "https://eqlwiki.com/index.php/Noctivagant_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Noctivagant Vambraces",
+   "u": "https://eqlwiki.com/index.php/Noctivagant_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Oakleaf Girdle",
+   "u": "https://eqlwiki.com/index.php/Oakleaf_Girdle"
+  },
+  {
+   "g": 1,
+   "n": "Pantaloons of Conjuration",
+   "u": "https://eqlwiki.com/index.php/Pantaloons_of_Conjuration"
+  },
+  {
+   "g": 1,
+   "n": "Pantaloons of the Bonecaster",
+   "u": "https://eqlwiki.com/index.php/Pantaloons_of_the_Bonecaster"
+  },
+  {
+   "g": 1,
+   "n": "Petrified Heartwood Flamberge",
+   "u": "https://eqlwiki.com/index.php/Petrified_Heartwood_Flamberge"
+  },
+  {
+   "g": 1,
+   "n": "Potion of the Bone Field",
+   "u": "https://eqlwiki.com/index.php/Potion_of_the_Bone_Field"
+  },
+  {
+   "g": 1,
+   "n": "Resplendent Crown",
+   "u": "https://eqlwiki.com/index.php/Resplendent_Crown"
+  },
+  {
+   "g": 1,
+   "n": "Resplendent Gloves",
+   "u": "https://eqlwiki.com/index.php/Resplendent_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Resplendent Robe",
+   "u": "https://eqlwiki.com/index.php/Resplendent_Robe"
+  },
+  {
+   "g": 1,
+   "n": "Resplendent Sleeves",
+   "u": "https://eqlwiki.com/index.php/Resplendent_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Resplendent Slippers",
+   "u": "https://eqlwiki.com/index.php/Resplendent_Slippers"
+  },
+  {
+   "g": 1,
+   "n": "Resplendent Trousers",
+   "u": "https://eqlwiki.com/index.php/Resplendent_Trousers"
+  },
+  {
+   "g": 1,
+   "n": "Resplendent Wristguard",
+   "u": "https://eqlwiki.com/index.php/Resplendent_Wristguard"
+  },
+  {
+   "g": 1,
+   "n": "Robe of Conjuration",
+   "u": "https://eqlwiki.com/index.php/Robe_of_Conjuration"
+  },
+  {
+   "g": 1,
+   "n": "Robe of the Bonecaster",
+   "u": "https://eqlwiki.com/index.php/Robe_of_the_Bonecaster"
+  },
+  {
+   "n": "Ruby",
+   "u": "https://eqlwiki.com/index.php/Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Ruby Crown",
+   "u": "https://eqlwiki.com/index.php/Ruby_Crown"
+  },
+  {
+   "n": "Rune of Impetus",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Impetus"
+  },
+  {
+   "g": 1,
+   "n": "Sap Encrusted Branch",
+   "u": "https://eqlwiki.com/index.php/Sap_Encrusted_Branch"
+  },
+  {
+   "g": 1,
+   "n": "Sapphire Necklace",
+   "u": "https://eqlwiki.com/index.php/Sapphire_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Silver Moon Arm Wraps",
+   "u": "https://eqlwiki.com/index.php/Silver_Moon_Arm_Wraps"
+  },
+  {
+   "g": 1,
+   "n": "Silver Moon Chest Wraps",
+   "u": "https://eqlwiki.com/index.php/Silver_Moon_Chest_Wraps"
+  },
+  {
+   "g": 1,
+   "n": "Silver Moon Headband",
+   "u": "https://eqlwiki.com/index.php/Silver_Moon_Headband"
+  },
+  {
+   "g": 1,
+   "n": "Silver Moon Pants",
+   "u": "https://eqlwiki.com/index.php/Silver_Moon_Pants"
+  },
+  {
+   "g": 1,
+   "n": "Silver Moon Slippers",
+   "u": "https://eqlwiki.com/index.php/Silver_Moon_Slippers"
+  },
+  {
+   "g": 1,
+   "n": "Silver Moon Wrist Wraps",
+   "u": "https://eqlwiki.com/index.php/Silver_Moon_Wrist_Wraps"
+  },
+  {
+   "g": 1,
+   "n": "Sleeves of Conjuration",
+   "u": "https://eqlwiki.com/index.php/Sleeves_of_Conjuration"
+  },
+  {
+   "g": 1,
+   "n": "Sleeves of the Bonecaster",
+   "u": "https://eqlwiki.com/index.php/Sleeves_of_the_Bonecaster"
+  },
+  {
+   "g": 1,
+   "n": "Sorcerer's Boots",
+   "u": "https://eqlwiki.com/index.php/Sorcerer's_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Sorcerer's Circlet",
+   "u": "https://eqlwiki.com/index.php/Sorcerer's_Circlet"
+  },
+  {
+   "g": 1,
+   "n": "Sorcerer's Pantaloons",
+   "u": "https://eqlwiki.com/index.php/Sorcerer's_Pantaloons"
+  },
+  {
+   "g": 1,
+   "n": "Sorcerer's Robe",
+   "u": "https://eqlwiki.com/index.php/Sorcerer's_Robe"
+  },
+  {
+   "g": 1,
+   "n": "Sorcerer's Sleeves",
+   "u": "https://eqlwiki.com/index.php/Sorcerer's_Sleeves"
+  },
+  {
+   "g": 1,
+   "n": "Sorcerer's Wristband",
+   "u": "https://eqlwiki.com/index.php/Sorcerer's_Wristband"
+  },
+  {
+   "g": 1,
+   "n": "Spirit Weaver's Boots",
+   "u": "https://eqlwiki.com/index.php/Spirit_Weaver's_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Spirit Weaver's Bracer",
+   "u": "https://eqlwiki.com/index.php/Spirit_Weaver's_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Spirit Weaver's Breastplate",
+   "u": "https://eqlwiki.com/index.php/Spirit_Weaver's_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Spirit Weaver's Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Spirit_Weaver's_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Spirit Weaver's Greaves",
+   "u": "https://eqlwiki.com/index.php/Spirit_Weaver's_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Spirit Weaver's Vambraces",
+   "u": "https://eqlwiki.com/index.php/Spirit_Weaver's_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Star Ruby Earring",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Stonewood Mail",
+   "u": "https://eqlwiki.com/index.php/Stonewood_Mail"
+  },
+  {
+   "n": "Tears of Prexus",
+   "u": "https://eqlwiki.com/index.php/Tears_of_Prexus"
+  },
+  {
+   "g": 1,
+   "n": "Vambraces of Stability",
+   "u": "https://eqlwiki.com/index.php/Vambraces_of_Stability"
+  },
+  {
+   "n": "Words of Bondage",
+   "u": "https://eqlwiki.com/index.php/Words_of_Bondage"
+  },
+  {
+   "g": 1,
+   "n": "Woven Cord of Mistletoe",
+   "u": "https://eqlwiki.com/index.php/Woven_Cord_of_Mistletoe"
+  },
+  {
+   "g": 1,
+   "n": "Woven Vine Wristband",
+   "u": "https://eqlwiki.com/index.php/Woven_Vine_Wristband"
+  },
+  {
+   "g": 1,
+   "n": "Wristband of Conjuration",
+   "u": "https://eqlwiki.com/index.php/Wristband_of_Conjuration"
+  },
+  {
+   "g": 1,
+   "n": "Wristband of the Bonecaster",
+   "u": "https://eqlwiki.com/index.php/Wristband_of_the_Bonecaster"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    -1568.0,
+    -133.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "A bloodthorned spectre",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_bloodthorned_spectre"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    16,
+    22,
+    27,
+    38,
+    56,
+    59,
+    60,
+    76,
+    103
+   ],
+   "loc": [
+    -1570.0,
+    -1763.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "a contemplative thifling",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Contemplative_Thifling"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    3,
+    4,
+    9,
+    11,
+    13,
+    101
+   ],
+   "loc": [
+    2744.0,
+    -2356.0,
+    null
+   ],
+   "lvl": "54",
+   "n": "a feral amalgam",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Feral_Amalgam"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    14,
+    16,
+    18,
+    20,
+    24,
+    26,
+    27,
+    33,
+    54,
+    55,
+    57,
+    58,
+    60,
+    75,
+    76,
+    103
+   ],
+   "loc": [
+    1170.0,
+    1667.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "a gale wolf",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gale_Wolf"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    44,
+    45,
+    47,
+    49,
+    94,
+    95,
+    97
+   ],
+   "loc": [
+    2432.0,
+    3282.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "a glade stalker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_glade_stalker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    308.0,
+    -3566.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "a gleaming sphere of light",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Gleaming_Sphere_of_Light"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    22,
+    56,
+    60
+   ],
+   "loc": [
+    -1547.0,
+    -1757.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "A guardian power",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_guardian_power"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1720.0,
+    -1751.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "a mosscovered treant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_mosscovered_treant"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1487.0,
+    -225.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "A mumbling totem man",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_mumbling_totem_man"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    63,
+    80,
+    99,
+    101
+   ],
+   "loc": null,
+   "lvl": "60",
+   "n": "a phase puma",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Phase_Puma"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -196.0,
+    -1006.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "a protector of growth",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_protector_of_growth"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    16,
+    17,
+    19,
+    23,
+    25,
+    27,
+    35,
+    36,
+    39,
+    40,
+    41,
+    63,
+    65,
+    74,
+    76,
+    86,
+    87,
+    88,
+    89,
+    93,
+    107,
+    108
+   ],
+   "loc": [
+    468.0,
+    1011.0,
+    null
+   ],
+   "lvl": "48-52",
+   "n": "a rolling plains steed",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Rolling_Plains_Steed"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    31,
+    61,
+    66,
+    67,
+    70,
+    72,
+    82,
+    84,
+    85,
+    101
+   ],
+   "loc": [
+    1361.0,
+    2028.0,
+    null
+   ],
+   "lvl": "52-53",
+   "n": "a sanguine kodiak",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_sanguine_kodiak"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    46,
+    48,
+    50,
+    96,
+    98,
+    99,
+    102
+   ],
+   "loc": null,
+   "lvl": "60",
+   "n": "a serene forest spirit",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Serene_Forest_Spirit"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    5,
+    6,
+    7,
+    8,
+    10,
+    12,
+    61,
+    101
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "a spirit flux wolf",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_spirit_flux_wolf"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "a spirit stalker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_spirit_stalker"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    14,
+    16,
+    26,
+    27,
+    29,
+    40,
+    68,
+    69,
+    71,
+    76,
+    80,
+    81,
+    83,
+    100,
+    101
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "a sylvan protector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sylvan_Protector"
+  },
+  {
+   "dr": [
+    "Ultra Rare"
+   ],
+   "drops": [
+    56
+   ],
+   "loc": [
+    1543.0,
+    -1664.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "A thifling focuser",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_thifling_focuser"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -433.0,
+    -2484.0,
+    null
+   ],
+   "lvl": "59",
+   "n": "a thifling lord",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_thifling_lord"
+  },
+  {
+   "dr": [
+    "Ultra Rare"
+   ],
+   "drops": [
+    56
+   ],
+   "loc": [
+    -3105.0,
+    -2089.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "a thifling orator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_thifling_orator"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    16,
+    22,
+    27,
+    38,
+    56,
+    59,
+    60,
+    101,
+    103
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "a thifling sprite",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Thifling_Sprite"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    11,
+    38,
+    48,
+    59,
+    61,
+    71,
+    83,
+    90,
+    98,
+    101
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "a tranquil treant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_tranquil_treant"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "55",
+   "n": "A vigilant convoker",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_vigilant_convoker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1558.0,
+    -1624.0,
+    null
+   ],
+   "lvl": "1",
+   "n": "a warm light",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_warm_light"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -2522.0,
+    3016.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "a whorl of natural energy",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_whorl_of_natural_energy"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Always",
+    "Always",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    9,
+    46,
+    52,
+    53,
+    56,
+    68,
+    73,
+    74,
+    81,
+    91,
+    96
+   ],
+   "loc": [
+    2057.0,
+    422.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Ail the Elder",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ail_the_Elder"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "65",
+   "n": "an abstruse phantasm",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_abstruse_phantasm"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    14,
+    16,
+    26,
+    27,
+    29,
+    40,
+    61,
+    76,
+    79,
+    90,
+    91,
+    92,
+    100,
+    101
+   ],
+   "loc": [
+    373.0,
+    36.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "an entoling culler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_entoling_culler"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    14,
+    16,
+    26,
+    27,
+    29,
+    40,
+    61,
+    62,
+    73,
+    75,
+    76,
+    79,
+    86,
+    100,
+    101
+   ],
+   "loc": null,
+   "lvl": "60",
+   "n": "an entoling essence channeler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_entoling_essence_channeler"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    26,
+    40,
+    75,
+    79,
+    91,
+    100,
+    101
+   ],
+   "loc": [
+    1028.0,
+    -460.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "an entoling essence conduit",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_entoling_essence_conduit"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    63,
+    74,
+    87,
+    101
+   ],
+   "loc": null,
+   "lvl": "56",
+   "n": "an entoling harvester",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_entoling_harvester"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    77
+   ],
+   "loc": [
+    -1535.0,
+    -202.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Ancient Totem",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ancient_Totem"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -3774.0,
+    -333.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "entrancing water nymph",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Entrancing_water_nymph"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    61
+   ],
+   "loc": [
+    -627.0,
+    3513.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Farstride Unicorn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Farstride_Unicorn"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    4,
+    68,
+    81,
+    96
+   ],
+   "loc": [
+    3120.0,
+    -1541.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Fayl Everstrong",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Fayl_Everstrong"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    11,
+    38,
+    48,
+    59,
+    62,
+    63,
+    71,
+    83,
+    90,
+    98
+   ],
+   "loc": [
+    -2854.0,
+    2156.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Galiel Spirithoof",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Galiel_Spirithoof"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    13,
+    50,
+    69,
+    80
+   ],
+   "loc": [
+    2158.0,
+    997.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "Grahl Strongback",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grahl_Strongback"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -3508.0,
+    1208.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Guardian of Takish",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guardian_of_Takish"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "60",
+   "n": "Guardian of Tunare",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guardian_of_Tunare"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    11,
+    48
+   ],
+   "loc": [
+    1426.0,
+    -2961.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "keeper of the glades",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Keeper_of_the_glades"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    101
+   ],
+   "loc": [
+    -1626.0,
+    -1796.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "Ordro",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ordro"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    22,
+    56,
+    59
+   ],
+   "loc": [
+    -1617.0,
+    -1802.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "Ordros assistant",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ordros_assistant"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    32,
+    42,
+    76,
+    105,
+    106
+   ],
+   "loc": [
+    1491.0,
+    -1561.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Prince Thirneg",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Prince_Thirneg"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    9,
+    22,
+    46,
+    56,
+    73,
+    74,
+    81
+   ],
+   "loc": [
+    719.0,
+    -3395.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Rumbleroot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rumbleroot"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    13,
+    50,
+    76,
+    86,
+    87
+   ],
+   "loc": [
+    249.0,
+    838.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Sarik the Fang",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sarik_the_Fang"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Always",
+    "Always",
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    22,
+    46,
+    52,
+    53,
+    56,
+    68,
+    73,
+    74,
+    81,
+    91
+   ],
+   "loc": [
+    -1071.0,
+    -791.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Treah Greenroot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Treah_Greenroot"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    15,
+    21,
+    28,
+    30,
+    34,
+    37,
+    43,
+    51,
+    64,
+    78
+   ],
+   "loc": [
+    1524.0,
+    -1633.0,
+    203.0
+   ],
+   "lvl": "70",
+   "n": "Tunare",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tunare_(God)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -447.0,
+    -2484.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Tunarean Earthmelder",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tunarean_Earthmelder"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Always"
+   ],
+   "drops": [
+    2,
+    38,
+    48,
+    59,
+    71,
+    98,
+    104
+   ],
+   "loc": [
+    -599.0,
+    -2162.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Undogo Digolo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Undogo_Digolo"
+  }
+ ],
+ "updated": "2026-06-04T14:22:09Z",
+ "wikiTitle": "Plane of Growth",
+ "wikiUrl": "https://eqlwiki.com/index.php/Plane_of_Growth",
+ "zone": "growthplane"
+}

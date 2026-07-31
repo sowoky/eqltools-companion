@@ -1,0 +1,615 @@
+{
+ "items": [
+  {
+   "n": "Ashroot",
+   "u": "https://eqlwiki.com/index.php/Ashroot"
+  },
+  {
+   "g": 1,
+   "n": "Bamboo Wakizashi Bo",
+   "u": "https://eqlwiki.com/index.php/Bamboo_Wakizashi_Bo"
+  },
+  {
+   "g": 1,
+   "n": "Blood Soaked Plasmatic Priest Robe",
+   "u": "https://eqlwiki.com/index.php/Blood_Soaked_Plasmatic_Priest_Robe"
+  },
+  {
+   "n": "Bloodstone",
+   "u": "https://eqlwiki.com/index.php/Bloodstone"
+  },
+  {
+   "g": 1,
+   "n": "Brahhms Horn",
+   "u": "https://eqlwiki.com/index.php/Brahhms_Horn"
+  },
+  {
+   "g": 1,
+   "n": "Darkwood Staff",
+   "u": "https://eqlwiki.com/index.php/Darkwood_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Dragon Scales",
+   "u": "https://eqlwiki.com/index.php/Dragon_Scales"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Spear",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Human Blood",
+   "u": "https://eqlwiki.com/index.php/Human_Blood"
+  },
+  {
+   "n": "Jasper",
+   "u": "https://eqlwiki.com/index.php/Jasper"
+  },
+  {
+   "g": 1,
+   "n": "Limestone Ring",
+   "u": "https://eqlwiki.com/index.php/Limestone_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Lon's Head",
+   "u": "https://eqlwiki.com/index.php/Lon's_Head"
+  },
+  {
+   "g": 1,
+   "n": "Mandolin",
+   "u": "https://eqlwiki.com/index.php/Mandolin"
+  },
+  {
+   "g": 1,
+   "n": "Mroons Toy",
+   "u": "https://eqlwiki.com/index.php/Mroons_Toy"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 300",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._300"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 301",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._301"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Ring",
+   "u": "https://eqlwiki.com/index.php/Pearl_Ring"
+  },
+  {
+   "n": "Peridot",
+   "u": "https://eqlwiki.com/index.php/Peridot"
+  },
+  {
+   "g": 1,
+   "n": "Robe of the Keeper",
+   "u": "https://eqlwiki.com/index.php/Robe_of_the_Keeper"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Shortened Spear",
+   "u": "https://eqlwiki.com/index.php/Rusty_Shortened_Spear"
+  },
+  {
+   "g": 1,
+   "n": "Small Portal Fragments",
+   "u": "https://eqlwiki.com/index.php/Small_Portal_Fragments"
+  },
+  {
+   "n": "Tome of Tash",
+   "u": "https://eqlwiki.com/index.php/Tome_of_Tash"
+  },
+  {
+   "n": "Words of Incarceration",
+   "u": "https://eqlwiki.com/index.php/Words_of_Incarceration"
+  },
+  {
+   "n": "Words of Obligation",
+   "u": "https://eqlwiki.com/index.php/Words_of_Obligation"
+  }
+ ],
+ "meta": {
+  "license": "CC BY-SA 4.0",
+  "source": "eqlwiki.com"
+ },
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    331.0,
+    3.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "a blazing elemental",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_blazing_elemental"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    5,
+    18
+   ],
+   "loc": null,
+   "lvl": "34-36",
+   "n": "a keeper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_keeper"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    null
+   ],
+   "drops": [
+    2,
+    5,
+    8
+   ],
+   "loc": [
+    330.0,
+    40.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "a plasmatic priest",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Plasmatic_Priest"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    326.0,
+    38.0,
+    29.0
+   ],
+   "lvl": "34-36",
+   "n": "a seeker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Seeker"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    3,
+    16
+   ],
+   "loc": [
+    370.0,
+    -25.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "a ward of ro",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_ward_of_ro"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    10
+   ],
+   "loc": [
+    406.0,
+    81.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "an undead knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Undead_Knight"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    417.0,
+    -23.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Blaize the Radiant",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Blaize_the_Radiant"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    12
+   ],
+   "loc": [
+    417.0,
+    -44.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Cryssia Stardreamer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Cryssia_Stardreamer"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    433.0,
+    -61.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Gardern",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gardern"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    417.0,
+    36.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Gavel the Temperant",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gavel_the_Temperant"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    434.0,
+    -65.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Genni",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Genni"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    433.0,
+    77.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Joyce",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Joyce"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    7,
+    11,
+    19
+   ],
+   "loc": [
+    553.0,
+    -17.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Lon the Redeemed",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lon_the_Redeemed"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Uncommon"
+   ],
+   "drops": [
+    5,
+    6,
+    13
+   ],
+   "loc": [
+    437.0,
+    88.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Lord Lyfyx of Burwood",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Lyfyx_of_Burwood"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    482.0,
+    88.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Lord Searfire",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Searfire"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    335.0,
+    -50.0,
+    null
+   ],
+   "lvl": "1",
+   "n": "Moltak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Moltak"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    437.0,
+    -79.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Ostorm",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ostorm"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    1,
+    21
+   ],
+   "loc": [
+    393.0,
+    90.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Romar Sunto",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Romar_Sunto"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    426.0,
+    80.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Solomen",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Solomen"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    385.0,
+    77.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Sultin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sultin"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    319.0,
+    79.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Syllina",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Syllina"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    3,
+    14,
+    15,
+    22,
+    23
+   ],
+   "loc": [
+    500.0,
+    6.0,
+    null
+   ],
+   "lvl": "44",
+   "n": "Tazgar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tazgar"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    9,
+    17,
+    20
+   ],
+   "loc": [
+    444.0,
+    -73.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Terblyn Zelbus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Terblyn_Zelbus"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    1,
+    18
+   ],
+   "loc": [
+    481.0,
+    -75.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Torzan Searfire",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Torzan_Searfire"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    434.0,
+    -80.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Vilissia",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vilissia"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    411.0,
+    91.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Vira",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vira"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    356.0,
+    91.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Vurgo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vurgo"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    4
+   ],
+   "loc": [
+    430.0,
+    -54.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Walthin Fireweaver",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Walthin_Fireweaver"
+  }
+ ],
+ "updated": "2026-05-19T05:49:12Z",
+ "wikiTitle": "Temple of Solusek Ro",
+ "wikiUrl": "https://eqlwiki.com/index.php/Temple_of_Solusek_Ro",
+ "zone": "soltemple"
+}
