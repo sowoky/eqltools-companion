@@ -959,21 +959,9 @@
     "c"
    ]
   ],
-  "arrow of recognition": [
-   [
-    409,
-    "c"
-   ]
-  ],
   "arydryidriyorn": [
    [
     590,
-    "c"
-   ]
-  ],
-  "asp poison": [
-   [
-    901,
     "c"
    ]
   ],
@@ -4316,6 +4304,10 @@
   "cabilis pale ale": [
    [
     92,
+    "c"
+   ],
+   [
+    93,
     "c"
    ]
   ],
@@ -13093,6 +13085,12 @@
     "c"
    ]
   ],
+  "gnoll paw": [
+   [
+    257,
+    "c"
+   ]
+  ],
   "gnoll pup scalp": [
    [
     492,
@@ -16627,10 +16625,6 @@
     "c"
    ],
    [
-    125,
-    "c"
-   ],
-   [
     215,
     "c"
    ],
@@ -20091,6 +20085,10 @@
     "c"
    ],
    [
+    545,
+    "c"
+   ],
+   [
     550,
     "c"
    ]
@@ -21189,6 +21187,12 @@
    [
     648,
     "r"
+   ]
+  ],
+  "prayer shawl": [
+   [
+    129,
+    "c"
    ]
   ],
   "prayer to brell": [
@@ -27299,10 +27303,6 @@
    [
     251,
     "r"
-   ],
-   [
-    839,
-    "c"
    ]
   ],
   "spider venom sac": [
@@ -32813,12 +32813,6 @@
     "c"
    ]
   ],
-  "zombie flesh": [
-   [
-    533,
-    "c"
-   ]
-  ],
   "zombie flesh bracer": [
    [
     642,
@@ -35431,7 +35425,9 @@
    ],
    "era": "Unknown Era",
    "giver": "Lenka Stoutheart",
-   "items": [],
+   "items": [
+    "Cabilis Pale Ale"
+   ],
    "lvl": 1,
    "n": "Cabilis Pale Ale (Firiona Vie)",
    "oe": true,
@@ -36426,7 +36422,6 @@
     "Gleaming Coin of Tash",
     "Radiant Coin of Tash",
     "Tome of Tash",
-    "Koalindl Fish",
     "Library of Erudin",
     "Old Silver Coin"
    ],
@@ -36650,11 +36645,11 @@
     "Embroidered Shawl Pattern",
     "Spool of Sacred Coldain Thread",
     "Lock of Siren Hair",
-    "Runed Prayer Shawl Pattern",
+    "Runed Prayer Shawl pattern",
     "Blank Rune",
     "Burin",
     "Cutlassfish Oil",
-    "Encased Velium Etched Rune",
+    "Encased Velium etched rune",
     "Enchanted Velium Powder",
     "Etched Rune",
     "Etched Rune Pattern",
@@ -36676,6 +36671,7 @@
     "Skull Ale",
     "Excellent Siren Scales",
     "Wenglawks Manly Purse",
+    "Prayer Shawl",
     "Runed Shawl"
    ],
    "lvl": 35,
@@ -40540,7 +40536,9 @@
    ],
    "era": null,
    "giver": "Corun Finisc",
-   "items": [],
+   "items": [
+    "Gnoll Paw"
+   ],
    "lvl": 10,
    "n": "Gnoll Paws",
    "relatedNpcs": [],
@@ -44145,8 +44143,7 @@
     "Arrow of Bravery",
     "Arrow of Defiance",
     "Arrow of Fortitude",
-    "Arrow of Gallantry",
-    "Arrow of Recognition"
+    "Arrow of Gallantry"
    ],
    "lvl": 35,
    "n": "Ivy Etched Armor Quests",
@@ -47789,8 +47786,7 @@
     "Small Bag",
     "Tattered Skullcap",
     "Worn Great Staff",
-    "Empty Bag",
-    "Zombie Flesh"
+    "Empty Bag"
    ],
    "lvl": 10,
    "n": "Odus Pearls",
@@ -48113,7 +48109,9 @@
    ],
    "era": "Classic Era",
    "giver": "Kasine Paegra",
-   "items": [],
+   "items": [
+    "Order of Thunder"
+   ],
    "lvl": 10,
    "n": "Order of Thunder (from Drosco)",
    "relatedNpcs": [
@@ -57229,7 +57227,6 @@
    "items": [
     "Bone Chips",
     "Giant Bat Fur",
-    "Spider Venom",
     "Wolf Meat"
    ],
    "lvl": 1,
@@ -59183,8 +59180,7 @@
     "Kejekan Palm Fruit",
     "Bamboo Shoot",
     "Full Gathering Satchel",
-    "Vial of Healing Liquid",
-    "Asp Poison"
+    "Vial of Healing Liquid"
    ],
    "lvl": 25,
    "n": "Yuio's Illness",

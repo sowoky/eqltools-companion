@@ -82,6 +82,8 @@ function newStream(file) {
 const SEED_CAP = 100;
 
 function onBootstrap({ file, text }) {
+  // another character's log took over — their live loot tally isn't yours
+  if (file !== currentFile) LIVE_HAVE = new Map();
   newStream(file);
   LINES_SEEN++; // a (re)bootstrapped file is new data for the parser tab
   // One pass over the tail serves three consumers: kill credit for the
@@ -709,17 +711,22 @@ function renderQuests() {
   const showPartial = QUESTS.readyOnly ? [] : partial.filter(p => match(p.q));
   const showRest = QUESTS.readyOnly ? [] : rest;
 
+  // tracked rows count too — a tracked quest that fills up IS ready
+  const readyN = ready.length + tracked.filter(p => p.done).length;
+  const partialN = partial.length + tracked.filter(p => !p.done && p.got).length;
   $("qMeta").textContent = [
     tracked.length ? `${tracked.length} tracked` : "",
-    `${ready.length} ready`, `${partial.length} partly collected`,
+    `${readyN} ready`, `${partialN} partly collected`,
     INV.file ? `from ${INV.file}` : "",
   ].filter(Boolean).join(" · ");
 
   const any = showTracked.length || showReady.length || showPartial.length || showRest.length;
   empty.hidden = !!any;
   if (!any) {
-    if (needle) empty.textContent = "Nothing matches that search.";
-    else if (QUESTS.readyOnly && (tracked.length || partial.length)) empty.textContent = "Nothing ready to hand in yet.";
+    // matches hidden by the ready-only filter are not "no matches"
+    const hiddenByReady = QUESTS.readyOnly && (partial.some(p => match(p.q)) || rest.length > 0);
+    if (hiddenByReady) empty.textContent = "Nothing ready — untick “ready only” to see the rest.";
+    else if (needle) empty.textContent = "Nothing matches that search.";
     else if (INV.problem) empty.textContent = INV.problem;
     else empty.innerHTML = QUESTS_HINT;
     body.innerHTML = "";
@@ -733,7 +740,7 @@ function renderQuests() {
     section("Partly collected", showPartial.length, showPartial.map(p => questRow(p, false)).join("")) +
     section("More matches", showRest.length + restOver,
       showRest.map(q => q.items && q.items.length ? questRow(compsFor(q, have), false) : questStub(q)).join("")) +
-    (restOver ? `<p class="dim">+${restOver} more — narrow the search.</p>` : "") +
+    (showRest.length && restOver ? `<p class="dim">+${restOver} more — narrow the search.</p>` : "") +
     `<p class="dim qnote">The wiki lists which items a quest wants, never how many —
      “ready” means you hold at least one of each. Counts you are carrying are shown
      beside each item.</p>`;

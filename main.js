@@ -439,21 +439,24 @@ function initUpdater() {
     autoUpdater.on("error", e => setUpdate({ status: "error", detail: String((e && e.message) || e) }));
     checkNow = () => autoUpdater.checkForUpdates().catch(() => {});
   } else {
-    checkNow = async () => {
-      setUpdate({ status: "checking" });
+    // Failures only surface on a manual button press — a background check
+    // failing on a flaky connection shouldn't park "Update check failed" in
+    // Settings for hours (the pre-checkNow behavior was silent too).
+    checkNow = async (manual) => {
+      if (manual) setUpdate({ status: "checking" });
       try {
         const r = await fetch("https://api.github.com/repos/sowoky/eqltools-companion/releases/latest",
           { headers: { "user-agent": `eqltools-companion/${app.getVersion()}` } });
-        if (!r.ok) { setUpdate({ status: "error", detail: `GitHub answered ${r.status}` }); return; }
+        if (!r.ok) { if (manual) setUpdate({ status: "error", detail: `GitHub answered ${r.status}` }); return; }
         const tag = (await r.json()).tag_name;
         if (tag && semverNewer(tag, app.getVersion()))
           setUpdate({ status: "manual", version: tag.replace(/^v/, "") });
         else setUpdate({ status: "current" });
-      } catch (e) { setUpdate({ status: "error", detail: String((e && e.message) || e) }); }
+      } catch (e) { if (manual) setUpdate({ status: "error", detail: String((e && e.message) || e) }); }
     };
   }
   checkNow();
-  setInterval(checkNow, 4 * 3600 * 1000);
+  setInterval(() => checkNow(), 4 * 3600 * 1000);
 }
 
 /* Per-zone mobs & drops (the atlas widget's data). Resolution: fresh cache
@@ -516,7 +519,7 @@ ipcMain.handle("log:tail", () => {
 });
 ipcMain.handle("data:zoneFile", (_e, key) => zoneFile(String(key || "")));
 ipcMain.handle("update:get", () => UPDATE);
-ipcMain.handle("update:check", () => { if (checkNow) checkNow(); return UPDATE; });
+ipcMain.handle("update:check", () => { if (checkNow) checkNow(true); return UPDATE; });
 ipcMain.on("update:install", () => { if (autoUpdater && UPDATE.status === "ready") autoUpdater.quitAndInstall(); });
 ipcMain.on("update:openPage", () => shell.openExternal(RELEASES_URL));
 ipcMain.handle("log:pickDir", async () => {

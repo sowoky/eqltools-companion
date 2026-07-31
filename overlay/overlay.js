@@ -39,8 +39,23 @@ function itemSpan(name, url, sb, cls) {
   return s;
 }
 
+/* Raw events kept locally so a filter change re-filters HISTORY instead of
+   rebuilding from main's 50-item relay ring and losing older rows. */
+let EVENTS = [];
+const EVENT_CAP = 200;
+
 function addEvent(ev) {
-  if (!wanted(ev)) return;
+  EVENTS.push(ev);
+  if (EVENTS.length > EVENT_CAP) EVENTS.shift();
+  if (wanted(ev)) prependRow(ev);
+}
+
+function rebuildFeed() {
+  feedEl.innerHTML = "";
+  for (const ev of EVENTS.filter(wanted).slice(-FEED_CAP)) prependRow(ev);
+}
+
+function prependRow(ev) {
   const li = document.createElement("li");
   if (ev.kind === "loot") {
     const qty = ev.qty > 1 ? ` ×${ev.qty}` : "";
@@ -129,8 +144,10 @@ window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, ques
   panelEl.style.zoom = PREFS.fontScale;
   setMode(clickThrough, opacity);
   renderFilters();
-  feedEl.innerHTML = "";
-  for (const ev of feed || []) addEvent(ev);
+  // a fresh window seeds from main's ring; a prefs re-init keeps the richer
+  // local history and just re-filters it
+  if (!EVENTS.length) EVENTS = (feed || []).slice(-EVENT_CAP);
+  rebuildFeed();
   setZone(zone);
   TRACKED = quests || [];
   renderQuests();
