@@ -52,6 +52,9 @@ main { flex: 1; overflow-y: auto; padding: 16px; }
 .pane { display: none; max-width: 900px; margin: 0 auto; }
 .pane.on { display: block; }
 .banner { background: var(--bg-panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; margin-bottom: 12px; color: var(--ink-soft); }
+.banner--upd { border-color: var(--gold); color: var(--gold-pale); max-width: 900px; margin: 0 auto 12px; display: flex; align-items: center; gap: 12px; }
+.banner--upd[hidden] { display: none; } /* author display:flex would defeat the hidden attribute */
+.banner--upd span { flex: 1; }
 .empty { color: var(--ink-dim); text-align: center; margin-top: 48px; }
 
 /* live feed */
@@ -123,6 +126,23 @@ main { flex: 1; overflow-y: auto; padding: 16px; }
   border-radius: 4px; padding: 0 4px; margin-left: 6px; vertical-align: 1px;
 }
 @media (max-width: 860px) { .zonegrid { grid-template-columns: 1fr; } }
+
+/* EQ item tooltip — the in-game item display window, minus the icon */
+#eqtip {
+  position: fixed; z-index: 99; pointer-events: none;
+  min-width: 220px; max-width: 360px;
+  background: rgba(8, 9, 14, .97);
+  border: 1px solid var(--gold-deep);
+  outline: 1px solid #000;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .6);
+  padding: 8px 11px; border-radius: 3px;
+  font: 12.5px/1.45 var(--sans);
+  color: #d8d2c4;
+}
+#eqtip .tt__name { color: var(--gold-bright); font-weight: 700; font-size: 13.5px; margin-bottom: 2px; }
+#eqtip .tt__flags { color: #fff; letter-spacing: .02em; }
+.itn { cursor: default; }
+.ev.is-quest .itn, .ev--loot .itn { border-bottom: 1px dotted var(--line); }
 
 /* settings */
 #tab-settings h2 { font-size: 15px; color: var(--gold-bright); margin: 22px 0 8px; }

@@ -15,6 +15,8 @@ let QDATA = null;     // quest-items.json
 let SOURCES = {};     // {name: source-string} for the settings pane
 let NAME2KEY = new Map(), ROSTER = new Map(), NAMEZONES = new Map();
 let QIDX = new Map(); // normName(item) -> [{q: quest row, as: "r"|"c"}]
+let TDATA = null;     // item-tooltips.json
+let TIDX = new Map(); // normName(item) -> {n, t, ic, sb: [lines]}
 
 function buildIndexes(datasets) {
   const kd = datasets["kills-data.json"], qd = datasets["quest-items.json"];
@@ -39,6 +41,11 @@ function buildIndexes(datasets) {
       QIDX.set(nk, refs.map(([qi, as]) => ({ q: QDATA.quests[qi], as })));
     }
   }
+  const td = datasets["item-tooltips.json"];
+  TDATA = td ? td.data : null;
+  SOURCES.tooltips = td ? td.source : "none";
+  TIDX = new Map();
+  if (TDATA) for (const [nk, e] of Object.entries(TDATA.items)) TIDX.set(nk, e);
 }
 
 /* ── tracker state (same blob shape as the /kills page) ───────────────────*/
@@ -200,7 +207,7 @@ function feedLi(e) {
   }).join("") + more;
   return `<li class="ev ev--loot ${e.quests.length ? "is-quest" : ""}">
     <span class="ev__t">${hhmmss(e.ts)}</span>
-    <span class="ev__body">${esc(e.item)}${qty} <span class="dim">from ${esc(e.mob)}</span>${disp}${badges}</span></li>`;
+    <span class="ev__body"><span class="itn" data-tt="${esc(e.item)}">${esc(e.item)}</span>${qty} <span class="dim">from ${esc(e.mob)}</span>${disp}${badges}</span></li>`;
 }
 
 function renderFeed() {
@@ -292,7 +299,7 @@ function renderZoneTab() {
       const it = f.items[di];
       if (!it) return "";
       const r = m.dr && m.dr[j] ? ` <i>${esc(m.dr[j])}</i>` : "";
-      return `<span class="zdrop" data-url="${esc(it.u || "")}">${esc(it.n)}${r}</span>`;
+      return `<span class="zdrop" data-url="${esc(it.u || "")}" data-tt="${esc(it.n)}">${esc(it.n)}${r}</span>`;
     }).filter(Boolean).join(", ");
     return `<li class="zmob ${dead ? "is-dead" : ""} ${m.named ? "is-named" : ""}">
       <span class="zmob__tick">${dead ? "✓" : ""}</span>
@@ -313,7 +320,7 @@ function renderZoneTab() {
     const by = droppers.get(i) || [];
     const quests = QIDX.get(K.normName(it.n)) || [];
     const qmark = quests.length ? `<span class="zquest" title="quest item">quest</span>` : "";
-    return `<li class="zitem"><a class="wk" data-url="${esc(it.u || "")}">${esc(it.n)}</a>${qmark}
+    return `<li class="zitem"><a class="wk" data-url="${esc(it.u || "")}" data-tt="${esc(it.n)}">${esc(it.n)}</a>${qmark}
       ${by.length ? `<span class="dim"> — ${esc(by.slice(0, 4).join(", "))}${by.length > 4 ? ` +${by.length - 4}` : ""}</span>` : ""}</li>`;
   };
 
@@ -346,7 +353,59 @@ function renderData() {
   };
   one(`Mob roster (${DATA ? Object.keys(DATA.zones).length + " zones" : "—"})`, DATA, SOURCES.kills);
   one(`Quest items (${QDATA ? QDATA.quests.length + " quests, " + Object.keys(QDATA.items).length + " items" : "—"})`, QDATA, SOURCES.quests);
+  one(`Item tooltips (${TDATA ? Object.keys(TDATA.items).length + " items" : "—"})`, TDATA, SOURCES.tooltips);
   $("dataStatus").innerHTML = rows.join("");
+}
+
+/* ── EQ item tooltip ──────────────────────────────────────────────────────
+   The wiki's statsblock is literally the in-game item-display text, one line
+   per row — render it as-is under the item name. Anything carrying data-tt
+   gets one on hover when the tooltip dataset knows the name. */
+const FLAGS_RX = /^[A-Z][A-Z0-9 *'&-]+$/; // all-caps flag rows: MAGIC ITEM LORE ITEM…
+let tipEl = null;
+function initTip() {
+  tipEl = document.createElement("div");
+  tipEl.id = "eqtip"; tipEl.hidden = true;
+  document.body.appendChild(tipEl);
+  document.addEventListener("mouseover", ev => {
+    const t = ev.target.closest ? ev.target.closest("[data-tt]") : null;
+    const e = t && TIDX.get(K.normName(t.dataset.tt));
+    if (!e) { tipEl.hidden = true; return; }
+    tipEl.innerHTML = `<div class="tt__name">${esc(e.n)}</div>` +
+      e.sb.map(l => `<div class="${FLAGS_RX.test(l) ? "tt__flags" : "tt__line"}">${esc(l)}</div>`).join("");
+    tipEl.hidden = false;
+    moveTip(ev);
+  });
+  document.addEventListener("mousemove", ev => { if (!tipEl.hidden) moveTip(ev); });
+  document.addEventListener("scroll", () => { tipEl.hidden = true; }, true);
+}
+function moveTip(ev) {
+  const pad = 14, r = tipEl.getBoundingClientRect();
+  let x = ev.clientX + pad, y = ev.clientY + pad;
+  if (x + r.width > innerWidth - 8) x = Math.max(8, ev.clientX - r.width - pad);
+  if (y + r.height > innerHeight - 8) y = Math.max(8, innerHeight - r.height - 8);
+  tipEl.style.left = x + "px"; tipEl.style.top = y + "px";
+}
+
+/* ── updater ──────────────────────────────────────────────────────────────*/
+function renderUpdate(u) {
+  const banner = $("updBanner"), act = $("updAct");
+  const msg = {
+    downloading: [`Downloading update ${u.version || ""}…`, null],
+    ready: [`Update ${u.version} is ready.`, "Restart to update"],
+    manual: [`Version ${u.version} is out.`, "Open download page"],
+  }[u.status];
+  banner.hidden = !msg || !msg[1]; // only bother the player when there's an action
+  if (msg) { $("updText").textContent = msg[0]; act.textContent = msg[1] || ""; }
+  act.onclick = () => u.status === "ready" ? window.companion.installUpdate() : window.companion.openReleases();
+  $("updStatus").textContent = {
+    idle: "Automatic — checks every few hours.",
+    downloading: `Downloading ${u.version || "update"}…`,
+    ready: `Update ${u.version} downloaded — restarts into it.`,
+    manual: `Version ${u.version} is out — this install type updates by re-downloading.`,
+    current: "Up to date.",
+    error: `Update check failed: ${u.detail || "unknown"}`,
+  }[u.status] || "—";
 }
 
 function renderOverlayState(o) {
@@ -371,13 +430,15 @@ async function main() {
   $("setWitnessed").checked = s.witnessed;
 
   renderStatus(); renderTracker(); renderFeed(); renderData();
-  populateZoneSel(); renderZoneTab();
+  populateZoneSel(); renderZoneTab(); initTip();
 
   window.companion.onBootstrap(onBootstrap);
   window.companion.onLines(onLines);
   window.companion.onLogStatus(st => { LOGSTATUS = st; renderStatus(); });
   window.companion.onDataUpdated(d => { buildIndexes(d); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); pushZone(); });
   window.companion.onOverlayState(renderOverlayState);
+  window.companion.onUpdate(renderUpdate);
+  renderUpdate(await window.companion.getUpdate());
   window.companion.ready(); // listeners live — main may start tailing now
 
   document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => {

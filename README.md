@@ -14,6 +14,10 @@ anyway".
 - **Gotta Kill 'Em All** — the eqltools.com kill tracker, fed live from your
   log instead of file drops. Same rules, same math: the app runs the site's
   own `shared.js` verbatim.
+- **Item tooltips** — mouse over any item name and get the in-game item
+  window: flags, slot, AC, stats, effect, weight, classes, races.
+- **Auto-updates** — installed builds update themselves from GitHub
+  Releases; portable/zip builds tell you when a new version is out.
 - **Zone browser** — the atlas mobs & drops data, following your character:
   zone in and the app shows that zone's mobs (with your kill ✓s) and items
   (with quest flags), all linked to the wiki.

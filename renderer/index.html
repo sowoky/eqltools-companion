@@ -21,6 +21,9 @@
 </nav>
 
 <main>
+  <div id="updBanner" class="banner banner--upd" hidden>
+    <span id="updText"></span> <button id="updAct" class="btn"></button>
+  </div>
   <section id="tab-live" class="pane on">
     <div id="liveBanner" class="banner" hidden></div>
     <div class="feedhead">
@@ -71,6 +74,9 @@
     <h2>Data</h2>
     <div id="dataStatus" class="dim"></div>
     <p class="row"><button id="btnRefresh" class="btn">Refresh from eqltools.com</button></p>
+
+    <h2>Updates</h2>
+    <p class="dim" id="updStatus">—</p>
     <p class="dim" id="verLine"></p>
   </section>
 </main>

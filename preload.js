@@ -7,6 +7,10 @@ contextBridge.exposeInMainWorld("companion", {
   /* main window */
   init: () => ipcRenderer.invoke("app:init"),
   ready: () => ipcRenderer.send("renderer:ready"),
+  getUpdate: () => ipcRenderer.invoke("update:get"),
+  installUpdate: () => ipcRenderer.send("update:install"),
+  openReleases: () => ipcRenderer.send("update:openPage"),
+  onUpdate: (fn) => ipcRenderer.on("update:state", (_e, p) => fn(p)),
   refreshData: () => ipcRenderer.invoke("data:refresh"),
   getZoneFile: (key) => ipcRenderer.invoke("data:zoneFile", key),
   pickLogDir: () => ipcRenderer.invoke("log:pickDir"),

@@ -43,7 +43,7 @@ for (const rel of ["public/kills/shared.js", "public/kills/parse.js"]) {
 
 mkdirSync(join(companion, "data-snapshot"), { recursive: true });
 let missing = 0;
-for (const rel of ["public/kills/data/kills-data.json", "public/companion/data/quest-items.json"]) {
+for (const rel of ["public/kills/data/kills-data.json", "public/companion/data/quest-items.json", "public/companion/data/item-tooltips.json"]) {
   const src = join(repo, rel);
   const out = join(companion, "data-snapshot", rel.split("/").pop());
   if (existsSync(src)) {

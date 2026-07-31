@@ -21,6 +21,7 @@ const WIN_LOG_DIR = "C:\\Users\\Public\\Daybreak Game Company\\Installed Games\\
 const REMOTE = {
   "kills-data.json": "https://eqltools.com/kills/data/kills-data.json",
   "quest-items.json": "https://eqltools.com/companion/data/quest-items.json",
+  "item-tooltips.json": "https://eqltools.com/companion/data/item-tooltips.json",
 };
 const REFRESH_MS = 12 * 3600 * 1000;
 
@@ -56,11 +57,17 @@ function createMainWindow() {
   mainWin.loadFile(path.join(__dirname, "renderer", "index.html"));
   if (isDev && process.env.EQLC_DEVTOOLS) mainWin.webContents.openDevTools({ mode: "detach" });
   if (isDev) mainWin.webContents.on("console-message", (_e, _l, msg) => console.log("[renderer]", msg));
-  // Dev: EQLC_TAB=zone|tracker|settings opens the app on that tab (the
-  // agent-side screenshot loop can't click).
-  if (isDev && process.env.EQLC_TAB) mainWin.webContents.on("did-finish-load", () => {
-    setTimeout(() => mainWin && mainWin.webContents.executeJavaScript(
-      `document.querySelector('[data-tab="${process.env.EQLC_TAB}"]')?.click()`), 3000);
+  // Dev: EQLC_TAB=zone|tracker|settings opens the app on that tab, and
+  // EQLC_EXEC=<file.js> runs a script in the page — the agent-side
+  // screenshot loop can't click or hover, so these drive the UI for it.
+  if (isDev && (process.env.EQLC_TAB || process.env.EQLC_EXEC)) mainWin.webContents.on("did-finish-load", () => {
+    setTimeout(() => {
+      if (!mainWin) return;
+      if (process.env.EQLC_TAB) mainWin.webContents.executeJavaScript(
+        `document.querySelector('[data-tab="${process.env.EQLC_TAB}"]')?.click()`);
+      if (process.env.EQLC_EXEC) mainWin.webContents.executeJavaScript(
+        fs.readFileSync(process.env.EQLC_EXEC, "utf8")).catch(e => console.log("[exec]", e.message));
+    }, 3000);
   });
   mainWin.on("closed", () => { mainWin = null; app.quit(); });
 }
@@ -262,6 +269,66 @@ async function refreshDatasets(force) {
   if (any && mainWin) mainWin.webContents.send("data:updated", loadDatasets());
 }
 
+/* ── app updater ──────────────────────────────────────────────────────────
+   Three install shapes, three behaviors:
+   - NSIS-installed (exe under AppData\Local\Programs): full electron-updater
+     flow — download in background, "restart to update" when ready.
+   - portable target (PORTABLE_EXECUTABLE_DIR set) or zip-extracted anywhere
+     else: no in-place update path exists, so just compare versions against
+     the latest GitHub release and point at the download page.
+   Unsigned builds: electron-updater only verifies signatures when the
+   installed app is signed, so unsigned→unsigned updates are fine. */
+const RELEASES_URL = "https://github.com/sowoky/eqltools-companion/releases/latest";
+let UPDATE = { status: "idle", version: null, url: RELEASES_URL };
+
+function setUpdate(patch) {
+  UPDATE = { ...UPDATE, ...patch };
+  if (mainWin) mainWin.webContents.send("update:state", UPDATE);
+}
+
+function isNsisInstall() {
+  if (process.env.PORTABLE_EXECUTABLE_DIR) return false;
+  return process.platform === "win32" &&
+    app.getPath("exe").toLowerCase().includes("\\appdata\\local\\programs\\");
+}
+
+const semverNewer = (a, b) => { // a > b, "1.2.3" strings
+  const pa = String(a).replace(/^v/, "").split(".").map(Number);
+  const pb = String(b).replace(/^v/, "").split(".").map(Number);
+  for (let i = 0; i < 3; i++) { if ((pa[i] || 0) !== (pb[i] || 0)) return (pa[i] || 0) > (pb[i] || 0); }
+  return false;
+};
+
+let autoUpdater = null;
+function initUpdater() {
+  if (isDev) return;
+  if (isNsisInstall()) {
+    try { ({ autoUpdater } = require("electron-updater")); } catch { return; }
+    autoUpdater.autoDownload = true;
+    autoUpdater.on("update-available", i => setUpdate({ status: "downloading", version: i.version }));
+    autoUpdater.on("update-not-available", () => setUpdate({ status: "current" }));
+    autoUpdater.on("update-downloaded", i => setUpdate({ status: "ready", version: i.version }));
+    autoUpdater.on("error", e => setUpdate({ status: "error", detail: String((e && e.message) || e) }));
+    const check = () => autoUpdater.checkForUpdates().catch(() => {});
+    check();
+    setInterval(check, 4 * 3600 * 1000);
+  } else {
+    const check = async () => {
+      try {
+        const r = await fetch("https://api.github.com/repos/sowoky/eqltools-companion/releases/latest",
+          { headers: { "user-agent": `eqltools-companion/${app.getVersion()}` } });
+        if (!r.ok) return;
+        const tag = (await r.json()).tag_name;
+        if (tag && semverNewer(tag, app.getVersion()))
+          setUpdate({ status: "manual", version: tag.replace(/^v/, "") });
+        else setUpdate({ status: "current" });
+      } catch {}
+    };
+    check();
+    setInterval(check, 4 * 3600 * 1000);
+  }
+}
+
 /* Per-zone mobs & drops (the atlas widget's data). Resolution: fresh cache
    (<24 h) → live fetch (cached on success) → stale cache → bundled snapshot.
    Zone keys are atlas shortnames, validated hard since they become paths. */
@@ -309,6 +376,9 @@ ipcMain.on("renderer:ready", () => {
 });
 ipcMain.handle("data:refresh", async () => { await refreshDatasets(true); return loadDatasets(); });
 ipcMain.handle("data:zoneFile", (_e, key) => zoneFile(String(key || "")));
+ipcMain.handle("update:get", () => UPDATE);
+ipcMain.on("update:install", () => { if (autoUpdater && UPDATE.status === "ready") autoUpdater.quitAndInstall(); });
+ipcMain.on("update:openPage", () => shell.openExternal(RELEASES_URL));
 ipcMain.handle("log:pickDir", async () => {
   const r = await dialog.showOpenDialog(mainWin, {
     title: "Pick the EverQuest Legends Logs folder",
@@ -346,6 +416,7 @@ else {
   app.whenReady().then(() => {
     loadSettings();
     createMainWindow();
+    initUpdater();
     /* Overlay control works while the game has focus. Show/hide, and the
        pointer-control escape hatch for click-through mode. */
     globalShortcut.register("Control+Shift+O", () => toggleOverlay());
