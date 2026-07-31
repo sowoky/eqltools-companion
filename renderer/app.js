@@ -81,6 +81,7 @@ const SEED_CAP = 100;
 
 function onBootstrap({ file, text }) {
   newStream(file);
+  LINES_SEEN++; // a (re)bootstrapped file is new data for the parser tab
   // One pass over the tail serves three consumers: kill credit for the
   // tracker (high-water mark makes restarts safe — same parseLog semantics,
   // inlined so loot isn't discarded), the last SEED_CAP drops for the feed,
@@ -114,6 +115,7 @@ function onBootstrap({ file, text }) {
 let lastStreamZone = "?";
 function onLines({ file, lines }) {
   if (file !== currentFile || !stream) return;
+  LINES_SEEN += lines.length;
   for (const line of lines) {
     const evs = stream.feed(line);
     for (const ev of evs) handleEvent(ev);
@@ -482,12 +484,12 @@ function parseInventory(text) {
 function onInvFile({ file, mtime, text }) {
   INV.file = file; INV.mtime = mtime;
   INV.rows = parseInventory(text);
-  renderInv();
+  renderInv(); renderQuests();
 }
 
 function onInvStatus({ problem }) {
   INV.problem = problem;
-  renderInv();
+  renderInv(); renderQuests();
 }
 
 function renderInv() {
@@ -521,6 +523,148 @@ function renderInv() {
         <span class="ev__body">${itemSpan(r.name)}${r.count > 1 ? ` ×${r.count}` : ""}${questChips(r.quests, r.id)}</span></li>`).join("")}
     </ul>`).join("");
   retip();
+}
+
+/* ── Quests tab — what the inventory dump says you could hand in ───────────
+   Cross of the inventory dump against the wiki quest list: a quest counts as
+   READY when you hold every component the wiki lists for it.
+
+   Two limits are real and both are stated in the UI rather than papered over:
+
+   1. The wiki lists component NAMES, never counts — no quest row in the
+      dataset carries a quantity marker or a repeated item (checked: 0 of
+      904). So "ready" means "you hold at least one of each", and Bone Chips
+      wants four. The held count rides on every component row so the player
+      can judge; the app must not claim to know the requirement.
+   2. 147 quests list no components at all (index pages like "Bone Chips
+      Quests", and chain articles). Those are skipped outright — an empty
+      requirement list is trivially "complete" and would flood the ready
+      section with quests you cannot hand in.
+
+   Everything else is presentation: rows sort by how much of the quest the
+   dump accounts for, so a 4-of-4 lands above the seventh bone-chip variant. */
+const QUESTS = { q: "", readyOnly: false };
+
+// normName -> total count held, keyed BOTH raw and decoration-stripped so a
+// "Giant Snake Fang +4" in the dump answers a bare "Giant Snake Fang".
+function haveMap() {
+  const m = new Map();
+  for (const r of INV.rows || []) {
+    for (const k of new Set([K.normName(r.name), K.normName(stripDecor(r.name))]))
+      m.set(k, (m.get(k) || 0) + r.count);
+  }
+  return m;
+}
+
+function questProgress() {
+  if (!QDATA || !INV.rows) return [];
+  const have = haveMap();
+  const held = n => have.get(K.normName(n)) ?? have.get(K.normName(stripDecor(n))) ?? 0;
+  const out = [];
+  for (const q of QDATA.quests) {
+    const items = q.items || [];
+    if (!items.length) continue; // see (2) above
+    const comps = items.map(n => ({ n, have: held(n) }));
+    const got = comps.filter(c => c.have).length;
+    if (!got) continue; // hold nothing for it — not this player's problem yet
+    out.push({ q, comps, got, need: items.length, done: got === items.length });
+  }
+  // ready first, then by how complete, then by size (a 4-of-4 outranks a 1-of-1)
+  return out.sort((a, b) =>
+    (b.done - a.done) || (b.got / b.need - a.got / a.need) || (b.need - a.need) ||
+    (a.q.n.toLowerCase() < b.q.n.toLowerCase() ? -1 : 1));
+}
+
+function questRow(p) {
+  const { q } = p;
+  // 27 quests carry components but no giver and no zone. They are not junk —
+  // "Cleric Plane of Sky Tests" (26 items) and the Coldain ring chain live
+  // here — but they have no single hand-in NPC, so calling them "ready to
+  // hand in" would be a lie. Say what they are instead.
+  const chain = !q.giver && !q.zone;
+  const facts = [q.lvl ? `lvl ${q.lvl}` : "", (q.classes || []).filter(c => c && c !== "?").join("/"),
+    q.zone, q.giver ? `→ ${q.giver}` : "", chain ? "multi-step chain — no single turn-in" : ""]
+    .filter(Boolean).join(" · ");
+  const comps = p.comps.map(c => `
+    <li class="qc ${c.have ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(c.n)}${c.have > 1 ? ` <span class="dim">×${c.have}</span>` : ""}</li>`).join("");
+  const rew = (q.rewards || []).length
+    ? `<div class="qrew">reward: ${q.rewards.slice(0, 6).map(r => `<span data-tt="${esc(r)}">${esc(r)}</span>`).join(", ")}${q.rewards.length > 6 ? ` <span class="dim">+${q.rewards.length - 6} more</span>` : ""}</div>`
+    : "";
+  return `<li class="qrow ${p.done ? "is-ready" : ""}">
+    <div class="qrow__head">
+      <a class="wk" data-wiki="${esc(q.t || "")}">${esc(q.n)}</a>
+      <span class="qprog">${p.got}/${p.need}</span>
+      ${facts ? `<span class="dim">${esc(facts)}</span>` : ""}
+    </div>
+    <ul class="qcomps">${comps}</ul>${rew}</li>`;
+}
+
+function renderQuests() {
+  const body = $("questsBody"), empty = $("questsEmpty"), banner = $("questsBanner");
+  banner.hidden = !!QDATA;
+  if (!QDATA) { banner.textContent = "Quest data not loaded yet — refresh from eqltools.com in Settings."; }
+  if (!INV.rows) {
+    $("qMeta").textContent = "";
+    body.innerHTML = "";
+    empty.textContent = INV.problem || "Type /out inventory in game — quests you hold items for show up here.";
+    empty.hidden = false;
+    return;
+  }
+  const all = questProgress();
+  const ready = all.filter(p => p.done), partial = all.filter(p => !p.done);
+  const needle = QUESTS.q.trim().toLowerCase();
+  const match = p => !needle || [p.q.n, p.q.giver, p.q.zone, ...(p.q.items || []), ...(p.q.rewards || [])]
+    .some(s => s && String(s).toLowerCase().includes(needle));
+  const shown = (QUESTS.readyOnly ? ready : all).filter(match);
+
+  $("qMeta").textContent = `${ready.length} ready · ${partial.length} partly collected · from ${INV.file}`;
+  empty.hidden = shown.length > 0;
+  if (!shown.length) {
+    empty.textContent = all.length
+      ? "Nothing matches that search."
+      : "No quest components in this dump yet.";
+    body.innerHTML = "";
+    return;
+  }
+  const section = (label, rows) => rows.length
+    ? `<h3>${label} (${rows.length})</h3><ul class="qlist">${rows.map(questRow).join("")}</ul>` : "";
+  body.innerHTML =
+    section("Ready to hand in", shown.filter(p => p.done)) +
+    section("Partly collected", shown.filter(p => !p.done)) +
+    `<p class="dim qnote">The wiki lists which items a quest wants, never how many —
+     “ready” means you hold at least one of each. Counts you are carrying are shown
+     beside each item.</p>`;
+  retip();
+}
+
+/* ── parser tab: the site's /log-parser page, embedded whole ──────────────
+   The iframe loads the vendored page over eqlt:// on first open; we post the
+   active log's tail into its embed intake and re-post while the tab stays
+   open (5 s cadence, only when new lines arrived — the page re-parses the
+   whole tail each time, exactly like its own live-watch mode). */
+const PARSER = { fedLines: -1, timer: null };
+let LINES_SEEN = 0; // bootstrap + live lines; the parser re-feeds on growth
+
+async function feedParser(keep) {
+  const t = await window.companion.getLogTail();
+  if (!t) return;
+  PARSER.fedLines = LINES_SEEN;
+  $("lpFrame").contentWindow.postMessage({ type: "eqlt-log", text: t.text, name: t.name, keep: !!keep }, "*");
+  $("lpFrame").hidden = false;
+  $("lpEmpty").hidden = true;
+}
+
+function parserTabActive(on) {
+  if (!on) {
+    if (PARSER.timer) { clearInterval(PARSER.timer); PARSER.timer = null; }
+    return;
+  }
+  const f = $("lpFrame");
+  if (!f.src) {
+    f.addEventListener("load", () => feedParser(false), { once: true });
+    f.src = "eqlt://app/log-parser/index.html?embed=1";
+  } else if (LINES_SEEN > PARSER.fedLines) feedParser(true);
+  if (!PARSER.timer) PARSER.timer = setInterval(() => { if (LINES_SEEN > PARSER.fedLines) feedParser(true); }, 5000);
 }
 
 let LOGSTATUS = {};
@@ -640,14 +784,14 @@ async function main() {
   $("setWitnessed").checked = s.witnessed;
 
   renderStatus(); renderTracker(); renderFeed(); renderData();
-  populateZoneSel(); renderZoneTab(); initTip();
+  populateZoneSel(); renderZoneTab(); renderQuests(); initTip();
 
   window.companion.onBootstrap(onBootstrap);
   window.companion.onLines(onLines);
   window.companion.onLogStatus(st => { LOGSTATUS = st; renderStatus(); });
   window.companion.onInvFile(onInvFile);
   window.companion.onInvStatus(onInvStatus);
-  window.companion.onDataUpdated(d => { buildIndexes(d); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); renderInv(); pushZone(); });
+  window.companion.onDataUpdated(d => { buildIndexes(d); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); renderInv(); renderQuests(); pushZone(); });
   window.companion.onOverlayState(renderOverlayState);
   window.companion.onUpdate(renderUpdate);
   renderUpdate(await window.companion.getUpdate());
@@ -656,10 +800,13 @@ async function main() {
   document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === b));
     document.querySelectorAll(".pane").forEach(p => p.classList.toggle("on", p.id === "tab-" + b.dataset.tab));
+    parserTabActive(b.dataset.tab === "parser");
   }));
 
   $("onlyQuest").addEventListener("change", renderFeed);
   $("invQuestOnly").addEventListener("change", renderInv);
+  $("qSearch").addEventListener("input", e => { QUESTS.q = e.target.value; renderQuests(); });
+  $("qReadyOnly").addEventListener("change", e => { QUESTS.readyOnly = e.target.checked; renderQuests(); });
   $("trkSearch").addEventListener("input", e => { TRACKER_Q = e.target.value; renderTracker(); });
   $("trkAtlas").addEventListener("click", () => {
     // Land on the player's zone with the atlas sidebar open on KILLS; the

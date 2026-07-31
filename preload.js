@@ -13,6 +13,7 @@ contextBridge.exposeInMainWorld("companion", {
   onUpdate: (fn) => ipcRenderer.on("update:state", (_e, p) => fn(p)),
   refreshData: () => ipcRenderer.invoke("data:refresh"),
   getZoneFile: (key) => ipcRenderer.invoke("data:zoneFile", key),
+  getLogTail: () => ipcRenderer.invoke("log:tail"),
   pickLogDir: () => ipcRenderer.invoke("log:pickDir"),
   openWiki: (url) => ipcRenderer.send("wiki:open", url),
   toggleOverlay: (force) => ipcRenderer.send("overlay:toggle", force),

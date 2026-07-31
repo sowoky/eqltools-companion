@@ -1,0 +1,279 @@
+/* Combat Log Parser — page styles. Leans on /_shared/theme.css for
+   tokens (--gold, --bg-panel, --line, fonts …) and header/footer. */
+
+/* Damage-composition palette — drawn from the site's own 3 hues + muted tints,
+   NOT a stock chart palette. Kept separate from element hues (a different axis). */
+:root {
+  --c-melee: var(--gold);
+  --c-skill: #d4b25e;  /* pale gold — a deliberate swing, kin to melee */
+  --c-ranged: #7d9db8; /* fletching steel-blue */
+  --c-cast: var(--arcane);
+  --c-proc: var(--ember);
+  --c-dot: #5f8c7d;   /* verdigris */
+  --c-ds:  #b0694a;   /* warm bronze */
+  --c-pet: #8f86c9;   /* pale arcane — related to cast, clearly lighter */
+  --c-charm: #6f9c8f; /* sage — a mob fighting for you, not quite a pet */
+}
+
+/* the hidden attribute must beat author display rules (.intake grid, .ctl
+   flex) — without this the intake stays visible after a parse and the
+   difficulty/visit controls show before a zone is picked */
+[hidden] { display: none !important; }
+.page-body { padding-block: 1.3rem 3rem; }
+.site-head { padding: 1rem 0 .6rem; }
+.title-block h1 { font-family: var(--font-display), Georgia, serif; font-size: clamp(1.9rem, 4vw, 2.8rem); margin: 0; color: var(--gold-bright); font-weight: 600; letter-spacing: .01em; }
+.tagline { margin: .4rem 0 0; color: var(--ink-soft); max-width: 68ch; font-family: var(--font-accent), Georgia, serif; }
+h2 { font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: 1.12rem; color: var(--gold-bright); margin: 0 0 .2rem; letter-spacing: .01em; }
+.fine { color: var(--ink-dim); font-size: .86rem; font-family: var(--font-accent), Georgia, serif; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .86em; color: var(--gold-bright); background: rgba(201,149,42,.08); padding: .05em .35em; border-radius: 4px; }
+code.path { color: var(--ink-soft); word-break: break-all; }
+
+/* buttons */
+.ghost { background: transparent; border: 1px solid var(--line); color: var(--ink-soft); font-family: var(--font-accent), Georgia, serif; padding: .4rem .8rem; border-radius: 7px; cursor: pointer; transition: .15s; font-size: .92rem; }
+.ghost:hover { border-color: var(--gold); color: var(--gold-bright); }
+.ghost.small { padding: .28rem .6rem; font-size: .82rem; }
+
+/* ── intake / drop zone ── */
+.intake { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.6rem; align-items: stretch; margin-top: .6rem; }
+/* A grid item defaults to min-width:auto, so the unbreakable
+   `eqlog_<character>_<server>.txt` token inside .how set a floor wider than the
+   phone viewport and pushed the whole page sideways. */
+.intake > * { min-width: 0; }
+.intake code { overflow-wrap: anywhere; }
+@media (max-width: 760px) { .intake { grid-template-columns: 1fr; } }
+.drop-zone { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; text-align: center;
+  border: 1.5px dashed var(--line); border-radius: 14px; padding: 2.8rem 1.4rem; cursor: pointer; transition: .18s;
+  background: radial-gradient(120% 80% at 50% 0%, rgba(201,149,42,.05), transparent 70%), var(--bg-panel); }
+.drop-zone:hover, .drop-zone.over { border-color: var(--gold); background: var(--bg-panel-2); }
+.drop-glyph { color: var(--gold); filter: drop-shadow(0 0 10px rgba(224,113,58,.25)); line-height: 0; }
+.drop-glyph svg { width: 2.5rem; height: 2.5rem; }
+.drop-lead { font-family: var(--font-display), Georgia, serif; color: var(--ink); font-size: 1.05rem; }
+.drop-sub { color: var(--ink-dim); }
+.drop-col { display: flex; flex-direction: column; gap: .7rem; min-width: 0; }
+.drop-col .drop-zone { flex: 1; }
+.watch-btn { align-self: flex-start; }
+.how { background: var(--bg-panel); border: 1px solid var(--line); border-radius: 14px; padding: 1.2rem 1.4rem; }
+.how h2 { margin-bottom: .5rem; }
+.how ol { margin: 0 0 .7rem; padding-left: 1.2rem; color: var(--ink-soft); }
+.how li { margin: .3rem 0; }
+.how .fine { margin: .4rem 0 0; }
+
+.err { background: rgba(178,60,60,.12); border: 1px solid #7a2f2f; color: #e7a99f; border-radius: 10px; padding: .8rem 1rem; margin-top: 1rem; font-family: var(--font-accent), Georgia, serif; }
+
+/* ── controls ── */
+.controls { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; justify-content: space-between;
+  border-bottom: 1px solid var(--line); padding-bottom: .9rem; margin: .4rem 0 1.4rem; }
+.who-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem; font-family: var(--font-sans); }
+.who-name { font-family: var(--font-display), Georgia, serif; font-size: 1.5rem; color: var(--gold-bright); }
+.who-pet, .who-lvl { color: var(--ink-dim); font-size: .9rem; font-family: var(--font-accent), Georgia, serif; }
+.who-pet.dim { opacity: .7; font-style: italic; }
+.who-swap { color: #e7c07a; font-size: .9rem; font-family: var(--font-accent), Georgia, serif; }
+/* one line of per-hour rates under the plaques */
+.pace-line { color: var(--ink-soft); font-family: var(--font-accent), Georgia, serif; font-size: .92rem; margin: -.6rem 0 1.4rem; }
+.control-group { display: flex; align-items: flex-end; gap: .8rem; flex-wrap: wrap; }
+.ctl { display: flex; flex-direction: column; gap: .25rem; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-dim); font-family: var(--font-accent), Georgia, serif; }
+.ctl { max-width: 100%; }
+/* cap at the row's width or a long fight label ("a Pickclaw Foechopper pet ·
+   Jul 6 · 11:23pm · 1,086 dmg") forces page-level horizontal scroll at 414px */
+.ctl select { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-family: var(--font-body), Georgia, serif; font-size: .95rem; text-transform: none; letter-spacing: normal; color: var(--ink);
+  background: var(--bg-panel-2); border: 1px solid var(--line); border-radius: 7px; padding: .4rem .6rem; min-width: 12rem; cursor: pointer; }
+.ctl select:hover { border-color: var(--gold); }
+
+.truncnote { color: var(--ink-dim); font-family: var(--font-accent), Georgia, serif; font-size: .86rem; font-style: italic; margin-bottom: 1rem; }
+
+/* ── plaques ── */
+.plaques { display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); gap: .8rem; margin-bottom: 1.4rem; align-items: stretch; }
+.plaque { background: linear-gradient(180deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--line); border-radius: 11px; padding: .8rem 1rem; text-align: center; }
+.plaque .pn { display: block; font-family: var(--font-sans); font-weight: 600; font-variant-numeric: tabular-nums; font-size: 1.5rem; color: var(--gold-bright); line-height: 1.1; white-space: nowrap; }
+.plaque .pl { display: block; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-dim); margin-top: .2rem; font-family: var(--font-accent), Georgia, serif; }
+/* break the KPI-grid sameness: the headline number reads as the headline */
+.plaque.hero { grid-column: span 2; background: radial-gradient(120% 130% at 0% 0%, rgba(201,149,42,.14), transparent 60%), linear-gradient(180deg, var(--bg-panel-2), var(--bg-panel)); border-color: var(--line-hot, #5c4630); display: flex; flex-direction: column; justify-content: center; }
+.plaque.hero .pn { font-size: 2.5rem; background: linear-gradient(180deg, #f3d488, #c8992f 70%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@media (max-width: 560px) { .plaque.hero { grid-column: span 2; } .plaque.hero .pn { font-size: 2rem; } }
+
+/* ── panels ── */
+.panel { background: var(--bg-panel); border: 1px solid var(--line); border-radius: 14px; padding: 1.3rem 1.5rem; margin-bottom: 1.4rem; }
+.panel .rule-ornate { margin-bottom: .8rem; }
+.panel-note { color: var(--ink-dim); font-size: .88rem; margin: 0 0 1rem; font-family: var(--font-accent), Georgia, serif; }
+.two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+@media (max-width: 760px) { .two-up { grid-template-columns: 1fr; } }
+
+.tag-you, .tag-pet, .tag-charm { display: inline-block; font-family: var(--font-accent), Georgia, serif; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; padding: .08em .5em; border-radius: 5px; vertical-align: middle; }
+.tag-you { color: var(--gold-bright); background: rgba(201,149,42,.14); }
+.tag-pet { color: var(--arcane); background: rgba(124,111,224,.16); }
+.tag-charm { color: var(--c-charm); background: rgba(111,156,143,.16); }
+
+.f-open { font-family: var(--font-accent), Georgia, serif; font-size: .74rem; color: var(--ink-dim); font-style: italic; }
+
+/* ── tooltip anchors ── */
+/* .tipv marks a value with raw numbers behind it (tip.js serves them) */
+.tipv { border-bottom: 1px dotted var(--ink-dim); cursor: help; }
+
+/* stance/invocation annotation rails welded to the DPS chart — a faint
+   full-width track (so "nothing active" reads as a state, not a missing
+   element), chips per segment with a dark seam between neighbors, labels
+   only where they fit (fitLanes suppresses fragments), hover everywhere */
+.lane { position: relative; height: 19px; margin: 0; }
+.lane::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: rgba(255,255,255,.015); box-shadow: inset 0 0 0 1px var(--rail); }
+.lane-stance { --rail: rgba(201,149,42,.16); }
+.lane-stance, .lane-stance::before { border-radius: 3px 3px 0 0; }
+.lane-invoke { --rail: rgba(124,111,224,.18); }
+.lane-invoke, .lane-invoke::before { border-radius: 0 0 3px 3px; }
+.spark { display: block; }
+.lane-seg { position: absolute; top: 0; bottom: 0; box-sizing: border-box; overflow: hidden;
+  white-space: nowrap; padding: 0 .45em; border-left: 2px solid var(--bg-panel);
+  font-family: var(--font-sans), sans-serif; font-size: .68rem; line-height: 19px;
+  letter-spacing: .02em; cursor: help; }
+.lane-seg:first-child { border-left: none; }
+.lane-txt { display: block; overflow: hidden; text-overflow: ellipsis; }
+.lane-seg.lane-tight { padding: 0; }
+.lane-seg.lane-tight .lane-txt { display: none; }
+.lane-stance .lane-seg { background: rgba(201,149,42,.10); color: var(--gold-bright); }
+.lane-invoke .lane-seg { background: rgba(124,111,224,.12); color: #b9a7ef; }
+.lane-seg.lane-sliver { padding: 0; min-width: 2px; border-left: none; }
+.lane-stance .lane-sliver { background: rgba(201,149,42,.45); }
+.lane-invoke .lane-sliver { background: rgba(124,111,224,.5); }
+.plaque[data-tip] { cursor: help; transition: border-color .15s; }
+.plaque[data-tip]:hover { border-color: var(--gold); }
+
+/* ── source table ── */
+.tblwrap { overflow-x: auto; position: relative; -webkit-overflow-scrolling: touch; }
+.tblwrap::-webkit-scrollbar { height: 8px; }
+/* On phones the wide tables scroll; fade the right edge so it's clear there's more,
+   and drop the two lowest-value columns (element, avg) so the payoff numbers fit. */
+@media (max-width: 640px) {
+  .tblwrap { -webkit-mask-image: linear-gradient(90deg, #000 90%, transparent);
+                     mask-image: linear-gradient(90deg, #000 90%, transparent); }
+  /* drop each table's lowest-value columns so the payoff numbers fit unscrolled */
+  #sourceTable th:nth-child(1), #sourceTable td:nth-child(1),
+  #sourceTable th:nth-child(4), #sourceTable td:nth-child(4),
+  #sourceTable th:nth-child(5), #sourceTable td:nth-child(5),
+  #sourceTable th:nth-child(8), #sourceTable td:nth-child(8),
+  #sourceTable th:nth-child(9), #sourceTable td:nth-child(9),
+  /* mob table keeps the camp payoff (kills, xp, coin, drops); the detail row
+     spans every column, so it is never hidden by these */
+  #mobTable > tbody > tr.mob-row > td:nth-child(3), #mobTable > thead th:nth-child(3),
+  #mobTable > tbody > tr.mob-row > td:nth-child(6), #mobTable > thead th:nth-child(6),
+  #comboTable th:nth-child(2), #comboTable td:nth-child(2),
+  #comboTable th:nth-child(5), #comboTable td:nth-child(5) { display: none; }
+  .detail-grid { grid-template-columns: 1fr; }
+  /* detail mini-tables: keep the payoff columns. Drops loses per-drop qty;
+     the shared nth-child(4) also hides the fights table's Est. DPS, on
+     purpose. The focus column hides too — the row itself is the tap target —
+     or it clips at the right viewport edge. */
+  .mini-tbl th:nth-child(4), .mini-tbl td:nth-child(4),
+  .enc-tbl th:nth-child(2), .enc-tbl td:nth-child(2),
+  .enc-tbl th:nth-child(5), .enc-tbl td:nth-child(5),
+  .enc-tbl th:nth-child(8), .enc-tbl td:nth-child(8) { display: none; }
+  .d-block { padding: .3rem .5rem .5rem; }
+  /* long spell/source names wrap instead of forcing the numbers off-screen */
+  #sourceTable .c-name { max-width: 8.5rem; overflow-wrap: break-word; white-space: normal; }
+  table { font-size: .88rem; }
+}
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+thead th { text-align: right; font-family: var(--font-accent), Georgia, serif; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-dim); font-weight: 500; padding: .3rem .55rem; border-bottom: 1px solid var(--line); }
+thead th:nth-child(2) { text-align: left; }
+/* mobs/loot lead with the name in column 1, not column 2 */
+#mobTable thead th:first-child, #lootTable thead th:first-child, .mini-tbl thead th:first-child { text-align: left; }
+#mobTable thead th:nth-child(2), #lootTable thead th:nth-child(2), .mini-tbl thead th:nth-child(2) { text-align: right; }
+tbody td { text-align: right; padding: .42rem .55rem; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); }
+tbody tr:hover td { background: rgba(201,149,42,.04); }
+.c-gem { width: 34px; text-align: center; padding-left: 0; }
+.c-name { text-align: left; color: var(--ink); font-family: var(--font-sans); }
+.loot-wiki { color: inherit; text-decoration: underline dotted color-mix(in srgb, var(--wiki) 65%, transparent); text-underline-offset: 2px; }
+.loot-wiki:hover { color: var(--wiki); }
+.c-el { color: var(--ink-dim); font-family: var(--font-sans); font-variant: small-caps; letter-spacing: .03em; }
+.c-dmg { color: var(--gold-bright); font-variant-numeric: tabular-nums; }
+td { font-variant-numeric: tabular-nums; }
+.empty { text-align: center; color: var(--ink-dim); font-style: italic; padding: 1.2rem; }
+.gem { width: 26px; height: 26px; border-radius: 5px; vertical-align: middle; image-rendering: -webkit-optimize-contrast; box-shadow: 0 0 0 1px var(--line); }
+.gem-melee { display: inline-flex; align-items: center; justify-content: center; color: var(--gold); box-shadow: none; }
+.gem-melee svg { width: 20px; height: 20px; }
+.gem-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--h, var(--ink-dim)); box-shadow: 0 0 6px -1px var(--h); }
+
+/* ── meters (composition, combos) ── */
+.meter { display: grid; grid-template-columns: minmax(9rem, 1.2fr) 2fr minmax(8rem, auto); align-items: center; gap: .8rem; margin: .45rem 0; }
+@media (max-width: 560px) { .meter { grid-template-columns: 1fr; gap: .1rem; } .meter .mval { text-align: left; } }
+.mlab { color: var(--ink); font-size: .92rem; font-family: var(--font-sans); }
+.mtrack { height: 13px; background: var(--bg-deep); border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+.mfill { display: block; height: 100%; border-radius: 6px 0 0 6px; }
+.mval { text-align: right; font-size: .84rem; color: var(--ink-dim); font-variant-numeric: tabular-nums; font-family: var(--font-sans); }
+.sub { color: var(--ink-dim); font-size: .84rem; margin: .8rem 0 0; font-family: var(--font-accent), Georgia, serif; }
+
+/* ── stat rows ── */
+.statrow { display: flex; justify-content: space-between; gap: 1rem; padding: .35rem 0; border-bottom: 1px dotted var(--line-soft); font-size: .95rem; font-family: var(--font-sans); }
+.statrow .k { color: var(--ink-dim); }
+.statrow .v { color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; }
+.statrow .v.warn { color: var(--gold-bright); }
+
+/* who-meta */
+.who-meta { color: var(--ink-soft); font-size: .9rem; font-family: var(--font-accent), Georgia, serif; }
+h2 .h2sub { font-family: var(--font-accent), Georgia, serif; font-size: .72rem; font-weight: 400; letter-spacing: .06em; text-transform: none; color: var(--ink-dim); margin-left: .5rem; }
+
+/* biggest-hit tiles */
+.bighits { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .8rem; margin-bottom: 1.4rem; }
+.bigtile { background: linear-gradient(180deg, rgba(224,113,58,.08), transparent), var(--bg-panel); border: 1px solid var(--line); border-radius: 11px; padding: .8rem 1rem; }
+.bigtile .bt-n { display: block; font-family: var(--font-sans); font-weight: 600; font-variant-numeric: tabular-nums; font-size: 1.55rem; color: var(--ember-hot, #ff8a3d); line-height: 1.05; }
+.bigtile .bt-src { display: block; color: var(--ink); font-size: .92rem; margin-top: .1rem; font-family: var(--font-sans); }
+.bigtile .bt-src em { color: var(--gold-bright); font-style: normal; font-size: .78rem; }
+.bigtile .bt-lab { display: block; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-dim); margin-top: .25rem; font-family: var(--font-accent), Georgia, serif; }
+
+/* dps sparkline */
+.spark { width: 100%; height: 120px; display: block; }
+
+/* by-class mini */
+.mini-h { font-family: var(--font-accent), Georgia, serif; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-dim); margin: 1.1rem 0 .3rem; }
+.meter.small { margin: .25rem 0; }
+.meter.small .mlab { font-size: .86rem; }
+.meter.small .mtrack { height: 9px; }
+.inlpct { font-size: .8rem; color: var(--ink-dim); margin-left: .5rem; font-family: var(--font-sans); font-variant-numeric: tabular-nums; }
+
+/* mob rows: click to open the per-mob detail (fights + drops) */
+.mob-row { cursor: pointer; }
+.mob-row:hover td { background: rgba(201,149,42,.06); }
+.mob-row.open td { background: rgba(201,149,42,.05); border-bottom-color: transparent; }
+.m-caret { display: inline-block; width: 1.1em; color: var(--gold); font-size: .8em; }
+/* grouped source rows (pet/charm) open into their per-verb split */
+.src-row { cursor: pointer; }
+.src-row:hover td { background: rgba(201,149,42,.06); }
+.src-row.open td { background: rgba(201,149,42,.05); border-bottom-color: transparent; }
+.src-sub td { color: var(--ink-soft); background: rgba(201,149,42,.03); font-size: .92em; }
+.src-sub .c-name { padding-left: 2.1em; }
+.m-zone { color: var(--ink-dim); font-family: var(--font-accent), Georgia, serif; font-size: .78rem; font-style: italic; margin-left: .45em; }
+/* only ever printed in the mob's own con line, so it rides the con data */
+.m-rare { color: var(--ember, #e0713a); font-family: var(--font-accent), Georgia, serif; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; margin-left: .45em; }
+.mob-detail > td { padding: .2rem .55rem 1rem 1.6rem; background: rgba(201,149,42,.03); text-align: left; }
+.detail-grid { display: grid; grid-template-columns: minmax(16rem, 1fr) 2fr; gap: 1.2rem; align-items: start; }
+.detail-grid.even { grid-template-columns: 1fr 1fr; }
+@media (max-width: 900px) { .detail-grid, .detail-grid.even { grid-template-columns: 1fr; } }
+/* the two detail blocks are peers — same surface, or the drops table reads
+   as a different component from the fights list */
+.d-block { background: var(--bg-panel-2); border: 1px solid var(--line-soft); border-radius: 10px; padding: .4rem .9rem .7rem; }
+.d-block h4 { margin: .5rem 0 .2rem; font-family: var(--font-accent), Georgia, serif; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-dim); font-weight: 500; }
+.mini-tbl { font-size: .88rem; }
+.mini-tbl thead th { font-size: .64rem; white-space: nowrap; }
+.mini-tbl tbody td { padding: .3rem .5rem; white-space: nowrap; }
+.mini-tbl tbody td.c-name { white-space: normal; }
+.enc-row { cursor: pointer; }
+.enc-row:hover td { background: rgba(201,149,42,.06); }
+.enc-row.on td { background: rgba(201,149,42,.1); }
+.c-foc { color: var(--ink-dim); font-size: .82rem; font-family: var(--font-accent), Georgia, serif; white-space: nowrap; }
+.enc-row.on .c-foc { color: var(--gold-bright); }
+tbody tr.tot td { border-top: 1px solid var(--line-hot, #5c4630); color: var(--ink); }
+
+/* death recap */
+.death { padding: .5rem .2rem; border-bottom: 1px dotted var(--line-soft); font-size: .95rem; color: var(--ink-soft); }
+.death .d-when { color: var(--ink-dim); font-variant-numeric: tabular-nums; margin-right: .4rem; font-family: var(--font-sans); }
+.death b { color: #e7a99f; }
+
+#mobMore { margin-top: .9rem; }
+#unparsed { margin-top: 1rem; }
+#unparsed.warn-banner { color: #e7c07a; background: rgba(224,168,58,.1); border: 1px solid #7a5f2a; border-radius: 9px; padding: .7rem 1rem; font-style: normal; }
+
+.site-foot { margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+
+/* companion embed (?embed=1): the host app tails the log and posts it in —
+   site chrome, file intake, and reset have no job inside the app */
+body.embed .eq-header, body.embed .eq-footer, body.embed .intake, body.embed #btnReset { display: none; }

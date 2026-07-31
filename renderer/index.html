@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src eqlt:">
 <title>EQL Tools Companion</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -18,6 +18,8 @@
 <nav class="tabs">
   <button class="tab on" data-tab="live">Live</button>
   <button class="tab" data-tab="inv">Inventory</button>
+  <button class="tab" data-tab="quests">Quests</button>
+  <button class="tab" data-tab="parser">Parser</button>
   <button class="tab" data-tab="zone">Zone</button>
   <button class="tab" data-tab="tracker">Kill tracker</button>
   <button class="tab" data-tab="settings">Settings</button>
@@ -46,6 +48,24 @@
     </div>
     <div id="invBody"></div>
     <p id="invEmpty" class="empty">No inventory dump found beside the log folder yet.</p>
+  </section>
+
+  <section id="tab-quests" class="pane">
+    <div id="questsBanner" class="banner" hidden></div>
+    <div class="feedhead">
+      <input id="qSearch" type="search" placeholder="search quest, NPC, zone, item">
+      <label class="chk"><input type="checkbox" id="qReadyOnly"> ready only</label>
+      <span id="qMeta" class="dim"></span>
+    </div>
+    <div id="questsBody"></div>
+    <p id="questsEmpty" class="empty">Type <code>/out inventory</code> in game — quests you hold items for show up here.</p>
+  </section>
+
+  <section id="tab-parser" class="pane">
+    <!-- the site's /log-parser page, vendored whole and served over eqlt://;
+         app.js feeds it the tailed log and re-feeds while the tab is open -->
+    <iframe id="lpFrame" title="Combat log parser" hidden></iframe>
+    <p id="lpEmpty" class="empty">Waiting for a log — the parser fills in once log lines arrive.</p>
   </section>
 
   <section id="tab-zone" class="pane">

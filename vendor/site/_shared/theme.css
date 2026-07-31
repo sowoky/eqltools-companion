@@ -1,0 +1,881 @@
+/* ───────────────────────────────────────────────────────────────────────────
+   EQL TOOLS — shared design system for the static player tools
+   (Spellmaster, Combat & Stats, Log Parser) under public/.
+
+   Plain HTML/CSS/JS apps, no React/Tailwind/next-font build. This file holds
+   the whole design system: the dark violet-gold tokens, the grain/vignette
+   background, the ornament primitives, the self-hosted fonts, and the shared
+   header/footer chrome. The palette is inherited from the Library of Erudin
+   lore site (the sibling project these tools were split out of); the
+   typography here is EQL Tools' own — serif for big/reading (Eczar, Lora),
+   sans for technical (IBM Plex Sans).
+
+   Consuming pages: <link rel="stylesheet" href="/_shared/theme.css">
+   then inline /_shared/header.html at the top of <body>.
+─────────────────────────────────────────────────────────────────────────── */
+
+/* ── Fonts — self-hosted, vendored into ./fonts/, NOT a Google Fonts CDN dep ──
+   Three families, split by role (Kyle's rule): SERIF for the big/reading stuff
+   — Eczar (display: wordmark, headings, card & stat names) and Lora (reading
+   prose + the few fine italics) — and SANS for the technical stuff — IBM Plex
+   Sans (numbers, tables, chips, labels, nav, UI controls).
+
+   Google's own CSS2 API (fetched 2026-07-08 with a Chrome UA) served Eczar,
+   Lora, and IBM Plex Sans as VARIABLE fonts: requesting several static weights
+   returned the SAME physical woff2 URL for each — the file spans the whole
+   weight axis and the browser instances it per @font-face's declared
+   font-weight. So one physical file legitimately backs multiple @font-face
+   rules below for each family (the three ibm-plex-sans-NNN.woff2 are the same
+   variable latin subset, one per declared weight). The two old serif accent
+   faces were dropped when the accent + fine roles moved to sans. */
+
+@font-face {
+  font-family: "Eczar";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/_shared/fonts/eczar-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Eczar";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/_shared/fonts/eczar-variable.woff2") format("woff2");
+}
+/* 700/800 come from the same variable file. The heavy end is what the gilt
+   wordmark and the hero headline are cut from — Eczar's flared stems and wedge
+   serifs at 800 sit in the same family as EQ's own Friz-Quadrata-ish logotype,
+   which 600 was too thin to suggest. */
+@font-face {
+  font-family: "Eczar";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/_shared/fonts/eczar-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Eczar";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/_shared/fonts/eczar-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/_shared/fonts/lora-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/_shared/fonts/lora-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/_shared/fonts/ibm-plex-sans-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/_shared/fonts/ibm-plex-sans-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/_shared/fonts/ibm-plex-sans-600.woff2") format("woff2");
+}
+
+/* ── Design tokens — copied verbatim from web/src/app/globals.css :root ──── */
+:root {
+  /* Erudin — the high scholar-city: purple-blue stone, gold inlay. */
+  --bg-deep: #0b0913;
+  --bg-deep-2: #100c1d;
+  --bg-panel: #171227;
+  --bg-panel-2: #1e1836;
+  --ink: #ece8f7;
+  --ink-soft: #ccc4de;
+  --ink-dim: #9086ad;
+  /* --ink-faint (#625976) measures 2.79:1 on --bg-panel — FAILS WCAG AA (needs
+     4.5:1 for normal text, 3:1 for large text/UI). Inherited from the sibling
+     lore site's palette. Reserve it for decorative/non-text use (hairlines,
+     disabled states) and deliberately de-emphasized links that recover on
+     hover/focus (the header's .eq-nav__lore "way out" link goes gold on hover).
+     For any small readable body text use --ink-dim, which measures 5.38:1 on
+     --bg-panel (passes AA). */
+  --ink-faint: #625976;
+  --line: #2c2545;
+  --line-soft: #231d38;
+
+  --gold: #c9952a;
+  --gold-bright: #e7b94e;
+  --gold-pale: #f6dfa0;   /* the lit top edge of cast gold */
+  --gold-deep: #8a5f14;   /* the shadowed underside */
+  --ember: #e0713a;
+  --arcane: #7c6fe0;
+  /* Wiki green — the one colour reserved for community-wiki-sourced data, so a
+     wiki number can never be misread as a client-observed one. */
+  --wiki: #9ccc9c;
+  --wiki-line: rgba(126,190,126,.4);
+  --wiki-bg: rgba(126,190,126,.07);
+  /* Sapphire — the cabochon EQL sets into every gilt frame and bullet on its
+     own site. Our second accent, and the only cool colour allowed to glow. */
+  --sapphire: #2f63b4;
+  --sapphire-lit: #77aaea;
+  --sapphire-deep: #0a1a3a;
+  /* The dark leather the gilt sits on. */
+  --leather: #17100a;
+
+  --maxw: 1200px;
+
+  /* ── The two SVG ornaments, as data URIs so the markup stays clean ──────
+     Seven pages inline the header; an inline <svg> mark would be seven copies
+     to keep in sync. These live here instead, so the mark is one span and the
+     frame corner is one class.
+
+     --sigil  the brand mark: a gilt lozenge boss, four-point star, sapphire
+              cabochon. Legible down to 28px, which a crossed-swords glyph was
+              not — it read as a close button.
+     --cnr    one top-left frame corner: four acanthus lobes off a gem at the
+              elbow, plus the two edge rules. The other three corners are this
+              one flipped (see .frame-gilt__cnr), so they can't drift apart.
+              Drawn on a 52-unit viewBox and rendered 1:1 at 52px, offset -3px,
+              so its 3.5-unit rules land dead on the frame's 1px border. */
+  --sigil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E %3ClinearGradient id='a' x1='.1' y1='0' x2='.9' y2='1'%3E%3Cstop offset='0' stop-color='%23fbeec2'/%3E%3Cstop offset='.22' stop-color='%23e7b94e'/%3E%3Cstop offset='.5' stop-color='%2396690f'/%3E%3Cstop offset='.72' stop-color='%23eec25b'/%3E%3Cstop offset='1' stop-color='%236d4a10'/%3E%3C/linearGradient%3E %3CradialGradient id='s' cx='.36' cy='.28' r='.85'%3E%3Cstop offset='0' stop-color='%23dbe9ff'/%3E%3Cstop offset='.15' stop-color='%2377aaea'/%3E%3Cstop offset='.45' stop-color='%232f63b4'/%3E%3Cstop offset='.78' stop-color='%23132c60'/%3E%3Cstop offset='1' stop-color='%23081530'/%3E%3C/radialGradient%3E %3CradialGradient id='p' cx='.38' cy='.26' r='.95'%3E%3Cstop offset='0' stop-color='%232a2148'/%3E%3Cstop offset='1' stop-color='%230b0814'/%3E%3C/radialGradient%3E %3Crect x='7' y='7' width='50' height='50' rx='8' transform='rotate%2845 32 32%29' fill='url%28%23p%29' stroke='url%28%23a%29' stroke-width='2.2'/%3E %3Crect x='11.8' y='11.8' width='40.4' height='40.4' rx='5' transform='rotate%2845 32 32%29' fill='none' stroke='%236d4a10' stroke-width='.9'/%3E %3Cg fill='url%28%23a%29'%3E%3Cpath d='M32 4l2.6 18-2.6 2.6-2.6-2.6z'/%3E%3Cpath d='M60 32l-18 2.6-2.6-2.6 2.6-2.6z'/%3E%3Cpath d='M32 60l-2.6-18 2.6-2.6 2.6 2.6z'/%3E%3Cpath d='M4 32l18-2.6 2.6 2.6-2.6 2.6z'/%3E%3C/g%3E %3Ccircle cx='32' cy='32' r='12' fill='%233a2708'/%3E%3Ccircle cx='32' cy='32' r='10.8' fill='url%28%23a%29'/%3E%3Ccircle cx='32' cy='32' r='8.2' fill='url%28%23s%29'/%3E %3Cellipse cx='29' cy='28.7' rx='2.5' ry='1.7' fill='%23fff' opacity='.72' transform='rotate%28-35 29 28.7%29'/%3E%3C/svg%3E");
+  --cnr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52' width='52' height='52'%3E %3ClinearGradient id='a' x1='.08' y1='0' x2='.92' y2='1'%3E%3Cstop offset='0' stop-color='%23fbeec2'/%3E%3Cstop offset='.2' stop-color='%23e7b94e'/%3E%3Cstop offset='.5' stop-color='%238f6410'/%3E%3Cstop offset='.74' stop-color='%23eec25b'/%3E%3Cstop offset='1' stop-color='%236d4a10'/%3E%3C/linearGradient%3E %3ClinearGradient id='b' x1='0' y1='0' x2='.75' y2='1'%3E%3Cstop offset='0' stop-color='%23f8e6b0'/%3E%3Cstop offset='.42' stop-color='%23cf9c2e'/%3E%3Cstop offset='.78' stop-color='%238a5f14'/%3E%3Cstop offset='1' stop-color='%23c9952a'/%3E%3C/linearGradient%3E %3CradialGradient id='s' cx='.36' cy='.28' r='.85'%3E%3Cstop offset='0' stop-color='%23dbe9ff'/%3E%3Cstop offset='.15' stop-color='%2377aaea'/%3E%3Cstop offset='.45' stop-color='%232f63b4'/%3E%3Cstop offset='.78' stop-color='%23132c60'/%3E%3Cstop offset='1' stop-color='%23081530'/%3E%3C/radialGradient%3E %3ClinearGradient id='h' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23e7b94e'/%3E%3Cstop offset='.45' stop-color='%23b88620' stop-opacity='.65'/%3E%3Cstop offset='1' stop-color='%23a2731d' stop-opacity='0'/%3E%3C/linearGradient%3E %3ClinearGradient id='v' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23e7b94e'/%3E%3Cstop offset='.45' stop-color='%23b88620' stop-opacity='.65'/%3E%3Cstop offset='1' stop-color='%23a2731d' stop-opacity='0'/%3E%3C/linearGradient%3E %3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M3.5 3.5H52' stroke='url%28%23h%29' stroke-width='1.2'/%3E%3Cpath d='M3.5 3.5V52' stroke='url%28%23v%29' stroke-width='1.2'/%3E%3Cpath d='M8.8 40V13.4Q8.8 8.8 13.4 8.8H40' stroke='%23a2731d' stroke-width='.65' opacity='.45'/%3E%3C/g%3E %3Cpath d='M12 12C23.44 22.23 34.73 16.26 45 7.6C34.99 8.13 20.23 8.22 12 12Z' fill='url%28%23b%29'/%3E%3Cpath d='M12 12C15.61 22.31 25.14 23.42 35 22.6C28.39 18.8 18.93 12.69 12 12Z' fill='url%28%23a%29'/%3E%3Cpath d='M12 12C22.31 15.61 23.42 25.14 22.6 35C18.8 28.39 12.69 18.93 12 12Z' fill='url%28%23b%29'/%3E%3Cpath d='M12 12C22.23 23.44 16.26 34.73 7.6 45C8.13 34.99 8.22 20.23 12 12Z' fill='url%28%23a%29'/%3E %3Cpath d='M18.09 12.36Q29.49 12.19 41.16 9.05' fill='none' stroke='%235c3f0e' stroke-width='.45' opacity='.5'/%3E%3Cpath d='M15.77 14.71Q23.16 19.24 31.94 21.97' fill='none' stroke='%235c3f0e' stroke-width='.45' opacity='.5'/%3E%3Cpath d='M13.1 16.51Q15.79 24.76 20.68 32.54' fill='none' stroke='%235c3f0e' stroke-width='.45' opacity='.5'/%3E%3Cpath d='M10.05 17.79Q7.24 28.83 7.2 40.92' fill='none' stroke='%235c3f0e' stroke-width='.45' opacity='.5'/%3E %3Cpath d='M45 7.6C49.88 9.24 48.37 13.4 45.69 10.85' fill='none' stroke='url%28%23a%29' stroke-width='1.15' stroke-linecap='round'/%3E %3Cpath d='M7.6 45C9.24 49.88 13.4 48.37 10.85 45.69' fill='none' stroke='url%28%23a%29' stroke-width='1.15' stroke-linecap='round'/%3E %3Ccircle cx='11' cy='11' r='5.4' fill='%233a2708'/%3E%3Ccircle cx='11' cy='11' r='4.7' fill='url%28%23a%29'/%3E%3Ccircle cx='11' cy='11' r='3.4' fill='url%28%23s%29'/%3E %3Cellipse cx='9.9' cy='9.8' rx='1' ry='.7' fill='%23fff' opacity='.8'/%3E%3C/svg%3E");
+
+  /* Typography split (Kyle's rule): serif for big/reading, sans for technical. */
+  --font-display: "Eczar", Georgia, serif;                                     /* wordmark, H1/H2/H3, card & stat NAMES */
+  --font-body: "Lora", Georgia, serif;                                          /* reading prose: ledes, intros, notes, method paragraphs */
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; /* NEW — technical: numbers, tables, chips, labels, nav, controls */
+  --font-accent: var(--font-sans);                                              /* now sans: kickers, small labels, nav (was a serif accent face) */
+  --font-fine: "Lora", Georgia, serif;                                          /* now Lora; a few italic uses (was a serif italic face) */
+}
+
+/* ── Technical elements → sans, WITHOUT per-page edits everywhere.
+   A number, a data value, a table, a chip, a small label, or a UI control is
+   sans; numerals use tabular figures so columns line up. Headings, stat names,
+   and reading prose keep their serif faces (set locally per page). */
+table, th, td, input, select, textarea, button, code, .chip, .canon-pill, .kicker, .fine {
+  font-family: var(--font-sans);
+}
+table th, table td, .num, .val, .cap { font-variant-numeric: tabular-nums; }
+
+/* ── Base ──────────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-deep);
+  color: var(--ink);
+  font-family: var(--font-body), Georgia, serif;
+  font-size: 17px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.005em;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+/* The world beneath — a layered, warm darkness with a far ember and cold edges.
+   Texture is TWO scales, not one. The old single 220px grain at 4.5% was
+   invisible past arm's length and the page read as flat charcoal:
+
+     1. a coarse ~620px mottle, blended soft-light so it both lifts and sinks
+        the gradients underneath — tooled leather seen in the dark, which is
+        the register EverQuest Legends' own site works in;
+     2. the fine grain (body::after), which only has to kill banding.
+
+   A vignette rides above the colour so the corners fall away and the middle
+   of the page carries the light. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='620'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='.85'/%3E%3C/svg%3E"),
+    radial-gradient(120% 90% at 12% -8%, rgba(124, 111, 224, 0.17), transparent 55%),
+    radial-gradient(90% 70% at 100% 0%, rgba(49, 132, 196, 0.12), transparent 60%),
+    radial-gradient(115% 85% at 50% 128%, rgba(201, 149, 42, 0.10), transparent 64%),
+    radial-gradient(135% 105% at 50% 40%, transparent 42%, rgba(0, 0, 0, 0.5) 100%),
+    linear-gradient(180deg, var(--bg-deep-2), var(--bg-deep) 40%, #08060f 74%, #0d0906 100%);
+  background-size: 620px 620px, auto, auto, auto, auto, auto;
+  background-blend-mode: soft-light, normal, normal, normal, normal, normal;
+}
+
+/* Stone grain — kills banding in the gradients above. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection { background: rgba(201, 149, 42, 0.28); color: var(--ink); }
+
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: #2c2016; border-radius: 8px; border: 2px solid var(--bg-deep); }
+::-webkit-scrollbar-thumb:hover { background: #3a2a1a; }
+
+a { color: inherit; text-decoration: none; }
+
+/* Visually-hidden but screen-reader-visible — Tailwind ships this on the main
+   site for free; these static pages don't have Tailwind, so it's defined here. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Layout shell ──────────────────────────────────────────────────────── */
+/* INLINE padding only — never the 4-value shorthand. globals.css learned
+   this the hard way: a shorthand `.wrap { padding: 0 clamp(...) }` collided
+   with vertical-padding utility classes at equal specificity and silently
+   zeroed every one of them site-wide (see .claude/rules/eqlore-web.md). */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: clamp(1.1rem, 4vw, 2.5rem); }
+
+/* ── Ornament primitives — copied verbatim from globals.css ─────────────── */
+.kicker {
+  font-family: var(--font-accent), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--gold) 72%, var(--ink-dim));
+}
+
+/* Engraved rule with a gilt lozenge at the left end — section heads. */
+.rule-ornate {
+  position: relative;
+  height: 9px;
+  pointer-events: none;
+}
+.rule-ornate::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--gold) 85%, transparent), color-mix(in srgb, var(--gold) 30%, var(--line)) 45%, var(--line) 75%, transparent);
+}
+/* The lozenge is a sapphire in a gold setting, not a gold chip — the same stone
+   set into the frame corners and the tool-card bullets. */
+.rule-ornate::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 1.5px;
+  transform: translateY(-50%) rotate(45deg);
+  background: linear-gradient(135deg, #8dbaf0 0%, var(--sapphire) 42%, #12295a 100%);
+  box-shadow:
+    0 0 0 1.4px var(--gold-bright),
+    0 0 0 2.1px #5c3f0e,
+    0 0 9px color-mix(in srgb, var(--sapphire) 45%, transparent);
+}
+
+/* Symmetric variant — a centered lozenge, lines falling away to both sides. */
+.rule-ornate-center {
+  position: relative;
+  height: 9px;
+  pointer-events: none;
+}
+.rule-ornate-center::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 1px;
+  background:
+    linear-gradient(90deg, transparent, var(--line) 18%, color-mix(in srgb, var(--gold) 65%, transparent) calc(50% - 14px), transparent calc(50% - 9px), transparent calc(50% + 9px), color-mix(in srgb, var(--gold) 65%, transparent) calc(50% + 14px), var(--line) 82%, transparent);
+}
+.rule-ornate-center::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 1.5px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: linear-gradient(135deg, #8dbaf0 0%, var(--sapphire) 42%, #12295a 100%);
+  box-shadow:
+    0 0 0 1.4px var(--gold-bright),
+    0 0 0 2.1px #5c3f0e,
+    0 0 9px color-mix(in srgb, var(--sapphire) 45%, transparent);
+}
+
+/* ── Gilt frame — a panel with the four acanthus corners fitted to it ──────
+   Markup: the panel, then four <i class="frame-gilt__cnr frame-gilt__cnr--tl">
+   (…--tr, --bl, --br) as its first children. One SVG, flipped per corner, so
+   the four can never drift apart. The frame's own 1px border draws the long
+   runs of rule between them; the corner SVG's rules are collinear with it.
+
+   Sized 1:1 (52px, no scaling) — that is what keeps the two rules aligned. */
+.frame-gilt {
+  position: relative;
+  border: 1px solid #6d4a10;
+  border-radius: 3px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.022), rgba(0, 0, 0, 0.24)),
+    var(--bg-panel);
+  box-shadow:
+    inset 0 0 0 1px rgba(231, 185, 78, 0.07),
+    inset 0 3px 34px rgba(0, 0, 0, 0.55),
+    0 24px 64px rgba(0, 0, 0, 0.5);
+}
+.frame-gilt__cnr {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  background: var(--cnr) 0 0 / 52px 52px no-repeat;
+  pointer-events: none;
+}
+.frame-gilt__cnr--tl { left: -3px; top: -3px; }
+.frame-gilt__cnr--tr { right: -3px; top: -3px; transform: scaleX(-1); }
+.frame-gilt__cnr--bl { left: -3px; bottom: -3px; transform: scaleY(-1); }
+.frame-gilt__cnr--br { right: -3px; bottom: -3px; transform: scale(-1, -1); }
+
+/* ── Spell socket — the setting a 40px client icon drops into ─────────────
+   The icons are hand-painted 40px art. Rendered at exactly 2× with
+   image-rendering:pixelated they stay crisp and read as the client's own; any
+   fractional scale, or smoothing, turns them to mush. */
+.spell-socket {
+  display: block;
+  padding: 3px;
+  border-radius: 4px;
+  background: linear-gradient(158deg, #6b5220 0%, #2a2013 46%, #4a3818 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.65),
+    0 1px 0 rgba(255, 240, 200, 0.07),
+    0 5px 12px rgba(0, 0, 0, 0.5);
+}
+/* The dark slot behind the art. Spell icons are opaque 40px squares and cover it;
+   dragitem icons have an alpha channel, and this is the ground they sit on — the
+   same way an empty inventory slot reads in the client. */
+.spell-socket img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 2px;
+  image-rendering: pixelated;
+  background: radial-gradient(120% 120% at 40% 25%, #1b1630, #0a0812 85%);
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.7);
+}
+
+/* Gilt corner brackets — the fittings on a bound tome. For panels that
+   deserve it (infobox, provenance-style asides), not every card.
+
+   Painted on ::after, not on the element's own background-image. The host panel
+   almost always wants its own gradient, and a `background-image` on the element
+   would silently overwrite these eight strokes (equal specificity, later rule
+   wins). Requires a positioned host; tune the colour with --cg, including on
+   :hover. */
+.corner-gilt { position: relative; --cg: color-mix(in srgb, var(--gold) 60%, transparent); }
+.corner-gilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: inherit;
+  background-image:
+    linear-gradient(var(--cg), var(--cg)), linear-gradient(var(--cg), var(--cg)),
+    linear-gradient(var(--cg), var(--cg)), linear-gradient(var(--cg), var(--cg)),
+    linear-gradient(var(--cg), var(--cg)), linear-gradient(var(--cg), var(--cg)),
+    linear-gradient(var(--cg), var(--cg)), linear-gradient(var(--cg), var(--cg));
+  background-repeat: no-repeat;
+  background-size: 13px 1px, 1px 13px, 13px 1px, 1px 13px, 13px 1px, 1px 13px, 13px 1px, 1px 13px;
+  background-position: left 6px top 6px, left 6px top 6px, right 6px top 6px, right 6px top 6px,
+    left 6px bottom 6px, left 6px bottom 6px, right 6px bottom 6px, right 6px bottom 6px;
+}
+
+.chip {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-family: var(--font-accent), serif;
+  font-size: 0.74rem;
+  color: var(--ink-dim);
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,0.2);
+  padding: 0.16rem 0.55rem; border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip:hover { color: var(--ink); border-color: color-mix(in srgb, var(--gold) 40%, var(--line)); }
+.chip-active {
+  color: var(--bg-deep); background: var(--gold);
+  border-color: var(--gold); font-weight: 600;
+}
+.chip-active:hover { color: var(--bg-deep); }
+
+.canon-pill {
+  font-family: var(--font-accent), serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.08rem 0.42rem;
+  border-radius: 2px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.canon-pill[data-canon="eq1"]         { color: #c08a3a; border-color: color-mix(in srgb, #c08a3a 45%, transparent); background: color-mix(in srgb, #c08a3a 9%, transparent); }
+.canon-pill[data-canon="eq2"]         { color: #6f7da0; border-color: color-mix(in srgb, #6f7da0 45%, transparent); background: color-mix(in srgb, #6f7da0 9%, transparent); }
+.canon-pill[data-canon="eq-rpg"]      { color: #8a6fa0; border-color: color-mix(in srgb, #8a6fa0 45%, transparent); background: color-mix(in srgb, #8a6fa0 9%, transparent); }
+.canon-pill[data-canon="cross-canon"] { color: var(--gold); border-color: color-mix(in srgb, var(--gold) 40%, transparent); background: color-mix(in srgb, var(--gold) 8%, transparent); }
+.canon-pill[data-canon="disputed"]    { color: #b0473f; border-color: color-mix(in srgb, #b0473f 45%, transparent); }
+.canon-pill[data-canon="meta"]        { color: #5b6480; border-color: color-mix(in srgb, #5b6480 45%, transparent); }
+
+/* ── Gilt letterpress — cast-gold type with a struck dark edge ─────────────
+   The move EQL's own site makes on every display line: a top-lit gold gradient
+   down the glyph, a bronze band two-thirds down, a bright rim near the
+   baseline, and a dark outline so the letters sit ON the leather rather than
+   float over it.
+
+   The outline is built ONLY from tight zero-offset drop-shadows. drop-shadow is
+   the only way to get an OUTWARD outline here: background-clip:text zeroes the
+   glyph's own alpha, so text-shadow paints nothing, and a ::before duplicate
+   paints *above* the gradient (a clipped background is drawn at the element's
+   background step, beneath even negative-z-index children).
+
+   No -webkit-text-stroke. It paints over the fill rather than under it, and at
+   Eczar 800 it bites through the thin serif joints — the headline came out
+   visibly cracked along the top of every glyph. */
+.gilt {
+  --gilt-outline: #17100a;
+  /* One full gradient cycle PER LINE. Sized to the element's line-height —
+     otherwise a headline that wraps gets the lit top edge on line one and the
+     shadowed underside on line two, and stops looking like cast metal. */
+  --gilt-line: 1.06em;
+  color: transparent;
+  background-image: linear-gradient(
+    180deg,
+    #fdf3d2 0%, var(--gold-pale) 15%, #eec95f 33%,
+    #d3a03a 51%, #9c6c17 65%, #e5ba52 83%, #f5dc95 100%
+  );
+  background-size: 100% var(--gilt-line);
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter:
+    drop-shadow(0 0 1px var(--gilt-outline))
+    drop-shadow(0 0 1px var(--gilt-outline))
+    drop-shadow(0 0 1px var(--gilt-outline))
+    drop-shadow(0 2px 0 rgba(0, 0, 0, 0.5))
+    drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 28px rgba(201, 149, 42, 0.18));
+}
+
+/* ── Sapphire cabochon — the gem in a gold setting ────────────────────────
+   Two cuts of one stone. .cabochon is the round stone EQL sets into its frame
+   corners; .cabochon-lozenge is the diamond-cut bullet from its list items.
+   Size via --cab-size. Both are decorative: give them aria-hidden.
+
+   NOT named .gem: log-parser/style.css already owns `.gem` (a 26px spell icon)
+   and `.gem-dot` (a damage-element dot), and it loads after this file. A global
+   `.gem::after` here would have stamped a white specular blob on every element
+   dot in the parser. The `gem-` prefix belongs to that page. */
+.cabochon,
+.cabochon-lozenge {
+  --cab-size: 13px;
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: var(--cab-size);
+  height: var(--cab-size);
+}
+.cabochon {
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%,
+    #dbe9ff 0%, var(--sapphire-lit) 17%, var(--sapphire) 46%, #132c60 78%, var(--sapphire-deep) 100%);
+  box-shadow:
+    0 0 0 1px var(--gold-deep),
+    0 0 0 2px var(--gold-bright),
+    0 0 0 2.6px #5c3f0e,
+    0 0 10px color-mix(in srgb, var(--sapphire) 45%, transparent);
+}
+.cabochon::after {
+  content: "";
+  position: absolute;
+  left: 24%; top: 18%;
+  width: 28%; height: 21%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.78);
+}
+.cabochon-lozenge {
+  transform: rotate(45deg);
+  border-radius: 1.5px;
+  background: linear-gradient(135deg, #8dbaf0 0%, var(--sapphire) 42%, #12295a 100%);
+  box-shadow:
+    0 0 0 1.4px var(--gold-bright),
+    0 0 0 2.2px #5c3f0e,
+    0 0 9px color-mix(in srgb, var(--sapphire) 42%, transparent);
+}
+
+/* Gilded button — cast gold, lit from above. The primary CTA register. */
+.btn-gilt {
+  background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 55%, #a2731d 100%);
+  color: var(--bg-deep);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid color-mix(in srgb, var(--gold-bright) 55%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 240, 200, 0.5), 0 2px 10px rgba(201, 149, 42, 0.16);
+  transition: filter 0.15s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.btn-gilt:hover {
+  filter: brightness(1.08);
+  box-shadow: inset 0 1px 0 rgba(255, 240, 200, 0.55), 0 4px 16px rgba(201, 149, 42, 0.28);
+}
+
+/* ── Shared site header (header.html) ─────────────────────────────────────
+   EQL Tools chrome: translucent gradient, hairline bottom border, a gold
+   crossed-wands mark + "EQL TOOLS" wordmark on the left, and a tool nav on the
+   right (Spellmaster / Combat & Stats / Log Parser + a link out to the Library
+   of Erudin lore site). The current tool's nav link carries .is-current. */
+/* NOT sticky: the tool pages pin their OWN controls at top:0 (Combat's char-bar,
+   Spellmaster's table headers). A second sticky bar here would overlap them, so
+   the brand header scrolls away and the page's controls own the top edge — the
+   footer + nav still provide the way back. */
+/* The header is a solid slab over a textured ground, and with a single --line
+   hairline the two just blurred together. It now closes with an engraved edge:
+   a dark bronze rule, a gilt hairline under it, and a cast shadow onto the page
+   so the slab reads as sitting ON the leather rather than painted into it. */
+.eq-header {
+  position: relative;
+  z-index: 40;
+  background: linear-gradient(180deg, #0e0b18 0%, rgba(11,9,19,0.82) 100%);
+  border-bottom: 1px solid #5c3f0e;
+  box-shadow:
+    inset 0 -2px 0 rgba(0, 0, 0, 0.45),
+    0 1px 0 rgba(231, 185, 78, 0.22),
+    0 9px 24px rgba(0, 0, 0, 0.55);
+}
+.eq-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding-block: 0.65rem;
+}
+
+.eq-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+  flex: none;
+  min-height: 44px;   /* match the 44px tap-target floor the nav links use */
+}
+/* The mark is a CSS background (--sigil), not inline SVG: seven pages carry
+   this header, and seven inline copies is seven chances to drift. */
+.eq-header__mark {
+  display: block;
+  flex: none;
+  height: 2.6rem;
+  width: 2.6rem;
+  background: var(--sigil) center / contain no-repeat;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.55));
+}
+
+/* The wordmark is a drawn logotype, not a font: public/_shared/wordmark.svg,
+   "EQL" over a gilt rule over "TOOLS", cut from Uncial Antiqua outlines and given
+   EverQuest's own material — a seven-step extrusion, a dark outline, a top-lit
+   gold face, a bright rim and a shadowed underside. The outlines are dilated
+   ~0.9% em so the uncial holds its weight at 34px.
+
+   Live text in a display font could never carry the bevel, and Eczar was not an
+   EQ letterform. The <span> is empty; the real text is the .sr-only sibling. */
+.eq-header__word {
+  display: block;
+  flex: none;
+  height: 2.9rem;
+  width: calc(2.9rem * 1.1881);   /* wordmark.svg viewBox aspect */
+  background: url("/_shared/wordmark.svg") center / contain no-repeat;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Tool nav — sans, right-aligned, wraps to its own row on phones. */
+.eq-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  align-items: center;
+  margin-left: auto;
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+}
+/* :hover included so page-global `a:hover{underline}` rules (learn/style.css)
+   can't leak underlines into the shared header */
+.eq-nav a, .eq-nav a:hover { color: var(--ink-dim); text-decoration: none; transition: color 0.15s ease; }
+.eq-nav a:hover { color: var(--gold); }
+.eq-nav .is-current { color: var(--gold-bright); font-weight: 600; }
+/* The way out to the sibling lore site. It isn't a tool, so it sits behind a
+   divider rather than pretending to be a fourth nav item. Reads "Library
+   (lore)": the name first, what it is in parentheses. */
+.eq-nav__lore {
+  color: var(--ink-dim);
+  padding-left: 1.2rem;
+  border-left: 1px solid var(--line);
+}
+.eq-nav__lore:hover { color: var(--gold); }
+.eq-nav__lore .note { color: var(--ink-faint); }
+.eq-nav__lore:hover .note { color: color-mix(in srgb, var(--gold) 70%, transparent); }
+@media (max-width: 640px) {
+  .eq-nav__lore { padding-left: 0; border-left: 0; }
+}
+
+/* ── Nav dropdowns (Tools, Learn) ────────────────────────────────────────
+   One nav entry over many pages; the dropdown shows the breadth. Pure CSS:
+   opens on hover/focus-within for fine pointers only — on touch and narrow
+   widths it doesn't exist, and the link lands on the hub page (/ for Tools,
+   /learn), which lists everything the drop holds.
+   The triggers are drawn as bordered pill buttons so they read as menus, not
+   links — Atlas and Library stay plain text, and that contrast is the real
+   affordance. The caret backs it up: 0.8em in --ink-dim (a tiny faint caret
+   was invisible at nav size) and it flips while the drop is open. */
+.eq-nav__group { position: relative; display: inline-flex; align-items: center; }
+.eq-nav__group > a {
+  display: inline-flex; align-items: center; gap: 0.35em;
+  color: var(--ink); font-weight: 600;
+  padding: 0.26rem 0.72rem;
+  border: 1px solid color-mix(in srgb, var(--ink-dim) 28%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg-panel-2) 55%, transparent);
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.eq-nav__group > a:hover,
+.eq-nav__group:focus-within > a {
+  color: var(--gold-bright);
+  border-color: color-mix(in srgb, var(--gold) 60%, var(--line));
+  background: var(--bg-panel-2);
+}
+.eq-nav__group > a.is-current {
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--line));
+}
+.eq-nav__caret {
+  /* the markup's ▾ text glyph is tiny at nav size no matter what font-size it
+     gets — suppress it and draw a solid triangle at exact pixel size instead */
+  font-size: 0;
+  width: 9px; height: 6px;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  color: var(--ink-dim);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.eq-nav__group > a:hover .eq-nav__caret,
+.eq-nav__group:focus-within .eq-nav__caret { color: var(--gold); }
+.eq-nav__drop {
+  display: none;
+  position: absolute; top: calc(100% + 0.35rem); left: 50%; transform: translateX(-50%);
+  z-index: 60;
+  min-width: 13.5rem;
+  padding: 0.5rem 0;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-top: 2px solid color-mix(in srgb, var(--gold) 55%, var(--line));
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+/* invisible bridge across the gap between the link and the panel, so the
+   pointer can travel down without the :hover chain breaking */
+.eq-nav__drop::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -0.45rem; height: 0.45rem;
+}
+.eq-nav__drop a {
+  display: block; padding: 0.42rem 1.15rem;
+  font-size: 0.92em; white-space: nowrap;
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 641px) {
+  .eq-nav__group:hover .eq-nav__drop,
+  .eq-nav__group:focus-within .eq-nav__drop { display: block; }
+  .eq-nav__group:hover .eq-nav__caret,
+  .eq-nav__group:focus-within .eq-nav__caret { transform: rotate(180deg); }
+}
+
+@media (max-width: 640px) {
+  /* nav drops to its own full-width row beneath the wordmark */
+  .eq-nav { flex-basis: 100%; margin-left: 0; }
+}
+/* Touch/narrow: give the header + footer nav links a 44px tap target (the links
+   are otherwise ~22px). Fires on a coarse pointer OR narrow width, so phones,
+   touch laptops, and width-based audits all clear the floor; fine-pointer
+   desktop keeps its compact header. */
+@media (max-width: 640px), (pointer: coarse) {
+  /* inline-flex turns the link's text nodes into anonymous flex items and eats
+     the whitespace between them — "Library (lore) ↗" rendered "Library(lore)↗".
+     gap puts the spacing back. */
+  .eq-nav a, .eq-footer__nav a {
+    min-height: 44px; display: inline-flex; align-items: center; gap: 0.3em;
+  }
+}
+
+/* ── Shared site footer (footer.html) ─────────────────────────────────────
+   A thin site-nav strip: EQL Tools wordmark, the three tools + a link out to
+   the Library of Erudin lore site, and a fine-print line (fan-project
+   disclaimer + "nothing about your character is uploaded"). Sits below each
+   tool's own page-specific colophon. */
+.eq-footer {
+  border-top: 1px solid var(--line);
+  margin-top: 1.4rem;
+  padding-top: 1.5rem;
+}
+.eq-footer > .wrap > .rule-ornate-center { margin-bottom: 0.4rem; }
+.eq-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding-block: 1.4rem 2.4rem;
+}
+.eq-footer__word {
+  display: block;
+  flex: none;
+  height: 2.1rem;
+  width: calc(2.1rem * 1.1881);
+  background: url("/_shared/wordmark.svg") center / contain no-repeat;
+  opacity: 0.85;
+}
+.eq-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.2rem;
+  margin-left: auto;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+}
+.eq-footer__nav a { color: var(--ink-dim); transition: color 0.15s ease; }
+.eq-footer__nav a:hover { color: var(--gold); }
+.eq-footer__fine {
+  font-family: var(--font-sans);
+  color: var(--ink-dim);
+  font-size: 0.8rem;
+  margin: 0.6rem auto 0;
+  padding-block: 0 0.4rem;
+}
+
+/* ── Provenance seals ─────────────────────────────────────────────────────
+   Every claim on the site carries one, in strict authority order:
+
+     client-observed > client-mined > dev > model > chat
+
+   The two client tiers are siblings — both come from the game, and both are
+   gold. They differ in WHERE the game handed the number over. `client-observed`
+   is what the running server actually sent and the interface actually drew;
+   `client-mined` is what the shipped files say, and those files are a live-EQ
+   superset that lies about level caps and carries thousands of spells EQL never
+   sells. When they disagree, the window wins. That is why observed is the
+   brighter chip. See docs/PROVENANCE.md §1.
+
+   They are LINKS to /sources, not decoration — hover explains the tier, click
+   goes to the ledger. Defined once here so the six chips can never drift
+   between pages. Any page that loads /_shared/tip.js swaps the native title
+   for the richer tooltip.
+
+   There is deliberately no bare `.src.client` any more. "Client" alone is
+   ambiguous now, and an unstyled chip is easier to spot than a mislabelled one. */
+.src {
+  display: inline-block; vertical-align: 0.18em; margin-left: 0.4em;
+  font-family: var(--font-sans); font-size: 0.56rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.14em; line-height: 1;
+  padding: 0.28em 0.5em 0.24em; border-radius: 99px;
+  text-decoration: none; cursor: help;
+}
+a.src { cursor: pointer; }
+a.src:hover, a.src:focus-visible { filter: brightness(1.18); }
+a.src:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* color is !important: a seal chip carries its own text color as part of its
+   identity, and must survive any page-local link rule (e.g. /sources' `.cite
+   .attr a { color: gold }`, specificity 0,2,1) that would otherwise repaint an
+   inline `<a class="src …">` and give gold-on-gold. */
+.src.client-observed { color: #120d06 !important; background: linear-gradient(180deg, var(--gold-pale), var(--gold-bright)); box-shadow: inset 0 0 0 1px var(--gold-deep); }
+.src.client-mined    { color: #120d06 !important; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); }
+.src.dev             { color: var(--ember) !important; border: 1px solid rgba(224,113,58,.55); background: rgba(224,113,58,.08); }
+.src.model           { color: #9db4d6 !important; border: 1px solid rgba(123,167,204,.4); background: rgba(123,167,204,.07); }
+.src.chat            { color: var(--ink-dim) !important; border: 1px solid var(--line); background: rgba(255,255,255,.02); }
+.src.wiki            { color: var(--wiki) !important; border: 1px solid var(--wiki-line); background: var(--wiki-bg); }
+
+/* ── Rich tooltips ────────────────────────────────────────────────────────
+   Driven by /_shared/tip.js. A .tt is a dotted term; #tip is the single
+   floating panel. Lived in /combat's stylesheet until /attributes needed the
+   same panel for its per-class breakdowns. Page stylesheets must scope their
+   own table rules (e.g. #result td) or they will leak in here. */
+.tt { border-bottom: 1px dotted var(--gold); cursor: help; }
+.tip {
+  position: fixed; z-index: 120; max-width: 400px;
+  max-height: calc(100vh - 16px); overflow-y: auto;
+  background: linear-gradient(180deg, #241c28, #1b141d);
+  border: 1px solid rgba(201,149,42,.45); border-radius: 10px;
+  padding: .75rem .9rem; box-shadow: 0 16px 44px rgba(0,0,0,.6);
+  font-family: var(--font-sans); font-size: .84rem; color: var(--ink-soft); line-height: 1.5;
+}
+.tip h5 { margin: 0 0 .35rem; font-family: var(--font-display); font-size: 1.02rem; color: var(--gold-bright); font-weight: 600; }
+.tip h5 small { font-family: var(--font-sans); font-size: .62rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-dim); margin-left: .5em; }
+.tip .you { margin: 0 0 .5rem; padding: .3rem .5rem; border-radius: 6px; background: rgba(201,149,42,.1); border: 1px solid rgba(201,149,42,.3); color: var(--ink); font-size: .82rem; }
+.tip .you b { color: var(--gold-bright); }
+.tip p { margin: .4rem 0 0; color: var(--ink-dim); }
+.tip p a { color: var(--gold); }
+.tip table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+.tip th { position: static; background: none; font-size: .62rem; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-dim); text-align: right; padding: .15rem .3rem; border-bottom: 1px solid var(--line); }
+.tip th:first-child { text-align: left; }
+.tip td { padding: .2rem .3rem; border-bottom: 1px solid var(--line-soft); text-align: right; color: var(--ink-soft); }
+.tip td:first-child { text-align: left; color: var(--ink-dim); font-size: .76rem; letter-spacing: .04em; }
+.tip tr.none td { opacity: .45; }
+.tip tr.best td { color: var(--gold-bright); }
+.tip tfoot td { border-bottom: 0; border-top: 1px solid var(--line); color: var(--gold-bright); font-weight: 600; }
+.tip tfoot td:first-child { color: var(--ink-dim); font-weight: 400; }
+
+/* ── Attribute cards ──────────────────────────────────────────────────────
+   Rendered from /_shared/attrs.js on both /combat and /attributes.
+
+   The seven cards differ wildly in length — DEX carries five bullets, STA two.
+   They STRETCH to their row's height rather than sitting ragged (`align-items:
+   start`, the old default), which left a card-and-a-half of dead space hanging
+   under the short ones. Multi-column packing is worse still: with break-inside
+   avoid the balancer orphans a card into its own column. Air inside a panel
+   beats a hole in the grid.
+
+   Every selector is doubled up (.attr-cards .attr-card …) on purpose. This file
+   loads BEFORE each page's own stylesheet, so a bare `.attr-card h3` ties with
+   /combat's `.plate h3` on specificity and loses on order — which silently
+   stripped the gold off the card titles the first time these moved here. */
+.attr-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .8rem; }
+.attr-cards .attr-card {
+  border: 1px solid var(--line); border-radius: 11px; padding: 1rem 1.1rem;
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.15));
+}
+.attr-cards .attr-card h3 { font-family: var(--font-display); font-size: 1.6rem; margin: 0; color: var(--gold-bright); font-weight: 600; letter-spacing: 0; }
+.attr-cards .attr-card .verdict { font-family: var(--font-sans); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-dim); margin: .05rem 0 .5rem; }
+.attr-cards .attr-card ul { margin: .2rem 0 0; padding-left: 1.05rem; color: var(--ink-soft); font-family: var(--font-sans); font-size: .9rem; list-style: disc; }
+.attr-cards .attr-card li { margin: .28rem 0; padding-left: 0; }
+.attr-cards .attr-card li::before { content: none; }
+.attr-cards .attr-card li::marker { color: var(--gold); }
+.attr-cards .attr-card .no { color: var(--ink-dim); }

@@ -5,7 +5,7 @@
    runs in the renderer via the vendored site modules (vendor/shared.js,
    vendor/parse.js), so the app can never disagree with eqltools.com. */
 "use strict";
-const { app, BrowserWindow, ipcMain, dialog, shell, globalShortcut } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog, shell, globalShortcut, protocol } = require("electron");
 const fs = require("fs");
 const path = require("path");
 
@@ -22,6 +22,15 @@ const REMOTE = {
   "kills-data.json": "https://eqltools.com/kills/data/kills-data.json",
   "quest-items.json": "https://eqltools.com/companion/data/quest-items.json",
   "item-tooltips.json": "https://eqltools.com/companion/data/item-tooltips.json",
+};
+/* Data the embedded /log-parser page fetches. Cached under its site URL
+   paths and served straight to the iframe by the eqlt:// protocol — the
+   renderer never sees these, so they live outside loadDatasets(). */
+const REMOTE_PAGES = {
+  "log-parser/data/con-bands.json": "https://eqltools.com/log-parser/data/con-bands.json",
+  "log-parser/data/wiki-items.json": "https://eqltools.com/log-parser/data/wiki-items.json",
+  "log-parser/data/wiki-mobs.json": "https://eqltools.com/log-parser/data/wiki-mobs.json",
+  "spellmaster/data/spells.json": "https://eqltools.com/spellmaster/data/spells.json",
 };
 const REFRESH_MS = 12 * 3600 * 1000;
 
@@ -72,6 +81,17 @@ function createMainWindow() {
         `document.querySelector('[data-tab="${process.env.EQLC_TAB}"]')?.click()`);
       if (process.env.EQLC_EXEC) mainWin.webContents.executeJavaScript(
         fs.readFileSync(process.env.EQLC_EXEC, "utf8")).catch(e => console.log("[exec]", e.message));
+      // EQLC_SHOT=<png> writes a screenshot and quits — the agent has no eyes
+      // on this window otherwise, and "the probe says the DOM is right" is not
+      // the same as having looked at it. Waits out EQLC_EXEC's own async work.
+      if (process.env.EQLC_SHOT) setTimeout(async () => {
+        try {
+          const img = await mainWin.webContents.capturePage();
+          fs.writeFileSync(process.env.EQLC_SHOT, img.toPNG());
+          console.log("[shot]", process.env.EQLC_SHOT);
+        } catch (e) { console.log("[shot] failed", e.message); }
+        app.quit();
+      }, Number(process.env.EQLC_SHOT_DELAY || 2500));
     }, 3000);
   });
   mainWin.on("closed", () => { mainWin = null; app.quit(); });
@@ -200,17 +220,22 @@ function pollTail() {
   if (st.size > t.offset) readAppended(activeFile, t, st.size);
 }
 
-function bootstrap(file, size) {
+// ≤40 MB tail of a log file, first partial line dropped. Throws on fs errors.
+function readTailText(file, size) {
   const start = Math.max(0, size - BOOTSTRAP_CAP);
+  const fd = fs.openSync(file, "r");
+  const buf = Buffer.alloc(size - start);
+  fs.readSync(fd, buf, 0, buf.length, start);
+  fs.closeSync(fd);
+  let text = buf.toString("utf8");
+  if (start > 0) text = text.slice(text.indexOf("\n") + 1);
+  return text;
+}
+
+function bootstrap(file, size) {
   let text = "";
-  try {
-    const fd = fs.openSync(file, "r");
-    const buf = Buffer.alloc(size - start);
-    fs.readSync(fd, buf, 0, buf.length, start);
-    fs.closeSync(fd);
-    text = buf.toString("utf8");
-    if (start > 0) text = text.slice(text.indexOf("\n") + 1);
-  } catch { activeFile = null; return; } // retry next poll rather than wedging on this file
+  try { text = readTailText(file, size); }
+  catch { activeFile = null; return; } // retry next poll rather than wedging on this file
   tails.set(file, { offset: size, remainder: "" });
   mainWin.webContents.send("log:bootstrap", { file: path.basename(file), text });
   sendStatus();
@@ -312,18 +337,60 @@ async function refreshDatasets(force) {
   if (!force && Date.now() - last < REFRESH_MS) return;
   fs.mkdirSync(cacheDir(), { recursive: true });
   let any = false;
-  for (const [name, url] of Object.entries(REMOTE)) {
+  for (const [name, url] of Object.entries({ ...REMOTE, ...REMOTE_PAGES })) {
     try {
       const r = await fetch(url, { headers: { "user-agent": `eqltools-companion/${app.getVersion()}` } });
       if (!r.ok) continue; // quest-items may 404 until the site ships it
       const body = await r.text();
       JSON.parse(body); // never cache a non-JSON error page
-      fs.writeFileSync(path.join(cacheDir(), name), body);
+      const out = path.join(cacheDir(), name); // page-data names carry site subpaths
+      fs.mkdirSync(path.dirname(out), { recursive: true });
+      fs.writeFileSync(out, body);
       any = true;
     } catch { /* offline is normal; bundled data carries on */ }
   }
   SETTINGS.dataRefreshedAt = Date.now(); saveSettings();
   if (any && mainWin) mainWin.webContents.send("data:updated", loadDatasets());
+}
+
+/* ── eqlt:// — the embedded log-parser page ───────────────────────────────
+   The site's /log-parser is vendored whole (vendor/site/, sync-vendor.mjs)
+   and served under a scheme of its own so the page's absolute URLs
+   (/log-parser/app.js, /_shared/theme.css, /log-parser/data/…) work
+   untouched. Static files come from the vendor mirror; data files resolve
+   cache → bundled snapshot, same order as the datasets. Anything else 404s. */
+const PAGE_DATA_RX = /^\/(log-parser\/data\/(?:con-bands|wiki-items|wiki-mobs)\.json|spellmaster\/data\/spells\.json)$/;
+const PAGE_FILE_RX = /^\/(log-parser\/(?:index\.html|style\.css|app\.js)|_shared\/(?:theme\.css|tip\.js|fonts\/[A-Za-z0-9.-]+\.woff2))$/;
+const vendorSiteDir = () => path.join(__dirname, "vendor", "site");
+protocol.registerSchemesAsPrivileged([
+  { scheme: "eqlt", privileges: { standard: true, secure: true, supportFetchAPI: true } },
+]);
+const PAGE_MIME = {
+  ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8",
+  ".js": "text/javascript; charset=utf-8", ".json": "application/json; charset=utf-8",
+  ".woff2": "font/woff2",
+};
+// Serve with fs, not net.fetch(file://): fs is asar-aware, net.fetch is not
+// reliably so — vendor/site lives inside the packaged asar.
+function pageResponse(p) {
+  try {
+    const body = fs.readFileSync(p);
+    return new Response(body, { headers: { "content-type": PAGE_MIME[path.extname(p)] || "application/octet-stream" } });
+  } catch { return null; }
+}
+function registerPageProtocol() {
+  protocol.handle("eqlt", (req) => {
+    const { pathname } = new URL(req.url);
+    let m;
+    if ((m = PAGE_DATA_RX.exec(pathname))) {
+      return pageResponse(path.join(cacheDir(), m[1]))
+        || pageResponse(path.join(bundledDir(), m[1]))
+        || new Response("no data", { status: 404 });
+    }
+    if ((m = PAGE_FILE_RX.exec(pathname)))
+      return pageResponse(path.join(vendorSiteDir(), m[1])) || new Response("not found", { status: 404 });
+    return new Response("not found", { status: 404 });
+  });
 }
 
 /* ── app updater ──────────────────────────────────────────────────────────
@@ -433,6 +500,14 @@ ipcMain.on("renderer:ready", () => {
   refreshDatasets(false);
 });
 ipcMain.handle("data:refresh", async () => { await refreshDatasets(true); return loadDatasets(); });
+/* The Parser tab re-reads the active log's tail on demand — the renderer
+   doesn't retain the bootstrap text, and the embedded page re-parses whole
+   (its own live-watch mode works the same way). */
+ipcMain.handle("log:tail", () => {
+  if (!activeFile) return null;
+  try { return { name: path.basename(activeFile), text: readTailText(activeFile, fs.statSync(activeFile).size) }; }
+  catch { return null; }
+});
 ipcMain.handle("data:zoneFile", (_e, key) => zoneFile(String(key || "")));
 ipcMain.handle("update:get", () => UPDATE);
 ipcMain.on("update:install", () => { if (autoUpdater && UPDATE.status === "ready") autoUpdater.quitAndInstall(); });
@@ -499,6 +574,7 @@ else {
   app.on("second-instance", () => { if (mainWin) { mainWin.show(); mainWin.focus(); } });
   app.whenReady().then(() => {
     loadSettings();
+    registerPageProtocol();
     createMainWindow();
     initUpdater();
     /* Overlay control works while the game has focus. Show/hide, and the

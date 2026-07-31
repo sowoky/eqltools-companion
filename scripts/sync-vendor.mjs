@@ -74,3 +74,49 @@ if (existsSync(zwSrc)) {
 } else {
   console.warn("sync-vendor: WARNING — public/atlas/wiki missing; Zone tab will be fetch-only");
 }
+
+/* The embedded /log-parser page (Parser tab). The whole site page plus its
+   shared assets mirror under vendor/site/ with their site paths intact, so
+   main's eqlt:// protocol can serve the page's absolute URLs untouched —
+   the site file stays the single implementation, same rule as parse.js. */
+const SITE_FILES = [
+  "public/log-parser/index.html",
+  "public/log-parser/style.css",
+  "public/log-parser/app.js",
+  "public/_shared/theme.css",
+  "public/_shared/tip.js",
+];
+for (const rel of SITE_FILES) {
+  const src = join(repo, rel);
+  if (!existsSync(src)) { console.error(`sync-vendor: missing ${rel}`); process.exit(1); }
+  const out = join(companion, "vendor", "site", rel.replace(/^public\//, ""));
+  mkdirSync(dirname(out), { recursive: true });
+  copyFileSync(src, out);
+  console.log(`site    ${rel}`);
+}
+const fontsSrc = join(repo, "public", "_shared", "fonts");
+if (existsSync(fontsSrc)) {
+  const fontsOut = join(companion, "vendor", "site", "_shared", "fonts");
+  mkdirSync(fontsOut, { recursive: true });
+  for (const f of readdirSync(fontsSrc)) if (f.endsWith(".woff2")) copyFileSync(join(fontsSrc, f), join(fontsOut, f));
+  console.log("site    public/_shared/fonts");
+}
+
+/* Data the parser page fetches — snapshotted under its URL paths; served by
+   the eqlt:// protocol (cache first) and refreshed alongside the datasets. */
+for (const rel of [
+  "public/log-parser/data/con-bands.json",
+  "public/log-parser/data/wiki-items.json",
+  "public/log-parser/data/wiki-mobs.json",
+  "public/spellmaster/data/spells.json",
+]) {
+  const src = join(repo, rel);
+  const out = join(companion, "data-snapshot", rel.replace(/^public\//, ""));
+  if (existsSync(src)) {
+    mkdirSync(dirname(out), { recursive: true });
+    copyFileSync(src, out);
+    console.log(`data    ${rel}`);
+  } else {
+    console.warn(`sync-vendor: WARNING — ${rel} not on disk; parser tab will need the live site for it`);
+  }
+}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Combat Log Parser — EQ Legends</title>
+<meta name="description" content="Drop your EQ Legends combat log and see what you and your pet did — by source, by level, by zone and difficulty, by stance-and-invocation combo. Parsed entirely in your browser; the log never uploads.">
+<link rel="canonical" href="https://eqltools.com/log-parser">
+<meta property="og:title" content="Combat Log Parser — EQ Legends">
+<meta property="og:description" content="Drop your EQ Legends combat log and see what you and your pet did — by source, by level, by zone and difficulty, by stance-and-invocation combo. Parsed entirely in your browser; the log never uploads.">
+<meta property="og:site_name" content="EQL Tools">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eqltools.com/log-parser">
+<meta property="og:image" content="https://eqltools.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3ClinearGradient id='a' x1='.1' y1='0' x2='.9' y2='1'%3E%3Cstop offset='0' stop-color='%23fbeec2'/%3E%3Cstop offset='.25' stop-color='%23e7b94e'/%3E%3Cstop offset='.55' stop-color='%2396690f'/%3E%3Cstop offset='1' stop-color='%23e7b94e'/%3E%3C/linearGradient%3E%3CradialGradient id='s' cx='.36' cy='.28' r='.85'%3E%3Cstop offset='0' stop-color='%23dbe9ff'/%3E%3Cstop offset='.2' stop-color='%2377aaea'/%3E%3Cstop offset='.5' stop-color='%232f63b4'/%3E%3Cstop offset='1' stop-color='%23081530'/%3E%3C/radialGradient%3E%3Crect width='64' height='64' fill='%230d0a08'/%3E%3Crect x='9' y='9' width='46' height='46' rx='7' transform='rotate%2845 32 32%29' fill='%23171227' stroke='url%28%23a%29' stroke-width='4'/%3E%3Cg fill='url%28%23a%29'%3E%3Cpath d='M32 7l3 17-3 3-3-3z'/%3E%3Cpath d='M57 32l-17 3-3-3 3-3z'/%3E%3Cpath d='M32 57l-3-17 3-3 3 3z'/%3E%3Cpath d='M7 32l17-3 3 3-3 3z'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='13' fill='url%28%23a%29'/%3E%3Ccircle cx='32' cy='32' r='9.6' fill='url%28%23s%29'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/_shared/theme.css">
+<link rel="stylesheet" href="/log-parser/style.css">
+</head>
+<body>
+<header class="eq-header">
+  <div class="eq-header__inner wrap">
+    <a href="/" class="eq-header__brand" aria-label="EQL Tools — home">
+      <span class="eq-header__mark" aria-hidden="true"></span>
+      <span class="eq-header__word" role="img" aria-label="EQL Tools"></span>
+    </a>
+    <nav class="eq-nav" aria-label="Site">
+      <a href="/atlas">Atlas</a>
+      <div class="eq-nav__group">
+        <a href="/" class="is-current">Tools<span class="eq-nav__caret" aria-hidden="true">▾</span></a>
+        <div class="eq-nav__drop" aria-label="Tools">
+          <a href="/log-parser" class="is-current" aria-current="page">Log Parser</a>
+          <a href="/kills">Gotta Kill ’Em All</a>
+          <a href="/spellmaster">Spellmaster</a>
+          <a href="/picker">Trio Builder</a>
+          <a href="/attributes">Starting attributes</a>
+          <a href="/aa">AA Planner</a>
+          <a href="/leveling">Leveling</a>
+          <a href="/osxeql">osxEQL</a>
+        </div>
+      </div>
+      <div class="eq-nav__group">
+        <a href="/learn">Learn<span class="eq-nav__caret" aria-hidden="true">▾</span></a>
+        <div class="eq-nav__drop" aria-label="Learn topics">
+          <a href="/learn/difficulty">Difficulty (D0&ndash;D4)</a>
+          <a href="/learn/experience">Experience</a>
+          <a href="/learn/trio">The trio system</a>
+          <a href="/combat">Combat &amp; stats</a>
+          <a href="/learn/control">Slow, haste &amp; CC</a>
+          <a href="/learn/pets">Pets</a>
+          <a href="/learn/upgrades">Upgrades &amp; motes</a>
+          <a href="/learn/spell-upgrades">Spell upgrade scaling</a>
+          <a href="/learn/aa">Alternate Advancement</a>
+        </div>
+      </div>
+      <a class="eq-nav__lore" href="https://libraryoferudin.com" title="Library of Erudin — classic EverQuest lore">Library <span class="note">(lore)</span> ↗</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap page-body">
+
+<header class="site-head">
+  <div class="title-block">
+    <h1>Combat Log Parser</h1>
+    <p class="tagline">Drop your EverQuest Legends log. It shows what you, your pets, and your charmed mobs did — fight by fight, level by level.</p>
+  </div>
+</header>
+
+<!-- Empty state: drop zone + how to get a log -->
+<section class="intake" id="intake">
+  <div class="drop-col">
+  <label class="drop-zone" id="dropZone">
+    <span class="drop-glyph" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 5.5 20 19.5"/><path d="M26 5.5 12 19.5"/>
+        <path d="M20 19.5 25.5 25M12 19.5 6.5 25"/>
+        <circle cx="6" cy="5.5" r="1.5" fill="currentColor" stroke="none"/><circle cx="26" cy="5.5" r="1.5" fill="currentColor" stroke="none"/>
+      </svg>
+    </span>
+    <span class="drop-lead">Drop your log file here, or click to choose one</span>
+    <span class="drop-sub"><code>eqlog_&lt;character&gt;_&lt;server&gt;.txt</code></span>
+    <input type="file" id="logFile" accept=".txt,text/plain" hidden>
+  </label>
+  <button id="btnWatch" class="ghost small watch-btn" type="button" hidden
+    title="Re-reads the file as the game writes it. Chrome and Edge only.">Or watch it live while you play</button>
+  </div>
+
+  <div class="how">
+    <h2>Getting your log</h2>
+    <ol>
+      <li>In game, type <code>/log on</code> once. Logging stays on between sessions.</li>
+      <li>Play a while, then find the file in your EQ Legends folder, under <code>\Logs\</code>.</li>
+      <li>It's named <code>eqlog_&lt;character&gt;_&lt;server&gt;.txt</code>. Drop it above.</li>
+    </ol>
+    <p class="fine">Windows default: <code class="path">C:\Users\Public\Daybreak Game Company\Installed Games\EverQuest Legends\Logs\</code></p>
+    <p class="fine">Big log? Only the tail is read — enough to cover your recent levels.</p>
+  </div>
+</section>
+
+<div class="err" id="err" hidden></div>
+
+<!-- Results -->
+<main id="report" hidden>
+  <section class="controls" id="controls">
+    <div class="who-line" id="whoLine"></div>
+    <div class="control-group">
+      <label class="ctl">Levels
+        <select id="levelSel"></select>
+      </label>
+      <label class="ctl" id="zoneCtl">Zone
+        <select id="zoneSel"></select>
+      </label>
+      <label class="ctl" id="tierCtl" hidden>Difficulty
+        <select id="tierSel"></select>
+      </label>
+      <label class="ctl" id="visitCtl" hidden>Visit
+        <select id="visitSel"></select>
+      </label>
+      <label class="ctl">Stance &amp; invocation
+        <select id="comboSel"></select>
+      </label>
+      <label class="ctl">Fight
+        <select id="fightSel"></select>
+      </label>
+      <button id="btnCopy" class="ghost small" type="button" title="Copies a text summary of the current view for Discord or guild chat.">Copy summary</button>
+      <button id="btnReset" class="ghost small" type="button">New log</button>
+    </div>
+  </section>
+
+  <div class="truncnote" id="watchNote" hidden>Watching your log — the page updates as you play.</div>
+  <div class="truncnote" id="truncNote" hidden></div>
+
+  <section class="plaques" id="plaques"></section>
+
+  <p class="pace-line" id="paceLine" hidden></p>
+
+  <section class="bighits" id="bigHits"></section>
+
+  <section class="panel" id="dpsPanel">
+    <div class="rule-ornate" aria-hidden="true"></div>
+    <h2>Damage over time <span class="h2sub">stances above, invocations below — hover a band for its window</span></h2>
+    <div id="dpsChart"></div>
+  </section>
+
+  <section class="panel" id="sourcePanel">
+    <div class="rule-ornate" aria-hidden="true"></div>
+    <h2>Damage by source</h2>
+    <p class="panel-note">Your side only. <span class="tag-you">you</span> <span class="tag-pet">pet</span> <span class="tag-charm">charm</span> —
+    a pet is anything that answered you with ", Master." Hover a pet row for who's inside; click it to split by verb.</p>
+    <div class="tblwrap"><table id="sourceTable"></table></div>
+  </section>
+
+  <div class="two-up">
+    <section class="panel" id="compPanel">
+      <div class="rule-ornate" aria-hidden="true"></div>
+      <h2>What it's made of</h2>
+      <div id="composition"></div>
+      <div id="byClass"></div>
+    </section>
+    <section class="panel" id="ratesPanel">
+      <div class="rule-ornate" aria-hidden="true"></div>
+      <h2>Your melee, ranged &amp; casting</h2>
+      <div id="rates"></div>
+    </section>
+  </div>
+
+  <section class="panel" id="comboPanel">
+    <div class="rule-ornate" aria-hidden="true"></div>
+    <h2>Stance &amp; invocation</h2>
+    <p class="panel-note">Each combo you fought under, its share of combat time, and how your damage looked while it was up. Stances and invocations only exist in EQL — no classic-EQ parser tracks them.</p>
+    <div class="tblwrap"><table id="comboTable"></table></div>
+  </section>
+
+  <section class="panel" id="healPanel" hidden>
+    <div class="rule-ornate" aria-hidden="true"></div>
+    <h2>Healing</h2>
+    <div class="detail-grid even">
+      <div class="d-block" id="healOutBlock"><h4>You healed</h4><div class="tblwrap"><table id="healTable"></table></div></div>
+      <div class="d-block" id="healInBlock" hidden><h4>You were healed</h4><div class="tblwrap"><table id="healRecvTable"></table></div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="mobPanel" hidden>
+    <div class="rule-ornate" aria-hidden="true"></div>
+    <h2>Mobs &amp; fights</h2>
+    <p class="panel-note">One row per mob name. Click it for each fight and what the corpses paid — drop rates,
+    coin, XP. A fight ends at the mob's death line, or after 45 quiet seconds if none appeared; click a fight
+    to focus the whole page on it. Mob levels come from your own /con lines — con a mob once and its level
+    fills in. Hover any average for the raw numbers.</p>
+    <div class="tblwrap"><table id="mobTable"></table></div>
+    <button id="mobMore" class="ghost small" type="button" hidden></button>
+  </section>
+
+  <section class="panel" id="lootPanel" hidden>
+    <div class="rule-ornate" aria-hidden="true"></div>
+    <h2>Loot</h2>
+    <p class="panel-note">From the auto-loot lines. Coin gained counts corpse coin plus what auto-sell paid.
+    Item links go to the community wiki<a class="src wiki" href="/sources#seal-wiki" data-tip-nopin>wiki</a>.</p>
+    <div class="tblwrap"><table id="lootTable"></table></div>
+    <button id="lootMore" class="ghost small" type="button" hidden></button>
+  </section>
+
+  <section class="panel" id="progressPanel" hidden>
+    <div class="rule-ornate" aria-hidden="true"></div>
+    <h2>Skill-ups &amp; faction</h2>
+    <div class="detail-grid even">
+      <div class="d-block" id="skillBlock"><h4>Skill-ups</h4><div class="tblwrap"><table id="skillTable"></table></div></div>
+      <div class="d-block" id="factionBlock"><h4>Faction</h4><div class="tblwrap"><table id="factionTable"></table></div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="deathPanel" hidden>
+    <div class="rule-ornate" aria-hidden="true"></div>
+    <h2>What killed you</h2>
+    <div id="deaths"></div>
+  </section>
+
+  <p class="fine" id="unparsed"></p>
+</main>
+
+<footer class="site-foot">
+  <p class="fine">All computation done in browser, your data stays on your computer.</p>
+</footer>
+
+</div>
+
+<footer class="eq-footer">
+  <div class="eq-footer__inner wrap">
+    <span class="eq-footer__word" role="img" aria-label="EQL Tools"></span>
+    <nav class="eq-footer__nav" aria-label="Site">
+      <a href="/atlas">Atlas</a>
+      <a href="/log-parser">Log Parser</a>
+      <a href="/kills">Gotta Kill ’Em All</a>
+      <a href="/spellmaster">Spellmaster</a>
+      <a href="/picker">Trio Builder</a>
+      <a href="/attributes">Attributes</a>
+      <a href="/combat">Combat &amp; Stats</a>
+      <a href="/aa">AA Planner</a>
+      <a href="/leveling">Leveling</a>
+      <a href="/learn">Learn</a>
+      <a href="/osxeql">osxEQL</a>
+      <a href="/sources">Sources</a>
+      <a href="/feedback">Feedback</a>
+      <a href="https://libraryoferudin.com">Library of Erudin — classic EQ lore ↗</a>
+    </nav>
+  </div>
+  <p class="eq-footer__fine wrap">A fan project for EverQuest Legends. Not affiliated with Daybreak Game Company.</p>
+</footer>
+
+<script src="/_shared/tip.js"></script>
+<script src="/log-parser/app.js"></script>
+</body>
+</html>

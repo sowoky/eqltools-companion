@@ -93,6 +93,36 @@ main { flex: 1; overflow-y: auto; padding: 16px; }
 #invBody h3 { font-size: 14px; color: var(--gold-bright); margin: 14px 0 4px; }
 #invBody .ev__t--loc { flex: 0 0 118px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+/* quests — inventory crossed against the wiki quest list */
+#questsBody h3 { font-size: 14px; color: var(--gold-bright); margin: 16px 0 6px; }
+#qSearch {
+  background: var(--bg-panel-2); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 6px; padding: 5px 8px; font: 13px var(--sans); width: 240px;
+}
+#qSearch:focus { outline: none; border-color: var(--gold); }
+.qlist { list-style: none; padding: 0; }
+.qrow { padding: 8px 0 10px; border-bottom: 1px solid var(--line-soft); }
+.qrow__head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.qrow__head .dim { font-size: 12px; }
+/* the count is the whole point of the row — gold once every listed item is
+   accounted for, quiet while it is still a shopping list */
+.qprog {
+  font: 12px var(--mono); color: var(--ink-dim);
+  border: 1px solid var(--line); border-radius: 4px; padding: 0 5px;
+}
+.qrow.is-ready .qprog { color: var(--bg-deep); background: var(--gold); border-color: var(--gold); font-weight: 700; }
+.qcomps { list-style: none; padding: 0; margin: 5px 0 0 2px; columns: 2; }
+.qc { padding: 2px 0; break-inside: avoid; font-size: 13px; }
+/* same tracking-mark idiom as the kill tracker: a span, never an input */
+.qc.is-have .kchk { border-color: var(--gold); background: var(--gold); }
+.qc.is-have .kchk::after {
+  content: ""; position: absolute; left: 4px; top: 1px; width: 3px; height: 7px;
+  border: solid var(--bg-deep); border-width: 0 2px 2px 0; transform: rotate(45deg);
+}
+.qc:not(.is-have) .itn { color: var(--ink-dim); }
+.qrew { margin: 6px 0 0 2px; font-size: 12px; color: var(--ink-dim); }
+.qnote { text-align: left; margin-top: 18px; font-size: 12px; max-width: 62ch; }
+
 /* tracker */
 .thead { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
 #trkSearch {
@@ -186,3 +216,8 @@ main { flex: 1; overflow-y: auto; padding: 16px; }
 .row { display: flex; align-items: center; gap: 12px; margin: 6px 0; flex-wrap: wrap; }
 input[type="range"] { accent-color: var(--gold); }
 input[type="checkbox"] { accent-color: var(--gold); }
+
+/* parser — the site's /log-parser page in an iframe */
+#tab-parser { max-width: none; }
+#tab-parser.on { height: 100%; }
+#lpFrame { width: 100%; height: 100%; border: 0; }
