@@ -28,7 +28,7 @@ const RX = {
   loot:      new RegExp(TS + String.raw`You looted (?:an? |(\d+) )?(.+?) from (.+?)'s corpse(?:\.| (and stored it in your tradeskill depot|and sold it for free\.|and sold it for (.+?)\.|to create an? .+))?$`),
   // MANUAL loot (corpse window) prints a different line than auto-loot:
   // "--You have looted a Charcoal from an earth elemental's corpse.--".
-  // Observed 2026-07-31, 309 lines in eqlog_Ravlin_oggok: always --wrapped,
+  // Observed 2026-07-31, 309 lines in a live-play log: always --wrapped,
   // article precedes even plural item names ("a Bone Chips"), stacks print a
   // count ("2 Bone Chips"), items may contain apostrophes ("Rambunctious
   // Pet's Skull from a rambunctious pet's corpse" — the lazy item group stops

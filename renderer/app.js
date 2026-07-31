@@ -75,23 +75,38 @@ function newStream(file) {
   killBuf = [];
 }
 
+// The feed used to start blank until the first live loot (Kyle, 2026-07-31:
+// "no reason to start blank") — the bootstrap tail's trailing drops seed it.
+const SEED_CAP = 100;
+
 function onBootstrap({ file, text }) {
   newStream(file);
+  // One pass over the tail serves three consumers: kill credit for the
+  // tracker (high-water mark makes restarts safe — same parseLog semantics,
+  // inlined so loot isn't discarded), the last SEED_CAP drops for the feed,
+  // and the final zone so the live stream starts where the player is.
+  const boot = new P.KillStream({ name2key: NAME2KEY, normName: K.normName });
+  const kills = [], loots = [];
+  const collect = ev => {
+    if (ev.kind === "kill") kills.push({ ts: ev.ts, zone: ev.zone, n: ev.n, credit: ev.credit });
+    else if (ev.kind === "loot") { loots.push(ev); if (loots.length > SEED_CAP) loots.shift(); }
+  };
+  for (const raw of text.split(/\r?\n/)) for (const ev of boot.feed(raw)) collect(ev);
+  for (const ev of boot.flush()) collect(ev);
   if (DATA) {
-    // Historical tail: credit kills (high-water mark makes restarts safe),
-    // but never replay old loot into the live feed.
-    const parsed = P.parseLog(text, NAME2KEY, K.normName);
     if (!STATE) STATE = K.blank();
-    P.ingest(STATE, { nameZones: NAMEZONES }, file, parsed);
+    P.ingest(STATE, { nameZones: NAMEZONES }, file, { kills, lastTs: boot.lastTs, lines: boot.lines });
     K.save(STATE);
   }
-  // Seed the live stream's zone from where the log left off: replay only the
-  // last zone-entry line so the stream starts where the player is.
-  const zrx = P.RX.zone;
-  let lastZoneLine = null;
-  for (const line of text.split(/\r?\n/)) if (zrx.test(line)) lastZoneLine = line;
-  if (lastZoneLine) stream.feed(lastZoneLine);
+  stream.zone = boot.zone;
   lastStreamZone = stream.zone;
+  // Seed once per app run: historical drops fill the feed's display but never
+  // touch the session strip's counters or replay into the overlay; a mid-run
+  // character switch keeps the feed it already has.
+  if (!SESSION.feed.length && loots.length) {
+    for (const ev of loots) SESSION.feed.push(lootEntry(ev));
+    renderFeed();
+  }
   if (ZONE.follow && DATA && DATA.zones[stream.zone]) selectZone(stream.zone);
   renderStatus(); renderTracker(); pushZone();
 }
@@ -111,6 +126,15 @@ function onLines({ file, lines }) {
   renderStatus();
 }
 
+// A loot stream event → a feed entry, quest matches resolved. Shared by the
+// live handler and the bootstrap seed so both build identical rows.
+function lootEntry(ev) {
+  return {
+    kind: "loot", id: ++FEED_ID, ts: ev.ts, item: ev.item, qty: ev.qty, mob: ev.mob,
+    disp: ev.disp, zone: ev.zone, quests: questRefsFor(ev.item),
+  };
+}
+
 function handleEvent(ev) {
   bumpActive(ev.ts);
   if (ev.kind === "xp") {
@@ -120,14 +144,7 @@ function handleEvent(ev) {
   }
   if (ev.kind === "loot") {
     SESSION.loots++;
-    const quests = QIDX.get(K.normName(ev.item)) || [];
-    const entry = {
-      kind: "loot", id: ++FEED_ID, ts: ev.ts, item: ev.item, qty: ev.qty, mob: ev.mob,
-      disp: ev.disp, zone: ev.zone,
-      quests: quests.map(({ q, as }) => ({
-        n: q.n, t: q.t, as, rewards: q.rewards || [], zone: q.zone, lvl: q.lvl,
-      })),
-    };
+    const entry = lootEntry(ev);
     SESSION.feed.push(entry);
     if (entry.quests.length) SESSION.quests++;
     if (SESSION.feed.length > FEED_CAP) SESSION.feed.shift();
@@ -203,7 +220,7 @@ function overlayEvent(entry) {
     // item and each shown reward get {url, sb} when the tooltip data knows
     // them. Payloads stay small (a few hundred bytes).
     const itemRef = (name) => {
-      const t = TIDX.get(K.normName(name));
+      const t = lookupItem(TIDX, name);
       return { n: name, url: t && base ? base + t.t : "", sb: t ? t.sb : null };
     };
     const it = itemRef(entry.item);
@@ -235,22 +252,41 @@ const hhmmss = ts => {
 };
 const DISP = { kept: "", depot: "→ depot", sold_free: "sold (worthless)", sold: "auto-sold", created: "→ crafted" };
 
-function feedLi(e) {
-  if (e.kind === "kill") {
-    const tag = e.credit === "blow" ? "kill" : e.credit === "xp" ? "group kill" : "witnessed";
-    return `<li class="ev ev--kill"><span class="ev__t">${hhmmss(e.ts)}</span>
-      <span class="ev__body">${esc(e.n)} <span class="tag">${tag}</span></span></li>`;
-  }
-  const qty = e.qty > 1 ? ` ×${e.qty}` : "";
-  const disp = DISP[e.disp] ? ` <span class="dim">${DISP[e.disp]}</span>` : "";
-  // Common turn-ins (bone chips: 22 quests) would wall the feed with chips —
-  // cap and expand on demand. Full data always collected, grouping is display.
+/* ── shared item rendering — Live and Inventory draw the same rows ─────────
+   Item lookups resolve in two steps: EXACT normName first — a trailing "*"
+   can be part of the wiki item name itself (Bread Cakes*; and Club vs Club*
+   are two different items, so the star must never be blindly stripped) —
+   then with client decorations stripped (`+N` upgrade tier, `(Exaltation)`,
+   the inventory dump's own trailing `*`), which is how "Giant Snake Fang +4"
+   and "Backpack*" find their base entries. Log names are bare, so step one
+   hits for the live feed. */
+const stripDecor = name => String(name)
+  .replace(/\*+$/, "").replace(/\s*\(Exaltation\)$/, "").replace(/\s*\+\d+$/, "");
+const lookupItem = (map, name) =>
+  map.get(K.normName(name)) ?? map.get(K.normName(stripDecor(name)));
+
+const questRefsFor = name => (lookupItem(QIDX, name) || []).map(({ q, as }) => ({
+  n: q.n, t: q.t, as, rewards: q.rewards || [], zone: q.zone, lvl: q.lvl,
+}));
+
+// item name: tooltip always; a wiki link too when the dataset knows it
+function itemSpan(name) {
+  const ti = lookupItem(TIDX, name);
+  const base = (TDATA && TDATA.base) || (DATA && DATA.base) || "";
+  return ti && base
+    ? `<span class="itn is-link" data-tt="${esc(name)}" data-url="${esc(base + ti.t)}">${esc(name)}</span>`
+    : `<span class="itn" data-tt="${esc(name)}">${esc(name)}</span>`;
+}
+
+// Common turn-ins (bone chips: 22 quests) would wall the list with chips —
+// cap and expand on demand. Full data always collected, grouping is display.
+function questChips(quests, id) {
   const CHIP_CAP = 4;
-  const open = FEED_OPEN.has(e.id);
-  const qlist = open ? e.quests : e.quests.slice(0, CHIP_CAP);
-  const more = e.quests.length > CHIP_CAP && !open
-    ? `<div class="quest quest--more" data-open="${e.id}">+${e.quests.length - CHIP_CAP} more quests</div>` : "";
-  const badges = qlist.map(q => {
+  const open = FEED_OPEN.has(id);
+  const qlist = open ? quests : quests.slice(0, CHIP_CAP);
+  const more = quests.length > CHIP_CAP && !open
+    ? `<div class="quest quest--more" data-open="${id}">+${quests.length - CHIP_CAP} more quests</div>` : "";
+  return qlist.map(q => {
     // Looting a quest's REWARD: re-listing that quest's whole reward table is
     // noise (some armor-set quests list 60). Only component hits show what
     // the quest pays, capped.
@@ -263,15 +299,19 @@ function feedLi(e) {
     }
     return `<div class="quest" data-wiki="${esc(q.t)}"><b>${role}</b> ${esc(q.n)}${rew}</div>`;
   }).join("") + more;
-  // item name: tooltip always; a wiki link too when the dataset knows it
-  const ti = TIDX.get(K.normName(e.item));
-  const base = (TDATA && TDATA.base) || (DATA && DATA.base) || "";
-  const itn = ti && base
-    ? `<span class="itn is-link" data-tt="${esc(e.item)}" data-url="${esc(base + ti.t)}">${esc(e.item)}</span>`
-    : `<span class="itn" data-tt="${esc(e.item)}">${esc(e.item)}</span>`;
+}
+
+function feedLi(e) {
+  if (e.kind === "kill") {
+    const tag = e.credit === "blow" ? "kill" : e.credit === "xp" ? "group kill" : "witnessed";
+    return `<li class="ev ev--kill"><span class="ev__t">${hhmmss(e.ts)}</span>
+      <span class="ev__body">${esc(e.n)} <span class="tag">${tag}</span></span></li>`;
+  }
+  const qty = e.qty > 1 ? ` ×${e.qty}` : "";
+  const disp = DISP[e.disp] ? ` <span class="dim">${DISP[e.disp]}</span>` : "";
   return `<li class="ev ev--loot ${e.quests.length ? "is-quest" : ""}">
     <span class="ev__t">${hhmmss(e.ts)}</span>
-    <span class="ev__body">${itn}${qty} <span class="dim">from ${esc(e.mob)}</span>${disp}${badges}</span></li>`;
+    <span class="ev__body">${itemSpan(e.item)}${qty} <span class="dim">from ${esc(e.mob)}</span>${disp}${questChips(e.quests, e.id)}</span></li>`;
 }
 
 function renderFeed() {
@@ -285,11 +325,15 @@ function renderFeed() {
   $("feed").innerHTML = shown.map(([e]) => feedLi(e)).join("");
   retip(); // rows shifted under the cursor — re-derive the tooltip
   $("feedEmpty").hidden = SESSION.feed.length > 0;
-  $("feedCount").textContent = SESSION.feed.length
+  // Gate on live events, not feed length: a freshly seeded feed shows
+  // historical quest chips, and "0 quest items this session" beside them
+  // reads as a contradiction.
+  $("feedCount").textContent = SESSION.kills || SESSION.loots
     ? `${SESSION.kills} kills · ${SESSION.quests} quest items this session` : "";
 }
 
 const EXPANDED = new Set();
+let TRACKER_Q = "";
 function renderTracker() {
   const banner = $("trackerBanner");
   if (!DATA) { banner.hidden = false; banner.textContent = "Mob roster not loaded yet — refresh from eqltools.com in Settings."; $("trackerHead").innerHTML = ""; $("zones").innerHTML = ""; return; }
@@ -300,19 +344,24 @@ function renderTracker() {
   $("trackerHead").innerHTML = `<span class="big">${pct}%</span> ${sum.done} of ${sum.total} mobs ·
     ${sum.zonesDone}/${sum.zonesTotal} zones cleared
     <span class="kbar"><span class="kbar__fill" style="width:${sum.total ? (100 * sum.done / sum.total).toFixed(1) : 0}%"></span></span>`;
+  const q = TRACKER_Q.trim().toLowerCase();
   const entries = Object.entries(DATA.zones).filter(([, z]) => z.mobs.length)
     .filter(([k]) => !sum.zones[k].ignored)
+    .filter(([, z]) => !q || z.name.toLowerCase().includes(q))
     .sort((a, b) => ((sum.zones[a[0]].total - sum.zones[a[0]].done) - (sum.zones[b[0]].total - sum.zones[b[0]].done)) || (a[1].name < b[1].name ? -1 : 1));
   $("zones").innerHTML = entries.map(([key, z]) => {
     const zs = sum.zones[key];
     const open = EXPANDED.has(key);
     let body = "";
     if (open) {
+      // The whole roster, checklist-style: killed rows keep their place —
+      // checked and struck through — instead of vanishing (Kyle, 2026-07-31:
+      // "show killed, but also show unkilled").
       const rows = K.sortRows(z.mobs.map(r => ({ ...r })));
-      const miss = rows.filter(r => !K.credited(s, sum.glob, key, r));
-      body = `<ul class="klist">${miss.map(r =>
-        `<li class="kmob"><a data-wiki="${esc(r.t)}">${esc(r.n)}</a>${r.lvl ? `<span class="klvl">${esc(r.lvl)}</span>` : ""}</li>`).join("")}</ul>`;
-      if (!miss.length) body = `<p class="dim">Zone cleared.</p>`;
+      body = `<ul class="klist">${rows.map(r => {
+        const dead = K.credited(s, sum.glob, key, r);
+        return `<li class="kmob ${dead ? "is-dead" : ""}"><span class="kchk"></span><a data-wiki="${esc(r.t)}">${esc(r.n)}</a>${r.lvl ? `<span class="klvl">${esc(r.lvl)}</span>` : ""}</li>`;
+      }).join("")}</ul>`;
     }
     return `<section class="kzone ${zs.done === zs.total ? "is-full" : ""}">
       <button class="kzone__head" data-zone="${key}">
@@ -395,6 +444,85 @@ function renderZoneTab() {
   retip();
 }
 
+/* ── inventory tab ────────────────────────────────────────────────────────
+   /out inventory writes a TSV — header Location/Name/ID/Count/Slots, CRLF,
+   "Empty" placeholder rows — validated against a real live-play dump.
+   Main ships the newest file whenever it changes; rows keep their raw
+   Location (collect full), the section grouping is display-only. */
+const INV = { file: null, mtime: 0, rows: null };
+const WORN_RX = /^(Charm|Ear|Head|Face|Neck|Shoulders|Arms|Back|Wrist|Range|Hands|Primary|Secondary|Fingers?|Ring|Chest|Legs|Feet|Waist|Ammo|Power Source)(-Slot\d+)?$/;
+const INV_SECTIONS = [
+  ["Worn", loc => WORN_RX.test(loc)],
+  ["Held", loc => /^(Held|Any Slot)$/.test(loc)],
+  ["Carried", loc => /^General ?\d+/.test(loc)],
+  // the client writes "General 1" WITH a space but "Bank1" without — both
+  // matchers take an optional space so a format nudge doesn't reclassify
+  ["Bank", loc => /^Bank ?\d+/.test(loc)],
+  ["Shared bank", loc => /^SharedBank/.test(loc)],
+  ["Depot", loc => /^Personal-Depot/.test(loc)],
+  ["Key ring", loc => /^KeyRing/.test(loc)],
+];
+
+function parseInventory(text) {
+  const rows = [];
+  for (const raw of text.split(/\r?\n/)) {
+    const f = raw.replace(/\r$/, "").split("\t");
+    // The dump is two concatenated tables: Location/Name/ID/Count/Slots, then
+    // a 3-column KeyRing/Name/ID table with its own header — skip BOTH header
+    // rows by shape, not by first column.
+    if (f.length < 3 || (f[1] === "Name" && f[2] === "ID")) continue;
+    const name = f[1];
+    if (!name || name === "Empty") continue;
+    // id joins the FEED_OPEN chip-expand space; itemId is the client's item ID
+    rows.push({ loc: f[0], name, itemId: +f[2] || 0, count: +f[3] || 1, id: ++FEED_ID });
+  }
+  return rows;
+}
+
+function onInvFile({ file, mtime, text }) {
+  INV.file = file; INV.mtime = mtime;
+  INV.rows = parseInventory(text);
+  renderInv();
+}
+
+function onInvStatus({ problem }) {
+  INV.problem = problem;
+  renderInv();
+}
+
+function renderInv() {
+  const body = $("invBody"), empty = $("invEmpty");
+  if (!INV.rows) {
+    $("invMeta").textContent = "";
+    body.innerHTML = "";
+    empty.textContent = INV.problem || "No inventory dump found beside the log folder yet.";
+    empty.hidden = false;
+    return;
+  }
+  empty.hidden = true;
+  $("invMeta").textContent = `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()}`;
+  // Quest matches resolve at render time from the live QIDX, so a dataset
+  // refresh re-chips the same dump.
+  const qOnly = $("invQuestOnly").checked;
+  const rows = INV.rows.map(r => ({ ...r, quests: questRefsFor(r.name) }))
+    .filter(r => !qOnly || r.quests.length);
+  const buckets = INV_SECTIONS.map(([label]) => ({ label, rows: [] }));
+  const other = { label: "Elsewhere", rows: [] };
+  for (const r of rows) {
+    const i = INV_SECTIONS.findIndex(([, test]) => test(r.loc));
+    (i === -1 ? other : buckets[i]).rows.push(r);
+  }
+  buckets.push(other);
+  body.innerHTML = buckets.filter(b => b.rows.length).map(b => `
+    <h3>${b.label} (${b.rows.length})</h3>
+    <ul class="feed">${b.rows.map(r => `
+      <li class="ev ev--loot ${r.quests.length ? "is-quest" : ""}">
+        <span class="ev__t ev__t--loc">${esc(r.loc)}</span>
+        <span class="ev__body">${itemSpan(r.name)}${r.count > 1 ? ` ×${r.count}` : ""}${questChips(r.quests, r.id)}</span></li>`).join("")}
+    </ul>`).join("");
+  retip();
+}
+
 let LOGSTATUS = {};
 function renderStatus() {
   const bits = [];
@@ -443,7 +571,7 @@ function retip() {
   if (!tipEl) return;
   const el = document.elementFromPoint(MX, MY);
   const t = el && el.closest ? el.closest("[data-tt]") : null;
-  const e = t && TIDX.get(K.normName(t.dataset.tt));
+  const e = t && lookupItem(TIDX, t.dataset.tt); // "+N"/"*" decorated names resolve too
   if (e) showTip(e); else tipEl.hidden = true;
 }
 function initTip() {
@@ -517,7 +645,9 @@ async function main() {
   window.companion.onBootstrap(onBootstrap);
   window.companion.onLines(onLines);
   window.companion.onLogStatus(st => { LOGSTATUS = st; renderStatus(); });
-  window.companion.onDataUpdated(d => { buildIndexes(d); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); pushZone(); });
+  window.companion.onInvFile(onInvFile);
+  window.companion.onInvStatus(onInvStatus);
+  window.companion.onDataUpdated(d => { buildIndexes(d); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); renderInv(); pushZone(); });
   window.companion.onOverlayState(renderOverlayState);
   window.companion.onUpdate(renderUpdate);
   renderUpdate(await window.companion.getUpdate());
@@ -529,6 +659,16 @@ async function main() {
   }));
 
   $("onlyQuest").addEventListener("change", renderFeed);
+  $("invQuestOnly").addEventListener("change", renderInv);
+  $("trkSearch").addEventListener("input", e => { TRACKER_Q = e.target.value; renderTracker(); });
+  $("trkAtlas").addEventListener("click", () => {
+    // Land on the player's zone with the atlas sidebar open on KILLS; the
+    // atlas root otherwise.
+    const key = stream && stream.zone !== "?" && DATA && DATA.zones[stream.zone] ? stream.zone : ZONE.sel;
+    window.companion.openWiki(key
+      ? `https://eqltools.com/atlas/?zone=${encodeURIComponent(key)}&wb=1&wbt=kills`
+      : "https://eqltools.com/atlas/");
+  });
   $("zoneSel").addEventListener("change", e => {
     if (!e.target.value) return;
     // A manual pick means the player wants to browse — stop yanking the tab
@@ -567,7 +707,7 @@ async function main() {
 
   document.addEventListener("click", e => {
     const mo = e.target.closest("[data-open]");
-    if (mo) { FEED_OPEN.add(+mo.dataset.open); renderFeed(); return; }
+    if (mo) { FEED_OPEN.add(+mo.dataset.open); renderFeed(); renderInv(); return; }
     const u = e.target.closest("[data-url]");
     if (u && u.dataset.url) { window.companion.openWiki(u.dataset.url); return; }
     const w = e.target.closest("[data-wiki]");

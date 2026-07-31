@@ -242,6 +242,52 @@ function sendStatus(problem) {
   });
 }
 
+/* ── inventory dumps ──────────────────────────────────────────────────────
+   /out inventory writes <Char>_<server>-Inventory.txt into the EQ install
+   dir — the PARENT of the Logs folder we tail. Poll that dir and the log dir
+   itself (dev points logDir at a scratch dir with no install layout) for the
+   newest dump and ship the whole file whenever path or mtime changes; a dump
+   is a few KB. Parsing is the renderer's job, same as log lines. */
+const INV_POLL_MS = 3000;
+let invTimer = null;
+let invSent = null;    // "path:mtime" of the last file shipped
+let invProblem = "-";  // last problem sent; "-" forces the first send
+function startInvWatch() {
+  stopInvWatch();
+  if (!SETTINGS.logDir) return;
+  invTimer = setInterval(pollInv, INV_POLL_MS);
+  pollInv();
+}
+function stopInvWatch() {
+  if (invTimer) { clearInterval(invTimer); invTimer = null; }
+  invSent = null; invProblem = "-";
+}
+function pollInv() {
+  if (!rendererReady || !mainWin) return;
+  let best = null, readable = false;
+  for (const dir of [path.dirname(SETTINGS.logDir), SETTINGS.logDir]) {
+    let entries; try { entries = fs.readdirSync(dir); } catch { continue; }
+    readable = true;
+    for (const name of entries) {
+      if (!/-Inventory\.txt$/i.test(name)) continue;
+      const p = path.join(dir, name);
+      let st; try { st = fs.statSync(p); } catch { continue; }
+      if (!best || st.mtimeMs > best.mtimeMs) best = { p, mtimeMs: st.mtimeMs };
+    }
+  }
+  // A dump-less folder is the normal empty state; an unreadable one must be
+  // nameable by the tab, or misconfiguration is indistinguishable from
+  // "you haven't dumped yet" (same rule as the tail engine's sendStatus).
+  const problem = readable ? null : "Game folder is unreadable.";
+  if (problem !== invProblem) { invProblem = problem; mainWin.webContents.send("inv:status", { problem }); }
+  if (!best) return;
+  const sig = best.p + ":" + best.mtimeMs;
+  if (sig === invSent) return;
+  let text; try { text = fs.readFileSync(best.p, "utf8"); } catch { return; }
+  invSent = sig;
+  mainWin.webContents.send("inv:file", { file: path.basename(best.p), mtime: best.mtimeMs, text });
+}
+
 /* ── datasets ─────────────────────────────────────────────────────────────
    Resolution order per file: userData cache (a successful past refresh) →
    bundled snapshot (whatever the build machine had) → null. A background
@@ -383,6 +429,7 @@ ipcMain.handle("app:init", () => {
 ipcMain.on("renderer:ready", () => {
   rendererReady = true;
   startTail();
+  startInvWatch();
   refreshDatasets(false);
 });
 ipcMain.handle("data:refresh", async () => { await refreshDatasets(true); return loadDatasets(); });
@@ -399,6 +446,7 @@ ipcMain.handle("log:pickDir", async () => {
   if (r.canceled || !r.filePaths.length) return SETTINGS.logDir || null;
   SETTINGS.logDir = r.filePaths[0]; saveSettings();
   startTail();
+  startInvWatch();
   return SETTINGS.logDir;
 });
 ipcMain.on("wiki:open", (_e, url) => {

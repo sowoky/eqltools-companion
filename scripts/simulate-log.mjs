@@ -58,7 +58,7 @@ if (process.argv.includes("--fixture")) {
     const mob = MOBS[step % MOBS.length];
     if (step % 3 === 2) {
       // someone else's blow + xp inside the ±2s window → 'xp' credit
-      b.push(`${now()} ${mob[0].toUpperCase() + mob.slice(1)} has been slain by Soronil!`);
+      b.push(`${now()} ${mob[0].toUpperCase() + mob.slice(1)} has been slain by Groupmate!`);
       b.push(`${now()} You gain party experience! (0.750%)`);
     } else {
       b.push(`${now()} You have slain ${mob}!`);

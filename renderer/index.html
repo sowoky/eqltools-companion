@@ -17,6 +17,7 @@
 
 <nav class="tabs">
   <button class="tab on" data-tab="live">Live</button>
+  <button class="tab" data-tab="inv">Inventory</button>
   <button class="tab" data-tab="zone">Zone</button>
   <button class="tab" data-tab="tracker">Kill tracker</button>
   <button class="tab" data-tab="settings">Settings</button>
@@ -37,6 +38,16 @@
     <span class="dim">Logging must be on in game: <code>/log</code></span></p>
   </section>
 
+  <section id="tab-inv" class="pane">
+    <p class="dim">Type <code>/out inventory</code> in game; the dump loads here within a few seconds.</p>
+    <div class="feedhead">
+      <label class="chk"><input type="checkbox" id="invQuestOnly"> quest items only</label>
+      <span id="invMeta" class="dim"></span>
+    </div>
+    <div id="invBody"></div>
+    <p id="invEmpty" class="empty">No inventory dump found beside the log folder yet.</p>
+  </section>
+
   <section id="tab-zone" class="pane">
     <div class="feedhead">
       <select id="zoneSel"></select>
@@ -49,6 +60,10 @@
 
   <section id="tab-tracker" class="pane">
     <div id="trackerBanner" class="banner" hidden></div>
+    <div class="feedhead">
+      <input id="trkSearch" type="search" placeholder="search zones">
+      <a id="trkAtlas" class="wk">see mobs on atlas</a>
+    </div>
     <div id="trackerHead" class="thead"></div>
     <div id="zones"></div>
   </section>

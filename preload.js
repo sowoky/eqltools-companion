@@ -26,6 +26,8 @@ contextBridge.exposeInMainWorld("companion", {
   onBootstrap: (fn) => ipcRenderer.on("log:bootstrap", (_e, p) => fn(p)),
   onLines: (fn) => ipcRenderer.on("log:lines", (_e, p) => fn(p)),
   onLogStatus: (fn) => ipcRenderer.on("log:status", (_e, p) => fn(p)),
+  onInvFile: (fn) => ipcRenderer.on("inv:file", (_e, p) => fn(p)),
+  onInvStatus: (fn) => ipcRenderer.on("inv:status", (_e, p) => fn(p)),
   onDataUpdated: (fn) => ipcRenderer.on("data:updated", (_e, p) => fn(p)),
   onOverlayState: (fn) => ipcRenderer.on("overlay:state", (_e, p) => fn(p)),
 
