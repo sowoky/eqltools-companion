@@ -332,7 +332,11 @@ function feedLi(e) {
 
 function renderFeed() {
   const only = $("onlyQuest").checked;
-  const items = SESSION.feed.filter(e => !only || (e.kind === "loot" && e.quests.length));
+  const needle = $("feedFilter").value.trim().toLowerCase();
+  const fmatch = e => !needle || (e.kind === "kill"
+    ? e.n.toLowerCase().includes(needle)
+    : [e.item, e.mob, ...e.quests.map(q => q.n)].some(s => s && s.toLowerCase().includes(needle)));
+  const items = SESSION.feed.filter(e => (!only || (e.kind === "loot" && e.quests.length)) && fmatch(e));
   // Feed order is emission order, and kill candidates resolve a couple of
   // seconds late by design — sort the DISPLAY by log time so a slain_by that
   // resolved after a loot line doesn't render above it.
@@ -422,7 +426,10 @@ function renderZoneTab() {
 
   const s = STATE || K.blank();
   const glob = K.globalKilled(s);
-  const mobRows = K.sortRows(f.mobs.map(r => ({ ...r })));
+  const zNeedle = $("zoneFilter").value.trim().toLowerCase();
+  const mobRows = K.sortRows(f.mobs.map(r => ({ ...r })))
+    .filter(m => !zNeedle || m.n.toLowerCase().includes(zNeedle) ||
+      (m.drops || []).some(di => f.items[di] && f.items[di].n.toLowerCase().includes(zNeedle)));
   const mobLi = (m) => {
     const dead = K.credited(s, glob, ZONE.sel, m);
     const drops = (m.drops || []).map((di, j) => {
@@ -445,6 +452,8 @@ function renderZoneTab() {
     droppers.get(di).push(m.n);
   }));
   const itemRows = f.items.map((it, i) => ({ it, i }))
+    .filter(({ it, i }) => !zNeedle || it.n.toLowerCase().includes(zNeedle) ||
+      (droppers.get(i) || []).some(n => n.toLowerCase().includes(zNeedle)))
     .sort((a, b) => a.it.n.toLowerCase() < b.it.n.toLowerCase() ? -1 : 1);
   const itemLi = ({ it, i }) => {
     const by = droppers.get(i) || [];
@@ -461,8 +470,8 @@ function renderZoneTab() {
   };
 
   body.innerHTML = `
-    <div><h3>Mobs (${f.mobs.length})</h3><ul class="zlist">${mobRows.map(mobLi).join("")}</ul></div>
-    <div><h3>Items (${f.items.length})</h3><ul class="zlist">${itemRows.map(itemLi).join("")}</ul></div>`;
+    <div><h3>Mobs (${mobRows.length}${zNeedle ? ` of ${f.mobs.length}` : ""})</h3><ul class="zlist">${mobRows.map(mobLi).join("")}</ul></div>
+    <div><h3>Items (${itemRows.length}${zNeedle ? ` of ${f.items.length}` : ""})</h3><ul class="zlist">${itemRows.map(itemLi).join("")}</ul></div>`;
   retip();
 }
 
@@ -527,8 +536,10 @@ function renderInv() {
   // Quest matches resolve at render time from the live QIDX, so a dataset
   // refresh re-chips the same dump.
   const qOnly = $("invQuestOnly").checked;
+  const iNeedle = $("invSearch").value.trim().toLowerCase();
   const rows = INV.rows.map(r => ({ ...r, quests: questRefsFor(r.name) }))
-    .filter(r => !qOnly || r.quests.length);
+    .filter(r => !qOnly || r.quests.length)
+    .filter(r => !iNeedle || r.name.toLowerCase().includes(iNeedle) || r.loc.toLowerCase().includes(iNeedle));
   const buckets = INV_SECTIONS.map(([label]) => ({ label, rows: [] }));
   const other = { label: "Elsewhere", rows: [] };
   for (const r of rows) {
@@ -565,7 +576,9 @@ function renderInv() {
    Tracking: q.t (the quest's wiki path) is unique across all 904 quests and
    survives dataset refreshes, so it is the stored key. Tracked progress also
    feeds the overlay through main's relay (pushQuests). */
-const QUESTS = { q: "", readyOnly: false };
+const TURNIN = { q: "", readyOnly: false }; // Turn-ins tab — filter within held quests
+const QB = { q: "", cls: "", zone: "", era: "", lvlMin: "", lvlMax: "", sort: "name", dir: 1 }; // Quests browser
+const QEXPANDED = new Set(); // browser rows opened to full detail (q.t keys)
 const TRACK_KEY = "eqlt-companion-tracked-v1";
 let TRACKED = []; // q.t keys, in the order the player tracked them
 function loadTracked() {
@@ -629,6 +642,27 @@ function questFacts(q, chain) {
     .filter(Boolean).join(" · ");
 }
 
+// components + rewards + related pages — shared by the Turn-ins rows, the
+// tracked list, and the browser's expanded rows
+function questDetail(p) {
+  const { q } = p;
+  const comps = p.comps.map(c => `
+    <li class="qc ${c.have ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(c.n)}${c.have > 1 ? ` <span class="dim">×${c.have}</span>` : ""}</li>`).join("");
+  const rew = (q.rewards || []).length
+    ? `<div class="qrew">reward: ${q.rewards.slice(0, 10).map(r => `<span data-tt="${esc(r)}">${esc(r)}</span>`).join(", ")}${q.rewards.length > 10 ? ` <span class="dim">+${q.rewards.length - 10} more</span>` : ""}</div>`
+    : "";
+  // the wiki's top table fills empty cells with a literal "None"
+  const rz = (q.relatedZones || []).filter(z => z && z !== "None");
+  const rn = (q.relatedNpcs || []).filter(n => n && n !== "None");
+  const rel = [
+    rz.length ? `zones: ${rz.map(esc).join(", ")}` : "",
+    rn.length ? `NPCs: ${rn.slice(0, 8).map(esc).join(", ")}${rn.length > 8 ? ` +${rn.length - 8}` : ""}` : "",
+  ].filter(Boolean).join(" · ");
+  return (comps ? `<ul class="qcomps">${comps}</ul>`
+    : `<p class="dim">The wiki page lists no items for this quest.</p>`)
+    + rew + (rel ? `<p class="qrel dim">${rel}</p>` : "");
+}
+
 function questRow(p, tracked) {
   const { q } = p;
   // 27 quests carry components but no giver and no zone. They are not junk —
@@ -636,11 +670,6 @@ function questRow(p, tracked) {
   // here — but they have no single hand-in NPC, so calling them "ready to
   // hand in" would be a lie. Say what they are instead.
   const facts = questFacts(q, !q.giver && !q.zone);
-  const comps = p.comps.map(c => `
-    <li class="qc ${c.have ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(c.n)}${c.have > 1 ? ` <span class="dim">×${c.have}</span>` : ""}</li>`).join("");
-  const rew = (q.rewards || []).length
-    ? `<div class="qrew">reward: ${q.rewards.slice(0, 6).map(r => `<span data-tt="${esc(r)}">${esc(r)}</span>`).join(", ")}${q.rewards.length > 6 ? ` <span class="dim">+${q.rewards.length - 6} more</span>` : ""}</div>`
-    : "";
   return `<li class="qrow ${p.done ? "is-ready" : ""} ${tracked ? "is-tracked" : ""}">
     <div class="qrow__head">
       <a class="wk" data-wiki="${esc(q.t || "")}">${esc(q.n)}</a>
@@ -648,39 +677,23 @@ function questRow(p, tracked) {
       ${facts ? `<span class="dim">${esc(facts)}</span>` : ""}
       <button class="btn btn--mini qtrk" data-track="${esc(q.t)}">${tracked ? "Untrack" : "Track"}</button>
     </div>
-    <ul class="qcomps">${comps}</ul>${rew}</li>`;
+    ${questDetail(p)}</li>`;
 }
 
-// Search hit whose wiki page lists no items — searchable, nothing to track.
-function questStub(q) {
-  const facts = questFacts(q, false);
-  return `<li class="qrow"><div class="qrow__head">
-    <a class="wk" data-wiki="${esc(q.t || "")}">${esc(q.n)}</a>
-    <span class="dim">no item list on the wiki page</span>
-    ${facts ? `<span class="dim">${esc(facts)}</span>` : ""}
-  </div></li>`;
-}
-
-const QUESTS_HINT = $("questsEmpty").innerHTML; // index.html's two-line default
-const MATCH_CAP = 50;
-function renderQuests() {
-  const body = $("questsBody"), empty = $("questsEmpty"), banner = $("questsBanner");
+/* ── Turn-ins tab — what the inventory says you could hand in ────────────── */
+const TURNIN_HINT = $("turninsEmpty").innerHTML;
+function renderTurnins() {
+  const body = $("turninsBody"), empty = $("turninsEmpty"), banner = $("turninsBanner");
   banner.hidden = !!QDATA;
   if (!QDATA) {
     banner.textContent = "Quest data not loaded yet — refresh from eqltools.com in Settings.";
-    $("qMeta").textContent = ""; body.innerHTML = ""; empty.hidden = true;
+    $("tiMeta").textContent = ""; body.innerHTML = ""; empty.hidden = true;
     return;
   }
   const have = haveMap();
-  const needle = QUESTS.q.trim().toLowerCase();
-  const match = q => !needle || [q.n, q.giver, q.zone, ...(q.items || []), ...(q.rewards || [])]
-    .some(s => s && String(s).toLowerCase().includes(needle));
-
-  const tSet = new Set(TRACKED);
-  const tracked = TRACKED.map(t => T2Q.get(t)).filter(Boolean).map(q => compsFor(q, have));
   const held = [];
   for (const q of QDATA.quests) {
-    if (!q.items || !q.items.length || tSet.has(q.t)) continue;
+    if (!q.items || !q.items.length) continue;
     const p = compsFor(q, have);
     if (p.got) held.push(p); // hold nothing for it — not this player's problem yet
   }
@@ -691,61 +704,137 @@ function renderQuests() {
     (b.got / b.need - a.got / a.need) || (b.need - a.need) ||
     (a.q.n.toLowerCase() < b.q.n.toLowerCase() ? -1 : 1));
   const ready = held.filter(p => p.done), partial = held.filter(p => !p.done);
+  $("tiMeta").textContent = held.length
+    ? `${ready.length} ready · ${partial.length} partly collected${INV.file ? ` · from ${INV.file}` : ""}` : "";
 
-  // The rest of the 904 only surfaces under a search — nobody asked for the
-  // full wall. Quests with an item list sort above the stubs.
-  let rest = [], restOver = 0;
-  if (needle) {
-    const heldSet = new Set(held.map(p => p.q.t));
-    rest = QDATA.quests.filter(q => !tSet.has(q.t) && !heldSet.has(q.t) && match(q))
-      .sort((a, b) => (!!(b.items || []).length - !!(a.items || []).length) ||
-        (a.n.toLowerCase() < b.n.toLowerCase() ? -1 : 1));
-    restOver = Math.max(0, rest.length - MATCH_CAP);
-    rest = rest.slice(0, MATCH_CAP);
-  }
+  const needle = TURNIN.q.trim().toLowerCase();
+  const match = p => !needle || [p.q.n, p.q.giver, p.q.zone, ...(p.q.items || []), ...(p.q.rewards || [])]
+    .some(s => s && String(s).toLowerCase().includes(needle));
+  const showReady = ready.filter(match);
+  const showPartial = TURNIN.readyOnly ? [] : partial.filter(match);
 
-  // "ready only" declutters the hand-in view; tracked rows are explicit
-  // intent and stay
-  const showTracked = tracked.filter(p => match(p.q));
-  const showReady = ready.filter(p => match(p.q));
-  const showPartial = QUESTS.readyOnly ? [] : partial.filter(p => match(p.q));
-  const showRest = QUESTS.readyOnly ? [] : rest;
-
-  // tracked rows count too — a tracked quest that fills up IS ready
-  const readyN = ready.length + tracked.filter(p => p.done).length;
-  const partialN = partial.length + tracked.filter(p => !p.done && p.got).length;
-  $("qMeta").textContent = [
-    tracked.length ? `${tracked.length} tracked` : "",
-    `${readyN} ready`, `${partialN} partly collected`,
-    INV.file ? `from ${INV.file}` : "",
-  ].filter(Boolean).join(" · ");
-
-  const any = showTracked.length || showReady.length || showPartial.length || showRest.length;
+  const any = showReady.length || showPartial.length;
   empty.hidden = !!any;
   if (!any) {
-    // matches hidden by the ready-only filter are not "no matches"
-    const hiddenByReady = QUESTS.readyOnly && (partial.some(p => match(p.q)) || rest.length > 0);
-    if (hiddenByReady) empty.textContent = "Nothing ready — untick “ready only” to see the rest.";
-    else if (needle) empty.textContent = "Nothing matches that search.";
+    if (TURNIN.readyOnly && partial.some(match)) empty.textContent = "Nothing ready — untick “ready only” to see partly collected quests.";
+    else if (needle) empty.textContent = "Nothing you hold items for matches that filter.";
     else if (INV.problem) empty.textContent = INV.problem;
-    else empty.innerHTML = QUESTS_HINT;
+    else empty.innerHTML = TURNIN_HINT;
     body.innerHTML = "";
     return;
   }
-  const section = (label, n, html) => html
-    ? `<h3>${label} (${n})</h3><ul class="qlist">${html}</ul>` : "";
+  const trackedSet = new Set(TRACKED);
+  const section = (label, rows) => rows.length
+    ? `<h3>${label} (${rows.length})</h3><ul class="qlist">${rows.map(p => questRow(p, trackedSet.has(p.q.t))).join("")}</ul>` : "";
   body.innerHTML =
-    section("Tracked", showTracked.length, showTracked.map(p => questRow(p, true)).join("")) +
-    section("Ready to hand in", showReady.length, showReady.map(p => questRow(p, false)).join("")) +
-    section("Partly collected", showPartial.length, showPartial.map(p => questRow(p, false)).join("")) +
-    section("More matches", showRest.length + restOver,
-      showRest.map(q => q.items && q.items.length ? questRow(compsFor(q, have), false) : questStub(q)).join("")) +
-    (showRest.length && restOver ? `<p class="dim">+${restOver} more — narrow the search.</p>` : "") +
+    section("Ready to hand in", showReady) +
+    section("Partly collected", showPartial) +
     `<p class="dim qnote">The wiki lists which items a quest wants, never how many —
      “ready” means you hold at least one of each. Counts you are carrying are shown
      beside each item.</p>`;
   retip();
 }
+
+/* ── Quests tab — the full quest table: search, filter, sort, track ──────── */
+function populateQuestFilters() {
+  if (!QDATA) return;
+  const classes = new Set(), zones = new Set();
+  for (const q of QDATA.quests) {
+    for (const c of q.classes || []) if (c && c !== "?" && c !== "Any") classes.add(c);
+    if (q.zone) zones.add(q.zone);
+  }
+  const opt = (v, label) => `<option value="${esc(v)}">${esc(label)}</option>`;
+  $("qbClass").innerHTML = opt("", "any class") + [...classes].sort().map(c => opt(c, c)).join("");
+  $("qbZone").innerHTML = opt("", "any zone") + [...zones].sort().map(z => opt(z, z)).join("");
+  if (QB.cls) $("qbClass").value = QB.cls;
+  if (QB.zone) $("qbZone").value = QB.zone;
+}
+
+const ERA_SHORT = e => String(e || "").replace(/\s*Era$/i, "");
+
+function qbMatch(q) {
+  const needle = QB.q.trim().toLowerCase();
+  if (needle && ![q.n, q.giver, q.zone, q.era, ...(q.items || []), ...(q.rewards || []),
+    ...(q.relatedZones || []), ...(q.relatedNpcs || []), ...(q.classes || [])]
+    .some(s => s && String(s).toLowerCase().includes(needle))) return false;
+  // a quest with no class list is open to everyone — it passes any class filter
+  if (QB.cls && (q.classes || []).length && !q.classes.some(c => c === QB.cls || c === "Any")) return false;
+  if (QB.zone && q.zone !== QB.zone) return false;
+  if (QB.era === "in" && q.oe) return false;
+  if (QB.era === "out" && !q.oe) return false;
+  const min = +QB.lvlMin || 0, max = +QB.lvlMax || 0;
+  if ((min || max) && q.lvl == null) return false;
+  if (min && q.lvl < min) return false;
+  if (max && q.lvl > max) return false;
+  return true;
+}
+
+const QB_SORTS = {
+  name: p => p.q.n.toLowerCase(),
+  lvl: p => p.q.lvl ?? 999,
+  zone: p => (p.q.zone || "￿").toLowerCase(),
+  era: p => (p.q.oe ? "z" : "a") + (p.q.era || ""),
+  held: p => -(p.need ? p.got / p.need + p.need / 1000 : -1),
+};
+
+function qbRow(p, tracked, open) {
+  const { q } = p;
+  const cls = (q.classes || []).filter(c => c && c !== "?").join("/");
+  const chain = q.items && q.items.length && !q.giver && !q.zone;
+  return `<tr class="qbr ${p.done ? "is-ready" : ""} ${q.oe ? "is-oe" : ""} ${open ? "is-open" : ""}" data-qx="${esc(q.t)}">
+    <td class="qb-trk"><button class="btn btn--mini" data-track="${esc(q.t)}">${tracked ? "Untrack" : "Track"}</button></td>
+    <td class="qb-name"><a class="wk" data-wiki="${esc(q.t)}">${esc(q.n)}</a>${chain ? ` <span class="dim" title="multi-step chain — no single turn-in">chain</span>` : ""}</td>
+    <td class="qb-lvl">${q.lvl ?? ""}</td>
+    <td class="qb-cls" title="${esc(cls)}">${esc(cls)}</td>
+    <td class="qb-zone">${esc(q.zone || "")}</td>
+    <td class="qb-giver">${esc(q.giver || "")}</td>
+    <td class="qb-era">${q.oe ? `<span class="oe">out of era</span>` : esc(ERA_SHORT(q.era))}</td>
+    <td class="qb-held">${p.need ? `<span class="qprog">${p.got}/${p.need}</span>` : "—"}</td>
+  </tr>` + (open ? `<tr class="qbx"><td></td><td colspan="7">${questDetail(p)}</td></tr>` : "");
+}
+
+function renderQuestBrowser() {
+  const banner = $("questsBanner");
+  banner.hidden = !!QDATA;
+  if (!QDATA) {
+    banner.textContent = "Quest data not loaded yet — refresh from eqltools.com in Settings.";
+    $("qbMeta").textContent = ""; $("qbTracked").innerHTML = ""; $("qbBody").innerHTML = "";
+    return;
+  }
+  const have = haveMap();
+  const trackedSet = new Set(TRACKED);
+
+  // tracked stay pinned above the table, unfiltered — explicit intent. Same
+  // compact row shape as the results (click to expand) so the pinned list
+  // never shoves search results below the fold.
+  const tracked = TRACKED.map(t => T2Q.get(t)).filter(Boolean).map(q => compsFor(q, have));
+  $("qbTracked").innerHTML = tracked.length
+    ? `<h3>Tracked (${tracked.length})</h3><table class="qtab"><tbody>${
+        tracked.map(p => qbRow(p, true, QEXPANDED.has(p.q.t))).join("")}</tbody></table>` : "";
+
+  const rows = QDATA.quests.filter(qbMatch).map(q => compsFor(q, have));
+  const key = QB_SORTS[QB.sort] || QB_SORTS.name;
+  rows.sort((a, b) => {
+    const ka = key(a), kb = key(b);
+    return ((ka < kb ? -1 : ka > kb ? 1 : 0) * QB.dir) ||
+      (a.q.n.toLowerCase() < b.q.n.toLowerCase() ? -1 : 1);
+  });
+  $("qbMeta").textContent = `${rows.length} of ${QDATA.quests.length} quests`;
+
+  const arrow = k => QB.sort === k ? (QB.dir > 0 ? " ▲" : " ▼") : "";
+  const th = (k, label) => k
+    ? `<th class="is-sort" data-qsort="${k}">${label}${arrow(k)}</th>`
+    : `<th>${label}</th>`;
+  $("qbBody").innerHTML = rows.length ? `<table class="qtab">
+    <thead><tr>
+      ${th("", "")}${th("name", "Quest")}${th("lvl", "Lvl")}${th("", "Classes")}${th("zone", "Zone")}${th("", "Giver")}${th("era", "Era")}${th("held", "Items")}
+    </tr></thead>
+    <tbody>${rows.map(p => qbRow(p, trackedSet.has(p.q.t), QEXPANDED.has(p.q.t))).join("")}</tbody>
+  </table>` : `<p class="empty">Nothing matches those filters.</p>`;
+  retip();
+}
+
+function renderQuests() { renderTurnins(); renderQuestBrowser(); }
 
 /* ── parser tab: the site's /log-parser page, embedded whole ──────────────
    The iframe loads the vendored page over eqlt:// on first open; we post the
@@ -906,14 +995,14 @@ async function main() {
   $("setWitnessed").checked = s.witnessed;
 
   renderStatus(); renderTracker(); renderFeed(); renderData();
-  populateZoneSel(); renderZoneTab(); renderQuests(); initTip();
+  populateZoneSel(); renderZoneTab(); populateQuestFilters(); renderQuests(); initTip();
 
   window.companion.onBootstrap(onBootstrap);
   window.companion.onLines(onLines);
   window.companion.onLogStatus(st => { LOGSTATUS = st; renderStatus(); });
   window.companion.onInvFile(onInvFile);
   window.companion.onInvStatus(onInvStatus);
-  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); renderInv(); renderQuests(); pushZone(); pushQuests(); });
+  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); renderInv(); populateQuestFilters(); renderQuests(); pushZone(); pushQuests(); });
   window.companion.onOverlayState(renderOverlayState);
   window.companion.onUpdate(renderUpdate);
   renderUpdate(await window.companion.getUpdate());
@@ -927,9 +1016,18 @@ async function main() {
   }));
 
   $("onlyQuest").addEventListener("change", renderFeed);
+  $("feedFilter").addEventListener("input", renderFeed);
   $("invQuestOnly").addEventListener("change", renderInv);
-  $("qSearch").addEventListener("input", e => { QUESTS.q = e.target.value; renderQuests(); });
-  $("qReadyOnly").addEventListener("change", e => { QUESTS.readyOnly = e.target.checked; renderQuests(); });
+  $("invSearch").addEventListener("input", renderInv);
+  $("zoneFilter").addEventListener("input", renderZoneTab);
+  $("tiSearch").addEventListener("input", e => { TURNIN.q = e.target.value; renderTurnins(); });
+  $("qReadyOnly").addEventListener("change", e => { TURNIN.readyOnly = e.target.checked; renderTurnins(); });
+  $("qSearch").addEventListener("input", e => { QB.q = e.target.value; renderQuestBrowser(); });
+  $("qbClass").addEventListener("change", e => { QB.cls = e.target.value; renderQuestBrowser(); });
+  $("qbZone").addEventListener("change", e => { QB.zone = e.target.value; renderQuestBrowser(); });
+  $("qbEra").addEventListener("change", e => { QB.era = e.target.value; renderQuestBrowser(); });
+  $("qbLvlMin").addEventListener("input", e => { QB.lvlMin = e.target.value; renderQuestBrowser(); });
+  $("qbLvlMax").addEventListener("input", e => { QB.lvlMax = e.target.value; renderQuestBrowser(); });
   $("trkSearch").addEventListener("input", e => { TRACKER_Q = e.target.value; renderTracker(); });
   $("trkAtlas").addEventListener("click", () => {
     // Land on the player's zone with the atlas sidebar open on KILLS; the
@@ -980,6 +1078,12 @@ async function main() {
   document.addEventListener("click", e => {
     const tk = e.target.closest("[data-track]");
     if (tk) { toggleTrack(tk.dataset.track); return; }
+    const sh = e.target.closest("[data-qsort]");
+    if (sh) {
+      const k = sh.dataset.qsort;
+      if (QB.sort === k) QB.dir = -QB.dir; else { QB.sort = k; QB.dir = 1; }
+      renderQuestBrowser(); return;
+    }
     const mo = e.target.closest("[data-open]");
     if (mo) { FEED_OPEN.add(+mo.dataset.open); renderFeed(); renderInv(); return; }
     const u = e.target.closest("[data-url]");
@@ -987,6 +1091,13 @@ async function main() {
     const w = e.target.closest("[data-wiki]");
     const base = (DATA && DATA.base) || (QDATA && QDATA.base);
     if (w && base) { window.companion.openWiki(base + w.dataset.wiki); return; }
+    // anywhere else on a browser row toggles its detail (links handled above)
+    const qr = e.target.closest("tr.qbr");
+    if (qr) {
+      const t = qr.dataset.qx;
+      QEXPANDED.has(t) ? QEXPANDED.delete(t) : QEXPANDED.add(t);
+      renderQuestBrowser(); return;
+    }
     const zh = e.target.closest("[data-zone]");
     if (zh) { const k = zh.dataset.zone; EXPANDED.has(k) ? EXPANDED.delete(k) : EXPANDED.add(k); renderTracker(); }
   });

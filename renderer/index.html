@@ -18,6 +18,7 @@
 <nav class="tabs">
   <button class="tab on" data-tab="live">Live</button>
   <button class="tab" data-tab="inv">Inventory</button>
+  <button class="tab" data-tab="turnins">Turn-ins</button>
   <button class="tab" data-tab="quests">Quests</button>
   <button class="tab" data-tab="parser">Parser</button>
   <button class="tab" data-tab="zone">Zone</button>
@@ -32,6 +33,7 @@
   <section id="tab-live" class="pane on">
     <div id="liveBanner" class="banner" hidden></div>
     <div class="feedhead">
+      <input id="feedFilter" type="search" placeholder="filter item, mob, quest">
       <label class="chk"><input type="checkbox" id="onlyQuest"> quest items only</label>
       <span id="feedCount" class="dim"></span>
     </div>
@@ -43,6 +45,7 @@
   <section id="tab-inv" class="pane">
     <p class="dim">Type <code>/out inventory</code> in game; the dump loads here within a few seconds.</p>
     <div class="feedhead">
+      <input id="invSearch" type="search" placeholder="filter item or slot">
       <label class="chk"><input type="checkbox" id="invQuestOnly"> quest items only</label>
       <span id="invMeta" class="dim"></span>
     </div>
@@ -50,16 +53,34 @@
     <p id="invEmpty" class="empty">No inventory dump found beside the log folder yet.</p>
   </section>
 
-  <section id="tab-quests" class="pane">
-    <div id="questsBanner" class="banner" hidden></div>
+  <section id="tab-turnins" class="pane">
+    <div id="turninsBanner" class="banner" hidden></div>
     <div class="feedhead">
-      <input id="qSearch" type="search" placeholder="search all quests — name, NPC, zone, item">
+      <input id="tiSearch" type="search" placeholder="filter these quests">
       <label class="chk"><input type="checkbox" id="qReadyOnly"> ready only</label>
-      <span id="qMeta" class="dim"></span>
+      <span id="tiMeta" class="dim"></span>
     </div>
-    <div id="questsBody"></div>
-    <p id="questsEmpty" class="empty">Type <code>/out inventory</code> in game — quests you hold items for show up here.<br>
-    <span class="dim">Or search above and track a quest to follow its items here and on the overlay.</span></p>
+    <div id="turninsBody"></div>
+    <p id="turninsEmpty" class="empty">Type <code>/out inventory</code> in game — quests you hold items for show up here, sorted by how close to done they are.</p>
+  </section>
+
+  <section id="tab-quests" class="pane pane--wide">
+    <div id="questsBanner" class="banner" hidden></div>
+    <div class="feedhead qbhead">
+      <input id="qSearch" type="search" placeholder="search name, NPC, zone, item, reward">
+      <select id="qbClass"></select>
+      <select id="qbZone"></select>
+      <select id="qbEra">
+        <option value="">any era</option>
+        <option value="in">in era</option>
+        <option value="out">out of era</option>
+      </select>
+      <input id="qbLvlMin" type="number" min="1" max="60" placeholder="lvl ≥">
+      <input id="qbLvlMax" type="number" min="1" max="60" placeholder="lvl ≤">
+      <span id="qbMeta" class="dim"></span>
+    </div>
+    <div id="qbTracked"></div>
+    <div id="qbBody"></div>
   </section>
 
   <section id="tab-parser" class="pane">
@@ -72,6 +93,7 @@
   <section id="tab-zone" class="pane">
     <div class="feedhead">
       <select id="zoneSel"></select>
+      <input id="zoneFilter" type="search" placeholder="filter mob or item">
       <label class="chk"><input type="checkbox" id="zoneFollow" checked> follow my character</label>
       <span id="zoneMeta" class="dim"></span>
     </div>

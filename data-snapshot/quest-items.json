@@ -299,7 +299,7 @@
     "c"
    ]
   ],
-  "ancient crocodile": [
+  "ancient croc": [
    [
     656,
     "r"
@@ -1351,6 +1351,10 @@
   ],
   "bandages": [
    [
+    8,
+    "c"
+   ],
+   [
     20,
     "c"
    ],
@@ -1360,6 +1364,14 @@
    ],
    [
     155,
+    "c"
+   ],
+   [
+    382,
+    "c"
+   ],
+   [
+    384,
     "c"
    ],
    [
@@ -2035,16 +2047,24 @@
   ],
   "black burrow stout": [
    [
+    54,
+    "c"
+   ],
+   [
     56,
     "r"
    ],
    [
     273,
-    "c"
+    "r"
    ],
    [
     501,
     "r"
+   ],
+   [
+    730,
+    "c"
    ]
   ],
   "black cod card": [
@@ -2407,12 +2427,6 @@
     "c"
    ]
   ],
-  "blackburrow stout": [
-   [
-    273,
-    "r"
-   ]
-  ],
   "blackburrow swig": [
    [
     627,
@@ -2425,7 +2439,7 @@
     "c"
    ]
   ],
-  "blackened iron armor": [
+  "blackened iron armor set": [
    [
     818,
     "r"
@@ -2493,12 +2507,6 @@
     "c"
    ]
   ],
-  "blacksmithing": [
-   [
-    675,
-    "r"
-   ]
-  ],
   "bladder of acidic ooze": [
    [
     98,
@@ -2563,6 +2571,20 @@
    [
     799,
     "c"
+   ]
+  ],
+  "bladed weapons": [
+   [
+    57,
+    "r"
+   ],
+   [
+    197,
+    "r"
+   ],
+   [
+    538,
+    "r"
    ]
   ],
   "blank rune": [
@@ -2968,6 +2990,12 @@
   "bloody mantle": [
    [
     17,
+    "c"
+   ]
+  ],
+  "bloody protector of zeks head": [
+   [
+    370,
     "c"
    ]
   ],
@@ -3767,6 +3795,12 @@
     "c"
    ]
   ],
+  "bread shipment": [
+   [
+    737,
+    "r"
+   ]
+  ],
   "breastplate of distraction": [
    [
     171,
@@ -3951,6 +3985,12 @@
     "r"
    ]
   ],
+  "bronze collar": [
+   [
+    425,
+    "r"
+   ]
+  ],
   "bronze dagger": [
    [
     683,
@@ -3994,6 +4034,12 @@
   "bronze long sword": [
    [
     134,
+    "r"
+   ]
+  ],
+  "bronze mask": [
+   [
+    425,
     "r"
    ]
   ],
@@ -4622,6 +4668,10 @@
    ]
   ],
   "champions crown": [
+   [
+    164,
+    "c"
+   ],
    [
     574,
     "c"
@@ -5544,6 +5594,12 @@
    ],
    [
     655,
+    "c"
+   ]
+  ],
+  "copper key": [
+   [
+    497,
     "c"
    ]
   ],
@@ -7613,6 +7669,12 @@
     "c"
    ]
   ],
+  "dark boned bracelet": [
+   [
+    433,
+    "c"
+   ]
+  ],
   "dark cauldron": [
    [
     11,
@@ -8559,6 +8621,12 @@
     "c"
    ]
   ],
+  "dragon-hide mantle": [
+   [
+    590,
+    "c"
+   ]
+  ],
   "dragonbane herb": [
    [
     575,
@@ -8881,13 +8949,37 @@
     "c"
    ]
   ],
+  "dusty broken shield": [
+   [
+    733,
+    "c"
+   ]
+  ],
+  "dusty broken sword": [
+   [
+    733,
+    "c"
+   ]
+  ],
   "dusty kobold scroll": [
    [
     775,
     "c"
    ]
   ],
+  "dusty old backbone": [
+   [
+    733,
+    "c"
+   ]
+  ],
   "dusty old finger bones": [
+   [
+    733,
+    "c"
+   ]
+  ],
+  "dusty old jawbone": [
    [
     733,
     "c"
@@ -9743,6 +9835,12 @@
     "c"
    ]
   ],
+  "encrypted document": [
+   [
+    581,
+    "c"
+   ]
+  ],
   "endure disease": [
    [
     472,
@@ -9962,6 +10060,10 @@
   "estate of unrest": [
    [
     361,
+    "r"
+   ],
+   [
+    656,
     "r"
    ]
   ],
@@ -12543,6 +12645,16 @@
     "c"
    ]
   ],
+  "giant blood sac": [
+   [
+    158,
+    "c"
+   ],
+   [
+    160,
+    "c"
+   ]
+  ],
   "giant fire beetle leg": [
    [
     86,
@@ -12747,7 +12859,7 @@
     "r"
    ],
    [
-    446,
+    574,
     "c"
    ]
   ],
@@ -13020,6 +13132,10 @@
    ]
   ],
   "glowing skull": [
+   [
+    149,
+    "c"
+   ],
    [
     490,
     "r"
@@ -14481,16 +14597,6 @@
     "r"
    ]
   ],
-  "helm of the tracker": [
-   [
-    370,
-    "r"
-   ],
-   [
-    574,
-    "c"
-   ]
-  ],
   "helm of twilight": [
    [
     29,
@@ -14503,6 +14609,12 @@
    [
     574,
     "c"
+   ]
+  ],
+  "helm_of_the_tracker": [
+   [
+    370,
+    "r"
    ]
   ],
   "helssens prismatic trinket": [
@@ -15288,6 +15400,12 @@
    ],
    [
     398,
+    "c"
+   ]
+  ],
+  "illegible note": [
+   [
+    416,
     "c"
    ]
   ],
@@ -16125,12 +16243,6 @@
     "c"
    ]
   ],
-  "jarlen meadowgreen": [
-   [
-    737,
-    "r"
-   ]
-  ],
   "jasper": [
    [
     485,
@@ -16534,6 +16646,12 @@
    ],
    [
     424,
+    "c"
+   ]
+  ],
+  "king cod card": [
+   [
+    171,
     "c"
    ]
   ],
@@ -16949,36 +17067,6 @@
     "c"
    ]
   ],
-  "large bronze bracers": [
-   [
-    425,
-    "r"
-   ]
-  ],
-  "large bronze collar": [
-   [
-    425,
-    "r"
-   ]
-  ],
-  "large bronze greaves": [
-   [
-    425,
-    "r"
-   ]
-  ],
-  "large bronze mask": [
-   [
-    425,
-    "r"
-   ]
-  ],
-  "large bronze pauldron": [
-   [
-    425,
-    "r"
-   ]
-  ],
   "large cloth cape": [
    [
     425,
@@ -17093,24 +17181,6 @@
    [
     107,
     "c"
-   ]
-  ],
-  "large raw-hide armor set": [
-   [
-    372,
-    "r"
-   ]
-  ],
-  "large ringmail cape": [
-   [
-    425,
-    "r"
-   ]
-  ],
-  "large ringmail coif": [
-   [
-    425,
-    "r"
    ]
   ],
   "large scorpion pincer": [
@@ -18203,6 +18273,12 @@
     "c"
    ]
   ],
+  "mancatcher crown": [
+   [
+    868,
+    "c"
+   ]
+  ],
   "mandala sketch": [
    [
     799,
@@ -18855,7 +18931,7 @@
     "c"
    ]
   ],
-  "mistmoore": [
+  "mistmoore castle": [
    [
     656,
     "r"
@@ -19447,6 +19523,12 @@
     "c"
    ]
   ],
+  "nickel key": [
+   [
+    497,
+    "c"
+   ]
+  ],
   "nightfall giants head": [
    [
     11,
@@ -19493,15 +19575,15 @@
     "c"
    ]
   ],
-  "north karana": [
+  "northern plains of karana": [
    [
-    737,
+    37,
     "r"
    ]
   ],
-  "northern karana": [
+  "northern_plains_of_karana": [
    [
-    37,
+    737,
     "r"
    ]
   ],
@@ -20199,6 +20281,12 @@
     "c"
    ]
   ],
+  "page of a tome": [
+   [
+    149,
+    "c"
+   ]
+  ],
   "painbringer": [
    [
     623,
@@ -20293,7 +20381,7 @@
     "r"
    ]
   ],
-  "patchwork armor": [
+  "patchwork armor set": [
    [
     113,
     "r"
@@ -22053,6 +22141,12 @@
     "c"
    ]
   ],
+  "raw pike head": [
+   [
+    868,
+    "c"
+   ]
+  ],
   "raw short sword 4": [
    [
     873,
@@ -22060,6 +22154,10 @@
    ]
   ],
   "raw-hide armor set": [
+   [
+    372,
+    "r"
+   ],
    [
     426,
     "r"
@@ -22076,6 +22174,10 @@
    ]
   ],
   "raw-hide leggings": [
+   [
+    107,
+    "c"
+   ],
    [
     108,
     "r"
@@ -22651,7 +22753,7 @@
     "c"
    ]
   ],
-  "ringmail armor": [
+  "ringmail armor set": [
    [
     427,
     "r"
@@ -22662,6 +22764,10 @@
    ]
   ],
   "ringmail cape": [
+   [
+    425,
+    "r"
+   ],
    [
     427,
     "c"
@@ -22675,6 +22781,10 @@
   ],
   "ringmail coif": [
    [
+    425,
+    "r"
+   ],
+   [
     427,
     "c"
    ]
@@ -22685,7 +22795,19 @@
     "r"
    ]
   ],
+  "ringmail mantle": [
+   [
+    425,
+    "r"
+   ]
+  ],
   "ringmail neckguard": [
+   [
+    425,
+    "r"
+   ]
+  ],
+  "ringmail pants": [
    [
     425,
     "r"
@@ -24865,6 +24987,10 @@
   ],
   "sealed note": [
    [
+    218,
+    "c"
+   ],
+   [
     385,
     "c"
    ],
@@ -24874,6 +25000,10 @@
    ],
    [
     645,
+    "c"
+   ],
+   [
+    868,
     "c"
    ],
    [
@@ -26001,6 +26131,12 @@
     "c"
    ]
   ],
+  "singed scroll": [
+   [
+    115,
+    "c"
+   ]
+  ],
   "singing short sword": [
    [
     24,
@@ -26057,6 +26193,18 @@
    [
     431,
     "c"
+   ]
+  ],
+  "skill blacksmithing": [
+   [
+    675,
+    "r"
+   ]
+  ],
+  "skill tailoring": [
+   [
+    656,
+    "r"
    ]
   ],
   "skin of the garou": [
@@ -26525,36 +26673,6 @@
     "r"
    ]
   ],
-  "small ringmail cape": [
-   [
-    425,
-    "r"
-   ]
-  ],
-  "small ringmail coat": [
-   [
-    425,
-    "r"
-   ]
-  ],
-  "small ringmail gloves": [
-   [
-    425,
-    "r"
-   ]
-  ],
-  "small ringmail mantle": [
-   [
-    425,
-    "r"
-   ]
-  ],
-  "small ringmail pants": [
-   [
-    425,
-    "r"
-   ]
-  ],
   "small ruby": [
    [
     869,
@@ -26720,6 +26838,12 @@
   "small, folded note": [
    [
     320,
+    "c"
+   ]
+  ],
+  "smashed protector of zeks head": [
+   [
+    370,
     "c"
    ]
   ],
@@ -27033,10 +27157,16 @@
     "r"
    ]
   ],
-  "south karana": [
+  "southern karana": [
    [
     737,
     "r"
+   ]
+  ],
+  "sparkle purse": [
+   [
+    627,
+    "c"
    ]
   ],
   "sparring arm guards": [
@@ -27307,6 +27437,10 @@
   ],
   "spider venom sac": [
    [
+    251,
+    "c"
+   ],
+   [
     902,
     "c"
    ]
@@ -27456,6 +27590,12 @@
   "spirit wracked urn": [
    [
     700,
+    "c"
+   ]
+  ],
+  "spiritualists ring": [
+   [
+    665,
     "c"
    ]
   ],
@@ -28365,12 +28505,6 @@
     "r"
    ]
   ],
-  "tailoring": [
-   [
-    656,
-    "r"
-   ]
-  ],
   "tainted avalanche ale": [
    [
     130,
@@ -28539,20 +28673,6 @@
     "r"
    ]
   ],
-  "tarnished scimitar": [
-   [
-    57,
-    "r"
-   ],
-   [
-    197,
-    "r"
-   ],
-   [
-    538,
-    "r"
-   ]
-  ],
   "tarnished shortened spear": [
    [
     197,
@@ -28601,6 +28721,14 @@
    [
     786,
     "c"
+   ],
+   [
+    792,
+    "c"
+   ],
+   [
+    821,
+    "c"
    ]
   ],
   "tattered cloth sandal": [
@@ -28622,6 +28750,10 @@
    ]
   ],
   "tattered note": [
+   [
+    186,
+    "c"
+   ],
    [
     232,
     "c"
@@ -30947,12 +31079,6 @@
     "c"
    ]
   ],
-  "unrest": [
-   [
-    656,
-    "r"
-   ]
-  ],
   "unswerving hammer": [
    [
     119,
@@ -31292,6 +31418,12 @@
   "vial of velium vapors": [
    [
     129,
+    "c"
+   ]
+  ],
+  "vile substance": [
+   [
+    849,
     "c"
    ]
   ],
@@ -32623,6 +32755,12 @@
     "c"
    ]
   ],
+  "wraithstone": [
+   [
+    519,
+    "c"
+   ]
+  ],
   "wrath orc wristbands": [
    [
     108,
@@ -32765,6 +32903,12 @@
    [
     496,
     "r"
+   ]
+  ],
+  "yellow whip": [
+   [
+    513,
+    "c"
    ]
   ],
   "ysgaril root": [
@@ -33074,6 +33218,7 @@
     "Rebby's Rat Whiskers",
     "Gnoll Fang",
     "White Wine",
+    "Bandages",
     "Note to Harkin",
     "Note to Janam",
     "Rat Whiskers"
@@ -34024,7 +34169,7 @@
     "Bear-hide Boots",
     "Bear-hide Cape",
     "Bear-hide Jerkin",
-    "Northern Karana"
+    "Northern Plains of Karana"
    ],
    "t": "Bear_Hide_Armor",
    "zone": "Qeynos Hills"
@@ -34412,7 +34557,9 @@
    ],
    "era": null,
    "giver": "Commander Kane",
-   "items": [],
+   "items": [
+    "Black Burrow Stout"
+   ],
    "lvl": null,
    "n": "Blackburrow Stout Delivery",
    "relatedNpcs": [
@@ -34499,7 +34646,7 @@
     "Greater Faydark"
    ],
    "rewards": [
-    "Tarnished Scimitar",
+    "Bladed Weapons",
     "Worn Great Staff"
    ],
    "t": "Bladed_Weapons",
@@ -35861,6 +36008,7 @@
     "Large Patchwork Pants",
     "Large Patchwork Sleeves",
     "Large Patchwork Tunic",
+    "Raw-hide Leggings",
     "Large Tattered Belt",
     "Large Tattered Gloves",
     "Large Tattered Gorget",
@@ -36037,7 +36185,7 @@
     "Erudin"
    ],
    "rewards": [
-    "Patchwork Armor"
+    "Patchwork Armor Set"
    ],
    "t": "Cleanse_the_Ocean",
    "zone": "Erudin"
@@ -36078,6 +36226,7 @@
     "Lord Gimblox's Signet Ring",
     "Message to Natasha",
     "Sceptre of Ixiblat Fer",
+    "A Singed Scroll",
     "Orb of Clear Water",
     "Heart of Zordak Ragefire",
     "Shimmering Pearl"
@@ -36401,7 +36550,7 @@
     "Neriak Foreign Quarter"
    ],
    "rewards": [
-    "Crude Stein",
+    "A Crude Stein",
     "Ogre War Maul",
     "Pearl",
     "Warhammer"
@@ -36601,6 +36750,7 @@
     "Preserved Kromrif Heads",
     "Bottle of Milk",
     "Cup of Flour",
+    "Water Flask",
     "Jug of Sauces",
     "Loaf of Bread",
     "Snake Egg",
@@ -36609,7 +36759,6 @@
     "Tundrabear Sandwich",
     "Saucy Bearmeat",
     "Snow Bunny Stew",
-    "Water Flask",
     "High Quality Firing Sheet",
     "Unfired Pot",
     "Large Block of Clay",
@@ -37268,7 +37417,7 @@
     "Neriak Foreign Quarter"
    ],
    "rewards": [
-    "Crude Stein",
+    "A Crude Stein",
     "Gatorsmash Maul"
    ],
    "t": "Crude_Stein_Quest",
@@ -37282,8 +37431,10 @@
    "giver": "Arch Duke Xog",
    "items": [
     "Sarnak Whelp Head",
+    "A Page of A Tome",
     "Tome Binder",
     "Magically Locked Tome",
+    "A Glowing Skull",
     "Misscribed Gate",
     "Misscribed Lifetap",
     "Scroll in a Bottle",
@@ -37562,6 +37713,7 @@
    "era": "Kunark Era",
    "giver": "Mystic Dovan",
    "items": [
+    "A Giant Blood Sac",
     "Brittle Iksar Skull",
     "Watcher Signal Torch"
    ],
@@ -37633,6 +37785,7 @@
     "Partisan Pack",
     "Goblin Scout Beads",
     "Sabertooth Kitten Canine",
+    "A Giant Blood Sac",
     "Bone Chips",
     "Full Partisan Pack"
    ],
@@ -37768,7 +37921,8 @@
     "Crown of Forbidden Rites",
     "Crown of the Kromzek Kings",
     "Frostreaver's Velium Crown",
-    "Cowl of Mortality"
+    "Cowl of Mortality",
+    "Champion's Crown"
    ],
    "lvl": 1,
    "n": "Custom Plate Helms - Thurgadin",
@@ -37988,6 +38142,7 @@
    "era": "Velious Era",
    "giver": "Ferjeneror",
    "items": [
+    "A King Cod Card",
     "Black Cod Card",
     "Blue Cod Card",
     "Red Cod Card",
@@ -38115,7 +38270,7 @@
     "Temple of Droga"
    ],
    "rewards": [
-    "Di'zok Signet of Service"
+    "Di'Zok Signet of Service"
    ],
    "t": "Di'Zok_Signet_of_Service_Quest",
    "zone": "Chardok"
@@ -38139,7 +38294,7 @@
     "Western Wastes"
    ],
    "rewards": [
-    "Dire Wolf-hide Cloak"
+    "Dire Wolf-Hide Cloak"
    ],
    "t": "Dire_Wolf-Hide_Cloak_Quest",
    "zone": "Kael Drakkel"
@@ -38428,6 +38583,7 @@
    "era": null,
    "giver": "Wolten Grafe",
    "items": [
+    "A Tattered Note",
     "A Sealed Letter",
     "Order of Thunder",
     "Sealed Letter"
@@ -38875,7 +39031,7 @@
     "Tarnished Mace",
     "Tarnished Morning Star",
     "Tarnished Rapier",
-    "Tarnished Scimitar",
+    "Bladed Weapons",
     "Tarnished Shortened Spear",
     "Tarnished Spear",
     "Tarnished Two Handed Battle Axe",
@@ -39485,6 +39641,7 @@
    "era": null,
    "giver": "Beno Targnarle",
    "items": [
+    "Sealed Note",
     "Cracked Emerald",
     "Froglok Leg",
     "H.K. 106",
@@ -40374,6 +40531,7 @@
    "era": null,
    "giver": "Gindlin Toxfodder",
    "items": [
+    "A Spider Venom Sac",
     "Crows Special Brew"
    ],
    "lvl": 8,
@@ -40926,9 +41084,7 @@
    ],
    "era": "Classic Era",
    "giver": "Guard Shilster",
-   "items": [
-    "Black Burrow Stout"
-   ],
+   "items": [],
    "lvl": 1,
    "n": "Guard Shilster's Stout",
    "relatedNpcs": [
@@ -40938,7 +41094,7 @@
     "None"
    ],
    "rewards": [
-    "Blackburrow Stout"
+    "Black Burrow Stout"
    ],
    "t": "Guard_Shilster's_Stout",
    "zone": "Northern Karana"
@@ -42905,11 +43061,11 @@
     "Shadowed Scythe",
     "a shadowed man",
     "A note",
-    "Fungus Eye",
+    "A fungus eye",
     "Mortuary Fungus",
     "The Estate of Unrest",
-    "Shadowed Knife",
-    "A goblin headmaster",
+    "A shadowed knife",
+    "A Goblin Headmaster",
     "Ocean of Tears",
     "an island goblin headhunter",
     "Fire Opal"
@@ -43099,7 +43255,9 @@
    "giver": "Tunarean Earthmelder",
    "items": [
     "Frostgiant Overseers Head",
-    "Kallis' Head"
+    "Kallis' Head",
+    "A smashed protector of Zek's Head",
+    "A bloody protector of Zek's Head"
    ],
    "lvl": 46,
    "n": "Helm of the Tracker Quest",
@@ -43114,7 +43272,7 @@
     "The Wakening Land"
    ],
    "rewards": [
-    "Helm of the Tracker"
+    "Helm_of_the_Tracker"
    ],
    "t": "Helm_of_the_Tracker_Quest",
    "zone": "Plane of Growth"
@@ -43158,7 +43316,7 @@
     "Innothule Swamp"
    ],
    "rewards": [
-    "Large Raw-Hide Armor Set",
+    "Raw-Hide Armor Set",
     "Large Tattered Armor Set"
    ],
    "t": "Help_Hergor_Get_Fatter",
@@ -43382,7 +43540,8 @@
    "era": "Classic Era",
    "giver": "Kizzie Mintopp",
    "items": [
-    "Honeycomb"
+    "Honeycomb",
+    "Bandages"
    ],
    "lvl": 1,
    "n": "Honey Jum Quest",
@@ -43431,6 +43590,7 @@
    "giver": "Pazin Punox",
    "items": [
     "Halfling Head",
+    "Bandages",
     "Case of Jumjum Juice"
    ],
    "lvl": 15,
@@ -44313,7 +44473,9 @@
    ],
    "era": "Kunark Era",
    "giver": "Keeper Rott",
-   "items": [],
+   "items": [
+    "An Illegible Note"
+   ],
    "lvl": 18,
    "n": "Keeper Rott's Pages",
    "oe": true,
@@ -44586,19 +44748,16 @@
     "Cloth Pants",
     "Cloth Sleeves",
     "Cloth Veil",
-    "Large Bronze Bracers",
-    "Large Bronze Collar",
-    "Large Bronze Greaves",
-    "Large Bronze Mask",
-    "Large Bronze Pauldron",
+    "Bronze Collar",
+    "Bronze Mask",
     "Large Cloth Cape",
     "Large Cloth Choker",
     "Large Cloth Pants",
     "Large Cloth Shirt",
     "Large Cloth Sleeves",
     "Large Cloth Veil",
-    "Large Ringmail Cape",
-    "Large Ringmail Coif",
+    "Ringmail Cape",
+    "Ringmail Coif",
     "Large Splinted Bronze Cloak",
     "Patch of Shadow",
     "Ringmail Coat",
@@ -44615,11 +44774,8 @@
     "Small Cloth Pants",
     "Small Cloth Veil",
     "Small Ringmail Bracelet",
-    "Small Ringmail Cape",
-    "Small Ringmail Coat",
-    "Small Ringmail Gloves",
-    "Small Ringmail Mantle",
-    "Small Ringmail Pants",
+    "Ringmail Mantle",
+    "Ringmail Pants",
     "Serpentskin Eyepatch"
    ],
    "t": "Knight_Card_Quest",
@@ -44641,7 +44797,7 @@
     "Toxxulia Forest"
    ],
    "rewards": [
-    "Raw-hide Armor Set"
+    "Raw-Hide Armor Set"
    ],
    "t": "Kobold_Killing",
    "zone": "South Qeynos"
@@ -44667,7 +44823,7 @@
     "The Warrens"
    ],
    "rewards": [
-    "Ringmail Armor"
+    "Ringmail Armor Set"
    ],
    "t": "Kobold_Molars_(Evil)",
    "zone": "Paineel"
@@ -44689,7 +44845,7 @@
     "The Warrens"
    ],
    "rewards": [
-    "Ringmail Armor"
+    "Ringmail Armor Set"
    ],
    "t": "Kobold_Molars_(Good)",
    "zone": "Erudin"
@@ -44815,6 +44971,7 @@
     "Rune of the One Eye",
     "Lambent Sapphire",
     "Sapphire",
+    "Dark Boned Bracelet",
     "Griffenne Charm",
     "Lambent Fire Opal",
     "Fire Opal",
@@ -45171,8 +45328,7 @@
    "era": "Velious Era",
    "giver": "a storm giant architect",
    "items": [
-    "Block of Living Granite",
-    "A Gigantic Kromzek Pick"
+    "Block of Living Granite"
    ],
    "lvl": 45,
    "n": "Living Granite",
@@ -45186,7 +45342,7 @@
     "None"
    ],
    "rewards": [
-    "Gigantic Kromzek Pick"
+    "A Gigantic Kromzek Pick"
    ],
    "t": "Living_Granite",
    "zone": "The Wakening Land"
@@ -45380,7 +45536,7 @@
     "Mistmoore"
    ],
    "rewards": [
-    "Electrum-bladed Wakizashi"
+    "Electrum-Bladed Wakizashi"
    ],
    "t": "Lord_Grimlot's_Love",
    "zone": "Southern Karana"
@@ -46669,6 +46825,8 @@
     "Unholy Coldstone",
     "Carnelian",
     "Part of a Large Key",
+    "A Nickel Key",
+    "A Copper Key",
     "Coppernickel Key",
     "A Bronze Key",
     "Trog Brew"
@@ -47183,6 +47341,7 @@
     "Jewel of Ganak",
     "Shiny Emerald",
     "Forge Hammer of Dalnir",
+    "A Yellow Whip",
     "Foot of Candlestick"
    ],
    "lvl": 4,
@@ -47399,6 +47558,7 @@
     "Iced Bone Chips",
     "Star Rose Quartz",
     "Eye of Fright",
+    "Wraithstone",
     "Pearl"
    ],
    "lvl": 46,
@@ -47928,7 +48088,7 @@
     "Rusty Spear",
     "Rusty Two Handed Sword",
     "Tarnished Bastard Sword",
-    "Tarnished Scimitar"
+    "Bladed Weapons"
    ],
    "t": "Orc_Hatchets",
    "zone": "Kelethin"
@@ -49163,6 +49323,7 @@
     "Wurmslayer",
     "Primal Velium Knight's Sword",
     "Priceless Velium Knight's Sword",
+    "A Gigantic Kromzek Pick",
     "Natures Defender",
     "Fiery Defender",
     "Silent Watch Shield",
@@ -49176,7 +49337,6 @@
     "SoulFire",
     "Cloak of Jaggedpine",
     "Runed Othmir Spear",
-    "Helm of the Tracker",
     "Jaggedpine Crook",
     "Short Sword of Morin",
     "Rain Caller",
@@ -49548,7 +49708,8 @@
     "Embroidered Bag of Bronze Symbols",
     "Odd Cold Iron Necklace",
     "Sealed Parchment",
-    "Hieroglyph Translations"
+    "Hieroglyph Translations",
+    "An encrypted document"
    ],
    "lvl": 10,
    "n": "Quellious Symbol Quests",
@@ -49860,6 +50021,7 @@
     "Fine Velvet Cloak",
     "Earthshaker's Mantle",
     "Gridelin Globe",
+    "Dragon-hide Mantle",
     "Spiroc Earth totem",
     "Thunderforged Earring",
     "Djinni Statuette",
@@ -50964,6 +51126,7 @@
    "items": [
     "Sealed Note",
     "Clockwork Oil Stout",
+    "A 'Sparkle' Purse",
     "Underfoot Triple Bock",
     "Tunare's Finest",
     "Blood Spirit",
@@ -51915,30 +52078,30 @@
    ],
    "rewards": [
     "Scepter",
-    "Mistmoore",
+    "Mistmoore Castle",
     "Solusek's Flower",
     "Ssynthi",
-    "Skeletal Toe",
+    "A skeletal toe",
     "A Giant Skeleton",
     "Rathe Mountains",
     "Eye of Shadow",
     "A shadowed man",
     "Shadow Silk",
-    "Tailoring",
+    "Skill Tailoring",
     "Gather Shadows",
     "Silk Swatch",
     "Shadow Wolf Pelt",
     "Lower Guk",
-    "Skeletal Finger",
+    "A skeletal finger",
     "Hand of Shadow",
     "Inky Shadow Silk",
     "A Werebat Wing",
     "A werebat",
-    "Unrest",
+    "The Estate of Unrest",
     "Globe of Shadow",
-    "A froglok nokta shaman",
+    "A Froglok Nokta Shaman",
     "Upper Guk",
-    "Ancient Crocodile",
+    "An Ancient Croc",
     "Mask of Shadow",
     "Large Shadow Silk",
     "ShadowBound Boots",
@@ -52290,6 +52453,7 @@
     "Vermilion Sky Ring",
     "Emerald Spiroc Feather",
     "Bixie Essence",
+    "Spiritualist`s Ring",
     "Garduk",
     "Thickened Nectar",
     "Fire Sky Ruby",
@@ -52615,7 +52779,7 @@
    ],
    "rewards": [
     "Shestar's Scaled Coif",
-    "blacksmithing"
+    "Skill Blacksmithing"
    ],
    "t": "Shestar's_Scaled_Coif_Quest",
    "zone": "East Cabilis"
@@ -54204,6 +54368,7 @@
     "Bayle List I",
     "Bayle List II",
     "Bayle List III",
+    "Black Burrow Stout",
     "Regurgitonic"
    ],
    "lvl": 25,
@@ -54284,6 +54449,11 @@
    "items": [
     "Dwarven Ale",
     "Dusty Old Skull",
+    "Dusty Old Leg Bone",
+    "Dusty Old Backbone",
+    "Dusty Old Jawbone",
+    "Dusty Broken Sword",
+    "Dusty Broken Shield",
     "Dusty Old Finger Bones",
     "Empty Gem Bag",
     "Diamond",
@@ -54293,8 +54463,7 @@
     "Sapphire",
     "Fire Opal",
     "Enchanted Platinum Bar",
-    "Revenant Ash",
-    "Dusty Old Leg Bone"
+    "Revenant Ash"
    ],
    "lvl": 49,
    "n": "The Bones of Darak Lightforge",
@@ -54389,9 +54558,9 @@
    "rewards": [
     "Druid",
     "Innkeep Morpa",
-    "North Karana",
-    "Jarlen Meadowgreen",
-    "South Karana",
+    "Northern_Plains_of_Karana",
+    "The Bread Shipment",
+    "Southern Karana",
     "The Feerrott",
     "Halfling"
    ],
@@ -55684,11 +55853,11 @@
    "giver": "Gerael Woodone",
    "items": [
     "Flask of Nitrates",
+    "Tattered Cloth Note",
     "Rusty Axe",
     "Human Blood",
     "Rusty Dagger",
-    "Black Wood Chip",
-    "Tattered Cloth Note"
+    "Black Wood Chip"
    ],
    "lvl": 10,
    "n": "The Nitrates and the Assassin",
@@ -55863,7 +56032,8 @@
    "era": null,
    "giver": "Wolten Grafe",
    "items": [
-    "Human Head"
+    "Human Head",
+    "Tattered Cloth Note"
    ],
    "lvl": 5,
    "n": "The Rat King",
@@ -56681,7 +56851,7 @@
     "Highpass Hold"
    ],
    "rewards": [
-    "Blackened Iron Armor"
+    "Blackened Iron Armor Set"
    ],
    "t": "The_Waylaid_Courier",
    "zone": "Paineel"
@@ -56736,6 +56906,7 @@
    "giver": "Loveal S`Nez",
    "items": [
     "Guise of the Deceiver",
+    "Tattered Cloth Note",
     "Mallet Stem",
     "Mallet Head",
     "Mallet Hilt"
@@ -57559,6 +57730,7 @@
     "Heavy Locked Chest",
     "Thick Glass Jar",
     "Green river sludge",
+    "A Vile Substance",
     "Putrid substance",
     "Reagent pouch",
     "Sealed Jar",
@@ -58163,6 +58335,7 @@
     "Goblin Hunter Javelin",
     "Froglok Bounder Javelin",
     "Footman Head Plans",
+    "A Raw Pike Head",
     "Forging Hammer",
     "Iron Rod",
     "Petrified Redwood",
@@ -58174,6 +58347,7 @@
     "A Ruby",
     "Soldier Head Plans",
     "Gold Nugget",
+    "Sealed Note",
     "Froglok Head",
     "Trooper Head Plans",
     "Radiant Meteorite",
@@ -58181,6 +58355,7 @@
     "Goblin Warlord Warbeads",
     "Krup Warrior Guard",
     "Legionnaire Crown Plans",
+    "A Mancatcher Crown",
     "Steel Rod",
     "Peridot",
     "Legionnaire's Mancatcher Crown",
@@ -58855,7 +59030,7 @@
     "Abscond",
     "Tears of Solusek",
     "Thunderbold",
-    "Tishan's Discord"
+    "Tishan`s Discord"
    ],
    "t": "Wizard_Spells_(Evil)",
    "zone": "The Overthere"
@@ -58879,7 +59054,7 @@
     "Abscond",
     "Tears of Solusek",
     "Thunderbold",
-    "Tishan's Discord"
+    "Tishan`s Discord"
    ],
    "t": "Wizard_Spells_(Good)",
    "zone": "Firiona Vie"
@@ -59203,6 +59378,7 @@
    "era": "Classic Era",
    "giver": "Kalatrina Plossen",
    "items": [
+    "Sealed Note",
     "Bog Juice",
     "Edible Goo",
     "Drom's Champagne",
@@ -59220,8 +59396,7 @@
     "Water Flask",
     "Fire Beetle Eye",
     "Rat Ears",
-    "Fiery Avenger",
-    "Sealed Note"
+    "Fiery Avenger"
    ],
    "lvl": 1,
    "n": "Zimel's Blades (SoulFire)",
