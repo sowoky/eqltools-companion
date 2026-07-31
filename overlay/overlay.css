@@ -35,30 +35,52 @@ body {
 #btnPin:hover { border-color: #e7b94e; color: #e7b94e; }
 body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 
-/* filter row — same prefs as Settings, reachable without leaving the game */
+/* view tabs — Tracked | Loot */
+#otabs {
+  display: flex; gap: 2px; padding: 0 6px;
+  border-bottom: 1px solid rgba(201, 149, 42, .3);
+  background: rgba(23, 18, 39, .55);
+}
+#otabs button {
+  background: none; border: none; border-bottom: 2px solid transparent;
+  color: #8d84a8; font: 10.5px "Segoe UI", system-ui, sans-serif;
+  padding: 2px 8px 1px; cursor: pointer;
+}
+#otabs button:hover { color: #ece8f7; }
+#otabs button.on { color: #e7b94e; border-bottom-color: #c9952a; }
+
+/* filter row (Loot view) — same prefs as Settings, reachable in game */
 #filters {
   display: flex; gap: 10px; padding: 1px 7px 2px;
   border-bottom: 1px solid rgba(44, 37, 69, .6);
   color: #8d84a8; font-size: 10.5px;
 }
+#filters[hidden] { display: none; }
 #filters label { display: inline-flex; align-items: center; gap: 3px; cursor: pointer; }
 #filters label:hover { color: #ccc4de; }
 #filters input { width: 10px; height: 10px; accent-color: #c9952a; margin: 0; }
 
-/* tracked quests — pinned above the feed; scrolls past 40% of the panel */
-#quests {
-  list-style: none; padding: 3px 7px;
-  border-bottom: 1px solid rgba(201, 149, 42, .3);
-  max-height: 40%; overflow-y: auto;
-}
+/* Tracked view — the whole panel: quest header, then every component with a
+   held mark and the missing pieces' mob · zone sources */
+#quests { list-style: none; padding: 3px 7px; overflow-y: auto; flex: 1; }
 #quests[hidden] { display: none; }
-.tq { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; padding: 1px 0; }
-.tq__n { color: #f6dfa0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tq__n[data-url] { cursor: pointer; }
-.tq__n[data-url]:hover { text-decoration: underline; }
-.tq__c { margin-left: auto; font-weight: 600; color: #ccc4de; }
+.tq-none { color: #8d84a8; padding: 4px 0; }
+.tq { padding: 2px 0 4px; border-bottom: 1px solid rgba(44, 37, 69, .45); }
+.tq:last-child { border-bottom: none; }
+.tq > .tq__n { color: #f6dfa0; font-weight: 600; }
+.tq .oe { margin-left: 5px; }
+.tq__c { float: right; font-weight: 600; color: #ccc4de; }
 .tq.is-done .tq__c { color: #e7b94e; }
-.tq__miss { flex-basis: 100%; padding-left: 8px; color: #8d84a8; font-size: 10.5px; }
+.tqc { list-style: none; padding: 1px 0 0 4px; }
+.tqc li { padding: 0; color: #ccc4de; }
+.tqc li.is-have { color: #8d84a8; }
+.tqc li.is-have .tqc__n { text-decoration: line-through; }
+.tqc__tick { display: inline-block; width: 11px; color: #e7b94e; }
+.tqc__src { display: block; padding-left: 15px; color: #8d84a8; font-size: 10.5px; }
+.tqc__m { color: #b6aecb; }
+.tqc__z { color: #9ccc9c; }
+#quests [data-url] { cursor: pointer; }
+#quests [data-url]:hover { text-decoration: underline; color: #f6dfa0; }
 
 /* out-of-era marker — dim tag, same wording as the main window */
 .oe {

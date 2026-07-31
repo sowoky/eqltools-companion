@@ -46,7 +46,7 @@ function loadSettings() {
   SETTINGS.overlay = {
     opacity: 0.92, clickThrough: false, shown: false, bounds: null,
     // display prefs, all renderer-facing (Kyle, 2026-07-31: "resizable/customizable")
-    fontScale: 1, showKills: true, questOnly: false, showQuests: true,
+    fontScale: 1, showKills: true, questOnly: false, view: "loot",
     ...SETTINGS.overlay,
   };
   if (!SETTINGS.logDir && process.platform === "win32" && fs.existsSync(WIN_LOG_DIR))
@@ -127,7 +127,7 @@ function sendOverlayInit() {
   const o = SETTINGS.overlay;
   overlayWin.webContents.send("overlay:init", {
     opacity: o.opacity, clickThrough: o.clickThrough,
-    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, showQuests: o.showQuests },
+    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, view: o.view },
     feed: FEED_RING.slice(-50),
     zone: LAST_ZONE,
     quests: LAST_QUESTS,
@@ -155,7 +155,7 @@ function notifyOverlayState() {
   if (mainWin) mainWin.webContents.send("overlay:state", {
     shown: !!(overlayWin && overlayWin.isVisible()),
     clickThrough: o.clickThrough, opacity: o.opacity,
-    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, showQuests: o.showQuests },
+    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, view: o.view },
   });
 }
 
@@ -494,7 +494,7 @@ ipcMain.handle("app:init", () => {
     settings: { logDir: SETTINGS.logDir || null },
     overlay: {
       shown: !!(overlayWin && overlayWin.isVisible()), clickThrough: SETTINGS.overlay.clickThrough, opacity: SETTINGS.overlay.opacity,
-      prefs: { fontScale: SETTINGS.overlay.fontScale, showKills: SETTINGS.overlay.showKills, questOnly: SETTINGS.overlay.questOnly, showQuests: SETTINGS.overlay.showQuests },
+      prefs: { fontScale: SETTINGS.overlay.fontScale, showKills: SETTINGS.overlay.showKills, questOnly: SETTINGS.overlay.questOnly, view: SETTINGS.overlay.view },
     },
     datasets: loadDatasets(),
   };
@@ -555,7 +555,7 @@ ipcMain.on("overlay:prefs", (_e, p) => {
   if (p.fontScale !== undefined) o.fontScale = Math.min(1.6, Math.max(0.8, +p.fontScale || 1));
   if (p.showKills !== undefined) o.showKills = !!p.showKills;
   if (p.questOnly !== undefined) o.questOnly = !!p.questOnly;
-  if (p.showQuests !== undefined) o.showQuests = !!p.showQuests;
+  if (p.view === "tracked" || p.view === "loot") o.view = p.view;
   saveSettings(); sendOverlayInit(); notifyOverlayState();
 });
 /* Transparent frameless windows have NO native resize borders on Windows —

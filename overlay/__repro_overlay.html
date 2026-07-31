@@ -24,6 +24,22 @@
   <ul id="feed"></ul>
 </div>
 <div id="grip" title="Resize"></div>
+
+<script>
+window.__capturedFeedQuestsCb = null;
+window.companion = {
+  onFeedQuests: (fn) => { window.__capturedFeedQuestsCb = fn; },
+  onOverlayInit: (fn) => { window.__initCb = fn; },
+  onOverlayMode: () => {},
+  onFeedEvent: () => {},
+  onFeedZone: () => {},
+  openWiki: () => {},
+  overlayHotspot: () => {},
+  resizeOverlay: () => {},
+  setClickThrough: () => {},
+  setOverlayPrefs: () => {},
+};
+</script>
 <script src="overlay.js"></script>
 </body>
 </html>

@@ -16,6 +16,7 @@ let SOURCES = {};     // {name: source-string} for the settings pane
 let NAME2KEY = new Map(), ROSTER = new Map(), NAMEZONES = new Map();
 let QIDX = new Map(); // normName(item) -> [{q: quest row, as: "r"|"c"}]
 let T2Q = new Map();  // quest wiki path (q.t, unique) -> quest row — the tracked-quest key
+let QDROPS = {};      // normName(item) -> [[mob, mobPath, zone, zonePath], ...] lowest level first
 let TDATA = null;     // item-tooltips.json
 let TIDX = new Map(); // normName(item) -> {n, t, ic, sb: [lines]}
 
@@ -23,7 +24,7 @@ function buildIndexes(datasets) {
   const kd = datasets["kills-data.json"], qd = datasets["quest-items.json"];
   SOURCES = { kills: kd.source, quests: qd.source };
   DATA = kd.data; QDATA = qd.data;
-  NAME2KEY = new Map(); ROSTER = new Map(); NAMEZONES = new Map(); QIDX = new Map(); T2Q = new Map();
+  NAME2KEY = new Map(); ROSTER = new Map(); NAMEZONES = new Map(); QIDX = new Map(); T2Q = new Map(); QDROPS = {};
   if (DATA) {
     for (const [key, z] of Object.entries(DATA.zones)) {
       NAME2KEY.set(z.name.toLowerCase(), key);
@@ -42,6 +43,7 @@ function buildIndexes(datasets) {
       QIDX.set(nk, refs.map(([qi, as]) => ({ q: QDATA.quests[qi], as })));
     }
     for (const q of QDATA.quests) T2Q.set(q.t, q);
+    QDROPS = QDATA.drops || {};
   }
   const td = datasets["item-tooltips.json"];
   TDATA = td ? td.data : null;
@@ -618,17 +620,24 @@ function renderQuestsSoon() { // coalesce loot bursts, same reason as the feed
   if (!questsTimer) questsTimer = setTimeout(() => { questsTimer = null; renderQuests(); pushQuests(); }, 500);
 }
 
-/* The overlay's tracked-quest panel: name, count, and what's still missing,
-   resolved here because the overlay has no datasets of its own. */
+/* The overlay's Tracked tab: full component lists with held marks, item wiki
+   links, and each missing piece's mob · zone sources — all resolved here
+   because the overlay has no datasets of its own. */
 function pushQuests() {
   if (!QDATA) return;
   const have = haveMap();
   const base = QDATA.base || (DATA && DATA.base) || "";
+  const itemUrl = n => { const t = lookupItem(TIDX, n); return t && base ? base + t.t : ""; };
   window.companion.sendQuests(TRACKED.map(t => T2Q.get(t)).filter(Boolean).map(q => {
     const p = compsFor(q, have);
-    const miss = p.comps.filter(c => !c.have);
-    return { n: q.n, url: base ? base + q.t : "", got: p.got, need: p.need, done: p.done,
-      oe: !!q.oe, miss: miss.slice(0, 3).map(c => c.n), missMore: Math.max(0, miss.length - 3) };
+    return {
+      n: q.n, url: base ? base + q.t : "", got: p.got, need: p.need, done: p.done, oe: !!q.oe,
+      comps: p.comps.map(c => ({
+        n: c.n, have: c.have, url: itemUrl(c.n),
+        src: c.have ? [] : dropsFor(c.n).slice(0, 2).map(([mn, mt, zn, zt]) =>
+          ({ mn, mu: base ? base + mt : "", zn, zu: zn && base ? base + zt : "" })),
+      })),
+    };
   }));
 }
 
@@ -642,12 +651,23 @@ function questFacts(q, chain) {
     .filter(Boolean).join(" · ");
 }
 
+// where a missing component drops: mob · zone, all wiki links, lowest-level
+// dropper first (the data's order)
+const dropsFor = name => QDROPS[K.normName(name)] ?? QDROPS[K.normName(stripDecor(name))] ?? [];
+function dropLine(name) {
+  const d = dropsFor(name);
+  if (!d.length) return "";
+  const parts = d.map(([mn, mt, zn, zt]) =>
+    `<a class="wk" data-wiki="${esc(mt)}">${esc(mn)}</a>${zn ? `<span class="dim"> · </span><a class="wk" data-wiki="${esc(zt)}">${esc(zn)}</a>` : ""}`);
+  return `<div class="qsrc dim">${parts.join('<span class="dim">, </span>')}</div>`;
+}
+
 // components + rewards + related pages — shared by the Turn-ins rows, the
-// tracked list, and the browser's expanded rows
+// Tracked tab, and the browser's expanded rows
 function questDetail(p) {
   const { q } = p;
   const comps = p.comps.map(c => `
-    <li class="qc ${c.have ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(c.n)}${c.have > 1 ? ` <span class="dim">×${c.have}</span>` : ""}</li>`).join("");
+    <li class="qc ${c.have ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(c.n)}${c.have > 1 ? ` <span class="dim">×${c.have}</span>` : ""}${c.have ? "" : dropLine(c.n)}</li>`).join("");
   const rew = (q.rewards || []).length
     ? `<div class="qrew">reward: ${q.rewards.slice(0, 10).map(r => `<span data-tt="${esc(r)}">${esc(r)}</span>`).join(", ")}${q.rewards.length > 10 ? ` <span class="dim">+${q.rewards.length - 10} more</span>` : ""}</div>`
     : "";
@@ -798,20 +818,11 @@ function renderQuestBrowser() {
   banner.hidden = !!QDATA;
   if (!QDATA) {
     banner.textContent = "Quest data not loaded yet — refresh from eqltools.com in Settings.";
-    $("qbMeta").textContent = ""; $("qbTracked").innerHTML = ""; $("qbBody").innerHTML = "";
+    $("qbMeta").textContent = ""; $("qbBody").innerHTML = "";
     return;
   }
   const have = haveMap();
   const trackedSet = new Set(TRACKED);
-
-  // tracked stay pinned above the table, unfiltered — explicit intent. Same
-  // compact row shape as the results (click to expand) so the pinned list
-  // never shoves search results below the fold.
-  const tracked = TRACKED.map(t => T2Q.get(t)).filter(Boolean).map(q => compsFor(q, have));
-  $("qbTracked").innerHTML = tracked.length
-    ? `<h3>Tracked (${tracked.length})</h3><table class="qtab"><tbody>${
-        tracked.map(p => qbRow(p, true, QEXPANDED.has(p.q.t))).join("")}</tbody></table>` : "";
-
   const rows = QDATA.quests.filter(qbMatch).map(q => compsFor(q, have));
   const key = QB_SORTS[QB.sort] || QB_SORTS.name;
   rows.sort((a, b) => {
@@ -834,7 +845,28 @@ function renderQuestBrowser() {
   retip();
 }
 
-function renderQuests() { renderTurnins(); renderQuestBrowser(); }
+/* ── Tracked tab — the working list: every tracked quest, full detail ────── */
+function renderTrackedTab() {
+  const banner = $("trackedBanner"), body = $("trackedBody"), empty = $("trackedEmpty");
+  const tab = document.querySelector('[data-tab="tracked"]');
+  if (tab) tab.textContent = TRACKED.length ? `Tracked (${TRACKED.length})` : "Tracked";
+  banner.hidden = !!QDATA;
+  if (!QDATA) {
+    // tracked keys can't resolve without the dataset — "nothing tracked yet"
+    // would be a lie here
+    banner.textContent = "Quest data not loaded yet — refresh from eqltools.com in Settings.";
+    body.innerHTML = ""; empty.hidden = true;
+    return;
+  }
+  const tracked = TRACKED.map(t => T2Q.get(t)).filter(Boolean);
+  empty.hidden = tracked.length > 0;
+  if (!tracked.length) { body.innerHTML = ""; return; }
+  const have = haveMap();
+  body.innerHTML = `<ul class="qlist">${tracked.map(q => questRow(compsFor(q, have), true)).join("")}</ul>`;
+  retip();
+}
+
+function renderQuests() { renderTurnins(); renderTrackedTab(); renderQuestBrowser(); }
 
 /* ── parser tab: the site's /log-parser page, embedded whole ──────────────
    The iframe loads the vendored page over eqlt:// on first open; we post the
@@ -972,7 +1004,6 @@ function renderOverlayState(o) {
     $("setOvScale").value = o.prefs.fontScale;
     $("setOvKills").checked = o.prefs.showKills;
     $("setOvQuestOnly").checked = o.prefs.questOnly;
-    $("setOvQuests").checked = o.prefs.showQuests !== false;
   }
 }
 
@@ -1055,7 +1086,6 @@ async function main() {
   $("setOvScale").addEventListener("input", e => window.companion.setOverlayPrefs({ fontScale: +e.target.value }));
   $("setOvKills").addEventListener("change", e => window.companion.setOverlayPrefs({ showKills: e.target.checked }));
   $("setOvQuestOnly").addEventListener("change", e => window.companion.setOverlayPrefs({ questOnly: e.target.checked }));
-  $("setOvQuests").addEventListener("change", e => window.companion.setOverlayPrefs({ showQuests: e.target.checked }));
   $("btnPickDir").addEventListener("click", async () => { LOGSTATUS.logDir = await window.companion.pickLogDir(); renderStatus(); });
   $("btnRefresh").addEventListener("click", async () => {
     $("btnRefresh").disabled = true;
