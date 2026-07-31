@@ -13,12 +13,14 @@
 "use strict";
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const feedEl = document.getElementById("feed");
+const questsEl = document.getElementById("quests");
 const zoneEl = document.getElementById("zoneLine");
 const pinEl = document.getElementById("btnPin");
 const gripEl = document.getElementById("grip");
 const panelEl = document.getElementById("panel");
 let THROUGH = false;
-let PREFS = { fontScale: 1, showKills: true, questOnly: false, maxRows: 8 };
+let PREFS = { fontScale: 1, showKills: true, questOnly: false, showQuests: true };
+const FEED_CAP = 50; // matches main's relay ring; the window scrolls, not truncates
 
 function wanted(ev) {
   if (ev.kind === "kill") return PREFS.showKills;
@@ -44,9 +46,11 @@ function addEvent(ev) {
     const qty = ev.qty > 1 ? ` ×${ev.qty}` : "";
     if (ev.quests && ev.quests.length) {
       li.className = "quest";
-      const q = ev.quests[0];
+      // an in-era quest outranks out-of-era ones for the single shown slot
+      const q = ev.quests.find(x => !x.oe) || ev.quests[0];
       li.append(itemSpan(ev.item + qty, ev.url, ev.sb, "itm"));
       li.insertAdjacentHTML("beforeend", ` — <span class="qn" data-url="${esc(q.url || "")}">${esc(q.n)}</span>`);
+      if (q.oe) li.insertAdjacentHTML("beforeend", ` <span class="oe">out of era</span>`);
       if (ev.quests.length > 1) li.insertAdjacentHTML("beforeend", ` <span class="dim">+${ev.quests.length - 1}</span>`);
       if (q.rewards && q.rewards.length) {
         const r = document.createElement("span");
@@ -66,8 +70,49 @@ function addEvent(ev) {
     li.innerHTML = `✕ ${esc(ev.n)}`;
   }
   feedEl.prepend(li);
-  while (feedEl.children.length > PREFS.maxRows) feedEl.lastChild.remove();
+  while (feedEl.children.length > FEED_CAP) feedEl.lastChild.remove();
 }
+
+/* The filter row drives the same prefs as Settings; main echoes the change
+   back through overlay:init, which rebuilds the feed under the new filters. */
+const fKills = document.getElementById("fKills");
+const fQuestOnly = document.getElementById("fQuestOnly");
+function renderFilters() { fKills.checked = PREFS.showKills; fQuestOnly.checked = PREFS.questOnly; }
+fKills.addEventListener("change", () => window.companion.setOverlayPrefs({ showKills: fKills.checked }));
+fQuestOnly.addEventListener("change", () => window.companion.setOverlayPrefs({ questOnly: fQuestOnly.checked }));
+
+/* Tracked quests — pre-resolved rows from the main renderer: {n, url, got,
+   need, done, miss, missMore}. The panel sits above the feed and only takes
+   the height it uses. */
+let TRACKED = [];
+function renderQuests() {
+  questsEl.innerHTML = "";
+  const shown = PREFS.showQuests ? TRACKED.slice(0, 10) : [];
+  questsEl.hidden = !shown.length;
+  for (const q of shown) {
+    const li = document.createElement("li");
+    li.className = q.done ? "tq is-done" : "tq";
+    const n = document.createElement("span");
+    n.className = "tq__n"; n.textContent = q.n;
+    if (q.url) n.dataset.url = q.url;
+    const c = document.createElement("span");
+    c.className = "tq__c"; c.textContent = q.done ? `✓ ${q.got}/${q.need}` : `${q.got}/${q.need}`;
+    li.append(n, c);
+    if (q.oe) {
+      const o = document.createElement("span");
+      o.className = "oe"; o.textContent = "out of era";
+      n.after(o);
+    }
+    if (!q.done && q.miss && q.miss.length) {
+      const m = document.createElement("div");
+      m.className = "tq__miss";
+      m.textContent = `need ${q.miss.join(", ")}${q.missMore ? ` +${q.missMore}` : ""}`;
+      li.append(m);
+    }
+    questsEl.append(li);
+  }
+}
+window.companion.onFeedQuests(q => { TRACKED = q || []; renderQuests(); });
 
 function setMode(clickThrough, opacity) {
   THROUGH = !!clickThrough;
@@ -79,13 +124,16 @@ function setMode(clickThrough, opacity) {
     : "Click-through: the game gets the mouse. This button and quest links stay clickable.";
 }
 
-window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone }) => {
+window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests }) => {
   if (prefs) PREFS = { ...PREFS, ...prefs };
   panelEl.style.zoom = PREFS.fontScale;
   setMode(clickThrough, opacity);
+  renderFilters();
   feedEl.innerHTML = "";
   for (const ev of feed || []) addEvent(ev);
   setZone(zone);
+  TRACKED = quests || [];
+  renderQuests();
 });
 window.companion.onOverlayMode(({ clickThrough, opacity }) => setMode(clickThrough, opacity));
 window.companion.onFeedEvent(addEvent);
@@ -124,7 +172,7 @@ document.addEventListener("mouseover", e => {
     tipEl.hidden = false; moveTip(e.clientX, e.clientY);
   } else tipEl.hidden = true;
   if (!THROUGH) return;
-  const hot = e.target.closest ? e.target.closest("[data-url], #btnPin") : null;
+  const hot = e.target.closest ? e.target.closest("[data-url], #btnPin, #filters") : null;
   window.companion.overlayHotspot(!!hot);
 });
 document.addEventListener("mouseout", e => {

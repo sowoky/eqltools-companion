@@ -53,12 +53,13 @@
   <section id="tab-quests" class="pane">
     <div id="questsBanner" class="banner" hidden></div>
     <div class="feedhead">
-      <input id="qSearch" type="search" placeholder="search quest, NPC, zone, item">
+      <input id="qSearch" type="search" placeholder="search all quests — name, NPC, zone, item">
       <label class="chk"><input type="checkbox" id="qReadyOnly"> ready only</label>
       <span id="qMeta" class="dim"></span>
     </div>
     <div id="questsBody"></div>
-    <p id="questsEmpty" class="empty">Type <code>/out inventory</code> in game — quests you hold items for show up here.</p>
+    <p id="questsEmpty" class="empty">Type <code>/out inventory</code> in game — quests you hold items for show up here.<br>
+    <span class="dim">Or search above and track a quest to follow its items here and on the overlay.</span></p>
   </section>
 
   <section id="tab-parser" class="pane">
@@ -99,10 +100,10 @@
       <label class="chk"><input type="checkbox" id="setClickThrough"> click-through (game gets the mouse)</label>
     </p>
     <p class="row"><label class="dim" for="setOpacity">Opacity</label> <input type="range" id="setOpacity" min="0.2" max="1" step="0.05">
-      <label class="dim" for="setOvScale">Text size</label> <input type="range" id="setOvScale" min="0.8" max="1.6" step="0.05">
-      <label class="dim" for="setOvRows">Rows</label> <input type="range" id="setOvRows" min="3" max="20" step="1"> <span id="ovRowsVal" class="dim"></span></p>
+      <label class="dim" for="setOvScale">Text size</label> <input type="range" id="setOvScale" min="0.8" max="1.6" step="0.05"></p>
     <p class="row"><label class="chk"><input type="checkbox" id="setOvKills"> show kills</label>
-      <label class="chk"><input type="checkbox" id="setOvQuestOnly"> quest items only</label></p>
+      <label class="chk"><input type="checkbox" id="setOvQuestOnly"> quest items only</label>
+      <label class="chk"><input type="checkbox" id="setOvQuests"> tracked quests</label></p>
     <p class="dim">Hotkeys anywhere, even with the game focused: <code>Ctrl+Shift+O</code> show/hide · <code>Ctrl+Shift+L</code> click-through.<br>
     The overlay can only sit over the game in <b>windowed or borderless</b> display mode — exclusive fullscreen draws past every other window.</p>
 
@@ -118,6 +119,8 @@
 
     <h2>Updates</h2>
     <p class="dim" id="updStatus">—</p>
+    <p class="row"><button id="btnUpdCheck" class="btn">Check for updates</button>
+      <button id="btnUpdAct" class="btn" hidden></button></p>
     <p class="dim" id="verLine"></p>
   </section>
 </main>

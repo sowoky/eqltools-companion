@@ -65,6 +65,10 @@
    [
     574,
     "c"
+   ],
+   [
+    631,
+    "c"
    ]
   ],
   "adamantite band": [
@@ -913,10 +917,34 @@
     "c"
    ]
   ],
+  "arrow of acknowledgment": [
+   [
+    409,
+    "c"
+   ]
+  ],
+  "arrow of bravery": [
+   [
+    409,
+    "c"
+   ]
+  ],
   "arrow of contagion": [
    [
     526,
     "r"
+   ]
+  ],
+  "arrow of defiance": [
+   [
+    409,
+    "c"
+   ]
+  ],
+  "arrow of fortitude": [
+   [
+    409,
+    "c"
    ]
   ],
   "arrow of frost": [
@@ -925,9 +953,27 @@
     "r"
    ]
   ],
+  "arrow of gallantry": [
+   [
+    409,
+    "c"
+   ]
+  ],
+  "arrow of recognition": [
+   [
+    409,
+    "c"
+   ]
+  ],
   "arydryidriyorn": [
    [
     590,
+    "c"
+   ]
+  ],
+  "asp poison": [
+   [
+    901,
     "c"
    ]
   ],
@@ -1109,6 +1155,12 @@
    [
     903,
     "r"
+   ]
+  ],
+  "backpack pattern": [
+   [
+    225,
+    "c"
    ]
   ],
   "bag for cutthroat rings": [
@@ -1493,6 +1545,10 @@
    [
     21,
     "c"
+   ],
+   [
+    200,
+    "c"
    ]
   ],
   "bangle of the invoker": [
@@ -1524,6 +1580,10 @@
    ]
   ],
   "barbarian head": [
+   [
+    363,
+    "c"
+   ],
    [
     568,
     "c"
@@ -1683,6 +1743,10 @@
     "c"
    ],
    [
+    703,
+    "c"
+   ],
+   [
     852,
     "c"
    ],
@@ -1724,6 +1788,10 @@
    ],
    [
     730,
+    "c"
+   ],
+   [
+    794,
     "c"
    ],
    [
@@ -2033,6 +2101,12 @@
     "c"
    ]
   ],
+  "black headband": [
+   [
+    492,
+    "c"
+   ]
+  ],
   "black heart": [
    [
     148,
@@ -2097,6 +2171,10 @@
    [
     88,
     "r"
+   ],
+   [
+    477,
+    "c"
    ],
    [
     525,
@@ -2505,13 +2583,33 @@
     "c"
    ]
   ],
+  "blank scroll sheets": [
+   [
+    58,
+    "c"
+   ]
+  ],
   "blazing wand": [
    [
     460,
     "c"
    ]
   ],
+  "bleeding brain": [
+   [
+    816,
+    "c"
+   ]
+  ],
   "blessed oil flask": [
+   [
+    59,
+    "c"
+   ],
+   [
+    60,
+    "c"
+   ],
    [
     662,
     "c"
@@ -2637,6 +2735,20 @@
    [
     353,
     "r"
+   ]
+  ],
+  "blood stained note": [
+   [
+    331,
+    "c"
+   ],
+   [
+    334,
+    "c"
+   ],
+   [
+    335,
+    "c"
    ]
   ],
   "blood stained note (klungas blood)": [
@@ -2793,6 +2905,10 @@
    [
     756,
     "c"
+   ],
+   [
+    757,
+    "c"
    ]
   ],
   "bloodsky sapphire": [
@@ -2947,6 +3063,10 @@
     "c"
    ],
    [
+    816,
+    "c"
+   ],
+   [
     902,
     "c"
    ]
@@ -2992,6 +3112,14 @@
    ],
    [
     72,
+    "c"
+   ],
+   [
+    96,
+    "c"
+   ],
+   [
+    97,
     "c"
    ],
    [
@@ -3157,6 +3285,10 @@
    [
     760,
     "c"
+   ],
+   [
+    830,
+    "c"
    ]
   ],
   "book of souls": [
@@ -3185,6 +3317,10 @@
    [
     74,
     "r"
+   ],
+   [
+    830,
+    "c"
    ]
   ],
   "boon of immolation": [
@@ -3233,6 +3369,10 @@
    [
     11,
     "r"
+   ],
+   [
+    105,
+    "c"
    ]
   ],
   "boots of silent striding": [
@@ -3542,6 +3682,12 @@
   "bracers of battle": [
    [
     648,
+    "c"
+   ]
+  ],
+  "bracers of erollisi": [
+   [
+    561,
     "c"
    ]
   ],
@@ -4069,7 +4215,17 @@
     "r"
    ]
   ],
+  "burlap satchel": [
+   [
+    375,
+    "c"
+   ]
+  ],
   "burning embers": [
+   [
+    24,
+    "c"
+   ],
    [
     460,
     "c"
@@ -4585,6 +4741,10 @@
    [
     149,
     "c"
+   ],
+   [
+    747,
+    "c"
    ]
   ],
   "charasis tome copy": [
@@ -4827,7 +4987,19 @@
     "r"
    ],
    [
+    111,
+    "c"
+   ],
+   [
+    194,
+    "c"
+   ],
+   [
     574,
+    "c"
+   ],
+   [
+    620,
     "c"
    ]
   ],
@@ -5361,6 +5533,10 @@
    [
     770,
     "r"
+   ],
+   [
+    789,
+    "c"
    ]
   ],
   "copper coldain insignia ring": [
@@ -5741,6 +5917,10 @@
   ],
   "cowl of mortality": [
    [
+    162,
+    "c"
+   ],
+   [
     163,
     "c"
    ],
@@ -5800,6 +5980,12 @@
   "cracked mirror of self-loathing": [
    [
     149,
+    "c"
+   ]
+  ],
+  "cracked staff": [
+   [
+    397,
     "c"
    ]
   ],
@@ -5905,6 +6091,10 @@
    [
     752,
     "c"
+   ],
+   [
+    753,
+    "c"
    ]
   ],
   "crate of rotten carrots": [
@@ -5973,9 +6163,21 @@
     "r"
    ]
   ],
+  "crested blood wolf harness": [
+   [
+    154,
+    "c"
+   ]
+  ],
   "criers scroll": [
    [
     663,
+    "c"
+   ]
+  ],
+  "crimson ring of desinence": [
+   [
+    665,
     "c"
    ]
   ],
@@ -6052,6 +6254,10 @@
    ]
   ],
   "crown of the kromzek kings": [
+   [
+    162,
+    "c"
+   ],
    [
     163,
     "c"
@@ -6133,6 +6339,12 @@
    [
     149,
     "r"
+   ]
+  ],
+  "crusades of the high scale": [
+   [
+    663,
+    "c"
    ]
   ],
   "crushbone belt": [
@@ -7341,6 +7553,10 @@
     "c"
    ],
    [
+    608,
+    "c"
+   ],
+   [
     654,
     "c"
    ]
@@ -7358,6 +7574,10 @@
    ]
   ],
   "damaged militia helm": [
+   [
+    49,
+    "c"
+   ],
    [
     135,
     "c"
@@ -7629,6 +7849,12 @@
    [
     167,
     "r"
+   ]
+  ],
+  "darkwood aegis": [
+   [
+    117,
+    "c"
    ]
   ],
   "darkwood staff": [
@@ -7913,11 +8139,21 @@
    [
     653,
     "r"
+   ],
+   [
+    746,
+    "c"
    ]
   ],
   "degenerated guk weed": [
    [
     677,
+    "c"
+   ]
+  ],
+  "delius thymes diary pg. 74": [
+   [
+    816,
     "c"
    ]
   ],
@@ -8251,6 +8487,12 @@
     "c"
    ]
   ],
+  "djinni finger ring": [
+   [
+    655,
+    "c"
+   ]
+  ],
   "djinni statuette": [
    [
     590,
@@ -8360,6 +8602,12 @@
    ]
   ],
   "drake fang": [
+   [
+    665,
+    "c"
+   ]
+  ],
+  "drake fang amulet": [
    [
     665,
     "c"
@@ -8653,6 +8901,12 @@
     "c"
    ]
   ],
+  "dusty old leg bone": [
+   [
+    733,
+    "c"
+   ]
+  ],
   "dusty old skull": [
    [
     733,
@@ -8700,6 +8954,10 @@
    ],
    [
     844,
+    "c"
+   ],
+   [
+    845,
     "c"
    ]
   ],
@@ -9007,6 +9265,12 @@
     "c"
    ]
   ],
+  "elder shamans ceremonial bracelet": [
+   [
+    665,
+    "c"
+   ]
+  ],
   "electrum-bladed wakizashi": [
    [
     95,
@@ -9100,6 +9364,10 @@
   "elven wine": [
    [
     82,
+    "c"
+   ],
+   [
+    816,
     "c"
    ],
    [
@@ -9241,6 +9509,14 @@
    [
     722,
     "c"
+   ],
+   [
+    725,
+    "c"
+   ],
+   [
+    726,
+    "c"
    ]
   ],
   "emissary head": [
@@ -9251,11 +9527,27 @@
   ],
   "empty bag": [
    [
+    392,
+    "c"
+   ],
+   [
     393,
     "c"
    ],
    [
+    505,
+    "c"
+   ],
+   [
+    533,
+    "c"
+   ],
+   [
     898,
+    "c"
+   ],
+   [
+    903,
     "c"
    ]
   ],
@@ -9493,6 +9785,12 @@
     "r"
    ]
   ],
+  "engraved ring": [
+   [
+    663,
+    "c"
+   ]
+  ],
   "engulfing darkness": [
    [
     603,
@@ -9593,6 +9891,12 @@
     "c"
    ]
   ],
+  "erudite meat": [
+   [
+    369,
+    "c"
+   ]
+  ],
   "eruds tonic": [
    [
     8,
@@ -9604,6 +9908,10 @@
    ],
    [
     215,
+    "c"
+   ],
+   [
+    679,
     "c"
    ],
    [
@@ -9873,6 +10181,10 @@
    [
     756,
     "c"
+   ],
+   [
+    757,
+    "c"
    ]
   ],
   "faceted hyacinth telesm": [
@@ -10008,6 +10320,14 @@
    ],
    [
     409,
+    "c"
+   ],
+   [
+    577,
+    "c"
+   ],
+   [
+    690,
     "c"
    ],
    [
@@ -10241,6 +10561,14 @@
    [
     760,
     "r"
+   ],
+   [
+    830,
+    "c"
+   ],
+   [
+    902,
+    "c"
    ]
   ],
   "fiery defender": [
@@ -10260,6 +10588,12 @@
   "fiery vambraces": [
    [
     433,
+    "c"
+   ]
+  ],
+  "file mold": [
+   [
+    407,
     "c"
    ]
   ],
@@ -10421,6 +10755,10 @@
     "c"
    ],
    [
+    802,
+    "c"
+   ],
+   [
     892,
     "c"
    ],
@@ -10434,6 +10772,10 @@
    ]
   ],
   "fire beetle leg": [
+   [
+    33,
+    "c"
+   ],
    [
     892,
     "c"
@@ -10637,6 +10979,16 @@
    [
     595,
     "c"
+   ],
+   [
+    663,
+    "c"
+   ]
+  ],
+  "fish wine": [
+   [
+    816,
+    "c"
    ]
   ],
   "fishbone earring": [
@@ -10722,6 +11074,26 @@
    ],
    [
     882,
+    "c"
+   ]
+  ],
+  "flaming clurg": [
+   [
+    123,
+    "c"
+   ],
+   [
+    124,
+    "c"
+   ],
+   [
+    215,
+    "c"
+   ]
+  ],
+  "flaming pungla": [
+   [
+    124,
     "c"
    ]
   ],
@@ -11209,6 +11581,10 @@
    [
     105,
     "c"
+   ],
+   [
+    513,
+    "c"
    ]
   ],
   "footman head plans": [
@@ -11445,6 +11821,10 @@
    [
     231,
     "c"
+   ],
+   [
+    884,
+    "c"
    ]
   ],
   "fresh piranha": [
@@ -11518,6 +11898,10 @@
    ]
   ],
   "froglok meat": [
+   [
+    101,
+    "c"
+   ],
    [
     547,
     "c"
@@ -11768,6 +12152,10 @@
    ],
    [
     507,
+    "c"
+   ],
+   [
+    735,
     "c"
    ]
   ],
@@ -12157,6 +12545,12 @@
     "c"
    ]
   ],
+  "giant bat fur": [
+   [
+    839,
+    "c"
+   ]
+  ],
   "giant fire beetle leg": [
    [
     86,
@@ -12220,6 +12614,14 @@
    ]
   ],
   "giant sack of supplies": [
+   [
+    803,
+    "c"
+   ],
+   [
+    804,
+    "c"
+   ],
    [
     805,
     "c"
@@ -12595,11 +12997,21 @@
    [
     402,
     "c"
+   ],
+   [
+    403,
+    "c"
    ]
   ],
   "glowing necklace": [
    [
     202,
+    "c"
+   ]
+  ],
+  "glowing pauldrons": [
+   [
+    117,
     "c"
    ]
   ],
@@ -12753,6 +13165,10 @@
    [
     50,
     "c"
+   ],
+   [
+    816,
+    "c"
    ]
   ],
   "goblin bracer": [
@@ -12816,6 +13232,12 @@
   "goblin sparring gloves": [
    [
     497,
+    "c"
+   ]
+  ],
+  "goblin supply pouch": [
+   [
+    229,
     "c"
    ]
   ],
@@ -12955,6 +13377,12 @@
    [
     591,
     "r"
+   ]
+  ],
+  "golden locket": [
+   [
+    227,
+    "c"
    ]
   ],
   "golden locket (locket of courage)": [
@@ -13164,6 +13592,14 @@
    ],
    [
     616,
+    "c"
+   ],
+   [
+    789,
+    "c"
+   ],
+   [
+    802,
     "c"
    ]
   ],
@@ -13571,6 +14007,12 @@
     "c"
    ]
   ],
+  "gypsy wine": [
+   [
+    816,
+    "c"
+   ]
+  ],
   "h.k. 106": [
    [
     218,
@@ -13580,6 +14022,12 @@
   "h.k. 401": [
    [
     377,
+    "c"
+   ]
+  ],
+  "halas heater": [
+   [
+    816,
     "c"
    ]
   ],
@@ -13627,6 +14075,12 @@
     "r"
    ]
   ],
+  "halfling stouters": [
+   [
+    816,
+    "c"
+   ]
+  ],
   "hammer of 1406": [
    [
     149,
@@ -13668,6 +14122,12 @@
    ],
    [
     225,
+    "c"
+   ]
+  ],
+  "hand of deaen greyforge": [
+   [
+    707,
     "c"
    ]
   ],
@@ -13735,6 +14195,10 @@
   ],
   "harness of control": [
    [
+    128,
+    "c"
+   ],
+   [
     154,
     "c"
    ]
@@ -13764,6 +14228,12 @@
   "hazy opal": [
    [
     462,
+    "c"
+   ]
+  ],
+  "head housekeepers log": [
+   [
+    663,
     "c"
    ]
   ],
@@ -13951,6 +14421,10 @@
    [
     194,
     "c"
+   ],
+   [
+    701,
+    "c"
    ]
   ],
   "heart of the innocent": [
@@ -13985,7 +14459,15 @@
   ],
   "hehe meat": [
    [
+    223,
+    "c"
+   ],
+   [
     369,
+    "c"
+   ],
+   [
+    576,
     "c"
    ]
   ],
@@ -14113,6 +14595,16 @@
     "c"
    ]
   ],
+  "high elf parts": [
+   [
+    223,
+    "c"
+   ],
+   [
+    369,
+    "c"
+   ]
+  ],
   "high quality bear skin": [
    [
     37,
@@ -14120,6 +14612,10 @@
    ],
    [
     38,
+    "c"
+   ],
+   [
+    225,
     "c"
    ],
    [
@@ -14210,6 +14706,12 @@
   "hilt of the nobleman": [
    [
     806,
+    "c"
+   ]
+  ],
+  "historic article": [
+   [
+    663,
     "c"
    ]
   ],
@@ -14339,6 +14841,10 @@
    [
     602,
     "c"
+   ],
+   [
+    816,
+    "c"
    ]
   ],
   "honey mush bread": [
@@ -14389,6 +14895,10 @@
   ],
   "hopper spear": [
    [
+    472,
+    "c"
+   ],
+   [
     755,
     "r"
    ]
@@ -14421,6 +14931,10 @@
    [
     223,
     "c"
+   ],
+   [
+    369,
+    "c"
    ]
   ],
   "human head": [
@@ -14434,6 +14948,16 @@
    ],
    [
     792,
+    "c"
+   ]
+  ],
+  "human parts": [
+   [
+    223,
+    "c"
+   ],
+   [
+    369,
     "c"
    ]
   ],
@@ -14819,6 +15343,10 @@
   ],
   "illegible scroll": [
    [
+    149,
+    "c"
+   ],
+   [
     397,
     "c"
    ],
@@ -14874,6 +15402,10 @@
    ]
   ],
   "illweed parchment": [
+   [
+    62,
+    "c"
+   ],
    [
     401,
     "r"
@@ -15151,6 +15683,12 @@
     "c"
    ]
   ],
+  "innothule mushroom": [
+   [
+    868,
+    "c"
+   ]
+  ],
   "inscribed velium tablet": [
    [
     612,
@@ -15355,6 +15893,10 @@
    [
     393,
     "r"
+   ],
+   [
+    397,
+    "c"
    ],
    [
     399,
@@ -15703,6 +16245,12 @@
     "c"
    ]
   ],
+  "journal entry": [
+   [
+    861,
+    "c"
+   ]
+  ],
   "journal of greater enchantment": [
    [
     769,
@@ -15733,6 +16281,12 @@
     "c"
    ]
   ],
+  "jumjum juice": [
+   [
+    731,
+    "c"
+   ]
+  ],
   "jumjum sack tunic": [
    [
     523,
@@ -15742,6 +16296,12 @@
   "jumjum stalk": [
    [
     526,
+    "c"
+   ]
+  ],
+  "jungle spiritling stone": [
+   [
+    699,
     "c"
    ]
   ],
@@ -15849,6 +16409,12 @@
     "c"
    ]
   ],
+  "kerra catfish": [
+   [
+    884,
+    "c"
+   ]
+  ],
   "kerran doll": [
    [
     104,
@@ -15879,6 +16445,10 @@
    [
     605,
     "r"
+   ],
+   [
+    884,
+    "c"
    ]
   ],
   "kerran toy": [
@@ -15931,6 +16501,10 @@
   ],
   "key of veeshan": [
    [
+    510,
+    "c"
+   ],
+   [
     651,
     "r"
    ]
@@ -15968,6 +16542,10 @@
   "king tormaxs head": [
    [
     835,
+    "c"
+   ],
+   [
+    836,
     "c"
    ]
   ],
@@ -16046,6 +16624,10 @@
   "koalindl fish": [
    [
     8,
+    "c"
+   ],
+   [
+    125,
     "c"
    ],
    [
@@ -16557,6 +17139,12 @@
     "r"
    ]
   ],
+  "large sewing kit": [
+   [
+    642,
+    "c"
+   ]
+  ],
   "large shadow silk": [
    [
     656,
@@ -16759,6 +17347,10 @@
   ],
   "leech husk": [
    [
+    471,
+    "c"
+   ],
+   [
     695,
     "c"
    ]
@@ -16829,6 +17421,10 @@
    [
     795,
     "c"
+   ],
+   [
+    868,
+    "c"
    ]
   ],
   "legion of cabilis": [
@@ -16868,6 +17464,12 @@
   "legionnaires mancatcher crown": [
    [
     868,
+    "c"
+   ]
+  ],
+  "legs of deaen greyforge": [
+   [
+    707,
     "c"
    ]
   ],
@@ -16934,6 +17536,22 @@
   "library of erudin": [
    [
     106,
+    "c"
+   ],
+   [
+    125,
+    "c"
+   ],
+   [
+    442,
+    "c"
+   ],
+   [
+    491,
+    "c"
+   ],
+   [
+    856,
     "c"
    ]
   ],
@@ -17004,6 +17622,10 @@
    ]
   ],
   "lion meat shipment": [
+   [
+    434,
+    "c"
+   ],
    [
     443,
     "c"
@@ -17098,6 +17720,10 @@
   "loaf of bread": [
    [
     129,
+    "c"
+   ],
+   [
+    150,
     "c"
    ],
    [
@@ -17311,6 +17937,12 @@
     "r"
    ]
   ],
+  "lumberjack pale ale": [
+   [
+    627,
+    "c"
+   ]
+  ],
   "lupine claw gauntlets": [
    [
     455,
@@ -17472,6 +18104,10 @@
    ]
   ],
   "malevolent crown": [
+   [
+    162,
+    "c"
+   ],
    [
     658,
     "r"
@@ -17695,6 +18331,10 @@
   ],
   "mask of deception": [
    [
+    24,
+    "c"
+   ],
+   [
     215,
     "c"
    ]
@@ -17785,6 +18425,24 @@
    [
     480,
     "r"
+   ]
+  ],
+  "meat pie": [
+   [
+    234,
+    "c"
+   ],
+   [
+    269,
+    "c"
+   ],
+   [
+    507,
+    "c"
+   ],
+   [
+    739,
+    "c"
    ]
   ],
   "mechanical doll": [
@@ -17987,6 +18645,16 @@
    [
     129,
     "c"
+   ],
+   [
+    407,
+    "c"
+   ]
+  ],
+  "metal disk": [
+   [
+    789,
+    "c"
    ]
   ],
   "metal pipe": [
@@ -18075,6 +18743,10 @@
    [
     484,
     "r"
+   ],
+   [
+    556,
+    "c"
    ],
    [
     574,
@@ -18387,6 +19059,12 @@
     "r"
    ]
   ],
+  "mountain spiritling stone": [
+   [
+    699,
+    "c"
+   ]
+  ],
   "mt. death mineral salts": [
    [
     174,
@@ -18697,6 +19375,12 @@
     "c"
    ]
   ],
+  "nehashiirs diary": [
+   [
+    663,
+    "c"
+   ]
+  ],
   "nephrite": [
    [
     201,
@@ -18899,11 +19583,19 @@
   ],
   "note to harkin": [
    [
+    8,
+    "c"
+   ],
+   [
     528,
     "c"
    ]
   ],
   "note to janam": [
+   [
+    8,
+    "c"
+   ],
    [
     528,
     "c"
@@ -19107,6 +19799,20 @@
     "r"
    ]
   ],
+  "ogre swill": [
+   [
+    215,
+    "c"
+   ],
+   [
+    223,
+    "c"
+   ],
+   [
+    369,
+    "c"
+   ]
+  ],
   "ogre war maul": [
    [
     124,
@@ -19191,6 +19897,12 @@
    [
     282,
     "r"
+   ]
+  ],
+  "old silver coin": [
+   [
+    125,
+    "c"
    ]
   ],
   "old stained robe*": [
@@ -19411,9 +20123,23 @@
     "c"
    ]
   ],
+  "ornate tin box": [
+   [
+    868,
+    "c"
+   ]
+  ],
   "ornate velium pendant": [
    [
     406,
+    "c"
+   ],
+   [
+    815,
+    "c"
+   ],
+   [
+    864,
     "c"
    ],
    [
@@ -19464,6 +20190,12 @@
    ]
   ],
   "page 30 of a book": [
+   [
+    442,
+    "c"
+   ]
+  ],
+  "page 34 of a book": [
    [
     442,
     "c"
@@ -19877,6 +20609,10 @@
   ],
   "piece of parchment": [
    [
+    149,
+    "c"
+   ],
+   [
     200,
     "c"
    ]
@@ -20143,7 +20879,15 @@
   ],
   "platinum tear": [
    [
+    722,
+    "c"
+   ],
+   [
     725,
+    "c"
+   ],
+   [
+    726,
     "c"
    ],
    [
@@ -20264,6 +21008,10 @@
    ]
   ],
   "potion of disease warding": [
+   [
+    156,
+    "c"
+   ],
    [
     552,
     "r"
@@ -20409,6 +21157,14 @@
   ],
   "prayer beads": [
    [
+    59,
+    "c"
+   ],
+   [
+    60,
+    "c"
+   ],
+   [
     209,
     "r"
    ],
@@ -20480,6 +21236,10 @@
   "preserved leg": [
    [
     369,
+    "c"
+   ],
+   [
+    576,
     "c"
    ]
   ],
@@ -21201,6 +21961,10 @@
   ],
   "rat whiskers": [
    [
+    8,
+    "c"
+   ],
+   [
     34,
     "c"
    ],
@@ -21533,11 +22297,19 @@
     "c"
    ],
    [
+    74,
+    "c"
+   ],
+   [
     75,
     "c"
    ],
    [
     609,
+    "c"
+   ],
+   [
+    816,
     "c"
    ]
   ],
@@ -21845,6 +22617,12 @@
     "c"
    ]
   ],
+  "ring of shadows": [
+   [
+    528,
+    "c"
+   ]
+  ],
   "ring of the ancients": [
    [
     413,
@@ -21879,10 +22657,22 @@
     "r"
    ]
   ],
+  "ringmail cape": [
+   [
+    427,
+    "c"
+   ]
+  ],
   "ringmail coat": [
    [
     425,
     "r"
+   ]
+  ],
+  "ringmail coif": [
+   [
+    427,
+    "c"
    ]
   ],
   "ringmail gloves": [
@@ -21901,6 +22691,10 @@
    [
     425,
     "r"
+   ],
+   [
+    427,
+    "c"
    ]
   ],
   "ripened heartfruit": [
@@ -21939,6 +22733,12 @@
     "c"
    ]
   ],
+  "roasted walrus with plum sauce": [
+   [
+    76,
+    "c"
+   ]
+  ],
   "robe of benevolence": [
    [
     441,
@@ -21974,6 +22774,18 @@
    ]
   ],
   "robe of the elements": [
+   [
+    109,
+    "c"
+   ],
+   [
+    111,
+    "c"
+   ],
+   [
+    194,
+    "c"
+   ],
    [
     574,
     "c"
@@ -22045,6 +22857,12 @@
    [
     776,
     "r"
+   ]
+  ],
+  "robe pattern": [
+   [
+    500,
+    "c"
    ]
   ],
   "rod": [
@@ -22451,6 +23269,14 @@
     "c"
    ],
    [
+    722,
+    "c"
+   ],
+   [
+    725,
+    "c"
+   ],
+   [
     726,
     "c"
    ],
@@ -22765,6 +23591,12 @@
    [
     592,
     "r"
+   ]
+  ],
+  "runed shawl": [
+   [
+    129,
+    "c"
    ]
   ],
   "runed symbol": [
@@ -23283,6 +24115,10 @@
    [
     11,
     "c"
+   ],
+   [
+    577,
+    "c"
    ]
   ],
   "sandals of alacrity": [
@@ -23737,6 +24573,10 @@
     "c"
    ],
    [
+    585,
+    "c"
+   ],
+   [
     647,
     "c"
    ]
@@ -23905,6 +24745,10 @@
   ],
   "sealed letter": [
    [
+    106,
+    "c"
+   ],
+   [
     126,
     "c"
    ],
@@ -23925,7 +24769,23 @@
     "c"
    ],
    [
+    186,
+    "c"
+   ],
+   [
+    248,
+    "c"
+   ],
+   [
+    249,
+    "c"
+   ],
+   [
     378,
+    "c"
+   ],
+   [
+    482,
     "c"
    ],
    [
@@ -23937,7 +24797,27 @@
     "c"
    ],
    [
+    541,
+    "c"
+   ],
+   [
     542,
+    "c"
+   ],
+   [
+    542,
+    "c"
+   ],
+   [
+    558,
+    "c"
+   ],
+   [
+    564,
+    "c"
+   ],
+   [
+    703,
     "c"
    ],
    [
@@ -23953,7 +24833,15 @@
     "c"
    ],
    [
+    796,
+    "c"
+   ],
+   [
     818,
+    "c"
+   ],
+   [
+    873,
     "c"
    ],
    [
@@ -23973,11 +24861,19 @@
   ],
   "sealed note": [
    [
+    385,
+    "c"
+   ],
+   [
     627,
     "c"
    ],
    [
     645,
+    "c"
+   ],
+   [
+    902,
     "c"
    ]
   ],
@@ -24052,6 +24948,12 @@
   "semharts tax payment": [
    [
     713,
+    "c"
+   ]
+  ],
+  "sentinel creots head": [
+   [
+    652,
     "c"
    ]
   ],
@@ -24417,6 +25319,10 @@
   ],
   "shark skin": [
    [
+    31,
+    "c"
+   ],
+   [
     436,
     "c"
    ],
@@ -24549,6 +25455,10 @@
   ],
   "shimmering pearl": [
    [
+    115,
+    "c"
+   ],
+   [
     590,
     "c"
    ]
@@ -24608,6 +25518,10 @@
    ]
   ],
   "shining helm": [
+   [
+    162,
+    "c"
+   ],
    [
     551,
     "r"
@@ -24723,6 +25637,10 @@
    [
     755,
     "r"
+   ],
+   [
+    873,
+    "c"
    ]
   ],
   "short sword of morin": [
@@ -24799,6 +25717,12 @@
    [
     895,
     "r"
+   ]
+  ],
+  "sifaye wing": [
+   [
+    681,
+    "c"
    ]
   ],
   "signed requisition": [
@@ -25343,6 +26267,12 @@
     "c"
    ]
   ],
+  "small brick of ore": [
+   [
+    407,
+    "c"
+   ]
+  ],
   "small brick of velium": [
    [
     129,
@@ -25564,6 +26494,10 @@
   "small piece of ore": [
    [
     129,
+    "c"
+   ],
+   [
+    407,
     "c"
    ],
    [
@@ -25803,6 +26737,12 @@
     "c"
    ]
   ],
+  "smithy hammer": [
+   [
+    699,
+    "c"
+   ]
+  ],
   "snake egg": [
    [
     129,
@@ -25836,6 +26776,10 @@
   "snake scales": [
    [
     505,
+    "c"
+   ],
+   [
+    703,
     "c"
    ],
    [
@@ -25957,6 +26901,12 @@
    [
     868,
     "r"
+   ]
+  ],
+  "soldiers pike head": [
+   [
+    868,
+    "c"
    ]
   ],
   "solidate mithril ring": [
@@ -26187,6 +27137,18 @@
     "r"
    ]
   ],
+  "spell: cannibalize iii": [
+   [
+    669,
+    "c"
+   ]
+  ],
+  "spell: cripple": [
+   [
+    669,
+    "c"
+   ]
+  ],
   "spell: ice comet": [
    [
     711,
@@ -26203,6 +27165,18 @@
    [
     464,
     "r"
+   ]
+  ],
+  "spell: spirit of scale": [
+   [
+    669,
+    "c"
+   ]
+  ],
+  "spell: talisman of jasinth": [
+   [
+    669,
+    "c"
    ]
   ],
   "spell: tashania": [
@@ -26251,6 +27225,12 @@
     "c"
    ]
   ],
+  "sphinx eye amulet": [
+   [
+    655,
+    "c"
+   ]
+  ],
   "sphinx eye opal": [
    [
     655,
@@ -26278,6 +27258,12 @@
   "sphinx tallow": [
    [
     590,
+    "c"
+   ]
+  ],
+  "sphinx-hide mantle": [
+   [
+    665,
     "c"
    ]
   ],
@@ -26313,6 +27299,10 @@
    [
     251,
     "r"
+   ],
+   [
+    839,
+    "c"
    ]
   ],
   "spider venom sac": [
@@ -26505,6 +27495,12 @@
     "c"
    ]
   ],
+  "spiroc healers cloak": [
+   [
+    590,
+    "c"
+   ]
+  ],
   "spiroc healing totem": [
    [
     117,
@@ -26532,6 +27528,12 @@
   "spiroc thunder totem": [
    [
     590,
+    "c"
+   ]
+  ],
+  "spiroc warhammer": [
+   [
+    665,
     "c"
    ]
   ],
@@ -26739,6 +27741,10 @@
    [
     286,
     "c"
+   ],
+   [
+    291,
+    "c"
    ]
   ],
   "stained parchment": [
@@ -26903,6 +27909,12 @@
     "c"
    ]
   ],
+  "steel breastplate": [
+   [
+    549,
+    "c"
+   ]
+  ],
   "steel rod": [
    [
     868,
@@ -26939,6 +27951,10 @@
    [
     574,
     "c"
+   ],
+   [
+    701,
+    "c"
    ]
   ],
   "stein of ulissa": [
@@ -26958,6 +27974,12 @@
    ],
    [
     513,
+    "c"
+   ]
+  ],
+  "stiletto of the bloodclaw": [
+   [
+    133,
     "c"
    ]
   ],
@@ -27028,6 +28050,12 @@
   "strathbone silk": [
    [
     48,
+    "c"
+   ]
+  ],
+  "streavens head": [
+   [
+    842,
     "c"
    ]
   ],
@@ -27103,6 +28131,18 @@
    [
     472,
     "r"
+   ]
+  ],
+  "summoned: black bread": [
+   [
+    791,
+    "c"
+   ]
+  ],
+  "summoned: dagger": [
+   [
+    791,
+    "c"
    ]
   ],
   "summoned: firefly globe": [
@@ -27265,6 +28305,12 @@
     "c"
    ]
   ],
+  "symbol of insanity": [
+   [
+    510,
+    "c"
+   ]
+  ],
   "symbol of tunarian worship": [
    [
     574,
@@ -27288,6 +28334,10 @@
    ]
   ],
   "t.o.l. 2020": [
+   [
+    59,
+    "c"
+   ],
    [
     60,
     "c"
@@ -27536,6 +28586,20 @@
   "tattered book": [
    [
     17,
+    "c"
+   ]
+  ],
+  "tattered cloth note": [
+   [
+    472,
+    "c"
+   ],
+   [
+    712,
+    "c"
+   ],
+   [
+    786,
     "c"
    ]
   ],
@@ -28141,6 +29205,10 @@
    [
     574,
     "c"
+   ],
+   [
+    856,
+    "c"
    ]
   ],
   "testimony": [
@@ -28184,6 +29252,10 @@
    ]
   ],
   "thex mallet": [
+   [
+    482,
+    "c"
+   ],
    [
     574,
     "c"
@@ -28327,6 +29399,12 @@
     "c"
    ]
   ],
+  "tinmizers stupendous contraption": [
+   [
+    149,
+    "c"
+   ]
+  ],
   "tiny collar": [
    [
     842,
@@ -28376,6 +29454,10 @@
   "tishans kilt": [
    [
     574,
+    "c"
+   ],
+   [
+    631,
     "c"
    ],
    [
@@ -29007,6 +30089,12 @@
     "c"
    ]
   ],
+  "transparent mask": [
+   [
+    626,
+    "c"
+   ]
+  ],
   "travelers pack": [
    [
     526,
@@ -29050,6 +30138,12 @@
   "trochilics skean": [
    [
     623,
+    "c"
+   ]
+  ],
+  "trog brew": [
+   [
+    497,
     "c"
    ]
   ],
@@ -29165,6 +30259,12 @@
     "r"
    ]
   ],
+  "troopers pike head": [
+   [
+    868,
+    "c"
+   ]
+  ],
   "troubadours boots": [
    [
     25,
@@ -29219,6 +30319,10 @@
    [
     25,
     "r"
+   ],
+   [
+    162,
+    "c"
    ],
    [
     574,
@@ -29347,6 +30451,12 @@
    [
     849,
     "r"
+   ]
+  ],
+  "turgans note": [
+   [
+    12,
+    "c"
    ]
   ],
   "turmoil warts": [
@@ -29759,6 +30869,10 @@
    [
     756,
     "c"
+   ],
+   [
+    757,
+    "c"
    ]
   ],
   "undead dragon sinew": [
@@ -29905,6 +31019,12 @@
     "c"
    ]
   ],
+  "valley spiritling stone": [
+   [
+    699,
+    "c"
+   ]
+  ],
   "vambraces of avoidance": [
    [
     855,
@@ -29976,6 +31096,10 @@
    ]
   ],
   "veeshans key": [
+   [
+    200,
+    "c"
+   ],
    [
     567,
     "c"
@@ -30689,6 +31813,12 @@
     "r"
    ]
   ],
+  "well-balanced rapier": [
+   [
+    623,
+    "c"
+   ]
+  ],
   "wenglawks manly purse": [
    [
     129,
@@ -30709,6 +31839,12 @@
    [
     656,
     "r"
+   ]
+  ],
+  "werewolf claws": [
+   [
+    455,
+    "c"
    ]
   ],
   "werewolf pelt": [
@@ -30937,6 +32073,10 @@
    [
     609,
     "c"
+   ],
+   [
+    816,
+    "c"
    ]
   ],
   "white-tipped spiroc feather": [
@@ -31131,6 +32271,12 @@
     "r"
    ]
   ],
+  "wolf meat": [
+   [
+    839,
+    "c"
+   ]
+  ],
   "wolf-hide belt": [
    [
     893,
@@ -31256,6 +32402,10 @@
    ]
   ],
   "words of darkness": [
+   [
+    361,
+    "c"
+   ],
    [
     574,
     "c"
@@ -31663,6 +32813,12 @@
     "c"
    ]
   ],
+  "zombie flesh": [
+   [
+    533,
+    "c"
+   ]
+  ],
   "zombie flesh bracer": [
    [
     642,
@@ -31835,6 +32991,7 @@
    ],
    "lvl": 60,
    "n": "Aid the Dar Brood",
+   "oe": true,
    "relatedNpcs": [
     "Zlandicar"
    ],
@@ -31922,7 +33079,10 @@
     "Bone Chips",
     "Rebby's Rat Whiskers",
     "Gnoll Fang",
-    "White Wine"
+    "White Wine",
+    "Note to Harkin",
+    "Note to Janam",
+    "Rat Whiskers"
    ],
    "lvl": null,
    "n": "All Positive Faction Quests",
@@ -31941,6 +33101,7 @@
    "items": [],
    "lvl": 45,
    "n": "Ancient Dragon Tome",
+   "oe": true,
    "relatedNpcs": [
     "Fergul Frostsky",
     "Gralk Dwarfkiller",
@@ -31981,6 +33142,7 @@
    ],
    "lvl": 27,
    "n": "Animal Skin Armor",
+   "oe": true,
    "relatedNpcs": [
     "a dire wolf",
     "a savage dire wolf",
@@ -32079,7 +33241,8 @@
     "Ingot of the Constant",
     "Ingot of the Reverent",
     "Icon of the Reverent",
-    "Lianna's Flute"
+    "Lianna's Flute",
+    "Turgan's Note"
    ],
    "lvl": 35,
    "n": "Armor of the Priest Quests",
@@ -32447,10 +33610,13 @@
     "Metal Bits",
     "Mystical Lute Body",
     "Undead Dragongut Strings",
-    "Mystical Lute"
+    "Mystical Lute",
+    "Burning Embers",
+    "Mask of Deception"
    ],
    "lvl": null,
    "n": "Bard Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -32487,6 +33653,7 @@
    ],
    "lvl": 50,
    "n": "Bard Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (West Wing)"
    ],
@@ -32603,6 +33770,7 @@
    ],
    "lvl": 50,
    "n": "Bard Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (ToV East)"
    ],
@@ -32645,6 +33813,7 @@
    ],
    "lvl": 45,
    "n": "Bard Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -32678,7 +33847,8 @@
    "items": [
     "Empty Shark Bag",
     "Baby Shark Remains",
-    "Bag of Shark Remains"
+    "Bag of Shark Remains",
+    "Shark Skin"
    ],
    "lvl": 10,
    "n": "Barnacle Breastplate Quest",
@@ -32738,7 +33908,9 @@
    ],
    "era": "Paineel Era",
    "giver": "Dzan Amo",
-   "items": [],
+   "items": [
+    "Fire Beetle Leg"
+   ],
    "lvl": 1,
    "n": "Bat Fur and Beetle Legs",
    "relatedNpcs": [
@@ -33091,6 +34263,7 @@
    ],
    "lvl": 35,
    "n": "Beguile Plants Quest",
+   "oe": true,
    "relatedNpcs": [
     "sarnak revealer",
     "partisan",
@@ -33116,7 +34289,8 @@
    "era": "Classic Era",
    "giver": "Jemoz Lerkarson",
    "items": [
-    "Human Head"
+    "Human Head",
+    "Damaged Militia Helm"
    ],
    "lvl": null,
    "n": "Behead the Freeport Militia",
@@ -33146,6 +34320,7 @@
    ],
    "lvl": 8,
    "n": "Bertoxxulous Symbol Quests",
+   "oe": true,
    "relatedNpcs": [
     "Ennixy Frennor",
     "a brittle skeleton",
@@ -33342,7 +34517,9 @@
    ],
    "era": "Classic Era",
    "giver": "Kazlo Naedra",
-   "items": [],
+   "items": [
+    "Blank Scroll Sheets"
+   ],
    "lvl": 1,
    "n": "Blank Scrolls",
    "relatedNpcs": [
@@ -33362,7 +34539,11 @@
    ],
    "era": "Classic Era",
    "giver": "Brother Estle",
-   "items": [],
+   "items": [
+    "Blessed Oil Flask",
+    "Prayer Beads",
+    "T.O.L. 2020"
+   ],
    "lvl": 1,
    "n": "Blessed Oil",
    "relatedNpcs": [
@@ -33391,7 +34572,9 @@
    "giver": "Brother Estle",
    "items": [
     "PrayerBeads",
-    "T.O.L. 2020"
+    "T.O.L. 2020",
+    "Blessed Oil Flask",
+    "Prayer Beads"
    ],
    "lvl": 1,
    "n": "Blessed Oil Quest",
@@ -33424,6 +34607,7 @@
    "items": [],
    "lvl": 46,
    "n": "Blizzent's Fang Quest",
+   "oe": true,
    "relatedNpcs": [
     "Blizzent"
    ],
@@ -33442,9 +34626,12 @@
    ],
    "era": "Kunark Era",
    "giver": "War Historian Kobl",
-   "items": [],
+   "items": [
+    "Illweed Parchment"
+   ],
    "lvl": 8,
    "n": "Blood Ink",
+   "oe": true,
    "relatedNpcs": [
     "?"
    ],
@@ -33598,6 +34785,7 @@
    ],
    "lvl": 1,
    "n": "Bone Chips Field of Bone",
+   "oe": true,
    "relatedNpcs": [
     "a decaying skeleton"
    ],
@@ -33681,6 +34869,7 @@
    ],
    "lvl": 3,
    "n": "Bone Granite Powder Quest",
+   "oe": true,
    "relatedNpcs": [
     "None"
    ],
@@ -33729,7 +34918,8 @@
    "giver": "Lokar To`Biath",
    "items": [
     "Note",
-    "Dark Elf Decapitated Head"
+    "Dark Elf Decapitated Head",
+    "Red Wine"
    ],
    "lvl": 40,
    "n": "Book of Turmoil Quest",
@@ -33774,9 +34964,12 @@
    ],
    "era": "Velious Era",
    "giver": "Sentry Emil",
-   "items": [],
+   "items": [
+    "Roasted Walrus with Plum Sauce"
+   ],
    "lvl": 0,
    "n": "Boysenberry Pie Quest",
+   "oe": true,
    "relatedNpcs": [
     "Grudash the Baker"
    ],
@@ -33888,6 +35081,7 @@
    ],
    "lvl": 37,
    "n": "Brain Bite (Good)",
+   "oe": true,
    "relatedNpcs": [
     "Hampton",
     "Ryla",
@@ -33914,6 +35108,7 @@
    ],
    "lvl": null,
    "n": "Bread Shipment Quests",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
@@ -34108,6 +35303,7 @@
    ],
    "lvl": 50,
    "n": "Bulthar Trunks",
+   "oe": true,
    "relatedNpcs": [
     "a bulthar",
     "a bulthar herdleader"
@@ -34143,6 +35339,7 @@
    ],
    "lvl": 45,
    "n": "Burnished Wooden Staff Quest",
+   "oe": true,
    "relatedNpcs": [
     "a Reanimated Berserker",
     "a Reanimated Conscript",
@@ -34167,6 +35364,7 @@
    "items": [],
    "lvl": 1,
    "n": "Burynai Bundt Cake",
+   "oe": true,
    "relatedNpcs": [
     "Scout Treekill"
    ],
@@ -34190,6 +35388,7 @@
    ],
    "lvl": 50,
    "n": "Bvellos' Bounty",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Eastern Wastes",
@@ -34215,6 +35414,7 @@
    ],
    "lvl": 1,
    "n": "Cabilis Pale Ale (Cabilis)",
+   "oe": true,
    "relatedNpcs": [
     "None"
    ],
@@ -34234,6 +35434,7 @@
    "items": [],
    "lvl": 1,
    "n": "Cabilis Pale Ale (Firiona Vie)",
+   "oe": true,
    "relatedNpcs": [
     "Bronto Thudfoot"
    ],
@@ -34320,7 +35521,8 @@
     "Yun Shaman Powder",
     "Greyish Bone Chips",
     "Crushed Diamonds",
-    "Dread Diamond"
+    "Dread Diamond",
+    "Bone Chips"
    ],
    "lvl": null,
    "n": "Cannibalize II (Evil)",
@@ -34356,10 +35558,12 @@
     "Dread Diamond",
     "Spectral Pestle",
     "Yun Shaman Powder",
-    "Greyish Bone Chips"
+    "Greyish Bone Chips",
+    "Bone Chips"
    ],
    "lvl": null,
    "n": "Cannibalize II (Good)",
+   "oe": true,
    "relatedNpcs": [
     "an army behemoth",
     "gem cutter skeleton",
@@ -34408,6 +35612,7 @@
    ],
    "lvl": 40,
    "n": "Captain Nalot's Triple Strength Rum",
+   "oe": true,
    "relatedNpcs": [
     "Mist Panther",
     "Pythic Urson",
@@ -34436,6 +35641,7 @@
    "items": [],
    "lvl": 26,
    "n": "Captain Nealith's Brother",
+   "oe": true,
    "relatedNpcs": [
     "a drolvarg scavenger"
    ],
@@ -34483,10 +35689,12 @@
     "Sharp Cutting Disk",
     "Shrub Lettuce",
     "Honey Mush Bread",
-    "Sewer Catfish"
+    "Sewer Catfish",
+    "Froglok Meat"
    ],
    "lvl": 10,
    "n": "Catfish Croak Sandwich Quest",
+   "oe": true,
    "relatedNpcs": [
     "Klok Bygle",
     "Klok Ephmir",
@@ -34564,6 +35772,7 @@
    ],
    "lvl": 1,
    "n": "Cazic Thule Symbol Quests",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Everfrost Peaks",
@@ -34594,7 +35803,8 @@
     "Chalice of Conquest",
     "Cape of Underfoot",
     "Fairy Dust",
-    "Chalice Case"
+    "Chalice Case",
+    "Boots of Ro"
    ],
    "lvl": 35,
    "n": "Chalice of Conquest Quest",
@@ -34627,7 +35837,8 @@
    "items": [
     "Chrono Cyclone",
     "Diamond Vale",
-    "Library of Erudin"
+    "Library of Erudin",
+    "Sealed Letter"
    ],
    "lvl": 5,
    "n": "Cheslin's Illusion Cards",
@@ -34712,7 +35923,8 @@
     "Globe of Mist",
     "Water Ring",
     "Ring of Evoluoy",
-    "Sapphire"
+    "Sapphire",
+    "Robe of the Elements"
    ],
    "lvl": 30,
    "n": "Circlet of Mist Quest",
@@ -34752,7 +35964,9 @@
    "era": "Temple Era",
    "giver": "Joyce",
    "items": [
-    "Rune of Clay"
+    "Rune of Clay",
+    "Circlet of Mist",
+    "Robe of the Elements"
    ],
    "lvl": 25,
    "n": "Clay Bracelet Quest",
@@ -34869,10 +36083,12 @@
     "Message to Natasha",
     "Sceptre of Ixiblat Fer",
     "Orb of Clear Water",
-    "Heart of Zordak Ragefire"
+    "Heart of Zordak Ragefire",
+    "Shimmering Pearl"
    ],
    "lvl": null,
    "n": "Cleric Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -34909,6 +36125,7 @@
    ],
    "lvl": 50,
    "n": "Cleric Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (West Wing)"
    ],
@@ -34957,7 +36174,9 @@
     "Manna Nectar",
     "Shimmering Topaz",
     "Mithril Bands",
-    "Efreeti Standard"
+    "Efreeti Standard",
+    "Darkwood Aegis",
+    "Glowing Pauldrons"
    ],
    "lvl": null,
    "n": "Cleric Plane of Sky Tests",
@@ -34991,6 +36210,7 @@
    ],
    "lvl": 50,
    "n": "Cleric Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East"
    ],
@@ -35124,6 +36344,7 @@
    ],
    "lvl": 45,
    "n": "Cleric Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -35149,7 +36370,8 @@
    "era": null,
    "giver": "Clurg",
    "items": [
-    "Lizard Tail"
+    "Lizard Tail",
+    "Flaming Clurg"
    ],
    "lvl": 1,
    "n": "Clurg's New Creation",
@@ -35170,7 +36392,9 @@
    "era": null,
    "giver": "Clurg",
    "items": [
-    "Lizard Meat"
+    "Lizard Meat",
+    "Flaming Clurg",
+    "Flaming Pungla"
    ],
    "lvl": 14,
    "n": "Clurg's Revenge",
@@ -35201,7 +36425,10 @@
     "Glowing Coin of Tash",
     "Gleaming Coin of Tash",
     "Radiant Coin of Tash",
-    "Tome of Tash"
+    "Tome of Tash",
+    "Koalindl Fish",
+    "Library of Erudin",
+    "Old Silver Coin"
    ],
    "lvl": 35,
    "n": "Coin of Tash (Tashania)",
@@ -35279,6 +36506,7 @@
    ],
    "lvl": 50,
    "n": "Coldain Books of Tactics",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Eastern Wastes"
@@ -35304,10 +36532,12 @@
     "Gem of Persuasion",
     "Kromrif Military Leggings",
     "Velium War Wolf Choker",
-    "Blood Wolf Harness"
+    "Blood Wolf Harness",
+    "Harness of Control"
    ],
    "lvl": 50,
    "n": "Coldain Military Wristguard Quest",
+   "oe": true,
    "relatedNpcs": [
     "Coldain War Wolf",
     "Erdarf Restil",
@@ -35435,20 +36665,22 @@
     "Prayer to Brell",
     "Rubbing Alcohol",
     "Rune Casing Pattern",
-    "Rune Casing",
+    "Rune casing",
     "Sacred Velium Ink",
     "Unfired Rune",
-    "Velium Etched Rune",
+    "Velium etched rune",
     "Platinum Bar",
     "Jeweler's Kit",
     "Hand Made Backpack",
     "Heady Kiola",
     "Skull Ale",
     "Excellent Siren Scales",
-    "Wenglawks Manly Purse"
+    "Wenglawks Manly Purse",
+    "Runed Shawl"
    ],
    "lvl": 35,
    "n": "Coldain Prayer Shawl Quests",
+   "oe": true,
    "relatedNpcs": [
     "Various and numerous."
    ],
@@ -35528,6 +36760,7 @@
    ],
    "lvl": 30,
    "n": "Coldain Ring Quests",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -35573,6 +36806,7 @@
    ],
    "lvl": 45,
    "n": "Coldain Skulls",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Eastern Wastes",
@@ -35630,7 +36864,8 @@
     "Forged Mace",
     "Forged Rapier",
     "Forged Scimitar",
-    "Forged Warhammer"
+    "Forged Warhammer",
+    "Stiletto of the Bloodclaw"
    ],
    "lvl": 20,
    "n": "Collier's Weapon Treatment",
@@ -35756,6 +36991,7 @@
    ],
    "lvl": 33,
    "n": "Cougarskin Mask Quest",
+   "oe": true,
    "relatedNpcs": [
     "a snow cougar"
    ],
@@ -35839,6 +37075,7 @@
    ],
    "lvl": 50,
    "n": "Crest of the Drixie Quest",
+   "oe": true,
    "relatedNpcs": [
     "Yvolcarn"
    ],
@@ -35863,6 +37100,7 @@
    ],
    "lvl": 50,
    "n": "Crest of the Faerie Dragons Quest",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Kael Drakkel"
@@ -35886,6 +37124,7 @@
    ],
    "lvl": 50,
    "n": "Crest of the Fauns Quest",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Kael Drakkel"
@@ -35908,6 +37147,7 @@
    ],
    "lvl": 50,
    "n": "Crest of the Sifaye Quest",
+   "oe": true,
    "relatedNpcs": [
     "a storm giant surveyor"
    ],
@@ -35930,6 +37170,7 @@
    "items": [],
    "lvl": 55,
    "n": "Crest of the Unicorn Quest",
+   "oe": true,
    "relatedNpcs": [
     "Lithiniath",
     "Prince Thirneg",
@@ -35966,6 +37207,7 @@
    ],
    "lvl": 45,
    "n": "Crest of the Wood Nymphs Quest",
+   "oe": true,
    "relatedNpcs": [
     "None"
    ],
@@ -36074,10 +37316,14 @@
     "Greenmist Design Pattern",
     "Greenmist Khukri Blade",
     "Sarnak Head Pack",
-    "Full Pack of Sarnak Heads"
+    "Full Pack of Sarnak Heads",
+    "Illegible Scroll",
+    "Piece of Parchment",
+    "Tinmizer's Stupendous Contraption"
    ],
    "lvl": 1,
    "n": "Crusader's Tests",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [
@@ -36102,7 +37348,8 @@
    "giver": "Wolten Grafe",
    "items": [
     "Box For Bones",
-    "Bone Chips"
+    "Bone Chips",
+    "Loaf of Bread"
    ],
    "lvl": 1,
    "n": "Crush the Undead",
@@ -36199,6 +37446,7 @@
    ],
    "lvl": 50,
    "n": "Crustacean Shell Armor Quest",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [
@@ -36218,10 +37466,12 @@
     "Bottle of Karsin Acid",
     "Gem of Persuasion",
     "Blood Wolf Harness",
-    "Harness of Control"
+    "Harness of Control",
+    "Crested Blood Wolf Harness"
    ],
    "lvl": 40,
    "n": "Crystal Caverns' Ancient Artifacts",
+   "oe": true,
    "relatedNpcs": [
     "A Drakkel Blood Wolf",
     "Fergul Frostsky",
@@ -36270,7 +37520,8 @@
    "items": [
     "Honey Jum",
     "Prime Healer Potion",
-    "Rusty Scythe"
+    "Rusty Scythe",
+    "Potion of Disease Warding"
    ],
    "lvl": 1,
    "n": "Cure for Lempeck Hargrin",
@@ -36320,6 +37571,7 @@
    ],
    "lvl": 1,
    "n": "Cures",
+   "oe": true,
    "relatedNpcs": [
     "a giant swamp leech",
     "a skeleton (Iksar)",
@@ -36348,6 +37600,7 @@
    ],
    "lvl": 1,
    "n": "Curscale Armor Quest",
+   "oe": true,
    "relatedNpcs": [
     "a scaled wolf cub",
     "a scaled wolf pup"
@@ -36389,6 +37642,7 @@
    ],
    "lvl": 5,
    "n": "Curscale Shield",
+   "oe": true,
    "relatedNpcs": [
     "a giant swamp leech",
     "a goblin scout",
@@ -36421,6 +37675,7 @@
    ],
    "lvl": 1,
    "n": "Cursed Wafers Quest",
+   "oe": true,
    "relatedNpcs": [
     "a mosquito"
    ],
@@ -36441,10 +37696,16 @@
    "era": "Velious Era",
    "giver": "Grand Armsmith Korin",
    "items": [
-    "Warlord's Crown"
+    "Warlord's Crown",
+    "Cowl of Mortality",
+    "Crown of the Kromzek Kings",
+    "Malevolent Crown",
+    "Shining Helm",
+    "Troubadour's Helm"
    ],
    "lvl": 1,
    "n": "Custom Plate Helms - Kael Drakkel",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [
@@ -36478,6 +37739,7 @@
    ],
    "lvl": 1,
    "n": "Custom Plate Helms - Skyshrine",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [
@@ -36514,6 +37776,7 @@
    ],
    "lvl": 1,
    "n": "Custom Plate Helms - Thurgadin",
+   "oe": true,
    "relatedNpcs": [
     "Loremaster Dorinan",
     "Captain Njall",
@@ -36588,6 +37851,7 @@
    ],
    "lvl": 50,
    "n": "Dain's Head",
+   "oe": true,
    "relatedNpcs": [
     "Dain Frostreaver IV"
    ],
@@ -36764,6 +38028,7 @@
    ],
    "lvl": 46,
    "n": "Deck of Spontaneous Generation Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -36796,6 +38061,7 @@
    ],
    "lvl": 50,
    "n": "Demise of Blizzent",
+   "oe": true,
    "relatedNpcs": [
     "Blizzent"
    ],
@@ -36845,6 +38111,7 @@
    ],
    "lvl": 51,
    "n": "Di'Zok Signet of Service Quest",
+   "oe": true,
    "relatedNpcs": [
     "Kunark Goblins"
    ],
@@ -36868,6 +38135,7 @@
    ],
    "lvl": 50,
    "n": "Dire Wolf-Hide Cloak Quest",
+   "oe": true,
    "relatedNpcs": [
     "Shardwing Courier"
    ],
@@ -36897,6 +38165,7 @@
    ],
    "lvl": 30,
    "n": "Direwolf Fur Cloak Quest",
+   "oe": true,
    "relatedNpcs": [
     "a dire wolf",
     "a savage dire wolf",
@@ -36924,6 +38193,7 @@
    ],
    "lvl": 30,
    "n": "Direwolf Fur Hood Quest",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [
@@ -36977,6 +38247,7 @@
    "items": [],
    "lvl": null,
    "n": "Dozekar Tear Quests",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
@@ -36995,6 +38266,7 @@
    ],
    "lvl": 50,
    "n": "Dragon Heads",
+   "oe": true,
    "relatedNpcs": [
     "Western Wastes Dragons"
    ],
@@ -37024,6 +38296,7 @@
    ],
    "lvl": 45,
    "n": "Dragon Scales Quest",
+   "oe": true,
    "relatedNpcs": [
     "Gylton",
     "Azdalin",
@@ -37078,6 +38351,7 @@
    ],
    "lvl": 23,
    "n": "Dreadscale Armor",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -37108,6 +38382,7 @@
    ],
    "lvl": 27,
    "n": "Drolvarg Teeth",
+   "oe": true,
    "relatedNpcs": [
     "A Drolvarg Growler",
     "A Drolvarg Savage",
@@ -37158,7 +38433,8 @@
    "giver": "Wolten Grafe",
    "items": [
     "A Sealed Letter",
-    "Order of Thunder"
+    "Order of Thunder",
+    "Sealed Letter"
    ],
    "lvl": 8,
    "n": "Drosco the Zombie (good)",
@@ -37226,6 +38502,7 @@
    ],
    "lvl": null,
    "n": "Druid Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -37263,6 +38540,7 @@
    ],
    "lvl": 50,
    "n": "Druid Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (West Wing)"
    ],
@@ -37345,6 +38623,7 @@
    ],
    "lvl": 50,
    "n": "Druid Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (ToV East)"
    ],
@@ -37372,6 +38651,7 @@
    "items": [],
    "lvl": 51,
    "n": "Druid Spells",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -37411,6 +38691,7 @@
    ],
    "lvl": 45,
    "n": "Druid Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -37466,7 +38747,9 @@
     "Stone Marker",
     "Heart of Stone",
     "Soiled Boots",
-    "Cat's Eye Agate"
+    "Cat's Eye Agate",
+    "Circlet of Mist",
+    "Robe of the Elements"
    ],
    "lvl": 28,
    "n": "Earthen Boots Quest",
@@ -37534,6 +38817,7 @@
    ],
    "lvl": 50,
    "n": "Emerald Dragonscale Quest",
+   "oe": true,
    "relatedNpcs": [
     "Wuoshi"
    ],
@@ -37616,6 +38900,7 @@
    ],
    "lvl": null,
    "n": "Emil's Report",
+   "oe": true,
    "relatedNpcs": [
     "Eysa Florawhisper"
    ],
@@ -37692,10 +38977,13 @@
     "Essence of a Ghost",
     "Essence of a Vampire",
     "Sands of the Mystics",
-    "Bundle of Staves"
+    "Bundle of Staves",
+    "Bandit Sash",
+    "Veeshan's Key"
    ],
    "lvl": null,
    "n": "Enchanter Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -37733,6 +39021,7 @@
    ],
    "lvl": 50,
    "n": "Enchanter Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (West Wing)"
    ],
@@ -37803,6 +39092,7 @@
    ],
    "lvl": 50,
    "n": "Enchanter Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East Mobs"
    ],
@@ -37830,6 +39120,7 @@
    "items": [],
    "lvl": 51,
    "n": "Enchanter Spells (Evil)",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -37854,6 +39145,7 @@
    "items": [],
    "lvl": 51,
    "n": "Enchanter Spells (Good)",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -37893,6 +39185,7 @@
    ],
    "lvl": 45,
    "n": "Enchanter Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -37923,6 +39216,7 @@
    ],
    "lvl": 1,
    "n": "Entalon's Quest",
+   "oe": true,
    "relatedNpcs": [
     "Atheling Plague",
     "a stoneleer cockatrice",
@@ -38017,6 +39311,7 @@
    "items": [],
    "lvl": 1,
    "n": "Erudin Cures",
+   "oe": true,
    "relatedNpcs": [
     "None"
    ],
@@ -38055,6 +39350,7 @@
    ],
    "lvl": 58,
    "n": "Essence Lens Quest",
+   "oe": true,
    "relatedNpcs": [
     "The Progenitor",
     "The Final Arbiter",
@@ -38118,7 +39414,9 @@
     "Innoruuk's Kiss of Death",
     "Koalindl Fish",
     "Barkeep Compendium",
-    "Mask of Deception"
+    "Mask of Deception",
+    "Flaming Clurg",
+    "Ogre Swill"
    ],
    "lvl": 4,
    "n": "Exotic Drinks",
@@ -38174,6 +39472,7 @@
    ],
    "lvl": 30,
    "n": "Explorer Survival Knives",
+   "oe": true,
    "relatedNpcs": [
     "a lead explorer",
     "an explorer"
@@ -38263,6 +39562,7 @@
    "items": [],
    "lvl": 50,
    "n": "Faerie Dragon Wings",
+   "oe": true,
    "relatedNpcs": [
     "Lord Gossimerwind",
     "Lord Prismwing"
@@ -38306,7 +39606,11 @@
    "giver": "Chef Dooga",
    "items": [
     "Human Flesh",
-    "High Elf Flesh"
+    "High Elf Flesh",
+    "HEHE Meat",
+    "High Elf Parts",
+    "Human Parts",
+    "Ogre Swill"
    ],
    "lvl": 14,
    "n": "Feeding Dooga",
@@ -38334,6 +39638,7 @@
    ],
    "lvl": 8,
    "n": "Fern Flower Collection",
+   "oe": true,
    "relatedNpcs": [
     "Man eating shrub"
    ],
@@ -38356,7 +39661,9 @@
     "Tunare's Finest",
     "Thunderhoof Mushroom",
     "Tea Leaves",
-    "Hand Made Backpack"
+    "Hand Made Backpack",
+    "Backpack Pattern",
+    "High Quality Bear Skin"
    ],
    "lvl": 1,
    "n": "Feskr's Supplies",
@@ -38383,6 +39690,7 @@
    ],
    "lvl": 50,
    "n": "Field Supplies Quest",
+   "oe": true,
    "relatedNpcs": [
     "Barbarian Mercenary",
     "Gnome Mercenary",
@@ -38406,7 +39714,8 @@
    "era": null,
    "giver": "Zamel",
    "items": [
-    "Small Tattered Dress"
+    "Small Tattered Dress",
+    "Golden Locket"
    ],
    "lvl": 4,
    "n": "Find Lucie Elron",
@@ -38458,7 +39767,9 @@
    ],
    "era": "Classic Era",
    "giver": "Narex T`Vem",
-   "items": [],
+   "items": [
+    "Goblin Supply Pouch"
+   ],
    "lvl": 12,
    "n": "Fire Goblin Runner",
    "relatedNpcs": [
@@ -38588,7 +39899,8 @@
    "giver": "Gretta Mottle",
    "items": [
     "Muffin Crate",
-    "Full Muffin Crate"
+    "Full Muffin Crate",
+    "Meat Pie"
    ],
    "lvl": 1,
    "n": "Fresh Baked Muffins (Kaladim)",
@@ -38640,6 +39952,7 @@
    ],
    "lvl": 53,
    "n": "Friend of the Kin",
+   "oe": true,
    "relatedNpcs": [
     "Wenglawks Kkeak",
     "Sentry Rotiart",
@@ -38685,6 +39998,7 @@
    ],
    "lvl": 50,
    "n": "Friend of the Tunarean Court",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -38763,6 +40077,7 @@
    ],
    "lvl": 1,
    "n": "Froglok Tad Tongues",
+   "oe": true,
    "relatedNpcs": [
     "a froglok tad"
    ],
@@ -38817,6 +40132,7 @@
    ],
    "lvl": 40,
    "n": "Fusibility Research",
+   "oe": true,
    "relatedNpcs": [
     "Guardian Kozzalym",
     "Master Yael",
@@ -38849,6 +40165,7 @@
    ],
    "lvl": 55,
    "n": "Garath's Weapons to Trade",
+   "oe": true,
    "relatedNpcs": [
     "warders (pre-awakening) or MotG",
     "FA and The Progenitor (post-awakening)"
@@ -38958,6 +40275,7 @@
    ],
    "lvl": 8,
    "n": "Geozite Tool Quest",
+   "oe": true,
    "relatedNpcs": [
     "Warlord Hikyg",
     "Warlord Vyzer",
@@ -38987,7 +40305,8 @@
    "giver": "Nomaria Doseniar",
    "items": [
     "Crows Special Brew",
-    "Crow's Special Brew"
+    "Crow's Special Brew",
+    "Sealed Letter"
    ],
    "lvl": 1,
    "n": "Gharin's Note (evil)",
@@ -39012,7 +40331,8 @@
    "giver": "Gharin",
    "items": [
     "Crow's Special Brew",
-    "Crows Special Brew"
+    "Crows Special Brew",
+    "Sealed Letter"
    ],
    "lvl": 1,
    "n": "Gharin's Note (good)",
@@ -39037,6 +40357,7 @@
    ],
    "lvl": 45,
    "n": "Giant Helmets",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Kael Drakkel"
@@ -39085,6 +40406,7 @@
    ],
    "lvl": 50,
    "n": "Gleed's Bow",
+   "oe": true,
    "relatedNpcs": [
     "Vluudeen"
    ],
@@ -39106,6 +40428,7 @@
    "items": [],
    "lvl": null,
    "n": "Gloves of Earthcrafting Quest",
+   "oe": true,
    "relatedNpcs": [
     "Derakor the Vindicator",
     "Priest Bjek",
@@ -39290,6 +40613,7 @@
    ],
    "lvl": 20,
    "n": "Goblin Battlemasters",
+   "oe": true,
    "relatedNpcs": [
     "goblin battlemaster"
    ],
@@ -39348,6 +40672,7 @@
    ],
    "lvl": 25,
    "n": "Goblin Raiders",
+   "oe": true,
    "relatedNpcs": [
     "a goblin watcher",
     "a goblin hunter",
@@ -39393,6 +40718,7 @@
    ],
    "lvl": 1,
    "n": "Going Postal (Felwithe to Kelethin)",
+   "oe": true,
    "relatedNpcs": [
     "Jakum Webdancer"
    ],
@@ -39414,6 +40740,7 @@
    ],
    "lvl": 1,
    "n": "Going Postal (Kaladim to Kelethin)",
+   "oe": true,
    "relatedNpcs": [
     "Jakum Webdancer"
    ],
@@ -39435,6 +40762,7 @@
    ],
    "lvl": 3,
    "n": "Granite Pebbles",
+   "oe": true,
    "relatedNpcs": [
     "an escaped froglok",
     "escaped froglok slave"
@@ -39507,7 +40835,8 @@
    "era": "Classic Era",
    "giver": "Gretta Mottle",
    "items": [
-    "Gretta's Baking Supplies"
+    "Gretta's Baking Supplies",
+    "Meat Pie"
    ],
    "lvl": 1,
    "n": "Gretta's Baking Supplies Quest",
@@ -39982,7 +41311,8 @@
    "era": "Classic Era",
    "giver": "Stained Parchment",
    "items": [
-    "Stained Parchment"
+    "Stained Parchment",
+    "Stained Note"
    ],
    "lvl": 1,
    "n": "Guild Summons - Dark Reflection Warrior",
@@ -40873,7 +42203,9 @@
    ],
    "era": "Classic Era",
    "giver": "Perkon Malok",
-   "items": [],
+   "items": [
+    "Blood Stained Note"
+   ],
    "lvl": 1,
    "n": "Guild Summons - Shrine of Bertoxxulous Magician",
    "relatedNpcs": [
@@ -40938,7 +42270,9 @@
    ],
    "era": "Classic Era",
    "giver": "Rocthar Bekesna",
-   "items": [],
+   "items": [
+    "Blood Stained Note"
+   ],
    "lvl": 1,
    "n": "Guild Summons - Shrine of Bertoxxulous Warrior",
    "relatedNpcs": [
@@ -40959,7 +42293,9 @@
    ],
    "era": "Classic Era",
    "giver": "Trenon Callust",
-   "items": [],
+   "items": [
+    "Blood Stained Note"
+   ],
    "lvl": 1,
    "n": "Guild Summons - Shrine of Bertoxxulous Wizard",
    "relatedNpcs": [
@@ -41530,6 +42866,7 @@
    ],
    "lvl": 30,
    "n": "Handy Shillelagh",
+   "oe": true,
    "relatedNpcs": [
     "Erollisi mantrap",
     "a mountain giant tump"
@@ -41551,7 +42888,9 @@
    ],
    "era": "Temple Era",
    "giver": "Vurgo",
-   "items": [],
+   "items": [
+    "Words of Darkness"
+   ],
    "lvl": 25,
    "n": "Harvester Quest",
    "relatedNpcs": [
@@ -41605,7 +42944,9 @@
    ],
    "era": "Classic Era",
    "giver": "Margyn McCann",
-   "items": [],
+   "items": [
+    "Barbarian Head"
+   ],
    "lvl": 5,
    "n": "Head of Granin O'Gill",
    "relatedNpcs": [
@@ -41727,7 +43068,12 @@
     "Tattered Recipe",
     "High Elf Flesh",
     "Preserved Leg",
-    "Ogre Butcher Gloves"
+    "Ogre Butcher Gloves",
+    "Erudite Meat",
+    "High Elf Parts",
+    "Human Flesh",
+    "Human Parts",
+    "Ogre Swill"
    ],
    "lvl": 20,
    "n": "HEHE Meat Quest",
@@ -41759,6 +43105,7 @@
    ],
    "lvl": 46,
    "n": "Helm of the Tracker Quest",
+   "oe": true,
    "relatedNpcs": [
     "Frostgiant Overseer",
     "Kallis Stormcaller",
@@ -41785,6 +43132,7 @@
    ],
    "lvl": 45,
    "n": "Helms of Giant Warriors",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Kael Drakkel"
@@ -41865,7 +43213,8 @@
    "era": "Classic Era",
    "giver": "Shazda Kaekwon",
    "items": [
-    "Heretics Head"
+    "Heretics Head",
+    "Burlap Satchel"
    ],
    "lvl": 25,
    "n": "Heretic Heads",
@@ -42104,7 +43453,9 @@
    ],
    "era": "Classic Era",
    "giver": "Plagus Ladeson",
-   "items": [],
+   "items": [
+    "Sealed Note"
+   ],
    "lvl": 1,
    "n": "Hopeless Love, Part 1",
    "relatedNpcs": [
@@ -42180,6 +43531,7 @@
    ],
    "lvl": 60,
    "n": "Hsagra's Wrath Quest",
+   "oe": true,
    "relatedNpcs": [
     "A Kromzek Spy",
     "Derasinal",
@@ -42282,7 +43634,8 @@
    "era": "Classic Era",
    "giver": "Josper Kenshed",
    "items": [
-    "Bag of Ice Necklaces"
+    "Bag of Ice Necklaces",
+    "Empty Bag"
    ],
    "lvl": 1,
    "n": "Ice Goblin Beads",
@@ -42368,6 +43721,7 @@
    ],
    "lvl": 25,
    "n": "Iksar Prisoner Quest",
+   "oe": true,
    "relatedNpcs": [
     "a coerced dwarf"
    ],
@@ -42412,7 +43766,9 @@
    "giver": "Tara Neklene",
    "items": [
     "Illegible Cantrip",
-    "Illegible Scroll"
+    "Illegible Scroll",
+    "Cracked Staff",
+    "Iron Ration"
    ],
    "lvl": 5,
    "n": "Illegible Cantrip Quest",
@@ -42499,6 +43855,7 @@
    ],
    "lvl": 25,
    "n": "Illusion: Iksar Quest",
+   "oe": true,
    "relatedNpcs": [
     "froglok nok shaman"
    ],
@@ -42524,6 +43881,7 @@
    "items": [],
    "lvl": 1,
    "n": "Illweed Parchment Quest",
+   "oe": true,
    "relatedNpcs": [
     "?"
    ],
@@ -42581,7 +43939,9 @@
    ],
    "era": null,
    "giver": "Sultin",
-   "items": [],
+   "items": [
+    "Glowing Mask"
+   ],
    "lvl": 25,
    "n": "Incandescent Mask quest",
    "relatedNpcs": [
@@ -42696,10 +44056,15 @@
     "Receipt for Provisions Crate",
     "Missing Teir`Dal Crate",
     "Swiftmoon's Head",
-    "Voucher of Service to Naythox"
+    "Voucher of Service to Naythox",
+    "File Mold",
+    "Metal Bits",
+    "Small Brick of Ore",
+    "Small Piece of Ore"
    ],
    "lvl": 5,
    "n": "Innoruuk Symbol Quests",
+   "oe": true,
    "relatedNpcs": [
     "Draxiz N'Ryt",
     "Dran `slug` Rembor",
@@ -42775,7 +44140,13 @@
     "Melatite",
     "Enchanted Platinum Bar",
     "Platinum Bar",
-    "Fairy Dust"
+    "Fairy Dust",
+    "Arrow of Acknowledgment",
+    "Arrow of Bravery",
+    "Arrow of Defiance",
+    "Arrow of Fortitude",
+    "Arrow of Gallantry",
+    "Arrow of Recognition"
    ],
    "lvl": 35,
    "n": "Ivy Etched Armor Quests",
@@ -42948,6 +44319,7 @@
    "items": [],
    "lvl": 18,
    "n": "Keeper Rott's Pages",
+   "oe": true,
    "relatedNpcs": [
     "A Goblin Soothsayer",
     "Goblin Spirit Caller"
@@ -42983,6 +44355,7 @@
    ],
    "lvl": 50,
    "n": "Kelorek's Scales",
+   "oe": true,
    "relatedNpcs": [
     "Kelorek`Dar"
    ],
@@ -43023,6 +44396,7 @@
    ],
    "lvl": 40,
    "n": "Key to Charasis Quest",
+   "oe": true,
    "relatedNpcs": [
     "Xalgoz",
     "Chancellor of Di`Zok"
@@ -43049,6 +44423,7 @@
    ],
    "lvl": 35,
    "n": "Key to Cobalt Scar",
+   "oe": true,
    "relatedNpcs": [
     "Wenglawks Kkeak"
    ],
@@ -43073,6 +44448,7 @@
    ],
    "lvl": 55,
    "n": "Key to Jaled Dar's Lair (Neb)",
+   "oe": true,
    "relatedNpcs": [
     "Vaniki",
     "Zlandicar"
@@ -43098,6 +44474,7 @@
    ],
    "lvl": 55,
    "n": "Key to Jaled Dar's Lair (Zlandicar)",
+   "oe": true,
    "relatedNpcs": [
     "Neb"
    ],
@@ -43125,6 +44502,7 @@
    ],
    "lvl": 55,
    "n": "Key to Sleeper's Tomb",
+   "oe": true,
    "relatedNpcs": [
     "Klandicar",
     "Lendiniara the Keeper",
@@ -43278,7 +44656,10 @@
    "era": "Classic Era",
    "giver": "Royal Guard Lilkus",
    "items": [
-    "Kobold Molar"
+    "Kobold Molar",
+    "Ringmail Cape",
+    "Ringmail Coif",
+    "Ringmail Sleeves"
    ],
    "lvl": 6,
    "n": "Kobold Molars (Evil)",
@@ -43354,6 +44735,7 @@
    ],
    "lvl": 5,
    "n": "Kobold Shaman Paws",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Toxxulia Forest"
@@ -43379,6 +44761,7 @@
    ],
    "lvl": 25,
    "n": "Kwinn's Quest",
+   "oe": true,
    "relatedNpcs": [
     "a pygmy skulking brute",
     "a sabertooth tiger",
@@ -43472,7 +44855,8 @@
    "giver": "Renth McLanis",
    "items": [
     "Lion Delight",
-    "Sweaty Shirt"
+    "Sweaty Shirt",
+    "Lion Meat Shipment"
    ],
    "lvl": 20,
    "n": "Langseax Quest",
@@ -43503,6 +44887,7 @@
    ],
    "lvl": 1,
    "n": "Learn the Ways of Skinning and Tailoring",
+   "oe": true,
    "relatedNpcs": [
     "a dire wolf"
    ],
@@ -43586,6 +44971,7 @@
    ],
    "lvl": 1,
    "n": "Legion Lager Quest",
+   "oe": true,
    "relatedNpcs": [
     "None"
    ],
@@ -43657,6 +45043,7 @@
    ],
    "lvl": 46,
    "n": "Leuz's Task",
+   "oe": true,
    "relatedNpcs": [
     "Scout Charisa",
     "a Kromzek Captain",
@@ -43680,7 +45067,9 @@
    "era": null,
    "giver": "Rarnan Lapice",
    "items": [
-    "Page 30 of a Book"
+    "Page 30 of a Book",
+    "Library of Erudin",
+    "Page 34 of a Book"
    ],
    "lvl": 16,
    "n": "Library Book",
@@ -43761,6 +45150,7 @@
    ],
    "lvl": 50,
    "n": "Living Dragons",
+   "oe": true,
    "relatedNpcs": [
     "Western Wastes Dragons"
    ],
@@ -43789,6 +45179,7 @@
    ],
    "lvl": 45,
    "n": "Living Granite",
+   "oe": true,
    "relatedNpcs": [
     "a geonid",
     "a geonid shaman",
@@ -43936,6 +45327,7 @@
    ],
    "lvl": 50,
    "n": "Lodizal Shell Shield Quest",
+   "oe": true,
    "relatedNpcs": [
     "Lodizal"
    ],
@@ -43962,6 +45354,7 @@
    ],
    "lvl": 25,
    "n": "Long Iron Rod Quest",
+   "oe": true,
    "relatedNpcs": [
     "an undead blacksmith"
    ],
@@ -44001,7 +45394,9 @@
    ],
    "era": null,
    "giver": "Karg IceBear",
-   "items": [],
+   "items": [
+    "Werewolf Claws"
+   ],
    "lvl": 25,
    "n": "Lupine Claw Gauntlets Quest",
    "relatedNpcs": [
@@ -44158,6 +45553,7 @@
    ],
    "lvl": null,
    "n": "Magician Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -44194,6 +45590,7 @@
    ],
    "lvl": 50,
    "n": "Magician Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (West Wing)"
    ],
@@ -44279,6 +45676,7 @@
    ],
    "lvl": 50,
    "n": "Magician Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East Mobs"
    ],
@@ -44389,6 +45787,7 @@
    ],
    "lvl": 45,
    "n": "Magician Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -44498,10 +45897,12 @@
    "era": "Kunark Era",
    "giver": "Drill Master Dal",
    "items": [
-    "Marauder Snout Ring 'MM'"
+    "Marauder Snout Ring 'MM'",
+    "Leech Husk"
    ],
    "lvl": 14,
    "n": "Marauder Armor",
+   "oe": true,
    "relatedNpcs": [
     "an iksar marauder"
    ],
@@ -44528,7 +45929,9 @@
    "items": [
     "Intestine Necklace",
     "Empty Vial",
-    "Zimbittle's Pouch"
+    "Zimbittle's Pouch",
+    "Hopper Spear",
+    "Tattered Cloth Note"
    ],
    "lvl": 9,
    "n": "Marda's Secret Mission",
@@ -44611,6 +46014,7 @@
    ],
    "lvl": 50,
    "n": "Mechanical Net Delivery",
+   "oe": true,
    "relatedNpcs": [
     "Kellek Felhammer",
     "a siren enticer",
@@ -44634,6 +46038,7 @@
    "items": [],
    "lvl": 51,
    "n": "Medallion of the Jarsath Quest",
+   "oe": true,
    "relatedNpcs": [
     "a bloodgill marauder",
     "an ancient Jarsath"
@@ -44655,9 +46060,12 @@
    ],
    "era": "Kunark Era",
    "giver": "Professor Akabao",
-   "items": [],
+   "items": [
+    "Black Sapphire"
+   ],
    "lvl": 51,
    "n": "Medallion of the Kylong Quest",
+   "oe": true,
    "relatedNpcs": [
     "Verix Kyloxs Remains",
     "Niblek"
@@ -44682,6 +46090,7 @@
    "items": [],
    "lvl": 51,
    "n": "Medallion of the Obulus Quest",
+   "oe": true,
    "relatedNpcs": [
     "rotting skeleton",
     "Pained Soul"
@@ -44708,6 +46117,7 @@
    ],
    "lvl": null,
    "n": "Mercenary Assignments Quest",
+   "oe": true,
    "relatedNpcs": [
     "Barbarian Mercenary",
     "Gnome Mercenary",
@@ -44784,7 +46194,9 @@
    "giver": "Noxhil V`Sek",
    "items": [
     "A Sealed List",
-    "A Sealed Letter"
+    "A Sealed Letter",
+    "Sealed Letter",
+    "Thex Mallet"
    ],
    "lvl": 15,
    "n": "Messages For Neriak",
@@ -44897,6 +46309,7 @@
    ],
    "lvl": 35,
    "n": "Mining Picks",
+   "oe": true,
    "relatedNpcs": [
     "a young shardwurm",
     "an elder shardwurm",
@@ -44992,6 +46405,7 @@
    "items": [],
    "lvl": null,
    "n": "Mirgon Dower's Head",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [
@@ -45037,10 +46451,12 @@
     "Trunt's Head",
     "Eye of Kaiaren",
     "Demon Fangs",
-    "Book of Celestial Fists"
+    "Book of Celestial Fists",
+    "Library of Erudin"
    ],
    "lvl": null,
    "n": "Monk Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -45072,7 +46488,8 @@
     "Skull of Jhen`Tra",
     "Dagger of Marnek",
     "Zaharn's Coronet",
-    "Robe of the Lost Circle"
+    "Robe of the Lost Circle",
+    "Black Headband"
    ],
    "lvl": 1,
    "n": "Monk Headband Quests",
@@ -45116,6 +46533,7 @@
    ],
    "lvl": 50,
    "n": "Monk Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (West Wing)"
    ],
@@ -45255,10 +46673,12 @@
     "Carnelian",
     "Part of a Large Key",
     "Coppernickel Key",
-    "A Bronze Key"
+    "A Bronze Key",
+    "Trog Brew"
    ],
    "lvl": 1,
    "n": "Monk Shackle Quests",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -45301,6 +46721,7 @@
    ],
    "lvl": 50,
    "n": "Monk Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (ToV East)"
    ],
@@ -45343,6 +46764,7 @@
    ],
    "lvl": 45,
    "n": "Monk Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -45376,7 +46798,8 @@
     "Rare Robe Pattern",
     "Shadow Silk",
     "Shadow Wolf Pelt",
-    "Silk Swatch"
+    "Silk Swatch",
+    "Robe Pattern"
    ],
    "lvl": null,
    "n": "Monks of The Whistling Fist",
@@ -45501,7 +46924,8 @@
    "items": [
     "Snake Scales",
     "Snake Fang",
-    "Bag of Snake Parts"
+    "Bag of Snake Parts",
+    "Empty Bag"
    ],
    "lvl": 1,
    "n": "Moss Snakes",
@@ -45548,7 +46972,8 @@
     "Fruit",
     "Muffin",
     "Muffin Crate",
-    "Full Muffin Crate"
+    "Full Muffin Crate",
+    "Meat Pie"
    ],
    "lvl": null,
    "n": "Muffin Quests",
@@ -45572,6 +46997,7 @@
    ],
    "lvl": 46,
    "n": "Natures Defender Quest",
+   "oe": true,
    "relatedNpcs": [
     "a corrupted faun",
     "a corrupted panther",
@@ -45601,6 +47027,7 @@
    ],
    "lvl": 6,
    "n": "Necro Spells",
+   "oe": true,
    "relatedNpcs": [
     "a large scorpion",
     "a sabertooth cub",
@@ -45634,10 +47061,13 @@
     "Eye of Innoruuk",
     "Slime Blood of Cazic Thule",
     "Gkzzallk in a Box",
-    "Tome of Instruction"
+    "Tome of Instruction",
+    "Key of Veeshan",
+    "Symbol of Insanity"
    ],
    "lvl": null,
    "n": "Necromancer Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -45676,6 +47106,7 @@
    ],
    "lvl": 50,
    "n": "Necromancer Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (West Wing)"
    ],
@@ -45754,7 +47185,8 @@
     "Gem of Yet to Come",
     "Jewel of Ganak",
     "Shiny Emerald",
-    "Forge Hammer of Dalnir"
+    "Forge Hammer of Dalnir",
+    "Foot of Candlestick"
    ],
    "lvl": 4,
    "n": "Necromancer Skullcap Quests",
@@ -45800,6 +47232,7 @@
    ],
    "lvl": 50,
    "n": "Necromancer Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East Mobs"
    ],
@@ -45890,6 +47323,7 @@
    ],
    "lvl": 45,
    "n": "Necromancer Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -46141,6 +47575,7 @@
    ],
    "lvl": 50,
    "n": "Niblek's Gems",
+   "oe": true,
    "relatedNpcs": [
     "None"
    ],
@@ -46237,7 +47672,8 @@
    "items": [
     "Dwarven Ale",
     "Note to Janam",
-    "Note to Harkin"
+    "Note to Harkin",
+    "Ring of Shadows"
    ],
    "lvl": 1,
    "n": "Note for Janam",
@@ -46334,6 +47770,7 @@
    ],
    "lvl": 1,
    "n": "Odd Items",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
@@ -46351,7 +47788,9 @@
     "Patchwork Sleeves",
     "Small Bag",
     "Tattered Skullcap",
-    "Worn Great Staff"
+    "Worn Great Staff",
+    "Empty Bag",
+    "Zombie Flesh"
    ],
    "lvl": 10,
    "n": "Odus Pearls",
@@ -46553,7 +47992,8 @@
    "giver": "General Jyleel",
    "items": [
     "Runner Pouch",
-    "A Sealed Letter"
+    "A Sealed Letter",
+    "Sealed Letter"
    ],
    "lvl": 8,
    "n": "Orc Runner (Felwithe)",
@@ -46586,7 +48026,8 @@
    "giver": "Dill Fireshine",
    "items": [
     "A Sealed Letter",
-    "Runner Pouch"
+    "Runner Pouch",
+    "Sealed Letter"
    ],
    "lvl": 8,
    "n": "Orc Runner (Kelethin)",
@@ -46773,10 +48214,12 @@
     "Gleaming Crested Sword",
     "Tainted Darksteel Shield",
     "Gleaming Crested Shield",
-    "Mark of Atonement"
+    "Mark of Atonement",
+    "Steel Breastplate"
    ],
    "lvl": null,
    "n": "Paladin Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -46849,6 +48292,7 @@
    ],
    "lvl": 50,
    "n": "Paladin Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (West Wing)"
    ],
@@ -46951,6 +48395,7 @@
    ],
    "lvl": 50,
    "n": "Paladin Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East"
    ],
@@ -46993,6 +48438,7 @@
    ],
    "lvl": 45,
    "n": "Paladin Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -47022,7 +48468,8 @@
     "Keldyn's Tongue",
     "Barma's Tongue",
     "Brass Earring",
-    "Rondo's Tongue"
+    "Rondo's Tongue",
+    "Mining Pick 628"
    ],
    "lvl": 13,
    "n": "Parrying Pick Quest",
@@ -47083,7 +48530,8 @@
    "giver": "Lumi Stergnon",
    "items": [
     "Pearl of Odus",
-    "Wooden Shards"
+    "Wooden Shards",
+    "Sealed Letter"
    ],
    "lvl": 10,
    "n": "Peacekeeper Staff Quest",
@@ -47153,7 +48601,8 @@
    "era": null,
    "giver": "Styria Fearnon",
    "items": [
-    "Pirate's Earring"
+    "Pirate's Earring",
+    "Bracers of Erollisi"
    ],
    "lvl": 20,
    "n": "Pirate Earrings",
@@ -47256,7 +48705,8 @@
    "giver": "Roesager Thusten",
    "items": [
     "Crows Special Brew",
-    "Crow's Special Brew"
+    "Crow's Special Brew",
+    "Sealed Letter"
    ],
    "lvl": 10,
    "n": "Plaguebringer Proof",
@@ -47289,6 +48739,7 @@
    ],
    "lvl": 55,
    "n": "Plane of Mischief Armor Quest",
+   "oe": true,
    "relatedNpcs": [
     "Peachy D`Vicci"
    ],
@@ -47320,6 +48771,7 @@
    ],
    "lvl": 55,
    "n": "Plane of Mischief Faction Quest",
+   "oe": true,
    "relatedNpcs": [
     "Stomples",
     "Vinny V. D`vicci"
@@ -47900,6 +49352,7 @@
    ],
    "lvl": 60,
    "n": "Porlos' Fury Quest",
+   "oe": true,
    "relatedNpcs": [
     "Myga",
     "Tomekeeper Bjordnessin",
@@ -47921,7 +49374,10 @@
    ],
    "era": "Classic Era",
    "giver": "Chef Dooga",
-   "items": [],
+   "items": [
+    "HEHE Meat",
+    "Preserved Leg"
+   ],
    "lvl": 4,
    "n": "Preserved Meat Delivery",
    "relatedNpcs": [
@@ -47953,7 +49409,9 @@
     "Brass Key",
     "Fish Food",
     "Royal Amulet of Thex",
-    "Highkeep Royal Suite"
+    "Highkeep Royal Suite",
+    "Fairy Dust",
+    "Sand of Ro"
    ],
    "lvl": 40,
    "n": "Princess Lenya (Quest)",
@@ -47992,6 +49450,7 @@
    "items": [],
    "lvl": 30,
    "n": "Protect the Shipyard",
+   "oe": true,
    "relatedNpcs": [
     "a Sarnak berzerker"
    ],
@@ -48194,7 +49653,8 @@
     "Clump of Gorilla Hair",
     "Lock of Hair",
     "A Glimmering Fairie Wing",
-    "Pouch of Gold Dust"
+    "Pouch of Gold Dust",
+    "Scrap Metal"
    ],
    "lvl": 35,
    "n": "Rain Caller Quest",
@@ -48236,6 +49696,7 @@
    ],
    "lvl": 5,
    "n": "Ralgyn's Promise",
+   "oe": true,
    "relatedNpcs": [
     "Gkrean Prophet of Tallon",
     "Kardakor",
@@ -48269,6 +49730,7 @@
    ],
    "lvl": 10,
    "n": "Rallos Zek Symbol Quests",
+   "oe": true,
    "relatedNpcs": [
     "a lizardman mystic"
    ],
@@ -48328,6 +49790,7 @@
    ],
    "lvl": null,
    "n": "Ranger Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -48365,6 +49828,7 @@
    ],
    "lvl": 50,
    "n": "Ranger Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (ToV West)"
    ],
@@ -48412,7 +49876,8 @@
     "Thickened Nectar",
     "Sphinx Tallow",
     "Shimmering Pearl",
-    "Efreeti War Bow"
+    "Efreeti War Bow",
+    "Spiroc Healer's Cloak"
    ],
    "lvl": null,
    "n": "Ranger Plane of Sky Tests",
@@ -48446,6 +49911,7 @@
    ],
    "lvl": 50,
    "n": "Ranger Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East Mobs"
    ],
@@ -48488,6 +49954,7 @@
    ],
    "lvl": 45,
    "n": "Ranger Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -48546,6 +50013,7 @@
    ],
    "lvl": 1,
    "n": "Rare Coins",
+   "oe": true,
    "relatedNpcs": [
     "a bloodgill goblin",
     "a kly imprecator",
@@ -48906,7 +50374,8 @@
    "items": [
     "Incomplete Blackbox",
     "Blackbox Fragment",
-    "Rusted Blackbox"
+    "Rusted Blackbox",
+    "Daily Log"
    ],
    "lvl": 8,
    "n": "Red V Clockwork",
@@ -48980,6 +50449,7 @@
    ],
    "lvl": 51,
    "n": "Regal Band of Bathezid Quest",
+   "oe": true,
    "relatedNpcs": [
     "A Sarnak Spy",
     "Warlord Skargus",
@@ -49020,6 +50490,7 @@
    ],
    "lvl": 45,
    "n": "Reinforcements for The Tunarean Regiment",
+   "oe": true,
    "relatedNpcs": [
     "Corudoth",
     "Incoherent spirit",
@@ -49060,6 +50531,7 @@
    ],
    "lvl": 25,
    "n": "Renew Bones Quest",
+   "oe": true,
    "relatedNpcs": [
     "a coerced revenant"
    ],
@@ -49092,6 +50564,7 @@
    ],
    "lvl": 55,
    "n": "Request of the Arcane",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Casalen",
@@ -49130,6 +50603,7 @@
    ],
    "lvl": 55,
    "n": "Request of the Strong",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed"
    ],
@@ -49248,7 +50722,8 @@
    "items": [
     "Fire Goblin Skin",
     "Frost Goblin Skin",
-    "Twice-Woven Cloak"
+    "Twice-Woven Cloak",
+    "Circlet of Mist"
    ],
    "lvl": 25,
    "n": "Robe of the Elements Quest",
@@ -49357,10 +50832,12 @@
     "Eyerazzia",
     "Trochilic's Skean",
     "Ravenscale Shoulderpads",
-    "Ravenscale Mask"
+    "Ravenscale Mask",
+    "Well-Balanced Rapier"
    ],
    "lvl": null,
    "n": "Rogue Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -49422,6 +50899,7 @@
    ],
    "lvl": 50,
    "n": "Rogue Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (ToV West)"
    ],
@@ -49468,7 +50946,8 @@
     "Thornstinger",
     "Honeyed Nectar",
     "Lightning Rod",
-    "Bloodsky Sapphire"
+    "Bloodsky Sapphire",
+    "Transparent Mask"
    ],
    "lvl": null,
    "n": "Rogue Plane of Sky Tests",
@@ -49505,7 +50984,8 @@
     "Case of Spirits",
     "Gem of Stamina",
     "Gem Case",
-    "Gnoll Pup Scalp"
+    "Gnoll Pup Scalp",
+    "Lumberjack Pale Ale"
    ],
    "lvl": 30,
    "n": "Rogue Redemption",
@@ -49567,6 +51047,7 @@
    ],
    "lvl": 50,
    "n": "Rogue Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East Mobs"
    ],
@@ -49609,6 +51090,7 @@
    ],
    "lvl": 45,
    "n": "Rogue Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -49656,7 +51138,9 @@
    "giver": "Vilissia",
    "items": [
     "Lizardscale Cloak",
-    "Rune of Scale"
+    "Rune of Scale",
+    "Acumen Mask",
+    "Tishan's Kilt"
    ],
    "lvl": 28,
    "n": "Runescale Cloak Quest",
@@ -49823,6 +51307,7 @@
    "items": [],
    "lvl": 5,
    "n": "Sad Klandicar",
+   "oe": true,
    "relatedNpcs": [
     "Klandicar"
    ],
@@ -49844,6 +51329,7 @@
    ],
    "lvl": 2,
    "n": "Sarnak Hatchling Brains",
+   "oe": true,
    "relatedNpcs": [
     "a Sarnak hatchling"
    ],
@@ -49873,6 +51359,7 @@
    ],
    "lvl": 50,
    "n": "Saucy Salted Seadragon Steak",
+   "oe": true,
    "relatedNpcs": [
     "Faydedar",
     "Kelorek`Dar"
@@ -49925,6 +51412,7 @@
    ],
    "lvl": 20,
    "n": "Scaled Mystic Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -50001,7 +51489,8 @@
     "Goblin Ice Necklace",
     "Fire Goblin Skin",
     "Holiday Gift",
-    "Whispers of the Icestar"
+    "Whispers of the Icestar",
+    "Large Sewing Kit"
    ],
    "lvl": 1,
    "n": "Scholar Darnath's Help",
@@ -50034,6 +51523,7 @@
    ],
    "lvl": 1,
    "n": "Scorpion Pincers",
+   "oe": true,
    "relatedNpcs": [
     "a scorpion"
    ],
@@ -50203,6 +51693,7 @@
    ],
    "lvl": 55,
    "n": "Scrolls of the Ancient Totem",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Dragon Necropolis"
@@ -50230,6 +51721,7 @@
    ],
    "lvl": 1,
    "n": "Sebilis and Veeshan's Peak Key Quest",
+   "oe": true,
    "relatedNpcs": [
     "A Bloodgill Marauder",
     "An Ancient Jarsath",
@@ -50280,7 +51772,9 @@
    ],
    "era": "Classic Era",
    "giver": "Shazda Asad",
-   "items": [],
+   "items": [
+    "Sentinel Creot's Head"
+   ],
    "lvl": 30,
    "n": "Second Test of Kejaar",
    "relatedNpcs": [
@@ -50390,7 +51884,9 @@
     "Dulcet Nectar",
     "Bloodstained Hilt",
     "Blood Sky Ruby",
-    "Efreeti War Axe"
+    "Efreeti War Axe",
+    "Djinni Finger Ring",
+    "Sphinx Eye Amulet"
    ],
    "lvl": null,
    "n": "Shadow Knight Plane of Sky Tests",
@@ -50488,6 +51984,7 @@
    ],
    "lvl": null,
    "n": "Shadowknight Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -50527,6 +52024,7 @@
    ],
    "lvl": 50,
    "n": "Shadowknight Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (ToV West Wing)"
    ],
@@ -50569,6 +52067,7 @@
    ],
    "lvl": 50,
    "n": "Shadowknight Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East Mobs"
    ],
@@ -50611,6 +52110,7 @@
    ],
    "lvl": 45,
    "n": "Shadowknight Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Various (Giants)"
    ],
@@ -50698,10 +52198,17 @@
     "Merchant's Letter",
     "Written Announcement",
     "Priest's Diary Page",
-    "Student's Log"
+    "Student's Log",
+    "Crusades of the High Scale",
+    "Engraved Ring",
+    "Fish Scales",
+    "Head Housekeeper's Log",
+    "Historic Article",
+    "Neh`Ashiir's Diary"
    ],
    "lvl": null,
    "n": "Shaman Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -50740,6 +52247,7 @@
    ],
    "lvl": 50,
    "n": "Shaman Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (ToV West)"
    ],
@@ -50788,7 +52296,12 @@
     "Thickened Nectar",
     "Fire Sky Ruby",
     "Symbol of Veeshan",
-    "Efreeti War Maul"
+    "Efreeti War Maul",
+    "Crimson Ring of Desinence",
+    "Drake Fang Amulet",
+    "Elder Shaman's Ceremonial Bracelet",
+    "Sphinx-Hide Mantle",
+    "Spiroc Warhammer"
    ],
    "lvl": null,
    "n": "Shaman Plane of Sky Tests",
@@ -50827,6 +52340,7 @@
    ],
    "lvl": 5,
    "n": "Shaman Skull Quests",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -50868,6 +52382,7 @@
    ],
    "lvl": 50,
    "n": "Shaman Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East Mobs"
    ],
@@ -50916,7 +52431,12 @@
    ],
    "era": null,
    "giver": "Bukuku Wolffeetz",
-   "items": [],
+   "items": [
+    "Spell: Cannibalize III",
+    "Spell: Cripple",
+    "Spell: Spirit of Scale",
+    "Spell: Talisman of Jasinth"
+   ],
    "lvl": 51,
    "n": "Shaman Spells (Evil)",
    "relatedNpcs": [
@@ -50982,6 +52502,7 @@
    ],
    "lvl": 45,
    "n": "Shaman Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -51009,6 +52530,7 @@
    "items": [],
    "lvl": 45,
    "n": "Shaman's Velium Sleeves",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Kael Drakkel"
@@ -51086,6 +52608,7 @@
    ],
    "lvl": 8,
    "n": "Shestar's Scaled Coif Quest",
+   "oe": true,
    "relatedNpcs": [
     "scaled wolfs"
    ],
@@ -51184,7 +52707,8 @@
    "era": null,
    "giver": "Shondo Billin",
    "items": [
-    "Vasty Deep Ale"
+    "Vasty Deep Ale",
+    "Erud's Tonic"
    ],
    "lvl": 1,
    "n": "Shondo and the Tonic",
@@ -51230,9 +52754,12 @@
    ],
    "era": "Velious Era",
    "giver": "Nojas Blackfist",
-   "items": [],
+   "items": [
+    "Sifaye Wing"
+   ],
    "lvl": 50,
    "n": "Sifaye Abominations",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [
@@ -51394,6 +52921,7 @@
    ],
    "lvl": 40,
    "n": "Slaggak's Bounty",
+   "oe": true,
    "relatedNpcs": [
     "a crystaline shardwurm",
     "a wyvern"
@@ -51492,7 +53020,9 @@
    ],
    "era": "Classic Era",
    "giver": "Priestess Ghalea",
-   "items": [],
+   "items": [
+    "Fairy Dust"
+   ],
    "lvl": 35,
    "n": "Soil of Underfoot",
    "relatedNpcs": [],
@@ -51598,6 +53128,7 @@
    ],
    "lvl": 35,
    "n": "Souvenir Mugs",
+   "oe": true,
    "relatedNpcs": [
     "Adia Coldbeard",
     "Doogle McBanick",
@@ -51625,6 +53156,7 @@
    ],
    "lvl": 4,
    "n": "Sparring Armor",
+   "oe": true,
    "relatedNpcs": [
     "a swamp leech",
     "The Toilmaster"
@@ -51658,6 +53190,7 @@
    ],
    "lvl": 45,
    "n": "Spear Delivery",
+   "oe": true,
    "relatedNpcs": [
     "Bekerak Coldbones",
     "Kellek Felhammer"
@@ -51682,6 +53215,7 @@
    ],
    "lvl": 45,
    "n": "Spider Legs Quest",
+   "oe": true,
    "relatedNpcs": [
     "a crystal spider"
    ],
@@ -51729,10 +53263,15 @@
     "Soul Orb",
     "Kejek Spirit Powder",
     "Shattered Soul Orb",
-    "Shattered Fading Soul Orb"
+    "Shattered Fading Soul Orb",
+    "Jungle Spiritling Stone",
+    "Mountain Spiritling Stone",
+    "Smithy Hammer",
+    "Valley Spiritling Stone"
    ],
    "lvl": 35,
    "n": "Spirit Aid",
+   "oe": true,
    "relatedNpcs": [
     "A fading erudite apparition",
     "A fading heretic apparition",
@@ -51789,6 +53328,7 @@
    ],
    "lvl": 55,
    "n": "Spirit Wracked Cord Quest",
+   "oe": true,
    "relatedNpcs": [
     "Drusella Sathir",
     "Trakanon",
@@ -51815,7 +53355,9 @@
     "Lambent Stone",
     "Heart of Fire",
     "Heart of Frost",
-    "Rod of Bone"
+    "Rod of Bone",
+    "Heart of Stone",
+    "Stein of Moggok"
    ],
    "lvl": 30,
    "n": "Staff of Temperate Flux Quest",
@@ -51858,6 +53400,7 @@
    ],
    "lvl": 50,
    "n": "Stanos' Head",
+   "oe": true,
    "relatedNpcs": [
     "Stanos Herkanor"
    ],
@@ -51876,7 +53419,11 @@
    ],
    "era": "Classic Era",
    "giver": "Brin Stolunger",
-   "items": [],
+   "items": [
+    "Bat Wing",
+    "Sealed Letter",
+    "Snake Scales"
+   ],
    "lvl": 6,
    "n": "Steel Warrior Initiation",
    "relatedNpcs": [
@@ -51929,6 +53476,7 @@
    ],
    "lvl": 1,
    "n": "Storm Giant Toes to Sentry Kcor",
+   "oe": true,
    "relatedNpcs": [
     "storm giants"
    ],
@@ -51952,6 +53500,7 @@
    ],
    "lvl": 50,
    "n": "Strategies of the Ancient Dragons",
+   "oe": true,
    "relatedNpcs": [
     "a dragon construct"
    ],
@@ -51973,9 +53522,13 @@
    ],
    "era": "Velious Era",
    "giver": "Clrakk Blackfist",
-   "items": [],
+   "items": [
+    "Hand of Deaen Greyforge",
+    "Legs of Deaen Greyforge"
+   ],
    "lvl": 50,
    "n": "Strife to the Coldain",
+   "oe": true,
    "relatedNpcs": [
     "Deaen Greyforge"
    ],
@@ -52108,7 +53661,8 @@
     "Dwarven Axe",
     "Targ Shield",
     "Gossamer Robe",
-    "Silver Amber Ring"
+    "Silver Amber Ring",
+    "Tattered Cloth Note"
    ],
    "lvl": 14,
    "n": "Taskmaster Earring",
@@ -52361,6 +53915,7 @@
    ],
    "lvl": 55,
    "n": "Test of Protection",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Essedera",
@@ -52386,10 +53941,13 @@
     "Emerald Tear",
     "Flame Kissed Symbol",
     "Poison Symbol",
-    "Emerald Symbol"
+    "Emerald Symbol",
+    "Platinum Tear",
+    "Ruby Tear"
    ],
    "lvl": 55,
    "n": "Test of the Emerald Tear",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Casalen",
@@ -52426,6 +53984,7 @@
    ],
    "lvl": 55,
    "n": "Test of the Fire Storm",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Krigara",
@@ -52459,6 +54018,7 @@
    ],
    "lvl": 55,
    "n": "Test of the Living Flame",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Casalen",
@@ -52484,10 +54044,13 @@
     "Platinum Tear",
     "Black Symbol",
     "Serrated Symbol",
-    "Runed Symbol"
+    "Runed Symbol",
+    "Emerald Tear",
+    "Ruby Tear"
    ],
    "lvl": 55,
    "n": "Test of the Platinum Tear",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Grozzmel",
@@ -52513,10 +54076,13 @@
     "Ruby Tear",
     "White Symbol",
     "Ruby Symbol",
-    "Silver Symbol"
+    "Silver Symbol",
+    "Emerald Tear",
+    "Platinum Tear"
    ],
    "lvl": 55,
    "n": "Test of the Ruby Tear",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Casalen",
@@ -52551,6 +54117,7 @@
    ],
    "lvl": 55,
    "n": "Test of the Tooth",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Casalen",
@@ -52613,6 +54180,7 @@
    ],
    "lvl": 50,
    "n": "The Ancient Tomes",
+   "oe": true,
    "relatedNpcs": [
     "Draazak",
     "Esorpa of the Ring",
@@ -52670,7 +54238,8 @@
    "era": "Classic Era",
    "giver": "Ilscent Tagglefoot",
    "items": [
-    "Case of Jumjum Juice"
+    "Case of Jumjum Juice",
+    "Jumjum Juice"
    ],
    "lvl": 3,
    "n": "The Bind",
@@ -52726,7 +54295,8 @@
     "Sapphire",
     "Fire Opal",
     "Enchanted Platinum Bar",
-    "Revenant Ash"
+    "Revenant Ash",
+    "Dusty Old Leg Bone"
    ],
    "lvl": 49,
    "n": "The Bones of Darak Lightforge",
@@ -52764,7 +54334,8 @@
    "era": "Classic Era",
    "giver": "Innkeep Nasumi",
    "items": [
-    "Bag of Bread Loaves"
+    "Bag of Bread Loaves",
+    "Full Muffin Crate"
    ],
    "lvl": 1,
    "n": "The Bread Shipment (East Freeport)",
@@ -52858,7 +54429,8 @@
    "era": null,
    "giver": "Gretta Mottle",
    "items": [
-    "Bag of Bread Loaves"
+    "Bag of Bread Loaves",
+    "Meat Pie"
    ],
    "lvl": 1,
    "n": "The Bread Shipment (Kaladim)",
@@ -53008,7 +54580,8 @@
     "A Sealed List",
     "Human Decapitated Head",
     "Gnome Decapitated Head",
-    "Dwarf Decapitated Head"
+    "Dwarf Decapitated Head",
+    "Deepwater Harpoon"
    ],
    "lvl": 30,
    "n": "The Bridge",
@@ -53036,7 +54609,9 @@
    ],
    "era": "Classic Era",
    "giver": "Dorn B`Dynn",
-   "items": [],
+   "items": [
+    "Charasis Tome"
+   ],
    "lvl": 20,
    "n": "The Broodling",
    "relatedNpcs": [],
@@ -53168,7 +54743,9 @@
    ],
    "era": "Classic Era",
    "giver": "Guard Weleth",
-   "items": [],
+   "items": [
+    "Crate of Defective Arrows"
+   ],
    "lvl": 1,
    "n": "The Crate (good)",
    "relatedNpcs": [
@@ -53280,7 +54857,10 @@
     "White Gold Necklace",
     "Crystalline Orb",
     "Prickly Pear",
-    "Monstrous Zombie Heart"
+    "Monstrous Zombie Heart",
+    "Bloodied Piece of Parchment",
+    "Faceted Hyacinth",
+    "Uncut Hyacinth"
    ],
    "lvl": 46,
    "n": "The Etched Stone (Spell: Life Leech)",
@@ -53345,6 +54925,7 @@
    "items": [],
    "lvl": 50,
    "n": "The Family Chest Straps",
+   "oe": true,
    "relatedNpcs": [
     "Phinigel Autropos"
    ],
@@ -53405,6 +54986,7 @@
    ],
    "lvl": 55,
    "n": "The First Arcane Test",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Casalen",
@@ -53508,6 +55090,7 @@
    ],
    "lvl": 55,
    "n": "The Four Idols",
+   "oe": true,
    "relatedNpcs": [
     "Gkrean Prophet of Tallon",
     "Semkak Prophet of Vallon",
@@ -53597,6 +55180,7 @@
    ],
    "lvl": 55,
    "n": "The Gift Box",
+   "oe": true,
    "relatedNpcs": [
     "Bob the Painter"
    ],
@@ -53707,6 +55291,7 @@
    ],
    "lvl": 35,
    "n": "The Grammar Manual",
+   "oe": true,
    "relatedNpcs": [
     "Ami",
     "An Agitated Snowfang",
@@ -53789,6 +55374,7 @@
    "items": [],
    "lvl": 1,
    "n": "The Loom",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
@@ -53831,6 +55417,7 @@
    ],
    "lvl": null,
    "n": "The Lost Circle",
+   "oe": true,
    "relatedNpcs": [
     "Brother Balatin",
     "a drolvarg pawbuster",
@@ -53864,6 +55451,7 @@
    ],
    "lvl": 1,
    "n": "The Lost Map",
+   "oe": true,
    "relatedNpcs": [
     "Bloodmaw",
     "Captain Nalot",
@@ -53920,6 +55508,7 @@
    ],
    "lvl": 55,
    "n": "The Lost Tome",
+   "oe": true,
    "relatedNpcs": [
     "Jaelk",
     "Lararith",
@@ -53973,6 +55562,7 @@
    ],
    "lvl": 35,
    "n": "The Mighty Garou",
+   "oe": true,
    "relatedNpcs": [
     "Garou",
     "Midnight"
@@ -54075,6 +55665,7 @@
    ],
    "lvl": 1,
    "n": "The New Worker",
+   "oe": true,
    "relatedNpcs": [
     "None"
    ],
@@ -54098,7 +55689,8 @@
     "Rusty Axe",
     "Human Blood",
     "Rusty Dagger",
-    "Black Wood Chip"
+    "Black Wood Chip",
+    "Tattered Cloth Note"
    ],
    "lvl": 10,
    "n": "The Nitrates and the Assassin",
@@ -54182,7 +55774,10 @@
    "era": null,
    "giver": "Danaria Hollin",
    "items": [
-    "Capt. Orlin's Spiced Ale"
+    "Capt. Orlin's Spiced Ale",
+    "Copper Band",
+    "Greater Lightstone",
+    "Metal Disk"
    ],
    "lvl": 10,
    "n": "The Painting",
@@ -54222,6 +55817,7 @@
    ],
    "lvl": 1,
    "n": "The Penance",
+   "oe": true,
    "relatedNpcs": [
     "None"
    ],
@@ -54244,7 +55840,10 @@
    ],
    "era": "Classic Era",
    "giver": "Vasile Jahnir",
-   "items": [],
+   "items": [
+    "Summoned: Black Bread",
+    "Summoned: Dagger"
+   ],
    "lvl": 1,
    "n": "The Power of the Gatecallers",
    "relatedNpcs": [
@@ -54291,6 +55890,7 @@
    "items": [],
    "lvl": 1,
    "n": "The Realm of Heroes -- Felwithe",
+   "oe": true,
    "relatedNpcs": [
     "None"
    ],
@@ -54308,7 +55908,8 @@
    "era": "Classic Era",
    "giver": "Kimble Nogflop",
    "items": [
-    "Flask of Nitrates"
+    "Flask of Nitrates",
+    "Bayle List II"
    ],
    "lvl": 1,
    "n": "The Regurgitonic",
@@ -54341,6 +55942,7 @@
    ],
    "lvl": 5,
    "n": "The Restraining Order",
+   "oe": true,
    "relatedNpcs": [
     "Various Troopers"
    ],
@@ -54364,7 +55966,8 @@
    "era": null,
    "giver": "Eolorn J`Axx",
    "items": [
-    "A Locked Chest"
+    "A Locked Chest",
+    "Sealed Letter"
    ],
    "lvl": 1,
    "n": "The Rogue Take",
@@ -54421,6 +56024,7 @@
    ],
    "lvl": 55,
    "n": "The Second Arcane Test",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Casalen",
@@ -54493,6 +56097,7 @@
    ],
    "lvl": 50,
    "n": "The Spirit of Garzicor",
+   "oe": true,
    "relatedNpcs": [
     "Armor of Zek",
     "Carpenter Grundo",
@@ -54604,7 +56209,9 @@
     "Basalt Drake Scales",
     "Lens of Lord Soptyvr",
     "Widowmistress Hair",
-    "Mundane Mask"
+    "Mundane Mask",
+    "Fire Beetle Eye",
+    "Greater Lightstone"
    ],
    "lvl": 35,
    "n": "The Summoning of Terror",
@@ -54633,10 +56240,12 @@
    "era": "Velious Era",
    "giver": "Svekk Fangbinder",
    "items": [
-    "Velium Torque"
+    "Velium Torque",
+    "Giant Sack of Supplies"
    ],
    "lvl": 50,
    "n": "The Supply Run - Eastern Wastes",
+   "oe": true,
    "relatedNpcs": [
     "Fjloaren Icebane"
    ],
@@ -54654,10 +56263,12 @@
    "era": "Velious Era",
    "giver": "Svekk Fangbinder",
    "items": [
-    "Klezendian Crystal"
+    "Klezendian Crystal",
+    "Giant Sack of Supplies"
    ],
    "lvl": 50,
    "n": "The Supply Run - Great Divide",
+   "oe": true,
    "relatedNpcs": [
     "Bekerak Coldbones"
    ],
@@ -54683,6 +56294,7 @@
    ],
    "lvl": 50,
    "n": "The Supply Run - Wakening Land",
+   "oe": true,
    "relatedNpcs": [
     "Korzak Stonehammer"
    ],
@@ -54710,6 +56322,7 @@
    ],
    "lvl": 30,
    "n": "The Sword of Nobility",
+   "oe": true,
    "relatedNpcs": [
     "Kanthuk Ogrebane",
     "Llara",
@@ -54818,6 +56431,7 @@
    ],
    "lvl": 35,
    "n": "The Tome Raider",
+   "oe": true,
    "relatedNpcs": [
     "Dom K`Perl",
     "an Iksar tomb raider"
@@ -54954,10 +56568,12 @@
     "Reddish Crystal",
     "Azurite Focus",
     "Holy Symbol of Zek",
-    "Normon's axe"
+    "Normon's axe",
+    "Ornate Velium Pendant"
    ],
    "lvl": 45,
    "n": "The Velium Focus",
+   "oe": true,
    "relatedNpcs": [
     "Hakon Brightsteel",
     "Phenocryst",
@@ -54983,7 +56599,20 @@
    ],
    "era": null,
    "giver": "Thadres Thyme",
-   "items": [],
+   "items": [
+    "Bleeding Brain",
+    "Bog Juice",
+    "Delius Thyme's Diary Pg. 74",
+    "Elven Wine",
+    "Fish Wine",
+    "Gnomish Spirits",
+    "Gypsy Wine",
+    "Halas Heater",
+    "Halfling Stouters",
+    "Honey Mead",
+    "Red Wine",
+    "White Wine"
+   ],
    "lvl": 8,
    "n": "The Vengeful Musicians",
    "relatedNpcs": [
@@ -55185,6 +56814,7 @@
    ],
    "lvl": 50,
    "n": "Tiny Savages",
+   "oe": true,
    "relatedNpcs": [
     "Grand Huntsman Darral",
     "Royal Scribe Kaavin"
@@ -55351,7 +56981,11 @@
    ],
    "era": "Classic Era",
    "giver": "Oracle of K`Arnon",
-   "items": [],
+   "items": [
+    "Book of Scale",
+    "Book of Turmoil",
+    "Fiery Avenger"
+   ],
    "lvl": 45,
    "n": "Tome of Ages",
    "relatedNpcs": [
@@ -55415,6 +57049,7 @@
    "items": [],
    "lvl": 50,
    "n": "Toolset Delivery",
+   "oe": true,
    "relatedNpcs": [
     "Kellek Felhammer",
     "Sojan the Sleepless"
@@ -55465,6 +57100,7 @@
    ],
    "lvl": 55,
    "n": "Tormax's Head - Dragons",
+   "oe": true,
    "relatedNpcs": [
     "King Tormax"
    ],
@@ -55485,9 +57121,12 @@
    ],
    "era": "Velious Era",
    "giver": "Dain Frostreaver IV",
-   "items": [],
+   "items": [
+    "King Tormax's Head"
+   ],
    "lvl": 55,
    "n": "Tormax's Head - Dwarves",
+   "oe": true,
    "relatedNpcs": [
     "King Tormax"
    ],
@@ -55588,7 +57227,10 @@
    "era": "Classic Era",
    "giver": "Vexia D`Ynth",
    "items": [
-    "Bone Chips"
+    "Bone Chips",
+    "Giant Bat Fur",
+    "Spider Venom",
+    "Wolf Meat"
    ],
    "lvl": 1,
    "n": "Track, Stalk, Hunt",
@@ -55691,10 +57333,12 @@
     "Illegible Note: Breastplate",
     "Illegible Note: Helm",
     "Illegible Note: Pauldron",
-    "Illegible Note: Vambraces"
+    "Illegible Note: Vambraces",
+    "Streaven's Head"
    ],
    "lvl": 20,
    "n": "Trooper Scale Armor",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -55789,7 +57433,8 @@
    "era": "Classic Era",
    "giver": "Kurne Rextula",
    "items": [
-    "Dwarf Skull"
+    "Dwarf Skull",
+    "Dwarf Head"
    ],
    "lvl": 5,
    "n": "Trumpy's Head",
@@ -55955,6 +57600,7 @@
    ],
    "lvl": 28,
    "n": "Ulthork Tusks Quest",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Eastern Wastes"
@@ -56092,6 +57738,7 @@
    ],
    "lvl": 50,
    "n": "Vambraces of Avoidance Quest",
+   "oe": true,
    "relatedNpcs": [
     "Ekelng Thunderstone"
    ],
@@ -56112,7 +57759,9 @@
    "giver": "Rarnan Lapice",
    "items": [
     "Innoruuk's Kiss of Death",
-    "Label of Erud's Tonic"
+    "Label of Erud's Tonic",
+    "Library of Erudin",
+    "Testament of Vanear"
    ],
    "lvl": 1,
    "n": "Vasty Deep Water",
@@ -56160,6 +57809,7 @@
    ],
    "lvl": null,
    "n": "Velious Class Armor",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
@@ -56209,6 +57859,7 @@
    ],
    "lvl": null,
    "n": "Velious Class Armor Comparisons",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
@@ -56234,6 +57885,7 @@
    ],
    "lvl": 45,
    "n": "Velium Retrieval",
+   "oe": true,
    "relatedNpcs": [
     "Ungdin"
    ],
@@ -56278,7 +57930,8 @@
     "Dagger Hilt",
     "Forge Hammer of Dalnir",
     "Sharp Metal Shard",
-    "Jagged Metal Shard"
+    "Jagged Metal Shard",
+    "Journal Entry"
    ],
    "lvl": 30,
    "n": "Visceral Dagger",
@@ -56305,6 +57958,7 @@
    "items": [],
    "lvl": 50,
    "n": "Vkjor's Major Task",
+   "oe": true,
    "relatedNpcs": [
     "Draazak",
     "Jerigozia",
@@ -56331,6 +57985,7 @@
    ],
    "lvl": 50,
    "n": "Vkjor's Minor Task",
+   "oe": true,
    "relatedNpcs": [
     "Graktar Bluehammer",
     "an undead bridesmaid",
@@ -56366,10 +58021,12 @@
    "era": "Velious Era",
    "giver": "A Kromrif recruiter",
    "items": [
-    "Coldain Head"
+    "Coldain Head",
+    "Ornate Velium Pendant"
    ],
    "lvl": 1,
    "n": "Wage War Upon The Coldain",
+   "oe": true,
    "relatedNpcs": [],
    "relatedZones": [
     "Eastern Wastes",
@@ -56438,6 +58095,7 @@
    ],
    "lvl": null,
    "n": "Warrior Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -56476,6 +58134,7 @@
    ],
    "lvl": 50,
    "n": "Warrior Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (West Wing)"
    ],
@@ -56527,10 +58186,16 @@
     "Legionnaire Crown Plans",
     "Steel Rod",
     "Peridot",
-    "Legionnaire's Mancatcher Crown"
+    "Legionnaire's Mancatcher Crown",
+    "Innothule Mushroom",
+    "Legion Lager",
+    "Ornate Tin Box",
+    "Soldier's Pike Head",
+    "Trooper's Pike Head"
    ],
    "lvl": 1,
    "n": "Warrior Pike Quests",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -56616,6 +58281,7 @@
    ],
    "lvl": 50,
    "n": "Warrior Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East Mobs"
    ],
@@ -56658,6 +58324,7 @@
    ],
    "lvl": 45,
    "n": "Warrior Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -56687,6 +58354,7 @@
    ],
    "lvl": 3,
    "n": "Watcher Torches",
+   "oe": true,
    "relatedNpcs": [
     "a goblin watcher"
    ],
@@ -56706,7 +58374,9 @@
    "era": "Classic Era",
    "giver": "Larn Brugal",
    "items": [
-    "Raw Short Sword 4"
+    "Raw Short Sword 4",
+    "Sealed Letter",
+    "Short Sword"
    ],
    "lvl": 9,
    "n": "Weapons Delivery",
@@ -56785,6 +58455,7 @@
    ],
    "lvl": 45,
    "n": "Wenglawks The Traitor",
+   "oe": true,
    "relatedNpcs": [
     "Shardwing Courier"
    ],
@@ -56808,6 +58479,7 @@
    ],
    "lvl": null,
    "n": "Werewolf Hunters",
+   "oe": true,
    "relatedNpcs": [
     "None"
    ],
@@ -56934,6 +58606,7 @@
    ],
    "lvl": 55,
    "n": "Wisdom - The Long Battle",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Casalen",
@@ -56968,6 +58641,7 @@
    ],
    "lvl": 55,
    "n": "Wisdom - The Short Battle",
+   "oe": true,
    "relatedNpcs": [
     "Dozekar the Cursed",
     "Essedera",
@@ -56987,7 +58661,11 @@
    ],
    "era": "Classic Era",
    "giver": "Wislen Mamluk",
-   "items": [],
+   "items": [
+    "Fresh Fish",
+    "Kerra Catfish",
+    "Kerran Fishingpole"
+   ],
    "lvl": 18,
    "n": "Wislen Mamluk's Catfish",
    "relatedNpcs": [],
@@ -57021,6 +58699,7 @@
    ],
    "lvl": null,
    "n": "Wizard Epic Quest",
+   "oe": true,
    "relatedNpcs": [
     "Various"
    ],
@@ -57058,6 +58737,7 @@
    ],
    "lvl": 50,
    "n": "Wizard Kael Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Dragons (West Wing)"
    ],
@@ -57140,6 +58820,7 @@
    ],
    "lvl": 50,
    "n": "Wizard Skyshrine Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "ToV East Mobs"
    ],
@@ -57230,6 +58911,7 @@
    ],
    "lvl": 45,
    "n": "Wizard Thurgadin Armor Quests",
+   "oe": true,
    "relatedNpcs": [
     "Giants"
    ],
@@ -57475,6 +59157,7 @@
    ],
    "lvl": null,
    "n": "Yelinak's Head Quest",
+   "oe": true,
    "relatedNpcs": [
     "Lord Yelinak"
    ],
@@ -57500,7 +59183,8 @@
     "Kejekan Palm Fruit",
     "Bamboo Shoot",
     "Full Gathering Satchel",
-    "Vial of Healing Liquid"
+    "Vial of Healing Liquid",
+    "Asp Poison"
    ],
    "lvl": 25,
    "n": "Yuio's Illness",
@@ -57539,7 +59223,9 @@
     "Snake Scales",
     "Water Flask",
     "Fire Beetle Eye",
-    "Rat Ears"
+    "Rat Ears",
+    "Fiery Avenger",
+    "Sealed Note"
    ],
    "lvl": 1,
    "n": "Zimel's Blades (SoulFire)",
@@ -57563,7 +59249,8 @@
    "era": null,
    "giver": "Dleria Mausrel",
    "items": [
-    "Zombie Skin"
+    "Zombie Skin",
+    "Empty Bag"
    ],
    "lvl": 10,
    "n": "Zombie Flesh Quest",

@@ -15,6 +15,7 @@ let QDATA = null;     // quest-items.json
 let SOURCES = {};     // {name: source-string} for the settings pane
 let NAME2KEY = new Map(), ROSTER = new Map(), NAMEZONES = new Map();
 let QIDX = new Map(); // normName(item) -> [{q: quest row, as: "r"|"c"}]
+let T2Q = new Map();  // quest wiki path (q.t, unique) -> quest row — the tracked-quest key
 let TDATA = null;     // item-tooltips.json
 let TIDX = new Map(); // normName(item) -> {n, t, ic, sb: [lines]}
 
@@ -22,7 +23,7 @@ function buildIndexes(datasets) {
   const kd = datasets["kills-data.json"], qd = datasets["quest-items.json"];
   SOURCES = { kills: kd.source, quests: qd.source };
   DATA = kd.data; QDATA = qd.data;
-  NAME2KEY = new Map(); ROSTER = new Map(); NAMEZONES = new Map(); QIDX = new Map();
+  NAME2KEY = new Map(); ROSTER = new Map(); NAMEZONES = new Map(); QIDX = new Map(); T2Q = new Map();
   if (DATA) {
     for (const [key, z] of Object.entries(DATA.zones)) {
       NAME2KEY.set(z.name.toLowerCase(), key);
@@ -40,6 +41,7 @@ function buildIndexes(datasets) {
     for (const [nk, refs] of Object.entries(QDATA.items)) {
       QIDX.set(nk, refs.map(([qi, as]) => ({ q: QDATA.quests[qi], as })));
     }
+    for (const q of QDATA.quests) T2Q.set(q.t, q);
   }
   const td = datasets["item-tooltips.json"];
   TDATA = td ? td.data : null;
@@ -151,6 +153,13 @@ function handleEvent(ev) {
     if (entry.quests.length) SESSION.quests++;
     if (SESSION.feed.length > FEED_CAP) SESSION.feed.shift();
     window.companion.sendFeedEvent(overlayEvent(entry));
+    // Live loot counts toward quest components until the next /out inventory
+    // dump supersedes it; sold loot never reached the bags.
+    if (ev.disp !== "sold" && ev.disp !== "sold_free") {
+      for (const k of new Set([K.normName(ev.item), K.normName(stripDecor(ev.item))]))
+        LIVE_HAVE.set(k, (LIVE_HAVE.get(k) || 0) + (ev.qty || 1));
+      renderQuestsSoon();
+    }
     renderFeedSoon(); renderStats();
   } else if (ev.kind === "kill") {
     SESSION.kills++;
@@ -229,7 +238,7 @@ function overlayEvent(entry) {
     return {
       kind: "loot", item: entry.item, qty: entry.qty, url: it.url, sb: it.sb,
       quests: entry.quests.map(q => ({
-        n: q.n, url: base ? base + q.t : "", as: q.as,
+        n: q.n, url: base ? base + q.t : "", as: q.as, oe: q.oe,
         rewards: q.as === "r" ? [] : q.rewards.slice(0, 3).map(itemRef), // same no-echo rule as the main feed
       })),
     };
@@ -268,7 +277,7 @@ const lookupItem = (map, name) =>
   map.get(K.normName(name)) ?? map.get(K.normName(stripDecor(name)));
 
 const questRefsFor = name => (lookupItem(QIDX, name) || []).map(({ q, as }) => ({
-  n: q.n, t: q.t, as, rewards: q.rewards || [], zone: q.zone, lvl: q.lvl,
+  n: q.n, t: q.t, as, rewards: q.rewards || [], zone: q.zone, lvl: q.lvl, oe: !!q.oe,
 }));
 
 // item name: tooltip always; a wiki link too when the dataset knows it
@@ -299,7 +308,10 @@ function questChips(quests, id) {
       const shown = q.rewards.slice(0, 4).map(r => `<span data-tt="${esc(r)}">${esc(r)}</span>`).join(", ");
       rew = ` — reward: ${shown}${q.rewards.length > 4 ? ` +${q.rewards.length - 4} more` : ""}`;
     }
-    return `<div class="quest" data-wiki="${esc(q.t)}"><b>${role}</b> ${esc(q.n)}${rew}</div>`;
+    // the wiki's own in/out switch says this quest's content isn't live yet —
+    // without the marker a drop that only feeds future quests looks useless
+    const oe = q.oe ? ` <span class="oe">out of era</span>` : "";
+    return `<div class="quest" data-wiki="${esc(q.t)}"><b>${role}</b> ${esc(q.n)}${oe}${rew}</div>`;
   }).join("") + more;
 }
 
@@ -435,7 +447,13 @@ function renderZoneTab() {
   const itemLi = ({ it, i }) => {
     const by = droppers.get(i) || [];
     const quests = QIDX.get(K.normName(it.n)) || [];
-    const qmark = quests.length ? `<span class="zquest" title="quest item">quest</span>` : "";
+    // every referencing quest out of era → say so, or the pill promises a
+    // hand-in that doesn't exist yet
+    const allOe = quests.length && quests.every(r => r.q.oe);
+    const qmark = quests.length
+      ? (allOe ? `<span class="zquest zquest--oe" title="every quest wanting this is out of era">quest · out of era</span>`
+               : `<span class="zquest" title="quest item">quest</span>`)
+      : "";
     return `<li class="zitem"><a class="wk" data-url="${esc(it.u || "")}" data-tt="${esc(it.n)}">${esc(it.n)}</a>${qmark}
       ${by.length ? `<span class="dim"> — ${esc(by.slice(0, 4).join(", "))}${by.length > 4 ? ` +${by.length - 4}` : ""}</span>` : ""}</li>`;
   };
@@ -484,7 +502,8 @@ function parseInventory(text) {
 function onInvFile({ file, mtime, text }) {
   INV.file = file; INV.mtime = mtime;
   INV.rows = parseInventory(text);
-  renderInv(); renderQuests();
+  LIVE_HAVE = new Map(); // the dump holds everything looted before it
+  renderInv(); renderQuests(); pushQuests();
 }
 
 function onInvStatus({ problem }) {
@@ -525,9 +544,10 @@ function renderInv() {
   retip();
 }
 
-/* ── Quests tab — what the inventory dump says you could hand in ───────────
-   Cross of the inventory dump against the wiki quest list: a quest counts as
-   READY when you hold every component the wiki lists for it.
+/* ── Quests tab — search every wiki quest, track any, see what's hand-in ready ─
+   Held counts cross the newest inventory dump with loot seen live since it (a
+   fresh dump supersedes the live tally). A quest counts as READY when you
+   hold every component the wiki lists for it.
 
    Two limits are real and both are stated in the UI rather than papered over:
 
@@ -537,13 +557,27 @@ function renderInv() {
       wants four. The held count rides on every component row so the player
       can judge; the app must not claim to know the requirement.
    2. 147 quests list no components at all (index pages like "Bone Chips
-      Quests", and chain articles). Those are skipped outright — an empty
-      requirement list is trivially "complete" and would flood the ready
-      section with quests you cannot hand in.
+      Quests", and chain articles). They stay searchable — with the gap named
+      on the row — but hold nothing to track and can never be "ready".
 
-   Everything else is presentation: rows sort by how much of the quest the
-   dump accounts for, so a 4-of-4 lands above the seventh bone-chip variant. */
+   Tracking: q.t (the quest's wiki path) is unique across all 904 quests and
+   survives dataset refreshes, so it is the stored key. Tracked progress also
+   feeds the overlay through main's relay (pushQuests). */
 const QUESTS = { q: "", readyOnly: false };
+const TRACK_KEY = "eqlt-companion-tracked-v1";
+let TRACKED = []; // q.t keys, in the order the player tracked them
+function loadTracked() {
+  try { const a = JSON.parse(localStorage.getItem(TRACK_KEY)); TRACKED = Array.isArray(a) ? a.filter(t => typeof t === "string") : []; }
+  catch { TRACKED = []; }
+}
+function saveTracked() { try { localStorage.setItem(TRACK_KEY, JSON.stringify(TRACKED)); } catch {} }
+function toggleTrack(t) {
+  const i = TRACKED.indexOf(t);
+  if (i >= 0) TRACKED.splice(i, 1); else TRACKED.push(t);
+  saveTracked(); renderQuests(); pushQuests();
+}
+
+let LIVE_HAVE = new Map(); // normName -> qty looted since the current dump
 
 // normName -> total count held, keyed BOTH raw and decoration-stripped so a
 // "Giant Snake Fang +4" in the dump answers a bare "Giant Snake Fang".
@@ -553,84 +587,153 @@ function haveMap() {
     for (const k of new Set([K.normName(r.name), K.normName(stripDecor(r.name))]))
       m.set(k, (m.get(k) || 0) + r.count);
   }
+  for (const [k, c] of LIVE_HAVE) m.set(k, (m.get(k) || 0) + c);
   return m;
 }
 
-function questProgress() {
-  if (!QDATA || !INV.rows) return [];
-  const have = haveMap();
+function compsFor(q, have) {
   const held = n => have.get(K.normName(n)) ?? have.get(K.normName(stripDecor(n))) ?? 0;
-  const out = [];
-  for (const q of QDATA.quests) {
-    const items = q.items || [];
-    if (!items.length) continue; // see (2) above
-    const comps = items.map(n => ({ n, have: held(n) }));
-    const got = comps.filter(c => c.have).length;
-    if (!got) continue; // hold nothing for it — not this player's problem yet
-    out.push({ q, comps, got, need: items.length, done: got === items.length });
-  }
-  // ready first, then by how complete, then by size (a 4-of-4 outranks a 1-of-1)
-  return out.sort((a, b) =>
-    (b.done - a.done) || (b.got / b.need - a.got / a.need) || (b.need - a.need) ||
-    (a.q.n.toLowerCase() < b.q.n.toLowerCase() ? -1 : 1));
+  const comps = (q.items || []).map(n => ({ n, have: held(n) }));
+  const got = comps.filter(c => c.have).length;
+  return { q, comps, got, need: comps.length, done: comps.length > 0 && got === comps.length };
 }
 
-function questRow(p) {
+let questsTimer = null;
+function renderQuestsSoon() { // coalesce loot bursts, same reason as the feed
+  if (!questsTimer) questsTimer = setTimeout(() => { questsTimer = null; renderQuests(); pushQuests(); }, 500);
+}
+
+/* The overlay's tracked-quest panel: name, count, and what's still missing,
+   resolved here because the overlay has no datasets of its own. */
+function pushQuests() {
+  if (!QDATA) return;
+  const have = haveMap();
+  const base = QDATA.base || (DATA && DATA.base) || "";
+  window.companion.sendQuests(TRACKED.map(t => T2Q.get(t)).filter(Boolean).map(q => {
+    const p = compsFor(q, have);
+    const miss = p.comps.filter(c => !c.have);
+    return { n: q.n, url: base ? base + q.t : "", got: p.got, need: p.need, done: p.done,
+      oe: !!q.oe, miss: miss.slice(0, 3).map(c => c.n), missMore: Math.max(0, miss.length - 3) };
+  }));
+}
+
+// facts line shared by full rows and stubs; the chain note only applies to
+// quests that DO list components (see questRow's comment). Out of era leads —
+// it changes what the whole row means.
+function questFacts(q, chain) {
+  const oe = q.oe ? `out of era — ${String(q.era || "").replace(/\s*Era$/i, "") || "?"}` : "";
+  return [oe, q.lvl ? `lvl ${q.lvl}` : "", (q.classes || []).filter(c => c && c !== "?").join("/"),
+    q.zone, q.giver ? `→ ${q.giver}` : "", chain ? "multi-step chain — no single turn-in" : ""]
+    .filter(Boolean).join(" · ");
+}
+
+function questRow(p, tracked) {
   const { q } = p;
   // 27 quests carry components but no giver and no zone. They are not junk —
   // "Cleric Plane of Sky Tests" (26 items) and the Coldain ring chain live
   // here — but they have no single hand-in NPC, so calling them "ready to
   // hand in" would be a lie. Say what they are instead.
-  const chain = !q.giver && !q.zone;
-  const facts = [q.lvl ? `lvl ${q.lvl}` : "", (q.classes || []).filter(c => c && c !== "?").join("/"),
-    q.zone, q.giver ? `→ ${q.giver}` : "", chain ? "multi-step chain — no single turn-in" : ""]
-    .filter(Boolean).join(" · ");
+  const facts = questFacts(q, !q.giver && !q.zone);
   const comps = p.comps.map(c => `
     <li class="qc ${c.have ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(c.n)}${c.have > 1 ? ` <span class="dim">×${c.have}</span>` : ""}</li>`).join("");
   const rew = (q.rewards || []).length
     ? `<div class="qrew">reward: ${q.rewards.slice(0, 6).map(r => `<span data-tt="${esc(r)}">${esc(r)}</span>`).join(", ")}${q.rewards.length > 6 ? ` <span class="dim">+${q.rewards.length - 6} more</span>` : ""}</div>`
     : "";
-  return `<li class="qrow ${p.done ? "is-ready" : ""}">
+  return `<li class="qrow ${p.done ? "is-ready" : ""} ${tracked ? "is-tracked" : ""}">
     <div class="qrow__head">
       <a class="wk" data-wiki="${esc(q.t || "")}">${esc(q.n)}</a>
       <span class="qprog">${p.got}/${p.need}</span>
       ${facts ? `<span class="dim">${esc(facts)}</span>` : ""}
+      <button class="btn btn--mini qtrk" data-track="${esc(q.t)}">${tracked ? "Untrack" : "Track"}</button>
     </div>
     <ul class="qcomps">${comps}</ul>${rew}</li>`;
 }
 
+// Search hit whose wiki page lists no items — searchable, nothing to track.
+function questStub(q) {
+  const facts = questFacts(q, false);
+  return `<li class="qrow"><div class="qrow__head">
+    <a class="wk" data-wiki="${esc(q.t || "")}">${esc(q.n)}</a>
+    <span class="dim">no item list on the wiki page</span>
+    ${facts ? `<span class="dim">${esc(facts)}</span>` : ""}
+  </div></li>`;
+}
+
+const QUESTS_HINT = $("questsEmpty").innerHTML; // index.html's two-line default
+const MATCH_CAP = 50;
 function renderQuests() {
   const body = $("questsBody"), empty = $("questsEmpty"), banner = $("questsBanner");
   banner.hidden = !!QDATA;
-  if (!QDATA) { banner.textContent = "Quest data not loaded yet — refresh from eqltools.com in Settings."; }
-  if (!INV.rows) {
-    $("qMeta").textContent = "";
-    body.innerHTML = "";
-    empty.textContent = INV.problem || "Type /out inventory in game — quests you hold items for show up here.";
-    empty.hidden = false;
+  if (!QDATA) {
+    banner.textContent = "Quest data not loaded yet — refresh from eqltools.com in Settings.";
+    $("qMeta").textContent = ""; body.innerHTML = ""; empty.hidden = true;
     return;
   }
-  const all = questProgress();
-  const ready = all.filter(p => p.done), partial = all.filter(p => !p.done);
+  const have = haveMap();
   const needle = QUESTS.q.trim().toLowerCase();
-  const match = p => !needle || [p.q.n, p.q.giver, p.q.zone, ...(p.q.items || []), ...(p.q.rewards || [])]
+  const match = q => !needle || [q.n, q.giver, q.zone, ...(q.items || []), ...(q.rewards || [])]
     .some(s => s && String(s).toLowerCase().includes(needle));
-  const shown = (QUESTS.readyOnly ? ready : all).filter(match);
 
-  $("qMeta").textContent = `${ready.length} ready · ${partial.length} partly collected · from ${INV.file}`;
-  empty.hidden = shown.length > 0;
-  if (!shown.length) {
-    empty.textContent = all.length
-      ? "Nothing matches that search."
-      : "No quest components in this dump yet.";
+  const tSet = new Set(TRACKED);
+  const tracked = TRACKED.map(t => T2Q.get(t)).filter(Boolean).map(q => compsFor(q, have));
+  const held = [];
+  for (const q of QDATA.quests) {
+    if (!q.items || !q.items.length || tSet.has(q.t)) continue;
+    const p = compsFor(q, have);
+    if (p.got) held.push(p); // hold nothing for it — not this player's problem yet
+  }
+  // ready first, in-era before out-of-era, then by how complete, then by size
+  // (a 4-of-4 outranks a 1-of-1)
+  held.sort((a, b) =>
+    (b.done - a.done) || ((a.q.oe ? 1 : 0) - (b.q.oe ? 1 : 0)) ||
+    (b.got / b.need - a.got / a.need) || (b.need - a.need) ||
+    (a.q.n.toLowerCase() < b.q.n.toLowerCase() ? -1 : 1));
+  const ready = held.filter(p => p.done), partial = held.filter(p => !p.done);
+
+  // The rest of the 904 only surfaces under a search — nobody asked for the
+  // full wall. Quests with an item list sort above the stubs.
+  let rest = [], restOver = 0;
+  if (needle) {
+    const heldSet = new Set(held.map(p => p.q.t));
+    rest = QDATA.quests.filter(q => !tSet.has(q.t) && !heldSet.has(q.t) && match(q))
+      .sort((a, b) => (!!(b.items || []).length - !!(a.items || []).length) ||
+        (a.n.toLowerCase() < b.n.toLowerCase() ? -1 : 1));
+    restOver = Math.max(0, rest.length - MATCH_CAP);
+    rest = rest.slice(0, MATCH_CAP);
+  }
+
+  // "ready only" declutters the hand-in view; tracked rows are explicit
+  // intent and stay
+  const showTracked = tracked.filter(p => match(p.q));
+  const showReady = ready.filter(p => match(p.q));
+  const showPartial = QUESTS.readyOnly ? [] : partial.filter(p => match(p.q));
+  const showRest = QUESTS.readyOnly ? [] : rest;
+
+  $("qMeta").textContent = [
+    tracked.length ? `${tracked.length} tracked` : "",
+    `${ready.length} ready`, `${partial.length} partly collected`,
+    INV.file ? `from ${INV.file}` : "",
+  ].filter(Boolean).join(" · ");
+
+  const any = showTracked.length || showReady.length || showPartial.length || showRest.length;
+  empty.hidden = !!any;
+  if (!any) {
+    if (needle) empty.textContent = "Nothing matches that search.";
+    else if (QUESTS.readyOnly && (tracked.length || partial.length)) empty.textContent = "Nothing ready to hand in yet.";
+    else if (INV.problem) empty.textContent = INV.problem;
+    else empty.innerHTML = QUESTS_HINT;
     body.innerHTML = "";
     return;
   }
-  const section = (label, rows) => rows.length
-    ? `<h3>${label} (${rows.length})</h3><ul class="qlist">${rows.map(questRow).join("")}</ul>` : "";
+  const section = (label, n, html) => html
+    ? `<h3>${label} (${n})</h3><ul class="qlist">${html}</ul>` : "";
   body.innerHTML =
-    section("Ready to hand in", shown.filter(p => p.done)) +
-    section("Partly collected", shown.filter(p => !p.done)) +
+    section("Tracked", showTracked.length, showTracked.map(p => questRow(p, true)).join("")) +
+    section("Ready to hand in", showReady.length, showReady.map(p => questRow(p, false)).join("")) +
+    section("Partly collected", showPartial.length, showPartial.map(p => questRow(p, false)).join("")) +
+    section("More matches", showRest.length + restOver,
+      showRest.map(q => q.items && q.items.length ? questRow(compsFor(q, have), false) : questStub(q)).join("")) +
+    (restOver ? `<p class="dim">+${restOver} more — narrow the search.</p>` : "") +
     `<p class="dim qnote">The wiki lists which items a quest wants, never how many —
      “ready” means you hold at least one of each. Counts you are carrying are shown
      beside each item.</p>`;
@@ -737,22 +840,31 @@ function moveTip() {
 /* ── updater ──────────────────────────────────────────────────────────────*/
 function renderUpdate(u) {
   const banner = $("updBanner"), act = $("updAct");
+  const doAct = () => u.status === "ready" ? window.companion.installUpdate() : window.companion.openReleases();
   const msg = {
     downloading: [`Downloading update ${u.version || ""}…`, null],
-    ready: [`Update ${u.version} is ready.`, "Restart to update"],
+    ready: [`Update ${u.version} is ready.`, "Install and restart"],
     manual: [`Version ${u.version} is out.`, "Open download page"],
   }[u.status];
   banner.hidden = !msg || !msg[1]; // only bother the player when there's an action
   if (msg) { $("updText").textContent = msg[0]; act.textContent = msg[1] || ""; }
-  act.onclick = () => u.status === "ready" ? window.companion.installUpdate() : window.companion.openReleases();
+  act.onclick = doAct;
   $("updStatus").textContent = {
     idle: "Automatic — checks every few hours.",
+    dev: "Dev builds don't update.",
+    checking: "Checking…",
     downloading: `Downloading ${u.version || "update"}…`,
     ready: `Update ${u.version} downloaded — restarts into it.`,
     manual: `Version ${u.version} is out — this install type updates by re-downloading.`,
     current: "Up to date.",
     error: `Update check failed: ${u.detail || "unknown"}`,
   }[u.status] || "—";
+  // the settings-page controls mirror the banner's action
+  $("btnUpdCheck").disabled = u.status === "checking" || u.status === "downloading" || u.status === "dev";
+  const sAct = $("btnUpdAct");
+  sAct.hidden = !msg || !msg[1];
+  if (msg && msg[1]) sAct.textContent = msg[1];
+  sAct.onclick = doAct;
 }
 
 function renderOverlayState(o) {
@@ -762,10 +874,9 @@ function renderOverlayState(o) {
   $("setOpacity").value = o.opacity;
   if (o.prefs) {
     $("setOvScale").value = o.prefs.fontScale;
-    $("setOvRows").value = o.prefs.maxRows;
-    $("ovRowsVal").textContent = o.prefs.maxRows;
     $("setOvKills").checked = o.prefs.showKills;
     $("setOvQuestOnly").checked = o.prefs.questOnly;
+    $("setOvQuests").checked = o.prefs.showQuests !== false;
   }
 }
 
@@ -774,6 +885,7 @@ async function main() {
   const init = await window.companion.init();
   buildIndexes(init.datasets);
   STATE = K.load();
+  loadTracked();
   // Kills an older matching rule filed as unmatched (the site's /kills page
   // does the same migration on load).
   if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE);
@@ -794,11 +906,12 @@ async function main() {
   window.companion.onLogStatus(st => { LOGSTATUS = st; renderStatus(); });
   window.companion.onInvFile(onInvFile);
   window.companion.onInvStatus(onInvStatus);
-  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); renderInv(); renderQuests(); pushZone(); });
+  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); renderInv(); renderQuests(); pushZone(); pushQuests(); });
   window.companion.onOverlayState(renderOverlayState);
   window.companion.onUpdate(renderUpdate);
   renderUpdate(await window.companion.getUpdate());
   window.companion.ready(); // listeners live — main may start tailing now
+  pushQuests(); // a fresh overlay shouldn't wait for the next loot to learn the tracked list
 
   document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === b));
@@ -835,9 +948,9 @@ async function main() {
   $("setClickThrough").addEventListener("change", e => window.companion.setClickThrough(e.target.checked));
   $("setOpacity").addEventListener("input", e => window.companion.setOverlayOpacity(+e.target.value));
   $("setOvScale").addEventListener("input", e => window.companion.setOverlayPrefs({ fontScale: +e.target.value }));
-  $("setOvRows").addEventListener("input", e => { $("ovRowsVal").textContent = e.target.value; window.companion.setOverlayPrefs({ maxRows: +e.target.value }); });
   $("setOvKills").addEventListener("change", e => window.companion.setOverlayPrefs({ showKills: e.target.checked }));
   $("setOvQuestOnly").addEventListener("change", e => window.companion.setOverlayPrefs({ questOnly: e.target.checked }));
+  $("setOvQuests").addEventListener("change", e => window.companion.setOverlayPrefs({ showQuests: e.target.checked }));
   $("btnPickDir").addEventListener("click", async () => { LOGSTATUS.logDir = await window.companion.pickLogDir(); renderStatus(); });
   $("btnRefresh").addEventListener("click", async () => {
     $("btnRefresh").disabled = true;
@@ -845,6 +958,8 @@ async function main() {
     $("btnRefresh").disabled = false;
     renderTracker(); renderData(); pushZone();
   });
+  // fire and forget — every state change streams back through update:state
+  $("btnUpdCheck").addEventListener("click", () => window.companion.checkUpdate());
 
   const setSetting = (k, v) => { if (!STATE) STATE = K.blank(); STATE.settings[k] = v; K.save(STATE); renderTracker(); pushZone(); };
   $("setCities").addEventListener("change", e => setSetting("ignoreCities", e.target.checked));
@@ -856,6 +971,8 @@ async function main() {
   });
 
   document.addEventListener("click", e => {
+    const tk = e.target.closest("[data-track]");
+    if (tk) { toggleTrack(tk.dataset.track); return; }
     const mo = e.target.closest("[data-open]");
     if (mo) { FEED_OPEN.add(+mo.dataset.open); renderFeed(); renderInv(); return; }
     const u = e.target.closest("[data-url]");

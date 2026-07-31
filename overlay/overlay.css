@@ -35,7 +35,46 @@ body {
 #btnPin:hover { border-color: #e7b94e; color: #e7b94e; }
 body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 
-#feed { list-style: none; padding: 2px 7px; overflow: hidden; flex: 1; }
+/* filter row — same prefs as Settings, reachable without leaving the game */
+#filters {
+  display: flex; gap: 10px; padding: 1px 7px 2px;
+  border-bottom: 1px solid rgba(44, 37, 69, .6);
+  color: #8d84a8; font-size: 10.5px;
+}
+#filters label { display: inline-flex; align-items: center; gap: 3px; cursor: pointer; }
+#filters label:hover { color: #ccc4de; }
+#filters input { width: 10px; height: 10px; accent-color: #c9952a; margin: 0; }
+
+/* tracked quests — pinned above the feed; scrolls past 40% of the panel */
+#quests {
+  list-style: none; padding: 3px 7px;
+  border-bottom: 1px solid rgba(201, 149, 42, .3);
+  max-height: 40%; overflow-y: auto;
+}
+#quests[hidden] { display: none; }
+.tq { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; padding: 1px 0; }
+.tq__n { color: #f6dfa0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tq__n[data-url] { cursor: pointer; }
+.tq__n[data-url]:hover { text-decoration: underline; }
+.tq__c { margin-left: auto; font-weight: 600; color: #ccc4de; }
+.tq.is-done .tq__c { color: #e7b94e; }
+.tq__miss { flex-basis: 100%; padding-left: 8px; color: #8d84a8; font-size: 10.5px; }
+
+/* out-of-era marker — dim tag, same wording as the main window */
+.oe {
+  color: #8d84a8; font-size: 9.5px; border: 1px solid rgba(44, 37, 69, .9);
+  border-radius: 3px; padding: 0 3px; white-space: nowrap;
+}
+
+#feed { list-style: none; padding: 2px 7px; overflow-y: auto; flex: 1; }
+/* thin scrollbars — readable over game footage without looking like chrome */
+#feed::-webkit-scrollbar, #quests::-webkit-scrollbar { width: 5px; }
+#feed::-webkit-scrollbar-thumb, #quests::-webkit-scrollbar-thumb {
+  background: rgba(201, 149, 42, .35); border-radius: 3px;
+}
+#feed::-webkit-scrollbar-thumb:hover, #quests::-webkit-scrollbar-thumb:hover {
+  background: rgba(231, 185, 78, .6);
+}
 #feed li { padding: 1px 0; border-bottom: 1px solid rgba(44, 37, 69, .45); }
 #feed li:last-child { border-bottom: none; }
 #feed .kill { color: #8d84a8; font-size: 11px; }

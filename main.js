@@ -46,7 +46,7 @@ function loadSettings() {
   SETTINGS.overlay = {
     opacity: 0.92, clickThrough: false, shown: false, bounds: null,
     // display prefs, all renderer-facing (Kyle, 2026-07-31: "resizable/customizable")
-    fontScale: 1, showKills: true, questOnly: false, maxRows: 8,
+    fontScale: 1, showKills: true, questOnly: false, showQuests: true,
     ...SETTINGS.overlay,
   };
   if (!SETTINGS.logDir && process.platform === "win32" && fs.existsSync(WIN_LOG_DIR))
@@ -127,9 +127,10 @@ function sendOverlayInit() {
   const o = SETTINGS.overlay;
   overlayWin.webContents.send("overlay:init", {
     opacity: o.opacity, clickThrough: o.clickThrough,
-    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, maxRows: o.maxRows },
+    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, showQuests: o.showQuests },
     feed: FEED_RING.slice(-50),
     zone: LAST_ZONE,
+    quests: LAST_QUESTS,
   });
 }
 
@@ -154,7 +155,7 @@ function notifyOverlayState() {
   if (mainWin) mainWin.webContents.send("overlay:state", {
     shown: !!(overlayWin && overlayWin.isVisible()),
     clickThrough: o.clickThrough, opacity: o.opacity,
-    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, maxRows: o.maxRows },
+    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, showQuests: o.showQuests },
   });
 }
 
@@ -165,6 +166,7 @@ function notifyOverlayState() {
    empty. */
 const FEED_RING = [];
 let LAST_ZONE = null;
+let LAST_QUESTS = []; // tracked-quest progress, pre-resolved by the renderer
 
 /* ── log tail engine ──────────────────────────────────────────────────────
    Poll-stat the log directory (fs.watch is unreliable enough on Windows
@@ -424,33 +426,34 @@ const semverNewer = (a, b) => { // a > b, "1.2.3" strings
 };
 
 let autoUpdater = null;
+let checkNow = null; // set per install shape; null in dev, where updates can't apply
 function initUpdater() {
-  if (isDev) return;
+  if (isDev) { setUpdate({ status: "dev" }); return; }
   if (isNsisInstall()) {
     try { ({ autoUpdater } = require("electron-updater")); } catch { return; }
     autoUpdater.autoDownload = true;
+    autoUpdater.on("checking-for-update", () => setUpdate({ status: "checking" }));
     autoUpdater.on("update-available", i => setUpdate({ status: "downloading", version: i.version }));
     autoUpdater.on("update-not-available", () => setUpdate({ status: "current" }));
     autoUpdater.on("update-downloaded", i => setUpdate({ status: "ready", version: i.version }));
     autoUpdater.on("error", e => setUpdate({ status: "error", detail: String((e && e.message) || e) }));
-    const check = () => autoUpdater.checkForUpdates().catch(() => {});
-    check();
-    setInterval(check, 4 * 3600 * 1000);
+    checkNow = () => autoUpdater.checkForUpdates().catch(() => {});
   } else {
-    const check = async () => {
+    checkNow = async () => {
+      setUpdate({ status: "checking" });
       try {
         const r = await fetch("https://api.github.com/repos/sowoky/eqltools-companion/releases/latest",
           { headers: { "user-agent": `eqltools-companion/${app.getVersion()}` } });
-        if (!r.ok) return;
+        if (!r.ok) { setUpdate({ status: "error", detail: `GitHub answered ${r.status}` }); return; }
         const tag = (await r.json()).tag_name;
         if (tag && semverNewer(tag, app.getVersion()))
           setUpdate({ status: "manual", version: tag.replace(/^v/, "") });
         else setUpdate({ status: "current" });
-      } catch {}
+      } catch (e) { setUpdate({ status: "error", detail: String((e && e.message) || e) }); }
     };
-    check();
-    setInterval(check, 4 * 3600 * 1000);
   }
+  checkNow();
+  setInterval(checkNow, 4 * 3600 * 1000);
 }
 
 /* Per-zone mobs & drops (the atlas widget's data). Resolution: fresh cache
@@ -486,7 +489,10 @@ ipcMain.handle("app:init", () => {
     version: app.getVersion(),
     platform: process.platform,
     settings: { logDir: SETTINGS.logDir || null },
-    overlay: { shown: !!(overlayWin && overlayWin.isVisible()), clickThrough: SETTINGS.overlay.clickThrough, opacity: SETTINGS.overlay.opacity },
+    overlay: {
+      shown: !!(overlayWin && overlayWin.isVisible()), clickThrough: SETTINGS.overlay.clickThrough, opacity: SETTINGS.overlay.opacity,
+      prefs: { fontScale: SETTINGS.overlay.fontScale, showKills: SETTINGS.overlay.showKills, questOnly: SETTINGS.overlay.questOnly, showQuests: SETTINGS.overlay.showQuests },
+    },
     datasets: loadDatasets(),
   };
 });
@@ -510,6 +516,7 @@ ipcMain.handle("log:tail", () => {
 });
 ipcMain.handle("data:zoneFile", (_e, key) => zoneFile(String(key || "")));
 ipcMain.handle("update:get", () => UPDATE);
+ipcMain.handle("update:check", () => { if (checkNow) checkNow(); return UPDATE; });
 ipcMain.on("update:install", () => { if (autoUpdater && UPDATE.status === "ready") autoUpdater.quitAndInstall(); });
 ipcMain.on("update:openPage", () => shell.openExternal(RELEASES_URL));
 ipcMain.handle("log:pickDir", async () => {
@@ -545,7 +552,7 @@ ipcMain.on("overlay:prefs", (_e, p) => {
   if (p.fontScale !== undefined) o.fontScale = Math.min(1.6, Math.max(0.8, +p.fontScale || 1));
   if (p.showKills !== undefined) o.showKills = !!p.showKills;
   if (p.questOnly !== undefined) o.questOnly = !!p.questOnly;
-  if (p.maxRows !== undefined) o.maxRows = Math.min(20, Math.max(3, ~~p.maxRows || 8));
+  if (p.showQuests !== undefined) o.showQuests = !!p.showQuests;
   saveSettings(); sendOverlayInit(); notifyOverlayState();
 });
 /* Transparent frameless windows have NO native resize borders on Windows —
@@ -566,6 +573,10 @@ ipcMain.on("feed:event", (_e, ev) => {
 ipcMain.on("feed:zone", (_e, z) => {
   LAST_ZONE = z;
   if (overlayWin) overlayWin.webContents.send("feed:zone", z);
+});
+ipcMain.on("feed:quests", (_e, q) => {
+  LAST_QUESTS = Array.isArray(q) ? q.slice(0, 20) : [];
+  if (overlayWin) overlayWin.webContents.send("feed:quests", LAST_QUESTS);
 });
 
 /* ── lifecycle ────────────────────────────────────────────────────────────*/

@@ -8,6 +8,7 @@ contextBridge.exposeInMainWorld("companion", {
   init: () => ipcRenderer.invoke("app:init"),
   ready: () => ipcRenderer.send("renderer:ready"),
   getUpdate: () => ipcRenderer.invoke("update:get"),
+  checkUpdate: () => ipcRenderer.invoke("update:check"),
   installUpdate: () => ipcRenderer.send("update:install"),
   openReleases: () => ipcRenderer.send("update:openPage"),
   onUpdate: (fn) => ipcRenderer.on("update:state", (_e, p) => fn(p)),
@@ -24,6 +25,7 @@ contextBridge.exposeInMainWorld("companion", {
   setOverlayOpacity: (v) => ipcRenderer.send("overlay:opacity", v),
   sendFeedEvent: (ev) => ipcRenderer.send("feed:event", ev),
   sendZone: (z) => ipcRenderer.send("feed:zone", z),
+  sendQuests: (q) => ipcRenderer.send("feed:quests", q),
   onBootstrap: (fn) => ipcRenderer.on("log:bootstrap", (_e, p) => fn(p)),
   onLines: (fn) => ipcRenderer.on("log:lines", (_e, p) => fn(p)),
   onLogStatus: (fn) => ipcRenderer.on("log:status", (_e, p) => fn(p)),
@@ -37,4 +39,5 @@ contextBridge.exposeInMainWorld("companion", {
   onOverlayMode: (fn) => ipcRenderer.on("overlay:mode", (_e, p) => fn(p)),
   onFeedEvent: (fn) => ipcRenderer.on("feed:event", (_e, p) => fn(p)),
   onFeedZone: (fn) => ipcRenderer.on("feed:zone", (_e, p) => fn(p)),
+  onFeedQuests: (fn) => ipcRenderer.on("feed:quests", (_e, p) => fn(p)),
 });
