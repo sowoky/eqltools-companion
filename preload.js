@@ -18,6 +18,8 @@ contextBridge.exposeInMainWorld("companion", {
   toggleOverlay: (force) => ipcRenderer.send("overlay:toggle", force),
   setClickThrough: (on) => ipcRenderer.send("overlay:clickThrough", on),
   overlayHotspot: (on) => ipcRenderer.send("overlay:hotspot", on),
+  setOverlayPrefs: (p) => ipcRenderer.send("overlay:prefs", p),
+  resizeOverlay: (w, h) => ipcRenderer.send("overlay:resize", w, h),
   setOverlayOpacity: (v) => ipcRenderer.send("overlay:opacity", v),
   sendFeedEvent: (ev) => ipcRenderer.send("feed:event", ev),
   sendZone: (z) => ipcRenderer.send("feed:zone", z),

@@ -1,39 +1,72 @@
 /* Overlay renderer — a dumb display. The main window resolves quests and
    credit; this window just draws what it's told and stays readable over the
-   game. Clicking a quest name opens the wiki (only when not click-through —
-   in click-through mode the game owns the mouse).
+   game.
 
-   The pin button is the exception: while pinned (click-through), hovering it
-   tells main to make the window interactive for just that moment
-   (overlay:hotspot), so the same button always unpins. */
+   Click-through ("pinned") uses forward:true, so mousemove still reaches us
+   even while clicks fall through to the game. Anything actionable — the pin
+   button AND quest links — is a HOTSPOT: hovering it tells main to make the
+   window interactive for just that moment, so pinned overlays keep working
+   links (Kyle, 2026-07-31: "why can't i click links in the overlay").
+
+   Transparent frameless windows have no native resize borders on Windows;
+   the corner grip resizes through main instead. */
 "use strict";
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const feedEl = document.getElementById("feed");
 const zoneEl = document.getElementById("zoneLine");
 const pinEl = document.getElementById("btnPin");
-const MAX_ROWS = 8;
+const gripEl = document.getElementById("grip");
+const panelEl = document.getElementById("panel");
 let THROUGH = false;
+let PREFS = { fontScale: 1, showKills: true, questOnly: false, maxRows: 8 };
+
+function wanted(ev) {
+  if (ev.kind === "kill") return PREFS.showKills;
+  if (ev.kind === "loot") return !PREFS.questOnly || (ev.quests && ev.quests.length > 0);
+  return false;
+}
+
+/* Item refs {n, url, sb} arrive pre-resolved from the main renderer. sb (the
+   EQ item-window lines) rides on the element itself for the mini tooltip. */
+function itemSpan(name, url, sb, cls) {
+  const s = document.createElement("span");
+  s.className = cls + (url ? " is-link" : "");
+  s.textContent = name;
+  if (url) s.dataset.url = url;
+  if (sb) s._sb = { n: name, sb };
+  return s;
+}
 
 function addEvent(ev) {
+  if (!wanted(ev)) return;
   const li = document.createElement("li");
   if (ev.kind === "loot") {
     const qty = ev.qty > 1 ? ` ×${ev.qty}` : "";
     if (ev.quests && ev.quests.length) {
       li.className = "quest";
       const q = ev.quests[0];
-      const more = ev.quests.length > 1 ? ` <span class="dim">+${ev.quests.length - 1}</span>` : "";
-      const rew = q.rewards && q.rewards.length ? ` <span class="rew">→ ${esc(q.rewards.join(", "))}</span>` : "";
-      li.innerHTML = `<b>${esc(ev.item)}${qty}</b> — <span class="qn" data-url="${esc(q.url || "")}">${esc(q.n)}</span>${more}${rew}`;
+      li.append(itemSpan(ev.item + qty, ev.url, ev.sb, "itm"));
+      li.insertAdjacentHTML("beforeend", ` — <span class="qn" data-url="${esc(q.url || "")}">${esc(q.n)}</span>`);
+      if (ev.quests.length > 1) li.insertAdjacentHTML("beforeend", ` <span class="dim">+${ev.quests.length - 1}</span>`);
+      if (q.rewards && q.rewards.length) {
+        const r = document.createElement("span");
+        r.className = "rew"; r.append(" → ");
+        q.rewards.forEach((ref, i) => {
+          if (i) r.append(", ");
+          r.append(itemSpan(ref.n, ref.url, ref.sb, "ri"));
+        });
+        li.append(r);
+      }
     } else {
       li.className = "loot";
-      li.innerHTML = `${esc(ev.item)}${qty}`;
+      li.append(itemSpan(ev.item + qty, ev.url, ev.sb, "itm itm--plain"));
     }
-  } else if (ev.kind === "kill") {
+  } else {
     li.className = "kill";
     li.innerHTML = `✕ ${esc(ev.n)}`;
-  } else return;
+  }
   feedEl.prepend(li);
-  while (feedEl.children.length > MAX_ROWS) feedEl.lastChild.remove();
+  while (feedEl.children.length > PREFS.maxRows) feedEl.lastChild.remove();
 }
 
 function setMode(clickThrough, opacity) {
@@ -43,10 +76,12 @@ function setMode(clickThrough, opacity) {
   pinEl.textContent = THROUGH ? "unpin" : "pin";
   pinEl.title = THROUGH
     ? "Give the mouse back to this panel (or Ctrl+Shift+L)"
-    : "Click-through: the game gets the mouse. This button stays clickable.";
+    : "Click-through: the game gets the mouse. This button and quest links stay clickable.";
 }
 
-window.companion.onOverlayInit(({ opacity, clickThrough, feed, zone }) => {
+window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone }) => {
+  if (prefs) PREFS = { ...PREFS, ...prefs };
+  panelEl.style.zoom = PREFS.fontScale;
   setMode(clickThrough, opacity);
   feedEl.innerHTML = "";
   for (const ev of feed || []) addEvent(ev);
@@ -61,11 +96,55 @@ function setZone(z) {
 }
 
 pinEl.addEventListener("click", () => window.companion.setClickThrough(!THROUGH));
-// While pinned, main ignores the mouse — except when it's over this button.
-pinEl.addEventListener("mouseenter", () => { if (THROUGH) window.companion.overlayHotspot(true); });
-pinEl.addEventListener("mouseleave", () => { if (THROUGH) window.companion.overlayHotspot(false); });
+
+/* Mini EQ item tooltip — the sb lines ride on the hovered element. Works
+   pinned too (forward:true keeps mousemove flowing). */
+const tipEl = document.createElement("div");
+tipEl.id = "otip"; tipEl.hidden = true;
+document.body.appendChild(tipEl);
+function moveTip(x, y) {
+  const r = tipEl.getBoundingClientRect();
+  let tx = x + 10, ty = y + 10;
+  if (tx + r.width > innerWidth - 4) tx = Math.max(4, x - r.width - 10);
+  if (ty + r.height > innerHeight - 4) ty = Math.max(4, innerHeight - r.height - 4);
+  tipEl.style.left = tx + "px"; tipEl.style.top = ty + "px";
+}
+document.addEventListener("mousemove", e => { if (!tipEl.hidden) moveTip(e.clientX, e.clientY); });
+
+/* Hotspot tracking: while pinned, hovering anything actionable makes the
+   window interactive; leaving it hands the mouse back to the game. Shares
+   the mouseover pass with the tooltip. */
+document.addEventListener("mouseover", e => {
+  let tip = null;
+  for (let el = e.target; el && el !== document.body; el = el.parentElement)
+    if (el._sb) { tip = el._sb; break; }
+  if (tip) {
+    tipEl.innerHTML = `<div class="ot__name">${esc(tip.n)}</div>` +
+      tip.sb.map(l => `<div>${esc(l)}</div>`).join("");
+    tipEl.hidden = false; moveTip(e.clientX, e.clientY);
+  } else tipEl.hidden = true;
+  if (!THROUGH) return;
+  const hot = e.target.closest ? e.target.closest("[data-url], #btnPin") : null;
+  window.companion.overlayHotspot(!!hot);
+});
+document.addEventListener("mouseout", e => {
+  if (THROUGH && !e.relatedTarget) window.companion.overlayHotspot(false);
+});
 
 document.addEventListener("click", e => {
   const q = e.target.closest("[data-url]");
   if (q && q.dataset.url) window.companion.openWiki(q.dataset.url);
+});
+
+/* Corner resize grip. Pointer capture keeps the drag alive even when the
+   cursor briefly leaves this small window. Sizes are DIPs, same as
+   setBounds. */
+gripEl.addEventListener("pointerdown", e => {
+  e.preventDefault();
+  gripEl.setPointerCapture(e.pointerId);
+  const sx = e.screenX, sy = e.screenY, sw = window.innerWidth, sh = window.innerHeight;
+  const move = ev => window.companion.resizeOverlay(sw + ev.screenX - sx, sh + ev.screenY - sy);
+  const up = () => gripEl.removeEventListener("pointermove", move);
+  gripEl.addEventListener("pointermove", move);
+  gripEl.addEventListener("pointerup", up, { once: true });
 });

@@ -56,10 +56,18 @@ let stream = null;
 let currentFile = null;
 let killBuf = [];        // resolved kills awaiting a batched ingest
 let killTimer = null;
-const SESSION = { feed: [], quests: 0, kills: 0 };
+const SESSION = { feed: [], quests: 0, kills: 0, loots: 0, xpSum: 0, activeSec: 0, lastEvTs: 0 };
 const FEED_CAP = 500;
 let FEED_ID = 0;
 const FEED_OPEN = new Set(); // entries expanded past the quest-chip cap
+
+// Active time, /log-parser's rule: event-to-event gaps over 30 min don't
+// count (you were AFK or logged out, not playing slowly).
+function bumpActive(ts) {
+  if (SESSION.lastEvTs && ts > SESSION.lastEvTs && ts - SESSION.lastEvTs < 1800)
+    SESSION.activeSec += ts - SESSION.lastEvTs;
+  if (ts > SESSION.lastEvTs) SESSION.lastEvTs = ts;
+}
 
 function newStream(file) {
   currentFile = file;
@@ -104,7 +112,14 @@ function onLines({ file, lines }) {
 }
 
 function handleEvent(ev) {
+  bumpActive(ev.ts);
+  if (ev.kind === "xp") {
+    SESSION.xpSum += ev.pct;
+    renderStats();
+    return;
+  }
   if (ev.kind === "loot") {
+    SESSION.loots++;
     const quests = QIDX.get(K.normName(ev.item)) || [];
     const entry = {
       kind: "loot", id: ++FEED_ID, ts: ev.ts, item: ev.item, qty: ev.qty, mob: ev.mob,
@@ -117,7 +132,7 @@ function handleEvent(ev) {
     if (entry.quests.length) SESSION.quests++;
     if (SESSION.feed.length > FEED_CAP) SESSION.feed.shift();
     window.companion.sendFeedEvent(overlayEvent(entry));
-    renderFeed();
+    renderFeedSoon(); renderStats();
   } else if (ev.kind === "kill") {
     SESSION.kills++;
     killBuf.push({ ts: ev.ts, zone: ev.zone, n: ev.n, credit: ev.credit });
@@ -126,8 +141,41 @@ function handleEvent(ev) {
     SESSION.feed.push(entry);
     if (SESSION.feed.length > FEED_CAP) SESSION.feed.shift();
     window.companion.sendFeedEvent(overlayEvent(entry));
-    renderFeed();
+    renderFeedSoon(); renderStats();
   }
+}
+
+/* The session strip — the /log-parser headline numbers, live (Kyle,
+   2026-07-31: "fold the log parser in as a new section at the top").
+   Rates divide by active time and only render once there's enough of it to
+   mean anything. */
+function renderStats() {
+  const s = SESSION;
+  if (!s.kills && !s.loots && !s.xpSum) return;
+  const el = $("stats");
+  el.hidden = false;
+  const hrs = s.activeSec / 3600;
+  const dur = s.activeSec >= 3600
+    ? `${Math.floor(s.activeSec / 3600)}h${String(Math.floor((s.activeSec % 3600) / 60)).padStart(2, "0")}m`
+    : `${Math.floor(s.activeSec / 60)}m`;
+  const cell = (v, label) => `<span class="stat"><b>${v}</b> ${label}</span>`;
+  const rates = s.activeSec >= 120
+    ? cell((s.kills / hrs).toFixed(0), "kills/h") + cell((s.xpSum / hrs).toFixed(1) + "%", "xp/h")
+    : "";
+  el.innerHTML =
+    cell(dur, "active") +
+    cell(s.kills, "kills") +
+    cell(s.xpSum.toFixed(2) + "%", "xp") +
+    rates +
+    cell(s.loots, "loots") +
+    cell(s.quests, "quest items");
+}
+
+let feedTimer = null;
+function renderFeedSoon() {
+  // Coalesce bursts: a big pull can resolve a dozen events in one poll, and
+  // re-rendering per event is what made tooltips die mid-hover.
+  if (!feedTimer) feedTimer = setTimeout(() => { feedTimer = null; renderFeed(); }, 250);
 }
 
 function flushKills() {
@@ -150,11 +198,20 @@ function flushKills() {
 function overlayEvent(entry) {
   if (entry.kind === "loot") {
     const base = (QDATA && QDATA.base) || (DATA && DATA.base) || "";
+    // The overlay is a dumb display with no datasets of its own, so every
+    // event carries its links and EQ-tooltip lines pre-resolved: the looted
+    // item and each shown reward get {url, sb} when the tooltip data knows
+    // them. Payloads stay small (a few hundred bytes).
+    const itemRef = (name) => {
+      const t = TIDX.get(K.normName(name));
+      return { n: name, url: t && base ? base + t.t : "", sb: t ? t.sb : null };
+    };
+    const it = itemRef(entry.item);
     return {
-      kind: "loot", item: entry.item, qty: entry.qty,
+      kind: "loot", item: entry.item, qty: entry.qty, url: it.url, sb: it.sb,
       quests: entry.quests.map(q => ({
         n: q.n, url: base ? base + q.t : "", as: q.as,
-        rewards: q.as === "r" ? [] : q.rewards.slice(0, 3), // same no-echo rule as the main feed
+        rewards: q.as === "r" ? [] : q.rewards.slice(0, 3).map(itemRef), // same no-echo rule as the main feed
       })),
     };
   }
@@ -200,14 +257,21 @@ function feedLi(e) {
     const role = q.as === "r" ? "reward from" : "quest item";
     let rew = "";
     if (q.as !== "r" && q.rewards.length) {
-      const shown = q.rewards.slice(0, 4).map(esc).join(", ");
+      // each reward is an item — give it the EQ tooltip too
+      const shown = q.rewards.slice(0, 4).map(r => `<span data-tt="${esc(r)}">${esc(r)}</span>`).join(", ");
       rew = ` — reward: ${shown}${q.rewards.length > 4 ? ` +${q.rewards.length - 4} more` : ""}`;
     }
     return `<div class="quest" data-wiki="${esc(q.t)}"><b>${role}</b> ${esc(q.n)}${rew}</div>`;
   }).join("") + more;
+  // item name: tooltip always; a wiki link too when the dataset knows it
+  const ti = TIDX.get(K.normName(e.item));
+  const base = (TDATA && TDATA.base) || (DATA && DATA.base) || "";
+  const itn = ti && base
+    ? `<span class="itn is-link" data-tt="${esc(e.item)}" data-url="${esc(base + ti.t)}">${esc(e.item)}</span>`
+    : `<span class="itn" data-tt="${esc(e.item)}">${esc(e.item)}</span>`;
   return `<li class="ev ev--loot ${e.quests.length ? "is-quest" : ""}">
     <span class="ev__t">${hhmmss(e.ts)}</span>
-    <span class="ev__body"><span class="itn" data-tt="${esc(e.item)}">${esc(e.item)}</span>${qty} <span class="dim">from ${esc(e.mob)}</span>${disp}${badges}</span></li>`;
+    <span class="ev__body">${itn}${qty} <span class="dim">from ${esc(e.mob)}</span>${disp}${badges}</span></li>`;
 }
 
 function renderFeed() {
@@ -219,6 +283,7 @@ function renderFeed() {
   const shown = items.slice(-200).map((e, i) => [e, i])
     .sort((a, b) => (b[0].ts - a[0].ts) || (b[1] - a[1]));
   $("feed").innerHTML = shown.map(([e]) => feedLi(e)).join("");
+  retip(); // rows shifted under the cursor — re-derive the tooltip
   $("feedEmpty").hidden = SESSION.feed.length > 0;
   $("feedCount").textContent = SESSION.feed.length
     ? `${SESSION.kills} kills · ${SESSION.quests} quest items this session` : "";
@@ -327,6 +392,7 @@ function renderZoneTab() {
   body.innerHTML = `
     <div><h3>Mobs (${f.mobs.length})</h3><ul class="zlist">${mobRows.map(mobLi).join("")}</ul></div>
     <div><h3>Items (${f.items.length})</h3><ul class="zlist">${itemRows.map(itemLi).join("")}</ul></div>`;
+  retip();
 }
 
 let LOGSTATUS = {};
@@ -362,27 +428,36 @@ function renderData() {
    per row — render it as-is under the item name. Anything carrying data-tt
    gets one on hover when the tooltip dataset knows the name. */
 const FLAGS_RX = /^[A-Z][A-Z0-9 *'&-]+$/; // all-caps flag rows: MAGIC ITEM LORE ITEM…
-let tipEl = null;
+let tipEl = null, MX = 0, MY = 0;
+function showTip(e) {
+  tipEl.innerHTML = `<div class="tt__name">${esc(e.n)}</div>` +
+    e.sb.map(l => `<div class="${FLAGS_RX.test(l) ? "tt__flags" : "tt__line"}">${esc(l)}</div>`).join("");
+  tipEl.hidden = false;
+  moveTip();
+}
+// Live lists re-render and shift under the cursor constantly (a new feed
+// event replaces the DOM the mouse was over — Kyle saw tooltips "pop up
+// briefly"). retip() re-derives the tooltip from whatever is under the
+// cursor NOW; renders and scrolls call it instead of blindly hiding.
+function retip() {
+  if (!tipEl) return;
+  const el = document.elementFromPoint(MX, MY);
+  const t = el && el.closest ? el.closest("[data-tt]") : null;
+  const e = t && TIDX.get(K.normName(t.dataset.tt));
+  if (e) showTip(e); else tipEl.hidden = true;
+}
 function initTip() {
   tipEl = document.createElement("div");
   tipEl.id = "eqtip"; tipEl.hidden = true;
   document.body.appendChild(tipEl);
-  document.addEventListener("mouseover", ev => {
-    const t = ev.target.closest ? ev.target.closest("[data-tt]") : null;
-    const e = t && TIDX.get(K.normName(t.dataset.tt));
-    if (!e) { tipEl.hidden = true; return; }
-    tipEl.innerHTML = `<div class="tt__name">${esc(e.n)}</div>` +
-      e.sb.map(l => `<div class="${FLAGS_RX.test(l) ? "tt__flags" : "tt__line"}">${esc(l)}</div>`).join("");
-    tipEl.hidden = false;
-    moveTip(ev);
-  });
-  document.addEventListener("mousemove", ev => { if (!tipEl.hidden) moveTip(ev); });
-  document.addEventListener("scroll", () => { tipEl.hidden = true; }, true);
+  document.addEventListener("mousemove", ev => { MX = ev.clientX; MY = ev.clientY; if (!tipEl.hidden) moveTip(); });
+  document.addEventListener("mouseover", ev => { MX = ev.clientX; MY = ev.clientY; retip(); });
+  document.addEventListener("scroll", retip, true);
 }
-function moveTip(ev) {
+function moveTip() {
   const pad = 14, r = tipEl.getBoundingClientRect();
-  let x = ev.clientX + pad, y = ev.clientY + pad;
-  if (x + r.width > innerWidth - 8) x = Math.max(8, ev.clientX - r.width - pad);
+  let x = MX + pad, y = MY + pad;
+  if (x + r.width > innerWidth - 8) x = Math.max(8, MX - r.width - pad);
   if (y + r.height > innerHeight - 8) y = Math.max(8, innerHeight - r.height - 8);
   tipEl.style.left = x + "px"; tipEl.style.top = y + "px";
 }
@@ -413,6 +488,13 @@ function renderOverlayState(o) {
   $("btnOverlay2").textContent = o.shown ? "Hide overlay" : "Show overlay";
   $("setClickThrough").checked = o.clickThrough;
   $("setOpacity").value = o.opacity;
+  if (o.prefs) {
+    $("setOvScale").value = o.prefs.fontScale;
+    $("setOvRows").value = o.prefs.maxRows;
+    $("ovRowsVal").textContent = o.prefs.maxRows;
+    $("setOvKills").checked = o.prefs.showKills;
+    $("setOvQuestOnly").checked = o.prefs.questOnly;
+  }
 }
 
 /* ── wiring ───────────────────────────────────────────────────────────────*/
@@ -462,6 +544,10 @@ async function main() {
   $("btnOverlay2").addEventListener("click", () => window.companion.toggleOverlay());
   $("setClickThrough").addEventListener("change", e => window.companion.setClickThrough(e.target.checked));
   $("setOpacity").addEventListener("input", e => window.companion.setOverlayOpacity(+e.target.value));
+  $("setOvScale").addEventListener("input", e => window.companion.setOverlayPrefs({ fontScale: +e.target.value }));
+  $("setOvRows").addEventListener("input", e => { $("ovRowsVal").textContent = e.target.value; window.companion.setOverlayPrefs({ maxRows: +e.target.value }); });
+  $("setOvKills").addEventListener("change", e => window.companion.setOverlayPrefs({ showKills: e.target.checked }));
+  $("setOvQuestOnly").addEventListener("change", e => window.companion.setOverlayPrefs({ questOnly: e.target.checked }));
   $("btnPickDir").addEventListener("click", async () => { LOGSTATUS.logDir = await window.companion.pickLogDir(); renderStatus(); });
   $("btnRefresh").addEventListener("click", async () => {
     $("btnRefresh").disabled = true;

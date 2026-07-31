@@ -34,7 +34,12 @@ let SETTINGS = null;
 function loadSettings() {
   try { SETTINGS = JSON.parse(fs.readFileSync(settingsPath(), "utf8")); }
   catch { SETTINGS = {}; }
-  SETTINGS.overlay = { opacity: 0.92, clickThrough: false, shown: false, bounds: null, ...SETTINGS.overlay };
+  SETTINGS.overlay = {
+    opacity: 0.92, clickThrough: false, shown: false, bounds: null,
+    // display prefs, all renderer-facing (Kyle, 2026-07-31: "resizable/customizable")
+    fontScale: 1, showKills: true, questOnly: false, maxRows: 8,
+    ...SETTINGS.overlay,
+  };
   if (!SETTINGS.logDir && process.platform === "win32" && fs.existsSync(WIN_LOG_DIR))
     SETTINGS.logDir = WIN_LOG_DIR;
 }
@@ -88,19 +93,24 @@ function createOverlayWindow() {
   overlayWin.setAlwaysOnTop(true, "screen-saver");
   overlayWin.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
   overlayWin.loadFile(path.join(__dirname, "overlay", "overlay.html"));
-  overlayWin.webContents.on("did-finish-load", () => {
-    overlayWin.webContents.send("overlay:init", {
-      opacity: SETTINGS.overlay.opacity,
-      clickThrough: SETTINGS.overlay.clickThrough,
-      feed: FEED_RING.slice(-30),
-      zone: LAST_ZONE,
-    });
-    applyClickThrough();
-  });
+  overlayWin.webContents.on("did-finish-load", () => { sendOverlayInit(); applyClickThrough(); });
   const saveBounds = () => { if (overlayWin) { SETTINGS.overlay.bounds = overlayWin.getBounds(); saveSettings(); } };
   overlayWin.on("moved", saveBounds);
   overlayWin.on("resized", saveBounds);
   overlayWin.on("closed", () => { overlayWin = null; SETTINGS.overlay.shown = false; saveSettings(); notifyOverlayState(); });
+}
+
+/* Full overlay redraw: mode + prefs + the feed ring, so a prefs change (or a
+   fresh window) rebuilds the list under the new filters. */
+function sendOverlayInit() {
+  if (!overlayWin) return;
+  const o = SETTINGS.overlay;
+  overlayWin.webContents.send("overlay:init", {
+    opacity: o.opacity, clickThrough: o.clickThrough,
+    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, maxRows: o.maxRows },
+    feed: FEED_RING.slice(-50),
+    zone: LAST_ZONE,
+  });
 }
 
 function applyClickThrough() {
@@ -120,10 +130,11 @@ function toggleOverlay(force) {
   saveSettings(); notifyOverlayState();
 }
 function notifyOverlayState() {
+  const o = SETTINGS.overlay;
   if (mainWin) mainWin.webContents.send("overlay:state", {
     shown: !!(overlayWin && overlayWin.isVisible()),
-    clickThrough: SETTINGS.overlay.clickThrough,
-    opacity: SETTINGS.overlay.opacity,
+    clickThrough: o.clickThrough, opacity: o.opacity,
+    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, maxRows: o.maxRows },
   });
 }
 
@@ -405,6 +416,22 @@ ipcMain.on("overlay:clickThrough", (_e, on) => {
 ipcMain.on("overlay:hotspot", (_e, on) => {
   if (overlayWin && SETTINGS.overlay.clickThrough)
     overlayWin.setIgnoreMouseEvents(!on, { forward: true });
+});
+ipcMain.on("overlay:prefs", (_e, p) => {
+  const o = SETTINGS.overlay;
+  if (p.fontScale !== undefined) o.fontScale = Math.min(1.6, Math.max(0.8, +p.fontScale || 1));
+  if (p.showKills !== undefined) o.showKills = !!p.showKills;
+  if (p.questOnly !== undefined) o.questOnly = !!p.questOnly;
+  if (p.maxRows !== undefined) o.maxRows = Math.min(20, Math.max(3, ~~p.maxRows || 8));
+  saveSettings(); sendOverlayInit(); notifyOverlayState();
+});
+/* Transparent frameless windows have NO native resize borders on Windows —
+   the overlay's corner grip drives resizing through here instead. */
+ipcMain.on("overlay:resize", (_e, w, h) => {
+  if (!overlayWin) return;
+  const b = overlayWin.getBounds();
+  overlayWin.setBounds({ x: b.x, y: b.y,
+    width: Math.min(900, Math.max(180, ~~w)), height: Math.min(900, Math.max(70, ~~h)) });
 });
 ipcMain.on("overlay:opacity", (_e, v) => {
   SETTINGS.overlay.opacity = Math.min(1, Math.max(0.2, +v || 0.92)); saveSettings(); applyClickThrough();

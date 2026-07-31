@@ -50,3 +50,30 @@ body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 #feed .qn:hover { color: #f6dfa0; text-decoration: underline; }
 #feed .rew { color: #b6aecb; font-size: 11px; }
 #feed .dim { color: #8d84a8; }
+#feed .itm { color: #fff; font-weight: 600; }
+#feed .itm--plain { color: #ccc4de; font-weight: 400; }
+#feed .ri { color: #b6aecb; }
+#feed .is-link { cursor: pointer; border-bottom: 1px dotted rgba(201,149,42,.4); }
+#feed .is-link:hover { color: #f6dfa0; }
+
+/* mini EQ item tooltip */
+#otip {
+  position: fixed; z-index: 9; pointer-events: none;
+  min-width: 160px; max-width: 260px;
+  background: rgba(8, 9, 14, .97);
+  border: 1px solid #8a5f14; border-radius: 3px;
+  padding: 5px 8px; font-size: 11px; line-height: 1.35;
+  color: #d8d2c4; text-shadow: none;
+}
+#otip .ot__name { color: #e7b94e; font-weight: 700; margin-bottom: 1px; }
+
+/* corner resize grip — transparent frameless windows have no native resize
+   borders on Windows, so this is the only handle */
+#grip {
+  position: fixed; right: 1px; bottom: 1px; width: 14px; height: 14px;
+  cursor: nwse-resize; -webkit-app-region: no-drag;
+  background: linear-gradient(135deg, transparent 50%, rgba(201,149,42,.55) 50%);
+  border-bottom-right-radius: 4px;
+}
+#grip:hover { background: linear-gradient(135deg, transparent 50%, rgba(231,185,78,.85) 50%); }
+body.through #grip { display: none; }  /* resizing needs the mouse; unpin first */

@@ -13,6 +13,8 @@
   <button id="btnOverlay" class="btn">Overlay</button>
 </header>
 
+<div id="stats" class="stats" hidden></div>
+
 <nav class="tabs">
   <button class="tab on" data-tab="live">Live</button>
   <button class="tab" data-tab="zone">Zone</button>
@@ -61,7 +63,11 @@
       <button id="btnOverlay2" class="btn">Show overlay</button>
       <label class="chk"><input type="checkbox" id="setClickThrough"> click-through (game gets the mouse)</label>
     </p>
-    <p class="row"><label class="dim" for="setOpacity">Opacity</label> <input type="range" id="setOpacity" min="0.2" max="1" step="0.05"></p>
+    <p class="row"><label class="dim" for="setOpacity">Opacity</label> <input type="range" id="setOpacity" min="0.2" max="1" step="0.05">
+      <label class="dim" for="setOvScale">Text size</label> <input type="range" id="setOvScale" min="0.8" max="1.6" step="0.05">
+      <label class="dim" for="setOvRows">Rows</label> <input type="range" id="setOvRows" min="3" max="20" step="1"> <span id="ovRowsVal" class="dim"></span></p>
+    <p class="row"><label class="chk"><input type="checkbox" id="setOvKills"> show kills</label>
+      <label class="chk"><input type="checkbox" id="setOvQuestOnly"> quest items only</label></p>
     <p class="dim">Hotkeys anywhere, even with the game focused: <code>Ctrl+Shift+O</code> show/hide · <code>Ctrl+Shift+L</code> click-through.<br>
     The overlay can only sit over the game in <b>windowed or borderless</b> display mode — exclusive fullscreen draws past every other window.</p>
 

@@ -115,6 +115,9 @@ class KillStream {
     } else if ((m = RX.xp.exec(rawLine))) {
       this._seenTs = this.lastTs = toSec(m);
       this._xpTs.push(this.lastTs);
+      // Also surfaced as an event: live consumers (the companion's session
+      // strip) sum these. Percent-of-current-level, same as the line prints.
+      out.push({ kind: "xp", ts: this.lastTs, pct: +m[8] });
     } else if ((m = RX.loot.exec(rawLine))) {
       const ts = toSec(m);
       this._seenTs = ts;
