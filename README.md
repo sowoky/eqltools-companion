@@ -3,10 +3,18 @@
 Windows companion app for [eqltools.com](https://eqltools.com) — reads your
 EverQuest Legends log file in real time and can overlay the game window.
 
-**Download:** grab the installer or the portable exe from
-[Releases](https://github.com/sowoky/eqltools-companion/releases). The build is
-not code-signed yet, so Windows SmartScreen will warn — "More info" → "Run
-anyway".
+**Download:** grab `EQL-Tools-Companion-Setup-<version>.exe` from the
+[latest release](https://github.com/sowoky/eqltools-companion/releases/latest).
+That's the installer — installed builds keep themselves updated. The portable
+exe and the zip are for machines you can't install on; they don't self-update.
+
+The build is not code-signed yet, so Windows flags the download. Either way
+past works:
+
+- When SmartScreen says "Windows protected your PC": **More info** → **Run
+  anyway**.
+- Or before running: right-click the downloaded file → **Properties** → check
+  **Unblock** at the bottom → **OK**.
 
 - **Quest-item loot alerts** — loot an item and the app tells you if it's a
   quest item, which quest wants it, what the reward is, one click to the
