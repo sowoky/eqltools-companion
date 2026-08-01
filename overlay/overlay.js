@@ -32,6 +32,10 @@ function applyView() {
   filtersEl.hidden = t;
   document.getElementById("otTracked").classList.toggle("on", t);
   document.getElementById("otLoot").classList.toggle("on", !t);
+  // the grouping toggle belongs to Tracked; renderQuests also hides it when
+  // the payload carries no zones to group by
+  const qv = document.getElementById("qView");
+  if (qv) qv.hidden = !t || !(TRACKED.zones || []).length;
 }
 document.getElementById("otabs").addEventListener("click", e => {
   const b = e.target.closest("[data-oview]");
@@ -101,7 +105,8 @@ function prependRow(ev) {
     }
   } else {
     li.className = "kill";
-    li.innerHTML = `✕ ${esc(ev.n)}`;
+    li.append("✕ ");
+    li.append(itemSpan(ev.n, ev.url, null, "mob"));
   }
   feedEl.prepend(li);
   while (feedEl.children.length > FEED_CAP) feedEl.lastChild.remove();
@@ -193,7 +198,7 @@ function renderQuests() {
   // no zones in the payload means the main window had no source table to group
   // by (older dataset); fall back to the flat list rather than an empty panel
   const grouped = (TRACKED.zones || []).length > 0;
-  if (qViewEl) qViewEl.hidden = !grouped;
+  if (qViewEl) qViewEl.hidden = !grouped || PREFS.view !== "tracked";
   if (QVIEW === "zone" && grouped) {
     for (const g of TRACKED.zones) questsEl.append(zoneLi(g));
     return;

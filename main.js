@@ -325,12 +325,26 @@ const bundledDir = () => isDev ? path.join(__dirname, "data-snapshot") : path.jo
 function readJson(p) {
   try { return JSON.parse(fs.readFileSync(p, "utf8")); } catch { return null; }
 }
+/* Minimum dataset schema this build needs. A cache written by an older build
+   is normally NEWER than the bundle and rightly wins — but not when it predates
+   a field this app renders: a fresh install would then start on data that
+   cannot answer, and could only say so. Below the floor we fall back to the
+   bundled snapshot until the next refresh brings the live file up. Raise the
+   number here in the same commit that starts depending on the new field. */
+const MIN_SCHEMA = { "quest-items.json": 2 };
+
 function loadDatasets() {
   const out = {};
   for (const name of Object.keys(REMOTE)) {
-    const cached = readJson(path.join(cacheDir(), name));
+    let cached = readJson(path.join(cacheDir(), name));
+    const floor = MIN_SCHEMA[name] || 0;
+    let stale = false;
+    if (cached && (cached.schema || 0) < floor) { stale = true; cached = null; }
     const bundled = cached ? null : readJson(path.join(bundledDir(), name));
-    out[name] = { data: cached || bundled, source: cached ? "cached" : bundled ? "bundled" : "none" };
+    out[name] = {
+      data: cached || bundled,
+      source: cached ? "cached" : bundled ? (stale ? "bundled (cache too old)" : "bundled") : "none",
+    };
   }
   return out;
 }

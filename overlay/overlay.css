@@ -124,6 +124,7 @@ body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 #feed .itm { color: #fff; font-weight: 600; }
 #feed .itm--plain { color: #ccc4de; font-weight: 400; }
 #feed .ri { color: #b6aecb; }
+#feed .mob { color: #b6aecb; }   /* kill rows: the mob, linked to its wiki page */
 #feed .is-link { cursor: pointer; border-bottom: 1px dotted rgba(201,149,42,.4); }
 #feed .is-link:hover { color: #f6dfa0; }
 

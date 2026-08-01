@@ -251,7 +251,9 @@ function overlayEvent(entry) {
       })),
     };
   }
-  return { kind: "kill", n: entry.n, credit: entry.credit };
+  const base = (QDATA && QDATA.base) || (DATA && DATA.base) || "";
+  const mt = mobPathFor(entry.n || "");
+  return { kind: "kill", n: entry.n, credit: entry.credit, url: mt && base ? base + mt : "" };
 }
 
 function pushZone() {
@@ -287,6 +289,28 @@ const lookupItem = (map, name) =>
 const questRefsFor = name => (lookupItem(QIDX, name) || []).map(({ q, as }) => ({
   n: q.n, t: q.t, as, rewards: q.rewards || [], zone: q.zone, lvl: q.lvl, oe: !!q.oe,
 }));
+
+/* Mob name -> its wiki page. The kill-tracker roster already carries a wiki
+   path per mob (kills-data rows: {n, t, lv, …}), so any mob the feed names is
+   one lookup from a link — the same treatment items have always had (Kyle,
+   2026-08-01: "if you're gonna show mob names / kills in the loot tab of the
+   widget, at least make them clickable to go to wiki"). A mob can appear in
+   several zones; every row for one name points at the same page, so the first
+   hit wins. */
+function mobPathFor(name) {
+  const n = K.normMob(name);
+  for (const key of NAMEZONES.get(n) || []) {
+    const row = ROSTER.get(key) && ROSTER.get(key).get(n);
+    if (row && row.t) return row.t;
+  }
+  return "";
+}
+// a mob name as a wiki link when the roster knows it, plain text when it doesn't
+function mobSpan(name, cls) {
+  const t = mobPathFor(name);
+  return t ? `<a class="wk ${cls || ""}" data-wiki="${esc(t)}">${esc(name)}</a>`
+    : `<span class="${cls || ""}">${esc(name)}</span>`;
+}
 
 // item name: tooltip always; a wiki link too when the dataset knows it
 function itemSpan(name) {
@@ -327,13 +351,13 @@ function feedLi(e) {
   if (e.kind === "kill") {
     const tag = e.credit === "blow" ? "kill" : e.credit === "xp" ? "group kill" : "witnessed";
     return `<li class="ev ev--kill"><span class="ev__t">${hhmmss(e.ts)}</span>
-      <span class="ev__body">${esc(e.n)} <span class="tag">${tag}</span></span></li>`;
+      <span class="ev__body">${mobSpan(e.n)} <span class="tag">${tag}</span></span></li>`;
   }
   const qty = e.qty > 1 ? ` ×${e.qty}` : "";
   const disp = DISP[e.disp] ? ` <span class="dim">${DISP[e.disp]}</span>` : "";
   return `<li class="ev ev--loot ${e.quests.length ? "is-quest" : ""}">
     <span class="ev__t">${hhmmss(e.ts)}</span>
-    <span class="ev__body">${itemSpan(e.item)}${qty} <span class="dim">from ${esc(e.mob)}</span>${disp}${questChips(e.quests, e.id)}</span></li>`;
+    <span class="ev__body">${itemSpan(e.item)}${qty} <span class="dim">from ${mobSpan(e.mob, "dim")}</span>${disp}${questChips(e.quests, e.id)}</span></li>`;
 }
 
 function renderFeed() {
