@@ -48,6 +48,8 @@ body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 }
 #otabs button:hover { color: #ece8f7; }
 #otabs button.on { color: #e7b94e; border-bottom-color: #c9952a; }
+/* the grouping toggle is not a view — push it right and keep it quiet */
+#qView { margin-left: auto; color: #9ccc9c; }
 
 /* filter row (Loot view) — same prefs as Settings, reachable in game */
 #filters {
@@ -60,8 +62,9 @@ body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 #filters label:hover { color: #ccc4de; }
 #filters input { width: 10px; height: 10px; accent-color: #c9952a; margin: 0; }
 
-/* Tracked view — the whole panel: quest header, then every component with a
-   held mark and the missing pieces' mob · zone sources */
+/* Tracked view — zone headings, then every item under them with a held count
+   and the mobs that drop it in that zone. By quest, the quest header wraps the
+   same zone blocks. */
 #quests { list-style: none; padding: 3px 7px; overflow-y: auto; flex: 1; }
 #quests[hidden] { display: none; }
 .tq-none { color: #8d84a8; padding: 4px 0; }
@@ -71,14 +74,21 @@ body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 .tq .oe { margin-left: 5px; }
 .tq__c { float: right; font-weight: 600; color: #ccc4de; }
 .tq.is-done .tq__c { color: #e7b94e; }
+.tzs { list-style: none; padding: 2px 0 0 4px; }
+.tz { padding: 1px 0 2px; }
+.tz.is-done { opacity: .55; }
+.tz__h { display: flex; align-items: baseline; gap: 6px; }
+.tz__n { color: #9ccc9c; font-weight: 600; }
+.tz__c { margin-left: auto; color: #8d84a8; font-size: 10.5px; }
 .tqc { list-style: none; padding: 1px 0 0 4px; }
 .tqc li { padding: 0; color: #ccc4de; }
 .tqc li.is-have { color: #8d84a8; }
 .tqc li.is-have .tqc__n { text-decoration: line-through; }
 .tqc__tick { display: inline-block; width: 11px; color: #e7b94e; }
+.tqc__ct { margin-left: 5px; color: #b6aecb; font-size: 10.5px; }
+.tqc li.is-have .tqc__ct { color: #e7b94e; }
+.tqc__tag { margin-left: 5px; color: #8d84a8; font-size: 10px; }
 .tqc__src { display: block; padding-left: 15px; color: #8d84a8; font-size: 10.5px; }
-.tqc__m { color: #b6aecb; }
-.tqc__z { color: #9ccc9c; }
 #quests [data-url] { cursor: pointer; }
 #quests [data-url]:hover { text-decoration: underline; color: #f6dfa0; }
 

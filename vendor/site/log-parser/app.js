@@ -176,6 +176,12 @@ function parse(text, fileOwner) {
   const resolve = (n, self) => {
     n = n.trim();
     if (n === "You" || n === "you" || n === "YOU") return owner;
+    // A reflexive target names the actor the line already named ("a necro
+    // neophyte healed himself for 6 hit points by Lifetap."). The caller hands
+    // in that actor as `self`; there is no ambiguity to resolve, the client is
+    // just writing English. Load-bearing for HP bounds — a lifetap mob's
+    // self-heals are exactly the points that must come back OUT of the damage
+    // total, and left unresolved they would attribute to a mob named "himself".
     if ((n === "himself" || n === "herself" || n === "itself" || n === "yourself") && self) return self;
     if (n.startsWith("A ")) return "a" + n.slice(1);
     if (n.startsWith("An ")) return "an" + n.slice(2);
@@ -430,6 +436,9 @@ function mkSide(P, claims) {
 // death line; the burst carries the kill's XP and coin. A burst with no death
 // line anywhere near it, right where a fight was active, is a silent kill.
 const FIGHT_IDLE = 45; // s without any event touching the mob (mez refreshes it)
+// Log timestamps are whole seconds, so an epoch-second integer is the exact
+// clock the log itself ticks on — HP/DPS math never introduces a fraction.
+const epochSec = ts => Math.round(ts.getTime() / 1000);
 function buildFights(P, side) {
   const fights = [], open = new Map();
   let zone = null, tier = 0, zv = -1;
@@ -454,6 +463,23 @@ function buildFights(P, side) {
     open.delete(key);
     f.end = end;
     if (killed) { f.killer = killer; f.killed = true; }
+    // The mob's offensive window runs from its first swing to the end of the
+    // fight — the death second for a kill, its last event otherwise. It is NOT
+    // the fight's own span: a mob that stood there for 20s before it noticed
+    // us was not dealing damage for those 20s, and dividing by them would
+    // under-report what it hits for.
+    f.offSecs = f.offT0 == null ? 0 : epochSec(end) - f.offT0;
+    // HP bounds. Everything the mob lost minus everything it got back is the
+    // most it could have had (hp_max); the killing blow proves it had at most
+    // that much, and at least enough to still be standing before it (hp_min).
+    // Only a KILL bounds anything — a fight the mob walked away from says only
+    // "more than this". A tainted fight still gets bounds computed here; the
+    // per-mob aggregate is where taint decides what to trust.
+    if (f.killed && f.lastBlow != null) {
+      f.hpMax = f.dmgAll - f.healed;
+      f.hpMin = Math.max(1, f.hpMax - f.lastBlow + 1);
+    }
+    f.dotKeys = null; // tick-stack bookkeeping is per-fight and dies with it
     fights.push(f);
     return f;
   };
@@ -464,7 +490,12 @@ function buildFights(P, side) {
   let lvlNow = null, comboNow = null;
   const touch = (name, ts) => {
     let f = open.get(name);
-    if (!f) { f = { mob: name, zone, tier, zv: zv < 0 ? null : zv, lvl: lvlNow, combo: comboNow, start: ts, end: ts, last: ts, dmg: { you: 0, pet: 0, charm: 0 }, taken: 0, xp: 0, coin: 0, killed: false, inferred: false }; open.set(name, f); }
+    // dmgAll/lastBlow/healed feed the HP bounds; offTotal/offT0/offSecs/maxHit
+    // are the mob's own output; dotKeys/dotStack/tainted are the "is this one
+    // mob or two wearing the same name" audit. All are per-encounter — the
+    // per-mob roll-up in buildMobStats is what the UI reads.
+    if (!f) { f = { mob: name, zone, tier, zv: zv < 0 ? null : zv, lvl: lvlNow, combo: comboNow, start: ts, end: ts, last: ts, dmg: { you: 0, pet: 0, charm: 0 }, taken: 0, xp: 0, coin: 0, killed: false, inferred: false,
+      dmgAll: 0, lastBlow: null, healed: 0, offTotal: 0, offT0: null, offSecs: 0, maxHit: 0, dotKeys: null, dotStack: false, tainted: false, hpMin: null, hpMax: null }; open.set(name, f); }
     f.last = f.end = ts;
     return f;
   };
@@ -501,18 +532,107 @@ function buildFights(P, side) {
       }
       continue;
     }
+    // A heal ON a mob subtracts from what we made it lose, so the HP bound has
+    // to see it. It only counts against a fight that is ALREADY open and it
+    // does not touch() — a heal is not evidence of an encounter (a passing
+    // healer topping up a mob we never engaged would otherwise invent a fight),
+    // and refreshing the idle clock off a heal would move existing fight
+    // boundaries. Failure mode: a heal landing in the gap between two fights of
+    // the same mob is dropped rather than guessed onto one of them.
+    if (e.k === "heal" && e.who && open.has(e.who)) open.get(e.who).healed += e.amt;
     if (e.k === "dmg" || e.k === "miss" || e.k === "mez" || e.k === "shed") {
       for (const name of [e.src, e.tgt]) if (name && name !== P.owner && P.mobSet.has(name)) touch(name, t);
       if (e.k === "dmg" && e.tgt && P.mobSet.has(e.tgt)) {
         const s = side(e);
-        if (s === "you" || s === "pet" || s === "charm") open.get(e.tgt).dmg[s] += e.amt;
+        const ft = open.get(e.tgt);
+        if (s === "you" || s === "pet" || s === "charm") ft.dmg[s] += e.amt;
+        // HP is a property of the MOB, not of our contribution: every point it
+        // lost counts, whoever landed it (another player, an unclaimed pet, a
+        // damage shield, a DoT). lastBlow is the last of them to land before
+        // the fight closes — on a kill that is the killing blow, which is the
+        // only line in the log that says "this was enough".
+        ft.dmgAll += e.amt;
+        ft.lastBlow = e.amt;
+        // Tick-stack taint. One caster's DoT ticks a given entity once per
+        // tick, so the same (second, spell, caster) landing twice on one name
+        // means two mobs are wearing that name and this fight's totals are a
+        // blend of both. Caster identity is the event's own src: the "your"
+        // form resolves to the owner, the "from <Spell> by <Caster>" form to
+        // that caster, and the anonymous form has no caster to distinguish, so
+        // every anonymous tick keys together (the pessimistic side — it can
+        // over-flag, never silently trust a blended fight).
+        if (e.cat === "dot") {
+          const dk = `${epochSec(t)}|${e.spell}|${e.src || "anon"}`;
+          if (!ft.dotKeys) ft.dotKeys = new Set();
+          if (ft.dotKeys.has(dk)) ft.dotStack = true; else ft.dotKeys.add(dk);
+        }
       }
       if (e.k === "dmg" && e.tgt === P.owner && e.src && open.has(e.src)) open.get(e.src).taken += e.amt;
+      // What the MOB puts out, at anyone — you, a pet, a charm, another mob.
+      // (`taken` above stays owner-only; this is the separate question of how
+      // hard the mob hits.) A miss starts the clock but adds no damage: the
+      // swing happened, so the mob was already in combat, and counting the
+      // swing-time is the whole point of an offensive-seconds denominator.
+      if ((e.k === "dmg" || e.k === "miss") && e.src && open.has(e.src)) {
+        const fo = open.get(e.src);
+        if (fo.offT0 == null) fo.offT0 = epochSec(t);
+        if (e.k === "dmg") {
+          fo.offTotal += e.amt;
+          // max hit is a MELEE reading — the number a player wants is "how big
+          // a swing can this thing land", and a nuke or a DoT tick is neither
+          // a swing nor mitigable the same way.
+          if (e.cat === "melee" && e.amt > fo.maxHit) fo.maxHit = e.amt;
+        }
+      }
     }
   }
   for (const [key, f] of open) close(key, f.last);
   fights.forEach(f => { f.total = f.dmg.you + f.dmg.pet + f.dmg.charm; });
+  markTaint(fights, P);
   return fights;
+}
+// A text log identifies a mob by its NAME, and a camp with two "a decaying
+// skeleton" in it hands both of them to one fight object. That is fine for a
+// damage meter (the damage happened either way) and fatal for an HP bound,
+// which is arithmetic on the assumption that one entity absorbed every point.
+// Taint marks the fights where the assumption is visibly unsafe, so the
+// aggregate can drop them instead of averaging a lie.
+const TAINT_SEC = 10; // chosen bound, not a measured one: wide enough to catch
+// a trailing DoT tick or an immediate re-pull, short enough that an unrelated
+// pull a minute later doesn't condemn a clean fight.
+function markTaint(fights, P) {
+  // every second at which a name appears in a damage or miss event, ascending
+  // (P.events is chronological, so appending in order keeps it sorted)
+  const seen = new Map();
+  for (const e of P.events) {
+    if (e.k !== "dmg" && e.k !== "miss") continue;
+    const s = epochSec(e.ts);
+    for (const n of [e.src, e.tgt]) {
+      if (!n) continue;
+      let a = seen.get(n); if (!a) { a = []; seen.set(n, a); }
+      if (a[a.length - 1] !== s) a.push(s);
+    }
+  }
+  const lastKill = new Map(); // name -> death second of its previous killed fight
+  for (const f of fights) {
+    if (!f.killed) continue;
+    const d = epochSec(f.end);
+    // (a) after-death contamination: a corpse cannot swing or be swung at, so
+    // the name still trading blows after its death line is a second mob that
+    // was in this fight's numbers all along. Strictly after — the killing blow
+    // prints in the same second as the death line.
+    const arr = seen.get(f.mob) || [];
+    let lo = 0, hi = arr.length;
+    while (lo < hi) { const mid = (lo + hi) >> 1; if (arr[mid] <= d) lo = mid + 1; else hi = mid; }
+    const after = lo < arr.length && arr[lo] <= d + TAINT_SEC;
+    // (b) split risk: we opened on this name again within seconds of killing
+    // one, so the previous mob's trailing effects (DoT ticks, a damage-shield
+    // proc) land inside this fight and inflate its damage total.
+    const prev = lastKill.get(f.mob);
+    const split = prev != null && epochSec(f.start) - prev <= TAINT_SEC;
+    f.tainted = after || split || f.dotStack;
+    lastKill.set(f.mob, d);
+  }
 }
 // A fight's identity is (mob, start second) — stable across live-watch
 // re-parses. Array position is NOT: fights still open at the data boundary
@@ -531,9 +651,21 @@ function buildMobStats(fights, lootEvents, conEvents) {
   const agg = new Map();
   for (const f of fights) {
     let g = agg.get(f.mob);
-    if (!g) { g = { mob: f.mob, zone: f.zone, kills: 0, fights: 0, dmg: 0, taken: 0, xp: 0, xpKills: 0, rollKills: 0, coin: 0, coinKills: 0, secs: 0, tiers: new Set(), enc: [], drops: new Map(), lvls: null, rare: false }; agg.set(f.mob, g); }
+    if (!g) { g = { mob: f.mob, zone: f.zone, kills: 0, fights: 0, dmg: 0, taken: 0, xp: 0, xpKills: 0, rollKills: 0, coin: 0, coinKills: 0, secs: 0, tiers: new Set(), enc: [], drops: new Map(), lvls: null, rare: false,
+      offSum: 0, offSecsSum: 0, maxHit: 0, hpFights: [], hp: null }; agg.set(f.mob, g); }
     g.fights++; if (f.killed) g.kills++;
     g.dmg += f.total; g.taken += f.taken; g.secs += (f.end - f.start) / 1000;
+    // Offense sums over EVERY fight, killed or not, tainted or not: a fight we
+    // fled and a fight shared with a twin still both show real swings landing
+    // for real amounts, and the mob's damage output is not an inference about
+    // one entity the way its HP total is. Sums are stored raw; the division
+    // (off_sum / off_secs_sum) happens in display so a short fight can't be
+    // averaged in as if it weighed the same as a long one.
+    g.offSum += f.offTotal; g.offSecsSum += f.offSecs;
+    if (f.maxHit > g.maxHit) g.maxHit = f.maxHit;
+    // HP measurements only from clean kills — a tainted fight's damage total
+    // belongs to two mobs, so its bound is arithmetic about nothing.
+    if (f.killed && !f.tainted && f.hpMax != null) g.hpFights.push(f);
     // rollover fights (their XP line was a post-ding remainder) stay out of
     // the average — numerator AND denominator — so a level-crossing kill
     // can't drag the mob's per-kill XP down
@@ -559,7 +691,41 @@ function buildMobStats(fights, lootEvents, conEvents) {
     g.lvls.lo = Math.min(g.lvls.lo, e.mlvl); g.lvls.hi = Math.max(g.lvls.hi, e.mlvl); g.lvls.n++;
     if (e.rare) g.rare = true;
   }
+  for (const g of agg.values()) resolveHp(g);
   return [...agg.values()].sort((x, y) => y.kills - x.kills || y.dmg - x.dmg);
+}
+/* Every clean kill of a mob is an independent measurement of the SAME number,
+   so the honest combination is the INTERSECTION of the per-kill bounds, not an
+   average of them: the answer has to satisfy all of them at once, and each
+   extra kill can only narrow it.
+
+   An empty intersection is a finding, not noise — it means the name covers
+   more than one thing (a level range, a variant, a rare version), so no single
+   HP value could have produced all these kills. Averaging there would invent a
+   number that describes none of the spawns. Instead the fights are clustered:
+   walk them in chronological order and drop each into the first cluster whose
+   running intersection survives it, else start a new one; report the cluster
+   with the most fights and flag the result mixed so the reader knows the name
+   is not one creature. Ties keep the earliest cluster — arbitrary, but stable,
+   which is what a re-parse during live-watch needs. */
+function resolveHp(g) {
+  const hf = g.hpFights;
+  if (!hf.length) return;
+  let lo = -Infinity, hi = Infinity;
+  for (const f of hf) { lo = Math.max(lo, f.hpMin); hi = Math.min(hi, f.hpMax); }
+  if (lo <= hi) { g.hp = [lo, hi, hf.length, 0]; return; }
+  const cl = [];
+  for (const f of hf) {
+    let placed = false;
+    for (const c of cl) {
+      const nlo = Math.max(c.lo, f.hpMin), nhi = Math.min(c.hi, f.hpMax);
+      if (nlo <= nhi) { c.lo = nlo; c.hi = nhi; c.n++; placed = true; break; }
+    }
+    if (!placed) cl.push({ lo: f.hpMin, hi: f.hpMax, n: 1 });
+  }
+  let best = cl[0];
+  for (const c of cl) if (c.n > best.n) best = c; // strict >: first (earliest) cluster wins a tie
+  g.hp = [best.lo, best.hi, best.n, 1];
 }
 
 /* ─── con-verdict bands (generated data — build_con_bands.py) ──────────────
@@ -1059,14 +1225,17 @@ function tipProvider(arg) {
       return `<h5>Your pets</h5><p>Claimed by their own tells — the client only ever shows you your own pet's answers.</p><p>${ns.map(c => `<b>${c.name}</b> (${c.kind}) — ${c.tells} tell${c.tells === 1 ? "" : "s"}, ${dtShort(c.from)} → ${dtShort(c.to)}`).join("<br>")}</p>`;
     }
     case "droprate": return `<h5>Observed drop rate</h5><p>Loot lines ÷ kills seen. The log has no line for opening an empty corpse, so a corpse you never looted still counts as a kill — the rate here can only run low, never high.</p>`;
+    case "enchp": return `<h5>HP this fight</h5><p>Bracketed by overkill: the mob took some total damage, and the killing blow either landed in full or was capped by whatever HP was left — so its HP sits between total−lastblow+1 and total. Heals it received subtract. A trailing <b>?</b> means another same-name mob was in the fray; the log can't tell two of a name apart, so that bracket is unreliable and stays out of the mob's HP.</p>`;
     case "srcrow": {
       const s = a.sources[idx];
       if (!s || !s.actors) return null;
       return `<h5>${s.name}</h5><p>${[...s.actors.entries()].sort((x, y) => y[1] - x[1]).map(([n, v]) => `${n} ${fmt(v)}`).join(" · ")}</p>`;
     }
-    case "mobxp": case "mobcoin": case "mobkills": case "moblvl": {
+    case "mobxp": case "mobcoin": case "mobkills": case "moblvl": case "mobhp": case "mobdps": {
       const g = TIPCTX.mobs && TIPCTX.mobs[idx];
       if (!g) return null;
+      if (key === "mobhp") return `<h5>${g.mob} — HP</h5><p>Each kill brackets HP between the total damage the mob took (minus heals it received) and that total minus the last blow — the killing hit can overshoot. ${g.hp[2]} clean kill${g.hp[2] === 1 ? "" : "s"} narrow${g.hp[2] === 1 ? "s" : ""} it to <b>${fmt(g.hp[0])}–${fmt(g.hp[1])}</b>.${g.hp[3] ? " Marked <b>mixed</b>: the kills disagree — same-name mobs spawn in more than one variant, and this bracket fits the most kills." : ""} Kills with another same-name mob nearby are left out.</p>`;
+      if (key === "mobdps") return `<h5>${g.mob} — their DPS</h5><p><b>${fmt(g.offSum)}</b> damage it dealt — melee, spells, DoTs, damage shield, at anyone — over <b>${fmt(g.offSecsSum)}s</b> on the attack. Biggest melee hit: <b>${fmt(g.maxHit)}</b>.</p>`;
       if (key === "mobxp") return `<h5>${g.mob} — XP</h5><p>${g.xp.toFixed(2)}% total over ${g.kills} kill${g.kills === 1 ? "" : "s"}; ${g.xpKills} printed an XP line. The average divides by all kills${g.rollKills ? `, minus ${g.rollKills} that crossed a level — those print only the leftover past the ding, so they'd drag the average down` : ""}.</p>`;
       if (key === "mobcoin") return `<h5>${g.mob} — coin</h5><p>${fmtCopper(g.coin)} total over ${g.kills} kill${g.kills === 1 ? "" : "s"}; ${g.coinKills} dropped coin.</p>`;
       if (key === "moblvl") return `<h5>${g.mob} — level</h5><p>From ${g.lvls.n} of your own /con line${g.lvls.n === 1 ? "" : "s"} — the only place the log states a level. Same-name spawns can span levels, so a range is real, not noise.</p>`;
@@ -1365,11 +1534,11 @@ function renderMobs(selLevels, selZone, selFight) {
   // the level column exists only when the player actually conned something —
   // levels come from their own /con lines, nowhere else
   const hasLvls = rows.some(g => g.lvls);
-  const nCols = 7 + (hasLvls ? 1 : 0);
+  const nCols = 9 + (hasLvls ? 1 : 0);
   const tierTxt = g => { if (!g.tiers || !g.tiers.size || (g.tiers.size === 1 && g.tiers.has(0))) return "";
     const ts = [...g.tiers].sort((x, y) => x - y); return ` · D${ts[0]}${ts.length > 1 ? `–D${ts[ts.length - 1]}` : ""}`; };
   const mt = $("mobTable");
-  mt.innerHTML = `<thead><tr><th>Mob</th>${hasLvls ? "<th>Level</th>" : ""}<th>Kills</th><th>Avg fight</th><th>Avg XP</th><th>Avg coin</th><th>Damage</th><th>Drops</th></tr></thead>`;
+  mt.innerHTML = `<thead><tr><th>Mob</th>${hasLvls ? "<th>Level</th>" : ""}<th>Kills</th><th>Avg fight</th><th>Avg XP</th><th>Avg coin</th><th>Damage</th><th>HP</th><th>Their DPS</th><th>Drops</th></tr></thead>`;
   const tb = el("tbody");
   shown.forEach((g, i) => {
     const isOpen = EXPANDED.has(g.mob);
@@ -1384,6 +1553,8 @@ function renderMobs(selLevels, selZone, selFight) {
       `<td>${g.xpKills && g.xp ? `<span class="tipv" data-tip="lp:mobxp:${i}">${(g.xp / Math.max(1, g.kills - g.rollKills)).toFixed(2)}%</span>` : "—"}</td>` +
       `<td>${g.kills && g.coin ? `<span class="tipv" data-tip="lp:mobcoin:${i}">${fmtCopper(g.coin / g.kills)}</span>` : "—"}</td>` +
       `<td class="c-dmg">${fmt(g.dmg)}</td>` +
+      `<td>${g.hp ? `<span class="tipv" data-tip="lp:mobhp:${i}">${g.hp[0] === g.hp[1] ? fmt(g.hp[0]) : `${fmt(g.hp[0])}–${fmt(g.hp[1])}`}${g.hp[3] ? ` <span class="f-open">mixed</span>` : ""}</span>` : "—"}</td>` +
+      `<td>${g.offSum ? `<span class="tipv" data-tip="lp:mobdps:${i}">${(g.offSum / Math.max(1, g.offSecsSum)).toFixed(1)}</span>` : "—"}</td>` +
       `<td>${items ? `${items} item${items === 1 ? "" : "s"}` : "—"}</td>`);
     tr.addEventListener("click", ev => {
       if (ev.target.closest("[data-tip], a")) return; // tips and wiki links own their clicks
@@ -1403,12 +1574,14 @@ function renderMobs(selLevels, selZone, selFight) {
       return `<tr class="enc-row${selFight === fkey(f) ? " on" : ""}">` +
         `<td class="c-name">${dtShort(f.start)}${f.killed ? "" : ` <span class="f-open">unfinished</span>`}</td>` +
         `<td>${Math.round(dur)}s</td><td class="c-dmg">${fmt(f.total)}</td><td>${rateDps(f.total, dur)}</td>` +
-        `<td>${f.taken ? fmt(f.taken) : "—"}</td><td>${f.xp ? f.xp.toFixed(2) + "%" : "—"}</td><td>${f.coin ? fmtCopper(f.coin) : "—"}</td>` +
+        `<td>${f.taken ? fmt(f.taken) : "—"}</td>` +
+        `<td>${f.killed && f.hpMin != null ? `<span class="tipv" data-tip="lp:enchp">${fmt(f.hpMin)}–${fmt(f.hpMax)}${f.tainted ? "?" : ""}</span>` : "—"}</td>` +
+        `<td>${f.xp ? f.xp.toFixed(2) + "%" : "—"}</td><td>${f.coin ? fmtCopper(f.coin) : "—"}</td>` +
         `<td class="c-foc">${selFight === fkey(f) ? "focused" : "focus"}</td></tr>`;
     }).join("");
     const detail = el("tr", "mob-detail", `<td colspan="${nCols}"><div class="detail-grid">` +
       (drops.length ? `<div class="d-block"><h4>Drops</h4><table class="mini-tbl"><thead><tr><th>Item</th><th>Dropped</th><th><span class="tipv" data-tip="lp:droprate">Rate</span></th><th>Per drop</th></tr></thead><tbody>${dropRows}</tbody></table></div>` : "") +
-      `<div class="d-block"><h4>Fights${encs.length > encShown.length ? ` <span class="f-open">newest ${encShown.length} of ${encs.length}</span>` : ""}</h4><div class="tblwrap"><table class="mini-tbl enc-tbl"><thead><tr><th>When</th><th>Length</th><th>Damage</th><th>Est. DPS</th><th>Took</th><th>XP</th><th>Coin</th><th></th></tr></thead><tbody>${encRows}</tbody></table></div></div>` +
+      `<div class="d-block"><h4>Fights${encs.length > encShown.length ? ` <span class="f-open">newest ${encShown.length} of ${encs.length}</span>` : ""}</h4><div class="tblwrap"><table class="mini-tbl enc-tbl"><thead><tr><th>When</th><th>Length</th><th>Damage</th><th>Est. DPS</th><th>Took</th><th>HP</th><th>XP</th><th>Coin</th><th></th></tr></thead><tbody>${encRows}</tbody></table></div></div>` +
       `</div></td>`);
     detail.querySelectorAll(".enc-row").forEach((rr, ri) => rr.addEventListener("click", ev2 => {
       ev2.stopPropagation();

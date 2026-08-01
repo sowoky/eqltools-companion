@@ -158,6 +158,63 @@ main { flex: 1; overflow-y: auto; padding: 16px; }
 .qrew { margin: 6px 0 0 2px; font-size: 12px; color: var(--ink-dim); }
 .qnote { text-align: left; margin-top: 18px; font-size: 12px; max-width: 62ch; }
 
+/* ── zone groups — the shopping list, split by where you have to stand ──── */
+.zgs { margin: 6px 0 2px; display: flex; flex-direction: column; gap: 5px; }
+.zg { border: 1px solid var(--line-soft); border-radius: 6px; background: var(--bg-panel); }
+.zg.is-done { opacity: .55; }
+.zg__head {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 4px 10px; border-bottom: 1px solid var(--line-soft);
+}
+.zg__name { font-weight: 600; color: var(--wiki); text-decoration: none; cursor: pointer; }
+a.zg__name:hover { color: var(--gold-pale); }
+.zg__name.is-catch { color: var(--ink-dim); font-weight: 400; font-style: italic; cursor: default; }
+.zg__n { margin-left: auto; font: 12px var(--mono); color: var(--ink-dim); }
+.zg .qcomps { margin: 4px 0; padding: 0 10px 6px; }
+.qcomps--bare { columns: 1; }
+.qc--where { font-size: 11px; padding-left: 20px; }
+.qc--where .zg__name { font-weight: 400; }
+/* held / needed sits against the name, not in its own column: the pair is one
+   fact and the eye should read it as one */
+.qct {
+  margin-left: 6px; font: 11px var(--mono); color: var(--ink-dim);
+  border: 1px solid var(--line); border-radius: 3px; padding: 0 4px;
+}
+.qct.is-ok { color: var(--gold-pale); border-color: var(--gold); }
+.qtag {
+  margin-left: 6px; font-size: 11px; color: var(--ink-dim);
+  border-left: 1px solid var(--line); padding-left: 6px;
+}
+.qsrc { display: block; font-size: 11px; margin: 0 0 0 20px; }
+.qsrc a { color: var(--wiki); text-decoration: none; cursor: pointer; }
+.qsrc a:hover { color: var(--gold-pale); }
+
+/* ── turn-ins — what you hand to whom, folded away until asked for ─────── */
+.qparts { margin-top: 8px; }
+.qparts__toggle {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; font-size: 12px; color: var(--ink-dim);
+}
+.qparts__toggle:hover { color: var(--gold-pale); }
+.qplist { list-style: none; padding: 0; margin: 6px 0 0; }
+.qpart { padding: 5px 0 6px; border-top: 1px solid var(--line-soft); }
+.qpart__head { display: flex; align-items: baseline; gap: 8px; }
+.qpart__n { font-weight: 600; color: var(--ink-soft); font-size: 13px; }
+.qpart__head .qprog { margin-left: auto; }
+.qpart.is-ready .qprog { color: var(--bg-deep); background: var(--gold); border-color: var(--gold); font-weight: 700; }
+.qpart .qcomps { columns: 3; margin-top: 3px; }
+
+/* segmented control — one choice, both options always readable */
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg[hidden] { display: none; }   /* an explicit display beats the hidden attribute */
+.seg__b {
+  background: var(--bg-panel-2); color: var(--ink-dim); border: 0;
+  padding: 3px 11px; font: inherit; font-size: 12px; cursor: pointer;
+}
+.seg__b + .seg__b { border-left: 1px solid var(--line); }
+.seg__b:hover { color: var(--gold-pale); }
+.seg__b.is-on { background: var(--gold); color: var(--bg-deep); font-weight: 600; }
+
 /* tracker */
 .thead { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
 .big { font-size: 26px; font-weight: 700; color: var(--gold-bright); }

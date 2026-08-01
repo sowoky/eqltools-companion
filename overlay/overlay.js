@@ -115,29 +115,90 @@ function renderFilters() { fKills.checked = PREFS.showKills; fQuestOnly.checked 
 fKills.addEventListener("change", () => window.companion.setOverlayPrefs({ showKills: fKills.checked }));
 fQuestOnly.addEventListener("change", () => window.companion.setOverlayPrefs({ questOnly: fQuestOnly.checked }));
 
-/* Tracked view — pre-resolved rows from the main renderer: {n, url, got,
-   need, done, oe, comps: [{n, have, url, src: [{mn, mu, zn, zu}]}]}. The
-   whole working list: every component with a held mark, wiki links on the
-   item, and the missing pieces' mob · zone sources (Kyle, 2026-07-31: "I
-   need to see the list of things i need. i need to see what zone and mob.
-   i need to be able to click all of those things"). */
-let TRACKED = [];
+/* Tracked view — pre-resolved by the main renderer, which owns every dataset:
+     {zones: [{z, url, left, items}],
+      quests: [{n, url, got, need, done, oe, zones: […], parts: […]}]}
+   with each item {n, have, want, url, mobs: [name], note?, tag?} — `note` when
+   the zone sells or forages the item instead of dropping it.
+
+   The whole working list: every item with a held mark and its count, wiki links
+   on the item, and the mobs that drop it IN the zone you are reading (Kyle,
+   2026-07-31: "I need to see the list of things i need. i need to see what zone
+   and mob. i need to be able to click all of those things"). Two groupings,
+   toggled in the header: pooled by zone across every tracked quest — the one
+   you read while standing somewhere — or by quest. Inside a quest the items
+   still group by zone, so clearing a zone never leaves something behind. */
+let TRACKED = { zones: [], quests: [] };
+let QVIEW = "zone";
 const link = (text, url, cls) => {
   const a = document.createElement("span");
   a.className = cls; a.textContent = text;
   if (url) a.dataset.url = url;
   return a;
 };
+
+function itemLi(it) {
+  const done = it.have >= it.want;
+  const cl = document.createElement("li");
+  cl.className = done ? "is-have" : "";
+  const tick = document.createElement("span");
+  tick.className = "tqc__tick"; tick.textContent = done ? "✓" : "·";
+  cl.append(tick, link(it.n, it.url, "tqc__n"));
+  if (it.want > 1 || it.have) {
+    const x = document.createElement("span");
+    x.className = "tqc__ct"; x.textContent = `${it.have}/${it.want}`;
+    cl.append(x);
+  }
+  if (it.tag) {
+    const t = document.createElement("span");
+    t.className = "tqc__tag"; t.textContent = it.tag;
+    cl.append(t);
+  }
+  const src = !done && ((it.mobs && it.mobs.join(", ")) || it.note);
+  if (src) {
+    const s = document.createElement("span");
+    s.className = "tqc__src"; s.textContent = src;
+    cl.append(s);
+  }
+  return cl;
+}
+
+function zoneLi(g) {
+  const li = document.createElement("li");
+  li.className = g.left ? "tz" : "tz is-done";
+  const h = document.createElement("div");
+  h.className = "tz__h";
+  h.append(link(g.z, g.url, "tz__n"));
+  const c = document.createElement("span");
+  c.className = "tz__c"; c.textContent = g.left ? `${g.left} to get` : "all held";
+  h.append(c);
+  li.append(h);
+  const ul = document.createElement("ul");
+  ul.className = "tqc";
+  for (const it of g.items) ul.append(itemLi(it));
+  li.append(ul);
+  return li;
+}
+
 function renderQuests() {
   questsEl.innerHTML = "";
-  if (!TRACKED.length) {
+  const quests = TRACKED.quests || [];
+  if (!quests.length) {
     const li = document.createElement("li");
     li.className = "tq-none";
     li.textContent = "Nothing tracked — hit Track on a quest in the app.";
     questsEl.append(li);
     return;
   }
-  for (const q of TRACKED) {
+  // no zones in the payload means the main window had no source table to group
+  // by (older dataset); fall back to the flat list rather than an empty panel
+  const grouped = (TRACKED.zones || []).length > 0;
+  if (qViewEl) qViewEl.hidden = !grouped;
+  if (QVIEW === "zone" && grouped) {
+    for (const g of TRACKED.zones) questsEl.append(zoneLi(g));
+    return;
+  }
+  for (const q of quests) {
     const li = document.createElement("li");
     li.className = q.done ? "tq is-done" : "tq";
     li.append(link(q.n, q.url, "tq__n"));
@@ -150,35 +211,28 @@ function renderQuests() {
     c.className = "tq__c"; c.textContent = q.done ? `✓ ${q.got}/${q.need}` : `${q.got}/${q.need}`;
     li.append(c);
     const ul = document.createElement("ul");
-    ul.className = "tqc";
-    for (const comp of q.comps || []) {
-      const cl = document.createElement("li");
-      cl.className = comp.have ? "is-have" : "";
-      const tick = document.createElement("span");
-      tick.className = "tqc__tick"; tick.textContent = comp.have ? "✓" : "·";
-      cl.append(tick, link(comp.n, comp.url, "tqc__n"));
-      if (comp.have > 1) {
-        const x = document.createElement("span");
-        x.className = "dim"; x.textContent = ` ×${comp.have}`;
-        cl.append(x);
-      }
-      if (!comp.have && comp.src && comp.src.length) {
-        const s = document.createElement("span");
-        s.className = "tqc__src";
-        comp.src.forEach((d, i) => {
-          if (i) s.append(", ");
-          s.append(link(d.mn, d.mu, "tqc__m"));
-          if (d.zn) { s.append(" · "); s.append(link(d.zn, d.zu, "tqc__z")); }
-        });
-        cl.append(s);
-      }
-      ul.append(cl);
+    if ((q.zones || []).length) {
+      ul.className = "tzs";
+      for (const g of q.zones) ul.append(zoneLi(g));
+    } else {
+      ul.className = "tqc";
+      for (const it of q.comps || []) ul.append(itemLi(it));
     }
     li.append(ul);
     questsEl.append(li);
   }
 }
-window.companion.onFeedQuests(q => { TRACKED = q || []; renderQuests(); rehotspot(); });
+
+const qViewEl = document.getElementById("qView");
+if (qViewEl) qViewEl.addEventListener("click", () => {
+  QVIEW = QVIEW === "zone" ? "quest" : "zone";
+  qViewEl.textContent = QVIEW === "zone" ? "by zone" : "by quest";
+  renderQuests(); rehotspot();
+});
+
+// older main windows sent a bare array of quests; keep reading it
+const asTracked = q => Array.isArray(q) ? { zones: [], quests: q } : (q || { zones: [], quests: [] });
+window.companion.onFeedQuests(q => { TRACKED = asTracked(q); renderQuests(); rehotspot(); });
 
 function setMode(clickThrough, opacity) {
   THROUGH = !!clickThrough;
@@ -200,7 +254,7 @@ window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, ques
   if (!EVENTS.length) EVENTS = (feed || []).slice(-EVENT_CAP);
   rebuildFeed();
   setZone(zone);
-  TRACKED = quests || [];
+  TRACKED = asTracked(quests);
   renderQuests();
   applyView();
 });

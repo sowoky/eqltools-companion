@@ -152,10 +152,11 @@ code.path { color: var(--ink-soft); word-break: break-all; }
   #sourceTable th:nth-child(5), #sourceTable td:nth-child(5),
   #sourceTable th:nth-child(8), #sourceTable td:nth-child(8),
   #sourceTable th:nth-child(9), #sourceTable td:nth-child(9),
-  /* mob table keeps the camp payoff (kills, xp, coin, drops); the detail row
-     spans every column, so it is never hidden by these */
+  /* mob table keeps the camp payoff (kills, xp, coin, HP, drops); the detail
+     row spans every column, so it is never hidden by these */
   #mobTable > tbody > tr.mob-row > td:nth-child(3), #mobTable > thead th:nth-child(3),
   #mobTable > tbody > tr.mob-row > td:nth-child(6), #mobTable > thead th:nth-child(6),
+  #mobTable > tbody > tr.mob-row > td:nth-child(8), #mobTable > thead th:nth-child(8),
   #comboTable th:nth-child(2), #comboTable td:nth-child(2),
   #comboTable th:nth-child(5), #comboTable td:nth-child(5) { display: none; }
   .detail-grid { grid-template-columns: 1fr; }
@@ -166,7 +167,7 @@ code.path { color: var(--ink-soft); word-break: break-all; }
   .mini-tbl th:nth-child(4), .mini-tbl td:nth-child(4),
   .enc-tbl th:nth-child(2), .enc-tbl td:nth-child(2),
   .enc-tbl th:nth-child(5), .enc-tbl td:nth-child(5),
-  .enc-tbl th:nth-child(8), .enc-tbl td:nth-child(8) { display: none; }
+  .enc-tbl th:nth-child(9), .enc-tbl td:nth-child(9) { display: none; }
   .d-block { padding: .3rem .5rem .5rem; }
   /* long spell/source names wrap instead of forcing the numbers off-screen */
   #sourceTable .c-name { max-width: 8.5rem; overflow-wrap: break-word; white-space: normal; }

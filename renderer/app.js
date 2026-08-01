@@ -17,6 +17,8 @@ let NAME2KEY = new Map(), ROSTER = new Map(), NAMEZONES = new Map();
 let QIDX = new Map(); // normName(item) -> [{q: quest row, as: "r"|"c"}]
 let T2Q = new Map();  // quest wiki path (q.t, unique) -> quest row — the tracked-quest key
 let QDROPS = {};      // normName(item) -> [[mob, mobPath, zone, zonePath], ...] lowest level first
+let QSRC = {};        // normName(item) -> {n, z:[zone], m:{zone:[mob]}, many, various, r:{c,to}}
+let QZONES = {};      // zone display name -> wiki path
 let TDATA = null;     // item-tooltips.json
 let TIDX = new Map(); // normName(item) -> {n, t, ic, sb: [lines]}
 
@@ -44,6 +46,8 @@ function buildIndexes(datasets) {
     }
     for (const q of QDATA.quests) T2Q.set(q.t, q);
     QDROPS = QDATA.drops || {};
+    QSRC = QDATA.src || {};
+    QZONES = QDATA.zones || {};
   }
   const td = datasets["item-tooltips.json"];
   TDATA = td ? td.data : null;
@@ -561,19 +565,27 @@ function renderInv() {
 
 /* ── Quests tab — search every wiki quest, track any, see what's hand-in ready ─
    Held counts cross the newest inventory dump with loot seen live since it (a
-   fresh dump supersedes the live tally). A quest counts as READY when you
-   hold every component the wiki lists for it.
+   fresh dump supersedes the live tally). A quest counts as READY when you hold
+   every item it needs, in the quantity it needs.
 
-   Two limits are real and both are stated in the UI rather than papered over:
+   What the dataset now says, and what it still can't:
 
-   1. The wiki lists component NAMES, never counts — no quest row in the
-      dataset carries a quantity marker or a repeated item (checked: 0 of
-      904). So "ready" means "you hold at least one of each", and Bone Chips
-      wants four. The held count rides on every component row so the player
-      can judge; the app must not claim to know the requirement.
-   2. 147 quests list no components at all (index pages like "Bone Chips
-      Quests", and chain articles). They stay searchable — with the gap named
-      on the row — but hold nothing to track and can never be "ready".
+   1. Quantities are real. 217 of 904 quests state a count for at least one
+      item ('3x [[Flawed Emerald]]', 'three [[Flawless Diamond]]s', 'Hand him 4
+      [[Bone Chips]]'), and q.need carries the total — recipe-expanded, so a
+      seven-piece Lambent set asks for the seven Lambent Stones its own page
+      never adds up. Where a page states no count, the requirement is one.
+   2. A quest PAGE is often several turn-ins. q.parts splits them (120 pages),
+      each with its own giver and hand-in list; q.split says the split is real
+      rather than assumed. A part named "" is what the page lists outside any
+      turn-in section — usually a summary table — and is shown as such.
+   3. 114 quests list no items at all (index pages like "Bone Chips Quests",
+      and chain articles). They stay searchable — with the gap named on the row
+      — but hold nothing to track and can never be "ready".
+   4. Zones come from each item's own wiki page (dropsfrom/soldby/foraged),
+      which is written zone-by-zone with the mobs under each. 1,699 of 3,020
+      quest items resolve to at least one zone; the rest bucket as "many zones"
+      or "source not listed" rather than being quietly dropped.
 
    Tracking: q.t (the quest's wiki path) is unique across all 904 quests and
    survives dataset refreshes, so it is the stored key. Tracked progress also
@@ -581,11 +593,23 @@ function renderInv() {
 const TURNIN = { q: "", readyOnly: false }; // Turn-ins tab — filter within held quests
 const QB = { q: "", cls: "", zone: "", era: "", lvlMin: "", lvlMax: "", sort: "name", dir: 1 }; // Quests browser
 const QEXPANDED = new Set(); // browser rows opened to full detail (q.t keys)
+const QPARTS_OPEN = new Set(); // quests whose turn-in list is expanded (q.t keys)
 const TRACK_KEY = "eqlt-companion-tracked-v1";
+const TRACK_VIEW_KEY = "eqlt-companion-trackview-v1";
 let TRACKED = []; // q.t keys, in the order the player tracked them
+let TRACK_VIEW = "quest"; // "quest" | "zone"
 function loadTracked() {
   try { const a = JSON.parse(localStorage.getItem(TRACK_KEY)); TRACKED = Array.isArray(a) ? a.filter(t => typeof t === "string") : []; }
   catch { TRACKED = []; }
+  try { TRACK_VIEW = localStorage.getItem(TRACK_VIEW_KEY) === "zone" ? "zone" : "quest"; }
+  catch { TRACK_VIEW = "quest"; }
+}
+function setTrackView(v) {
+  TRACK_VIEW = v === "zone" ? "zone" : "quest";
+  try { localStorage.setItem(TRACK_VIEW_KEY, TRACK_VIEW); } catch {}
+  for (const b of document.querySelectorAll("[data-trackview]"))
+    b.classList.toggle("is-on", b.dataset.trackview === TRACK_VIEW);
+  renderTrackedTab();
 }
 function saveTracked() { try { localStorage.setItem(TRACK_KEY, JSON.stringify(TRACKED)); } catch {} }
 function toggleTrack(t) {
@@ -608,11 +632,140 @@ function haveMap() {
   return m;
 }
 
+/* A quest's shopping list: q.need (rolled up and recipe-expanded) crossed with
+   what you hold. `got` counts items you hold ENOUGH of — with quantities in the
+   data, holding one of four Bone Chips is not holding Bone Chips. Older
+   datasets have no `need`; those fall back to the flat item list at one each,
+   so a companion that hasn't refreshed still works. */
 function compsFor(q, have) {
   const held = n => have.get(K.normName(n)) ?? have.get(K.normName(stripDecor(n))) ?? 0;
-  const comps = (q.items || []).map(n => ({ n, have: held(n) }));
-  const got = comps.filter(c => c.have).length;
-  return { q, comps, got, need: comps.length, done: comps.length > 0 && got === comps.length };
+  const rows = (q.need && q.need.length ? q.need : (q.items || []).map(n => [n, 1]))
+    .map(([n, want]) => ({ n, want, have: held(n) }));
+  const got = rows.filter(c => c.have >= c.want).length;
+  return { q, comps: rows, got, need: rows.length, done: rows.length > 0 && got === rows.length };
+}
+
+/* ── where an item comes from ─────────────────────────────────────────────
+   Every item lands in exactly one bucket per zone it names, so walking into a
+   zone surfaces everything that zone can give you. Items the wiki puts in five
+   or more zones (or calls "Various Zones") would otherwise appear under half
+   the game, so they get one bucket of their own; items with no stated source
+   get another, because "everywhere" and "the wiki doesn't say" are different
+   answers and pretending otherwise sends people hunting. */
+const MANY = "::many";        // "::" can't collide with a zone name
+const NOSRC = "::nosrc";
+const BUCKET_LABEL = { [MANY]: "Anywhere · many zones", [NOSRC]: "Source not listed on the wiki" };
+const srcFor = name => QSRC[K.normName(name)] ?? QSRC[K.normName(stripDecor(name))] ?? null;
+/* A dataset built before the source table existed has no `src` at all, and the
+   app must not read that silence as "the wiki lists no source" — it would say
+   so on every row of every quest. The companion prefers its CACHED download
+   over its bundled snapshot, so a freshly installed build hits this until the
+   site publishes a rebuild. Fall back to the flat list the older data supports,
+   and say why. */
+const hasSrc = () => !!(QDATA && QDATA.src);
+const STALE_DATA_NOTE = "Quest data is older than this app — items can't be grouped by zone yet. " +
+  "It refreshes from eqltools.com automatically, or hit Refresh data in Settings.";
+
+function bucketsFor(name) {
+  const s = srcFor(name);
+  if (!s) return [NOSRC];
+  // an item in five or more zones is not a reason to go anywhere, and listing
+  // Fire Opal under eight zone headings buries the one item that IS only here
+  if (s.many) return [MANY];
+  if (s.z && s.z.length) return s.z;
+  return [NOSRC];
+}
+
+// how you get this item IN this zone: the mobs to kill, or — when the zone is
+// on the item's soldby/foraged list rather than its dropsfrom — what to do
+// instead. "Freeport" under a gem means buy it, and a list of mobs to kill
+// there would be a lie of omission.
+const KIND_LABEL = { vendor: "from a merchant", forage: "forage" };
+function sourceIn(name, zone) {
+  const s = srcFor(name);
+  if (!s) return { mobs: [] };
+  const mobs = (s.m && s.m[zone]) || [];
+  if (mobs.length) return { mobs };
+  const i = (s.z || []).indexOf(zone);
+  const kind = i >= 0 && s.k ? s.k[i] : null;
+  return { mobs: [], note: KIND_LABEL[kind] || "" };
+}
+
+/* rows [{n, want, have, tag?}] -> ordered zone buckets. Zones with something
+   still outstanding sort first (that is the reason you are reading the list),
+   then by how much is left, then alphabetically; the two catch-all buckets sit
+   at the bottom whatever they hold. */
+function zoneBuckets(rows) {
+  const by = new Map();
+  for (const r of rows) {
+    for (const z of bucketsFor(r.n)) {
+      if (!by.has(z)) by.set(z, []);
+      by.get(z).push(r);
+    }
+  }
+  const out = [...by.entries()].map(([z, items]) => {
+    items.sort((a, b) => (a.have >= a.want) - (b.have >= b.want) ||
+      (a.n.toLowerCase() < b.n.toLowerCase() ? -1 : 1));
+    return { z, items, left: items.filter(r => r.have < r.want).length };
+  });
+  out.sort((a, b) => {
+    const ca = a.z in BUCKET_LABEL, cb = b.z in BUCKET_LABEL;
+    return (ca - cb) || ((b.left > 0) - (a.left > 0)) || (b.left - a.left) ||
+      (a.z < b.z ? -1 : 1);
+  });
+  return out;
+}
+
+const zoneLink = z => BUCKET_LABEL[z]
+  ? `<span class="zg__name is-catch">${esc(BUCKET_LABEL[z])}</span>`
+  : (QZONES[z] ? `<a class="wk zg__name" data-wiki="${esc(QZONES[z])}">${esc(z)}</a>`
+    : `<span class="zg__name">${esc(z)}</span>`);
+
+// one item row inside a zone bucket: held/needed, and who drops it here
+function zoneItemRow(r, zone) {
+  const done = r.have >= r.want;
+  const src = done ? { mobs: [] } : sourceIn(r.n, zone);
+  const count = r.want > 1 || r.have
+    ? `<span class="qct ${done ? "is-ok" : ""}">${r.have}/${r.want}</span>` : "";
+  const who = src.mobs.slice(0, 3).map(m => {
+    const t = mobPath(r.n, m);
+    return t ? `<a class="wk" data-wiki="${esc(t)}">${esc(m)}</a>` : esc(m);
+  }).join(", ") || esc(src.note || "");
+  return `<li class="qc ${done ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(r.n)}${count}
+    ${r.tag ? `<span class="qtag">${esc(r.tag)}</span>` : ""}
+    ${who ? `<span class="qsrc dim">${who}</span>` : ""}</li>`;
+}
+
+// the pre-zone-grouping rendering, kept for datasets that predate `src`:
+// item, held/needed, and the lowest-level droppers with their zone
+function flatCompsHtml(rows) {
+  return `<ul class="qcomps">${rows.map(r => {
+    const done = r.have >= r.want;
+    const d = done ? [] : dropsFor(r.n).slice(0, 2);
+    const src = d.map(([mn, mt, zn, zt]) =>
+      `<a class="wk" data-wiki="${esc(mt)}">${esc(mn)}</a>${zn ? ` <span class="dim">·</span> <a class="wk" data-wiki="${esc(zt)}">${esc(zn)}</a>` : ""}`).join(", ");
+    return `<li class="qc ${done ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(r.n)}
+      ${r.want > 1 || r.have ? `<span class="qct ${done ? "is-ok" : ""}">${r.have}/${r.want}</span>` : ""}
+      ${r.tag ? `<span class="qtag">${esc(r.tag)}</span>` : ""}
+      ${src ? `<span class="qsrc dim">${src}</span>` : ""}</li>`;
+  }).join("")}</ul>`;
+}
+
+function zoneGroupsHtml(rows) {
+  if (!hasSrc()) return flatCompsHtml(rows);
+  const groups = zoneBuckets(rows);
+  if (!groups.length) return "";
+  // a one-item quest doesn't need a boxed heading over a single row — most of
+  // the Turn-ins tab is these, and the chrome outweighs the fact
+  if (groups.length === 1 && groups[0].items.length === 1) {
+    return `<ul class="qcomps qcomps--bare">${zoneItemRow(groups[0].items[0], groups[0].z)}
+      <li class="qc qc--where dim">${zoneLink(groups[0].z)}</li></ul>`;
+  }
+  return `<div class="zgs">${groups.map(g => `
+    <div class="zg ${g.left ? "" : "is-done"}">
+      <div class="zg__head">${zoneLink(g.z)}<span class="zg__n">${g.left ? `${g.left} to get` : "all held"}</span></div>
+      <ul class="qcomps">${g.items.map(r => zoneItemRow(r, g.z)).join("")}</ul>
+    </div>`).join("")}</div>`;
 }
 
 let questsTimer = null;
@@ -620,25 +773,66 @@ function renderQuestsSoon() { // coalesce loot bursts, same reason as the feed
   if (!questsTimer) questsTimer = setTimeout(() => { questsTimer = null; renderQuests(); pushQuests(); }, 500);
 }
 
-/* The overlay's Tracked tab: full component lists with held marks, item wiki
-   links, and each missing piece's mob · zone sources — all resolved here
-   because the overlay has no datasets of its own. */
+/* The overlay's Tracked tab: every tracked quest with its items already grouped
+   by zone and counted, plus the mobs to kill in each zone — all resolved here
+   because the overlay has no datasets of its own. It ships both shapes: `zones`
+   for the pooled by-zone view (the one you read mid-fight) and per-quest rows
+   for the by-quest view, so the overlay only has to pick. */
 function pushQuests() {
   if (!QDATA) return;
   const have = haveMap();
   const base = QDATA.base || (DATA && DATA.base) || "";
   const itemUrl = n => { const t = lookupItem(TIDX, n); return t && base ? base + t.t : ""; };
-  window.companion.sendQuests(TRACKED.map(t => T2Q.get(t)).filter(Boolean).map(q => {
-    const p = compsFor(q, have);
+  const plans = TRACKED.map(t => T2Q.get(t)).filter(Boolean).map(q => compsFor(q, have));
+
+  const packRow = (c, zone) => {
+    const s = c.have >= c.want ? { mobs: [] } : sourceIn(c.n, zone);
     return {
-      n: q.n, url: base ? base + q.t : "", got: p.got, need: p.need, done: p.done, oe: !!q.oe,
-      comps: p.comps.map(c => ({
-        n: c.n, have: c.have, url: itemUrl(c.n),
-        src: c.have ? [] : dropsFor(c.n).slice(0, 2).map(([mn, mt, zn, zt]) =>
-          ({ mn, mu: base ? base + mt : "", zn, zu: zn && base ? base + zt : "" })),
-      })),
+      n: c.n, have: c.have, want: c.want, url: itemUrl(c.n),
+      mobs: s.mobs.slice(0, 3), ...(s.note ? { note: s.note } : {}),
+      ...(c.tag ? { tag: c.tag } : {}),
     };
+  };
+  // no source table (a dataset older than this app) means no zone answer at
+  // all — send the flat list instead of one bucket claiming the wiki is silent
+  const packZones = rows => !hasSrc() ? [] : zoneBuckets(rows).map(g => ({
+    z: BUCKET_LABEL[g.z] || g.z, url: QZONES[g.z] && base ? base + QZONES[g.z] : "",
+    left: g.left, items: g.items.map(c => packRow(c, g.z)),
   }));
+  const packFlat = rows => rows.map(c => ({
+    ...packRow(c, null),
+    mobs: c.have >= c.want ? [] : dropsFor(c.n).slice(0, 2).map(([mn, , zn]) => zn ? `${mn} · ${zn}` : mn),
+  }));
+
+  // one item two quests want is one thing to farm — same merge the main window
+  // does, so the two views can never disagree about what is left
+  const merged = new Map();
+  for (const p of plans) {
+    for (const c of p.comps) {
+      const k = K.normName(c.n), cur = merged.get(k);
+      if (cur) { cur.want = Math.max(cur.want, c.want); cur.quests.add(p.q.n); }
+      else merged.set(k, { n: c.n, want: c.want, have: c.have, quests: new Set([p.q.n]) });
+    }
+  }
+  const pooled = [...merged.values()].map(r => ({
+    ...r, tag: r.quests.size > 1 ? `${r.quests.size} quests` : [...r.quests][0],
+  }));
+
+  window.companion.sendQuests({
+    zones: packZones(pooled),
+    quests: plans.map(p => ({
+      n: p.q.n, url: base ? base + p.q.t : "",
+      got: p.got, need: p.need, done: p.done, oe: !!p.q.oe,
+      zones: packZones(p.comps),
+      ...(hasSrc() ? {} : { comps: packFlat(p.comps) }),
+      parts: (p.q.parts || []).map(pt => ({
+        n: pt.n, g: pt.g || "",
+        c: pt.c.map(([n, want]) => ({
+          n, want, have: have.get(K.normName(n)) ?? have.get(K.normName(stripDecor(n))) ?? 0,
+        })),
+      })),
+    })),
+  });
 }
 
 // facts line shared by full rows and stubs; the chain note only applies to
@@ -651,23 +845,52 @@ function questFacts(q, chain) {
     .filter(Boolean).join(" · ");
 }
 
-// where a missing component drops: mob · zone, all wiki links, lowest-level
-// dropper first (the data's order)
+/* The item page names the mobs per zone but links nothing; `drops` (built from
+   the mob corpus) has the wiki paths but only one zone per mob. Crossing them
+   gives a linkable mob where both know it and plain text where only the item
+   page does — better than dropping either half. */
 const dropsFor = name => QDROPS[K.normName(name)] ?? QDROPS[K.normName(stripDecor(name))] ?? [];
-function dropLine(name) {
-  const d = dropsFor(name);
-  if (!d.length) return "";
-  const parts = d.map(([mn, mt, zn, zt]) =>
-    `<a class="wk" data-wiki="${esc(mt)}">${esc(mn)}</a>${zn ? `<span class="dim"> · </span><a class="wk" data-wiki="${esc(zt)}">${esc(zn)}</a>` : ""}`);
-  return `<div class="qsrc dim">${parts.join('<span class="dim">, </span>')}</div>`;
+function mobPath(item, mob) {
+  const hit = dropsFor(item).find(([mn]) => K.normMob(mn) === K.normMob(mob));
+  return hit ? hit[1] : "";
 }
 
-// components + rewards + related pages — shared by the Turn-ins rows, the
-// Tracked tab, and the browser's expanded rows
-function questDetail(p) {
+/* The turn-in list: what you hand to whom. Shown under the zone groups because
+   the zones are what you act on — the parts are what you do when you get back.
+   A part named "" is the page's leftovers (a summary table, or items the page
+   mentions outside any turn-in section) and says so instead of pretending to
+   be a step. */
+function partsHtml(q, have) {
+  const parts = q.parts || [];
+  // no split means the page never said where one turn-in ends; its "parts" are
+  // just the page's links and its prose mentions, which the zone groups already
+  // show. Two unnamed blocks labelled "turn-ins" would invent a structure.
+  if (!q.split || parts.length < 2) return "";
+  const held = n => have.get(K.normName(n)) ?? have.get(K.normName(stripDecor(n))) ?? 0;
+  const open = QPARTS_OPEN.has(q.t);
+  const rows = parts.map((p, i) => {
+    const cs = p.c.map(([n, want]) => ({ n, want, have: held(n) }));
+    const got = cs.filter(c => c.have >= c.want).length;
+    return `<li class="qpart ${got === cs.length ? "is-ready" : ""}">
+      <div class="qpart__head">
+        <span class="qpart__n">${esc(p.n || "Also listed on this page")}</span>
+        ${p.g ? `<span class="dim">→ ${esc(p.g)}</span>` : ""}
+        <span class="qprog">${got}/${cs.length}</span>
+      </div>
+      <ul class="qcomps">${cs.map(c => `<li class="qc ${c.have >= c.want ? "is-have" : ""}">
+        <span class="kchk"></span>${itemSpan(c.n)}${c.want > 1 || c.have ? `<span class="qct ${c.have >= c.want ? "is-ok" : ""}">${c.have}/${c.want}</span>` : ""}</li>`).join("")}</ul>
+    </li>`;
+  }).join("");
+  return `<div class="qparts">
+    <button class="qparts__toggle" data-parts="${esc(q.t)}">${open ? "▾" : "▸"} ${parts.length} turn-in${parts.length === 1 ? "" : "s"} on this page</button>
+    ${open ? `<ul class="qplist">${rows}</ul>` : ""}</div>`;
+}
+
+// zone groups + turn-ins + rewards + related pages — shared by the Turn-ins
+// rows, the Tracked tab, and the browser's expanded rows
+function questDetail(p, have) {
   const { q } = p;
-  const comps = p.comps.map(c => `
-    <li class="qc ${c.have ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(c.n)}${c.have > 1 ? ` <span class="dim">×${c.have}</span>` : ""}${c.have ? "" : dropLine(c.n)}</li>`).join("");
+  const comps = zoneGroupsHtml(p.comps) + (have ? partsHtml(q, have) : "");
   const rew = (q.rewards || []).length
     ? `<div class="qrew">reward: ${q.rewards.slice(0, 10).map(r => `<span data-tt="${esc(r)}">${esc(r)}</span>`).join(", ")}${q.rewards.length > 10 ? ` <span class="dim">+${q.rewards.length - 10} more</span>` : ""}</div>`
     : "";
@@ -678,12 +901,11 @@ function questDetail(p) {
     rz.length ? `zones: ${rz.map(esc).join(", ")}` : "",
     rn.length ? `NPCs: ${rn.slice(0, 8).map(esc).join(", ")}${rn.length > 8 ? ` +${rn.length - 8}` : ""}` : "",
   ].filter(Boolean).join(" · ");
-  return (comps ? `<ul class="qcomps">${comps}</ul>`
-    : `<p class="dim">The wiki page lists no items for this quest.</p>`)
+  return (comps || `<p class="dim">The wiki page lists no items for this quest.</p>`)
     + rew + (rel ? `<p class="qrel dim">${rel}</p>` : "");
 }
 
-function questRow(p, tracked) {
+function questRow(p, tracked, have) {
   const { q } = p;
   // 27 quests carry components but no giver and no zone. They are not junk —
   // "Cleric Plane of Sky Tests" (26 items) and the Coldain ring chain live
@@ -697,7 +919,7 @@ function questRow(p, tracked) {
       ${facts ? `<span class="dim">${esc(facts)}</span>` : ""}
       <button class="btn btn--mini qtrk" data-track="${esc(q.t)}">${tracked ? "Untrack" : "Track"}</button>
     </div>
-    ${questDetail(p)}</li>`;
+    ${questDetail(p, have)}</li>`;
 }
 
 /* ── Turn-ins tab — what the inventory says you could hand in ────────────── */
@@ -710,6 +932,8 @@ function renderTurnins() {
     $("tiMeta").textContent = ""; body.innerHTML = ""; empty.hidden = true;
     return;
   }
+  banner.hidden = hasSrc();
+  if (!hasSrc()) banner.textContent = STALE_DATA_NOTE;
   const have = haveMap();
   const held = [];
   for (const q of QDATA.quests) {
@@ -745,13 +969,16 @@ function renderTurnins() {
   }
   const trackedSet = new Set(TRACKED);
   const section = (label, rows) => rows.length
-    ? `<h3>${label} (${rows.length})</h3><ul class="qlist">${rows.map(p => questRow(p, trackedSet.has(p.q.t))).join("")}</ul>` : "";
+    ? `<h3>${label} (${rows.length})</h3><ul class="qlist">${rows.map(p => questRow(p, trackedSet.has(p.q.t), have)).join("")}</ul>` : "";
   body.innerHTML =
     section("Ready to hand in", showReady) +
     section("Partly collected", showPartial) +
-    `<p class="dim qnote">The wiki lists which items a quest wants, never how many —
-     “ready” means you hold at least one of each. Counts you are carrying are shown
-     beside each item.</p>`;
+    (hasSrc()
+      ? `<p class="dim qnote">Counts come from the quest page where it states one and are
+         assumed to be one where it doesn’t, so “ready” can still be short on a page that
+         never said how many. Items you can only make are counted through their recipe —
+         a full Lambent set needs seven Lambent Stones its own page never totals up.</p>`
+      : "");
   retip();
 }
 
@@ -797,20 +1024,24 @@ const QB_SORTS = {
   held: p => -(p.need ? p.got / p.need + p.need / 1000 : -1),
 };
 
-function qbRow(p, tracked, open) {
+function qbRow(p, tracked, open, have) {
   const { q } = p;
   const cls = (q.classes || []).filter(c => c && c !== "?").join("/");
-  const chain = q.items && q.items.length && !q.giver && !q.zone;
+  // a page the parts walk split IS a chain, and now says how many turn-ins;
+  // the old guess (no giver and no zone) stays for pages it couldn't split
+  const parts = (q.parts || []).length;
+  const chain = q.split ? `${parts} turn-ins`
+    : (q.items && q.items.length && !q.giver && !q.zone ? "chain" : "");
   return `<tr class="qbr ${p.done ? "is-ready" : ""} ${q.oe ? "is-oe" : ""} ${open ? "is-open" : ""}" data-qx="${esc(q.t)}">
     <td class="qb-trk"><button class="btn btn--mini" data-track="${esc(q.t)}">${tracked ? "Untrack" : "Track"}</button></td>
-    <td class="qb-name"><a class="wk" data-wiki="${esc(q.t)}">${esc(q.n)}</a>${chain ? ` <span class="dim" title="multi-step chain — no single turn-in">chain</span>` : ""}</td>
+    <td class="qb-name"><a class="wk" data-wiki="${esc(q.t)}">${esc(q.n)}</a>${chain ? ` <span class="dim" title="this page is more than one hand-in">${esc(chain)}</span>` : ""}</td>
     <td class="qb-lvl">${q.lvl ?? ""}</td>
     <td class="qb-cls" title="${esc(cls)}">${esc(cls)}</td>
     <td class="qb-zone">${esc(q.zone || "")}</td>
     <td class="qb-giver">${esc(q.giver || "")}</td>
     <td class="qb-era">${q.oe ? `<span class="oe">out of era</span>` : esc(ERA_SHORT(q.era))}</td>
     <td class="qb-held">${p.need ? `<span class="qprog">${p.got}/${p.need}</span>` : "—"}</td>
-  </tr>` + (open ? `<tr class="qbx"><td></td><td colspan="7">${questDetail(p)}</td></tr>` : "");
+  </tr>` + (open ? `<tr class="qbx"><td></td><td colspan="7">${questDetail(p, have)}</td></tr>` : "");
 }
 
 function renderQuestBrowser() {
@@ -840,29 +1071,69 @@ function renderQuestBrowser() {
     <thead><tr>
       ${th("", "")}${th("name", "Quest")}${th("lvl", "Lvl")}${th("", "Classes")}${th("zone", "Zone")}${th("", "Giver")}${th("era", "Era")}${th("held", "Items")}
     </tr></thead>
-    <tbody>${rows.map(p => qbRow(p, trackedSet.has(p.q.t), QEXPANDED.has(p.q.t))).join("")}</tbody>
+    <tbody>${rows.map(p => qbRow(p, trackedSet.has(p.q.t), QEXPANDED.has(p.q.t), have)).join("")}</tbody>
   </table>` : `<p class="empty">Nothing matches those filters.</p>`;
   retip();
 }
 
-/* ── Tracked tab — the working list: every tracked quest, full detail ────── */
+/* ── Tracked tab — the working list ───────────────────────────────────────
+   Two ways to read the same set, because there are two moments. Planning, you
+   think in quests: what is this armour set going to cost me. Playing, you
+   think in zones: I am standing in Lower Guk, what does Lower Guk owe me —
+   and that view has to pool every tracked quest, or you clear a zone and find
+   out later the other quest wanted something here too. Inside a quest the
+   items still group by zone for the same reason. */
 function renderTrackedTab() {
   const banner = $("trackedBanner"), body = $("trackedBody"), empty = $("trackedEmpty");
   const tab = document.querySelector('[data-tab="tracked"]');
+  const head = $("trackedHead");
   if (tab) tab.textContent = TRACKED.length ? `Tracked (${TRACKED.length})` : "Tracked";
   banner.hidden = !!QDATA;
   if (!QDATA) {
     // tracked keys can't resolve without the dataset — "nothing tracked yet"
     // would be a lie here
     banner.textContent = "Quest data not loaded yet — refresh from eqltools.com in Settings.";
-    body.innerHTML = ""; empty.hidden = true;
+    body.innerHTML = ""; empty.hidden = true; if (head) head.hidden = true;
     return;
   }
   const tracked = TRACKED.map(t => T2Q.get(t)).filter(Boolean);
   empty.hidden = tracked.length > 0;
+  if (head) head.hidden = tracked.length < 1;
+  // the by-zone view needs the source table; offering the toggle without it
+  // would switch to an empty answer
+  const seg = document.querySelector(".seg");
+  if (seg) seg.hidden = !hasSrc();
+  banner.hidden = hasSrc();
+  if (!hasSrc()) banner.textContent = STALE_DATA_NOTE;
   if (!tracked.length) { body.innerHTML = ""; return; }
   const have = haveMap();
-  body.innerHTML = `<ul class="qlist">${tracked.map(q => questRow(compsFor(q, have), true)).join("")}</ul>`;
+  const plans = tracked.map(q => compsFor(q, have));
+
+  if (TRACK_VIEW === "zone" && hasSrc() && tracked.length > 1) {
+    // one item wanted by two quests is one thing to farm, so the rows merge and
+    // carry the largest requirement; the tag names every quest waiting on it
+    const merged = new Map();
+    for (const p of plans) {
+      for (const c of p.comps) {
+        const k = K.normName(c.n);
+        const cur = merged.get(k);
+        if (cur) { cur.want = Math.max(cur.want, c.want); cur.quests.add(p.q.n); }
+        else merged.set(k, { n: c.n, want: c.want, have: c.have, quests: new Set([p.q.n]) });
+      }
+    }
+    const rows = [...merged.values()].map(r => ({
+      ...r, tag: r.quests.size > 1 ? `${r.quests.size} quests` : [...r.quests][0],
+    }));
+    const left = rows.filter(r => r.have < r.want).length;
+    $("trackedMeta").textContent =
+      `${rows.length} item${rows.length === 1 ? "" : "s"} across ${tracked.length} quests · ${left} still to get`;
+    body.innerHTML = zoneGroupsHtml(rows);
+  } else {
+    const ready = plans.filter(p => p.done).length;
+    $("trackedMeta").textContent = tracked.length > 1
+      ? `${tracked.length} quests · ${ready} ready to hand in` : "";
+    body.innerHTML = `<ul class="qlist">${plans.map(p => questRow(p, true, have)).join("")}</ul>`;
+  }
   retip();
 }
 
@@ -1013,6 +1284,8 @@ async function main() {
   buildIndexes(init.datasets);
   STATE = K.load();
   loadTracked();
+  for (const b of document.querySelectorAll("[data-trackview]"))
+    b.classList.toggle("is-on", b.dataset.trackview === TRACK_VIEW);
   // Kills an older matching rule filed as unmatched (the site's /kills page
   // does the same migration on load).
   if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE);
@@ -1108,6 +1381,14 @@ async function main() {
   document.addEventListener("click", e => {
     const tk = e.target.closest("[data-track]");
     if (tk) { toggleTrack(tk.dataset.track); return; }
+    const tv = e.target.closest("[data-trackview]");
+    if (tv) { setTrackView(tv.dataset.trackview); return; }
+    const pt = e.target.closest("[data-parts]");
+    if (pt) {
+      const t = pt.dataset.parts;
+      QPARTS_OPEN.has(t) ? QPARTS_OPEN.delete(t) : QPARTS_OPEN.add(t);
+      renderQuests(); return;
+    }
     const sh = e.target.closest("[data-qsort]");
     if (sh) {
       const k = sh.dataset.qsort;
