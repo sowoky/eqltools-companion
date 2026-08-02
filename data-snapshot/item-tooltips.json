@@ -953,6 +953,1436 @@
    ],
    "t": "9lb_Fetid_Bass"
   },
+  "a bar of ronium": {
+   "ic": 1092,
+   "n": "A Bar of Ronium",
+   "sb": [
+    "WT: 0.5 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Bar_of_Ronium"
+  },
+  "a bardic letter (kelethin)": {
+   "ic": 866,
+   "n": "A Bardic Letter (Kelethin)",
+   "sb": [
+    "LORE ITEM NO TRADE TEMPORARY",
+    "WT: 1.0 Size: TINY",
+    "Class: None",
+    "Race: None",
+    "Item Information:",
+    "The letter is sealed."
+   ],
+   "t": "A_Bardic_Letter_(Kelethin)"
+  },
+  "a black crown": {
+   "ic": 653,
+   "n": "Black Crown",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Black_Crown"
+  },
+  "a black knight": {
+   "ic": 654,
+   "n": "Black Knight",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Black_Knight"
+  },
+  "a black squire": {
+   "ic": 649,
+   "n": "Black Squire",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Black_Squire"
+  },
+  "a black throne": {
+   "ic": 651,
+   "n": "Black Throne",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Black_Throne"
+  },
+  "a bloody protector of zeks head": {
+   "ic": 920,
+   "n": "A bloody protector of Zek's Head",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_bloody_protector_of_Zek's_Head"
+  },
+  "a blue crown": {
+   "ic": 653,
+   "n": "Blue Crown",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Blue_Crown"
+  },
+  "a blue knight": {
+   "ic": 654,
+   "n": "Blue Knight",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Blue_Knight"
+  },
+  "a blue squire": {
+   "ic": 649,
+   "n": "Blue Squire",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Blue_Squire"
+  },
+  "a blue throne": {
+   "ic": 651,
+   "n": "Blue Throne",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Blue_Throne"
+  },
+  "a bone key": {
+   "ic": 1078,
+   "n": "A Bone Key",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Bone_Key"
+  },
+  "a bone necklace": {
+   "ic": 502,
+   "n": "A Bone Necklace",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "Slot: NECK",
+    "AC: 2",
+    "WT: 1.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Bone_Necklace"
+  },
+  "a bowyers guide": {
+   "ic": 778,
+   "n": "A Bowyers Guide",
+   "sb": [
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "A_Bowyers_Guide"
+  },
+  "a box of bones": {
+   "ic": 836,
+   "n": "Box of Bones",
+   "sb": [
+    "LORE ITEM NO DROP QUEST ITEM",
+    "WT: 1.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Box_of_Bones"
+  },
+  "a box of cat bones": {
+   "ic": 836,
+   "n": "A Box of Cat Bones",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 7.5 Size: MEDIUM",
+    "Class: NONE",
+    "Race: NONE"
+   ],
+   "t": "A_Box_of_Cat_Bones"
+  },
+  "a broken vine": {
+   "ic": 813,
+   "n": "A Broken Vine",
+   "sb": [
+    "WT: 0.5 Size: TINY",
+    "Class: NONE",
+    "Race: NONE"
+   ],
+   "t": "A_Broken_Vine"
+  },
+  "a bronze key": {
+   "ic": 1077,
+   "n": "A Bronze Key",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Bronze_Key"
+  },
+  "a broom": {
+   "ic": 889,
+   "n": "A Broom",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "Slot: PRIMARY SECONDARY",
+    "WT: 1.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Broom"
+  },
+  "a burnt sash": {
+   "ic": 938,
+   "n": "A Burnt Sash",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.5 Size: TINY",
+    "Class: NONE",
+    "Race: NONE"
+   ],
+   "t": "A_Burnt_Sash"
+  },
+  "a canine": {
+   "ic": 801,
+   "n": "A Canine",
+   "sb": [
+    "NODROP",
+    "WT: 0.2 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Canine"
+  },
+  "a captured message": {
+   "ic": 869,
+   "n": "A captured message",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.2 Size: SMALL"
+   ],
+   "t": "A_captured_message"
+  },
+  "a chant rock": {
+   "ic": 944,
+   "n": "A Chant Rock",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Chant_Rock"
+  },
+  "a chipped fang": {
+   "ic": 1227,
+   "n": "Chipped Fang",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 2.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_chipped_fang"
+  },
+  "a copper key": {
+   "ic": 1077,
+   "n": "A Copper Key",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Copper_Key"
+  },
+  "a cracked femur": {
+   "ic": 905,
+   "n": "A Cracked Femur",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "Slot: PRIMARY SECONDARY",
+    "Skill: Piercing Atk Delay: 25",
+    "DMG: 3",
+    "SV DISEASE: +2",
+    "WT: 0.5 Size: SMALL",
+    "Class: ALL except CLR PAL DRU MNK SHM",
+    "Race: ALL"
+   ],
+   "t": "A_Cracked_Femur"
+  },
+  "a cracked stein": {
+   "ic": 708,
+   "n": "A Cracked Stein",
+   "sb": [
+    "LORE ITEM NO DROP QUEST ITEM",
+    "WT: 1.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Cracked_Stein"
+  },
+  "a crazy cleric doll": {
+   "ic": 720,
+   "n": "Crazy Cleric Doll",
+   "sb": [
+    "LORE ITEM",
+    "Slot: PRIMARY SECONDARY",
+    "Charges: 5",
+    "CHA: +2",
+    "Effect: Hug (Any Slot, Casting Time: 1.0)",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Crazy_Cleric_Doll"
+  },
+  "a crude stein": {
+   "ic": 708,
+   "n": "A Crude Stein",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "Slot: SECONDARY",
+    "Charges: 1",
+    "STA: +10 CHA: +15",
+    "Effect: Minor Healing (Any Slot, Casting Time: Instant)",
+    "WT: 1.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Crude_Stein"
+  },
+  "a dark cauldron": {
+   "ic": 1017,
+   "n": "A Dark Cauldron",
+   "sb": [
+    "NO DROP",
+    "WT: 2.5 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Dark_Cauldron"
+  },
+  "a dark reaver": {
+   "ic": 519,
+   "n": "A Dark Reaver",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "Slot: PRIMARY",
+    "Skill: 2H Slashing Atk Delay: 42",
+    "DMG: 20",
+    "Effect: Steal Strength (Combat, Casting Time: Instant) at Level 30",
+    "WT: 9.5 Size: LARGE",
+    "Class: SHD",
+    "Race: ALL"
+   ],
+   "t": "A_Dark_Reaver"
+  },
+  "a doll": {
+   "ic": 720,
+   "n": "A Doll",
+   "sb": [
+    "WT: 1.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Doll"
+  },
+  "a dusty ribcage": {
+   "ic": 974,
+   "n": "a Dusty Ribcage",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Dusty_Ribcage"
+  },
+  "a dusty sealed canopic": {
+   "ic": 1018,
+   "n": "A Dusty Sealed Canopic",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.8 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Dusty_Sealed_Canopic"
+  },
+  "a faded salils writ page": {
+   "ic": 870,
+   "n": "A Faded Salil's Writ Page",
+   "sb": [
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Faded_Salil's_Writ_Page"
+  },
+  "a farsight crystal": {
+   "ic": 507,
+   "n": "Farsight Crystal",
+   "sb": [
+    "LORE ITEM",
+    "WT: 1.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Farsight_Crystal"
+  },
+  "a froglok hex doll": {
+   "ic": 1007,
+   "n": "A Froglok Hex Doll",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "Slot: SECONDARY",
+    "CHA: +3",
+    "WT: 0.5 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Froglok_Hex_Doll"
+  },
+  "a fungus eye": {
+   "ic": 885,
+   "n": "A fungus eye",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "Slot: PRIMARY SECONDARY",
+    "WT: 0.2 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_fungus_eye"
+  },
+  "a ghouls heart": {
+   "ic": 1003,
+   "n": "A Ghoul's Heart",
+   "sb": [
+    "LORE ITEM NODROP",
+    "Slot: NECK",
+    "CHA: -10",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Ghoul's_Heart"
+  },
+  "a giant blood sac": {
+   "ic": 820,
+   "n": "A Giant Blood Sac",
+   "sb": [
+    "NO DROP QUEST ITEM",
+    "WT: 1.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Giant_Blood_Sac"
+  },
+  "a giants broom": {
+   "ic": 889,
+   "n": "A Giant's Broom",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "Slot: PRIMARY",
+    "Skill: 2H Blunt Atk Delay: 40",
+    "DMG: 15",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: BAR ELF TRL OGR IKS"
+   ],
+   "t": "A_Giant's_Broom"
+  },
+  "a gigantic kromzek pick": {
+   "ic": 888,
+   "n": "A Gigantic Kromzek Pick",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "Slot: PRIMARY",
+    "Skill: 2H Slashing Atk Delay: 41",
+    "DMG: 21",
+    "WT: 10.0 Size: LARGE",
+    "Class: WAR PAL RNG SHD",
+    "Race: ALL"
+   ],
+   "t": "A_Gigantic_Kromzek_Pick"
+  },
+  "a glimmering fairie wing": {
+   "ic": 1146,
+   "n": "A Glimmering Fairie Wing",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.2 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Glimmering_Fairie_Wing"
+  },
+  "a glowing skull": {
+   "ic": 1070,
+   "n": "A Glowing Skull",
+   "sb": [
+    "LORE ITEM NO DROP TEMPORARY",
+    "WT: 0.0 Size: TINY",
+    "Class: NONE",
+    "Race: NONE"
+   ],
+   "t": "A_Glowing_Skull"
+  },
+  "a gossamer wing": {
+   "ic": 908,
+   "n": "A Gossamer Wing",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Gossamer_Wing"
+  },
+  "a gypsy medallion": {
+   "ic": 566,
+   "n": "A Gypsy Medallion",
+   "sb": [
+    "MAGIC ITEM",
+    "Slot: NECK",
+    "AC: 2",
+    "CHA: +9",
+    "SV DISEASE: +10",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Gypsy_Medallion"
+  },
+  "a jar of liquid": {
+   "ic": 1006,
+   "n": "A Jar of Liquid",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.5 Size: SMALL"
+   ],
+   "t": "A_Jar_of_Liquid"
+  },
+  "a king cod card": {
+   "ic": 651,
+   "n": "A King Cod Card",
+   "sb": [
+    "MAGIC ITEM QUEST ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: NONE",
+    "Race: NONE"
+   ],
+   "t": "A_King_Cod_Card"
+  },
+  "a koadadal blood doll": {
+   "ic": 1007,
+   "n": "Koada'Dal Blood Doll",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "Slot: SECONDARY",
+    "CHA: +3",
+    "WT: 0.5 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Koada'Dal_Blood_Doll"
+  },
+  "a leaflet": {
+   "ic": 504,
+   "n": "A Leaflet",
+   "sb": [
+    "The Note is rolled up.",
+    "LORE ITEM",
+    "WT: 0.0 Size: TINY"
+   ],
+   "t": "A_Leaflet"
+  },
+  "a library card": {
+   "ic": 867,
+   "n": "A Library Card",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Library_Card"
+  },
+  "a locked chest": {
+   "ic": 836,
+   "n": "A Locked Chest",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.0 Size: TINY",
+    "Class: NONE",
+    "Race: NONE"
+   ],
+   "t": "A_Locked_Chest"
+  },
+  "a locket": {
+   "ic": 1147,
+   "n": "A Locket",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Locket"
+  },
+  "a maleficent necromancer doll": {
+   "ic": 720,
+   "n": "A Maleficent Necromancer Doll",
+   "sb": [
+    "LORE ITEM",
+    "Slot: PRIMARY SECONDARY",
+    "Charges: 1",
+    "CHA: +2",
+    "Effect: Hug (Any Slot, Casting Time: 1.0)",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Maleficent_Necromancer_Doll"
+  },
+  "a mancatcher crown": {
+   "ic": 836,
+   "n": "A Mancatcher Crown",
+   "sb": [
+    "LORE ITEM",
+    "WT: 8.0 Size: MEDIUM",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Mancatcher_Crown"
+  },
+  "a mandible": {
+   "ic": 1125,
+   "n": "A Mandible",
+   "sb": [
+    "LORE ITEM NO TRADE",
+    "WT: 1.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Mandible"
+  },
+  "a metal pipe": {
+   "ic": 601,
+   "n": "A Metal Pipe",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 4.0 Size: LARGE",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Metal_Pipe"
+  },
+  "a mischievous dazzler doll": {
+   "ic": 720,
+   "n": "Mischievous Dazzler Doll",
+   "sb": [
+    "LORE ITEM",
+    "Slot: PRIMARY SECONDARY",
+    "Charges: 5",
+    "CHA: +2",
+    "Effect: Hug (Any Slot, Casting Time: 1.0)",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Mischievous_Dazzler_Doll"
+  },
+  "a nicked coin": {
+   "ic": 645,
+   "n": "A Nicked Coin",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Nicked_Coin"
+  },
+  "a nickel key": {
+   "ic": 1077,
+   "n": "A Nickel Key",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Nickel_Key"
+  },
+  "a nobles crest": {
+   "ic": 754,
+   "n": "A Noble's Crest",
+   "sb": [
+    "NO DROP",
+    "Slot: NECK",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Noble's_Crest"
+  },
+  "a note": {
+   "ic": 864,
+   "n": "A note",
+   "sb": [
+    "The Note is rolled up.",
+    "NO TRADE",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "A_note"
+  },
+  "a note (gnome rogue)": {
+   "ic": 504,
+   "n": "A note",
+   "sb": [
+    "The Note is rolled up.",
+    "NO TRADE",
+    "WT: 0.0 Size: TINY"
+   ],
+   "t": "A_note_(Gnome_Rogue)"
+  },
+  "a page of a poem": {
+   "ic": 504,
+   "n": "Page of a Poem",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "A_Page_of_A_Poem"
+  },
+  "a page of a tome": {
+   "ic": 504,
+   "n": "A Page of A Tome",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "A_Page_of_A_Tome"
+  },
+  "a pendant": {
+   "ic": 1043,
+   "n": "Note to Kanthuk",
+   "sb": [
+    "LORE ITEM NO TRADE",
+    "Slot: NECK",
+    "CHA: +1",
+    "WT: 0.0 Size: TINY",
+    "Class: PAL",
+    "Race: HUM ERU HIE DWF"
+   ],
+   "t": "A_Pendant"
+  },
+  "a rabbit foot": {
+   "ic": 743,
+   "n": "A Rabbit Foot",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "Slot: NECK",
+    "AC: 5",
+    "SV FIRE: +5 SV DISEASE: +5 SV COLD: +5 SV MAGIC: +5 SV POISON: +5",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Rabbit_Foot"
+  },
+  "a rare leaf": {
+   "ic": 795,
+   "n": "A Rare Leaf",
+   "sb": [
+    "WT: 0.1 Size: TINY",
+    "Class: NONE",
+    "Race: NONE"
+   ],
+   "t": "A_Rare_Leaf"
+  },
+  "a raw pike head": {
+   "ic": 836,
+   "n": "A Raw Pike Head",
+   "sb": [
+    "LORE ITEM",
+    "WT: 8.0 Size: MEDIUM",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Raw_Pike_Head"
+  },
+  "a red crown": {
+   "ic": 653,
+   "n": "Red Crown",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Red_Crown"
+  },
+  "a red knight": {
+   "ic": 654,
+   "n": "A Red Knight",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Red_Knight"
+  },
+  "a red squire": {
+   "ic": 649,
+   "n": "Red Squire",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Red_Squire"
+  },
+  "a red throne": {
+   "ic": 651,
+   "n": "Red Throne",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Red_Throne"
+  },
+  "a rolled up note": {
+   "ic": 861,
+   "n": "A Rolled Up Note",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.1 Size: TINY",
+    "Class: None",
+    "Race: None"
+   ],
+   "t": "A_Rolled_Up_Note"
+  },
+  "a root": {
+   "ic": 1203,
+   "n": "A Root",
+   "sb": [
+    "WT: 0.1 Size: TINY",
+    "Class: NONE",
+    "Race: NONE"
+   ],
+   "t": "A_Root"
+  },
+  "a ruby": {
+   "ic": 964,
+   "n": "A Ruby",
+   "sb": [
+    "LORE ITEM WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Ruby"
+  },
+  "a sapphire": {
+   "ic": 954,
+   "n": "A Sapphire",
+   "sb": [
+    "LORE ITEM WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Sapphire"
+  },
+  "a sarnak war braid": {
+   "ic": 1132,
+   "n": "Sarnak War Braid",
+   "sb": [
+    "NO DROP QUEST ITEM",
+    "Slot: HEAD PRIMARY SECONDARY",
+    "Skill: 1H Slashing Atk Delay: 27",
+    "DMG: 5 AC: 2",
+    "WT: 2.5 Size: MEDIUM",
+    "Class: WAR PAL RNG SHD BRD ROG",
+    "Race: ALL"
+   ],
+   "t": "A_Sarnak_War_Braid"
+  },
+  "a scarlet stone": {
+   "ic": 964,
+   "n": "A Scarlet Stone",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Scarlet_Stone"
+  },
+  "a scorpion telson": {
+   "ic": 1123,
+   "n": "Scorpion Telson",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "Slot: PRIMARY SECONDARY",
+    "EXPENDABLE Charges: 1",
+    "Skill: Piercing Atk Delay: 24",
+    "DMG: 3",
+    "Effect: Poison Bolt (Any Slot, Casting Time: Instant)",
+    "WT: 2.5 Size: SMALL",
+    "Class: ALL except CLR PAL DRU MNK SHM",
+    "Race: ALL"
+   ],
+   "t": "A_Scorpion_Telson"
+  },
+  "a scroll": {
+   "ic": 504,
+   "n": "A Scroll",
+   "sb": [
+    "The Note is rolled up.",
+    "LORE ITEM NO TRADE TEMPORARY",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "A_Scroll"
+  },
+  "a sealed letter": {
+   "ic": 682,
+   "n": "A Sealed Letter",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Sealed_Letter"
+  },
+  "a sealed letter (thex dagger quest)": {
+   "ic": 866,
+   "n": "A Sealed Letter",
+   "sb": [
+    "The Note is rolled up.",
+    "LORE ITEM NO DROP",
+    "WT: 0.0 Size: TINY"
+   ],
+   "t": "A_Sealed_Letter_(Thex_Dagger_Quest)"
+  },
+  "a sealed list": {
+   "ic": 866,
+   "n": "A Sealed List",
+   "sb": [
+    "LORE ITEM NO DROP QUEST ITEM",
+    "WT: 0.0 Size: TINY"
+   ],
+   "t": "A_Sealed_List"
+  },
+  "a shadowed knife": {
+   "ic": 592,
+   "n": "A shadowed knife",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "Slot: PRIMARY",
+    "Skill: Piercing Atk Delay: 20",
+    "DMG: 3",
+    "INT: +2",
+    "SV COLD: +2",
+    "WT: 2.5 Size: SMALL",
+    "Class: SHD NEC",
+    "Race: HUM ERU DEF TRL OGR GNM IKS"
+   ],
+   "t": "A_shadowed_knife"
+  },
+  "a shimmering orb": {
+   "ic": 973,
+   "n": "A Shimmering Orb",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "Slot: SECONDARY",
+    "AC: 15",
+    "HP: +20",
+    "WT: 0.2 Size: TINY",
+    "Class: BRD NEC WIZ MAG ENC",
+    "Race: ALL"
+   ],
+   "t": "A_Shimmering_Orb"
+  },
+  "a shining stone": {
+   "ic": 945,
+   "n": "A Shining Stone",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO TRADE",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Shining_Stone"
+  },
+  "a shovel": {
+   "ic": 891,
+   "n": "A Shovel",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "Slot: PRIMARY SECONDARY",
+    "WT: 1.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Shovel"
+  },
+  "a singed scroll": {
+   "ic": 861,
+   "n": "A Singed Scroll",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "A_Singed_Scroll"
+  },
+  "a skeletal finger": {
+   "ic": 804,
+   "n": "A skeletal finger",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_skeletal_finger"
+  },
+  "a skeletal toe": {
+   "ic": 804,
+   "n": "A skeletal toe",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_skeletal_toe"
+  },
+  "a skeleton fist": {
+   "ic": 743,
+   "n": "A Skeleton Fist",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.8 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Skeleton_Fist"
+  },
+  "a skull chest": {
+   "ic": 609,
+   "n": "A Skull Chest",
+   "sb": [
+    "LORE ITEM NO TRADE",
+    "WT: 1.5 Weight Reduction: 0%",
+    "Capacity: 6 Size Capacity: SMALL"
+   ],
+   "t": "A_Skull_Chest"
+  },
+  "a slip of parchment": {
+   "ic": 870,
+   "n": "Slip of Parchment",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.0 Size: TINY"
+   ],
+   "t": "A_Slip_of_Parchment"
+  },
+  "a smashed protector of zeks head": {
+   "ic": 920,
+   "n": "A smashed protector of Zek's Head",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_smashed_protector_of_Zek's_Head"
+  },
+  "a smelly sealed bag": {
+   "ic": 539,
+   "n": "A Smelly Sealed Bag",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 4.0 Size: MEDIUM",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Smelly_Sealed_Bag"
+  },
+  "a sparkle purse": {
+   "ic": 582,
+   "n": "A 'Sparkle' Purse",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.2 Weight Reduction: 0%",
+    "Capacity: 4 Size Capacity: SMALL"
+   ],
+   "t": "A_'Sparkle'_Purse"
+  },
+  "a sparkling sapphire": {
+   "ic": 968,
+   "n": "Sparkling Sapphire",
+   "sb": [
+    "LORE ITEM NO TRADE",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Sparkling_Sapphire"
+  },
+  "a special fire emerald": {
+   "ic": 962,
+   "n": "A Special Fire Emerald",
+   "sb": [
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Special_Fire_Emerald"
+  },
+  "a spider venom sac": {
+   "ic": 819,
+   "n": "A Spider Venom Sac",
+   "sb": [
+    "QUEST ITEM",
+    "WT: 0.2 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Spider_Venom_Sac"
+  },
+  "a split paw": {
+   "ic": 743,
+   "n": "A Split Paw",
+   "sb": [
+    "MAGIC ITEM QUEST ITEM",
+    "Charges: 5",
+    "Effect: Dance of the Fireflies (Any Slot, Casting Time: Instant)",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Split_Paw"
+  },
+  "a spore mushroom": {
+   "ic": 854,
+   "n": "A Spore Mushroom",
+   "sb": [
+    "QUEST ITEM",
+    "WT: 0.5 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Spore_Mushroom"
+  },
+  "a steel key": {
+   "ic": 1081,
+   "n": "A Steel Key",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Steel_Key"
+  },
+  "a stone key": {
+   "ic": 1079,
+   "n": "A Stone Key",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Stone_Key"
+  },
+  "a strange dark fungus": {
+   "ic": 819,
+   "n": "A Strange Dark Fungus",
+   "sb": [
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Strange_Dark_Fungus"
+  },
+  "a strategic map of kithicor": {
+   "ic": 504,
+   "n": "A Strategic Map of Kithicor",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.1 Size: SMALL",
+    "Class: NONE",
+    "Race: NONE"
+   ],
+   "t": "A_Strategic_Map_of_Kithicor"
+  },
+  "a tattered book": {
+   "ic": 865,
+   "n": "A Tattered Book",
+   "sb": [
+    "LORE ITEM NO DROP NO RENT",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "A_Tattered_Book"
+  },
+  "a tattered note": {
+   "ic": 504,
+   "n": "A Tattered Note",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "A_Tattered_Note"
+  },
+  "a tattered note (shaman skull quest 2)": {
+   "ic": 504,
+   "n": "A Tattered Note",
+   "sb": [
+    "LORE ITEM NO TRADE",
+    "WT: 1.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Tattered_Note_(Shaman_Skull_Quest_2)"
+  },
+  "a torch": {
+   "ic": 547,
+   "n": "A Torch",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "Slot: PRIMARY SECONDARY",
+    "WT: 1.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Torch"
+  },
+  "a tump stump": {
+   "ic": 978,
+   "n": "Tump Stump",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 5.0 Size: MEDIUM",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Tump_Stump"
+  },
+  "a twisted stalk": {
+   "ic": 1222,
+   "n": "A Twisted Stalk",
+   "sb": [
+    "WT: 0.5 Size: TINY",
+    "Class: None",
+    "Race: None"
+   ],
+   "t": "A_Twisted_Stalk"
+  },
+  "a very large pelt": {
+   "ic": 554,
+   "n": "Very Large Pelt",
+   "sb": [
+    "LORE ITEM",
+    "WT: 3.5 Size: MEDIUM",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Very_Large_Pelt"
+  },
+  "a vile substance": {
+   "ic": 1158,
+   "n": "A Vile Substance",
+   "sb": [
+    "Slot: RANGE",
+    "Skill: Throwingv1 Atk Delay: 25",
+    "DMG: 3",
+    "Effect: Disease (Combat, Casting Time: Instant) at Level 30",
+    "WT: 0.0 Range: 50 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Vile_Substance"
+  },
+  "a weighted axe": {
+   "ic": 1164,
+   "n": "A Weighted Axe",
+   "sb": [
+    "MAGIC ITEM",
+    "Slot: PRIMARY",
+    "Skill: 2H Slashing Atk Delay: 150",
+    "DMG: 45",
+    "WT: 9.4 Size: LARGE",
+    "Class: WAR SHD",
+    "Race: BAR TRL OGR"
+   ],
+   "t": "A_Weighted_Axe"
+  },
+  "a werebat wing": {
+   "ic": 791,
+   "n": "A Werebat Wing",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "WT: 0.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Werebat_Wing"
+  },
+  "a white crown": {
+   "ic": 653,
+   "n": "White Crown",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_White_Crown"
+  },
+  "a white knight": {
+   "ic": 654,
+   "n": "White Knight",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_White_Knight"
+  },
+  "a white squire": {
+   "ic": 649,
+   "n": "White Squire",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_White_Squire"
+  },
+  "a white throne": {
+   "ic": 651,
+   "n": "White Throne",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_White_Throne"
+  },
+  "a wily warlock doll": {
+   "ic": 720,
+   "n": "Wily Warlock Doll",
+   "sb": [
+    "LORE ITEM",
+    "Slot: PRIMARY SECONDARY",
+    "Charges: 1",
+    "CHA: +2",
+    "Effect: Hug (Any Slot, Casting Time: 1.0)",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Wily_Warlock_Doll"
+  },
+  "a wolf scale": {
+   "ic": 1233,
+   "n": "A Wolf Scale",
+   "sb": [
+    "WT: 1.2 Size: SMALL",
+    "Class: None",
+    "Race: None"
+   ],
+   "t": "A_Wolf_Scale"
+  },
+  "a wooden heart": {
+   "ic": 1003,
+   "n": "Wooden Heart",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 2.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Wooden_Heart"
+  },
+  "a worn candle": {
+   "ic": 1127,
+   "n": "A Worn Candle",
+   "sb": [
+    "NO DROP",
+    "Slot: SECONDARY",
+    "WT: 0.5 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "A_Worn_Candle"
+  },
+  "a worn rune": {
+   "ic": 504,
+   "n": "A Worn Rune",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.0 Size: TINY"
+   ],
+   "t": "A_Worn_Rune"
+  },
+  "a yellow whip": {
+   "ic": 596,
+   "n": "A Yellow Whip",
+   "sb": [
+    "LORE ITEM",
+    "Slot: PRIMARY SECONDARY",
+    "Skill: 1H Slashing Atk Delay: 33",
+    "DMG: 7",
+    "WT: 6.0 Size: MEDIUM",
+    "Class: WAR PAL RNG SHD BRD ROG",
+    "Race: ALL"
+   ],
+   "t": "A_Yellow_Whip"
+  },
   "aasimons vorpal burrito": {
    "ic": 1092,
    "n": "Aasimon's Vorpal Burrito",
@@ -1747,16 +3177,6 @@
    ],
    "t": "Alligator_Skin"
   },
-  "alligator tooth": {
-   "ic": 803,
-   "n": "An Alligator Tooth",
-   "sb": [
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "An_Alligator_Tooth"
-  },
   "alligator tooth earring": {
    "ic": 800,
    "n": "Alligator Tooth Earring",
@@ -2090,6 +3510,116 @@
     "Race: ALL"
    ],
    "t": "Amygdalan_Tendril"
+  },
+  "an alligator tooth": {
+   "ic": 803,
+   "n": "An Alligator Tooth",
+   "sb": [
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "An_Alligator_Tooth"
+  },
+  "an elven charm necklace": {
+   "ic": 852,
+   "n": "An Elven Charm Necklace",
+   "sb": [
+    "LORE ITEM",
+    "Slot: NECK",
+    "CHA: +3",
+    "WT: 0.2 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "An_Elven_Charm_Necklace"
+  },
+  "an emerald": {
+   "ic": 958,
+   "n": "An Emerald",
+   "sb": [
+    "LORE ITEM WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "An_Emerald"
+  },
+  "an encrypted document": {
+   "ic": 682,
+   "n": "An encrypted document",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "An_encrypted_document"
+  },
+  "an enrollment letter": {
+   "ic": 504,
+   "n": "An Enrollment Letter",
+   "sb": [
+    "The Note is rolled up.",
+    "NO TRADE",
+    "WT: 0.0 Size: TINY"
+   ],
+   "t": "An_Enrollment_Letter"
+  },
+  "an executioners axe": {
+   "ic": 1164,
+   "n": "An Executioners Axe",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "Slot: PRIMARY",
+    "Skill: 2H Slashing Atk Delay: 50",
+    "DMG: 25",
+    "Effect: Haste (Combat, Casting Time: Instant) at Level 30",
+    "WT: 8.5 Size: LARGE",
+    "Class: WAR BER",
+    "Race: ALL"
+   ],
+   "t": "An_Executioners_Axe"
+  },
+  "an illegible note": {
+   "ic": 504,
+   "n": "An Illegible Note",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "An_Illegible_Note"
+  },
+  "an iron key": {
+   "ic": 1081,
+   "n": "An Iron Key",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "An_Iron_Key"
+  },
+  "an old delivered book": {
+   "ic": 865,
+   "n": "An Old Delivered Book",
+   "sb": [
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "An_Old_Delivered_Book"
+  },
+  "an outlanders head": {
+   "ic": 980,
+   "n": "An Outlander's Head",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 2.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "An_Outlander's_Head"
   },
   "ancient blade": {
    "ic": 890,
@@ -4021,19 +5551,6 @@
    ],
    "t": "Art_of_Idol_Sculpting"
   },
-  "artists brush": {
-   "ic": 809,
-   "n": "The Artist's Brush",
-   "sb": [
-    "Attunable, Quest",
-    "Slot: RANGE PRIMARY SECONDARY",
-    "INT: +3 DEX: +3 MANA: +10",
-    "WT: 0.5 Size: SMALL",
-    "Class: NEC WIZ MAG ENC",
-    "Race: ALL"
-   ],
-   "t": "The_Artist's_Brush"
-  },
   "arydryidriyorn": {
    "ic": 575,
    "n": "Arydryidriyorn",
@@ -5018,17 +6535,6 @@
    ],
    "t": "Bag_of_Troll_Guts"
   },
-  "baker": {
-   "ic": 1070,
-   "n": "The Baker",
-   "sb": [
-    "LORE ITEM NO TRADE",
-    "WT: 0.4 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Baker"
-  },
   "baking spirits": {
    "ic": 788,
    "n": "Baking Spirits",
@@ -5717,16 +7223,6 @@
    ],
    "t": "Bangle_of_the_Invoker"
   },
-  "bar of ronium": {
-   "ic": 1092,
-   "n": "A Bar of Ronium",
-   "sb": [
-    "WT: 0.5 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Bar_of_Ronium"
-  },
   "barbarian cookie mold": {
    "ic": 1151,
    "n": "Barbarian Cookie Mold",
@@ -6079,19 +7575,6 @@
    ],
    "t": "Barbequed_Erudite"
   },
-  "bardic letter (kelethin)": {
-   "ic": 866,
-   "n": "A Bardic Letter (Kelethin)",
-   "sb": [
-    "LORE ITEM NO TRADE TEMPORARY",
-    "WT: 1.0 Size: TINY",
-    "Class: None",
-    "Race: None",
-    "Item Information:",
-    "The letter is sealed."
-   ],
-   "t": "A_Bardic_Letter_(Kelethin)"
-  },
   "bargynns digger": {
    "ic": 1203,
    "n": "Bargynn's Digger",
@@ -6233,22 +7716,6 @@
     "Race: ALL"
    ],
    "t": "Barnacle-covered_Pauldron"
-  },
-  "barons blade": {
-   "ic": 590,
-   "n": "The Baron's Blade",
-   "sb": [
-    "LORE ITEM",
-    "Slot: PRIMARY SECONDARY",
-    "Skill: 1H Slashing",
-    "Atk Delay: 30",
-    "DMG: 10",
-    "DEX: +5 STA: +5 HP: +5",
-    "WT: 5.0 Size: MEDIUM",
-    "Class: WAR PAL RNG SHD BRD ROG",
-    "Race: ALL"
-   ],
-   "t": "The_Baron's_Blade"
   },
   "barracuda bones": {
    "ic": 794,
@@ -8118,17 +9585,6 @@
    ],
    "t": "Black_Cod_Card"
   },
-  "black crown": {
-   "ic": 653,
-   "n": "Black Crown",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Black_Crown"
-  },
   "black dire pelt": {
    "ic": 556,
    "n": "Black Dire Pelt",
@@ -8343,17 +9799,6 @@
     "Race: ALL"
    ],
    "t": "Black_Iron_Medallion"
-  },
-  "black knight": {
-   "ic": 654,
-   "n": "Black Knight",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Black_Knight"
   },
   "black lace sash": {
    "ic": 572,
@@ -8767,17 +10212,6 @@
    ],
    "t": "Black_Sky_Diamond"
   },
-  "black squire": {
-   "ic": 649,
-   "n": "Black Squire",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Black_Squire"
-  },
   "black steel wrap": {
    "ic": 719,
    "n": "Black Steel Wrap",
@@ -8824,17 +10258,6 @@
     "Race: ALL"
    ],
    "t": "Black_Tear"
-  },
-  "black throne": {
-   "ic": 651,
-   "n": "Black Throne",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Black_Throne"
   },
   "black tome with silver runes": {
    "ic": 777,
@@ -9751,15 +11174,6 @@
     "Race: ALL"
    ],
    "t": "Bladderwrack"
-  },
-  "blade": {
-   "ic": 865,
-   "n": "The Blade",
-   "sb": [
-    "NO DROP",
-    "WT: 0.5 Size: SMALL"
-   ],
-   "t": "The_Blade"
   },
   "blade core-1st fold": {
    "ic": 1138,
@@ -12009,17 +13423,6 @@
    ],
    "t": "Bloody_Mantle"
   },
-  "bloody protector of zeks head": {
-   "ic": 920,
-   "n": "A bloody protector of Zek's Head",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "WT: 1.0 Size: MEDIUM",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_bloody_protector_of_Zek's_Head"
-  },
   "bloody shank": {
    "ic": 592,
    "n": "Bloody Shank",
@@ -12044,17 +13447,6 @@
     "Race: NONE"
    ],
    "t": "Blue_Cod_Card"
-  },
-  "blue crown": {
-   "ic": 653,
-   "n": "Blue Crown",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Blue_Crown"
   },
   "blue crystal staff": {
    "ic": 602,
@@ -12172,17 +13564,6 @@
    ],
    "t": "Blue_Jr_Apprentice_Robe%2A"
   },
-  "blue knight": {
-   "ic": 654,
-   "n": "Blue Knight",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Blue_Knight"
-  },
   "blue orc head": {
    "ic": 920,
    "n": "Blue Orc Head",
@@ -12245,17 +13626,6 @@
    ],
    "t": "Blue_Slumber_Fungus"
   },
-  "blue squire": {
-   "ic": 649,
-   "n": "Blue Squire",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Blue_Squire"
-  },
   "blue sr apprentice robe*": {
    "ic": 838,
    "n": "Blue Sr Apprentice Robe*",
@@ -12269,17 +13639,6 @@
     "Race: HUM ERU HIE DEF"
    ],
    "t": "Blue_Sr_Apprentice_Robe%2A"
-  },
-  "blue throne": {
-   "ic": 651,
-   "n": "Blue Throne",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Blue_Throne"
   },
   "blue training robe*": {
    "ic": 838,
@@ -12740,17 +14099,6 @@
    ],
    "t": "Bone_Handled_Sword"
   },
-  "bone key": {
-   "ic": 1078,
-   "n": "A Bone Key",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Bone_Key"
-  },
   "bone legplates": {
    "ic": 540,
    "n": "Bone Legplates",
@@ -12779,19 +14127,6 @@
     "Race: ALL"
    ],
    "t": "Bone_Mask_of_the_Jarsath"
-  },
-  "bone necklace": {
-   "ic": 502,
-   "n": "A Bone Necklace",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "Slot: NECK",
-    "AC: 2",
-    "WT: 1.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Bone_Necklace"
   },
   "bone razor": {
    "ic": 575,
@@ -13020,17 +14355,6 @@
     "Race: ERU DEF GNM"
    ],
    "t": "Book_of_Frost"
-  },
-  "book of knowledge": {
-   "ic": 778,
-   "n": "The Book of Knowledge",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.5 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Book_of_Knowledge"
   },
   "book of mischief": {
    "ic": 865,
@@ -13800,14 +15124,6 @@
    ],
    "t": "Bowl_Sketch"
   },
-  "bowyers guide": {
-   "ic": 778,
-   "n": "A Bowyers Guide",
-   "sb": [
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "A_Bowyers_Guide"
-  },
   "box for bones": {
    "ic": 608,
    "n": "Box For Bones",
@@ -13858,28 +15174,6 @@
     "Race: ALL"
    ],
    "t": "Box_of_Beetle_Eyes"
-  },
-  "box of bones": {
-   "ic": 836,
-   "n": "Box of Bones",
-   "sb": [
-    "LORE ITEM NO DROP QUEST ITEM",
-    "WT: 1.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Box_of_Bones"
-  },
-  "box of cat bones": {
-   "ic": 836,
-   "n": "A Box of Cat Bones",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 7.5 Size: MEDIUM",
-    "Class: NONE",
-    "Race: NONE"
-   ],
-   "t": "A_Box_of_Cat_Bones"
   },
   "box of lute strings": {
    "ic": 609,
@@ -15608,17 +16902,6 @@
    ],
    "t": "Broken_Frost_Module"
   },
-  "broken glacier souvenir mug": {
-   "ic": 709,
-   "n": "The Broken Glacier Souvenir Mug",
-   "sb": [
-    "Slot: PRIMARY SECONDARY",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Broken_Glacier_Souvenir_Mug"
-  },
   "broken heirloom necklace": {
    "ic": 1147,
    "n": "Broken Heirloom Necklace",
@@ -15669,16 +16952,6 @@
     "Race: ALL"
    ],
    "t": "Broken_Sacrificial_Dagger"
-  },
-  "broken vine": {
-   "ic": 813,
-   "n": "A Broken Vine",
-   "sb": [
-    "WT: 0.5 Size: TINY",
-    "Class: NONE",
-    "Race: NONE"
-   ],
-   "t": "A_Broken_Vine"
   },
   "brokenskull club": {
    "ic": 738,
@@ -15931,17 +17204,6 @@
     "Race: ALL"
    ],
    "t": "Bronze_Katana"
-  },
-  "bronze key": {
-   "ic": 1077,
-   "n": "A Bronze Key",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Bronze_Key"
   },
   "bronze knuckles": {
    "ic": 975,
@@ -16359,18 +17621,6 @@
     "Capacity: 4 Size Capacity: SMALL"
    ],
    "t": "Brood_Sack"
-  },
-  "broom": {
-   "ic": 889,
-   "n": "A Broom",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "Slot: PRIMARY SECONDARY",
-    "WT: 1.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Broom"
   },
   "broom of trilon": {
    "ic": 889,
@@ -16892,14 +18142,14 @@
   },
   "burnt sash": {
    "ic": 938,
-   "n": "A Burnt Sash",
+   "n": "Burnt Sash",
    "sb": [
     "LORE ITEM NO DROP",
     "WT: 0.5 Size: TINY",
     "Class: NONE",
     "Race: NONE"
    ],
-   "t": "A_Burnt_Sash"
+   "t": "Burnt_Sash"
   },
   "burnt wood staff": {
    "ic": 602,
@@ -17167,17 +18417,6 @@
    ],
    "t": "Busted_Prayer_Beads"
   },
-  "butcher": {
-   "ic": 1070,
-   "n": "The Butcher",
-   "sb": [
-    "LORE ITEM NO TRADE",
-    "WT: 0.4 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Butcher"
-  },
   "butcher knife": {
    "ic": 592,
    "n": "Butcher Knife",
@@ -17191,22 +18430,6 @@
     "Race: ALL"
    ],
    "t": "Butcher_Knife"
-  },
-  "butcherblock hammer": {
-   "ic": 567,
-   "n": "The Butcherblock Hammer",
-   "sb": [
-    "MAGIC ITEM LORE ITEM ARTIFACT NO TRADE",
-    "Slot: PRIMARY",
-    "Skill: 2H Blunt Atk Delay: 45",
-    "DMG: 34 DMG Bonus: 113",
-    "STR: +10 CHA: -10 WIS: +5",
-    "Effect: Superior Healing(Combat, Casting Time: Instant)",
-    "WT: 10.0 Size: LARGE",
-    "Class: CLR PAL",
-    "Race: DWF GNM"
-   ],
-   "t": "The_Butcherblock_Hammer"
   },
   "butler syncalls fang": {
    "ic": 800,
@@ -17563,17 +18786,6 @@
    ],
    "t": "Cane_of_the_Tranquil"
   },
-  "canine": {
-   "ic": 801,
-   "n": "A Canine",
-   "sb": [
-    "NODROP",
-    "WT: 0.2 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Canine"
-  },
   "canteen of slush water": {
    "ic": 584,
    "n": "Canteen of Slush Water",
@@ -17691,17 +18903,6 @@
    ],
    "t": "Capt._Orlin's_Spiced_Ale"
   },
-  "captain": {
-   "ic": 1070,
-   "n": "The Captain",
-   "sb": [
-    "LORE ITEM NO TRADE",
-    "WT: 0.4 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Captain"
-  },
   "captain of the sea": {
    "ic": 778,
    "n": "Captain of the Sea",
@@ -17710,15 +18911,6 @@
     "WT: 0.1 Size: TINY"
    ],
    "t": "Captain_of_the_Sea"
-  },
-  "captured message": {
-   "ic": 869,
-   "n": "A captured message",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.2 Size: SMALL"
-   ],
-   "t": "A_captured_message"
   },
   "card of bristlebane": {
    "ic": 650,
@@ -19341,17 +20533,6 @@
    ],
    "t": "Champion's_Vambraces"
   },
-  "chant rock": {
-   "ic": 944,
-   "n": "A Chant Rock",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Chant_Rock"
-  },
   "chapter i, the shatter sky": {
    "ic": 860,
    "n": "Chapter I, The Scatter Sky",
@@ -20018,17 +21199,6 @@
     "Race: ALL"
    ],
    "t": "Chipped_Emerald"
-  },
-  "chipped fang": {
-   "ic": 1227,
-   "n": "Chipped Fang",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 2.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_chipped_fang"
   },
   "chipped fire emerald": {
    "ic": 962,
@@ -22614,17 +23784,6 @@
    ],
    "t": "Cod_Oil"
   },
-  "code of combat": {
-   "ic": 778,
-   "n": "The Code of Combat",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.5 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Code_of_Combat"
-  },
   "code of zan fi": {
    "ic": 789,
    "n": "Code of Zan Fi",
@@ -23938,17 +25097,6 @@
    ],
    "t": "Copper_Disc"
   },
-  "copper key": {
-   "ic": 1077,
-   "n": "A Copper Key",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Copper_Key"
-  },
   "copper ring (ring of opolla)": {
    "ic": 748,
    "n": "Copper Ring",
@@ -24487,21 +25635,6 @@
    ],
    "t": "Cracked_Emerald"
   },
-  "cracked femur": {
-   "ic": 905,
-   "n": "A Cracked Femur",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "Slot: PRIMARY SECONDARY",
-    "Skill: Piercing Atk Delay: 25",
-    "DMG: 3",
-    "SV DISEASE: +2",
-    "WT: 0.5 Size: SMALL",
-    "Class: ALL except CLR PAL DRU MNK SHM",
-    "Race: ALL"
-   ],
-   "t": "A_Cracked_Femur"
-  },
   "cracked flute": {
    "ic": 751,
    "n": "Cracked Flute",
@@ -24607,17 +25740,6 @@
     "Race: ALL"
    ],
    "t": "Cracked_Staff"
-  },
-  "cracked stein": {
-   "ic": 708,
-   "n": "A Cracked Stein",
-   "sb": [
-    "LORE ITEM NO DROP QUEST ITEM",
-    "WT: 1.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Cracked_Stein"
   },
   "crafted bracers": {
    "ic": 516,
@@ -24833,14 +25955,6 @@
    ],
    "t": "Crafted_Velium_Warsword"
   },
-  "crafty tailor": {
-   "ic": 778,
-   "n": "The Crafty Tailor",
-   "sb": [
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "The_Crafty_Tailor"
-  },
   "cranial cryofrost": {
    "ic": 808,
    "n": "Cranial Cryofrost",
@@ -24981,21 +26095,6 @@
     "Race: ALL except BAR HEF TRL OGR IKS"
    ],
    "t": "Crazy_Cleric_Breastplate"
-  },
-  "crazy cleric doll": {
-   "ic": 720,
-   "n": "Crazy Cleric Doll",
-   "sb": [
-    "LORE ITEM",
-    "Slot: PRIMARY SECONDARY",
-    "Charges: 5",
-    "CHA: +2",
-    "Effect: Hug (Any Slot, Casting Time: 1.0)",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Crazy_Cleric_Doll"
   },
   "crazy cleric gauntlets": {
    "ic": 531,
@@ -25780,21 +26879,6 @@
    ],
    "t": "Crude_Arrow"
   },
-  "crude stein": {
-   "ic": 708,
-   "n": "A Crude Stein",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "Slot: SECONDARY",
-    "Charges: 1",
-    "STA: +10 CHA: +15",
-    "Effect: Minor Healing (Any Slot, Casting Time: Instant)",
-    "WT: 1.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Crude_Stein"
-  },
   "crude wooden flute": {
    "ic": 751,
    "n": "Crude Wooden Flute",
@@ -25830,15 +26914,6 @@
     "Race: ALL"
    ],
    "t": "Crunchy_Crawlers"
-  },
-  "crusade of 1312 a.g.": {
-   "ic": 778,
-   "n": "The Crusade of 1312 A.G.",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "The_Crusade_of_1312_A.G."
   },
   "crusaders coffin": {
    "ic": 1142,
@@ -28888,17 +29963,6 @@
    ],
    "t": "Dark_Boned_Bracelet"
   },
-  "dark cauldron": {
-   "ic": 1017,
-   "n": "A Dark Cauldron",
-   "sb": [
-    "NO DROP",
-    "WT: 2.5 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Dark_Cauldron"
-  },
   "dark circlet": {
    "ic": 938,
    "n": "Dark Circlet",
@@ -29243,21 +30307,6 @@
     "Race: HUM"
    ],
    "t": "Dark_Purple_Robe%2A"
-  },
-  "dark reaver": {
-   "ic": 519,
-   "n": "A Dark Reaver",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "Slot: PRIMARY",
-    "Skill: 2H Slashing Atk Delay: 42",
-    "DMG: 20",
-    "Effect: Steal Strength (Combat, Casting Time: Instant) at Level 30",
-    "WT: 9.5 Size: LARGE",
-    "Class: SHD",
-    "Race: ALL"
-   ],
-   "t": "A_Dark_Reaver"
   },
   "dark red dye": {
    "ic": 1157,
@@ -31867,16 +32916,6 @@
    ],
    "t": "Doljonijiarnimorinar"
   },
-  "doll": {
-   "ic": 720,
-   "n": "A Doll",
-   "sb": [
-    "WT: 1.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Doll"
-  },
   "donals boots of mourning": {
    "ic": 524,
    "n": "Donal's Boots of Mourning",
@@ -33956,17 +34995,6 @@
    ],
    "t": "Dusty_Ransacker's_Pack"
   },
-  "dusty ribcage": {
-   "ic": 974,
-   "n": "a Dusty Ribcage",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Dusty_Ribcage"
-  },
   "dusty rusted shackles": {
    "ic": 1235,
    "n": "Dusty Rusted Shackles",
@@ -33994,17 +35022,6 @@
     "Race: ALL except DWF HFL GNM"
    ],
    "t": "Dusty_Rusted_Vambraces"
-  },
-  "dusty sealed canopic": {
-   "ic": 1018,
-   "n": "A Dusty Sealed Canopic",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.8 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Dusty_Sealed_Canopic"
   },
   "dusty tome": {
    "ic": 778,
@@ -36711,16 +37728,16 @@
   },
   "elven charm necklace": {
    "ic": 852,
-   "n": "An Elven Charm Necklace",
+   "n": "Elven Charm Necklace",
    "sb": [
-    "LORE ITEM",
+    "Lore Equipped, Attunable, Quest",
     "Slot: NECK",
-    "CHA: +3",
+    "INT: 3 WIS: 3 CHA: 3",
     "WT: 0.2 Size: TINY",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "An_Elven_Charm_Necklace"
+   "t": "Elven_Charm_Necklace"
   },
   "elven smithy hammer": {
    "ic": 567,
@@ -36909,13 +37926,14 @@
   },
   "emerald": {
    "ic": 958,
-   "n": "An Emerald",
+   "n": "Emerald",
    "sb": [
-    "LORE ITEM WT: 0.1 Size: TINY",
+    "QUEST ITEM",
+    "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "An_Emerald"
+   "t": "Emerald"
   },
   "emerald bastardsword of purity": {
    "ic": 1190,
@@ -39118,17 +40136,6 @@
    ],
    "t": "Enchanters_Sack"
   },
-  "encrypted document": {
-   "ic": 682,
-   "n": "An encrypted document",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "An_encrypted_document"
-  },
   "encyclopedia necrotheurgia": {
    "ic": 789,
    "n": "Encyclopedia Necrotheurgia",
@@ -39142,14 +40149,6 @@
     "Race: HUM ERU DEF GNM IKS"
    ],
    "t": "Encyclopedia_Necrotheurgia"
-  },
-  "end of an age": {
-   "ic": 778,
-   "n": "The End of an Age",
-   "sb": [
-    "WT: 0.0 Size: TINY"
-   ],
-   "t": "The_End_of_an_Age"
   },
   "engineers ring": {
    "ic": 616,
@@ -39292,16 +40291,6 @@
     "Race: ALL"
    ],
    "t": "Enraged_Goblin_Beads"
-  },
-  "enrollment letter": {
-   "ic": 504,
-   "n": "An Enrollment Letter",
-   "sb": [
-    "The Note is rolled up.",
-    "NO TRADE",
-    "WT: 0.0 Size: TINY"
-   ],
-   "t": "An_Enrollment_Letter"
   },
   "enshrouded veil": {
    "ic": 677,
@@ -40459,21 +41448,6 @@
    ],
    "t": "Exceptional_Ratman_Blood"
   },
-  "executioners axe": {
-   "ic": 1164,
-   "n": "An Executioners Axe",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "Slot: PRIMARY",
-    "Skill: 2H Slashing Atk Delay: 50",
-    "DMG: 25",
-    "Effect: Haste (Combat, Casting Time: Instant) at Level 30",
-    "WT: 8.5 Size: LARGE",
-    "Class: WAR BER",
-    "Race: ALL"
-   ],
-   "t": "An_Executioners_Axe"
-  },
   "executioners blade": {
    "ic": 1181,
    "n": "Executioner's Blade",
@@ -41126,13 +42100,13 @@
   },
   "faded salils writ page": {
    "ic": 870,
-   "n": "A Faded Salil's Writ Page",
+   "n": "Faded Salil's Writ Page",
    "sb": [
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Faded_Salil's_Writ_Page"
+   "t": "Faded_Salil's_Writ_Page"
   },
   "faded silver tunic*": {
    "ic": 678,
@@ -41575,17 +42549,6 @@
     "Race: ALL"
    ],
    "t": "Fangorth"
-  },
-  "farsight crystal": {
-   "ic": 507,
-   "n": "Farsight Crystal",
-   "sb": [
-    "LORE ITEM",
-    "WT: 1.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Farsight_Crystal"
   },
   "fatecaller": {
    "ic": 1166,
@@ -46015,14 +46978,6 @@
    ],
    "t": "Frakadar's_Talisman"
   },
-  "freeport observer vol. 8 no. 1": {
-   "ic": 860,
-   "n": "The Freeport Observer Vol. 8 No. 1",
-   "sb": [
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "The_Freeport_Observer_Vol._8_No._1"
-  },
   "freeport stout": {
    "ic": 827,
    "n": "Freeport Stout",
@@ -46236,19 +47191,6 @@
     "Race: ALL"
    ],
    "t": "Froglok_Head"
-  },
-  "froglok hex doll": {
-   "ic": 1007,
-   "n": "A Froglok Hex Doll",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "Slot: SECONDARY",
-    "CHA: +3",
-    "WT: 0.5 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Froglok_Hex_Doll"
   },
   "froglok leg": {
    "ic": 1068,
@@ -47418,18 +48360,6 @@
    ],
    "t": "Fungus_Dung_Pie"
   },
-  "fungus eye": {
-   "ic": 885,
-   "n": "A fungus eye",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "Slot: PRIMARY SECONDARY",
-    "WT: 0.2 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_fungus_eye"
-  },
   "fungus spores": {
    "ic": 855,
    "n": "Fungus Spores",
@@ -48542,19 +49472,6 @@
    ],
    "t": "Ghoulbane"
   },
-  "ghouls heart": {
-   "ic": 1003,
-   "n": "A Ghoul's Heart",
-   "sb": [
-    "LORE ITEM NODROP",
-    "Slot: NECK",
-    "CHA: -10",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Ghoul's_Heart"
-  },
   "ghumims classical dishes": {
    "ic": 778,
    "n": "Ghumim's Classical Dishes",
@@ -48617,17 +49534,6 @@
     "Capacity: 4 Size Capacity: MEDIUM"
    ],
    "t": "Giant_Belt_Pouch"
-  },
-  "giant blood sac": {
-   "ic": 820,
-   "n": "A Giant Blood Sac",
-   "sb": [
-    "NO DROP QUEST ITEM",
-    "WT: 1.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Giant_Blood_Sac"
   },
   "giant briar snake skin": {
    "ic": 813,
@@ -49312,20 +50218,6 @@
    ],
    "t": "Giant_Woven_Vest"
   },
-  "giants broom": {
-   "ic": 889,
-   "n": "A Giant's Broom",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "Slot: PRIMARY",
-    "Skill: 2H Blunt Atk Delay: 40",
-    "DMG: 15",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: BAR ELF TRL OGR IKS"
-   ],
-   "t": "A_Giant's_Broom"
-  },
   "giants reminder string": {
    "ic": 572,
    "n": "Giants Reminder String",
@@ -49414,20 +50306,6 @@
     "Race: ALL"
    ],
    "t": "Gigantic_Gorilla_Hide"
-  },
-  "gigantic kromzek pick": {
-   "ic": 888,
-   "n": "A Gigantic Kromzek Pick",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "Slot: PRIMARY",
-    "Skill: 2H Slashing Atk Delay: 41",
-    "DMG: 21",
-    "WT: 10.0 Size: LARGE",
-    "Class: WAR PAL RNG SHD",
-    "Race: ALL"
-   ],
-   "t": "A_Gigantic_Kromzek_Pick"
   },
   "gigantic zweihander": {
    "ic": 519,
@@ -49869,17 +50747,6 @@
     "Race: ALL"
    ],
    "t": "Glimmering_Axe"
-  },
-  "glimmering fairie wing": {
-   "ic": 1146,
-   "n": "A Glimmering Fairie Wing",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.2 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Glimmering_Fairie_Wing"
   },
   "glimmering mithril torque": {
    "ic": 535,
@@ -50536,17 +51403,6 @@
     "Race: HUM ERU HIE DEF GNM"
    ],
    "t": "Glowing_Silver_Wand"
-  },
-  "glowing skull": {
-   "ic": 1070,
-   "n": "A Glowing Skull",
-   "sb": [
-    "LORE ITEM NO DROP TEMPORARY",
-    "WT: 0.0 Size: TINY",
-    "Class: NONE",
-    "Race: NONE"
-   ],
-   "t": "A_Glowing_Skull"
   },
   "glowing stone band": {
    "ic": 880,
@@ -53249,17 +54105,6 @@
    ],
    "t": "Gossamer_Veil"
   },
-  "gossamer wing": {
-   "ic": 908,
-   "n": "A Gossamer Wing",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Gossamer_Wing"
-  },
   "gossamer wristbands": {
    "ic": 637,
    "n": "Gossamer Wristbands",
@@ -55379,21 +56224,6 @@
     "Race: ALL"
    ],
    "t": "Gypsy_Lute"
-  },
-  "gypsy medallion": {
-   "ic": 566,
-   "n": "A Gypsy Medallion",
-   "sb": [
-    "MAGIC ITEM",
-    "Slot: NECK",
-    "AC: 2",
-    "CHA: +9",
-    "SV DISEASE: +10",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Gypsy_Medallion"
   },
   "gypsy porter": {
    "ic": 979,
@@ -57949,17 +58779,6 @@
    ],
    "t": "History_of_the_Di%60zok"
   },
-  "history of the greenmist": {
-   "ic": 789,
-   "n": "The History of the Greenmist",
-   "sb": [
-    "LORE ITEM",
-    "WT: 5.0 Size: MEDIUM",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_History_of_the_Greenmist"
-  },
   "hobarts war helmet": {
    "ic": 746,
    "n": "Hobart`s War Helmet",
@@ -58519,22 +59338,6 @@
     "Race: ALL"
    ],
    "t": "Horn_Mouthpiece"
-  },
-  "horn of hsagra": {
-   "ic": 800,
-   "n": "The Horn of Hsagra",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "Slot: PRIMARY SECONDARY",
-    "Skill: Piercing Atk Delay: 20",
-    "DMG: 13 AC: 35",
-    "STA: +10 HP: +75",
-    "SV COLD: +25",
-    "WT: 0.1 Size: TINY",
-    "Class: WAR RNG SHD ROG",
-    "Race: ALL"
-   ],
-   "t": "The_Horn_of_Hsagra"
   },
   "horrendous atrophy": {
    "ic": 806,
@@ -59774,17 +60577,6 @@
    ],
    "t": "Icy_Greaves"
   },
-  "icy mug souvenir": {
-   "ic": 709,
-   "n": "The Icy Mug Souvenir",
-   "sb": [
-    "Slot: PRIMARY SECONDARY",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Icy_Mug_Souvenir"
-  },
   "icy mushrooms": {
    "ic": 854,
    "n": "Icy Mushrooms",
@@ -59837,19 +60629,6 @@
     "Race: ALL"
    ],
    "t": "Idiot_Savant's_Cap"
-  },
-  "idol": {
-   "ic": 893,
-   "n": "The Idol",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NODROP",
-    "Slot: PRIMARY SECONDARY",
-    "WIS: +3 INT: +3",
-    "WT: 0.8 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Idol"
   },
   "idol of bertoxxulous": {
    "ic": 1007,
@@ -60584,17 +61363,6 @@
     "Race: ALL"
    ],
    "t": "Illegible_Cantrip"
-  },
-  "illegible note": {
-   "ic": 504,
-   "n": "An Illegible Note",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "An_Illegible_Note"
   },
   "illegible note: boots": {
    "ic": 868,
@@ -67781,17 +68549,6 @@
    ],
    "t": "Iron_Disc"
   },
-  "iron key": {
-   "ic": 1081,
-   "n": "An Iron Key",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "An_Iron_Key"
-  },
   "iron leash collar": {
    "ic": 627,
    "n": "Iron Leash Collar",
@@ -68801,15 +69558,6 @@
     "Race: ALL"
    ],
    "t": "Jar_of_Lacquer"
-  },
-  "jar of liquid": {
-   "ic": 1006,
-   "n": "A Jar of Liquid",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.5 Size: SMALL"
-   ],
-   "t": "A_Jar_of_Liquid"
   },
   "jarnal long sword": {
    "ic": 590,
@@ -70257,17 +71005,6 @@
    ],
    "t": "Kinetic_Suppressant"
   },
-  "king cod card": {
-   "ic": 651,
-   "n": "A King Cod Card",
-   "sb": [
-    "MAGIC ITEM QUEST ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: NONE",
-    "Race: NONE"
-   ],
-   "t": "A_King_Cod_Card"
-  },
   "king tormaxs head": {
    "ic": 980,
    "n": "King Tormax's Head",
@@ -70521,19 +71258,6 @@
     "Race: ALL"
    ],
    "t": "Koada_Cichlid"
-  },
-  "koadadal blood doll": {
-   "ic": 1007,
-   "n": "Koada'Dal Blood Doll",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "Slot: SECONDARY",
-    "CHA: +3",
-    "WT: 0.5 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Koada'Dal_Blood_Doll"
   },
   "koadadal falchion": {
    "ic": 604,
@@ -74146,16 +74870,6 @@
    ],
    "t": "Lead_Sulphide"
   },
-  "leaflet": {
-   "ic": 504,
-   "n": "A Leaflet",
-   "sb": [
-    "The Note is rolled up.",
-    "LORE ITEM",
-    "WT: 0.0 Size: TINY"
-   ],
-   "t": "A_Leaflet"
-  },
   "leather belt": {
    "ic": 564,
    "n": "Leather Belt",
@@ -74569,14 +75283,6 @@
    ],
    "t": "Legacy_of_Jewel_Craft"
   },
-  "legend of full plate": {
-   "ic": 778,
-   "n": "The Legend of Full Plate",
-   "sb": [
-    "WT: 0.1 Size: SMALL"
-   ],
-   "t": "The_Legend_of_Full_Plate"
-  },
   "leggings of ridossan": {
    "ic": 540,
    "n": "Leggings of Ridossan",
@@ -74984,17 +75690,6 @@
     "Race: ALL"
    ],
    "t": "Lianna's_Flute"
-  },
-  "library card": {
-   "ic": 867,
-   "n": "A Library Card",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Library_Card"
   },
   "library of erudin": {
    "ic": 653,
@@ -75977,17 +76672,6 @@
    ],
    "t": "Locked_Book"
   },
-  "locked chest": {
-   "ic": 836,
-   "n": "A Locked Chest",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.0 Size: TINY",
-    "Class: NONE",
-    "Race: NONE"
-   ],
-   "t": "A_Locked_Chest"
-  },
   "locked rum box": {
    "ic": 836,
    "n": "Locked Rum Box",
@@ -75998,17 +76682,6 @@
     "Race: ALL"
    ],
    "t": "Locked_Rum_Box"
-  },
-  "locket": {
-   "ic": 1147,
-   "n": "A Locket",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Locket"
   },
   "locket of escape": {
    "ic": 1147,
@@ -77353,21 +78026,6 @@
    ],
    "t": "Maleficent_Leggings"
   },
-  "maleficent necromancer doll": {
-   "ic": 720,
-   "n": "A Maleficent Necromancer Doll",
-   "sb": [
-    "LORE ITEM",
-    "Slot: PRIMARY SECONDARY",
-    "Charges: 1",
-    "CHA: +2",
-    "Effect: Hug (Any Slot, Casting Time: 1.0)",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Maleficent_Necromancer_Doll"
-  },
   "maleficent robe": {
    "ic": 1126,
    "n": "Maleficent Robe",
@@ -77792,17 +78450,6 @@
    ],
    "t": "Manastone"
   },
-  "mancatcher crown": {
-   "ic": 836,
-   "n": "A Mancatcher Crown",
-   "sb": [
-    "LORE ITEM",
-    "WT: 8.0 Size: MEDIUM",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Mancatcher_Crown"
-  },
   "mandala sketch": {
    "ic": 896,
    "n": "Mandala sketch",
@@ -77813,17 +78460,6 @@
     "Race: ALL"
    ],
    "t": "Mandala_sketch"
-  },
-  "mandible": {
-   "ic": 1125,
-   "n": "A Mandible",
-   "sb": [
-    "LORE ITEM NO TRADE",
-    "WT: 1.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Mandible"
   },
   "mandolin": {
    "ic": 551,
@@ -79930,7 +80566,7 @@
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Metal_Pipe"
+   "t": "Metal_Pipe"
   },
   "metal rings": {
    "ic": 1031,
@@ -80437,17 +81073,6 @@
    ],
    "t": "Minotaur_Ribcage"
   },
-  "minstrel": {
-   "ic": 1070,
-   "n": "The Minstrel",
-   "sb": [
-    "LORE ITEM NO TRADE",
-    "WT: 0.4 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Minstrel"
-  },
   "miraguls head": {
    "ic": 986,
    "n": "Miragul's Head",
@@ -80537,21 +81162,6 @@
     "Race: HUM ERU HIE DEF GNM"
    ],
    "t": "Mischievous_Dazzler_Crown"
-  },
-  "mischievous dazzler doll": {
-   "ic": 720,
-   "n": "Mischievous Dazzler Doll",
-   "sb": [
-    "LORE ITEM",
-    "Slot: PRIMARY SECONDARY",
-    "Charges: 5",
-    "CHA: +2",
-    "Effect: Hug (Any Slot, Casting Time: 1.0)",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Mischievous_Dazzler_Doll"
   },
   "mischievous dazzler gloves": {
    "ic": 636,
@@ -82467,21 +83077,6 @@
    ],
    "t": "Murky_Vial"
   },
-  "muses flayed legs": {
-   "ic": 635,
-   "n": "The Muse's Flayed Legs",
-   "sb": [
-    "Attunable",
-    "Slot: LEGS",
-    "AC: 6 END: 5",
-    "STR: 2",
-    "SV Disease: -5",
-    "WT: 4.0 Size: MEDIUM",
-    "Class: WAR RNG SHD DRU MNK BRD ROG SHM BST BER",
-    "Race: ALL"
-   ],
-   "t": "The_Muse's_Flayed_Legs"
-  },
   "mushroom bracelet": {
    "ic": 1071,
    "n": "Mushroom Bracelet",
@@ -83916,28 +84511,6 @@
    ],
    "t": "Never_Stop_Chopping"
   },
-  "nicked coin": {
-   "ic": 645,
-   "n": "A Nicked Coin",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Nicked_Coin"
-  },
-  "nickel key": {
-   "ic": 1077,
-   "n": "A Nickel Key",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Nickel_Key"
-  },
   "night shade": {
    "ic": 911,
    "n": "Night Shade",
@@ -84219,18 +84792,6 @@
     "Capacity: 4 Size Capacity: LARGE"
    ],
    "t": "Nobleman's_Bag"
-  },
-  "nobles crest": {
-   "ic": 754,
-   "n": "A Noble's Crest",
-   "sb": [
-    "NO DROP",
-    "Slot: NECK",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Noble's_Crest"
   },
   "nobles robes": {
    "ic": 929,
@@ -84702,24 +85263,13 @@
    "t": "Nostrolo_Tambourine"
   },
   "note": {
-   "ic": 864,
-   "n": "A note",
-   "sb": [
-    "The Note is rolled up.",
-    "NO TRADE",
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "A_note"
-  },
-  "note (gnome rogue)": {
    "ic": 504,
-   "n": "A note",
+   "n": "Note",
    "sb": [
-    "The Note is rolled up.",
-    "NO TRADE",
+    "LORE ITEM",
     "WT: 0.0 Size: TINY"
    ],
-   "t": "A_note_(Gnome_Rogue)"
+   "t": "Note"
   },
   "note for baenar": {
    "ic": 862,
@@ -85128,17 +85678,6 @@
     "Race: ALL"
    ],
    "t": "Oasis_Water"
-  },
-  "oblong bottle": {
-   "ic": 826,
-   "n": "The Oblong Bottle",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.5 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Oblong_Bottle"
   },
   "obsidian amulet": {
    "ic": 752,
@@ -86336,11 +86875,11 @@
   },
   "old delivered book": {
    "ic": 865,
-   "n": "An Old Delivered Book",
+   "n": "Old Delivered Book",
    "sb": [
     "WT: 0.1 Size: TINY"
    ],
-   "t": "An_Old_Delivered_Book"
+   "t": "Old_Delivered_Book"
   },
   "old dragon horn": {
    "ic": 807,
@@ -86556,17 +87095,6 @@
     "Race: ALL"
    ],
    "t": "One_Hand_Pick"
-  },
-  "one key": {
-   "ic": 1077,
-   "n": "The One Key",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_One_Key"
   },
   "onyx": {
    "ic": 956,
@@ -87757,17 +88285,6 @@
    ],
    "t": "Otterman_Meat"
   },
-  "outlanders head": {
-   "ic": 980,
-   "n": "An Outlander's Head",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 2.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "An_Outlander's_Head"
-  },
   "outriders taming whip": {
    "ic": 596,
    "n": "Outrider's Taming Whip",
@@ -87921,24 +88438,6 @@
     "Race: ALL"
    ],
    "t": "Page_34_of_a_Book"
-  },
-  "page of a poem": {
-   "ic": 504,
-   "n": "Page of a Poem",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "A_Page_of_A_Poem"
-  },
-  "page of a tome": {
-   "ic": 504,
-   "n": "A Page of A Tome",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "A_Page_of_A_Tome"
   },
   "pages from brodders diary i": {
    "ic": 865,
@@ -89375,19 +89874,6 @@
     "Capacity: 8 Size Capacity: MEDIUM"
    ],
    "t": "Penance_Bag"
-  },
-  "pendant": {
-   "ic": 1043,
-   "n": "Note to Kanthuk",
-   "sb": [
-    "LORE ITEM NO TRADE",
-    "Slot: NECK",
-    "CHA: +1",
-    "WT: 0.0 Size: TINY",
-    "Class: PAL",
-    "Race: HUM ERU HIE DWF"
-   ],
-   "t": "A_Pendant"
   },
   "pendant of salvation": {
    "ic": 852,
@@ -94053,20 +94539,6 @@
    ],
    "t": "Quoza's_Talisman"
   },
-  "rabbit foot": {
-   "ic": 743,
-   "n": "A Rabbit Foot",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "Slot: NECK",
-    "AC: 5",
-    "SV FIRE: +5 SV DISEASE: +5 SV COLD: +5 SV MAGIC: +5 SV POISON: +5",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Rabbit_Foot"
-  },
   "rabbit meat": {
    "ic": 925,
    "n": "Rabbit Meat",
@@ -94399,16 +94871,6 @@
     "Race: ALL"
    ],
    "t": "Raptor_Steaks"
-  },
-  "rare leaf": {
-   "ic": 795,
-   "n": "A Rare Leaf",
-   "sb": [
-    "WT: 0.1 Size: TINY",
-    "Class: NONE",
-    "Race: NONE"
-   ],
-   "t": "A_Rare_Leaf"
   },
   "rare robe pattern": {
    "ic": 790,
@@ -94927,17 +95389,6 @@
     "Race: ALL"
    ],
    "t": "Raw_Infused_Dark_Matter"
-  },
-  "raw pike head": {
-   "ic": 836,
-   "n": "A Raw Pike Head",
-   "sb": [
-    "LORE ITEM",
-    "WT: 8.0 Size: MEDIUM",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Raw_Pike_Head"
   },
   "raw short sword 4": {
    "ic": 580,
@@ -95491,17 +95942,6 @@
    ],
    "t": "Red_Cod_Card"
   },
-  "red crown": {
-   "ic": 653,
-   "n": "Red Crown",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Red_Crown"
-  },
   "red dragon scales": {
    "ic": 1232,
    "n": "Red Dragon Scales",
@@ -95628,14 +96068,14 @@
   },
   "red knight": {
    "ic": 654,
-   "n": "A Red Knight",
+   "n": "Red Knight",
    "sb": [
     "MAGIC ITEM LORE ITEM",
     "WT: 0.0 Size: TINY",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Red_Knight"
+   "t": "Red_Knight"
   },
   "red porter": {
    "ic": 979,
@@ -95715,28 +96155,6 @@
     "Capacity: 4 Size Capacity: MEDIUM"
    ],
    "t": "Red_Scabbard"
-  },
-  "red squire": {
-   "ic": 649,
-   "n": "Red Squire",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Red_Squire"
-  },
-  "red throne": {
-   "ic": 651,
-   "n": "Red Throne",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Red_Throne"
   },
   "red wine": {
    "ic": 704,
@@ -98662,14 +99080,14 @@
   },
   "rolled up note": {
    "ic": 861,
-   "n": "A Rolled Up Note",
+   "n": "Rolled up Note",
    "sb": [
     "LORE ITEM NO DROP",
     "WT: 0.1 Size: TINY",
     "Class: None",
     "Race: None"
    ],
-   "t": "A_Rolled_Up_Note"
+   "t": "Rolled_up_Note"
   },
   "rolled up strip of cloth": {
    "ic": 864,
@@ -98703,16 +99121,6 @@
     "Race: ALL"
    ],
    "t": "Rondo's_Tongue"
-  },
-  "root": {
-   "ic": 1203,
-   "n": "A Root",
-   "sb": [
-    "WT: 0.1 Size: TINY",
-    "Class: NONE",
-    "Race: NONE"
-   ],
-   "t": "A_Root"
   },
   "root (item)": {
    "ic": 1203,
@@ -99878,13 +100286,13 @@
   },
   "ruby": {
    "ic": 964,
-   "n": "A Ruby",
+   "n": "Ruby",
    "sb": [
-    "LORE ITEM WT: 0.1 Size: TINY",
+    "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Ruby"
+   "t": "Ruby"
   },
   "ruby crown": {
    "ic": 511,
@@ -103700,14 +104108,14 @@
    "t": "Sap_Sheen_Staff"
   },
   "sapphire": {
-   "ic": 954,
-   "n": "A Sapphire",
+   "ic": 963,
+   "n": "Sapphire",
    "sb": [
-    "LORE ITEM WT: 0.1 Size: TINY",
+    "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Sapphire"
+   "t": "Sapphire"
   },
   "sapphire electrum earring": {
    "ic": 1042,
@@ -104322,7 +104730,7 @@
     "Class: WAR PAL RNG SHD BRD ROG",
     "Race: ALL"
    ],
-   "t": "A_Sarnak_War_Braid"
+   "t": "Sarnak_War_Braid"
   },
   "sarnak warhammer": {
    "ic": 567,
@@ -105123,17 +105531,6 @@
    ],
    "t": "Scare_Straw"
   },
-  "scarlet stone": {
-   "ic": 964,
-   "n": "A Scarlet Stone",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Scarlet_Stone"
-  },
   "scent of marr": {
    "ic": 599,
    "n": "The Scent of Marr",
@@ -105271,22 +105668,6 @@
     "Race: ALL"
    ],
    "t": "Scimitar"
-  },
-  "scimitar of lifestealing": {
-   "ic": 1168,
-   "n": "The Scimitar of Lifestealing",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "Slot: PRIMARY",
-    "Skill: 1H Slashing Atk Delay: 18",
-    "DMG: 9",
-    "STR: +10 WIS: +8",
-    "Effect: Spirit Tap (Combat, Casting Time: Instant) at Level 50",
-    "WT: 2.0 Size: MEDIUM",
-    "Class: WAR SHD ROG",
-    "Race: ALL"
-   ],
-   "t": "The_Scimitar_of_Lifestealing"
   },
   "scimitar of the emerald dawn": {
    "ic": 604,
@@ -105436,22 +105817,6 @@
    ],
    "t": "Scorpion_Sandwich"
   },
-  "scorpion telson": {
-   "ic": 1123,
-   "n": "Scorpion Telson",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "Slot: PRIMARY SECONDARY",
-    "EXPENDABLE Charges: 1",
-    "Skill: Piercing Atk Delay: 24",
-    "DMG: 3",
-    "Effect: Poison Bolt (Any Slot, Casting Time: Instant)",
-    "WT: 2.5 Size: SMALL",
-    "Class: ALL except CLR PAL DRU MNK SHM",
-    "Race: ALL"
-   ],
-   "t": "A_Scorpion_Telson"
-  },
   "scourgetail bracer": {
    "ic": 637,
    "n": "Scourgetail Bracer",
@@ -105590,16 +105955,6 @@
     "Race: ALL"
    ],
    "t": "Scribblings"
-  },
-  "scroll": {
-   "ic": 504,
-   "n": "A Scroll",
-   "sb": [
-    "The Note is rolled up.",
-    "LORE ITEM NO TRADE TEMPORARY",
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "A_Scroll"
   },
   "scroll in a bottle": {
    "ic": 1006,
@@ -106182,33 +106537,14 @@
   },
   "sealed letter": {
    "ic": 682,
-   "n": "A Sealed Letter",
+   "n": "Sealed Letter",
    "sb": [
     "MAGIC ITEM LORE ITEM NO DROP",
     "WT: 0.0 Size: TINY",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Sealed_Letter"
-  },
-  "sealed letter (thex dagger quest)": {
-   "ic": 866,
-   "n": "A Sealed Letter",
-   "sb": [
-    "The Note is rolled up.",
-    "LORE ITEM NO DROP",
-    "WT: 0.0 Size: TINY"
-   ],
-   "t": "A_Sealed_Letter_(Thex_Dagger_Quest)"
-  },
-  "sealed list": {
-   "ic": 866,
-   "n": "A Sealed List",
-   "sb": [
-    "LORE ITEM NO DROP QUEST ITEM",
-    "WT: 0.0 Size: TINY"
-   ],
-   "t": "A_Sealed_List"
+   "t": "Sealed_Letter"
   },
   "sealed note": {
    "ic": 866,
@@ -107959,22 +108295,6 @@
    ],
    "t": "Shadowed_Halberd"
   },
-  "shadowed knife": {
-   "ic": 592,
-   "n": "A shadowed knife",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "Slot: PRIMARY",
-    "Skill: Piercing Atk Delay: 20",
-    "DMG: 3",
-    "INT: +2",
-    "SV COLD: +2",
-    "WT: 2.5 Size: SMALL",
-    "Class: SHD NEC",
-    "Race: HUM ERU DEF TRL OGR GNM IKS"
-   ],
-   "t": "A_shadowed_knife"
-  },
   "shadowed long sword": {
    "ic": 590,
    "n": "Shadowed Long Sword",
@@ -109636,20 +109956,6 @@
    ],
    "t": "Shimmering_Opal"
   },
-  "shimmering orb": {
-   "ic": 973,
-   "n": "A Shimmering Orb",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "Slot: SECONDARY",
-    "AC: 15",
-    "HP: +20",
-    "WT: 0.2 Size: TINY",
-    "Class: BRD NEC WIZ MAG ENC",
-    "Race: ALL"
-   ],
-   "t": "A_Shimmering_Orb"
-  },
   "shimmering partisan": {
    "ic": 1187,
    "n": "Shimmering Partisan",
@@ -109971,17 +110277,6 @@
     "Race: ALL"
    ],
    "t": "Shining_Star_of_Light"
-  },
-  "shining stone": {
-   "ic": 945,
-   "n": "A Shining Stone",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO TRADE",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Shining_Stone"
   },
   "shining vambraces": {
    "ic": 622,
@@ -110608,15 +110903,16 @@
   },
   "shovel": {
    "ic": 891,
-   "n": "A Shovel",
+   "n": "Shovel",
    "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "Slot: PRIMARY SECONDARY",
-    "WT: 1.0 Size: SMALL",
+    "Slot: PRIMARY",
+    "Skill: 2H Blunt Atk Delay: 27",
+    "DMG: 4",
+    "WT: 6.0 Size: MEDIUM",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Shovel"
+   "t": "Shovel"
   },
   "shovel of ponz": {
    "ic": 891,
@@ -112629,15 +112925,6 @@
    ],
    "t": "Silvery_War_Axe"
   },
-  "singed scroll": {
-   "ic": 861,
-   "n": "A Singed Scroll",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "A_Singed_Scroll"
-  },
   "singing short sword": {
    "ic": 882,
    "n": "Singing Short Sword",
@@ -113053,17 +113340,6 @@
    ],
    "t": "Skeletal_Feet"
   },
-  "skeletal finger": {
-   "ic": 804,
-   "n": "A skeletal finger",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_skeletal_finger"
-  },
   "skeletal hand": {
    "ic": 1089,
    "n": "Skeletal Hand",
@@ -113088,27 +113364,16 @@
    ],
    "t": "Skeletal_Rod"
   },
-  "skeletal toe": {
-   "ic": 804,
-   "n": "A skeletal toe",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_skeletal_toe"
-  },
   "skeleton fist": {
    "ic": 743,
-   "n": "A Skeleton Fist",
+   "n": "Skeleton Fist",
    "sb": [
     "LORE ITEM",
     "WT: 0.8 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Skeleton_Fist"
+   "t": "Skeleton_Fist"
   },
   "skewer mold": {
    "ic": 1151,
@@ -113255,16 +113520,6 @@
    ],
    "t": "Skull_Ale"
   },
-  "skull chest": {
-   "ic": 609,
-   "n": "A Skull Chest",
-   "sb": [
-    "LORE ITEM NO TRADE",
-    "WT: 1.5 Weight Reduction: 0%",
-    "Capacity: 6 Size Capacity: SMALL"
-   ],
-   "t": "A_Skull_Chest"
-  },
   "skull of jhentra": {
    "ic": 1070,
    "n": "Skull of Jhen`Tra",
@@ -113289,20 +113544,6 @@
     "Race: ALL"
    ],
    "t": "Skull_of_Meldrath"
-  },
-  "skull of torture": {
-   "ic": 1070,
-   "n": "The Skull of Torture",
-   "sb": [
-    "LORE ITEM",
-    "Slot: NECK",
-    "AC: 2",
-    "INT: +5 HP: +10 MANA: +10",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL except ELF HIE DWF HFL"
-   ],
-   "t": "The_Skull_of_Torture"
   },
   "skull with i": {
    "ic": 1070,
@@ -113909,15 +114150,6 @@
     "Race: NONE"
    ],
    "t": "Slime_filled_potion"
-  },
-  "slip of parchment": {
-   "ic": 870,
-   "n": "Slip of Parchment",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.0 Size: TINY"
-   ],
-   "t": "A_Slip_of_Parchment"
   },
   "slippers of the silent stalker": {
    "ic": 666,
@@ -116536,28 +116768,6 @@
    ],
    "t": "Small,_Folded_Note"
   },
-  "smashed protector of zeks head": {
-   "ic": 920,
-   "n": "A smashed protector of Zek's Head",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "WT: 1.0 Size: MEDIUM",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_smashed_protector_of_Zek's_Head"
-  },
-  "smelly sealed bag": {
-   "ic": 539,
-   "n": "A Smelly Sealed Bag",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 4.0 Size: MEDIUM",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Smelly_Sealed_Bag"
-  },
   "smithing chisel": {
    "ic": 732,
    "n": "Smithing Chisel",
@@ -117842,27 +118052,6 @@
    ],
    "t": "Soulforge_Hammer"
   },
-  "sparkle purse": {
-   "ic": 582,
-   "n": "A 'Sparkle' Purse",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 0.2 Weight Reduction: 0%",
-    "Capacity: 4 Size Capacity: SMALL"
-   ],
-   "t": "A_'Sparkle'_Purse"
-  },
-  "sparkling sapphire": {
-   "ic": 968,
-   "n": "Sparkling Sapphire",
-   "sb": [
-    "LORE ITEM NO TRADE",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Sparkling_Sapphire"
-  },
   "sparkling soul necklace": {
    "ic": 752,
    "n": "Sparkling Soul Necklace",
@@ -118096,16 +118285,6 @@
     "Race: ALL"
    ],
    "t": "Spear_of_Winter"
-  },
-  "special fire emerald": {
-   "ic": 962,
-   "n": "A Special Fire Emerald",
-   "sb": [
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Special_Fire_Emerald"
   },
   "speckled granite pebble": {
    "ic": 956,
@@ -118953,17 +119132,6 @@
     "Race: ALL"
    ],
    "t": "Spider_Venom"
-  },
-  "spider venom sac": {
-   "ic": 819,
-   "n": "A Spider Venom Sac",
-   "sb": [
-    "QUEST ITEM",
-    "WT: 0.2 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Spider_Venom_Sac"
   },
   "spiderling eye": {
    "ic": 885,
@@ -119868,19 +120036,6 @@
    ],
    "t": "Splintering_Club"
   },
-  "split paw": {
-   "ic": 743,
-   "n": "A Split Paw",
-   "sb": [
-    "MAGIC ITEM QUEST ITEM",
-    "Charges: 5",
-    "Effect: Dance of the Fireflies (Any Slot, Casting Time: Instant)",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Split_Paw"
-  },
   "split paw hide belt": {
    "ic": 564,
    "n": "Split Paw Hide Belt",
@@ -120025,17 +120180,6 @@
     "Race: ALL"
    ],
    "t": "Sporali_Gloves"
-  },
-  "spore mushroom": {
-   "ic": 854,
-   "n": "A Spore Mushroom",
-   "sb": [
-    "QUEST ITEM",
-    "WT: 0.5 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Spore_Mushroom"
   },
   "spores of forgetfulness": {
    "ic": 854,
@@ -121164,17 +121308,6 @@
    ],
    "t": "Steel_Hilted_Flint_Dagger"
   },
-  "steel key": {
-   "ic": 1081,
-   "n": "A Steel Key",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Steel_Key"
-  },
   "steel knuckles": {
    "ic": 975,
    "n": "Steel Knuckles",
@@ -121699,17 +121832,6 @@
    ],
    "t": "Stone_Collar"
   },
-  "stone key": {
-   "ic": 1079,
-   "n": "A Stone Key",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Stone_Key"
-  },
   "stone marker": {
    "ic": 967,
    "n": "Stone Marker",
@@ -122018,13 +122140,14 @@
   },
   "strange dark fungus": {
    "ic": 819,
-   "n": "A Strange Dark Fungus",
+   "n": "Strange Dark Fungus",
    "sb": [
+    "MAGIC ITEM",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Strange_Dark_Fungus"
+   "t": "Strange_Dark_Fungus"
   },
   "strange ochre clay": {
    "ic": 1095,
@@ -122068,7 +122191,7 @@
     "Class: NONE",
     "Race: NONE"
    ],
-   "t": "A_Strategic_Map_of_Kithicor"
+   "t": "Strategic_Map_of_Kithicor"
   },
   "strathbone anti-venom": {
    "ic": 699,
@@ -124555,15 +124678,6 @@
    ],
    "t": "Tattered_Belt"
   },
-  "tattered book": {
-   "ic": 865,
-   "n": "A Tattered Book",
-   "sb": [
-    "LORE ITEM NO DROP NO RENT",
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "A_Tattered_Book"
-  },
   "tattered cloth note": {
    "ic": 504,
    "n": "Tattered Cloth Note",
@@ -124729,26 +124843,6 @@
     "WT: 0.0 Size: TINY"
    ],
    "t": "Tattered_Memo"
-  },
-  "tattered note": {
-   "ic": 504,
-   "n": "A Tattered Note",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "A_Tattered_Note"
-  },
-  "tattered note (shaman skull quest 2)": {
-   "ic": 504,
-   "n": "A Tattered Note",
-   "sb": [
-    "LORE ITEM NO TRADE",
-    "WT: 1.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Tattered_Note_(Shaman_Skull_Quest_2)"
   },
   "tattered parchment": {
    "ic": 868,
@@ -126033,21 +126127,6 @@
    ],
    "t": "Tenal%60s_note_to_Kargek"
   },
-  "tenderizer (weapon)": {
-   "ic": 1117,
-   "n": "The Tenderizer (Weapon)",
-   "sb": [
-    "Lore Equipped, Attunable",
-    "Slot: PRIMARY SECONDARY",
-    "Skill: 1H Blunt Atk Delay: 19",
-    "DMG: 5",
-    "STR: 2",
-    "WT: 2.5 Size: SMALL",
-    "Class: WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST",
-    "Race: ALL"
-   ],
-   "t": "The_Tenderizer_(Weapon)"
-  },
   "tentacle whip": {
    "ic": 596,
    "n": "Tentacle Whip",
@@ -126205,6 +126284,364 @@
     "WT: 0 Size: SMALL"
    ],
    "t": "Thaumaturgist's_Sash"
+  },
+  "the artists brush": {
+   "ic": 809,
+   "n": "The Artist's Brush",
+   "sb": [
+    "Attunable, Quest",
+    "Slot: RANGE PRIMARY SECONDARY",
+    "INT: +3 DEX: +3 MANA: +10",
+    "WT: 0.5 Size: SMALL",
+    "Class: NEC WIZ MAG ENC",
+    "Race: ALL"
+   ],
+   "t": "The_Artist's_Brush"
+  },
+  "the baker": {
+   "ic": 1070,
+   "n": "The Baker",
+   "sb": [
+    "LORE ITEM NO TRADE",
+    "WT: 0.4 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Baker"
+  },
+  "the barons blade": {
+   "ic": 590,
+   "n": "The Baron's Blade",
+   "sb": [
+    "LORE ITEM",
+    "Slot: PRIMARY SECONDARY",
+    "Skill: 1H Slashing",
+    "Atk Delay: 30",
+    "DMG: 10",
+    "DEX: +5 STA: +5 HP: +5",
+    "WT: 5.0 Size: MEDIUM",
+    "Class: WAR PAL RNG SHD BRD ROG",
+    "Race: ALL"
+   ],
+   "t": "The_Baron's_Blade"
+  },
+  "the blade": {
+   "ic": 865,
+   "n": "The Blade",
+   "sb": [
+    "NO DROP",
+    "WT: 0.5 Size: SMALL"
+   ],
+   "t": "The_Blade"
+  },
+  "the book of knowledge": {
+   "ic": 778,
+   "n": "The Book of Knowledge",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.5 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Book_of_Knowledge"
+  },
+  "the broken glacier souvenir mug": {
+   "ic": 709,
+   "n": "The Broken Glacier Souvenir Mug",
+   "sb": [
+    "Slot: PRIMARY SECONDARY",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Broken_Glacier_Souvenir_Mug"
+  },
+  "the butcher": {
+   "ic": 1070,
+   "n": "The Butcher",
+   "sb": [
+    "LORE ITEM NO TRADE",
+    "WT: 0.4 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Butcher"
+  },
+  "the butcherblock hammer": {
+   "ic": 567,
+   "n": "The Butcherblock Hammer",
+   "sb": [
+    "MAGIC ITEM LORE ITEM ARTIFACT NO TRADE",
+    "Slot: PRIMARY",
+    "Skill: 2H Blunt Atk Delay: 45",
+    "DMG: 34 DMG Bonus: 113",
+    "STR: +10 CHA: -10 WIS: +5",
+    "Effect: Superior Healing(Combat, Casting Time: Instant)",
+    "WT: 10.0 Size: LARGE",
+    "Class: CLR PAL",
+    "Race: DWF GNM"
+   ],
+   "t": "The_Butcherblock_Hammer"
+  },
+  "the captain": {
+   "ic": 1070,
+   "n": "The Captain",
+   "sb": [
+    "LORE ITEM NO TRADE",
+    "WT: 0.4 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Captain"
+  },
+  "the code of combat": {
+   "ic": 778,
+   "n": "The Code of Combat",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.5 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Code_of_Combat"
+  },
+  "the crafty tailor": {
+   "ic": 778,
+   "n": "The Crafty Tailor",
+   "sb": [
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "The_Crafty_Tailor"
+  },
+  "the crusade of 1312 a.g.": {
+   "ic": 778,
+   "n": "The Crusade of 1312 A.G.",
+   "sb": [
+    "LORE ITEM",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "The_Crusade_of_1312_A.G."
+  },
+  "the end of an age": {
+   "ic": 778,
+   "n": "The End of an Age",
+   "sb": [
+    "WT: 0.0 Size: TINY"
+   ],
+   "t": "The_End_of_an_Age"
+  },
+  "the freeport observer vol. 8 no. 1": {
+   "ic": 860,
+   "n": "The Freeport Observer Vol. 8 No. 1",
+   "sb": [
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "The_Freeport_Observer_Vol._8_No._1"
+  },
+  "the history of the greenmist": {
+   "ic": 789,
+   "n": "The History of the Greenmist",
+   "sb": [
+    "LORE ITEM",
+    "WT: 5.0 Size: MEDIUM",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_History_of_the_Greenmist"
+  },
+  "the horn of hsagra": {
+   "ic": 800,
+   "n": "The Horn of Hsagra",
+   "sb": [
+    "MAGIC ITEM LORE ITEM",
+    "Slot: PRIMARY SECONDARY",
+    "Skill: Piercing Atk Delay: 20",
+    "DMG: 13 AC: 35",
+    "STA: +10 HP: +75",
+    "SV COLD: +25",
+    "WT: 0.1 Size: TINY",
+    "Class: WAR RNG SHD ROG",
+    "Race: ALL"
+   ],
+   "t": "The_Horn_of_Hsagra"
+  },
+  "the icy mug souvenir": {
+   "ic": 709,
+   "n": "The Icy Mug Souvenir",
+   "sb": [
+    "Slot: PRIMARY SECONDARY",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Icy_Mug_Souvenir"
+  },
+  "the idol": {
+   "ic": 893,
+   "n": "The Idol",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NODROP",
+    "Slot: PRIMARY SECONDARY",
+    "WIS: +3 INT: +3",
+    "WT: 0.8 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Idol"
+  },
+  "the legend of full plate": {
+   "ic": 778,
+   "n": "The Legend of Full Plate",
+   "sb": [
+    "WT: 0.1 Size: SMALL"
+   ],
+   "t": "The_Legend_of_Full_Plate"
+  },
+  "the minstrel": {
+   "ic": 1070,
+   "n": "The Minstrel",
+   "sb": [
+    "LORE ITEM NO TRADE",
+    "WT: 0.4 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Minstrel"
+  },
+  "the muses flayed legs": {
+   "ic": 635,
+   "n": "The Muse's Flayed Legs",
+   "sb": [
+    "Attunable",
+    "Slot: LEGS",
+    "AC: 6 END: 5",
+    "STR: 2",
+    "SV Disease: -5",
+    "WT: 4.0 Size: MEDIUM",
+    "Class: WAR RNG SHD DRU MNK BRD ROG SHM BST BER",
+    "Race: ALL"
+   ],
+   "t": "The_Muse's_Flayed_Legs"
+  },
+  "the oblong bottle": {
+   "ic": 826,
+   "n": "The Oblong Bottle",
+   "sb": [
+    "LORE ITEM NO DROP",
+    "WT: 0.5 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Oblong_Bottle"
+  },
+  "the one key": {
+   "ic": 1077,
+   "n": "The One Key",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_One_Key"
+  },
+  "the scent of marr": {
+   "ic": 599,
+   "n": "The Scent of Marr",
+   "sb": [
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Scent_of_Marr"
+  },
+  "the scimitar of lifestealing": {
+   "ic": 1168,
+   "n": "The Scimitar of Lifestealing",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "Slot: PRIMARY",
+    "Skill: 1H Slashing Atk Delay: 18",
+    "DMG: 9",
+    "STR: +10 WIS: +8",
+    "Effect: Spirit Tap (Combat, Casting Time: Instant) at Level 50",
+    "WT: 2.0 Size: MEDIUM",
+    "Class: WAR SHD ROG",
+    "Race: ALL"
+   ],
+   "t": "The_Scimitar_of_Lifestealing"
+  },
+  "the skull of torture": {
+   "ic": 1070,
+   "n": "The Skull of Torture",
+   "sb": [
+    "LORE ITEM",
+    "Slot: NECK",
+    "AC: 2",
+    "INT: +5 HP: +10 MANA: +10",
+    "WT: 0.0 Size: TINY",
+    "Class: ALL",
+    "Race: ALL except ELF HIE DWF HFL"
+   ],
+   "t": "The_Skull_of_Torture"
+  },
+  "the tenderizer (weapon)": {
+   "ic": 1117,
+   "n": "The Tenderizer (Weapon)",
+   "sb": [
+    "Lore Equipped, Attunable",
+    "Slot: PRIMARY SECONDARY",
+    "Skill: 1H Blunt Atk Delay: 19",
+    "DMG: 5",
+    "STR: 2",
+    "WT: 2.5 Size: SMALL",
+    "Class: WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST",
+    "Race: ALL"
+   ],
+   "t": "The_Tenderizer_(Weapon)"
+  },
+  "the thornless rose": {
+   "ic": 504,
+   "n": "The Thornless Rose",
+   "sb": [
+    "LORE ITEM QUEST ITEM",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "The_Thornless_Rose"
+  },
+  "the velium keg collectors mug": {
+   "ic": 709,
+   "n": "The Velium Keg Collectors Mug",
+   "sb": [
+    "Slot: PRIMARY SECONDARY",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "The_Velium_Keg_Collectors_Mug"
+  },
+  "the visceral dagger": {
+   "ic": 1186,
+   "n": "The Visceral Dagger",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "Slot: PRIMARY",
+    "Skill: Piercing Atk Delay: 21",
+    "DMG: 6",
+    "INT: +8",
+    "WT: 2.0 Size: MEDIUM",
+    "Class: SHD NEC",
+    "Race: HUM ERU DEF TRL OGR GNM IKS"
+   ],
+   "t": "The_Visceral_Dagger"
+  },
+  "the wizards canon": {
+   "ic": 778,
+   "n": "The Wizard's Canon",
+   "sb": [
+    "WT: 0.0 Size: TINY"
+   ],
+   "t": "The_Wizard's_Canon"
   },
   "thelvorn, blade of light": {
    "ic": 575,
@@ -126519,15 +126956,6 @@
     "Race: ALL"
    ],
    "t": "Thoridain's_Napkin"
-  },
-  "thornless rose": {
-   "ic": 504,
-   "n": "The Thornless Rose",
-   "sb": [
-    "LORE ITEM QUEST ITEM",
-    "WT: 0.1 Size: TINY"
-   ],
-   "t": "The_Thornless_Rose"
   },
   "thornstinger": {
    "ic": 574,
@@ -128144,15 +128572,14 @@
   },
   "torch": {
    "ic": 547,
-   "n": "A Torch",
+   "n": "Torch",
    "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "Slot: PRIMARY SECONDARY",
-    "WT: 1.0 Size: SMALL",
+    "Slot: SECONDARY",
+    "WT: 0.5 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Torch"
+   "t": "Torch"
   },
   "torch of alna": {
    "ic": 559,
@@ -130098,17 +130525,6 @@
    ],
    "t": "Tuft_of_Dire_Wolf_Fur"
   },
-  "tump stump": {
-   "ic": 978,
-   "n": "Tump Stump",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 5.0 Size: MEDIUM",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Tump_Stump"
-  },
   "tumpy tonic": {
    "ic": 1029,
    "n": "Tumpy Tonic",
@@ -130558,13 +130974,14 @@
   },
   "twisted stalk": {
    "ic": 1222,
-   "n": "A Twisted Stalk",
+   "n": "Twisted Stalk",
    "sb": [
+    "QUEST ITEM",
     "WT: 0.5 Size: TINY",
-    "Class: None",
-    "Race: None"
+    "Class: NONE",
+    "Race: NONE"
    ],
-   "t": "A_Twisted_Stalk"
+   "t": "Twisted_Stalk"
   },
   "twisted steel bastard sword": {
    "ic": 577,
@@ -133267,17 +133684,6 @@
    ],
    "t": "Velium_Jasper_Ring"
   },
-  "velium keg collectors mug": {
-   "ic": 709,
-   "n": "The Velium Keg Collectors Mug",
-   "sb": [
-    "Slot: PRIMARY SECONDARY",
-    "WT: 0.1 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "The_Velium_Keg_Collectors_Mug"
-  },
   "velium keg stout": {
    "ic": 827,
    "n": "Velium Keg Stout",
@@ -134240,7 +134646,7 @@
     "Class: ALL",
     "Race: ALL"
    ],
-   "t": "A_Very_Large_Pelt"
+   "t": "Very_Large_Pelt"
   },
   "very rusty dagger": {
    "ic": 574,
@@ -134634,20 +135040,6 @@
    ],
    "t": "Vile_Sarnak_Brew"
   },
-  "vile substance": {
-   "ic": 1158,
-   "n": "A Vile Substance",
-   "sb": [
-    "Slot: RANGE",
-    "Skill: Throwingv1 Atk Delay: 25",
-    "DMG: 3",
-    "Effect: Disease (Combat, Casting Time: Instant) at Level 30",
-    "WT: 0.0 Range: 50 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Vile_Substance"
-  },
   "vindication": {
    "ic": 519,
    "n": "Vindication",
@@ -134773,21 +135165,6 @@
     "Deity: Tunare"
    ],
    "t": "Visage_of_Life"
-  },
-  "visceral dagger": {
-   "ic": 1186,
-   "n": "The Visceral Dagger",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "Slot: PRIMARY",
-    "Skill: Piercing Atk Delay: 21",
-    "DMG: 6",
-    "INT: +8",
-    "WT: 2.0 Size: MEDIUM",
-    "Class: SHD NEC",
-    "Race: HUM ERU DEF TRL OGR GNM IKS"
-   ],
-   "t": "The_Visceral_Dagger"
   },
   "visceral rot": {
    "ic": 806,
@@ -136073,20 +136450,6 @@
    ],
    "t": "Weight_of_the_Gods"
   },
-  "weighted axe": {
-   "ic": 1164,
-   "n": "A Weighted Axe",
-   "sb": [
-    "MAGIC ITEM",
-    "Slot: PRIMARY",
-    "Skill: 2H Slashing Atk Delay: 150",
-    "DMG: 45",
-    "WT: 9.4 Size: LARGE",
-    "Class: WAR SHD",
-    "Race: BAR TRL OGR"
-   ],
-   "t": "A_Weighted_Axe"
-  },
   "weighted gloves": {
    "ic": 636,
    "n": "Weighted Gloves",
@@ -136234,17 +136597,6 @@
     "Capacity: 8 Size Capacity: GIANT"
    ],
    "t": "Wenglawks_Manly_Purse"
-  },
-  "werebat wing": {
-   "ic": 791,
-   "n": "A Werebat Wing",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "WT: 0.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Werebat_Wing"
   },
   "werewolf claws": {
    "ic": 743,
@@ -136627,17 +136979,6 @@
    ],
    "t": "White_Cod_Card"
   },
-  "white crown": {
-   "ic": 653,
-   "n": "White Crown",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_White_Crown"
-  },
   "white dragon helm": {
    "ic": 625,
    "n": "White Dragon Helm",
@@ -136844,17 +137185,6 @@
    ],
    "t": "White_Hellebore"
   },
-  "white knight": {
-   "ic": 654,
-   "n": "White Knight",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_White_Knight"
-  },
   "white lead": {
    "ic": 1075,
    "n": "White Lead",
@@ -137051,17 +137381,6 @@
    ],
    "t": "White_Spiroc_Feather"
   },
-  "white squire": {
-   "ic": 649,
-   "n": "White Squire",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_White_Squire"
-  },
   "white symbol": {
    "ic": 967,
    "n": "White Symbol",
@@ -137083,17 +137402,6 @@
     "Race: ALL"
    ],
    "t": "White_Tear"
-  },
-  "white throne": {
-   "ic": 651,
-   "n": "White Throne",
-   "sb": [
-    "MAGIC ITEM LORE ITEM",
-    "WT: 0.0 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_White_Throne"
   },
   "white training sash": {
    "ic": 932,
@@ -137395,21 +137703,6 @@
     "Race: HUM ERU HIE DEF GNM"
    ],
    "t": "Wily_Warlock_Crown"
-  },
-  "wily warlock doll": {
-   "ic": 720,
-   "n": "Wily Warlock Doll",
-   "sb": [
-    "LORE ITEM",
-    "Slot: PRIMARY SECONDARY",
-    "Charges: 1",
-    "CHA: +2",
-    "Effect: Hug (Any Slot, Casting Time: 1.0)",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Wily_Warlock_Doll"
   },
   "wily warlock gloves": {
    "ic": 636,
@@ -138068,14 +138361,6 @@
    ],
    "t": "Withered_Totem_of_Widdershins"
   },
-  "wizards canon": {
-   "ic": 778,
-   "n": "The Wizard's Canon",
-   "sb": [
-    "WT: 0.0 Size: TINY"
-   ],
-   "t": "The_Wizard's_Canon"
-  },
   "woe": {
    "ic": 580,
    "n": "Woe",
@@ -138254,16 +138539,6 @@
     "Race: ALL"
    ],
    "t": "Wolf_Sandwich"
-  },
-  "wolf scale": {
-   "ic": 1233,
-   "n": "A Wolf Scale",
-   "sb": [
-    "WT: 1.2 Size: SMALL",
-    "Class: None",
-    "Race: None"
-   ],
-   "t": "A_Wolf_Scale"
   },
   "wolf steaks": {
    "ic": 816,
@@ -138504,17 +138779,6 @@
     "Race: ALL"
    ],
    "t": "Wooden_Flute"
-  },
-  "wooden heart": {
-   "ic": 1003,
-   "n": "Wooden Heart",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "WT: 2.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Wooden_Heart"
   },
   "wooden kite shield": {
    "ic": 758,
@@ -139736,18 +140000,6 @@
    ],
    "t": "Wormwood"
   },
-  "worn candle": {
-   "ic": 1127,
-   "n": "A Worn Candle",
-   "sb": [
-    "NO DROP",
-    "Slot: SECONDARY",
-    "WT: 0.5 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Worn_Candle"
-  },
   "worn charbone": {
    "ic": 804,
    "n": "Worn Charbone",
@@ -139882,15 +140134,6 @@
     "Race: ALL"
    ],
    "t": "Worn_note"
-  },
-  "worn rune": {
-   "ic": 504,
-   "n": "A Worn Rune",
-   "sb": [
-    "LORE ITEM",
-    "WT: 0.0 Size: TINY"
-   ],
-   "t": "A_Worn_Rune"
   },
   "worn shaidin naginata": {
    "ic": 1529,
@@ -141458,20 +141701,6 @@
    ],
    "t": "Yellow_Sash_of_Order"
   },
-  "yellow whip": {
-   "ic": 596,
-   "n": "A Yellow Whip",
-   "sb": [
-    "LORE ITEM",
-    "Slot: PRIMARY SECONDARY",
-    "Skill: 1H Slashing Atk Delay: 33",
-    "DMG: 7",
-    "WT: 6.0 Size: MEDIUM",
-    "Class: WAR PAL RNG SHD BRD ROG",
-    "Race: ALL"
-   ],
-   "t": "A_Yellow_Whip"
-  },
   "yerbhimba": {
    "ic": 1201,
    "n": "Yerbhimba",
@@ -141796,5 +142025,6 @@
  "meta": {
   "license": "CC BY-SA 4.0",
   "source": "eqlwiki.com"
- }
+ },
+ "schema": 1
 }

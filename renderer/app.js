@@ -17,8 +17,10 @@ let NAME2KEY = new Map(), ROSTER = new Map(), NAMEZONES = new Map();
 let QIDX = new Map(); // normName(item) -> [{q: quest row, as: "r"|"c"}]
 let T2Q = new Map();  // quest wiki path (q.t, unique) -> quest row — the tracked-quest key
 let QDROPS = {};      // normName(item) -> [[mob, mobPath, zone, zonePath], ...] lowest level first
-let QSRC = {};        // normName(item) -> {n, z:[zone], m:{zone:[mob]}, many, various, r:{c,to}}
+let QSRC = {};        // itemKey(item) -> {z:[zone], k:[kind], m:{zone:[mob]}, many, various, r:{c,to}}
 let QZONES = {};      // zone display name -> wiki path
+// article-stripped fallbacks, consulted only when the exact key misses
+let QIDX_L = new Map(), TIDX_L = new Map(), QSRC_L = {}, QDROPS_L = {};
 let TDATA = null;     // item-tooltips.json
 let TIDX = new Map(); // normName(item) -> {n, t, ic, sb: [lines]}
 
@@ -54,6 +56,8 @@ function buildIndexes(datasets) {
   SOURCES.tooltips = td ? td.source : "none";
   TIDX = new Map();
   if (TDATA) for (const [nk, e] of Object.entries(TDATA.items)) TIDX.set(nk, e);
+  QIDX_L = looseIndex(QIDX); TIDX_L = looseIndex(TIDX);
+  QSRC_L = looseObj(QSRC); QDROPS_L = looseObj(QDROPS);
 }
 
 /* ── tracker state (same blob shape as the /kills page) ───────────────────*/
@@ -164,7 +168,7 @@ function handleEvent(ev) {
     // Live loot counts toward quest components until the next /out inventory
     // dump supersedes it; sold loot never reached the bags.
     if (ev.disp !== "sold" && ev.disp !== "sold_free") {
-      for (const k of new Set([K.normName(ev.item), K.normName(stripDecor(ev.item))]))
+      for (const k of new Set([itemKey(ev.item), itemKey(stripDecor(ev.item))]))
         LIVE_HAVE.set(k, (LIVE_HAVE.get(k) || 0) + (ev.qty || 1));
       renderQuestsSoon();
     }
@@ -283,10 +287,43 @@ const DISP = { kept: "", depot: "→ depot", sold_free: "sold (worthless)", sold
    hits for the live feed. */
 const stripDecor = name => String(name)
   .replace(/\*+$/, "").replace(/\s*\(Exaltation\)$/, "").replace(/\s*\+\d+$/, "");
-const lookupItem = (map, name) =>
-  map.get(K.normName(name)) ?? map.get(K.normName(stripDecor(name)));
 
-const questRefsFor = name => (lookupItem(QIDX, name) || []).map(({ q, as }) => ({
+/* Item IDENTITY key — everything the datasets are keyed by. NOT normName:
+   normName strips a leading article, which fuses items the wiki keeps apart on
+   purpose ('Sapphire' the merchant gem vs 'A Sapphire', the Iksar Warrior Pike
+   quest drop — its page literally says "not to be confused with Sapphire").
+   Article stripping survives below as a LOOKUP fallback, never as identity. */
+const itemKey = s => String(s).replace(/[`']/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+
+/* Loose alias table per index, built once: article-stripped key -> entry, with
+   an article-LESS title winning any tie. Only consulted when the exact key
+   misses, so it can rescue a game name whose article the title doesn't carry
+   without ever overriding a real item. */
+function looseIndex(map) {
+  const out = new Map();
+  for (const [k, v] of map) {
+    const lk = K.normName(k);
+    if (lk === k || !out.has(lk)) out.set(lk, v);
+  }
+  return out;
+}
+function looseObj(obj) {
+  const out = {};
+  for (const k of Object.keys(obj)) {
+    const lk = K.normName(k);
+    if (lk === k || !(lk in out)) out[lk] = obj[k];
+  }
+  return out;
+}
+const lookupExact = (map, name) =>
+  map.get(itemKey(name)) ?? map.get(itemKey(stripDecor(name)));
+// name from the game (log line or inventory dump): exact first, then loose
+const lookupLoose = (map, loose, name) => lookupExact(map, name)
+  ?? loose.get(K.normName(name)) ?? loose.get(K.normName(stripDecor(name)));
+const lookupItem = (map, name) => lookupExact(map, name);
+
+// called with a name off a log line or an inventory row — loose lookup
+const questRefsFor = name => (lookupLoose(QIDX, QIDX_L, name) || []).map(({ q, as }) => ({
   n: q.n, t: q.t, as, rewards: q.rewards || [], zone: q.zone, lvl: q.lvl, oe: !!q.oe,
 }));
 
@@ -312,9 +349,13 @@ function mobSpan(name, cls) {
     : `<span class="${cls || ""}">${esc(name)}</span>`;
 }
 
-// item name: tooltip always; a wiki link too when the dataset knows it
-function itemSpan(name) {
-  const ti = lookupItem(TIDX, name);
+/* item name: tooltip always; a wiki link too when the dataset knows it.
+   `loose` for a name that came from the game (log line, inventory dump) — it
+   may carry an article the item title doesn't. A wiki-sourced name (a quest
+   component, a rollup row) is exact, and must stay exact or 'Sapphire' links
+   to 'A Sapphire'. */
+function itemSpan(name, loose) {
+  const ti = loose ? lookupLoose(TIDX, TIDX_L, name) : lookupExact(TIDX, name);
   const base = (TDATA && TDATA.base) || (DATA && DATA.base) || "";
   return ti && base
     ? `<span class="itn is-link" data-tt="${esc(name)}" data-url="${esc(base + ti.t)}">${esc(name)}</span>`
@@ -357,7 +398,7 @@ function feedLi(e) {
   const disp = DISP[e.disp] ? ` <span class="dim">${DISP[e.disp]}</span>` : "";
   return `<li class="ev ev--loot ${e.quests.length ? "is-quest" : ""}">
     <span class="ev__t">${hhmmss(e.ts)}</span>
-    <span class="ev__body">${itemSpan(e.item)}${qty} <span class="dim">from ${mobSpan(e.mob, "dim")}</span>${disp}${questChips(e.quests, e.id)}</span></li>`;
+    <span class="ev__body">${itemSpan(e.item, true)}${qty} <span class="dim">from ${mobSpan(e.mob, "dim")}</span>${disp}${questChips(e.quests, e.id)}</span></li>`;
 }
 
 function renderFeed() {
@@ -487,7 +528,7 @@ function renderZoneTab() {
     .sort((a, b) => a.it.n.toLowerCase() < b.it.n.toLowerCase() ? -1 : 1);
   const itemLi = ({ it, i }) => {
     const by = droppers.get(i) || [];
-    const quests = QIDX.get(K.normName(it.n)) || [];
+    const quests = lookupExact(QIDX, it.n) || [];
     // every referencing quest out of era → say so, or the pill promises a
     // hand-in that doesn't exist yet
     const allOe = quests.length && quests.every(r => r.q.oe);
@@ -582,7 +623,7 @@ function renderInv() {
     <ul class="feed">${b.rows.map(r => `
       <li class="ev ev--loot ${r.quests.length ? "is-quest" : ""}">
         <span class="ev__t ev__t--loc">${esc(r.loc)}</span>
-        <span class="ev__body">${itemSpan(r.name)}${r.count > 1 ? ` ×${r.count}` : ""}${questChips(r.quests, r.id)}</span></li>`).join("")}
+        <span class="ev__body">${itemSpan(r.name, true)}${r.count > 1 ? ` ×${r.count}` : ""}${questChips(r.quests, r.id)}</span></li>`).join("")}
     </ul>`).join("");
   retip();
 }
@@ -646,14 +687,26 @@ let LIVE_HAVE = new Map(); // normName -> qty looted since the current dump
 
 // normName -> total count held, keyed BOTH raw and decoration-stripped so a
 // "Giant Snake Fang +4" in the dump answers a bare "Giant Snake Fang".
+/* itemKey, not normName: an inventory dump prints the item's real name, so
+   'Sapphire' and 'A Sapphire' are two rows and must stay two counts. The loose
+   fallback lives in held() below, so a dump row that DOES carry a stray article
+   still finds its item. */
 function haveMap() {
   const m = new Map();
   for (const r of INV.rows || []) {
-    for (const k of new Set([K.normName(r.name), K.normName(stripDecor(r.name))]))
+    for (const k of new Set([itemKey(r.name), itemKey(stripDecor(r.name))]))
       m.set(k, (m.get(k) || 0) + r.count);
   }
   for (const [k, c] of LIVE_HAVE) m.set(k, (m.get(k) || 0) + c);
   return m;
+}
+// how many of a WIKI-named item the player holds: exact, then article-stripped
+function heldCount(have, name) {
+  const exact = have.get(itemKey(name)) ?? have.get(itemKey(stripDecor(name)));
+  if (exact !== undefined) return exact;
+  const lk = K.normName(name), lk2 = K.normName(stripDecor(name));
+  for (const [k, c] of have) if (K.normName(k) === lk || K.normName(k) === lk2) return c;
+  return 0;
 }
 
 /* A quest's shopping list: q.need (rolled up and recipe-expanded) crossed with
@@ -662,7 +715,7 @@ function haveMap() {
    datasets have no `need`; those fall back to the flat item list at one each,
    so a companion that hasn't refreshed still works. */
 function compsFor(q, have) {
-  const held = n => have.get(K.normName(n)) ?? have.get(K.normName(stripDecor(n))) ?? 0;
+  const held = n => heldCount(have, n);
   const rows = (q.need && q.need.length ? q.need : (q.items || []).map(n => [n, 1]))
     .map(([n, want]) => ({ n, want, have: held(n) }));
   const got = rows.filter(c => c.have >= c.want).length;
@@ -679,7 +732,8 @@ function compsFor(q, have) {
 const MANY = "::many";        // "::" can't collide with a zone name
 const NOSRC = "::nosrc";
 const BUCKET_LABEL = { [MANY]: "Anywhere · many zones", [NOSRC]: "Source not listed on the wiki" };
-const srcFor = name => QSRC[K.normName(name)] ?? QSRC[K.normName(stripDecor(name))] ?? null;
+const srcFor = name => QSRC[itemKey(name)] ?? QSRC[itemKey(stripDecor(name))]
+  ?? QSRC_L[K.normName(name)] ?? QSRC_L[K.normName(stripDecor(name))] ?? null;
 /* A dataset built before the source table existed has no `src` at all, and the
    app must not read that silence as "the wiki lists no source" — it would say
    so on every row of every quest. The companion prefers its CACHED download
@@ -833,7 +887,7 @@ function pushQuests() {
   const merged = new Map();
   for (const p of plans) {
     for (const c of p.comps) {
-      const k = K.normName(c.n), cur = merged.get(k);
+      const k = itemKey(c.n), cur = merged.get(k);
       if (cur) { cur.want = Math.max(cur.want, c.want); cur.quests.add(p.q.n); }
       else merged.set(k, { n: c.n, want: c.want, have: c.have, quests: new Set([p.q.n]) });
     }
@@ -852,7 +906,7 @@ function pushQuests() {
       parts: (p.q.parts || []).map(pt => ({
         n: pt.n, g: pt.g || "",
         c: pt.c.map(([n, want]) => ({
-          n, want, have: have.get(K.normName(n)) ?? have.get(K.normName(stripDecor(n))) ?? 0,
+          n, want, have: heldCount(have, n),
         })),
       })),
     })),
@@ -873,7 +927,8 @@ function questFacts(q, chain) {
    the mob corpus) has the wiki paths but only one zone per mob. Crossing them
    gives a linkable mob where both know it and plain text where only the item
    page does — better than dropping either half. */
-const dropsFor = name => QDROPS[K.normName(name)] ?? QDROPS[K.normName(stripDecor(name))] ?? [];
+const dropsFor = name => QDROPS[itemKey(name)] ?? QDROPS[itemKey(stripDecor(name))]
+  ?? QDROPS_L[K.normName(name)] ?? QDROPS_L[K.normName(stripDecor(name))] ?? [];
 function mobPath(item, mob) {
   const hit = dropsFor(item).find(([mn]) => K.normMob(mn) === K.normMob(mob));
   return hit ? hit[1] : "";
@@ -890,7 +945,7 @@ function partsHtml(q, have) {
   // just the page's links and its prose mentions, which the zone groups already
   // show. Two unnamed blocks labelled "turn-ins" would invent a structure.
   if (!q.split || parts.length < 2) return "";
-  const held = n => have.get(K.normName(n)) ?? have.get(K.normName(stripDecor(n))) ?? 0;
+  const held = n => heldCount(have, n);
   const open = QPARTS_OPEN.has(q.t);
   const rows = parts.map((p, i) => {
     const cs = p.c.map(([n, want]) => ({ n, want, have: held(n) }));
@@ -1139,7 +1194,7 @@ function renderTrackedTab() {
     const merged = new Map();
     for (const p of plans) {
       for (const c of p.comps) {
-        const k = K.normName(c.n);
+        const k = itemKey(c.n);
         const cur = merged.get(k);
         if (cur) { cur.want = Math.max(cur.want, c.want); cur.quests.add(p.q.n); }
         else merged.set(k, { n: c.n, want: c.want, have: c.have, quests: new Set([p.q.n]) });

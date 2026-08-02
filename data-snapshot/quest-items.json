@@ -1,6 +1,626 @@
 {
  "base": "https://eqlwiki.com/index.php/",
  "drops": {
+  "a bloody protector of zeks head": [
+   [
+    "a Protector of Zek",
+    "A_Protector_of_Zek",
+    "Kael Drakkel",
+    "Kael_Drakkel"
+   ],
+   [
+    "protector of Zek",
+    "Protector_of_Zek",
+    "Kael Drakkel",
+    "Kael_Drakkel"
+   ]
+  ],
+  "a bone key": [
+   [
+    "a goblin penmaster",
+    "A_goblin_penmaster",
+    "The Temple of Droga",
+    "Temple_of_Droga"
+   ]
+  ],
+  "a bone necklace": [
+   [
+    "a goblin penmaster",
+    "A_goblin_penmaster",
+    "The Temple of Droga",
+    "Temple_of_Droga"
+   ]
+  ],
+  "a bronze key": [
+   [
+    "a goblin penkeeper",
+    "A_goblin_penkeeper",
+    "The Temple of Droga",
+    "Temple_of_Droga"
+   ]
+  ],
+  "a broom": [
+   [
+    "a magician",
+    "A_Magician",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "dark-boned skeleton",
+    "Dark-boned_skeleton",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "a goblin magician",
+    "A_Goblin_Magician",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "Linara Parlone",
+    "Linara_Parlone",
+    "Najena",
+    "Najena"
+   ]
+  ],
+  "a canine": [
+   [
+    "a coerced Iksar",
+    "A_Coerced_Iksar",
+    "The Crypt of Dalnir",
+    "Crypt_of_Dalnir"
+   ],
+   [
+    "a drolvarg savage",
+    "A_Drolvarg_Savage",
+    "Firiona Vie",
+    "Firiona_Vie"
+   ],
+   [
+    "a drolvarg scavenger",
+    "A_drolvarg_scavenger",
+    "Firiona Vie",
+    "Firiona_Vie"
+   ],
+   [
+    "a coerced Teir`Dal",
+    "A_coerced_Teir%60Dal",
+    "The Crypt of Dalnir",
+    "Crypt_of_Dalnir"
+   ]
+  ],
+  "a copper key": [
+   [
+    "a goblin interrogator",
+    "A_goblin_interrogator",
+    "The Temple of Droga",
+    "Temple_of_Droga"
+   ]
+  ],
+  "a cracked femur": [
+   [
+    "scalebone skeleton",
+    "Scalebone_skeleton",
+    "The Field of Bone",
+    "Field_of_Bone"
+   ],
+   [
+    "greater scalebone",
+    "Greater_Scalebone",
+    "Kurn's Tower",
+    "Kurn's_Tower"
+   ]
+  ],
+  "a crude stein": [
+   [
+    "Bouncer Flerb",
+    "Bouncer_Flerb",
+    "The Feerrott",
+    "The_Feerrott"
+   ],
+   [
+    "Bouncer Hurd",
+    "Bouncer_Hurd",
+    "The Feerrott",
+    "The_Feerrott"
+   ]
+  ],
+  "a dark cauldron": [
+   [
+    "an ancille cook",
+    "An_Ancille_Cook",
+    "The Castle of Mistmoore",
+    "Mistmoore_Castle"
+   ]
+  ],
+  "a doll": [
+   [
+    "a young shark",
+    "A_young_shark",
+    "Erudin",
+    "Erudin"
+   ],
+   [
+    "a shark",
+    "A_Shark",
+    "The Ocean of Tears",
+    "Ocean_of_Tears"
+   ],
+   [
+    "a shark",
+    "A_Shark_(Qeynos_Aqueducts)",
+    "The Qeynos Aqueduct System",
+    "Qeynos_Aqueducts"
+   ],
+   [
+    "a plague shark",
+    "A_plague_shark",
+    "Erud's Crossing",
+    "Erud's_Crossing"
+   ]
+  ],
+  "a dusty sealed canopic": [
+   [
+    "Burynai Forager",
+    "Burynai_Forage",
+    "Kurn's Tower",
+    "Kurn's_Tower"
+   ],
+   [
+    "Burynai Forager",
+    "Burynai_Forager",
+    "Kurn's Tower",
+    "Kurn's_Tower"
+   ]
+  ],
+  "a froglok hex doll": [
+   [
+    "a goblin hextracer",
+    "A_Goblin_Hextracer",
+    "The Warsliks Woods",
+    "Warsliks_Woods"
+   ]
+  ],
+  "a fungus eye": [
+   [
+    "mortuary fungus",
+    "Mortuary_Fungus",
+    "The Estate of Unrest",
+    "The_Estate_of_Unrest"
+   ]
+  ],
+  "a ghouls heart": [
+   [
+    "a crazed ghoul",
+    "A_Crazed_Ghoul",
+    "The Estate of Unrest",
+    "The_Estate_of_Unrest"
+   ]
+  ],
+  "a giant blood sac": [
+   [
+    "a giant swamp leech",
+    "A_giant_swamp_leech",
+    "The Swamp of No Hope",
+    "Swamp_of_No_Hope"
+   ],
+   [
+    "a giant marsh leech",
+    "A_giant_marsh_leech",
+    "The Swamp of No Hope",
+    "Swamp_of_No_Hope"
+   ]
+  ],
+  "a king cod card": [
+   [
+    "Dinner",
+    "Dinner",
+    "The Plane of Mischief",
+    "Plane_of_Mischief"
+   ]
+  ],
+  "a library card": [
+   [
+    "Brenn",
+    "Brenn",
+    "The Plane of Mischief",
+    "Plane_of_Mischief"
+   ],
+   [
+    "Glonk",
+    "Glonk",
+    "The Plane of Mischief",
+    "Plane_of_Mischief"
+   ],
+   [
+    "Grenn",
+    "Grenn",
+    "The Plane of Mischief",
+    "Plane_of_Mischief"
+   ],
+   [
+    "Grink",
+    "Grink",
+    "The Plane of Mischief",
+    "Plane_of_Mischief"
+   ]
+  ],
+  "a locket": [
+   [
+    "a werewolf",
+    "A_Werewolf",
+    "The Western Plains of Karana",
+    "Western_Plains_of_Karana"
+   ],
+   [
+    "Sentry Alechin",
+    "Sentry_Alechin",
+    "The Southern Plains of Karana",
+    "Southern_Karana"
+   ]
+  ],
+  "a nicked coin": [
+   [
+    "Cenn Lostin",
+    "Cenn_Lostin",
+    "Erudin",
+    "Erudin"
+   ],
+   [
+    "Genna Lostin",
+    "Genna_Lostin",
+    "Erudin",
+    "Erudin"
+   ],
+   [
+    "Lenya Wisk",
+    "Lenya_Wisk",
+    "Erudin",
+    "Erudin"
+   ],
+   [
+    "Megan Tiglin",
+    "Megan_Tiglin",
+    "Erudin",
+    "Erudin"
+   ]
+  ],
+  "a nickel key": [
+   [
+    "a coerced penkeeper",
+    "A_coerced_penkeeper",
+    "The Crypt of Dalnir",
+    "Crypt_of_Dalnir"
+   ]
+  ],
+  "a nobles crest": [
+   [
+    "Jyle Windstorm",
+    "Jyle_Windstorm",
+    "Innothule Swamp",
+    "Innothule_Swamp"
+   ],
+   [
+    "Zepin Winsle",
+    "Zepin_Winsle",
+    "Innothule Swamp",
+    "Innothule_Swamp"
+   ],
+   [
+    "Gwynn Marthank",
+    "Gwynn_Marthank",
+    "Innothule Swamp",
+    "Innothule_Swamp"
+   ],
+   [
+    "Jars Legola",
+    "Jars_Legola",
+    "Innothule Swamp",
+    "Innothule_Swamp"
+   ]
+  ],
+  "a page of a tome": [
+   [
+    "froglok raider",
+    "Froglok_Raider",
+    "The Swamp of No Hope",
+    "Swamp_of_No_Hope"
+   ]
+  ],
+  "a rabbit foot": [
+   [
+    "Stomples",
+    "Stomples",
+    "The Plane of Mischief",
+    "Plane_of_Mischief"
+   ]
+  ],
+  "a sapphire": [
+   [
+    "thick boned skeleton",
+    "Thick_boned_skeleton",
+    "Kurn's Tower",
+    "Kurn's_Tower"
+   ]
+  ],
+  "a scarlet stone": [
+   [
+    "a drolvarg scavenger",
+    "A_drolvarg_scavenger",
+    "Firiona Vie",
+    "Firiona_Vie"
+   ]
+  ],
+  "a sealed letter": [
+   [
+    "orc runner",
+    "Orc_runner",
+    "Nektulos Forest",
+    "Nektulos_Forest"
+   ],
+   [
+    "Drosco",
+    "Drosco",
+    "The Qeynos Aqueduct System",
+    "Qeynos_Aqueducts"
+   ]
+  ],
+  "a shadowed knife": [
+   [
+    "a goblin headmaster",
+    "A_Goblin_Headmaster",
+    "The Ocean of Tears",
+    "Ocean_of_Tears"
+   ],
+   [
+    "a shadowed man",
+    "A_shadowed_man_(Innothule_Swamp)",
+    "Innothule Swamp",
+    "Innothule_Swamp"
+   ],
+   [
+    "a shadowed man",
+    "A_shadowed_man_(Lavastorm_Mountains)",
+    "The Lavastorm Mountains",
+    "Lavastorm_Mountains"
+   ],
+   [
+    "a shadowed man",
+    "A_shadowed_man_(Lesser_Faydark)",
+    "The Lesser Faydark",
+    "Lesser_Faydark"
+   ]
+  ],
+  "a shining stone": [
+   [
+    "a shadowed man",
+    "A_shadowed_man_(Innothule_Swamp)",
+    "Innothule Swamp",
+    "Innothule_Swamp"
+   ],
+   [
+    "a shadowed man",
+    "A_shadowed_man_(Lavastorm_Mountains)",
+    "The Lavastorm Mountains",
+    "Lavastorm_Mountains"
+   ],
+   [
+    "a shadowed man",
+    "A_shadowed_man_(Lesser_Faydark)",
+    "The Lesser Faydark",
+    "Lesser_Faydark"
+   ],
+   [
+    "a shadowed man",
+    "A_shadowed_man_(Nektulos_Forest)",
+    "Nektulos Forest",
+    "Nektulos_Forest"
+   ]
+  ],
+  "a shovel": [
+   [
+    "a Sad Ratman Slave",
+    "A_Sad_Ratman_Slave",
+    "Chardok",
+    "Chardok"
+   ],
+   [
+    "a magician",
+    "A_Magician",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "an injured halfling",
+    "An_Injured_Halfling",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "Linara Parlone",
+    "Linara_Parlone",
+    "Najena",
+    "Najena"
+   ]
+  ],
+  "a singed scroll": [
+   [
+    "Overking Bathezid",
+    "Overking_Bathezid",
+    "Chardok",
+    "Chardok"
+   ]
+  ],
+  "a skeletal finger": [
+   [
+    "a giant skeleton",
+    "A_Giant_Skeleton",
+    "The Rathe Mountains",
+    "Rathe_Mountains"
+   ]
+  ],
+  "a skeletal toe": [
+   [
+    "a giant skeleton",
+    "A_Giant_Skeleton",
+    "The Rathe Mountains",
+    "Rathe_Mountains"
+   ]
+  ],
+  "a smashed protector of zeks head": [
+   [
+    "a Protector of Zek",
+    "A_Protector_of_Zek",
+    "Kael Drakkel",
+    "Kael_Drakkel"
+   ],
+   [
+    "protector of Zek",
+    "Protector_of_Zek",
+    "Kael Drakkel",
+    "Kael_Drakkel"
+   ]
+  ],
+  "a sparkle purse": [
+   [
+    "Lynada the exiled",
+    "Lynada_the_Exiled",
+    "Solusek's Eye",
+    "Solusek's_Eye"
+   ]
+  ],
+  "a spider venom sac": [
+   [
+    "a large spider",
+    "A_large_spider",
+    "Butcherblock Mountains",
+    "Butcherblock_Mountains"
+   ],
+   [
+    "a large wood spider",
+    "A_large_wood_spider",
+    "Misty Thicket",
+    "Misty_Thicket"
+   ],
+   [
+    "bonecrawler",
+    "Bonecrawler",
+    "The Field of Bone",
+    "Field_of_Bone"
+   ],
+   [
+    "a giant spider",
+    "A_Giant_Spider",
+    "Misty Thicket",
+    "Misty_Thicket"
+   ]
+  ],
+  "a spore mushroom": [
+   [
+    "a fungus spore",
+    "A_fungus_spore",
+    "Innothule Swamp",
+    "Innothule_Swamp"
+   ]
+  ],
+  "a stone key": [
+   [
+    "a goblin penkeeper",
+    "A_goblin_penkeeper",
+    "The Temple of Droga",
+    "Temple_of_Droga"
+   ]
+  ],
+  "a tattered note": [
+   [
+    "Gnasher Furgutt",
+    "Gnasher_Furgutt",
+    "Qeynos Hills",
+    "Qeynos_Hills"
+   ],
+   [
+    "Boog Mudtoe",
+    "Boog_Mudtoe",
+    "The Ocean of Tears",
+    "Ocean_of_Tears"
+   ],
+   [
+    "Goob Mudtoe",
+    "Goob_Mudtoe",
+    "The Ocean of Tears",
+    "Ocean_of_Tears"
+   ],
+   [
+    "a Sarnak revenant",
+    "A_sarnak_revenant",
+    "Lake of Ill Omen",
+    "Lake_of_Ill_Omen"
+   ]
+  ],
+  "a torch": [
+   [
+    "an ice goblin scout",
+    "An_ice_goblin_scout",
+    "Everfrost Peaks",
+    "Everfrost_Peaks"
+   ],
+   [
+    "ice goblin diver",
+    "Ice_goblin_diver",
+    "Everfrost Peaks",
+    "Everfrost_Peaks"
+   ],
+   [
+    "a magician",
+    "A_Magician",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "an alligator",
+    "An_alligator",
+    "Temple of Cazic-Thule",
+    "Cazic_Thule"
+   ]
+  ],
+  "a vile substance": [
+   [
+    "goblin janitor",
+    "Goblin_Janitor",
+    "The Liberated Citadel of Runnyeye",
+    "RunnyEye_Citadel"
+   ],
+   [
+    "Sludge Dankmire",
+    "Sludge_Dankmire",
+    "The Liberated Citadel of Runnyeye",
+    "RunnyEye_Citadel"
+   ]
+  ],
+  "a werebat wing": [
+   [
+    "a werebat",
+    "A_werebat",
+    "The Estate of Unrest",
+    "The_Estate_of_Unrest"
+   ]
+  ],
+  "a yellow whip": [
+   [
+    "a decaying skeleton",
+    "A_Decaying_Skeleton",
+    "East Commonlands",
+    "East_Commonlands"
+   ],
+   [
+    "A wulfware lonewolf",
+    "A_wulfware_lonewolf",
+    "The Dreadlands",
+    "Dreadlands"
+   ]
+  ],
   "acidic venom": [
    [
     "Bzzazzt",
@@ -157,6 +777,44 @@
     "Amygdalan_Warrior",
     "The Plane of Fear",
     "Plane_of_Fear"
+   ]
+  ],
+  "an emerald": [
+   [
+    "thick boned skeleton",
+    "Thick_boned_skeleton",
+    "Kurn's Tower",
+    "Kurn's_Tower"
+   ]
+  ],
+  "an encrypted document": [
+   [
+    "a kobold missionary",
+    "A_Kobold_Missionary",
+    "The Steamfont Mountains",
+    "Steamfont_Mountains"
+   ]
+  ],
+  "an illegible note": [
+   [
+    "a goblin soothsayer",
+    "A_Goblin_Soothsayer",
+    "The Warsliks Woods",
+    "Warsliks_Woods"
+   ],
+   [
+    "goblin spirit caller",
+    "Goblin_Spirit_Caller",
+    "The Warsliks Woods",
+    "Warsliks_Woods"
+   ]
+  ],
+  "an outlanders head": [
+   [
+    "Kwinn the Outlander",
+    "Kwinn_the_Outlander",
+    "Firiona Vie",
+    "Firiona_Vie"
    ]
   ],
   "ancient blade": [
@@ -2337,20 +2995,6 @@
     "Everfrost_Peaks"
    ]
   ],
-  "bloody protector of zeks head": [
-   [
-    "a Protector of Zek",
-    "A_Protector_of_Zek",
-    "Kael Drakkel",
-    "Kael_Drakkel"
-   ],
-   [
-    "protector of Zek",
-    "Protector_of_Zek",
-    "Kael Drakkel",
-    "Kael_Drakkel"
-   ]
-  ],
   "blue crystal staff": [
    [
     "Phinigel Autropos",
@@ -2439,22 +3083,6 @@
     "A_Gnome_Skeleton",
     "The Steamfont Mountains",
     "Steamfont_Mountains"
-   ]
-  ],
-  "bone key": [
-   [
-    "a goblin penmaster",
-    "A_goblin_penmaster",
-    "The Temple of Droga",
-    "Temple_of_Droga"
-   ]
-  ],
-  "bone necklace": [
-   [
-    "a goblin penmaster",
-    "A_goblin_penmaster",
-    "The Temple of Droga",
-    "Temple_of_Droga"
    ]
   ],
   "bonechipped mask": [
@@ -3041,14 +3669,6 @@
     "Lower_Guk"
    ]
   ],
-  "bronze key": [
-   [
-    "a goblin penkeeper",
-    "A_goblin_penkeeper",
-    "The Temple of Droga",
-    "Temple_of_Droga"
-   ]
-  ],
   "bronze long sword": [
    [
     "a bandit",
@@ -3245,32 +3865,6 @@
     "Carpenter_Grundo",
     "The Burning Woods",
     "Burning_Woods"
-   ]
-  ],
-  "broom": [
-   [
-    "a magician",
-    "A_Magician",
-    "Najena",
-    "Najena"
-   ],
-   [
-    "dark-boned skeleton",
-    "Dark-boned_skeleton",
-    "Najena",
-    "Najena"
-   ],
-   [
-    "a goblin magician",
-    "A_Goblin_Magician",
-    "Najena",
-    "Najena"
-   ],
-   [
-    "Linara Parlone",
-    "Linara_Parlone",
-    "Najena",
-    "Najena"
    ]
   ],
   "brownie parts": [
@@ -3499,32 +4093,6 @@
     "A_spiked_succulent",
     "The Overthere",
     "The_Overthere"
-   ]
-  ],
-  "canine": [
-   [
-    "a coerced Iksar",
-    "A_Coerced_Iksar",
-    "The Crypt of Dalnir",
-    "Crypt_of_Dalnir"
-   ],
-   [
-    "a drolvarg savage",
-    "A_Drolvarg_Savage",
-    "Firiona Vie",
-    "Firiona_Vie"
-   ],
-   [
-    "a drolvarg scavenger",
-    "A_drolvarg_scavenger",
-    "Firiona Vie",
-    "Firiona_Vie"
-   ],
-   [
-    "a coerced Teir`Dal",
-    "A_coerced_Teir%60Dal",
-    "The Crypt of Dalnir",
-    "Crypt_of_Dalnir"
    ]
   ],
   "carmine spiroc feather": [
@@ -4303,14 +4871,6 @@
     "Plane_of_Sky"
    ]
   ],
-  "copper key": [
-   [
-    "a goblin interrogator",
-    "A_goblin_interrogator",
-    "The Temple of Droga",
-    "Temple_of_Droga"
-   ]
-  ],
   "copper ring (ring of opolla)": [
    [
     "High Priestess Mitty",
@@ -4771,20 +5331,6 @@
     "Northern_Karana"
    ]
   ],
-  "cracked femur": [
-   [
-    "scalebone skeleton",
-    "Scalebone_skeleton",
-    "The Field of Bone",
-    "Field_of_Bone"
-   ],
-   [
-    "greater scalebone",
-    "Greater_Scalebone",
-    "Kurn's Tower",
-    "Kurn's_Tower"
-   ]
-  ],
   "cracked flute": [
    [
     "a hermit",
@@ -4967,28 +5513,6 @@
     "King_Tormax",
     "Kael Drakkel",
     "Kael_Drakkel"
-   ]
-  ],
-  "crude stein": [
-   [
-    "Bouncer Flerb",
-    "Bouncer_Flerb",
-    "The Feerrott",
-    "The_Feerrott"
-   ],
-   [
-    "Bouncer Hurd",
-    "Bouncer_Hurd",
-    "The Feerrott",
-    "The_Feerrott"
-   ]
-  ],
-  "crusade of 1312 a.g.": [
-   [
-    "an Iksar tomb raider",
-    "An_Iksar_tomb_raider",
-    "The Emerald Jungle",
-    "Emerald_Jungle"
    ]
   ],
   "crusades of the high scale": [
@@ -5715,14 +6239,6 @@
     "The_Estate_of_Unrest"
    ]
   ],
-  "dark cauldron": [
-   [
-    "an ancille cook",
-    "An_Ancille_Cook",
-    "The Castle of Mistmoore",
-    "Mistmoore_Castle"
-   ]
-  ],
   "dark circlet": [
    [
     "Trazdon",
@@ -6069,32 +6585,6 @@
     "Kael_Drakkel"
    ]
   ],
-  "doll": [
-   [
-    "a young shark",
-    "A_young_shark",
-    "Erudin",
-    "Erudin"
-   ],
-   [
-    "a shark",
-    "A_Shark",
-    "The Ocean of Tears",
-    "Ocean_of_Tears"
-   ],
-   [
-    "a shark",
-    "A_Shark_(Qeynos_Aqueducts)",
-    "The Qeynos Aqueduct System",
-    "Qeynos_Aqueducts"
-   ],
-   [
-    "a plague shark",
-    "A_plague_shark",
-    "Erud's Crossing",
-    "Erud's_Crossing"
-   ]
-  ],
   "dove slippers": [
    [
     "The Spiroc Lord",
@@ -6387,20 +6877,6 @@
     "Lorekeeper_Roggik",
     "The Warrens",
     "The_Warrens"
-   ]
-  ],
-  "dusty sealed canopic": [
-   [
-    "Burynai Forager",
-    "Burynai_Forage",
-    "Kurn's Tower",
-    "Kurn's_Tower"
-   ],
-   [
-    "Burynai Forager",
-    "Burynai_Forager",
-    "Kurn's Tower",
-    "Kurn's_Tower"
    ]
   ],
   "dusty tome": [
@@ -6883,12 +7359,6 @@
     "Lavastorm_Mountains"
    ],
    [
-    "thick boned skeleton",
-    "Thick_boned_skeleton",
-    "Kurn's Tower",
-    "Kurn's_Tower"
-   ],
-   [
     "Zixx Nenix",
     "Zixx_Nenix",
     "The Lair of the Splitpaw",
@@ -6897,6 +7367,12 @@
    [
     "a rabid griffenne",
     "A_rabid_griffenne",
+    "The Northern Plains of Karana",
+    "Northern_Karana"
+   ],
+   [
+    "a griffenne",
+    "A_griffenne",
     "The Northern Plains of Karana",
     "Northern_Karana"
    ]
@@ -6979,14 +7455,6 @@
     "An_Erudin_Emissary",
     "Toxxulia Forest",
     "Toxxulia_Forest"
-   ]
-  ],
-  "encrypted document": [
-   [
-    "a kobold missionary",
-    "A_Kobold_Missionary",
-    "The Steamfont Mountains",
-    "Steamfont_Mountains"
    ]
   ],
   "engraved bone pauldrons": [
@@ -8631,14 +9099,6 @@
     "Swamp_of_No_Hope"
    ]
   ],
-  "froglok hex doll": [
-   [
-    "a goblin hextracer",
-    "A_Goblin_Hextracer",
-    "The Warsliks Woods",
-    "Warsliks_Woods"
-   ]
-  ],
   "froglok leg": [
    [
     "a froglok gaz shaman",
@@ -8803,14 +9263,6 @@
     "Kael_Drakkel"
    ]
   ],
-  "fungus eye": [
-   [
-    "mortuary fungus",
-    "Mortuary_Fungus",
-    "The Estate of Unrest",
-    "The_Estate_of_Unrest"
-   ]
-  ],
   "fusible coral ore": [
    [
     "Phinigel Autropos",
@@ -8953,14 +9405,6 @@
     "Southern_Felwithe"
    ]
   ],
-  "ghouls heart": [
-   [
-    "a crazed ghoul",
-    "A_Crazed_Ghoul",
-    "The Estate of Unrest",
-    "The_Estate_of_Unrest"
-   ]
-  ],
   "giant bat fur": [
    [
     "a giant bat",
@@ -8985,20 +9429,6 @@
     "A_cave_bat",
     "The Warrens",
     "The_Warrens"
-   ]
-  ],
-  "giant blood sac": [
-   [
-    "a giant swamp leech",
-    "A_giant_swamp_leech",
-    "The Swamp of No Hope",
-    "Swamp_of_No_Hope"
-   ],
-   [
-    "a giant marsh leech",
-    "A_giant_marsh_leech",
-    "The Swamp of No Hope",
-    "Swamp_of_No_Hope"
    ]
   ],
   "giant fire beetle leg": [
@@ -10925,26 +11355,6 @@
     "City_of_Mist"
    ]
   ],
-  "history of the greenmist": [
-   [
-    "a Chokidai Fleshripper",
-    "A_Chokidai_Fleshripper",
-    "Chardok",
-    "Chardok"
-   ],
-   [
-    "Grand Lorekeeper Kino Shai`din",
-    "Grand_Lorekeeper_Kino_Shai%60din",
-    "Chardok",
-    "Chardok"
-   ],
-   [
-    "Loremaster Piza`tak",
-    "Loremaster_Piza%60tak",
-    "Chardok",
-    "Chardok"
-   ]
-  ],
   "holgresh mojo stick (air)": [
    [
     "a holgresh elementalist",
@@ -11367,14 +11777,6 @@
     "Permafrost"
    ]
   ],
-  "idol": [
-   [
-    "Raster of Guk",
-    "Raster_of_Guk",
-    "The Ruins of Old Guk",
-    "Lower_Guk"
-   ]
-  ],
   "idol of corruption": [
    [
     "Gkrean Prophet of Tallon",
@@ -11503,20 +11905,6 @@
     "Orc_Apprentice",
     "West Commonlands",
     "West_Commonlands"
-   ]
-  ],
-  "illegible note": [
-   [
-    "a goblin soothsayer",
-    "A_Goblin_Soothsayer",
-    "The Warsliks Woods",
-    "Warsliks_Woods"
-   ],
-   [
-    "goblin spirit caller",
-    "Goblin_Spirit_Caller",
-    "The Warsliks Woods",
-    "Warsliks_Woods"
    ]
   ],
   "illegible scroll": [
@@ -12099,14 +12487,6 @@
     "Sandgiant_Husam",
     "The Southern Desert of Ro",
     "Southern_Desert_of_Ro"
-   ]
-  ],
-  "king cod card": [
-   [
-    "Dinner",
-    "Dinner",
-    "The Plane of Mischief",
-    "Plane_of_Mischief"
    ]
   ],
   "king tormaxs head": [
@@ -12939,32 +13319,6 @@
     "Northern_Karana"
    ]
   ],
-  "library card": [
-   [
-    "Brenn",
-    "Brenn",
-    "The Plane of Mischief",
-    "Plane_of_Mischief"
-   ],
-   [
-    "Glonk",
-    "Glonk",
-    "The Plane of Mischief",
-    "Plane_of_Mischief"
-   ],
-   [
-    "Grenn",
-    "Grenn",
-    "The Plane of Mischief",
-    "Plane_of_Mischief"
-   ],
-   [
-    "Grink",
-    "Grink",
-    "The Plane of Mischief",
-    "Plane_of_Mischief"
-   ]
-  ],
   "light cloth mantle": [
    [
     "Keeper of Souls",
@@ -13199,20 +13553,6 @@
     "Lydl_the_Great",
     "East Freeport",
     "East_Freeport"
-   ]
-  ],
-  "locket": [
-   [
-    "a werewolf",
-    "A_Werewolf",
-    "The Western Plains of Karana",
-    "Western_Plains_of_Karana"
-   ],
-   [
-    "Sentry Alechin",
-    "Sentry_Alechin",
-    "The Southern Plains of Karana",
-    "Southern_Karana"
    ]
   ],
   "logrin skull": [
@@ -13973,20 +14313,6 @@
     "Erud's_Crossing"
    ]
   ],
-  "metal pipe": [
-   [
-    "a drolvarg pawbuster",
-    "A_Drolvarg_Pawbuster",
-    "Karnor's Castle",
-    "Karnor's_Castle"
-   ],
-   [
-    "an iksar betrayer",
-    "An_iksar_betrayer",
-    "Chardok",
-    "Chardok"
-   ]
-  ],
   "micro servo": [
    [
     "rogue clockwork",
@@ -14389,72 +14715,12 @@
     "Velketor's_Labyrinth"
    ]
   ],
-  "nicked coin": [
-   [
-    "Cenn Lostin",
-    "Cenn_Lostin",
-    "Erudin",
-    "Erudin"
-   ],
-   [
-    "Genna Lostin",
-    "Genna_Lostin",
-    "Erudin",
-    "Erudin"
-   ],
-   [
-    "Lenya Wisk",
-    "Lenya_Wisk",
-    "Erudin",
-    "Erudin"
-   ],
-   [
-    "Megan Tiglin",
-    "Megan_Tiglin",
-    "Erudin",
-    "Erudin"
-   ]
-  ],
-  "nickel key": [
-   [
-    "a coerced penkeeper",
-    "A_coerced_penkeeper",
-    "The Crypt of Dalnir",
-    "Crypt_of_Dalnir"
-   ]
-  ],
   "nightfall giants head": [
    [
     "a nightfall giant",
     "Nightfall_Giant",
     "West Commonlands",
     "West_Commonlands"
-   ]
-  ],
-  "nobles crest": [
-   [
-    "Jyle Windstorm",
-    "Jyle_Windstorm",
-    "Innothule Swamp",
-    "Innothule_Swamp"
-   ],
-   [
-    "Zepin Winsle",
-    "Zepin_Winsle",
-    "Innothule Swamp",
-    "Innothule_Swamp"
-   ],
-   [
-    "Gwynn Marthank",
-    "Gwynn_Marthank",
-    "Innothule Swamp",
-    "Innothule_Swamp"
-   ],
-   [
-    "Jars Legola",
-    "Jars_Legola",
-    "Innothule Swamp",
-    "Innothule_Swamp"
    ]
   ],
   "noise maker": [
@@ -14853,14 +15119,6 @@
     "Siren's_Grotto"
    ]
   ],
-  "outlanders head": [
-   [
-    "Kwinn the Outlander",
-    "Kwinn_the_Outlander",
-    "Firiona Vie",
-    "Firiona_Vie"
-   ]
-  ],
   "paebala fetish": [
    [
     "a Paebala Spirit Talker",
@@ -14875,14 +15133,6 @@
     "Dyllin_Starsine",
     "Highpass Hold",
     "Highpass_Hold"
-   ]
-  ],
-  "page of a tome": [
-   [
-    "froglok raider",
-    "Froglok_Raider",
-    "The Swamp of No Hope",
-    "Swamp_of_No_Hope"
    ]
   ],
   "painbringer": [
@@ -16011,14 +16261,6 @@
     "Ocean_of_Tears"
    ]
   ],
-  "rabbit foot": [
-   [
-    "Stomples",
-    "Stomples",
-    "The Plane of Mischief",
-    "Plane_of_Mischief"
-   ]
-  ],
   "rabid kodiak skin": [
    [
     "Rabid Tundra Kodiak",
@@ -16943,26 +17185,6 @@
     "Rondo_Dunfire",
     "Clan Crushbone",
     "Crushbone"
-   ]
-  ],
-  "root": [
-   [
-    "a bristly succulent",
-    "A_bristly_succulent",
-    "The Overthere",
-    "The_Overthere"
-   ],
-   [
-    "a prickly succulent",
-    "A_prickly_succulent",
-    "The Overthere",
-    "The_Overthere"
-   ],
-   [
-    "a barbed succulent",
-    "A_barbed_succulent",
-    "The Overthere",
-    "The_Overthere"
    ]
   ],
   "rotten shark meat": [
@@ -17947,12 +18169,6 @@
   ],
   "sapphire": [
    [
-    "thick boned skeleton",
-    "Thick_boned_skeleton",
-    "Kurn's Tower",
-    "Kurn's_Tower"
-   ],
-   [
     "Zixx Nenix",
     "Zixx_Nenix",
     "The Lair of the Splitpaw",
@@ -17969,6 +18185,12 @@
     "Norsirx",
     "Skyshrine",
     "Skyshrine"
+   ],
+   [
+    "Battlewizard Unak",
+    "Battlewizard_Unak",
+    "The Liberated Citadel of Runnyeye",
+    "RunnyEye_Citadel"
    ]
   ],
   "sapphire necklace": [
@@ -18145,14 +18367,6 @@
     "Plane_of_Fear"
    ]
   ],
-  "scarlet stone": [
-   [
-    "a drolvarg scavenger",
-    "A_drolvarg_scavenger",
-    "Firiona Vie",
-    "Firiona_Vie"
-   ]
-  ],
   "sceptre of ixiblat fer": [
    [
     "Ixiblat Fer",
@@ -18327,18 +18541,6 @@
   ],
   "sealed letter": [
    [
-    "orc runner",
-    "Orc_runner",
-    "Nektulos Forest",
-    "Nektulos_Forest"
-   ],
-   [
-    "Drosco",
-    "Drosco",
-    "The Qeynos Aqueduct System",
-    "Qeynos_Aqueducts"
-   ],
-   [
     "Hollish Tnoops",
     "Hollish_Tnoops",
     "West Freeport",
@@ -18349,6 +18551,18 @@
     "Malik_Zaren",
     "Highpass Hold",
     "Highpass_Hold"
+   ],
+   [
+    "Eichvul",
+    "Eichvul",
+    "Everfrost Peaks",
+    "Everfrost_Peaks"
+   ],
+   [
+    "Shardwing Courier",
+    "Shardwing_Courier",
+    "The Western Wastes",
+    "Western_Wastes"
    ]
   ],
   "seax": [
@@ -18617,32 +18831,6 @@
    [
     "Shadowman Leader",
     "Shadowman_Leader",
-    "The Lesser Faydark",
-    "Lesser_Faydark"
-   ]
-  ],
-  "shadowed knife": [
-   [
-    "a goblin headmaster",
-    "A_Goblin_Headmaster",
-    "The Ocean of Tears",
-    "Ocean_of_Tears"
-   ],
-   [
-    "a shadowed man",
-    "A_shadowed_man_(Innothule_Swamp)",
-    "Innothule Swamp",
-    "Innothule_Swamp"
-   ],
-   [
-    "a shadowed man",
-    "A_shadowed_man_(Lavastorm_Mountains)",
-    "The Lavastorm Mountains",
-    "Lavastorm_Mountains"
-   ],
-   [
-    "a shadowed man",
-    "A_shadowed_man_(Lesser_Faydark)",
     "The Lesser Faydark",
     "Lesser_Faydark"
    ]
@@ -18965,32 +19153,6 @@
     "Steamfont_Mountains"
    ]
   ],
-  "shining stone": [
-   [
-    "a shadowed man",
-    "A_shadowed_man_(Innothule_Swamp)",
-    "Innothule Swamp",
-    "Innothule_Swamp"
-   ],
-   [
-    "a shadowed man",
-    "A_shadowed_man_(Lavastorm_Mountains)",
-    "The Lavastorm Mountains",
-    "Lavastorm_Mountains"
-   ],
-   [
-    "a shadowed man",
-    "A_shadowed_man_(Lesser_Faydark)",
-    "The Lesser Faydark",
-    "Lesser_Faydark"
-   ],
-   [
-    "a shadowed man",
-    "A_shadowed_man_(Nektulos_Forest)",
-    "Nektulos Forest",
-    "Nektulos_Forest"
-   ]
-  ],
   "shiny brass shield": [
    [
     "orc trainer",
@@ -19089,28 +19251,28 @@
   ],
   "shovel": [
    [
-    "a Sad Ratman Slave",
-    "A_Sad_Ratman_Slave",
-    "Chardok",
-    "Chardok"
-   ],
-   [
     "Furball Miller",
     "Furball_Miller",
     "The Western Plains of Karana",
     "Western_Plains_of_Karana"
    ],
    [
-    "a magician",
-    "A_Magician",
-    "Najena",
-    "Najena"
-   ],
-   [
     "dark-boned skeleton",
     "Dark-boned_skeleton",
     "Najena",
     "Najena"
+   ],
+   [
+    "an iksar slave",
+    "An_iksar_slave",
+    "The Mines of Nurga",
+    "Mines_of_Nurga"
+   ],
+   [
+    "burynai squad leader",
+    "Burynai_squad_leader",
+    "Frontier Mountains",
+    "Frontier_Mountains"
    ]
   ],
   "shrine key": [
@@ -19497,14 +19659,6 @@
     "Plane_of_Sky"
    ]
   ],
-  "singed scroll": [
-   [
-    "Overking Bathezid",
-    "Overking_Bathezid",
-    "Chardok",
-    "Chardok"
-   ]
-  ],
   "siren hair": [
    [
     "a siren enticer",
@@ -19533,14 +19687,6 @@
     "Kurn's_Tower"
    ]
   ],
-  "skeletal finger": [
-   [
-    "a giant skeleton",
-    "A_Giant_Skeleton",
-    "The Rathe Mountains",
-    "Rathe_Mountains"
-   ]
-  ],
   "skeletal hand": [
    [
     "icebone skeleton",
@@ -19553,14 +19699,6 @@
     "Charbone_Skeleton",
     "The Swamp of No Hope",
     "Swamp_of_No_Hope"
-   ]
-  ],
-  "skeletal toe": [
-   [
-    "a giant skeleton",
-    "A_Giant_Skeleton",
-    "The Rathe Mountains",
-    "Rathe_Mountains"
    ]
   ],
   "skeleton fist": [
@@ -20089,20 +20227,6 @@
     "Qeynos_Aqueducts"
    ]
   ],
-  "smashed protector of zeks head": [
-   [
-    "a Protector of Zek",
-    "A_Protector_of_Zek",
-    "Kael Drakkel",
-    "Kael_Drakkel"
-   ],
-   [
-    "protector of Zek",
-    "Protector_of_Zek",
-    "Kael Drakkel",
-    "Kael_Drakkel"
-   ]
-  ],
   "snake egg": [
    [
     "a garter snake",
@@ -20275,14 +20399,6 @@
     "The_Hole"
    ]
   ],
-  "sparkle purse": [
-   [
-    "Lynada the exiled",
-    "Lynada_the_Exiled",
-    "Solusek's Eye",
-    "Solusek's_Eye"
-   ]
-  ],
   "spectral pestle": [
    [
     "spectral partisan",
@@ -20383,32 +20499,6 @@
     "Sister_of_the_Spire",
     "The Plane of Sky",
     "Plane_of_Sky"
-   ]
-  ],
-  "spider venom sac": [
-   [
-    "a large spider",
-    "A_large_spider",
-    "Butcherblock Mountains",
-    "Butcherblock_Mountains"
-   ],
-   [
-    "a large wood spider",
-    "A_large_wood_spider",
-    "Misty Thicket",
-    "Misty_Thicket"
-   ],
-   [
-    "bonecrawler",
-    "Bonecrawler",
-    "The Field of Bone",
-    "Field_of_Bone"
-   ],
-   [
-    "a giant spider",
-    "A_Giant_Spider",
-    "Misty Thicket",
-    "Misty_Thicket"
    ]
   ],
   "spiderling eye": [
@@ -20677,14 +20767,6 @@
     "Oasis_of_Marr"
    ]
   ],
-  "spore mushroom": [
-   [
-    "a fungus spore",
-    "A_fungus_spore",
-    "Innothule Swamp",
-    "Innothule_Swamp"
-   ]
-  ],
   "spy report": [
    [
     "a krom zek spy",
@@ -20903,14 +20985,6 @@
     "Plane_of_Sky"
    ]
   ],
-  "stone key": [
-   [
-    "a goblin penkeeper",
-    "A_goblin_penkeeper",
-    "The Temple of Droga",
-    "Temple_of_Droga"
-   ]
-  ],
   "stone marker": [
    [
     "a glyphed guard",
@@ -20989,14 +21063,6 @@
     "Kobb",
     "Kithicor Forest",
     "Kithicor_Forest"
-   ]
-  ],
-  "strategic map of kithicor": [
-   [
-    "Ghoul Messenger",
-    "Ghoul_Messenger",
-    "The Western Plains of Karana",
-    "Western_Plains_of_Karana"
    ]
   ],
   "strathbone silk": [
@@ -21345,32 +21411,6 @@
     "Crypt_of_Dalnir"
    ]
   ],
-  "tattered note": [
-   [
-    "Gnasher Furgutt",
-    "Gnasher_Furgutt",
-    "Qeynos Hills",
-    "Qeynos_Hills"
-   ],
-   [
-    "Boog Mudtoe",
-    "Boog_Mudtoe",
-    "The Ocean of Tears",
-    "Ocean_of_Tears"
-   ],
-   [
-    "Goob Mudtoe",
-    "Goob_Mudtoe",
-    "The Ocean of Tears",
-    "Ocean_of_Tears"
-   ],
-   [
-    "a Sarnak revenant",
-    "A_sarnak_revenant",
-    "Lake of Ill Omen",
-    "Lake_of_Ill_Omen"
-   ]
-  ],
   "tattered parchment": [
    [
     "Rell Ostodl",
@@ -21671,6 +21711,42 @@
     "West_Freeport"
    ]
   ],
+  "the crusade of 1312 a.g.": [
+   [
+    "an Iksar tomb raider",
+    "An_Iksar_tomb_raider",
+    "The Emerald Jungle",
+    "Emerald_Jungle"
+   ]
+  ],
+  "the history of the greenmist": [
+   [
+    "a Chokidai Fleshripper",
+    "A_Chokidai_Fleshripper",
+    "Chardok",
+    "Chardok"
+   ],
+   [
+    "Grand Lorekeeper Kino Shai`din",
+    "Grand_Lorekeeper_Kino_Shai%60din",
+    "Chardok",
+    "Chardok"
+   ],
+   [
+    "Loremaster Piza`tak",
+    "Loremaster_Piza%60tak",
+    "Chardok",
+    "Chardok"
+   ]
+  ],
+  "the idol": [
+   [
+    "Raster of Guk",
+    "Raster_of_Guk",
+    "The Ruins of Old Guk",
+    "Lower_Guk"
+   ]
+  ],
   "thick caustic fluid": [
    [
     "a dusty werebat",
@@ -21893,10 +21969,10 @@
     "Butcherblock_Mountains"
    ],
    [
-    "an ice goblin scout",
-    "An_ice_goblin_scout",
-    "Everfrost Peaks",
-    "Everfrost_Peaks"
+    "Brother Trintle",
+    "Brother_Trintle",
+    "The Western Plains of Karana",
+    "Western_Plains_of_Karana"
    ]
   ],
   "torch of the elements": [
@@ -23341,20 +23417,6 @@
     "Lesser_Faydark"
    ]
   ],
-  "vile substance": [
-   [
-    "goblin janitor",
-    "Goblin_Janitor",
-    "The Liberated Citadel of Runnyeye",
-    "RunnyEye_Citadel"
-   ],
-   [
-    "Sludge Dankmire",
-    "Sludge_Dankmire",
-    "The Liberated Citadel of Runnyeye",
-    "RunnyEye_Citadel"
-   ]
-  ],
   "virulent poison": [
    [
     "Bizazzzt",
@@ -23535,14 +23597,6 @@
     "An_iksar_outcast",
     "The Swamp of No Hope",
     "Swamp_of_No_Hope"
-   ]
-  ],
-  "werebat wing": [
-   [
-    "a werebat",
-    "A_werebat",
-    "The Estate of Unrest",
-    "The_Estate_of_Unrest"
    ]
   ],
   "werewolf claws": [
@@ -24493,20 +24547,6 @@
     "Qeynos_Hills"
    ]
   ],
-  "yellow whip": [
-   [
-    "a decaying skeleton",
-    "A_Decaying_Skeleton",
-    "East Commonlands",
-    "East_Commonlands"
-   ],
-   [
-    "A wulfware lonewolf",
-    "A_wulfware_lonewolf",
-    "The Dreadlands",
-    "Dreadlands"
-   ]
-  ],
   "ysgaril root": [
    [
     "Protector of Sky",
@@ -24612,6 +24652,730 @@
   "4th piece of staff": [
    [
     200,
+    "c"
+   ]
+  ],
+  "a bar of ronium": [
+   [
+    11,
+    "c"
+   ],
+   [
+    409,
+    "c"
+   ]
+  ],
+  "a bardic letter (kelethin)": [
+   [
+    264,
+    "c"
+   ],
+   [
+    265,
+    "c"
+   ]
+  ],
+  "a bloody protector of zeks head": [
+   [
+    370,
+    "c"
+   ]
+  ],
+  "a bone key": [
+   [
+    149,
+    "c"
+   ]
+  ],
+  "a bone necklace": [
+   [
+    149,
+    "c"
+   ]
+  ],
+  "a box of cat bones": [
+   [
+    813,
+    "c"
+   ]
+  ],
+  "a bronze key": [
+   [
+    497,
+    "c"
+   ]
+  ],
+  "a broom": [
+   [
+    84,
+    "c"
+   ]
+  ],
+  "a canine": [
+   [
+    184,
+    "c"
+   ]
+  ],
+  "a copper key": [
+   [
+    497,
+    "c"
+   ]
+  ],
+  "a cracked femur": [
+   [
+    513,
+    "c"
+   ]
+  ],
+  "a cracked stein": [
+   [
+    148,
+    "c"
+   ]
+  ],
+  "a crude stein": [
+   [
+    124,
+    "r"
+   ],
+   [
+    148,
+    "r"
+   ]
+  ],
+  "a dark cauldron": [
+   [
+    11,
+    "c"
+   ]
+  ],
+  "a doll": [
+   [
+    404,
+    "c"
+   ]
+  ],
+  "a dusty sealed canopic": [
+   [
+    490,
+    "r"
+   ]
+  ],
+  "a froglok hex doll": [
+   [
+    666,
+    "c"
+   ]
+  ],
+  "a froglok nokta shaman": [
+   [
+    656,
+    "r"
+   ]
+  ],
+  "a fungus eye": [
+   [
+    361,
+    "r"
+   ]
+  ],
+  "a ghouls heart": [
+   [
+    806,
+    "c"
+   ]
+  ],
+  "a giant blood sac": [
+   [
+    158,
+    "c"
+   ],
+   [
+    160,
+    "c"
+   ]
+  ],
+  "a giant skeleton": [
+   [
+    656,
+    "r"
+   ]
+  ],
+  "a gigantic kromzek pick": [
+   [
+    446,
+    "r"
+   ],
+   [
+    574,
+    "c"
+   ]
+  ],
+  "a glimmering fairie wing": [
+   [
+    585,
+    "c"
+   ]
+  ],
+  "a glowing skull": [
+   [
+    149,
+    "c"
+   ],
+   [
+    490,
+    "r"
+   ]
+  ],
+  "a goblin headmaster": [
+   [
+    361,
+    "r"
+   ]
+  ],
+  "a jar of liquid": [
+   [
+    473,
+    "c"
+   ]
+  ],
+  "a king cod card": [
+   [
+    171,
+    "c"
+   ]
+  ],
+  "a library card": [
+   [
+    768,
+    "c"
+   ]
+  ],
+  "a locked chest": [
+   [
+    216,
+    "c"
+   ],
+   [
+    796,
+    "c"
+   ]
+  ],
+  "a locket": [
+   [
+    11,
+    "c"
+   ]
+  ],
+  "a maleficent necromancer doll": [
+   [
+    768,
+    "c"
+   ]
+  ],
+  "a mancatcher crown": [
+   [
+    868,
+    "c"
+   ]
+  ],
+  "a mandible": [
+   [
+    666,
+    "c"
+   ]
+  ],
+  "a metal pipe": [
+   [
+    491,
+    "c"
+   ],
+   [
+    776,
+    "c"
+   ]
+  ],
+  "a nicked coin": [
+   [
+    113,
+    "c"
+   ]
+  ],
+  "a nickel key": [
+   [
+    497,
+    "c"
+   ]
+  ],
+  "a nobles crest": [
+   [
+    527,
+    "c"
+   ]
+  ],
+  "a note": [
+   [
+    361,
+    "r"
+   ]
+  ],
+  "a page of a tome": [
+   [
+    149,
+    "c"
+   ]
+  ],
+  "a rabbit foot": [
+   [
+    566,
+    "c"
+   ]
+  ],
+  "a raw pike head": [
+   [
+    868,
+    "c"
+   ]
+  ],
+  "a rolled up note": [
+   [
+    521,
+    "c"
+   ]
+  ],
+  "a ruby": [
+   [
+    868,
+    "c"
+   ]
+  ],
+  "a sapphire": [
+   [
+    868,
+    "c"
+   ]
+  ],
+  "a scarlet stone": [
+   [
+    497,
+    "c"
+   ]
+  ],
+  "a sealed letter": [
+   [
+    185,
+    "c"
+   ],
+   [
+    186,
+    "c"
+   ],
+   [
+    482,
+    "c"
+   ],
+   [
+    541,
+    "c"
+   ],
+   [
+    542,
+    "c"
+   ],
+   [
+    784,
+    "c"
+   ]
+  ],
+  "a sealed list": [
+   [
+    482,
+    "c"
+   ],
+   [
+    746,
+    "c"
+   ]
+  ],
+  "a shadowed knife": [
+   [
+    361,
+    "r"
+   ]
+  ],
+  "a shadowed man": [
+   [
+    361,
+    "r"
+   ],
+   [
+    656,
+    "r"
+   ]
+  ],
+  "a shining stone": [
+   [
+    621,
+    "c"
+   ]
+  ],
+  "a shovel": [
+   [
+    680,
+    "c"
+   ]
+  ],
+  "a singed scroll": [
+   [
+    115,
+    "c"
+   ]
+  ],
+  "a skeletal cook": [
+   [
+    490,
+    "r"
+   ]
+  ],
+  "a skeletal finger": [
+   [
+    656,
+    "r"
+   ]
+  ],
+  "a skeletal toe": [
+   [
+    656,
+    "r"
+   ]
+  ],
+  "a skull chest": [
+   [
+    666,
+    "c"
+   ]
+  ],
+  "a smashed protector of zeks head": [
+   [
+    370,
+    "c"
+   ]
+  ],
+  "a smelly sealed bag": [
+   [
+    100,
+    "c"
+   ]
+  ],
+  "a sparkle purse": [
+   [
+    627,
+    "c"
+   ]
+  ],
+  "a spider venom sac": [
+   [
+    251,
+    "c"
+   ],
+   [
+    902,
+    "c"
+   ]
+  ],
+  "a spore mushroom": [
+   [
+    372,
+    "c"
+   ]
+  ],
+  "a stone key": [
+   [
+    149,
+    "c"
+   ]
+  ],
+  "a strategic map of kithicor": [
+   [
+    504,
+    "c"
+   ]
+  ],
+  "a tattered book": [
+   [
+    17,
+    "c"
+   ]
+  ],
+  "a tattered note": [
+   [
+    186,
+    "c"
+   ],
+   [
+    232,
+    "c"
+   ],
+   [
+    254,
+    "c"
+   ],
+   [
+    275,
+    "c"
+   ],
+   [
+    277,
+    "c"
+   ],
+   [
+    278,
+    "c"
+   ],
+   [
+    281,
+    "c"
+   ],
+   [
+    282,
+    "c"
+   ],
+   [
+    283,
+    "c"
+   ],
+   [
+    284,
+    "c"
+   ],
+   [
+    285,
+    "c"
+   ],
+   [
+    293,
+    "c"
+   ],
+   [
+    294,
+    "c"
+   ],
+   [
+    295,
+    "c"
+   ],
+   [
+    296,
+    "c"
+   ],
+   [
+    297,
+    "c"
+   ],
+   [
+    298,
+    "c"
+   ],
+   [
+    299,
+    "c"
+   ],
+   [
+    301,
+    "c"
+   ],
+   [
+    303,
+    "c"
+   ],
+   [
+    304,
+    "c"
+   ],
+   [
+    305,
+    "c"
+   ],
+   [
+    307,
+    "c"
+   ],
+   [
+    308,
+    "c"
+   ],
+   [
+    309,
+    "c"
+   ],
+   [
+    310,
+    "c"
+   ],
+   [
+    312,
+    "c"
+   ],
+   [
+    313,
+    "c"
+   ],
+   [
+    314,
+    "c"
+   ],
+   [
+    315,
+    "c"
+   ],
+   [
+    319,
+    "c"
+   ],
+   [
+    321,
+    "c"
+   ],
+   [
+    322,
+    "c"
+   ],
+   [
+    325,
+    "c"
+   ],
+   [
+    326,
+    "c"
+   ],
+   [
+    327,
+    "c"
+   ],
+   [
+    328,
+    "c"
+   ],
+   [
+    329,
+    "c"
+   ],
+   [
+    330,
+    "c"
+   ],
+   [
+    336,
+    "c"
+   ],
+   [
+    337,
+    "c"
+   ],
+   [
+    340,
+    "c"
+   ],
+   [
+    341,
+    "c"
+   ],
+   [
+    342,
+    "c"
+   ],
+   [
+    343,
+    "c"
+   ],
+   [
+    344,
+    "c"
+   ],
+   [
+    345,
+    "c"
+   ],
+   [
+    346,
+    "c"
+   ],
+   [
+    347,
+    "c"
+   ],
+   [
+    348,
+    "c"
+   ],
+   [
+    351,
+    "c"
+   ],
+   [
+    352,
+    "c"
+   ],
+   [
+    354,
+    "c"
+   ],
+   [
+    355,
+    "c"
+   ],
+   [
+    356,
+    "c"
+   ],
+   [
+    357,
+    "c"
+   ],
+   [
+    358,
+    "c"
+   ],
+   [
+    414,
+    "c"
+   ]
+  ],
+  "a torch": [
+   [
+    834,
+    "c"
+   ]
+  ],
+  "a vile substance": [
+   [
+    849,
+    "c"
+   ]
+  ],
+  "a werebat": [
+   [
+    656,
+    "r"
+   ]
+  ],
+  "a werebat wing": [
+   [
+    656,
+    "r"
+   ]
+  ],
+  "a worn rune": [
+   [
+    712,
+    "c"
+   ]
+  ],
+  "a yellow whip": [
+   [
+    513,
     "c"
    ]
   ],
@@ -24877,6 +25641,54 @@
     "c"
    ]
   ],
+  "an ancient croc": [
+   [
+    656,
+    "r"
+   ]
+  ],
+  "an emerald": [
+   [
+    868,
+    "c"
+   ]
+  ],
+  "an encrypted document": [
+   [
+    581,
+    "c"
+   ]
+  ],
+  "an enrollment letter": [
+   [
+    350,
+    "c"
+   ]
+  ],
+  "an illegible note": [
+   [
+    416,
+    "c"
+   ]
+  ],
+  "an island goblin headhunter": [
+   [
+    361,
+    "r"
+   ]
+  ],
+  "an outlanders head": [
+   [
+    497,
+    "c"
+   ]
+  ],
+  "an undead jester": [
+   [
+    490,
+    "r"
+   ]
+  ],
   "ancient blade": [
    [
     866,
@@ -24887,12 +25699,6 @@
    [
     594,
     "c"
-   ]
-  ],
-  "ancient croc": [
-   [
-    656,
-    "r"
    ]
   ],
   "ancient leather boots": [
@@ -25877,12 +26683,6 @@
     "c"
    ]
   ],
-  "baker": [
-   [
-    854,
-    "c"
-   ]
-  ],
   "baking spirits": [
    [
     595,
@@ -26153,16 +26953,6 @@
     "r"
    ]
   ],
-  "bar of ronium": [
-   [
-    11,
-    "c"
-   ],
-   [
-    409,
-    "c"
-   ]
-  ],
   "barbarian femur": [
    [
     408,
@@ -26221,16 +27011,6 @@
    [
     445,
     "r"
-   ]
-  ],
-  "bardic letter (kelethin)": [
-   [
-    264,
-    "c"
-   ],
-   [
-    265,
-    "c"
    ]
   ],
   "bargynns digger": [
@@ -27107,12 +27887,6 @@
     "r"
    ]
   ],
-  "blade": [
-   [
-    799,
-    "c"
-   ]
-  ],
   "blade core-5th fold": [
    [
     799,
@@ -27583,12 +28357,6 @@
     "c"
    ]
   ],
-  "bloody protector of zeks head": [
-   [
-    370,
-    "c"
-   ]
-  ],
   "bloody shank": [
    [
     574,
@@ -27797,18 +28565,6 @@
     "c"
    ]
   ],
-  "bone key": [
-   [
-    149,
-    "c"
-   ]
-  ],
-  "bone necklace": [
-   [
-    149,
-    "c"
-   ]
-  ],
   "bone shield": [
    [
     485,
@@ -27873,12 +28629,6 @@
    [
     896,
     "c"
-   ]
-  ],
-  "book of knowledge": [
-   [
-    795,
-    "r"
    ]
   ],
   "book of mischief": [
@@ -28155,12 +28905,6 @@
     "c"
    ]
   ],
-  "box of cat bones": [
-   [
-    813,
-    "c"
-   ]
-  ],
   "box of remains": [
    [
     408,
@@ -28385,12 +29129,6 @@
     "c"
    ]
   ],
-  "bread shipment": [
-   [
-    737,
-    "r"
-   ]
-  ],
   "breastplate of distraction": [
    [
     171,
@@ -28535,12 +29273,6 @@
     "c"
    ]
   ],
-  "broken glacier souvenir mug": [
-   [
-    694,
-    "c"
-   ]
-  ],
   "broken heirloom necklace": [
    [
     766,
@@ -28613,12 +29345,6 @@
    [
     425,
     "r"
-   ]
-  ],
-  "bronze key": [
-   [
-    497,
-    "c"
    ]
   ],
   "bronze long sword": [
@@ -28694,12 +29420,6 @@
   "brood sack": [
    [
     513,
-    "c"
-   ]
-  ],
-  "broom": [
-   [
-    84,
     "c"
    ]
   ],
@@ -28925,12 +29645,6 @@
     "c"
    ]
   ],
-  "butcher": [
-   [
-    854,
-    "c"
-   ]
-  ],
   "cabilis": [
    [
     490,
@@ -28983,12 +29697,6 @@
     "c"
    ]
   ],
-  "canine": [
-   [
-    184,
-    "c"
-   ]
-  ],
   "cape of underfoot": [
    [
     105,
@@ -29004,12 +29712,6 @@
   "capt. orlins spiced ale": [
    [
     789,
-    "c"
-   ]
-  ],
-  "captain": [
-   [
-    854,
     "c"
    ]
   ],
@@ -29853,12 +30555,6 @@
     "c"
    ]
   ],
-  "code of combat": [
-   [
-    795,
-    "r"
-   ]
-  ],
   "code of zan fi": [
    [
     491,
@@ -30184,12 +30880,6 @@
    ],
    [
     655,
-    "c"
-   ]
-  ],
-  "copper key": [
-   [
-    497,
     "c"
    ]
   ],
@@ -30579,12 +31269,6 @@
     "c"
    ]
   ],
-  "cracked femur": [
-   [
-    513,
-    "c"
-   ]
-  ],
   "cracked flute": [
    [
     880,
@@ -30624,12 +31308,6 @@
   "cracked staff": [
    [
     397,
-    "c"
-   ]
-  ],
-  "cracked stein": [
-   [
-    148,
     "c"
    ]
   ],
@@ -30954,22 +31632,6 @@
    ],
    [
     807,
-    "c"
-   ]
-  ],
-  "crude stein": [
-   [
-    124,
-    "r"
-   ],
-   [
-    148,
-    "r"
-   ]
-  ],
-  "crusade of 1312 a.g.": [
-   [
-    666,
     "c"
    ]
   ],
@@ -32265,12 +32927,6 @@
     "c"
    ]
   ],
-  "dark cauldron": [
-   [
-    11,
-    "c"
-   ]
-  ],
   "dark circlet": [
    [
     140,
@@ -33165,12 +33821,6 @@
     "c"
    ]
   ],
-  "doll": [
-   [
-    404,
-    "c"
-   ]
-  ],
   "doogles signature souvenir mug": [
    [
     694,
@@ -33585,12 +34235,6 @@
    [
     733,
     "c"
-   ]
-  ],
-  "dusty sealed canopic": [
-   [
-    490,
-    "r"
    ]
   ],
   "dusty tome": [
@@ -34097,10 +34741,6 @@
    [
     810,
     "c"
-   ],
-   [
-    868,
-    "c"
    ]
   ],
   "emerald cloak of the faydark": [
@@ -34425,12 +35065,6 @@
     "c"
    ]
   ],
-  "encrypted document": [
-   [
-    581,
-    "c"
-   ]
-  ],
   "endure disease": [
    [
     472,
@@ -34480,12 +35114,6 @@
   "enraged goblin beads": [
    [
     82,
-    "c"
-   ]
-  ],
-  "enrollment letter": [
-   [
-    350,
     "c"
    ]
   ],
@@ -34644,16 +35272,6 @@
   "essence ring": [
    [
     213,
-    "r"
-   ]
-  ],
-  "estate of unrest": [
-   [
-    361,
-    "r"
-   ],
-   [
-    656,
     "r"
    ]
   ],
@@ -35176,12 +35794,6 @@
   "featherweight pouch": [
    [
     229,
-    "r"
-   ]
-  ],
-  "feerrott": [
-   [
-    737,
     "r"
    ]
   ],
@@ -36569,12 +37181,6 @@
     "c"
    ]
   ],
-  "froglok hex doll": [
-   [
-    666,
-    "c"
-   ]
-  ],
   "froglok leg": [
    [
     218,
@@ -36597,12 +37203,6 @@
    [
     854,
     "c"
-   ]
-  ],
-  "froglok nokta shaman": [
-   [
-    656,
-    "r"
    ]
   ],
   "froglok skin mask": [
@@ -36883,12 +37483,6 @@
    [
     372,
     "c"
-   ]
-  ],
-  "fungus eye": [
-   [
-    361,
-    "r"
    ]
   ],
   "funny money": [
@@ -37223,25 +37817,9 @@
     "r"
    ]
   ],
-  "ghouls heart": [
-   [
-    806,
-    "c"
-   ]
-  ],
   "giant bat fur": [
    [
     839,
-    "c"
-   ]
-  ],
-  "giant blood sac": [
-   [
-    158,
-    "c"
-   ],
-   [
-    160,
     "c"
    ]
   ],
@@ -37363,12 +37941,6 @@
     "c"
    ]
   ],
-  "giant skeleton": [
-   [
-    656,
-    "r"
-   ]
-  ],
   "giant snake fang": [
    [
     104,
@@ -37440,16 +38012,6 @@
   "gigantic gorilla hide": [
    [
     828,
-    "c"
-   ]
-  ],
-  "gigantic kromzek pick": [
-   [
-    446,
-    "r"
-   ],
-   [
-    574,
     "c"
    ]
   ],
@@ -37552,12 +38114,6 @@
   "glidaras ring": [
    [
     787,
-    "c"
-   ]
-  ],
-  "glimmering fairie wing": [
-   [
-    585,
     "c"
    ]
   ],
@@ -37721,16 +38277,6 @@
     "c"
    ]
   ],
-  "glowing skull": [
-   [
-    149,
-    "c"
-   ],
-   [
-    490,
-    "r"
-   ]
-  ],
   "glowing sword hilt": [
    [
     902,
@@ -37891,12 +38437,6 @@
    [
     140,
     "c"
-   ]
-  ],
-  "goblin headmaster": [
-   [
-    361,
-    "r"
    ]
   ],
   "goblin hunter javelin": [
@@ -39415,12 +39955,6 @@
     "c"
    ]
   ],
-  "history of the greenmist": [
-   [
-    149,
-    "c"
-   ]
-  ],
   "holgresh mojo stick (air)": [
    [
     221,
@@ -39879,12 +40413,6 @@
     "c"
    ]
   ],
-  "icy mug souvenir": [
-   [
-    694,
-    "c"
-   ]
-  ],
   "icy totem of protection": [
    [
     574,
@@ -39898,16 +40426,6 @@
   "idiot savants cap": [
    [
     171,
-    "c"
-   ]
-  ],
-  "idol": [
-   [
-    491,
-    "c"
-   ],
-   [
-    500,
     "c"
    ]
   ],
@@ -39990,12 +40508,6 @@
    ],
    [
     398,
-    "c"
-   ]
-  ],
-  "illegible note": [
-   [
-    416,
     "c"
    ]
   ],
@@ -40627,12 +41139,6 @@
     "c"
    ]
   ],
-  "island goblin headhunter": [
-   [
-    361,
-    "r"
-   ]
-  ],
   "ivandyrs hoop": [
    [
     457,
@@ -40824,12 +41330,6 @@
   "jar of honey": [
    [
     655,
-    "c"
-   ]
-  ],
-  "jar of liquid": [
-   [
-    473,
     "c"
    ]
   ],
@@ -41236,12 +41736,6 @@
    ],
    [
     424,
-    "c"
-   ]
-  ],
-  "king cod card": [
-   [
-    171,
     "c"
    ]
   ],
@@ -42181,12 +42675,6 @@
     "c"
    ]
   ],
-  "library card": [
-   [
-    768,
-    "c"
-   ]
-  ],
   "library of erudin": [
    [
     106,
@@ -42415,25 +42903,9 @@
     "c"
    ]
   ],
-  "locked chest": [
-   [
-    216,
-    "c"
-   ],
-   [
-    796,
-    "c"
-   ]
-  ],
   "locked rum box": [
    [
     98,
-    "c"
-   ]
-  ],
-  "locket": [
-   [
-    11,
     "c"
    ]
   ],
@@ -42721,12 +43193,6 @@
     "c"
    ]
   ],
-  "maleficent necromancer doll": [
-   [
-    768,
-    "c"
-   ]
-  ],
   "maleficent robe": [
    [
     858,
@@ -42863,21 +43329,9 @@
     "c"
    ]
   ],
-  "mancatcher crown": [
-   [
-    868,
-    "c"
-   ]
-  ],
   "mandala sketch": [
    [
     799,
-    "c"
-   ]
-  ],
-  "mandible": [
-   [
-    666,
     "c"
    ]
   ],
@@ -43317,16 +43771,6 @@
     "c"
    ]
   ],
-  "metal pipe": [
-   [
-    491,
-    "c"
-   ],
-   [
-    776,
-    "c"
-   ]
-  ],
   "micro servo": [
    [
     843,
@@ -43448,12 +43892,6 @@
   "minotaur horn": [
    [
     487,
-    "c"
-   ]
-  ],
-  "minstrel": [
-   [
-    854,
     "c"
    ]
   ],
@@ -44107,18 +44545,6 @@
     "c"
    ]
   ],
-  "nicked coin": [
-   [
-    113,
-    "c"
-   ]
-  ],
-  "nickel key": [
-   [
-    497,
-    "c"
-   ]
-  ],
   "nightfall giants head": [
    [
     11,
@@ -44128,12 +44554,6 @@
   "noblemans bag": [
    [
     806,
-    "c"
-   ]
-  ],
-  "nobles crest": [
-   [
-    527,
     "c"
    ]
   ],
@@ -44191,10 +44611,6 @@
    [
     74,
     "c"
-   ],
-   [
-    361,
-    "r"
    ],
    [
     552,
@@ -44354,12 +44770,6 @@
   "oak shaft": [
    [
     699,
-    "c"
-   ]
-  ],
-  "oblong bottle": [
-   [
-    627,
     "c"
    ]
   ],
@@ -44611,12 +45021,6 @@
     "c"
    ]
   ],
-  "one key": [
-   [
-    200,
-    "c"
-   ]
-  ],
   "onyx": [
    [
     79,
@@ -44829,12 +45233,6 @@
     "r"
    ]
   ],
-  "outlanders head": [
-   [
-    497,
-    "c"
-   ]
-  ],
   "pack for shark": [
    [
     674,
@@ -44868,12 +45266,6 @@
   "page 34 of a book": [
    [
     442,
-    "c"
-   ]
-  ],
-  "page of a tome": [
-   [
-    149,
     "c"
    ]
   ],
@@ -46453,12 +46845,6 @@
     "c"
    ]
   ],
-  "rabbit foot": [
-   [
-    566,
-    "c"
-   ]
-  ],
   "rabid kodiak skin": [
    [
     130,
@@ -46728,12 +47114,6 @@
   "raw darkwater piranha": [
    [
     231,
-    "c"
-   ]
-  ],
-  "raw pike head": [
-   [
-    868,
     "c"
    ]
   ],
@@ -47649,10 +48029,6 @@
    [
     216,
     "c"
-   ],
-   [
-    521,
-    "c"
    ]
   ],
   "rolled up strip of cloth": [
@@ -47943,10 +48319,6 @@
    [
     850,
     "r"
-   ],
-   [
-    868,
-    "c"
    ]
   ],
   "ruby crown": [
@@ -48907,10 +49279,6 @@
    [
     850,
     "r"
-   ],
-   [
-    868,
-    "c"
    ]
   ],
   "sapphire necklace": [
@@ -49158,12 +49526,6 @@
   "scare straw": [
    [
     520,
-    "c"
-   ]
-  ],
-  "scarlet stone": [
-   [
-    497,
     "c"
    ]
   ],
@@ -49477,14 +49839,6 @@
     "c"
    ],
    [
-    185,
-    "c"
-   ],
-   [
-    186,
-    "c"
-   ],
-   [
     186,
     "c"
    ],
@@ -49505,19 +49859,7 @@
     "c"
    ],
    [
-    482,
-    "c"
-   ],
-   [
     541,
-    "c"
-   ],
-   [
-    541,
-    "c"
-   ],
-   [
-    542,
     "c"
    ],
    [
@@ -49545,10 +49887,6 @@
     "c"
    ],
    [
-    784,
-    "c"
-   ],
-   [
     796,
     "c"
    ],
@@ -49562,16 +49900,6 @@
    ],
    [
     876,
-    "c"
-   ]
-  ],
-  "sealed list": [
-   [
-    482,
-    "c"
-   ],
-   [
-    746,
     "c"
    ]
   ],
@@ -49971,22 +50299,6 @@
     "c"
    ]
   ],
-  "shadowed knife": [
-   [
-    361,
-    "r"
-   ]
-  ],
-  "shadowed man": [
-   [
-    361,
-    "r"
-   ],
-   [
-    656,
-    "r"
-   ]
-  ],
   "shadowed rapier": [
    [
     413,
@@ -50275,12 +50587,6 @@
     "c"
    ]
   ],
-  "shining stone": [
-   [
-    621,
-    "c"
-   ]
-  ],
   "shining vambraces": [
    [
     551,
@@ -50380,10 +50686,6 @@
   "shovel": [
    [
     149,
-    "c"
-   ],
-   [
-    680,
     "c"
    ]
   ],
@@ -50721,12 +51023,6 @@
     "c"
    ]
   ],
-  "singed scroll": [
-   [
-    115,
-    "c"
-   ]
-  ],
   "singing short sword": [
    [
     24,
@@ -50749,34 +51045,16 @@
     "c"
    ]
   ],
-  "skeletal cook": [
-   [
-    490,
-    "r"
-   ]
-  ],
   "skeletal feet": [
    [
     183,
     "c"
    ]
   ],
-  "skeletal finger": [
-   [
-    656,
-    "r"
-   ]
-  ],
   "skeletal hand": [
    [
     183,
     "c"
-   ]
-  ],
-  "skeletal toe": [
-   [
-    656,
-    "r"
    ]
   ],
   "skeleton fist": [
@@ -50845,12 +51123,6 @@
     "c"
    ]
   ],
-  "skull chest": [
-   [
-    666,
-    "c"
-   ]
-  ],
   "skull of jhentra": [
    [
     492,
@@ -50860,16 +51132,6 @@
   "skull of meldrath": [
    [
     409,
-    "c"
-   ]
-  ],
-  "skull of torture": [
-   [
-    490,
-    "r"
-   ],
-   [
-    574,
     "c"
    ]
   ],
@@ -51431,18 +51693,6 @@
     "c"
    ]
   ],
-  "smashed protector of zeks head": [
-   [
-    370,
-    "c"
-   ]
-  ],
-  "smelly sealed bag": [
-   [
-    100,
-    "c"
-   ]
-  ],
   "smite": [
    [
     208,
@@ -51753,12 +52003,6 @@
     "r"
    ]
   ],
-  "sparkle purse": [
-   [
-    627,
-    "c"
-   ]
-  ],
   "sparring arm guards": [
    [
     695,
@@ -52023,16 +52267,6 @@
    [
     251,
     "r"
-   ]
-  ],
-  "spider venom sac": [
-   [
-    251,
-    "c"
-   ],
-   [
-    902,
-    "c"
    ]
   ],
   "spiderling eye": [
@@ -52318,12 +52552,6 @@
   "spoon": [
    [
     200,
-    "c"
-   ]
-  ],
-  "spore mushroom": [
-   [
-    372,
     "c"
    ]
   ],
@@ -52719,12 +52947,6 @@
     "c"
    ]
   ],
-  "stone key": [
-   [
-    149,
-    "c"
-   ]
-  ],
   "stone marker": [
    [
     194,
@@ -52768,12 +52990,6 @@
   "strange tiger pelt": [
    [
     270,
-    "c"
-   ]
-  ],
-  "strategic map of kithicor": [
-   [
-    504,
     "c"
    ]
   ],
@@ -53293,12 +53509,6 @@
     "c"
    ]
   ],
-  "tattered book": [
-   [
-    17,
-    "c"
-   ]
-  ],
   "tattered cloth note": [
    [
     472,
@@ -53336,240 +53546,6 @@
   "tattered memo": [
    [
     453,
-    "c"
-   ]
-  ],
-  "tattered note": [
-   [
-    186,
-    "c"
-   ],
-   [
-    232,
-    "c"
-   ],
-   [
-    254,
-    "c"
-   ],
-   [
-    275,
-    "c"
-   ],
-   [
-    277,
-    "c"
-   ],
-   [
-    278,
-    "c"
-   ],
-   [
-    281,
-    "c"
-   ],
-   [
-    282,
-    "c"
-   ],
-   [
-    283,
-    "c"
-   ],
-   [
-    284,
-    "c"
-   ],
-   [
-    285,
-    "c"
-   ],
-   [
-    293,
-    "c"
-   ],
-   [
-    294,
-    "c"
-   ],
-   [
-    295,
-    "c"
-   ],
-   [
-    296,
-    "c"
-   ],
-   [
-    297,
-    "c"
-   ],
-   [
-    298,
-    "c"
-   ],
-   [
-    299,
-    "c"
-   ],
-   [
-    301,
-    "c"
-   ],
-   [
-    303,
-    "c"
-   ],
-   [
-    304,
-    "c"
-   ],
-   [
-    305,
-    "c"
-   ],
-   [
-    307,
-    "c"
-   ],
-   [
-    308,
-    "c"
-   ],
-   [
-    309,
-    "c"
-   ],
-   [
-    310,
-    "c"
-   ],
-   [
-    312,
-    "c"
-   ],
-   [
-    313,
-    "c"
-   ],
-   [
-    314,
-    "c"
-   ],
-   [
-    315,
-    "c"
-   ],
-   [
-    319,
-    "c"
-   ],
-   [
-    321,
-    "c"
-   ],
-   [
-    322,
-    "c"
-   ],
-   [
-    325,
-    "c"
-   ],
-   [
-    326,
-    "c"
-   ],
-   [
-    327,
-    "c"
-   ],
-   [
-    328,
-    "c"
-   ],
-   [
-    329,
-    "c"
-   ],
-   [
-    330,
-    "c"
-   ],
-   [
-    336,
-    "c"
-   ],
-   [
-    337,
-    "c"
-   ],
-   [
-    340,
-    "c"
-   ],
-   [
-    341,
-    "c"
-   ],
-   [
-    342,
-    "c"
-   ],
-   [
-    343,
-    "c"
-   ],
-   [
-    344,
-    "c"
-   ],
-   [
-    345,
-    "c"
-   ],
-   [
-    346,
-    "c"
-   ],
-   [
-    347,
-    "c"
-   ],
-   [
-    348,
-    "c"
-   ],
-   [
-    351,
-    "c"
-   ],
-   [
-    352,
-    "c"
-   ],
-   [
-    354,
-    "c"
-   ],
-   [
-    355,
-    "c"
-   ],
-   [
-    356,
-    "c"
-   ],
-   [
-    357,
-    "c"
-   ],
-   [
-    358,
-    "c"
-   ],
-   [
-    414,
     "c"
    ]
   ],
@@ -53947,6 +53923,146 @@
    [
     902,
     "c"
+   ]
+  ],
+  "the baker": [
+   [
+    854,
+    "c"
+   ]
+  ],
+  "the blade": [
+   [
+    799,
+    "c"
+   ]
+  ],
+  "the book of knowledge": [
+   [
+    795,
+    "r"
+   ]
+  ],
+  "the bread shipment": [
+   [
+    737,
+    "r"
+   ]
+  ],
+  "the broken glacier souvenir mug": [
+   [
+    694,
+    "c"
+   ]
+  ],
+  "the butcher": [
+   [
+    854,
+    "c"
+   ]
+  ],
+  "the captain": [
+   [
+    854,
+    "c"
+   ]
+  ],
+  "the code of combat": [
+   [
+    795,
+    "r"
+   ]
+  ],
+  "the crusade of 1312 a.g.": [
+   [
+    666,
+    "c"
+   ]
+  ],
+  "the estate of unrest": [
+   [
+    361,
+    "r"
+   ],
+   [
+    656,
+    "r"
+   ]
+  ],
+  "the feerrott": [
+   [
+    737,
+    "r"
+   ]
+  ],
+  "the history of the greenmist": [
+   [
+    149,
+    "c"
+   ]
+  ],
+  "the icy mug souvenir": [
+   [
+    694,
+    "c"
+   ]
+  ],
+  "the idol": [
+   [
+    491,
+    "c"
+   ],
+   [
+    500,
+    "c"
+   ]
+  ],
+  "the minstrel": [
+   [
+    854,
+    "c"
+   ]
+  ],
+  "the oblong bottle": [
+   [
+    627,
+    "c"
+   ]
+  ],
+  "the one key": [
+   [
+    200,
+    "c"
+   ]
+  ],
+  "the skull of torture": [
+   [
+    490,
+    "r"
+   ],
+   [
+    574,
+    "c"
+   ]
+  ],
+  "the velium keg collectors mug": [
+   [
+    694,
+    "c"
+   ]
+  ],
+  "the visceral dagger": [
+   [
+    149,
+    "c"
+   ],
+   [
+    574,
+    "c"
+   ],
+   [
+    861,
+    "r"
    ]
   ],
   "thelvorn, blade of light": [
@@ -54377,10 +54493,6 @@
    [
     689,
     "r"
-   ],
-   [
-    834,
-    "c"
    ],
    [
     898,
@@ -55609,12 +55721,6 @@
     "c"
    ]
   ],
-  "undead jester": [
-   [
-    490,
-    "r"
-   ]
-  ],
   "underfoot triple bock": [
    [
     627,
@@ -55857,12 +55963,6 @@
     "c"
    ]
   ],
-  "velium keg collectors mug": [
-   [
-    694,
-    "c"
-   ]
-  ],
   "velium purifier": [
    [
     129,
@@ -56011,12 +56111,6 @@
     "c"
    ]
   ],
-  "vile substance": [
-   [
-    849,
-    "c"
-   ]
-  ],
   "vineclinger berries": [
    [
     146,
@@ -56042,20 +56136,6 @@
   "visage of life": [
    [
     650,
-    "r"
-   ]
-  ],
-  "visceral dagger": [
-   [
-    149,
-    "c"
-   ],
-   [
-    574,
-    "c"
-   ],
-   [
-    861,
     "r"
    ]
   ],
@@ -56548,18 +56628,6 @@
    ],
    [
     475,
-    "r"
-   ]
-  ],
-  "werebat": [
-   [
-    656,
-    "r"
-   ]
-  ],
-  "werebat wing": [
-   [
-    656,
     "r"
    ]
   ],
@@ -57273,12 +57341,6 @@
     "r"
    ]
   ],
-  "worn rune": [
-   [
-    712,
-    "c"
-   ]
-  ],
   "woven coldain prayer shawl": [
    [
     129,
@@ -57493,12 +57555,6 @@
    [
     496,
     "r"
-   ]
-  ],
-  "yellow whip": [
-   [
-    513,
-    "c"
    ]
   ],
   "ysgaril root": [
@@ -131572,7 +131628,7 @@
    "zone": "Erudin"
   }
  ],
- "schema": 2,
+ "schema": 3,
  "src": {
   "1st piece of staff": {
    "k": [],
@@ -131589,6 +131645,866 @@
   "4th piece of staff": {
    "k": [],
    "z": []
+  },
+  "a bar of ronium": {
+   "k": [],
+   "r": {
+    "c": [
+     [
+      1,
+      "Melatite"
+     ],
+     [
+      2,
+      "Enchanted Platinum Bar"
+     ],
+     [
+      1,
+      "Mistmoore Granite"
+     ],
+     [
+      1,
+      "Sand of Ro"
+     ]
+    ]
+   },
+   "z": []
+  },
+  "a bardic letter (kelethin)": {
+   "k": [],
+   "z": []
+  },
+  "a bloody protector of zeks head": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Kael Drakkel": [
+     "a Protector of Zek",
+     "protector of Zek"
+    ]
+   },
+   "z": [
+    "Kael Drakkel"
+   ]
+  },
+  "a bone key": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Temple of Droga": [
+     "A goblin penmaster"
+    ]
+   },
+   "z": [
+    "The Temple of Droga"
+   ]
+  },
+  "a bone necklace": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Temple of Droga": [
+     "a goblin penmaster"
+    ]
+   },
+   "z": [
+    "The Temple of Droga"
+   ]
+  },
+  "a box of cat bones": {
+   "k": [],
+   "z": []
+  },
+  "a bronze key": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Temple of Droga": [
+     "a goblin penkeeper"
+    ]
+   },
+   "z": [
+    "The Temple of Droga"
+   ]
+  },
+  "a broom": {
+   "k": [
+    "drop",
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Cazic Thule": [
+     "an alligator"
+    ],
+    "Lake Rathetear": [
+     "an alligator"
+    ],
+    "Najena": [
+     "a goblin magician",
+     "a magician",
+     "an injured halfling",
+     "dark-boned skeleton"
+    ]
+   },
+   "z": [
+    "Cazic Thule",
+    "Lake Rathetear",
+    "Najena"
+   ]
+  },
+  "a canine": {
+   "k": [
+    "drop",
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Dalnir": [
+     "a coerced dwarf",
+     "a coerced goblin",
+     "a coerced Iksar",
+     "a coerced Teir`Dal"
+    ],
+    "Firiona Vie": [
+     "a drolvarg growler",
+     "a drolvarg savage",
+     "a drolvarg scavenger",
+     "a drolvarg snarler"
+    ],
+    "The Dreadlands": [
+     "a drolvarg growler",
+     "a drolvarg gnasher",
+     "a drolvarg rager",
+     "a drolvarg snarler"
+    ]
+   },
+   "z": [
+    "Dalnir",
+    "The Dreadlands",
+    "Firiona Vie"
+   ]
+  },
+  "a copper key": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Temple of Droga": [
+     "a goblin interrogator"
+    ]
+   },
+   "z": [
+    "The Temple of Droga"
+   ]
+  },
+  "a cracked femur": {
+   "k": [
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Kurn's Tower": [
+     "greater scalebone",
+     "scalebone skeleton"
+    ],
+    "Lake of Ill Omen": [
+     "greater scalebone"
+    ]
+   },
+   "z": [
+    "Kurn's Tower",
+    "Lake of Ill Omen"
+   ]
+  },
+  "a cracked stein": {
+   "k": [],
+   "z": []
+  },
+  "a dark cauldron": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Castle of Mistmoore": [
+     "an ancille cook"
+    ]
+   },
+   "z": [
+    "The Castle of Mistmoore"
+   ]
+  },
+  "a doll": {
+   "k": [
+    "drop",
+    "drop",
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Erudin": [
+     "a sand shark",
+     "a young shark"
+    ],
+    "Freeport": [
+     "a shark"
+    ],
+    "The Ocean of Tears": [
+     "a shark"
+    ],
+    "The Qeynos Aqueduct System": [
+     "a shark"
+    ]
+   },
+   "z": [
+    "Freeport",
+    "Erudin",
+    "The Ocean of Tears",
+    "The Qeynos Aqueduct System"
+   ]
+  },
+  "a froglok hex doll": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Warsliks Woods": [
+     "a goblin hextracer"
+    ]
+   },
+   "z": [
+    "The Warsliks Woods"
+   ]
+  },
+  "a ghouls heart": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Estate of Unrest": [
+     "a carrion ghoul",
+     "a crazed ghoul"
+    ]
+   },
+   "z": [
+    "The Estate of Unrest"
+   ]
+  },
+  "a giant blood sac": {
+   "k": [
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Cabilis": [
+     "a giant swamp leech"
+    ],
+    "The Swamp of No Hope": [
+     "a giant swamp leech",
+     "a marsh leech",
+     "a giant marsh leech"
+    ]
+   },
+   "z": [
+    "Cabilis",
+    "The Swamp of No Hope"
+   ]
+  },
+  "a gigantic kromzek pick": {
+   "k": [],
+   "z": []
+  },
+  "a glimmering fairie wing": {
+   "k": [],
+   "z": []
+  },
+  "a glowing skull": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Kurn's Tower": [
+     "greater scalebone",
+     "lesser charbone skeleton",
+     "lesser icebone skeleton"
+    ]
+   },
+   "z": [
+    "Kurn's Tower"
+   ]
+  },
+  "a jar of liquid": {
+   "k": [],
+   "z": []
+  },
+  "a king cod card": {
+   "k": [],
+   "z": []
+  },
+  "a library card": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Plane of Mischief": [
+     "Glonk",
+     "Jumbo Gorilla King"
+    ]
+   },
+   "z": [
+    "The Plane of Mischief"
+   ]
+  },
+  "a locked chest": {
+   "k": [],
+   "z": []
+  },
+  "a locket": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Southern Plains of Karana": [
+     "a werewolf",
+     "Sentry Alechin"
+    ]
+   },
+   "z": [
+    "The Southern Plains of Karana"
+   ]
+  },
+  "a maleficent necromancer doll": {
+   "k": [],
+   "z": []
+  },
+  "a mancatcher crown": {
+   "k": [
+    "vendor"
+   ],
+   "z": [
+    "Cabilis"
+   ]
+  },
+  "a mandible": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Field of Bone": [
+     "a rogue shaman"
+    ]
+   },
+   "z": [
+    "The Field of Bone"
+   ]
+  },
+  "a metal pipe": {
+   "k": [
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Chardok (Post-Revamp)": [
+     "an iksar betrayer"
+    ],
+    "Karnor's Castle": [
+     "a drolvarg pawbuster"
+    ]
+   },
+   "z": [
+    "Karnor's Castle",
+    "Chardok (Post-Revamp)"
+   ]
+  },
+  "a nicked coin": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Erudin": [
+     "Cenn Lostin",
+     "Grendin Maze",
+     "Lenya Wisk",
+     "Megan Tiglin"
+    ]
+   },
+   "z": [
+    "Erudin"
+   ]
+  },
+  "a nickel key": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Dalnir": [
+     "a coerced penkeeper"
+    ]
+   },
+   "z": [
+    "Dalnir"
+   ]
+  },
+  "a nobles crest": {
+   "k": [
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Innothule Swamp": [
+     "Bunk Odon",
+     "Gwynn Marthank",
+     "Hogus Durmas",
+     "Jars Legola"
+    ],
+    "The Rathe Mountains": [
+     "Jyle Windstorm"
+    ]
+   },
+   "z": [
+    "Innothule Swamp",
+    "The Rathe Mountains"
+   ]
+  },
+  "a page of a tome": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Swamp of No Hope": [
+     "froglok raider"
+    ]
+   },
+   "z": [
+    "The Swamp of No Hope"
+   ]
+  },
+  "a rabbit foot": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Plane of Mischief": [
+     "Stomples"
+    ]
+   },
+   "z": [
+    "The Plane of Mischief"
+   ]
+  },
+  "a raw pike head": {
+   "k": [
+    "vendor"
+   ],
+   "z": [
+    "Cabilis"
+   ]
+  },
+  "a rolled up note": {
+   "k": [],
+   "z": []
+  },
+  "a ruby": {
+   "k": [],
+   "r": {
+    "c": [
+     [
+      1,
+      "Forging Hammer"
+     ],
+     [
+      1,
+      "Thick Iksar Skull"
+     ]
+    ]
+   },
+   "z": []
+  },
+  "a sapphire": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Kurn's Tower": [
+     "thick boned skeleton"
+    ]
+   },
+   "z": [
+    "Kurn's Tower"
+   ]
+  },
+  "a scarlet stone": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Firiona Vie": [
+     "a drolvarg scavenger"
+    ]
+   },
+   "z": [
+    "Firiona Vie"
+   ]
+  },
+  "a sealed letter": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Butcherblock Mountains": [
+     "orc runner"
+    ]
+   },
+   "z": [
+    "Butcherblock Mountains"
+   ]
+  },
+  "a sealed list": {
+   "k": [],
+   "z": []
+  },
+  "a shining stone": {
+   "k": [
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Innothule Swamp": [
+     "a shadowed man"
+    ],
+    "Kithicor Forest": [
+     "a shadowed man"
+    ],
+    "Nektulos Forest": [
+     "a shadowed man"
+    ],
+    "The Lavastorm Mountains": [
+     "a shadowed man"
+    ],
+    "The Lesser Faydark": [
+     "a shadowed man",
+     "Shadowman Leader"
+    ],
+    "The Southern Plains of Karana": [
+     "a shadowed man"
+    ],
+    "West Commonlands": [
+     "a shadowed man"
+    ]
+   },
+   "many": true,
+   "z": [
+    "West Commonlands",
+    "Innothule Swamp",
+    "Kithicor Forest",
+    "The Lavastorm Mountains",
+    "The Lesser Faydark",
+    "Nektulos Forest",
+    "The Southern Plains of Karana"
+   ]
+  },
+  "a shovel": {
+   "k": [
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Cazic Thule": [
+     "an alligator"
+    ],
+    "Najena": [
+     "a goblin magician",
+     "a magician",
+     "An Injured Halfling",
+     "dark-boned skeleton"
+    ]
+   },
+   "z": [
+    "Najena",
+    "Cazic Thule"
+   ]
+  },
+  "a singed scroll": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Chardok (Post-Revamp)": [
+     "Overking Bathezid"
+    ]
+   },
+   "z": [
+    "Chardok (Post-Revamp)"
+   ]
+  },
+  "a skull chest": {
+   "k": [],
+   "z": []
+  },
+  "a smashed protector of zeks head": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Kael Drakkel": [
+     "protector of Zek",
+     "A Protector of Zek"
+    ]
+   },
+   "z": [
+    "Kael Drakkel"
+   ]
+  },
+  "a smelly sealed bag": {
+   "k": [],
+   "z": []
+  },
+  "a sparkle purse": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Solusek's Eye": [
+     "Lynada the exiled"
+    ]
+   },
+   "z": [
+    "Solusek's Eye"
+   ]
+  },
+  "a spider venom sac": {
+   "k": [
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Butcherblock Mountains": [
+     "a large spider"
+    ],
+    "Commonlands": [
+     "a giant spider"
+    ],
+    "Everfrost Peaks": [
+     "a giant wooly spider",
+     "a large wooly spider"
+    ],
+    "Firiona Vie": [
+     "a drachnid silklurker",
+     "a drachnid silkspinner",
+     "a drachnid silkstrander",
+     "a drachnid weblurker"
+    ],
+    "Kaesora": [
+     "Briarweb Spider",
+     "strathbone healer"
+    ],
+    "Nagafen's Lair": [
+     "lava duct crawler"
+    ],
+    "Nektulos Forest": [
+     "a large arachneidae"
+    ],
+    "The City of Guk": [
+     "a heart spider",
+     "a large heart spider"
+    ],
+    "The Dreadlands": [
+     "a dread widow"
+    ],
+    "The Eastern Plains of Karana": [
+     "a crag spider"
+    ],
+    "The Field of Bone": [
+     "a bonebinder",
+     "bonecrawler"
+    ],
+    "The Lesser Faydark": [
+     "a giant spider"
+    ],
+    "The Northern Desert of Ro": [
+     "a desert tarantula",
+     "a dune tarantula"
+    ],
+    "The Ruins of Old Guk": [
+     "a deadly black widow"
+    ],
+    "The Southern Desert of Ro": [
+     "a dune tarantula"
+    ],
+    "Toxxulia Forest": [
+     "a large widow"
+    ]
+   },
+   "many": true,
+   "z": [
+    "Butcherblock Mountains",
+    "Commonlands",
+    "The Dreadlands",
+    "The Eastern Plains of Karana",
+    "Everfrost Peaks",
+    "The Field of Bone",
+    "Firiona Vie",
+    "Kaesora",
+    "The Lesser Faydark",
+    "The Ruins of Old Guk",
+    "Nagafen's Lair",
+    "Nektulos Forest",
+    "The Northern Desert of Ro",
+    "The Southern Desert of Ro",
+    "Toxxulia Forest",
+    "The City of Guk"
+   ]
+  },
+  "a spore mushroom": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Innothule Swamp": [
+     "A fungus spore"
+    ]
+   },
+   "z": [
+    "Innothule Swamp"
+   ]
+  },
+  "a stone key": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Temple of Droga": [
+     "a goblin penkeeper"
+    ]
+   },
+   "z": [
+    "The Temple of Droga"
+   ]
+  },
+  "a strategic map of kithicor": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Western Plains of Karana": [
+     "Ghoul Messenger"
+    ]
+   },
+   "z": [
+    "The Western Plains of Karana"
+   ]
+  },
+  "a tattered book": {
+   "k": [],
+   "z": []
+  },
+  "a tattered note": {
+   "k": [
+    "drop",
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Kaesora": [
+     "failed crypt raider"
+    ],
+    "Lake of Ill Omen": [
+     "a sarnak revenant"
+    ],
+    "The Ocean of Tears": [
+     "Boog Mudtoe"
+    ]
+   },
+   "z": [
+    "The Ocean of Tears",
+    "Lake of Ill Omen",
+    "Kaesora"
+   ]
+  },
+  "a torch": {
+   "k": [
+    "drop",
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Cazic Thule": [
+     "an alligator"
+    ],
+    "Everfrost Peaks": [
+     "an ice goblin scout",
+     "ice goblin diver"
+    ],
+    "Najena": [
+     "A Magician",
+     "a goblin magician",
+     "a goblin warrior",
+     "dark-boned skeleton"
+    ]
+   },
+   "z": [
+    "Najena",
+    "Cazic Thule",
+    "Everfrost Peaks"
+   ]
+  },
+  "a vile substance": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Liberated Citadel of Runnyeye": [
+     "Sludge Dankmire"
+    ]
+   },
+   "z": [
+    "The Liberated Citadel of Runnyeye"
+   ]
+  },
+  "a worn rune": {
+   "k": [],
+   "z": []
+  },
+  "a yellow whip": {
+   "k": [
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Nektulos Forest": [
+     "a decaying skeleton"
+    ],
+    "The Dreadlands": [
+     "a wulfware lonewolf"
+    ]
+   },
+   "z": [
+    "The Dreadlands",
+    "Nektulos Forest"
+   ]
   },
   "abandoned orc shovel": {
    "k": [
@@ -132026,6 +132942,68 @@
    },
    "z": [
     "The Plane of Fear"
+   ]
+  },
+  "an emerald": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Kurn's Tower": [
+     "thick boned skeleton"
+    ]
+   },
+   "z": [
+    "Kurn's Tower"
+   ]
+  },
+  "an encrypted document": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Steamfont Mountains": [
+     "a kobold missionary"
+    ]
+   },
+   "z": [
+    "The Steamfont Mountains"
+   ]
+  },
+  "an enrollment letter": {
+   "k": [],
+   "z": []
+  },
+  "an illegible note": {
+   "k": [
+    "drop",
+    "drop"
+   ],
+   "m": {
+    "Lake of Ill Omen": [
+     "a goblin soothsayer"
+    ],
+    "The Warsliks Woods": [
+     "a goblin soothsayer",
+     "goblin spirit caller"
+    ]
+   },
+   "z": [
+    "The Warsliks Woods",
+    "Lake of Ill Omen"
+   ]
+  },
+  "an outlanders head": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Firiona Vie": [
+     "Kwinn the Outlander"
+    ]
+   },
+   "z": [
+    "Firiona Vie"
    ]
   },
   "ancient blade": {
@@ -132974,10 +133952,6 @@
     "The Northern Plains of Karana"
    ]
   },
-  "baker": {
-   "k": [],
-   "z": []
-  },
   "baking spirits": {
    "k": [
     "vendor"
@@ -133433,30 +134407,6 @@
     "The Western Plains of Karana"
    ]
   },
-  "bar of ronium": {
-   "k": [],
-   "r": {
-    "c": [
-     [
-      1,
-      "Melatite"
-     ],
-     [
-      2,
-      "Enchanted Platinum Bar"
-     ],
-     [
-      1,
-      "Mistmoore Granite"
-     ],
-     [
-      1,
-      "Sand of Ro"
-     ]
-    ]
-   },
-   "z": []
-  },
   "barbarian femur": {
    "k": [],
    "z": []
@@ -133512,10 +134462,6 @@
     "The Estate of Unrest",
     "The Rathe Mountains"
    ]
-  },
-  "bardic letter (kelethin)": {
-   "k": [],
-   "z": []
   },
   "bargynns digger": {
    "k": [
@@ -134599,10 +135545,6 @@
    "k": [],
    "z": []
   },
-  "blade": {
-   "k": [],
-   "z": []
-  },
   "blade core-5th fold": {
    "k": [],
    "r": {
@@ -135360,20 +136302,6 @@
     "The Feerrott"
    ]
   },
-  "bloody protector of zeks head": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Kael Drakkel": [
-     "a Protector of Zek",
-     "protector of Zek"
-    ]
-   },
-   "z": [
-    "Kael Drakkel"
-   ]
-  },
   "bloody shank": {
    "k": [],
    "z": []
@@ -135488,32 +136416,6 @@
     ]
    },
    "z": []
-  },
-  "bone key": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Temple of Droga": [
-     "A goblin penmaster"
-    ]
-   },
-   "z": [
-    "The Temple of Droga"
-   ]
-  },
-  "bone necklace": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Temple of Droga": [
-     "a goblin penmaster"
-    ]
-   },
-   "z": [
-    "The Temple of Droga"
-   ]
   },
   "bone talisman": {
    "k": [],
@@ -135898,10 +136800,6 @@
    "k": [],
    "z": []
   },
-  "box of cat bones": {
-   "k": [],
-   "z": []
-  },
   "box of remains": {
    "k": [],
    "z": []
@@ -136256,10 +137154,6 @@
     "The Western Wastes"
    ]
   },
-  "broken glacier souvenir mug": {
-   "k": [],
-   "z": []
-  },
   "broken heirloom necklace": {
    "k": [],
    "z": []
@@ -136302,19 +137196,6 @@
    },
    "z": [
     "Plane%20of%20Sky"
-   ]
-  },
-  "bronze key": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Temple of Droga": [
-     "a goblin penkeeper"
-    ]
-   },
-   "z": [
-    "The Temple of Droga"
    ]
   },
   "bronze shackle key": {
@@ -136378,32 +137259,6 @@
   "brood sack": {
    "k": [],
    "z": []
-  },
-  "broom": {
-   "k": [
-    "drop",
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Cazic Thule": [
-     "an alligator"
-    ],
-    "Lake Rathetear": [
-     "an alligator"
-    ],
-    "Najena": [
-     "a goblin magician",
-     "a magician",
-     "an injured halfling",
-     "dark-boned skeleton"
-    ]
-   },
-   "z": [
-    "Cazic Thule",
-    "Lake Rathetear",
-    "Najena"
-   ]
   },
   "broom of trilon": {
    "k": [],
@@ -136627,10 +137482,6 @@
     "The Western Plains of Karana"
    ]
   },
-  "butcher": {
-   "k": [],
-   "z": []
-  },
   "cabilis pale ale": {
    "k": [
     "vendor",
@@ -136667,38 +137518,6 @@
   "candle of bravery": {
    "k": [],
    "z": []
-  },
-  "canine": {
-   "k": [
-    "drop",
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Dalnir": [
-     "a coerced dwarf",
-     "a coerced goblin",
-     "a coerced Iksar",
-     "a coerced Teir`Dal"
-    ],
-    "Firiona Vie": [
-     "a drolvarg growler",
-     "a drolvarg savage",
-     "a drolvarg scavenger",
-     "a drolvarg snarler"
-    ],
-    "The Dreadlands": [
-     "a drolvarg growler",
-     "a drolvarg gnasher",
-     "a drolvarg rager",
-     "a drolvarg snarler"
-    ]
-   },
-   "z": [
-    "Dalnir",
-    "The Dreadlands",
-    "Firiona Vie"
-   ]
   },
   "cap pattern": {
    "k": [
@@ -136791,10 +137610,6 @@
     "The Liberated Citadel of Runnyeye",
     "Timorous Deep"
    ]
-  },
-  "captain": {
-   "k": [],
-   "z": []
   },
   "carmine spiroc feather": {
    "k": [
@@ -138341,19 +139156,6 @@
     "Plane%20of%20Sky"
    ]
   },
-  "copper key": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Temple of Droga": [
-     "a goblin interrogator"
-    ]
-   },
-   "z": [
-    "The Temple of Droga"
-   ]
-  },
   "coppernickel key": {
    "k": [],
    "r": {
@@ -138746,25 +139548,6 @@
    "k": [],
    "z": []
   },
-  "cracked femur": {
-   "k": [
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Kurn's Tower": [
-     "greater scalebone",
-     "scalebone skeleton"
-    ],
-    "Lake of Ill Omen": [
-     "greater scalebone"
-    ]
-   },
-   "z": [
-    "Kurn's Tower",
-    "Lake of Ill Omen"
-   ]
-  },
   "cracked flute": {
    "k": [
     "drop"
@@ -138989,10 +139772,6 @@
     "The Western Plains of Karana"
    ]
   },
-  "cracked stein": {
-   "k": [],
-   "z": []
-  },
   "crafted bracers": {
    "k": [],
    "z": []
@@ -139189,23 +139968,6 @@
    ],
    "z": [
     "Qeynos"
-   ]
-  },
-  "crusade of 1312 a.g.": {
-   "k": [
-    "drop",
-    "vendor",
-    "vendor"
-   ],
-   "m": {
-    "The Emerald Jungle": [
-     "an Iksar tomb raider"
-    ]
-   },
-   "z": [
-    "The Emerald Jungle",
-    "Cabilis",
-    "The Overthere"
    ]
   },
   "crusades of the high scale": {
@@ -140607,19 +141369,6 @@
     "The Estate of Unrest"
    ]
   },
-  "dark cauldron": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Castle of Mistmoore": [
-     "an ancille cook"
-    ]
-   },
-   "z": [
-    "The Castle of Mistmoore"
-   ]
-  },
   "dark circlet": {
    "k": [
     "drop"
@@ -141386,35 +142135,6 @@
    },
    "z": [
     "Kael Drakkel"
-   ]
-  },
-  "doll": {
-   "k": [
-    "drop",
-    "drop",
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Erudin": [
-     "a sand shark",
-     "a young shark"
-    ],
-    "Freeport": [
-     "a shark"
-    ],
-    "The Ocean of Tears": [
-     "a shark"
-    ],
-    "The Qeynos Aqueduct System": [
-     "a shark"
-    ]
-   },
-   "z": [
-    "Freeport",
-    "Erudin",
-    "The Ocean of Tears",
-    "The Qeynos Aqueduct System"
    ]
   },
   "doogles signature souvenir mug": {
@@ -142938,19 +143658,6 @@
    "k": [],
    "z": []
   },
-  "encrypted document": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Steamfont Mountains": [
-     "a kobold missionary"
-    ]
-   },
-   "z": [
-    "The Steamfont Mountains"
-   ]
-  },
   "engraved ring": {
    "k": [
     "drop"
@@ -142976,10 +143683,6 @@
    "z": [
     "Butcherblock Mountains"
    ]
-  },
-  "enrollment letter": {
-   "k": [],
-   "z": []
   },
   "envelope with dust sample": {
    "k": [],
@@ -146038,19 +146741,6 @@
     "The Swamp of No Hope"
    ]
   },
-  "froglok hex doll": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Warsliks Woods": [
-     "a goblin hextracer"
-    ]
-   },
-   "z": [
-    "The Warsliks Woods"
-   ]
-  },
   "froglok leg": {
    "k": [
     "drop",
@@ -146788,20 +147478,6 @@
     "Felwithe"
    ]
   },
-  "ghouls heart": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Estate of Unrest": [
-     "a carrion ghoul",
-     "a crazed ghoul"
-    ]
-   },
-   "z": [
-    "The Estate of Unrest"
-   ]
-  },
   "giant bat fur": {
    "k": [
     "drop",
@@ -146845,26 +147521,6 @@
     "The Qeynos Aqueduct System",
     "The Feerrott",
     "The Warrens"
-   ]
-  },
-  "giant blood sac": {
-   "k": [
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Cabilis": [
-     "a giant swamp leech"
-    ],
-    "The Swamp of No Hope": [
-     "a giant swamp leech",
-     "a marsh leech",
-     "a giant marsh leech"
-    ]
-   },
-   "z": [
-    "Cabilis",
-    "The Swamp of No Hope"
    ]
   },
   "giant fire beetle leg": {
@@ -147314,10 +147970,6 @@
     "The Stonebrunt Mountains"
    ]
   },
-  "gigantic kromzek pick": {
-   "k": [],
-   "z": []
-  },
   "gigantic zweihander": {
    "k": [
     "drop"
@@ -147424,10 +148076,6 @@
    "z": []
   },
   "glidaras ring": {
-   "k": [],
-   "z": []
-  },
-  "glimmering fairie wing": {
    "k": [],
    "z": []
   },
@@ -147637,21 +148285,6 @@
   "glowing silver wand": {
    "k": [],
    "z": []
-  },
-  "glowing skull": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Kurn's Tower": [
-     "greater scalebone",
-     "lesser charbone skeleton",
-     "lesser icebone skeleton"
-    ]
-   },
-   "z": [
-    "Kurn's Tower"
-   ]
   },
   "glowing sword hilt": {
    "k": [
@@ -150345,20 +150978,6 @@
     "The City of Mist"
    ]
   },
-  "history of the greenmist": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Chardok (Post-Revamp)": [
-     "Grand Lorekeeper Kino Shai`din",
-     "Loremaster Piza`tak"
-    ]
-   },
-   "z": [
-    "Chardok (Post-Revamp)"
-   ]
-  },
   "holiday gift": {
    "k": [],
    "z": []
@@ -151109,10 +151728,6 @@
     "Permafrost Keep"
    ]
   },
-  "icy mug souvenir": {
-   "k": [],
-   "z": []
-  },
   "icy totem of protection": {
    "k": [],
    "z": []
@@ -151120,19 +151735,6 @@
   "idiot savants cap": {
    "k": [],
    "z": []
-  },
-  "idol": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Ruins of Old Guk": [
-     "Raster of Guk"
-    ]
-   },
-   "z": [
-    "The Ruins of Old Guk"
-   ]
   },
   "idol of corruption": {
    "k": [
@@ -151303,25 +151905,6 @@
     "East Commonlands",
     "West Commonlands",
     "Misty Thicket"
-   ]
-  },
-  "illegible note": {
-   "k": [
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Lake of Ill Omen": [
-     "a goblin soothsayer"
-    ],
-    "The Warsliks Woods": [
-     "a goblin soothsayer",
-     "goblin spirit caller"
-    ]
-   },
-   "z": [
-    "The Warsliks Woods",
-    "Lake of Ill Omen"
    ]
   },
   "illegible note: boots": {
@@ -152302,10 +152885,6 @@
     "Plane%20of%20Sky"
    ]
   },
-  "jar of liquid": {
-   "k": [],
-   "z": []
-  },
   "jasper": {
    "k": [
     "drop",
@@ -152997,10 +153576,6 @@
    "z": [
     "The Southern Desert of Ro"
    ]
-  },
-  "king cod card": {
-   "k": [],
-   "z": []
   },
   "king tormaxs head": {
    "k": [
@@ -154175,20 +154750,6 @@
     "The Northern Plains of Karana"
    ]
   },
-  "library card": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Mischief": [
-     "Glonk",
-     "Jumbo Gorilla King"
-    ]
-   },
-   "z": [
-    "The Plane of Mischief"
-   ]
-  },
   "library of erudin": {
    "k": [],
    "z": []
@@ -154610,27 +155171,9 @@
     "The Northern Desert of Ro"
    ]
   },
-  "locked chest": {
-   "k": [],
-   "z": []
-  },
   "locked rum box": {
    "k": [],
    "z": []
-  },
-  "locket": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Southern Plains of Karana": [
-     "a werewolf",
-     "Sentry Alechin"
-    ]
-   },
-   "z": [
-    "The Southern Plains of Karana"
-   ]
   },
   "lodizal shell shield": {
    "k": [],
@@ -155159,10 +155702,6 @@
    "k": [],
    "z": []
   },
-  "maleficent necromancer doll": {
-   "k": [],
-   "z": []
-  },
   "maleficent robe": {
    "k": [],
    "z": []
@@ -155376,33 +155915,12 @@
     "Surefall Glade"
    ]
   },
-  "mancatcher crown": {
-   "k": [
-    "vendor"
-   ],
-   "z": [
-    "Cabilis"
-   ]
-  },
   "mandala sketch": {
    "k": [
     "drop"
    ],
    "z": [
     "Howling Stones"
-   ]
-  },
-  "mandible": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Field of Bone": [
-     "a rogue shaman"
-    ]
-   },
-   "z": [
-    "The Field of Bone"
    ]
   },
   "manisi herb": {
@@ -156055,24 +156573,6 @@
     "The Steamfont Mountains"
    ]
   },
-  "metal pipe": {
-   "k": [
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Chardok (Post-Revamp)": [
-     "an iksar betrayer"
-    ],
-    "Karnor's Castle": [
-     "a drolvarg pawbuster"
-    ]
-   },
-   "z": [
-    "Karnor's Castle",
-    "Chardok (Post-Revamp)"
-   ]
-  },
   "metal rod": {
    "k": [
     "vendor",
@@ -156203,10 +156703,6 @@
     "Najena",
     "The Steamfont Mountains"
    ]
-  },
-  "minstrel": {
-   "k": [],
-   "z": []
   },
   "miraguls head": {
    "k": [
@@ -157034,35 +157530,6 @@
    "k": [],
    "z": []
   },
-  "nicked coin": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Erudin": [
-     "Cenn Lostin",
-     "Grendin Maze",
-     "Lenya Wisk",
-     "Megan Tiglin"
-    ]
-   },
-   "z": [
-    "Erudin"
-   ]
-  },
-  "nickel key": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Dalnir": [
-     "a coerced penkeeper"
-    ]
-   },
-   "z": [
-    "Dalnir"
-   ]
-  },
   "nightfall giants head": {
    "k": [
     "drop"
@@ -157079,27 +157546,6 @@
   "noblemans bag": {
    "k": [],
    "z": []
-  },
-  "nobles crest": {
-   "k": [
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Innothule Swamp": [
-     "Bunk Odon",
-     "Gwynn Marthank",
-     "Hogus Durmas",
-     "Jars Legola"
-    ],
-    "The Rathe Mountains": [
-     "Jyle Windstorm"
-    ]
-   },
-   "z": [
-    "Innothule Swamp",
-    "The Rathe Mountains"
-   ]
   },
   "nobles seal": {
    "k": [],
@@ -157275,10 +157721,6 @@
     "Oggok",
     "Qeynos"
    ]
-  },
-  "oblong bottle": {
-   "k": [],
-   "z": []
   },
   "obsidian shard (sky)": {
    "k": [
@@ -157480,10 +157922,6 @@
    "z": []
   },
   "old silver coin": {
-   "k": [],
-   "z": []
-  },
-  "one key": {
    "k": [],
    "z": []
   },
@@ -158112,19 +158550,6 @@
     "Siren's Grotto"
    ]
   },
-  "outlanders head": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Firiona Vie": [
-     "Kwinn the Outlander"
-    ]
-   },
-   "z": [
-    "Firiona Vie"
-   ]
-  },
   "pack for shark": {
    "k": [],
    "z": []
@@ -158220,19 +158645,6 @@
   "page 34 of a book": {
    "k": [],
    "z": []
-  },
-  "page of a tome": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Swamp of No Hope": [
-     "froglok raider"
-    ]
-   },
-   "z": [
-    "The Swamp of No Hope"
-   ]
   },
   "painbringer": {
    "k": [
@@ -160463,19 +160875,6 @@
     "The Ocean of Tears"
    ]
   },
-  "rabbit foot": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Mischief": [
-     "Stomples"
-    ]
-   },
-   "z": [
-    "The Plane of Mischief"
-   ]
-  },
   "rabid kodiak skin": {
    "k": [
     "drop"
@@ -161045,14 +161444,6 @@
    },
    "z": [
     "Nektulos Forest"
-   ]
-  },
-  "raw pike head": {
-   "k": [
-    "vendor"
-   ],
-   "z": [
-    "Cabilis"
    ]
   },
   "raw short sword 4": {
@@ -163864,19 +164255,6 @@
     "The Plane of Fear"
    ]
   },
-  "scarlet stone": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Firiona Vie": [
-     "a drolvarg scavenger"
-    ]
-   },
-   "z": [
-    "Firiona Vie"
-   ]
-  },
   "scepter": {
    "k": [
     "drop"
@@ -164215,10 +164593,6 @@
     "The Greater Faydark",
     "Everfrost Peaks"
    ]
-  },
-  "sealed list": {
-   "k": [],
-   "z": []
   },
   "sealed note": {
    "k": [
@@ -165142,51 +165516,6 @@
    "k": [],
    "z": []
   },
-  "shining stone": {
-   "k": [
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Innothule Swamp": [
-     "a shadowed man"
-    ],
-    "Kithicor Forest": [
-     "a shadowed man"
-    ],
-    "Nektulos Forest": [
-     "a shadowed man"
-    ],
-    "The Lavastorm Mountains": [
-     "a shadowed man"
-    ],
-    "The Lesser Faydark": [
-     "a shadowed man",
-     "Shadowman Leader"
-    ],
-    "The Southern Plains of Karana": [
-     "a shadowed man"
-    ],
-    "West Commonlands": [
-     "a shadowed man"
-    ]
-   },
-   "many": true,
-   "z": [
-    "West Commonlands",
-    "Innothule Swamp",
-    "Kithicor Forest",
-    "The Lavastorm Mountains",
-    "The Lesser Faydark",
-    "Nektulos Forest",
-    "The Southern Plains of Karana"
-   ]
-  },
   "shiny brass shield": {
    "k": [
     "drop",
@@ -166072,19 +166401,6 @@
     "Plane%20of%20Sky"
    ]
   },
-  "singed scroll": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Chardok (Post-Revamp)": [
-     "Overking Bathezid"
-    ]
-   },
-   "z": [
-    "Chardok (Post-Revamp)"
-   ]
-  },
   "singing short sword": {
    "k": [],
    "z": []
@@ -166207,10 +166523,6 @@
    },
    "z": []
   },
-  "skull chest": {
-   "k": [],
-   "z": []
-  },
   "skull of jhentra": {
    "k": [
     "drop"
@@ -166236,10 +166548,6 @@
    "z": [
     "The Steamfont Mountains"
    ]
-  },
-  "skull of torture": {
-   "k": [],
-   "z": []
   },
   "skull with i": {
    "k": [
@@ -167000,24 +167308,6 @@
    "k": [],
    "z": []
   },
-  "smashed protector of zeks head": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Kael Drakkel": [
-     "protector of Zek",
-     "A Protector of Zek"
-    ]
-   },
-   "z": [
-    "Kael Drakkel"
-   ]
-  },
-  "smelly sealed bag": {
-   "k": [],
-   "z": []
-  },
   "smithing chisel": {
    "k": [
     "vendor",
@@ -167580,19 +167870,6 @@
   "soulforge hammer": {
    "k": [],
    "z": []
-  },
-  "sparkle purse": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Solusek's Eye": [
-     "Lynada the exiled"
-    ]
-   },
-   "z": [
-    "Solusek's Eye"
-   ]
   },
   "spear of fate": {
    "k": [],
@@ -168270,103 +168547,6 @@
     "The Steamfont Mountains"
    ]
   },
-  "spider venom sac": {
-   "k": [
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Butcherblock Mountains": [
-     "a large spider"
-    ],
-    "Commonlands": [
-     "a giant spider"
-    ],
-    "Everfrost Peaks": [
-     "a giant wooly spider",
-     "a large wooly spider"
-    ],
-    "Firiona Vie": [
-     "a drachnid silklurker",
-     "a drachnid silkspinner",
-     "a drachnid silkstrander",
-     "a drachnid weblurker"
-    ],
-    "Kaesora": [
-     "Briarweb Spider",
-     "strathbone healer"
-    ],
-    "Nagafen's Lair": [
-     "lava duct crawler"
-    ],
-    "Nektulos Forest": [
-     "a large arachneidae"
-    ],
-    "The City of Guk": [
-     "a heart spider",
-     "a large heart spider"
-    ],
-    "The Dreadlands": [
-     "a dread widow"
-    ],
-    "The Eastern Plains of Karana": [
-     "a crag spider"
-    ],
-    "The Field of Bone": [
-     "a bonebinder",
-     "bonecrawler"
-    ],
-    "The Lesser Faydark": [
-     "a giant spider"
-    ],
-    "The Northern Desert of Ro": [
-     "a desert tarantula",
-     "a dune tarantula"
-    ],
-    "The Ruins of Old Guk": [
-     "a deadly black widow"
-    ],
-    "The Southern Desert of Ro": [
-     "a dune tarantula"
-    ],
-    "Toxxulia Forest": [
-     "a large widow"
-    ]
-   },
-   "many": true,
-   "z": [
-    "Butcherblock Mountains",
-    "Commonlands",
-    "The Dreadlands",
-    "The Eastern Plains of Karana",
-    "Everfrost Peaks",
-    "The Field of Bone",
-    "Firiona Vie",
-    "Kaesora",
-    "The Lesser Faydark",
-    "The Ruins of Old Guk",
-    "Nagafen's Lair",
-    "Nektulos Forest",
-    "The Northern Desert of Ro",
-    "The Southern Desert of Ro",
-    "Toxxulia Forest",
-    "The City of Guk"
-   ]
-  },
   "spiderling eye": {
    "k": [
     "drop",
@@ -168781,19 +168961,6 @@
    },
    "z": [
     "The Oasis of Marr"
-   ]
-  },
-  "spore mushroom": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "Innothule Swamp": [
-     "A fungus spore"
-    ]
-   },
-   "z": [
-    "Innothule Swamp"
    ]
   },
   "sprig of wormwood": {
@@ -169424,19 +169591,6 @@
     "Plane%20of%20Sky"
    ]
   },
-  "stone key": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Temple of Droga": [
-     "a goblin penkeeper"
-    ]
-   },
-   "z": [
-    "The Temple of Droga"
-   ]
-  },
   "stone marker": {
    "k": [
     "drop"
@@ -169532,19 +169686,6 @@
    },
    "z": [
     "Kithicor Forest"
-   ]
-  },
-  "strategic map of kithicor": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Western Plains of Karana": [
-     "Ghoul Messenger"
-    ]
-   },
-   "z": [
-    "The Western Plains of Karana"
    ]
   },
   "strathbone silk": {
@@ -169986,10 +170127,6 @@
    "k": [],
    "z": []
   },
-  "tattered book": {
-   "k": [],
-   "z": []
-  },
   "tattered cloth note": {
    "k": [],
    "z": []
@@ -170009,29 +170146,6 @@
    },
    "z": [
     "Dalnir"
-   ]
-  },
-  "tattered note": {
-   "k": [
-    "drop",
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Kaesora": [
-     "failed crypt raider"
-    ],
-    "Lake of Ill Omen": [
-     "a sarnak revenant"
-    ],
-    "The Ocean of Tears": [
-     "Boog Mudtoe"
-    ]
-   },
-   "z": [
-    "The Ocean of Tears",
-    "Lake of Ill Omen",
-    "Kaesora"
    ]
   },
   "tattered parchment": {
@@ -170338,6 +170452,98 @@
    "z": [
     "Freeport"
    ]
+  },
+  "the baker": {
+   "k": [],
+   "z": []
+  },
+  "the blade": {
+   "k": [],
+   "z": []
+  },
+  "the broken glacier souvenir mug": {
+   "k": [],
+   "z": []
+  },
+  "the butcher": {
+   "k": [],
+   "z": []
+  },
+  "the captain": {
+   "k": [],
+   "z": []
+  },
+  "the crusade of 1312 a.g.": {
+   "k": [
+    "drop",
+    "vendor",
+    "vendor"
+   ],
+   "m": {
+    "The Emerald Jungle": [
+     "an Iksar tomb raider"
+    ]
+   },
+   "z": [
+    "The Emerald Jungle",
+    "Cabilis",
+    "The Overthere"
+   ]
+  },
+  "the history of the greenmist": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Chardok (Post-Revamp)": [
+     "Grand Lorekeeper Kino Shai`din",
+     "Loremaster Piza`tak"
+    ]
+   },
+   "z": [
+    "Chardok (Post-Revamp)"
+   ]
+  },
+  "the icy mug souvenir": {
+   "k": [],
+   "z": []
+  },
+  "the idol": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Ruins of Old Guk": [
+     "Raster of Guk"
+    ]
+   },
+   "z": [
+    "The Ruins of Old Guk"
+   ]
+  },
+  "the minstrel": {
+   "k": [],
+   "z": []
+  },
+  "the oblong bottle": {
+   "k": [],
+   "z": []
+  },
+  "the one key": {
+   "k": [],
+   "z": []
+  },
+  "the skull of torture": {
+   "k": [],
+   "z": []
+  },
+  "the velium keg collectors mug": {
+   "k": [],
+   "z": []
+  },
+  "the visceral dagger": {
+   "k": [],
+   "z": []
   },
   "thelvorn, blade of light": {
    "k": [],
@@ -170732,33 +170938,6 @@
    },
    "z": [
     "Qeynos Hills"
-   ]
-  },
-  "torch": {
-   "k": [
-    "drop",
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Cazic Thule": [
-     "an alligator"
-    ],
-    "Everfrost Peaks": [
-     "an ice goblin scout",
-     "ice goblin diver"
-    ],
-    "Najena": [
-     "A Magician",
-     "a goblin magician",
-     "a goblin warrior",
-     "dark-boned skeleton"
-    ]
-   },
-   "z": [
-    "Najena",
-    "Cazic Thule",
-    "Everfrost Peaks"
    ]
   },
   "torch of alna": {
@@ -172037,10 +172216,6 @@
    "k": [],
    "z": []
   },
-  "velium keg collectors mug": {
-   "k": [],
-   "z": []
-  },
   "velium purifier": {
    "k": [],
    "z": []
@@ -172263,19 +172438,6 @@
    "k": [],
    "z": []
   },
-  "vile substance": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Liberated Citadel of Runnyeye": [
-     "Sludge Dankmire"
-    ]
-   },
-   "z": [
-    "The Liberated Citadel of Runnyeye"
-   ]
-  },
   "vineclinger berries": {
    "k": [
     "forage",
@@ -172337,10 +172499,6 @@
    "z": [
     "Plane%20of%20Sky"
    ]
-  },
-  "visceral dagger": {
-   "k": [],
-   "z": []
   },
   "vluudeens tail": {
    "k": [
@@ -173831,10 +173989,6 @@
     "Plane%20of%20Sky"
    ]
   },
-  "worn rune": {
-   "k": [],
-   "z": []
-  },
   "woven frost giant beard": {
    "k": [
     "drop",
@@ -174096,24 +174250,6 @@
    },
    "z": [
     "Skyshrine"
-   ]
-  },
-  "yellow whip": {
-   "k": [
-    "drop",
-    "drop"
-   ],
-   "m": {
-    "Nektulos Forest": [
-     "a decaying skeleton"
-    ],
-    "The Dreadlands": [
-     "a wulfware lonewolf"
-    ]
-   },
-   "z": [
-    "The Dreadlands",
-    "Nektulos Forest"
    ]
   },
   "ysgaril root": {

@@ -166,7 +166,8 @@ function notifyOverlayState() {
    empty. */
 const FEED_RING = [];
 let LAST_ZONE = null;
-let LAST_QUESTS = []; // tracked-quest progress, pre-resolved by the renderer
+// tracked-quest progress, pre-resolved by the renderer: {zones, quests}
+let LAST_QUESTS = { zones: [], quests: [] };
 
 /* ── log tail engine ──────────────────────────────────────────────────────
    Poll-stat the log directory (fs.watch is unreliable enough on Windows
@@ -331,7 +332,7 @@ function readJson(p) {
    cannot answer, and could only say so. Below the floor we fall back to the
    bundled snapshot until the next refresh brings the live file up. Raise the
    number here in the same commit that starts depending on the new field. */
-const MIN_SCHEMA = { "quest-items.json": 2 };
+const MIN_SCHEMA = { "quest-items.json": 3, "item-tooltips.json": 1 };
 
 function loadDatasets() {
   const out = {};
@@ -591,8 +592,15 @@ ipcMain.on("feed:zone", (_e, z) => {
   LAST_ZONE = z;
   if (overlayWin) overlayWin.webContents.send("feed:zone", z);
 });
+/* 0.9.0 changed this payload from an array of quests to {zones, quests} (the
+   overlay groups by zone now). The old `Array.isArray(q) ? … : []` guard turned
+   every new payload into [] and the overlay's Tracked view went permanently
+   empty while the main window showed the same quests fine — the two ends were
+   both verified, the wire between them was not. Accept both shapes. */
 ipcMain.on("feed:quests", (_e, q) => {
-  LAST_QUESTS = Array.isArray(q) ? q.slice(0, 20) : [];
+  const p = Array.isArray(q) ? { zones: [], quests: q }
+    : (q && typeof q === "object" ? q : { zones: [], quests: [] });
+  LAST_QUESTS = { zones: p.zones || [], quests: (p.quests || []).slice(0, 20) };
   if (overlayWin) overlayWin.webContents.send("feed:quests", LAST_QUESTS);
 });
 
