@@ -342,6 +342,25 @@ function render() {
   t.append(tb);
   if (!a.sources.length) t.append(el("tbody", null, `<tr><td colspan="10" class="empty">No damage from your side in this slice.</td></tr>`));
 
+  // what hit you — incoming damage per (mob, ability), full resists joined
+  const tp = $("takenPanel");
+  if (a.takenBy.length) {
+    tp.hidden = false;
+    const tt = $("takenTable");
+    tt.innerHTML = `<thead><tr><th></th><th>Mob</th><th>Ability</th><th>Element</th><th>Hits</th><th>Total</th><th>%</th><th>Avg</th><th>Max</th><th>Resisted</th></tr></thead>`;
+    const ttb = el("tbody");
+    for (const r of a.takenBy) {
+      const ability = r.cat === "melee" || r.cat === "ranged" ? esc(r.name)
+        : r.cat === "dot" ? `${esc(r.name)} <span class="h2sub">DoT</span>` : esc(r.name);
+      ttb.append(el("tr", null,
+        `<td class="c-gem">${gemFor(r)}</td><td class="c-name">${mobCell(r.src)}</td><td class="c-name">${ability}</td>` +
+        `<td class="c-el">${esc(r.elem)}</td><td>${fmt(r.hits)}</td><td class="c-dmg">${fmt(r.dmg)}</td>` +
+        `<td>${pct(r.dmg, a.taken.dmg)}</td><td>${r.hits ? fmt(r.dmg / r.hits) : "—"}</td>` +
+        `<td>${r.hits ? fmt(r.max) : "—"}</td><td>${r.res ? fmt(r.res) : "—"}</td>`));
+    }
+    tt.append(ttb);
+  } else tp.hidden = true;
+
   // composition + by-class
   const comp = $("composition"); comp.innerHTML = "";
   for (const [k, lab, col] of [["melee", "auto-attack", "var(--c-melee)"], ["skill", "combat skills", "var(--c-skill)"], ["ranged", "ranged", "var(--c-ranged)"], ["cast", "cast spells", "var(--c-cast)"], ["proc", "procs / passives", "var(--c-proc)"], ["dot", "damage over time", "var(--c-dot)"], ["ds", "damage shield", "var(--c-ds)"], ["pet", "pets", "var(--c-pet)"], ["charm", "charmed mobs", "var(--c-charm)"]]) {
@@ -383,6 +402,7 @@ function render() {
   if (a.taken.landed || a.taken.avoid.length) { const av = a.taken.avoid.reduce((x, [, n]) => x + n, 0);
     row("damage taken", `${fmt(a.taken.dmg)} over ${fmt(a.taken.landed)} hits`);
     row("avoided", av ? `${fmt(av)} (${a.taken.avoid.map(([k, n]) => `${k} ${n}`).join(", ")})` : "—"); }
+  if (a.summons) row("times summoned", fmt(a.summons));
   if (a.petTaken) row("your pets took", fmt(a.petTaken));
 
   // healing — what you cast, and what landed on you (same lines, both ends)

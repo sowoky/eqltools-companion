@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3ClinearGradient id='a' x1='.1' y1='0' x2='.9' y2='1'%3E%3Cstop offset='0' stop-color='%23fbeec2'/%3E%3Cstop offset='.25' stop-color='%23e7b94e'/%3E%3Cstop offset='.55' stop-color='%2396690f'/%3E%3Cstop offset='1' stop-color='%23e7b94e'/%3E%3C/linearGradient%3E%3CradialGradient id='s' cx='.36' cy='.28' r='.85'%3E%3Cstop offset='0' stop-color='%23dbe9ff'/%3E%3Cstop offset='.2' stop-color='%2377aaea'/%3E%3Cstop offset='.5' stop-color='%232f63b4'/%3E%3Cstop offset='1' stop-color='%23081530'/%3E%3C/radialGradient%3E%3Crect width='64' height='64' fill='%230d0a08'/%3E%3Crect x='9' y='9' width='46' height='46' rx='7' transform='rotate%2845 32 32%29' fill='%23171227' stroke='url%28%23a%29' stroke-width='4'/%3E%3Cg fill='url%28%23a%29'%3E%3Cpath d='M32 7l3 17-3 3-3-3z'/%3E%3Cpath d='M57 32l-17 3-3-3 3-3z'/%3E%3Cpath d='M32 57l-3-17 3-3 3 3z'/%3E%3Cpath d='M7 32l17-3 3 3-3 3z'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='13' fill='url%28%23a%29'/%3E%3Ccircle cx='32' cy='32' r='9.6' fill='url%28%23s%29'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/_shared/theme.css">
-<link rel="stylesheet" href="/log-parser/style.css">
+<link rel="stylesheet" href="/log-parser/style.css?v=20260807">
 </head>
 <body>
 <header class="eq-header">
@@ -152,6 +152,14 @@
     <div class="tblwrap"><table id="sourceTable"></table></div>
   </section>
 
+  <section class="panel" id="takenPanel" hidden>
+    <div class="rule-ornate" aria-hidden="true"></div>
+    <h2>What hit you</h2>
+    <p class="panel-note">One row per mob ability: melee by verb, spells and DoTs by name.
+    Resisted counts full resists; a partially resisted hit still lands and shows as damage.</p>
+    <div class="tblwrap"><table id="takenTable"></table></div>
+  </section>
+
   <div class="two-up">
     <section class="panel" id="compPanel">
       <div class="rule-ornate" aria-hidden="true"></div>
@@ -252,7 +260,7 @@
 </footer>
 
 <script src="/_shared/tip.js"></script>
-<script src="/log-parser/engine.js?v=20260806c"></script>
-<script src="/log-parser/app.js?v=20260806c"></script>
+<script src="/log-parser/engine.js?v=20260807"></script>
+<script src="/log-parser/app.js?v=20260807"></script>
 </body>
 </html>

@@ -160,6 +160,9 @@ const RX = {
   // Kick, Round Kick and Flying Kick all print "kick" in damage lines
   special:   new RegExp(TS + String.raw`You will now use (.+?)(?: instead of (.+?))? while (?:auto )?attacking\.$`),
   login:     new RegExp(TS + String.raw`Welcome to EverQuest Legends!$`),
+  // casterless — the mob's "You will not evade me, <name>!" say is flavor, not
+  // a parseable attribution (observed: Lord Nagafen, 2026-08-06 Ravlin log)
+  summoned:  new RegExp(TS + String.raw`You have been summoned!$`),
   // no trailing period on the merge line; the item name carries its "+N" tier
   merge:     new RegExp(TS + String.raw`You have successfully merged two items together to create a new item: (.+)$`),
   // one prefix, several stated reasons (weak mote / self-fuse / different
@@ -186,7 +189,7 @@ const RX = {
 const ORDER = ["miss","melee_you","melee","ds","spell","dot_your","dot_from","dot_anon","heal_been","heal","cast_you","cast_other",
   "slain_you","you_slain","slain_by","youdied","died","con","xp","coin","vendorsale","questcoin","salvage","loot","lootManual","faction","skillup","aa","zone","level","interrupt",
   "resist","resist_in","resist_other","stance","invoke","wornoff","mezzed","charmbc","nonmelee_you","mend","protected","ds_absorb","ds_rev","who","targeted","fizzle","nomana",
-  "special","login","merge","mergefail"];
+  "special","login","summoned","merge","mergefail"];
 const COMBATISH = /points? of (?:\w+ )?damage|has taken \d+ damage|healed .+ for \d+|has been slain|You have slain|, but .{0,60}(?:miss|dodge|parr|ripost|block|absorb)/;
 const COIN_RE = /(\d+) (platinum|gold|silver|copper)/g;
 const PC_NAME = /^[A-Z][a-z]+$/;
@@ -325,6 +328,7 @@ function parse(text, fileOwner) {
       case "charmbc": ev.push({ ts, k: "charm_bc", tgt: resolve(m[8]) }); break;
       case "special": ev.push({ ts, k: "special", name: m[8], prev: m[9] || null }); break;
       case "login": ev.push({ ts, k: "login" }); break;
+      case "summoned": ev.push({ ts, k: "summoned" }); break;
       case "merge": ev.push({ ts, k: "merge", item: m[8] }); break;
       case "mergefail": ev.push({ ts, k: "mergefail", reason: m[8] }); break;
       case "nonmelee_you": ev.push({ ts, k: "dmg", cat: "dot", src: null, tgt: owner, amt: +m[8], spell: "non-melee", flags: [] }); break;
@@ -1054,7 +1058,30 @@ function analyze(P, events, side, ownerClasses) {
     else if (e.k === "mergefail") mergeFails++;
   }
   const deaths = events.filter(e => e.k === "death");
+  const summons = events.filter(e => e.k === "summoned").length;
   const takenEv = events.filter(e => (e.k === "dmg" || e.k === "miss") && e.tgt === P.owner);
+  // What hit you, one row per (actor, ability): melee splits by the verb the
+  // log prints (a mob's crush and cleave are different attacks), spells and
+  // DoTs by name — the same spell can hold both a direct row and a DoT row
+  // (Scourge lands 47 up front and ticks 98 after). A full resist ("You
+  // resist X's Y!") joins the actor's direct-spell row, creating a zero-damage
+  // row when everything was resisted; partial resists land as damage and are
+  // invisible here.
+  const takenBy = new Map();
+  const takenRow = (src, name, cat, elem) => {
+    const key = `${src}|${name}|${cat}`;
+    let r = takenBy.get(key);
+    if (!r) { r = { src, name, cat, elem, hits: 0, dmg: 0, max: 0, res: 0 }; takenBy.set(key, r); }
+    return r;
+  };
+  for (const e of takenEv) {
+    if (e.k !== "dmg") continue;
+    const phys = e.cat === "melee" || e.cat === "ranged";
+    const cat = phys ? e.cat : e.cat === "spell" || e.cat === "proc" ? "spell" : e.cat;
+    const r = takenRow(e.src || "unknown", phys ? e.verb : e.spell || "unknown", cat, e.elem || (phys ? "physical" : "—"));
+    r.hits++; r.dmg += e.amt; if (e.amt > r.max) r.max = e.amt;
+  }
+  for (const e of events) if (e.k === "resist_in") takenRow(e.caster, e.spell, "spell", "—").res++;
   const takenDmg = takenEv.filter(e => e.k === "dmg").reduce((a, e) => a + e.amt, 0);
   const takenLanded = takenEv.filter(e => e.k === "dmg" && (e.cat === "melee" || e.cat === "ranged")).length;
   const avoid = new Map();
@@ -1126,6 +1153,8 @@ function analyze(P, events, side, ownerClasses) {
     skillups: [...skillups.values()].sort((a, b) => b.ups - a.ups || a.skill.localeCompare(b.skill)),
     faction: [...faction.values()].sort((a, b) => Math.abs(b.net) - Math.abs(a.net) || b.hits - a.hits),
     taken: { dmg: takenDmg, landed: takenLanded, avoid: [...avoid.entries()].sort((a, b) => b[1] - a[1]) },
+    takenBy: [...takenBy.values()].sort((a, b) => b.dmg - a.dmg || b.res - a.res),
+    summons,
     petTaken, xp, aa, aaNow, copper, vendorSaleCu, vendorSales, miscCu,
     loot: [...loot.values()].sort((a, b) => (b.sold || b.qty * 500) - (a.sold || a.qty * 500)),
   };

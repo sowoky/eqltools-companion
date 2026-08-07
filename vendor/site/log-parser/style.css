@@ -158,7 +158,14 @@ code.path { color: var(--ink-soft); word-break: break-all; }
   #mobTable > tbody > tr.mob-row > td:nth-child(6), #mobTable > thead th:nth-child(6),
   #mobTable > tbody > tr.mob-row > td:nth-child(8), #mobTable > thead th:nth-child(8),
   #comboTable th:nth-child(2), #comboTable td:nth-child(2),
-  #comboTable th:nth-child(5), #comboTable td:nth-child(5) { display: none; }
+  #comboTable th:nth-child(5), #comboTable td:nth-child(5),
+  /* what-hit-you keeps mob, ability, total, max, resisted — resisted is the
+     payoff column here, so % gives way instead */
+  #takenTable th:nth-child(1), #takenTable td:nth-child(1),
+  #takenTable th:nth-child(4), #takenTable td:nth-child(4),
+  #takenTable th:nth-child(5), #takenTable td:nth-child(5),
+  #takenTable th:nth-child(7), #takenTable td:nth-child(7),
+  #takenTable th:nth-child(8), #takenTable td:nth-child(8) { display: none; }
   .detail-grid { grid-template-columns: 1fr; }
   /* detail mini-tables: keep the payoff columns. Drops loses per-drop qty;
      the shared nth-child(4) also hides the fights table's Est. DPS, on
@@ -170,12 +177,13 @@ code.path { color: var(--ink-soft); word-break: break-all; }
   .enc-tbl th:nth-child(9), .enc-tbl td:nth-child(9) { display: none; }
   .d-block { padding: .3rem .5rem .5rem; }
   /* long spell/source names wrap instead of forcing the numbers off-screen */
-  #sourceTable .c-name { max-width: 8.5rem; overflow-wrap: break-word; white-space: normal; }
+  #sourceTable .c-name, #takenTable .c-name { max-width: 8.5rem; overflow-wrap: break-word; white-space: normal; }
   table { font-size: .88rem; }
 }
 table { width: 100%; border-collapse: collapse; font-size: .95rem; }
 thead th { text-align: right; font-family: var(--font-accent), Georgia, serif; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-dim); font-weight: 500; padding: .3rem .55rem; border-bottom: 1px solid var(--line); }
 thead th:nth-child(2) { text-align: left; }
+#takenTable thead th:nth-child(3) { text-align: left; }
 /* mobs/loot lead with the name in column 1, not column 2 */
 #mobTable thead th:first-child, #lootTable thead th:first-child, .mini-tbl thead th:first-child { text-align: left; }
 #mobTable thead th:nth-child(2), #lootTable thead th:nth-child(2), .mini-tbl thead th:nth-child(2) { text-align: right; }
