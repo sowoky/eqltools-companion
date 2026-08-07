@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Combat Log Parser — EQ Legends</title>
-<meta name="description" content="Drop your EQ Legends combat log and see what you and your pet did — by source, by level, by zone and difficulty, by stance-and-invocation combo. Parsed entirely in your browser; the log never uploads.">
+<meta name="description" content="Drop your EQ Legends combat log and see what you and your pet did — by day, by zone session, by level, by stance-and-invocation combo. Parsed entirely in your browser; the log never uploads.">
 <link rel="canonical" href="https://eqltools.com/log-parser">
 <meta property="og:title" content="Combat Log Parser — EQ Legends">
-<meta property="og:description" content="Drop your EQ Legends combat log and see what you and your pet did — by source, by level, by zone and difficulty, by stance-and-invocation combo. Parsed entirely in your browser; the log never uploads.">
+<meta property="og:description" content="Drop your EQ Legends combat log and see what you and your pet did — by day, by zone session, by level, by stance-and-invocation combo. Parsed entirely in your browser; the log never uploads.">
 <meta property="og:site_name" content="EQL Tools">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://eqltools.com/log-parser">
@@ -33,6 +33,7 @@
         <div class="eq-nav__drop" aria-label="Tools">
           <a href="/log-parser" class="is-current" aria-current="page">Log Parser</a>
           <a href="/kills">Gotta Kill ’Em All</a>
+          <a href="/gear">Gear Upgrade Finder</a>
           <a href="/spellmaster">Spellmaster</a>
           <a href="/picker">Trio Builder</a>
           <a href="/attributes">Starting attributes</a>
@@ -51,6 +52,7 @@
           <a href="/learn/control">Slow, haste &amp; CC</a>
           <a href="/learn/pets">Pets</a>
           <a href="/learn/upgrades">Upgrades &amp; motes</a>
+          <a href="/learn/motes">Mote drops</a>
           <a href="/learn/spell-upgrades">Spell upgrade scaling</a>
           <a href="/learn/aa">Alternate Advancement</a>
         </div>
@@ -65,7 +67,7 @@
 <header class="site-head">
   <div class="title-block">
     <h1>Combat Log Parser</h1>
-    <p class="tagline">Drop your EverQuest Legends log. It shows what you, your pets, and your charmed mobs did — fight by fight, level by level.</p>
+    <p class="tagline">Drop your EverQuest Legends log. It shows what you, your pets, and your charmed mobs did — zone session by zone session, fight by fight.</p>
   </div>
 </header>
 
@@ -107,17 +109,14 @@
   <section class="controls" id="controls">
     <div class="who-line" id="whoLine"></div>
     <div class="control-group">
-      <label class="ctl">Levels
+      <label class="ctl">Day
+        <select id="daySel"></select>
+      </label>
+      <label class="ctl" id="sessCtl">Zone session
+        <select id="sessSel"></select>
+      </label>
+      <label class="ctl">Level
         <select id="levelSel"></select>
-      </label>
-      <label class="ctl" id="zoneCtl">Zone
-        <select id="zoneSel"></select>
-      </label>
-      <label class="ctl" id="tierCtl" hidden>Difficulty
-        <select id="tierSel"></select>
-      </label>
-      <label class="ctl" id="visitCtl" hidden>Visit
-        <select id="visitSel"></select>
       </label>
       <label class="ctl">Stance &amp; invocation
         <select id="comboSel"></select>
@@ -205,10 +204,11 @@
 
   <section class="panel" id="progressPanel" hidden>
     <div class="rule-ornate" aria-hidden="true"></div>
-    <h2>Skill-ups &amp; faction</h2>
+    <h2>Skill-ups, faction &amp; merges</h2>
     <div class="detail-grid even">
       <div class="d-block" id="skillBlock"><h4>Skill-ups</h4><div class="tblwrap"><table id="skillTable"></table></div></div>
       <div class="d-block" id="factionBlock"><h4>Faction</h4><div class="tblwrap"><table id="factionTable"></table></div></div>
+      <div class="d-block" id="mergeBlock" hidden><h4>Item merges</h4><div class="tblwrap"><table id="mergeTable"></table></div></div>
     </div>
   </section>
 
@@ -234,6 +234,7 @@
       <a href="/atlas">Atlas</a>
       <a href="/log-parser">Log Parser</a>
       <a href="/kills">Gotta Kill ’Em All</a>
+      <a href="/gear">Gear Upgrade Finder</a>
       <a href="/spellmaster">Spellmaster</a>
       <a href="/picker">Trio Builder</a>
       <a href="/attributes">Attributes</a>
@@ -251,6 +252,7 @@
 </footer>
 
 <script src="/_shared/tip.js"></script>
-<script src="/log-parser/app.js"></script>
+<script src="/log-parser/engine.js?v=20260806c"></script>
+<script src="/log-parser/app.js?v=20260806c"></script>
 </body>
 </html>

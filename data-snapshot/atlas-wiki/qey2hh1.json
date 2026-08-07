@@ -1905,6 +1905,7 @@
     null,
     null,
     null,
+    null,
     "Common",
     "Rare",
     null
@@ -1913,6 +1914,7 @@
     10,
     11,
     20,
+    22,
     49,
     81,
     83,
@@ -3064,7 +3066,7 @@
    "u": "https://eqlwiki.com/index.php/Yiz_Pon"
   }
  ],
- "updated": "2026-07-17T23:28:31Z",
+ "updated": "2026-07-21T04:06:03Z",
  "wikiTitle": "Western Plains of Karana",
  "wikiUrl": "https://eqlwiki.com/index.php/Western_Plains_of_Karana",
  "zone": "qey2hh1"

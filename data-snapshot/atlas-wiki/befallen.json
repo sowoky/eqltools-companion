@@ -954,7 +954,7 @@
    "loc": [
     -485.0,
     86.0,
-    null
+    -78.0
    ],
    "lvl": "20",
    "n": "Arisen Thaumaturgist",
@@ -963,8 +963,8 @@
   },
   {
    "dr": [
-    null,
-    null
+    "Rare",
+    "Common"
    ],
    "drops": [
     23,
@@ -1110,8 +1110,8 @@
   },
   {
    "dr": [
-    null,
-    null
+    "Rare",
+    "Common"
    ],
    "drops": [
     26,
@@ -1158,7 +1158,7 @@
    "loc": [
     -990.0,
     -190.0,
-    null
+    -69.0
    ],
    "lvl": "24",
    "n": "Korven Nisere",
@@ -1248,9 +1248,9 @@
     94
    ],
    "loc": [
-    -486.0,
-    86.0,
-    null
+    -456.0,
+    80.0,
+    -40.0
    ],
    "lvl": "18-19",
    "n": "the thaumaturgist",
@@ -1271,7 +1271,7 @@
    "u": "https://eqlwiki.com/index.php/Zeek"
   }
  ],
- "updated": "2026-07-12T17:26:55Z",
+ "updated": "2026-08-03T23:00:11Z",
  "wikiTitle": "Befallen",
  "wikiUrl": "https://eqlwiki.com/index.php/Befallen",
  "zone": "befallen"

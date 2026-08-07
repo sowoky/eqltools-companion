@@ -26,6 +26,7 @@ contextBridge.exposeInMainWorld("companion", {
   sendFeedEvent: (ev) => ipcRenderer.send("feed:event", ev),
   sendZone: (z) => ipcRenderer.send("feed:zone", z),
   sendQuests: (q) => ipcRenderer.send("feed:quests", q),
+  sendStats: (s) => ipcRenderer.send("feed:stats", s),
   onBootstrap: (fn) => ipcRenderer.on("log:bootstrap", (_e, p) => fn(p)),
   onLines: (fn) => ipcRenderer.on("log:lines", (_e, p) => fn(p)),
   onLogStatus: (fn) => ipcRenderer.on("log:status", (_e, p) => fn(p)),
@@ -40,4 +41,5 @@ contextBridge.exposeInMainWorld("companion", {
   onFeedEvent: (fn) => ipcRenderer.on("feed:event", (_e, p) => fn(p)),
   onFeedZone: (fn) => ipcRenderer.on("feed:zone", (_e, p) => fn(p)),
   onFeedQuests: (fn) => ipcRenderer.on("feed:quests", (_e, p) => fn(p)),
+  onFeedStats: (fn) => ipcRenderer.on("feed:stats", (_e, p) => fn(p)),
 });

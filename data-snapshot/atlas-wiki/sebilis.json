@@ -1,12 +1,2709 @@
 {
- "items": [],
+ "items": [
+  {
+   "g": 1,
+   "n": "Adamantite Bo Stick",
+   "u": "https://eqlwiki.com/index.php/Adamantite_Bo_Stick"
+  },
+  {
+   "g": 1,
+   "n": "Arbitor's Combine Greatsword",
+   "u": "https://eqlwiki.com/index.php/Arbitor's_Combine_Greatsword"
+  },
+  {
+   "g": 1,
+   "n": "Beetle Stinger",
+   "u": "https://eqlwiki.com/index.php/Beetle_Stinger"
+  },
+  {
+   "n": "Black Sapphire",
+   "u": "https://eqlwiki.com/index.php/Black_Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Blade of the Green Dragon Eye",
+   "u": "https://eqlwiki.com/index.php/Blade_of_the_Green_Dragon_Eye"
+  },
+  {
+   "g": 1,
+   "n": "Blood Ember Bracer",
+   "u": "https://eqlwiki.com/index.php/Blood_Ember_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Blood Ember Breastplate",
+   "u": "https://eqlwiki.com/index.php/Blood_Ember_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Blood Ember Helm",
+   "u": "https://eqlwiki.com/index.php/Blood_Ember_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Blood Ember Vambraces",
+   "u": "https://eqlwiki.com/index.php/Blood_Ember_Vambraces"
+  },
+  {
+   "n": "Bloodstone",
+   "u": "https://eqlwiki.com/index.php/Bloodstone"
+  },
+  {
+   "n": "Blue Diamond",
+   "u": "https://eqlwiki.com/index.php/Blue_Diamond"
+  },
+  {
+   "n": "Blue Slumber Fungus",
+   "u": "https://eqlwiki.com/index.php/Blue_Slumber_Fungus"
+  },
+  {
+   "n": "Bone Chips",
+   "u": "https://eqlwiki.com/index.php/Bone_Chips"
+  },
+  {
+   "g": 1,
+   "n": "Book of Obulus",
+   "u": "https://eqlwiki.com/index.php/Book_of_Obulus"
+  },
+  {
+   "n": "Box of Nil Space",
+   "u": "https://eqlwiki.com/index.php/Box_of_Nil_Space"
+  },
+  {
+   "g": 1,
+   "n": "Breath of Harmony",
+   "u": "https://eqlwiki.com/index.php/Breath_of_Harmony"
+  },
+  {
+   "n": "Breath of Ro (Item)",
+   "u": "https://eqlwiki.com/index.php/Breath_of_Ro_(Item)"
+  },
+  {
+   "g": 1,
+   "n": "Brell's Keg Popper",
+   "u": "https://eqlwiki.com/index.php/Brell's_Keg_Popper"
+  },
+  {
+   "g": 1,
+   "n": "Cane of Harmony",
+   "u": "https://eqlwiki.com/index.php/Cane_of_Harmony"
+  },
+  {
+   "g": 1,
+   "n": "Cane of the Tranquil",
+   "u": "https://eqlwiki.com/index.php/Cane_of_the_Tranquil"
+  },
+  {
+   "g": 1,
+   "n": "Cap of the Insubstantial",
+   "u": "https://eqlwiki.com/index.php/Cap_of_the_Insubstantial"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "g": 1,
+   "n": "Clarifying Spores",
+   "u": "https://eqlwiki.com/index.php/Clarifying_Spores"
+  },
+  {
+   "g": 1,
+   "n": "Clay Guardian Shield",
+   "u": "https://eqlwiki.com/index.php/Clay_Guardian_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Cloak of Piety",
+   "u": "https://eqlwiki.com/index.php/Cloak_of_Piety"
+  },
+  {
+   "g": 1,
+   "n": "Cobalt Bracer",
+   "u": "https://eqlwiki.com/index.php/Cobalt_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Cobalt Breastplate",
+   "u": "https://eqlwiki.com/index.php/Cobalt_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Cobalt Helm",
+   "u": "https://eqlwiki.com/index.php/Cobalt_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Cobalt Vambraces",
+   "u": "https://eqlwiki.com/index.php/Cobalt_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Cone of the Mystics",
+   "u": "https://eqlwiki.com/index.php/Cone_of_the_Mystics"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Short Sword",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Short_Sword"
+  },
+  {
+   "n": "Crystallized Sulfur",
+   "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
+  },
+  {
+   "g": 1,
+   "n": "Dark Scale Greaves",
+   "u": "https://eqlwiki.com/index.php/Dark_Scale_Greaves"
+  },
+  {
+   "g": 1,
+   "n": "Deepwater Bracer",
+   "u": "https://eqlwiki.com/index.php/Deepwater_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Deepwater Breastplate",
+   "u": "https://eqlwiki.com/index.php/Deepwater_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Deepwater Helm",
+   "u": "https://eqlwiki.com/index.php/Deepwater_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Deepwater Vambraces",
+   "u": "https://eqlwiki.com/index.php/Deepwater_Vambraces"
+  },
+  {
+   "n": "Diamond",
+   "u": "https://eqlwiki.com/index.php/Diamond"
+  },
+  {
+   "g": 1,
+   "n": "Donal's Bracer of Mourning",
+   "u": "https://eqlwiki.com/index.php/Donal's_Bracer_of_Mourning"
+  },
+  {
+   "g": 1,
+   "n": "Donal's Chestplate of Mourning",
+   "u": "https://eqlwiki.com/index.php/Donal's_Chestplate_of_Mourning"
+  },
+  {
+   "g": 1,
+   "n": "Donal's Helm of Mourning",
+   "u": "https://eqlwiki.com/index.php/Donal's_Helm_of_Mourning"
+  },
+  {
+   "g": 1,
+   "n": "Donal's Vambraces of Mourning",
+   "u": "https://eqlwiki.com/index.php/Donal's_Vambraces_of_Mourning"
+  },
+  {
+   "g": 1,
+   "n": "Dragon Horn Ykesha",
+   "u": "https://eqlwiki.com/index.php/Dragon_Horn_Ykesha"
+  },
+  {
+   "g": 1,
+   "n": "Ebon Mace",
+   "u": "https://eqlwiki.com/index.php/Ebon_Mace"
+  },
+  {
+   "g": 1,
+   "n": "Elder Spiritist's Bracer",
+   "u": "https://eqlwiki.com/index.php/Elder_Spiritist's_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Elder Spiritist's Breastplate",
+   "u": "https://eqlwiki.com/index.php/Elder_Spiritist's_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Elder Spiritist's Helm",
+   "u": "https://eqlwiki.com/index.php/Elder_Spiritist's_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Fayguard Bladecatcher",
+   "u": "https://eqlwiki.com/index.php/Fayguard_Bladecatcher"
+  },
+  {
+   "g": 1,
+   "n": "Felhammer",
+   "u": "https://eqlwiki.com/index.php/Felhammer"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Great Staff",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Morning Star",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "n": "Fire Emerald",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
+  },
+  {
+   "g": 1,
+   "n": "Fire Emerald Ring",
+   "u": "https://eqlwiki.com/index.php/Fire_Emerald_Ring"
+  },
+  {
+   "n": "Fire Opal",
+   "u": "https://eqlwiki.com/index.php/Fire_Opal"
+  },
+  {
+   "g": 1,
+   "n": "Froglok Blood",
+   "u": "https://eqlwiki.com/index.php/Froglok_Blood"
+  },
+  {
+   "g": 1,
+   "n": "Froglok Bonecaster's Robe",
+   "u": "https://eqlwiki.com/index.php/Froglok_Bonecaster's_Robe"
+  },
+  {
+   "n": "Froglok Meat",
+   "u": "https://eqlwiki.com/index.php/Froglok_Meat"
+  },
+  {
+   "g": 1,
+   "n": "Froglok Scale Chestplate",
+   "u": "https://eqlwiki.com/index.php/Froglok_Scale_Chestplate"
+  },
+  {
+   "g": 1,
+   "n": "Fungi Covered Great Staff",
+   "u": "https://eqlwiki.com/index.php/Fungi_Covered_Great_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Fungus Covered Scale Tunic",
+   "u": "https://eqlwiki.com/index.php/Fungus_Covered_Scale_Tunic"
+  },
+  {
+   "g": 1,
+   "n": "Gangrenous Beetle Mask",
+   "u": "https://eqlwiki.com/index.php/Gangrenous_Beetle_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Granite Face Grinder",
+   "u": "https://eqlwiki.com/index.php/Granite_Face_Grinder"
+  },
+  {
+   "n": "Green Froglok Skin",
+   "u": "https://eqlwiki.com/index.php/Green_Froglok_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Green Jade Axe",
+   "u": "https://eqlwiki.com/index.php/Green_Jade_Axe"
+  },
+  {
+   "g": 1,
+   "n": "Green Jade Halberd",
+   "u": "https://eqlwiki.com/index.php/Green_Jade_Halberd"
+  },
+  {
+   "g": 1,
+   "n": "Hardened Clay Bracelet",
+   "u": "https://eqlwiki.com/index.php/Hardened_Clay_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Hierophant's Cloak",
+   "u": "https://eqlwiki.com/index.php/Hierophant's_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Blood",
+   "u": "https://eqlwiki.com/index.php/Iksar_Blood"
+  },
+  {
+   "g": 1,
+   "n": "Imbued Fighters Staff",
+   "u": "https://eqlwiki.com/index.php/Imbued_Fighters_Staff"
+  },
+  {
+   "n": "Jacinth",
+   "u": "https://eqlwiki.com/index.php/Jacinth"
+  },
+  {
+   "g": 1,
+   "n": "Jarsath Battle Sword",
+   "u": "https://eqlwiki.com/index.php/Jarsath_Battle_Sword"
+  },
+  {
+   "n": "Jasper",
+   "u": "https://eqlwiki.com/index.php/Jasper"
+  },
+  {
+   "g": 1,
+   "n": "Jaundiced Bone Bracer",
+   "u": "https://eqlwiki.com/index.php/Jaundiced_Bone_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Jaundiced Bone Breastplate",
+   "u": "https://eqlwiki.com/index.php/Jaundiced_Bone_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Jaundiced Bone Helm",
+   "u": "https://eqlwiki.com/index.php/Jaundiced_Bone_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Jaundiced Bone Vambraces",
+   "u": "https://eqlwiki.com/index.php/Jaundiced_Bone_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Journeyman's Walking Stick",
+   "u": "https://eqlwiki.com/index.php/Journeyman's_Walking_Stick"
+  },
+  {
+   "g": 1,
+   "n": "Knuckle Dusters",
+   "u": "https://eqlwiki.com/index.php/Knuckle_Dusters"
+  },
+  {
+   "g": 1,
+   "n": "Lamentation",
+   "u": "https://eqlwiki.com/index.php/Lamentation"
+  },
+  {
+   "g": 1,
+   "n": "Larrikan's Mask",
+   "u": "https://eqlwiki.com/index.php/Larrikan's_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Luminescent Staff",
+   "u": "https://eqlwiki.com/index.php/Luminescent_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Manna Robe",
+   "u": "https://eqlwiki.com/index.php/Manna_Robe"
+  },
+  {
+   "g": 1,
+   "n": "Mistletoe Powder",
+   "u": "https://eqlwiki.com/index.php/Mistletoe_Powder"
+  },
+  {
+   "g": 1,
+   "n": "Mrylokar's Bracer",
+   "u": "https://eqlwiki.com/index.php/Mrylokar's_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Mrylokar's Breastplate",
+   "u": "https://eqlwiki.com/index.php/Mrylokar's_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Mrylokar's Helm",
+   "u": "https://eqlwiki.com/index.php/Mrylokar's_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Mrylokar's Vambraces",
+   "u": "https://eqlwiki.com/index.php/Mrylokar's_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Nathsar Greatsword",
+   "u": "https://eqlwiki.com/index.php/Nathsar_Greatsword"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 351",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._351"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 378",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._378"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 401",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._401"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 415",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._415"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 449",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._449"
+  },
+  {
+   "n": "Nilitim's Grimoire Pg. 450",
+   "u": "https://eqlwiki.com/index.php/Nilitim's_Grimoire_Pg._450"
+  },
+  {
+   "n": "Nodding Blue Lily",
+   "u": "https://eqlwiki.com/index.php/Nodding_Blue_Lily"
+  },
+  {
+   "g": 1,
+   "n": "Obulus Death Shroud",
+   "u": "https://eqlwiki.com/index.php/Obulus_Death_Shroud"
+  },
+  {
+   "g": 1,
+   "n": "Obulus Mantle",
+   "u": "https://eqlwiki.com/index.php/Obulus_Mantle"
+  },
+  {
+   "n": "Onyx",
+   "u": "https://eqlwiki.com/index.php/Onyx"
+  },
+  {
+   "g": 1,
+   "n": "Peacebringer",
+   "u": "https://eqlwiki.com/index.php/Peacebringer"
+  },
+  {
+   "g": 1,
+   "n": "Pearl Necklace",
+   "u": "https://eqlwiki.com/index.php/Pearl_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Poison Wind Censer",
+   "u": "https://eqlwiki.com/index.php/Poison_Wind_Censer"
+  },
+  {
+   "g": 1,
+   "n": "Poisoned Mantle",
+   "u": "https://eqlwiki.com/index.php/Poisoned_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Reet Froglok Crown",
+   "u": "https://eqlwiki.com/index.php/Reet_Froglok_Crown"
+  },
+  {
+   "g": 1,
+   "n": "Robe of Living Fungus",
+   "u": "https://eqlwiki.com/index.php/Robe_of_Living_Fungus"
+  },
+  {
+   "g": 1,
+   "n": "Rod of Lamentation",
+   "u": "https://eqlwiki.com/index.php/Rod_of_Lamentation"
+  },
+  {
+   "n": "Ruby",
+   "u": "https://eqlwiki.com/index.php/Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Ruby Crown",
+   "u": "https://eqlwiki.com/index.php/Ruby_Crown"
+  },
+  {
+   "n": "Rune of Ap`Sagor",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Ap%60Sagor"
+  },
+  {
+   "n": "Rune of Concussion",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Concussion"
+  },
+  {
+   "n": "Rune of Crippling",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Crippling"
+  },
+  {
+   "n": "Rune of Impetus",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Impetus"
+  },
+  {
+   "n": "Rune of Rathe",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Rathe"
+  },
+  {
+   "n": "Rune of the Astral",
+   "u": "https://eqlwiki.com/index.php/Rune_of_the_Astral"
+  },
+  {
+   "g": 1,
+   "n": "Runebranded Girdle",
+   "u": "https://eqlwiki.com/index.php/Runebranded_Girdle"
+  },
+  {
+   "g": 1,
+   "n": "Runed Fighters Staff",
+   "u": "https://eqlwiki.com/index.php/Runed_Fighters_Staff"
+  },
+  {
+   "n": "Sapphire",
+   "u": "https://eqlwiki.com/index.php/Sapphire"
+  },
+  {
+   "g": 1,
+   "n": "Sapphire Necklace",
+   "u": "https://eqlwiki.com/index.php/Sapphire_Necklace"
+  },
+  {
+   "g": 1,
+   "n": "Sarnak Warhammer",
+   "u": "https://eqlwiki.com/index.php/Sarnak_Warhammer"
+  },
+  {
+   "n": "Scroll of the Dark",
+   "u": "https://eqlwiki.com/index.php/Scroll_of_the_Dark"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Croaking Dirk",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Croaking_Dirk"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Belt",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Belt"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Boots",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Bracelet",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Bracelet"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Cap",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Cap"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Cape",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Cape"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Coat",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Coat"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Gloves",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Leggings",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Mantle",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Mask",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Neckguard",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Neckguard"
+  },
+  {
+   "g": 1,
+   "n": "Sebilite Scale Vambraces",
+   "u": "https://eqlwiki.com/index.php/Sebilite_Scale_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Shieldstorm",
+   "u": "https://eqlwiki.com/index.php/Shieldstorm"
+  },
+  {
+   "g": 1,
+   "n": "Siblisian Berserker Cloak",
+   "u": "https://eqlwiki.com/index.php/Siblisian_Berserker_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Silken Whip of Ensnaring",
+   "u": "https://eqlwiki.com/index.php/Silken_Whip_of_Ensnaring"
+  },
+  {
+   "g": 1,
+   "n": "Silver Etched Warhammer",
+   "u": "https://eqlwiki.com/index.php/Silver_Etched_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Singing Steel Bracer",
+   "u": "https://eqlwiki.com/index.php/Singing_Steel_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Singing Steel Breastplate",
+   "u": "https://eqlwiki.com/index.php/Singing_Steel_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Singing Steel Helm",
+   "u": "https://eqlwiki.com/index.php/Singing_Steel_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Singing Steel Vambraces",
+   "u": "https://eqlwiki.com/index.php/Singing_Steel_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Slime Coated Harpoon",
+   "u": "https://eqlwiki.com/index.php/Slime_Coated_Harpoon"
+  },
+  {
+   "g": 1,
+   "n": "Sludged Girdle",
+   "u": "https://eqlwiki.com/index.php/Sludged_Girdle"
+  },
+  {
+   "g": 1,
+   "n": "Spores of Forgetfulness",
+   "u": "https://eqlwiki.com/index.php/Spores_of_Forgetfulness"
+  },
+  {
+   "g": 1,
+   "n": "Staff of Battle",
+   "u": "https://eqlwiki.com/index.php/Staff_of_Battle"
+  },
+  {
+   "g": 1,
+   "n": "Staff of the Waterwalker",
+   "u": "https://eqlwiki.com/index.php/Staff_of_the_Waterwalker"
+  },
+  {
+   "n": "Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
+  },
+  {
+   "n": "Star Ruby",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby"
+  },
+  {
+   "g": 1,
+   "n": "Star Ruby Earring",
+   "u": "https://eqlwiki.com/index.php/Star_Ruby_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Stormwood Battle Staff",
+   "u": "https://eqlwiki.com/index.php/Stormwood_Battle_Staff"
+  },
+  {
+   "g": 1,
+   "n": "Sword of Skyfire",
+   "u": "https://eqlwiki.com/index.php/Sword_of_Skyfire"
+  },
+  {
+   "g": 1,
+   "n": "Sword of the Morning",
+   "u": "https://eqlwiki.com/index.php/Sword_of_the_Morning"
+  },
+  {
+   "n": "Tears of Prexus",
+   "u": "https://eqlwiki.com/index.php/Tears_of_Prexus"
+  },
+  {
+   "g": 1,
+   "n": "Tolan's Darkwood Bracer",
+   "u": "https://eqlwiki.com/index.php/Tolan's_Darkwood_Bracer"
+  },
+  {
+   "g": 1,
+   "n": "Tolan's Darkwood Breastplate",
+   "u": "https://eqlwiki.com/index.php/Tolan's_Darkwood_Breastplate"
+  },
+  {
+   "g": 1,
+   "n": "Tolan's Darkwood Helm",
+   "u": "https://eqlwiki.com/index.php/Tolan's_Darkwood_Helm"
+  },
+  {
+   "g": 1,
+   "n": "Tolan's Darkwood Vambraces",
+   "u": "https://eqlwiki.com/index.php/Tolan's_Darkwood_Vambraces"
+  },
+  {
+   "g": 1,
+   "n": "Tolapumj's Robe",
+   "u": "https://eqlwiki.com/index.php/Tolapumj's_Robe"
+  },
+  {
+   "g": 1,
+   "n": "Ton Po's Bo Stick of Understanding",
+   "u": "https://eqlwiki.com/index.php/Ton_Po's_Bo_Stick_of_Understanding"
+  },
+  {
+   "g": 1,
+   "n": "Trakanon's Tooth",
+   "u": "https://eqlwiki.com/index.php/Trakanon's_Tooth"
+  },
+  {
+   "g": 1,
+   "n": "Truncheon of Doom",
+   "u": "https://eqlwiki.com/index.php/Truncheon_of_Doom"
+  },
+  {
+   "g": 1,
+   "n": "Undead Dragon Sinew",
+   "u": "https://eqlwiki.com/index.php/Undead_Dragon_Sinew"
+  },
+  {
+   "g": 1,
+   "n": "Undead Dragongut Strings",
+   "u": "https://eqlwiki.com/index.php/Undead_Dragongut_Strings"
+  },
+  {
+   "g": 1,
+   "n": "Undead Froglok Spine",
+   "u": "https://eqlwiki.com/index.php/Undead_Froglok_Spine"
+  },
+  {
+   "n": "Wax Flower",
+   "u": "https://eqlwiki.com/index.php/Wax_Flower"
+  },
+  {
+   "g": 1,
+   "n": "Wind Saber",
+   "u": "https://eqlwiki.com/index.php/Wind_Saber"
+  },
+  {
+   "n": "Wing of Xegony",
+   "u": "https://eqlwiki.com/index.php/Wing_of_Xegony"
+  },
+  {
+   "n": "Words of Acquisition (Beza)",
+   "u": "https://eqlwiki.com/index.php/Words_of_Acquisition_(Beza)"
+  },
+  {
+   "n": "Words of Bondage",
+   "u": "https://eqlwiki.com/index.php/Words_of_Bondage"
+  },
+  {
+   "n": "Words of Crippling Force",
+   "u": "https://eqlwiki.com/index.php/Words_of_Crippling_Force"
+  },
+  {
+   "n": "Words of Dissolution",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dissolution"
+  },
+  {
+   "n": "Words of Grappling",
+   "u": "https://eqlwiki.com/index.php/Words_of_Grappling"
+  },
+  {
+   "n": "Words of Odus",
+   "u": "https://eqlwiki.com/index.php/Words_of_Odus"
+  },
+  {
+   "n": "Words of Requisition",
+   "u": "https://eqlwiki.com/index.php/Words_of_Requisition"
+  },
+  {
+   "n": "Words of the Ethereal",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Ethereal"
+  },
+  {
+   "g": 1,
+   "n": "Worn Cloth Mantle",
+   "u": "https://eqlwiki.com/index.php/Worn_Cloth_Mantle"
+  },
+  {
+   "g": 1,
+   "n": "Ykeshan War Club",
+   "u": "https://eqlwiki.com/index.php/Ykeshan_War_Club"
+  },
+  {
+   "g": 1,
+   "n": "Zealot's Incarnadine Sword",
+   "u": "https://eqlwiki.com/index.php/Zealot's_Incarnadine_Sword"
+  }
+ ],
  "meta": {
   "license": "CC BY-SA 4.0",
   "source": "eqlwiki.com"
  },
- "mobs": [],
- "updated": null,
- "wikiTitle": null,
- "wikiUrl": null,
+ "mobs": [
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    31
+   ],
+   "loc": [
+    -851.0,
+    757.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "a leprous scarab",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Leprous_Scarab"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    19,
+    30,
+    76
+   ],
+   "loc": [
+    -576.0,
+    280.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "a necrosis scarab",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Necrosis_Scarab"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    69,
+    142
+   ],
+   "loc": [
+    -714.0,
+    708.0,
+    null
+   ],
+   "lvl": "47",
+   "n": "a pox scarab",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Pox_Scarab"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    52,
+    54,
+    58,
+    175
+   ],
+   "loc": null,
+   "lvl": "49-51",
+   "n": "a sebilite golem",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sebilite_Golem"
+  },
+  {
+   "dr": [
+    "Ultra Rare"
+   ],
+   "drops": [
+    142
+   ],
+   "loc": [
+    -551.0,
+    269.0,
+    null
+   ],
+   "lvl": "50-51",
+   "n": "a sepsis scarab",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Sepsis_Scarab"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    68,
+    75,
+    136
+   ],
+   "loc": null,
+   "lvl": "50",
+   "n": "An Iksar Necromancer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/An_Iksar_Necromancer"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Common"
+   ],
+   "drops": [
+    73,
+    135,
+    176
+   ],
+   "loc": [
+    -1425.0,
+    27.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Arch Duke Iatol",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Arch_Duke_Iatol"
+  },
+  {
+   "dr": [
+    "Common",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    77,
+    81,
+    155
+   ],
+   "loc": [
+    -1425.0,
+    27.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Baron Yosig",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Baron_Yosig"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    15,
+    29,
+    156
+   ],
+   "loc": [
+    -1727.0,
+    225.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "blood of chottal",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Blood_of_chottal"
+  },
+  {
+   "dr": [
+    null,
+    "Common",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    13,
+    23,
+    43,
+    153
+   ],
+   "loc": [
+    -1109.0,
+    -727.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Brogg",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Brogg"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Ultra Rare",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    40,
+    65,
+    122,
+    130
+   ],
+   "loc": [
+    -369.0,
+    -63.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Commander ilis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Froglok_commander"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    35,
+    97
+   ],
+   "loc": [
+    -1045.0,
+    158.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "crypt caretaker",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Crypt_Caretaker"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    null
+   ],
+   "drops": [
+    42,
+    163,
+    170
+   ],
+   "loc": null,
+   "lvl": "47",
+   "n": "dar ghoul knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Dar_Ghoul_Knight"
+  },
+  {
+   "dr": [
+    null,
+    "Common",
+    null
+   ],
+   "drops": [
+    36,
+    88,
+    105
+   ],
+   "loc": [
+    -1913.0,
+    225.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Emperor Chottal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Emperor_Chottal"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    2,
+    3,
+    33,
+    69,
+    115
+   ],
+   "loc": [
+    -927.0,
+    -246.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "frenzied pox scarab",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Frenzied_pox_scarab"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    10,
+    37,
+    52,
+    106,
+    116,
+    124,
+    139,
+    147
+   ],
+   "loc": [
+    -844.0,
+    901.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "Froggy",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Froggy"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    10,
+    37,
+    123,
+    137
+   ],
+   "loc": [
+    -692.0,
+    537.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "froglok armorer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_armorer"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    86,
+    160
+   ],
+   "loc": [
+    -896.0,
+    647.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "froglok armsman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Armsman"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    32,
+    87,
+    125,
+    127
+   ],
+   "loc": [
+    -742.0,
+    658.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "froglok bartender",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Bartender"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    31,
+    52,
+    54,
+    55,
+    57,
+    63,
+    106,
+    107,
+    111,
+    116,
+    141,
+    147,
+    148,
+    166,
+    169
+   ],
+   "loc": null,
+   "lvl": "47",
+   "n": "froglok bok knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Bok_Knight"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    31,
+    52,
+    54,
+    55,
+    57,
+    63,
+    91,
+    92,
+    94,
+    95,
+    106,
+    107,
+    110,
+    116,
+    141,
+    147,
+    148,
+    168
+   ],
+   "loc": null,
+   "lvl": "46-50",
+   "n": "froglok bok shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Bok_Shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    52,
+    55,
+    57,
+    63,
+    96,
+    100,
+    106,
+    116,
+    141,
+    147,
+    148,
+    167
+   ],
+   "loc": null,
+   "lvl": "47-50",
+   "n": "froglok bok wizard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Bok_Wizard"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    47,
+    84,
+    124,
+    132
+   ],
+   "loc": [
+    -1120.0,
+    768.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "froglok chef",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Chef"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    42,
+    55,
+    57,
+    63,
+    96,
+    141,
+    164
+   ],
+   "loc": null,
+   "lvl": "44-50",
+   "n": "froglok dar knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Dar_Knight"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    55,
+    63,
+    134,
+    141
+   ],
+   "loc": null,
+   "lvl": "48",
+   "n": "froglok dar wizard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Dar_Wizard"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    55
+   ],
+   "loc": [
+    -977.0,
+    -386.0,
+    null
+   ],
+   "lvl": "46",
+   "n": "froglok ilis acolyte",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_ilis_acolyte"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common"
+   ],
+   "drops": [
+    48,
+    55,
+    57,
+    63,
+    164
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "froglok ilis knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Ilis_Knight"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    48,
+    55,
+    57,
+    63
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "froglok ilis shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Ilis_Shaman"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    55,
+    57,
+    63
+   ],
+   "loc": null,
+   "lvl": "53",
+   "n": "froglok ilis wizard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Ilis_Wizard"
+  },
+  {
+   "dr": [
+    null,
+    "Rare",
+    null
+   ],
+   "drops": [
+    133,
+    141,
+    149
+   ],
+   "loc": null,
+   "lvl": "41-47",
+   "n": "froglok jin shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Jin_Shaman"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    133,
+    141
+   ],
+   "loc": null,
+   "lvl": "45",
+   "n": "froglok jin wizard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Jin_Wizard"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    55,
+    57,
+    63,
+    134,
+    141,
+    149
+   ],
+   "loc": [
+    -390.0,
+    531.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "froglok kor shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Kor_Shaman"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    3,
+    10,
+    31,
+    37,
+    52,
+    53,
+    54,
+    55,
+    70,
+    106,
+    107,
+    114,
+    116,
+    117,
+    147,
+    148,
+    152,
+    164,
+    166,
+    167,
+    168,
+    169,
+    171,
+    172,
+    173,
+    174
+   ],
+   "loc": [
+    -692.0,
+    537.0,
+    null
+   ],
+   "lvl": "48",
+   "n": "froglok krup enchanter",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_krup_enchanter"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    55,
+    57,
+    63,
+    114,
+    164
+   ],
+   "loc": null,
+   "lvl": "49-52",
+   "n": "froglok krup knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Krup_Knight"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    0,
+    55,
+    57,
+    63,
+    114,
+    134
+   ],
+   "loc": null,
+   "lvl": "50 - 52",
+   "n": "froglok krup shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Krup_Shaman"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    55,
+    57,
+    63
+   ],
+   "loc": null,
+   "lvl": "48-51",
+   "n": "froglok krup wizard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Krup_Wizard"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    1,
+    41,
+    129,
+    131
+   ],
+   "loc": [
+    -871.0,
+    -315.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "froglok ostiary",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_ostiary"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Common",
+    "Ultra Rare"
+   ],
+   "drops": [
+    38,
+    121,
+    126,
+    177
+   ],
+   "loc": [
+    -1223.0,
+    -467.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "froglok pickler",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Pickler"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    4,
+    10,
+    16,
+    27,
+    37,
+    54,
+    55,
+    57,
+    63,
+    90,
+    92,
+    93,
+    94,
+    95,
+    103,
+    106,
+    109,
+    110,
+    113,
+    164,
+    167,
+    168,
+    172,
+    174
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "froglok reet knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Reet_Knight"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    10,
+    37,
+    54,
+    55,
+    57,
+    63,
+    90,
+    92,
+    93,
+    94,
+    95,
+    103,
+    106,
+    109,
+    113,
+    164,
+    167,
+    168,
+    172,
+    174
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "froglok reet shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Reet_Shaman"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Common",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    10,
+    16,
+    37,
+    54,
+    55,
+    57,
+    63,
+    90,
+    92,
+    93,
+    94,
+    95,
+    103,
+    106,
+    109,
+    113,
+    164,
+    167,
+    168,
+    172,
+    174
+   ],
+   "loc": null,
+   "lvl": "55",
+   "n": "froglok reet wizard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Reet_Wizard"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    128,
+    140
+   ],
+   "loc": [
+    -1130.0,
+    784.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "froglok repairer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_repairer_(Old_Sebilis)"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    null,
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    null,
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    13,
+    28,
+    31,
+    52,
+    55,
+    57,
+    89,
+    107,
+    108,
+    141,
+    147,
+    148
+   ],
+   "loc": [
+    -391.0,
+    513.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "froglok zol knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Froglok_Zol_Knight"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    46,
+    61,
+    145
+   ],
+   "loc": [
+    -460.0,
+    321.0,
+    null
+   ],
+   "lvl": "52",
+   "n": "gangrenous scarab",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Gangrenous_Scarab"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Ultra Rare"
+   ],
+   "drops": [
+    44,
+    56,
+    118
+   ],
+   "loc": [
+    -977.0,
+    -386.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "Gruplinort",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gruplinort"
+  },
+  {
+   "dr": [
+    "Common",
+    "Ultra Rare",
+    null,
+    "Rare"
+   ],
+   "drops": [
+    14,
+    18,
+    31,
+    78
+   ],
+   "loc": [
+    -1424.0,
+    243.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Harbinger Freglor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Harbinger_Freglor"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Ultra Rare"
+   ],
+   "drops": [
+    67,
+    150,
+    151
+   ],
+   "loc": [
+    -1311.0,
+    27.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Hierophant Prime Grekal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hierophant_Prime_Grekal"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -1367.0,
+    185.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "Imperial Crypt Guardian",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Imperial_Crypt_Guardian"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    10,
+    37,
+    52,
+    53,
+    70,
+    106,
+    107,
+    116,
+    147,
+    148
+   ],
+   "loc": null,
+   "lvl": "47",
+   "n": "krup ghoul knight",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Krup_Ghoul_Knight"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    10,
+    22,
+    25,
+    37,
+    52,
+    64,
+    106,
+    116,
+    147
+   ],
+   "loc": [
+    -1143.0,
+    259.0,
+    null
+   ],
+   "lvl": "54 - 56",
+   "n": "myconid adept",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Myconid_Adept"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    10,
+    11,
+    21,
+    22,
+    25,
+    37,
+    51,
+    52,
+    54,
+    64,
+    106,
+    116,
+    143,
+    147
+   ],
+   "loc": null,
+   "lvl": "54",
+   "n": "myconid priest",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Myconid_priest"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    10,
+    22,
+    25,
+    37,
+    49,
+    50,
+    51,
+    52,
+    64,
+    106,
+    116,
+    147
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "myconid reaver",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Myconid_Reaver"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    59,
+    60,
+    104
+   ],
+   "loc": [
+    -910.0,
+    109.0,
+    null
+   ],
+   "lvl": "56",
+   "n": "myconid spore king",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Myconid_Spore_King"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    9,
+    10,
+    11,
+    21,
+    25,
+    37,
+    50,
+    52,
+    64,
+    72,
+    98,
+    106,
+    116,
+    146,
+    147
+   ],
+   "loc": null,
+   "lvl": "52",
+   "n": "myconid warrior",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Myconid_Warrior"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Common",
+    "Uncommon"
+   ],
+   "drops": [
+    79,
+    80,
+    165
+   ],
+   "loc": [
+    -888.0,
+    133.0,
+    null
+   ],
+   "lvl": "53",
+   "n": "sebilite guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Sebilite_Guardian"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    7,
+    27,
+    120,
+    152,
+    161
+   ],
+   "loc": [
+    -1558.0,
+    -135.0,
+    null
+   ],
+   "lvl": "57",
+   "n": "sebilite juggernaut",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Sebilite_Juggernaut"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    66,
+    101,
+    144
+   ],
+   "loc": [
+    -2085.0,
+    -624.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "sebilite protector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Sebilite_protector"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    12,
+    52,
+    54,
+    106,
+    116,
+    119,
+    147
+   ],
+   "loc": [
+    -1425.0,
+    27.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "skeletal baron",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Skeletal_baron"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    3,
+    8,
+    12,
+    37,
+    52,
+    54,
+    106,
+    116,
+    119,
+    147
+   ],
+   "loc": [
+    -1649.0,
+    234.0,
+    null
+   ],
+   "lvl": "44 - 51?",
+   "n": "skeletal champion",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Skeletal_champion"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    8,
+    12,
+    52,
+    54,
+    106,
+    116,
+    119,
+    147
+   ],
+   "loc": [
+    -1727.0,
+    225.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "skeletal duke",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Skeletal_duke"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    12
+   ],
+   "loc": null,
+   "lvl": "51 - ?",
+   "n": "skeletal guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Skeletal_guard"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare"
+   ],
+   "drops": [
+    12,
+    52,
+    54,
+    106,
+    116,
+    119,
+    147
+   ],
+   "loc": [
+    -1424.0,
+    243.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "skeletal harbinger",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Skeletal_harbinger"
+  },
+  {
+   "dr": [
+    "Ultra Rare",
+    "Uncommon",
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Uncommon",
+    "Ultra Rare"
+   ],
+   "drops": [
+    3,
+    12,
+    17,
+    37,
+    52,
+    54,
+    106,
+    116,
+    119,
+    147
+   ],
+   "loc": [
+    -1311.0,
+    27.0,
+    null
+   ],
+   "lvl": "51",
+   "n": "skeletal hierophant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Skeletal_hierophant"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    62,
+    71,
+    112
+   ],
+   "loc": null,
+   "lvl": "49",
+   "n": "spectral duke",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Spectral_Duke"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    5,
+    62,
+    71
+   ],
+   "loc": [
+    -1913.0,
+    225.0,
+    null
+   ],
+   "lvl": "51 - 54",
+   "n": "spectral harbinger",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Spectral_harbinger"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    8
+   ],
+   "loc": null,
+   "lvl": "51-53",
+   "n": "spectral revenant",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Spectral_revenant"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Very Rare",
+    "Common"
+   ],
+   "drops": [
+    20,
+    83,
+    99,
+    157
+   ],
+   "loc": [
+    -2185.0,
+    -444.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Tolapumj",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Tolapumj"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "No Longer Drops",
+    "Always",
+    null,
+    null
+   ],
+   "drops": [
+    6,
+    24,
+    26,
+    34,
+    39,
+    45,
+    74,
+    82,
+    85,
+    102,
+    138,
+    154,
+    158,
+    159,
+    161,
+    162
+   ],
+   "loc": [
+    -2133.0,
+    -679.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Trakanon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trakanon"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "No Longer Drops",
+    null,
+    null
+   ],
+   "drops": [
+    6,
+    24,
+    26,
+    34,
+    39,
+    45,
+    74,
+    82,
+    85,
+    102,
+    138,
+    154,
+    158,
+    161,
+    162
+   ],
+   "loc": [
+    -2133.0,
+    -679.0,
+    null
+   ],
+   "lvl": "65",
+   "n": "Trakanon",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trakanon_(triggered)"
+  }
+ ],
+ "updated": "2026-06-06T00:34:39Z",
+ "wikiTitle": "Old Sebilis",
+ "wikiUrl": "https://eqlwiki.com/index.php/Old_Sebilis",
  "zone": "sebilis"
 }

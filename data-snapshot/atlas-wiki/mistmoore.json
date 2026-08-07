@@ -858,8 +858,8 @@
    ],
    "loc": [
     -5.0,
-    76.0,
-    null
+    77.0,
+    -193.0
    ],
    "lvl": "33",
    "n": "a cloaked dhampyre",
@@ -1306,17 +1306,47 @@
   },
   {
    "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
     "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Ultra Rare",
+    "Rare",
+    "Rare",
+    "Ultra Rare",
+    "Ultra Rare",
     "Common"
    ],
    "drops": [
     31,
+    39,
+    40,
+    42,
+    43,
+    44,
+    45,
+    47,
+    48,
+    49,
+    61,
+    92,
+    94,
+    95,
+    97,
+    101,
     149
    ],
    "loc": [
-    -10.0,
-    587.0,
-    null
+    38.0,
+    597.0,
+    -206.0
    ],
    "lvl": "27",
    "n": "a glyphed ghoul",
@@ -2542,9 +2572,9 @@
    "loc": [
     -205.0,
     352.0,
-    null
+    -136.0
    ],
-   "lvl": "35-37",
+   "lvl": "37",
    "n": "Garton Viswin",
    "named": true,
    "u": "https://eqlwiki.com/index.php/Garton_Viswin"
@@ -2675,7 +2705,7 @@
    "u": "https://eqlwiki.com/index.php/Xicotl"
   }
  ],
- "updated": "2026-05-23T04:39:15Z",
+ "updated": "2026-08-04T00:38:00Z",
  "wikiTitle": "Mistmoore Castle",
  "wikiUrl": "https://eqlwiki.com/index.php/Mistmoore_Castle",
  "zone": "mistmoore"

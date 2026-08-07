@@ -1776,13 +1776,6 @@
      "t": "Sabertooth_Overseer"
     },
     {
-     "lv": 20.0,
-     "lvl": "20",
-     "n": "Sabertooth Overseer",
-     "named": true,
-     "t": "Splitpaw_Sharpshooter"
-    },
-    {
      "lv": 13.0,
      "lvl": "13",
      "n": "Socho Darkpaw",
@@ -1809,6 +1802,13 @@
      "n": "Splitpaw Sentry",
      "named": true,
      "t": "Splitpaw_Sentry"
+    },
+    {
+     "lv": 20.0,
+     "lvl": "20",
+     "n": "Splitpaw Sharpshooter",
+     "named": true,
+     "t": "Splitpaw_Sharpshooter"
     },
     {
      "lv": 15.0,
@@ -2479,7 +2479,7 @@
      "lvl": "12",
      "n": "Orc Scoutsman",
      "named": true,
-     "t": "Orc_Scoutsman"
+     "t": "Orc_Scoutsman_(Butcherblock)"
     },
     {
      "lv": 14.0,
@@ -3318,8 +3318,8 @@
      "t": "Kelynn"
     },
     {
-     "lv": 14.0,
-     "lvl": "14",
+     "lv": 15.5,
+     "lvl": "14-17",
      "n": "Lord Darish",
      "named": true,
      "t": "Lord_Darish"
@@ -3367,6 +3367,13 @@
      "t": "Orc_Pawn_(Crushbone)"
     },
     {
+     "lv": 12.0,
+     "lvl": "12",
+     "n": "orc scoutsman",
+     "named": false,
+     "t": "Orc_scoutsman_(Crushbone)"
+    },
+    {
      "lv": 11.0,
      "lvl": "10-12",
      "n": "orc slaver",
@@ -3374,11 +3381,18 @@
      "t": "Orc_Slaver"
     },
     {
-     "lv": 14.0,
-     "lvl": "14",
+     "lv": 12.0,
+     "lvl": "12",
      "n": "orc taskmaster",
      "named": false,
      "t": "Orc_Taskmaster"
+    },
+    {
+     "lv": 15.0,
+     "lvl": "14-16",
+     "n": "orc thaumaturgist",
+     "named": false,
+     "t": "Orc_thaumaturgist"
     },
     {
      "lv": 13.0,
@@ -3386,6 +3400,13 @@
      "n": "orc trainer",
      "named": false,
      "t": "Orc_Trainer"
+    },
+    {
+     "lv": 15.0,
+     "lvl": "15",
+     "n": "Orc Warden",
+     "named": true,
+     "t": "Orc_Warden"
     },
     {
      "lv": 16.0,
@@ -7673,8 +7694,8 @@
      "t": "Puab_Closk"
     },
     {
-     "lv": 35.0,
-     "lvl": "35",
+     "lv": 55.0,
+     "lvl": "55",
      "n": "Ran`un",
      "named": true,
      "t": "Ran%60Un"
@@ -8909,8 +8930,8 @@
      "t": "A_froglok_zol_knight"
     },
     {
-     "lv": 35.0,
-     "lvl": "35",
+     "lv": 34.0,
+     "lvl": "34",
      "n": "a ghoul assassin",
      "named": false,
      "t": "A_ghoul_assassin"
@@ -14744,8 +14765,8 @@
      "t": "Enynti"
     },
     {
-     "lv": 36.0,
-     "lvl": "35-37",
+     "lv": 37.0,
+     "lvl": "37",
      "n": "Garton Viswin",
      "named": true,
      "t": "Garton_Viswin"
@@ -16823,11 +16844,46 @@
    "city": true,
    "mobs": [
     {
+     "lv": null,
+     "lvl": "",
+     "n": "a burnt scalebone",
+     "named": false,
+     "t": "A_burnt_scalebone"
+    },
+    {
+     "lv": null,
+     "lvl": "",
+     "n": "a failed experiment",
+     "named": false,
+     "t": "A_failed_experiment"
+    },
+    {
+     "lv": null,
+     "lvl": "",
+     "n": "A Vitrified Skeleton",
+     "named": true,
+     "t": "A_Vitrified_Skeleton"
+    },
+    {
+     "lv": null,
+     "lvl": "",
+     "n": "Abomination of Ro",
+     "named": true,
+     "t": "Abomination_of_Ro"
+    },
+    {
      "lv": 70.0,
      "lvl": "70",
      "n": "Commander Riteb",
      "named": true,
      "t": "Commander_Riteb"
+    },
+    {
+     "lv": null,
+     "lvl": "",
+     "n": "Flaming Wraith",
+     "named": true,
+     "t": "Flaming_Wraith"
     },
     {
      "lv": 70.0,
@@ -16870,6 +16926,13 @@
      "n": "Patriarch Zevlex",
      "named": true,
      "t": "Patriarch_Zevlex"
+    },
+    {
+     "lv": null,
+     "lvl": "",
+     "n": "Spirit of Dessication",
+     "named": true,
+     "t": "Spirit_of_Dessication"
     },
     {
      "lv": 50.0,
@@ -18744,6 +18807,13 @@
     {
      "lv": 50.0,
      "lvl": "50",
+     "n": "Jotayi Ibupran",
+     "named": true,
+     "t": "Jotayi_Ibupran"
+    },
+    {
+     "lv": 50.0,
+     "lvl": "50",
      "n": "Librarian Kesler",
      "named": true,
      "t": "Librarian_Kesler"
@@ -18958,6 +19028,13 @@
      "t": "A_Lteth_Mas_Gnoll"
     },
     {
+     "lv": 33.0,
+     "lvl": "33",
+     "n": "a Lteth Val Deviant",
+     "named": false,
+     "t": "A_Lteth_Val_Deviant"
+    },
+    {
      "lv": 24.0,
      "lvl": "24",
      "n": "a Lteth Val Gnoll",
@@ -19112,8 +19189,8 @@
      "t": "Tesch_Val_Deval%60Nmak"
     },
     {
-     "lv": 39.0,
-     "lvl": "39",
+     "lv": 40.0,
+     "lvl": "40",
      "n": "Tesch Val Kadvem",
      "named": true,
      "t": "Tesch_Val_Kadvem"
@@ -24473,7 +24550,7 @@
      "lvl": "51",
      "n": "Magus Rokyl",
      "named": true,
-     "t": "Magi_Rokyl"
+     "t": "Magus_Rokyl"
     },
     {
      "lv": 35.0,
@@ -25955,8 +26032,8 @@
      "t": "A_heretic_apparition"
     },
     {
-     "lv": 24.0,
-     "lvl": "24",
+     "lv": 23.0,
+     "lvl": "22-24",
      "n": "a heretic invader",
      "named": false,
      "t": "Heretic_Invader"
@@ -26444,6 +26521,13 @@
      "t": "A_briar_snake"
     },
     {
+     "lv": 14.0,
+     "lvl": "14",
+     "n": "a darkwater piranha",
+     "named": false,
+     "t": "A_darkwater_piranha"
+    },
+    {
      "lv": 7.0,
      "lvl": "7",
      "n": "a giant briar snake",
@@ -26710,8 +26794,8 @@
      "t": "Rungupp"
     },
     {
-     "lv": 30.0,
-     "lvl": "30",
+     "lv": 10.0,
+     "lvl": "10",
      "n": "Sentinel Creot",
      "named": true,
      "t": "Sentinel_Creot"

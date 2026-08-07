@@ -1102,7 +1102,7 @@
     -2710.0,
     null
    ],
-   "lvl": "24",
+   "lvl": "22-24",
    "n": "a heretic invader",
    "named": false,
    "u": "https://eqlwiki.com/index.php/Heretic_Invader"
@@ -2052,6 +2052,7 @@
     "Rare",
     "Rare",
     "Rare",
+    "Rare",
     "Rare"
    ],
    "drops": [
@@ -2060,6 +2061,7 @@
     67,
     78,
     130,
+    132,
     133,
     136,
     170,
@@ -2589,7 +2591,7 @@
    "u": "https://eqlwiki.com/index.php/Yuio_Kaliio"
   }
  ],
- "updated": "2026-07-19T04:41:27Z",
+ "updated": "2026-08-03T15:17:41Z",
  "wikiTitle": "Stonebrunt Mountains",
  "wikiUrl": "https://eqlwiki.com/index.php/Stonebrunt_Mountains",
  "zone": "stonebrunt"

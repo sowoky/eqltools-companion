@@ -1,10 +1,126 @@
 {
- "items": [],
+ "items": [
+  {
+   "g": 1,
+   "n": "A Cracked Femur",
+   "u": "https://eqlwiki.com/index.php/A_Cracked_Femur"
+  },
+  {
+   "g": 1,
+   "n": "Burnt Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Burnt_Sheer_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Control Circlet",
+   "u": "https://eqlwiki.com/index.php/Control_Circlet"
+  },
+  {
+   "g": 1,
+   "n": "Frayed Silk Slippers",
+   "u": "https://eqlwiki.com/index.php/Frayed_Silk_Slippers"
+  },
+  {
+   "g": 1,
+   "n": "Glassy Gauntlets",
+   "u": "https://eqlwiki.com/index.php/Glassy_Gauntlets"
+  },
+  {
+   "g": 1,
+   "n": "Rusty Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Rusty_Sheer_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Singed Armature Rod",
+   "u": "https://eqlwiki.com/index.php/Singed_Armature_Rod"
+  },
+  {
+   "g": 1,
+   "n": "Smoldering Robe",
+   "u": "https://eqlwiki.com/index.php/Smoldering_Robe"
+  },
+  {
+   "g": 1,
+   "n": "Tarnished Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Tarnished_Sheer_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Vitrified Skull Fetish",
+   "u": "https://eqlwiki.com/index.php/Vitrified_Skull_Fetish"
+  },
+  {
+   "g": 1,
+   "n": "Withered Root Staff",
+   "u": "https://eqlwiki.com/index.php/Withered_Root_Staff"
+  }
+ ],
  "meta": {
   "license": "CC BY-SA 4.0",
   "source": "eqlwiki.com"
  },
  "mobs": [
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    0,
+    8
+   ],
+   "loc": null,
+   "lvl": "",
+   "n": "a burnt scalebone",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_burnt_scalebone"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "",
+   "n": "a failed experiment",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_failed_experiment"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    4,
+    5,
+    9
+   ],
+   "loc": null,
+   "lvl": "",
+   "n": "A Vitrified Skeleton",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_Vitrified_Skeleton"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    2,
+    6
+   ],
+   "loc": [
+    -468.0,
+    217.0,
+    null
+   ],
+   "lvl": "",
+   "n": "Abomination of Ro",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Abomination_of_Ro"
+  },
   {
    "dr": [],
    "drops": [],
@@ -17,6 +133,21 @@
    "n": "Commander Riteb",
    "named": true,
    "u": "https://eqlwiki.com/index.php/Commander_Riteb"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    1,
+    7
+   ],
+   "loc": null,
+   "lvl": "",
+   "n": "Flaming Wraith",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Flaming_Wraith"
   },
   {
    "dr": [],
@@ -97,6 +228,21 @@
    "u": "https://eqlwiki.com/index.php/Patriarch_Zevlex"
   },
   {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    3,
+    10
+   ],
+   "loc": null,
+   "lvl": "",
+   "n": "Spirit of Dessication",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Spirit_of_Dessication"
+  },
+  {
    "dr": [],
    "drops": [],
    "loc": [
@@ -110,7 +256,7 @@
    "u": "https://eqlwiki.com/index.php/Trooper_Kraer"
   }
  ],
- "updated": "2026-06-22T17:41:16Z",
+ "updated": "2026-07-31T14:34:08Z",
  "wikiTitle": "New Sebilis Expedition",
  "wikiUrl": "https://eqlwiki.com/index.php/New_Sebilis_Expedition",
  "zone": "newsebexp"

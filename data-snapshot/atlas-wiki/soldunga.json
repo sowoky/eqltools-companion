@@ -1951,7 +1951,7 @@
   },
   {
    "dr": [
-    "Uncommon",
+    "Rare",
     "Common",
     "Common"
    ],
@@ -1961,8 +1961,8 @@
     79
    ],
    "loc": [
-    -531.0,
-    -768.0,
+    -530.0,
+    -785.0,
     null
    ],
    "lvl": "28",
@@ -2207,7 +2207,7 @@
    "u": "https://eqlwiki.com/index.php/Young_goblin_wizard"
   }
  ],
- "updated": "2026-07-13T21:58:50Z",
+ "updated": "2026-07-31T20:22:17Z",
  "wikiTitle": "Solusek's Eye",
  "wikiUrl": "https://eqlwiki.com/index.php/Solusek's_Eye",
  "zone": "soldunga"

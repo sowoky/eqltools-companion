@@ -330,6 +330,11 @@
    "u": "https://eqlwiki.com/index.php/Gorgon_Feather_Quill"
   },
   {
+   "g": 1,
+   "n": "Guise of the Deceiver",
+   "u": "https://eqlwiki.com/index.php/Guise_of_the_Deceiver"
+  },
+  {
    "n": "Iced Bone Chips",
    "u": "https://eqlwiki.com/index.php/Iced_Bone_Chips"
   },
@@ -363,11 +368,6 @@
    "g": 1,
    "n": "Manastone",
    "u": "https://eqlwiki.com/index.php/Manastone"
-  },
-  {
-   "g": 1,
-   "n": "Mask of Deception",
-   "u": "https://eqlwiki.com/index.php/Mask_of_Deception"
   },
   {
    "g": 1,
@@ -1134,10 +1134,10 @@
     56,
     57,
     68,
-    71,
     72,
     73,
     74,
+    75,
     92,
     110,
     119,
@@ -1190,9 +1190,9 @@
     1,
     57,
     68,
-    71,
     72,
     73,
+    74,
     92,
     161,
     165,
@@ -1219,7 +1219,11 @@
     59,
     96
    ],
-   "loc": null,
+   "loc": [
+    1070.0,
+    -1060.0,
+    null
+   ],
    "lvl": "42",
    "n": "a frenzied ghoul",
    "named": false,
@@ -1374,9 +1378,9 @@
     56,
     57,
     68,
-    71,
     72,
     73,
+    74,
     92,
     110,
     148,
@@ -1569,8 +1573,8 @@
     4,
     60,
     63,
-    72,
-    75,
+    73,
+    76,
     79,
     82,
     83,
@@ -1813,9 +1817,9 @@
     56,
     57,
     68,
-    71,
     72,
     73,
+    74,
     92,
     110,
     161,
@@ -1834,7 +1838,7 @@
     "Rare"
    ],
    "drops": [
-    78,
+    70,
     155
    ],
    "loc": [
@@ -1842,7 +1846,7 @@
     -754.0,
     null
    ],
-   "lvl": "35",
+   "lvl": "34",
    "n": "a ghoul assassin",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_ghoul_assassin"
@@ -1986,7 +1990,7 @@
     "Rare"
    ],
    "drops": [
-    76,
+    77,
     173
    ],
    "loc": [
@@ -2097,7 +2101,7 @@
     56,
     58,
     67,
-    70,
+    71,
     115,
     123,
     125,
@@ -2202,7 +2206,7 @@
     56,
     57,
     68,
-    73,
+    74,
     97,
     98,
     99,
@@ -2580,9 +2584,9 @@
     56,
     57,
     68,
-    71,
     72,
     73,
+    74,
     92,
     110,
     114,
@@ -2703,9 +2707,9 @@
     56,
     57,
     68,
-    71,
     72,
     73,
+    74,
     92,
     108,
     109,
@@ -2749,7 +2753,7 @@
    "drops": [
     8,
     40,
-    77
+    78
    ],
    "loc": [
     625.0,
@@ -2834,8 +2838,8 @@
     54,
     57,
     68,
-    72,
     73,
+    74,
     92,
     110,
     116,
@@ -2975,7 +2979,7 @@
    "u": "https://eqlwiki.com/index.php/The_Ghoul_Lord"
   }
  ],
- "updated": "2026-07-17T21:49:10Z",
+ "updated": "2026-08-01T18:57:00Z",
  "wikiTitle": "Lower Guk",
  "wikiUrl": "https://eqlwiki.com/index.php/Lower_Guk",
  "zone": "gukbottom"

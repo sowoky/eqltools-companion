@@ -82,6 +82,7 @@ if (existsSync(zwSrc)) {
 const SITE_FILES = [
   "public/log-parser/index.html",
   "public/log-parser/style.css",
+  "public/log-parser/engine.js",
   "public/log-parser/app.js",
   "public/_shared/theme.css",
   "public/_shared/tip.js",

@@ -17,6 +17,7 @@
 
 <nav class="tabs">
   <button class="tab on" data-tab="live">Live</button>
+  <button class="tab" data-tab="combat">Combat</button>
   <button class="tab" data-tab="inv">Inventory</button>
   <button class="tab" data-tab="turnins">Turn-ins</button>
   <button class="tab" data-tab="tracked">Tracked</button>
@@ -40,6 +41,13 @@
     </div>
     <ul id="feed" class="feed"></ul>
     <p id="feedEmpty" class="empty">Waiting for log lines. Loot something in game — quest items light up here.<br>
+    <span class="dim">Logging must be on in game: <code>/log</code></span></p>
+  </section>
+
+  <section id="tab-combat" class="pane">
+    <div id="cbSession" class="stats cbstats" hidden></div>
+    <div id="cbBody"></div>
+    <p id="cbEmpty" class="empty">Fights show up here as they happen — who hit what, DPS, damage taken, XP per kill.<br>
     <span class="dim">Logging must be on in game: <code>/log</code></span></p>
   </section>
 
@@ -162,6 +170,7 @@
 
 <script src="../vendor/shared.js"></script>
 <script src="../vendor/parse.js"></script>
+<script src="../vendor/site/log-parser/engine.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

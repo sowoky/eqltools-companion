@@ -1641,8 +1641,8 @@
   },
   {
    "dr": [
-    "Rare",
-    "Always"
+    null,
+    null
    ],
    "drops": [
     13,
@@ -2586,7 +2586,7 @@
    "u": "https://eqlwiki.com/index.php/Zazaphenebti"
   }
  ],
- "updated": "2026-07-17T12:04:00Z",
+ "updated": "2026-07-20T21:10:24Z",
  "wikiTitle": "Rathe Mountains",
  "wikiUrl": "https://eqlwiki.com/index.php/Rathe_Mountains",
  "zone": "rathemtn"

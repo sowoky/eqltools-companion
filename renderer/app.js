@@ -123,6 +123,7 @@ function onBootstrap({ file, text }) {
     renderFeed();
   }
   if (ZONE.follow && DATA && DATA.zones[stream.zone]) selectZone(stream.zone);
+  combatSeed(file, text);
   renderStatus(); renderTracker(); pushZone();
 }
 
@@ -134,6 +135,7 @@ function onLines({ file, lines }) {
     const evs = stream.feed(line);
     for (const ev of evs) handleEvent(ev);
   }
+  combatFeed(lines);
   if (stream.zone !== lastStreamZone) {
     lastStreamZone = stream.zone;
     pushZone();
@@ -1248,6 +1250,265 @@ function parserTabActive(on) {
   if (!PARSER.timer) PARSER.timer = setInterval(() => { if (LINES_SEEN > PARSER.fedLines) feedParser(true); }, 5000);
 }
 
+/* ── combat tab: live per-fight and session stats ─────────────────────────
+   The site's /log-parser ENGINE (vendor/site/log-parser/engine.js — the same
+   parse/claims/fights/analyze the page itself runs) over a rolling window of
+   the live log. Nothing is transcribed here; every number is the engine's
+   own, so this tab can never disagree with eqltools.com/log-parser.
+
+   The engine is a whole-window pass by design (fights, claims, and kill
+   clusters need lookahead), so "live" means re-running it over a SMALL
+   window on a throttle, not feeding it line by line. The window is the
+   current zone visit: buildClaims cuts every claim interval at a zone-entry
+   line, so a window that starts on one has byte-identical attribution to a
+   full-file parse for everything inside it. Earlier visits parse once and
+   freeze. The refresh cadence adapts to the measured parse time (10×), so a
+   marathon visit degrades to a slower meter instead of pinning a core. */
+const E = window.EQLLog;
+const CB = {
+  hist: [],            // frozen rows from earlier zone visits, oldest first
+  histKeys: new Set(),
+  live: [],            // raw lines of the current zone visit
+  owner: null,
+  run: null,           // last live engine result {P, side, seg}
+  session: null,       // {a, kills} for the live window
+  runMs: 0,            // last parse duration — drives the adaptive cadence
+  timer: null, dirty: false,
+  sel: null,           // expanded fight key
+};
+const CB_SEED_LINES = 60000; // bootstrap window (whole visits within it)
+const CB_LIVE_LINES = 40000; // cap on one visit's window — past it the window
+                             // truncates, the same semantics as the site's 40 MB cap
+const CB_HIST_CAP = 40;      // frozen fights kept
+// the engine's own zone rule: these entries are not zone changes
+const CB_ZONE_RX = /^\[.{24}\] You have entered (?!an area|an Arena|the Drunken Monkey).+\.$/;
+
+function combatSeed(file, text) {
+  CB.owner = (file.match(/eqlog_([^_]+)_/) || [])[1] || null;
+  CB.hist = []; CB.histKeys = new Set(); CB.live = []; CB.run = null; CB.session = null; CB.sel = null;
+  // the bootstrap tail can be 40 MB; slice and parse off the handler's stack
+  setTimeout(() => {
+    let lines = text.split(/\r?\n/).filter(l => l.length);
+    if (lines.length > CB_SEED_LINES) lines = lines.slice(-CB_SEED_LINES);
+    let cut = -1;
+    for (let i = lines.length - 1; i >= 0; i--) if (CB_ZONE_RX.test(lines[i])) { cut = i; break; }
+    // no zone line in the whole tail: keep a bounded live window and no history
+    if (cut < 0 && lines.length > 10000) lines = lines.slice(-10000);
+    CB.live = lines.slice(Math.max(0, cut));
+    if (CB.live.length > CB_LIVE_LINES) CB.live = CB.live.slice(-CB_LIVE_LINES);
+    if (cut > 0) {
+      const r = combatParse(lines.slice(0, cut));
+      if (r) combatFreeze(r);
+    }
+    combatSoon();
+  }, 50);
+}
+
+function combatFeed(lines) {
+  for (const l of lines) {
+    CB.live.push(l);
+    if (CB_ZONE_RX.test(l)) combatRollVisit(l);
+  }
+  if (CB.live.length > CB_LIVE_LINES) CB.live = CB.live.slice(-CB_LIVE_LINES);
+  CB.dirty = true;
+  combatSoon();
+}
+
+/* A zone line ends the visit: parse it one last time (the zone event closes
+   every open fight), freeze those fights, and start the new visit's window
+   at its own zone line. */
+function combatRollVisit(zoneLine) {
+  const r = combatParse(CB.live);
+  if (r) combatFreeze(r);
+  CB.live = [zoneLine];
+  CB.run = null; CB.session = null;
+}
+
+function combatParse(lines) {
+  if (!lines.length) return null;
+  const p = E.parse(lines.join("\n"), CB.owner);
+  if (!p.events.length) return null;
+  const claims = E.buildClaims(p);
+  const side = E.mkSide(p, claims);
+  const seg = E.buildSegments(p, side);
+  return { P: p, side, seg };
+}
+
+function combatFreeze(r) {
+  for (const f of r.seg.fights) {
+    if (!(f.total > 0 || f.taken > 0)) continue;
+    const key = E.fkey(f);
+    if (CB.histKeys.has(key)) continue;
+    const row = combatRow(f, r);
+    row.detail = combatDetailFor(f, r); // the engine objects are dropped; keep the expansion
+    CB.hist.push(row); CB.histKeys.add(key);
+  }
+  if (CB.hist.length > CB_HIST_CAP) {
+    for (const row of CB.hist.slice(0, CB.hist.length - CB_HIST_CAP)) CB.histKeys.delete(row.key);
+    CB.hist = CB.hist.slice(-CB_HIST_CAP);
+  }
+}
+
+function combatRow(f, r) {
+  return {
+    key: E.fkey(f), ts: f.start, mob: f.mob, zone: f.zone,
+    secs: Math.max(1, Math.round((f.end - f.start) / 1000)),
+    total: f.total, you: f.dmg.you, pet: f.dmg.pet, charm: f.dmg.charm,
+    taken: f.taken, xp: f.xp, coin: f.coin, killed: f.killed,
+    team: f.killed && (f.killer === r.P.owner || r.side.claims.at(f.killer, f.end)),
+    detail: null,
+  };
+}
+
+/* The site's fight-focus slice, verbatim: the fight's own damage/miss events
+   plus every non-combat event in its span. */
+function combatDetailFor(f, r) {
+  const t0 = f.start - 2000, t1 = f.end.getTime() + 2000;
+  const evs = r.P.events.filter(e => e.ts >= t0 && e.ts <= t1 &&
+    (e.src === f.mob || e.tgt === f.mob || (e.k !== "dmg" && e.k !== "miss")));
+  const oc = r.P.who ? r.P.who.classes.split("/") : null;
+  const a = E.analyze(r.P, evs, r.side, oc);
+  return {
+    sources: a.sources.slice(0, 6).map(s => ({ name: s.name, side: s.side, hits: s.hits, dmg: s.dmg, max: s.max, crit: s.crit })),
+    taken: a.taken.dmg, avoided: a.taken.avoid.reduce((n, [, c]) => n + c, 0),
+    healTot: a.healTot, healInTot: a.healInTot,
+  };
+}
+
+function combatSoon() {
+  if (CB.timer) return;
+  CB.timer = setTimeout(() => { CB.timer = null; combatRun(); }, Math.max(1000, CB.runMs * 10));
+}
+function combatRun() {
+  CB.dirty = false;
+  const t0 = performance.now();
+  CB.run = combatParse(CB.live);
+  if (CB.run) {
+    const oc = CB.run.P.who ? CB.run.P.who.classes.split("/") : null;
+    const a = E.analyze(CB.run.P, CB.run.P.events, CB.run.side, oc);
+    const killed = CB.run.seg.fights.filter(f => f.killed);
+    const kills = killed.filter(f => f.killer === CB.run.P.owner || CB.run.side.claims.at(f.killer, f.end)).length;
+    CB.session = { a, kills };
+  } else CB.session = null;
+  CB.runMs = performance.now() - t0;
+  renderCombat();
+  pushStats();
+  if (CB.dirty) combatSoon(); // lines landed while we parsed
+}
+
+// merged fight list, newest first. The engine emits fights in CLOSE order (an
+// idle-closed fight lands after kills that happened mid-way through it), so
+// sort by start time or the list reads shuffled.
+function combatRows() {
+  const rows = CB.hist.slice();
+  if (CB.run) for (const f of CB.run.seg.fights) if (f.total > 0 || f.taken > 0) rows.push(combatRow(f, CB.run));
+  return rows.sort((a, b) => b.ts - a.ts);
+}
+
+const fmtN = n => Math.round(n).toLocaleString();
+const fmtDur = s => s >= 3600 ? `${Math.floor(s / 3600)}h${String(Math.floor(s % 3600 / 60)).padStart(2, "0")}m` : `${Math.floor(s / 60)}m`;
+const tsShort = d => d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit", second: "2-digit" });
+const fmtCu = cu => {
+  cu = Math.round(cu);
+  const p = Math.floor(cu / 1000), g = Math.floor(cu % 1000 / 100), s = Math.floor(cu % 100 / 10);
+  return p ? `${fmtN(p)}p ${g}g` : g ? `${g}g ${s}s` : `${s}s ${cu % 10}c`;
+};
+
+function renderCombat() {
+  const sEl = $("cbSession"), body = $("cbBody"), empty = $("cbEmpty");
+  const rows = combatRows();
+  if (!rows.length && !CB.session) { sEl.hidden = true; body.innerHTML = ""; empty.hidden = false; return; }
+  empty.hidden = true;
+  if (CB.session) {
+    const { a, kills } = CB.session;
+    const hrs = a.activeSecs / 3600;
+    const visit = CB.run.seg.visits[CB.run.seg.visits.length - 1] || null;
+    const cell = (v, label) => `<span class="stat"><b>${v}</b> ${label}</span>`;
+    sEl.innerHTML =
+      (visit ? `<span class="stat cb-zone">${esc(visit.name)}${visit.tier ? " · tier " + visit.tier : ""}</span>` : "") +
+      cell(fmtDur(a.activeSecs), "active") +
+      cell(fmtN(a.total), "damage") +
+      (a.combatSec >= 5 ? cell(fmtN(a.total / a.combatSec), "dps") : "") +
+      cell(kills, "kills") +
+      (a.xp ? cell(a.xp.toFixed(1) + "%", "xp") : "") +
+      (a.activeSecs >= 120 && kills ? cell((kills / hrs).toFixed(0), "kills/h") : "") +
+      (a.activeSecs >= 120 && a.xp ? cell((a.xp / hrs).toFixed(1) + "%", "xp/h") : "") +
+      (a.taken.dmg ? cell(fmtN(a.taken.dmg), "taken") : "") +
+      (a.copper ? cell(fmtCu(a.copper), "coin") : "");
+    sEl.hidden = false;
+  } else sEl.hidden = true;
+  if (!rows.length) { body.innerHTML = ""; return; }
+  let h = `<table class="qtab cbt"><thead><tr><th>Time</th><th>Mob</th><th></th><th>Dur</th><th>Damage</th><th>DPS</th><th>Taken</th><th>XP</th></tr></thead><tbody>`;
+  for (const row of rows) {
+    const open = CB.sel === row.key;
+    h += `<tr class="cbr${row.team ? "" : " cb-dim"}" data-fight="${esc(row.key)}">` +
+      `<td class="dim">${tsShort(row.ts)}</td>` +
+      `<td class="cb-mob">${esc(row.mob)}</td>` +
+      `<td title="${row.killed ? (row.team ? "your kill" : "killed by someone else") : "no death line"}">${row.killed ? (row.team ? "✓" : "✕") : ""}</td>` +
+      `<td>${row.secs}s</td>` +
+      `<td class="cb-dmg">${fmtN(row.total)}</td>` +
+      `<td>${fmtN(row.total / row.secs)}</td>` +
+      `<td>${row.taken ? fmtN(row.taken) : "—"}</td>` +
+      `<td>${row.xp ? row.xp.toFixed(1) + "%" : "—"}</td></tr>`;
+    if (open) h += `<tr class="cbd"><td colspan="8">${combatDetailHtml(row)}</td></tr>`;
+  }
+  body.innerHTML = h + "</tbody></table>";
+}
+
+function combatDetail(row) {
+  if (row.detail) return row.detail;
+  if (!CB.run) return null;
+  const f = CB.run.seg.fights.find(x => E.fkey(x) === row.key);
+  if (!f) return null;
+  row.detail = combatDetailFor(f, CB.run);
+  return row.detail;
+}
+
+function combatDetailHtml(row) {
+  const d = combatDetail(row);
+  if (!d) return `<span class="dim">no detail for this fight</span>`;
+  const src = d.sources.map(s =>
+    `<tr><td>${esc(s.name)}${s.side !== "you" ? ` <span class="dim">${s.side}</span>` : ""}</td>` +
+    `<td>${s.hits}</td><td class="cb-dmg">${fmtN(s.dmg)}</td><td>${fmtN(s.max)}</td><td>${s.crit || "—"}</td></tr>`).join("");
+  const bits = [];
+  if (row.you) bits.push(`you ${fmtN(row.you)}`);
+  if (row.pet) bits.push(`pet ${fmtN(row.pet)}`);
+  if (row.charm) bits.push(`charm ${fmtN(row.charm)}`);
+  if (d.taken) bits.push(`taken ${fmtN(d.taken)}`);
+  if (d.avoided) bits.push(`${d.avoided} avoided`);
+  if (d.healTot) bits.push(`healed ${fmtN(d.healTot)}`);
+  if (row.coin) bits.push(fmtCu(row.coin));
+  return (src ? `<table class="cbt-sub"><thead><tr><th>Source</th><th>Hits</th><th>Damage</th><th>Max</th><th>Crits</th></tr></thead><tbody>${src}</tbody></table>` : "") +
+    (bits.length ? `<p class="dim cb-line">${bits.join(" · ")}</p>` : "");
+}
+
+/* Overlay payload — pre-resolved like every other feed:* relay; the overlay
+   holds no engine. Pushed only when the numbers changed. */
+let lastStatsJson = "";
+function pushStats() {
+  if (!CB.session) return;
+  const { a, kills } = CB.session;
+  const visit = CB.run.seg.visits[CB.run.seg.visits.length - 1] || null;
+  const p = {
+    session: {
+      zone: visit ? visit.name : null,
+      mins: Math.round(a.activeSecs / 60),
+      dmg: a.total,
+      dps: a.combatSec >= 5 ? Math.round(a.total / a.combatSec) : null,
+      kills, xp: Math.round(a.xp * 10) / 10,
+      kph: a.activeSecs >= 120 ? Math.round(kills / (a.activeSecs / 3600)) : null,
+      xph: a.activeSecs >= 120 ? Math.round(a.xp / (a.activeSecs / 3600) * 10) / 10 : null,
+      taken: a.taken.dmg,
+    },
+    fights: combatRows().slice(0, 3).map(r => ({
+      mob: r.mob, secs: r.secs, dmg: r.total, dps: Math.round(r.total / r.secs),
+      taken: r.taken, killed: r.killed, team: r.team,
+    })),
+  };
+  const j = JSON.stringify(p);
+  if (j !== lastStatsJson) { lastStatsJson = j; window.companion.sendStats(p); }
+}
+
 let LOGSTATUS = {};
 function renderStatus() {
   const bits = [];
@@ -1458,6 +1719,8 @@ async function main() {
   });
 
   document.addEventListener("click", e => {
+    const cf = e.target.closest("[data-fight]");
+    if (cf) { CB.sel = CB.sel === cf.dataset.fight ? null : cf.dataset.fight; renderCombat(); return; }
     const tk = e.target.closest("[data-track]");
     if (tk) { toggleTrack(tk.dataset.track); return; }
     const tv = e.target.closest("[data-trackview]");

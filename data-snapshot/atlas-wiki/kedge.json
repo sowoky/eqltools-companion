@@ -1465,8 +1465,12 @@
    "u": "https://eqlwiki.com/index.php/Swirlspine_Guardian"
   },
   {
-   "dr": [],
-   "drops": [],
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    12
+   ],
    "loc": [
     179.0,
     -456.0,
@@ -1499,7 +1503,7 @@
    "u": "https://eqlwiki.com/index.php/Undertow"
   }
  ],
- "updated": "2026-06-04T14:26:21Z",
+ "updated": "2026-07-20T19:00:49Z",
  "wikiTitle": "Kedge Keep",
  "wikiUrl": "https://eqlwiki.com/index.php/Kedge_Keep",
  "zone": "kedge"

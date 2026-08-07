@@ -14,6 +14,12 @@ const isDev = !app.isPackaged;
 /* Where the EQL client writes logs on a default Windows install. The client
    only writes when the player has `/log on` — the renderer surfaces that. */
 const WIN_LOG_DIR = "C:\\Users\\Public\\Daybreak Game Company\\Installed Games\\EverQuest Legends\\Logs";
+/* On a Mac the game runs under osxEQL, whose wineprefix mirrors the same
+   Windows layout — this is where the client actually writes its logs there. */
+const MAC_LOG_DIR = path.join(require("os").homedir(),
+  "Library", "Application Support", "osxEQL", "prefix", "drive_c",
+  "users", "Public", "Daybreak Game Company", "Installed Games", "EverQuest Legends", "Logs");
+const DEFAULT_LOG_DIR = process.platform === "darwin" ? MAC_LOG_DIR : WIN_LOG_DIR;
 
 /* Same live site files the browser tools fetch; the app refreshes its bundled
    snapshot from them. 404 on quest-items just means the site hasn't shipped
@@ -49,8 +55,8 @@ function loadSettings() {
     fontScale: 1, showKills: true, questOnly: false, view: "loot",
     ...SETTINGS.overlay,
   };
-  if (!SETTINGS.logDir && process.platform === "win32" && fs.existsSync(WIN_LOG_DIR))
-    SETTINGS.logDir = WIN_LOG_DIR;
+  if (!SETTINGS.logDir && fs.existsSync(DEFAULT_LOG_DIR))
+    SETTINGS.logDir = DEFAULT_LOG_DIR;
 }
 function saveSettings() {
   try { fs.writeFileSync(settingsPath(), JSON.stringify(SETTINGS, null, 2)); } catch {}
@@ -131,6 +137,7 @@ function sendOverlayInit() {
     feed: FEED_RING.slice(-50),
     zone: LAST_ZONE,
     quests: LAST_QUESTS,
+    stats: LAST_STATS,
   });
 }
 
@@ -168,6 +175,8 @@ const FEED_RING = [];
 let LAST_ZONE = null;
 // tracked-quest progress, pre-resolved by the renderer: {zones, quests}
 let LAST_QUESTS = { zones: [], quests: [] };
+// live combat stats, pre-resolved by the renderer: {session, fights}
+let LAST_STATS = null;
 
 /* ── log tail engine ──────────────────────────────────────────────────────
    Poll-stat the log directory (fs.watch is unreliable enough on Windows
@@ -377,7 +386,7 @@ async function refreshDatasets(force) {
    untouched. Static files come from the vendor mirror; data files resolve
    cache → bundled snapshot, same order as the datasets. Anything else 404s. */
 const PAGE_DATA_RX = /^\/(log-parser\/data\/(?:con-bands|wiki-items|wiki-mobs)\.json|spellmaster\/data\/spells\.json)$/;
-const PAGE_FILE_RX = /^\/(log-parser\/(?:index\.html|style\.css|app\.js)|_shared\/(?:theme\.css|tip\.js|fonts\/[A-Za-z0-9.-]+\.woff2))$/;
+const PAGE_FILE_RX = /^\/(log-parser\/(?:index\.html|style\.css|engine\.js|app\.js)|_shared\/(?:theme\.css|tip\.js|fonts\/[A-Za-z0-9.-]+\.woff2))$/;
 const vendorSiteDir = () => path.join(__dirname, "vendor", "site");
 protocol.registerSchemesAsPrivileged([
   { scheme: "eqlt", privileges: { standard: true, secure: true, supportFetchAPI: true } },
@@ -540,7 +549,7 @@ ipcMain.on("update:openPage", () => shell.openExternal(RELEASES_URL));
 ipcMain.handle("log:pickDir", async () => {
   const r = await dialog.showOpenDialog(mainWin, {
     title: "Pick the EverQuest Legends Logs folder",
-    defaultPath: SETTINGS.logDir || WIN_LOG_DIR,
+    defaultPath: SETTINGS.logDir || DEFAULT_LOG_DIR,
     properties: ["openDirectory"],
   });
   if (r.canceled || !r.filePaths.length) return SETTINGS.logDir || null;
@@ -570,7 +579,7 @@ ipcMain.on("overlay:prefs", (_e, p) => {
   if (p.fontScale !== undefined) o.fontScale = Math.min(1.6, Math.max(0.8, +p.fontScale || 1));
   if (p.showKills !== undefined) o.showKills = !!p.showKills;
   if (p.questOnly !== undefined) o.questOnly = !!p.questOnly;
-  if (p.view === "tracked" || p.view === "loot") o.view = p.view;
+  if (p.view === "tracked" || p.view === "loot" || p.view === "stats") o.view = p.view;
   saveSettings(); sendOverlayInit(); notifyOverlayState();
 });
 /* Transparent frameless windows have NO native resize borders on Windows —
@@ -597,6 +606,10 @@ ipcMain.on("feed:zone", (_e, z) => {
    every new payload into [] and the overlay's Tracked view went permanently
    empty while the main window showed the same quests fine — the two ends were
    both verified, the wire between them was not. Accept both shapes. */
+ipcMain.on("feed:stats", (_e, s) => {
+  LAST_STATS = s && typeof s === "object" ? s : null;
+  if (overlayWin) overlayWin.webContents.send("feed:stats", LAST_STATS);
+});
 ipcMain.on("feed:quests", (_e, q) => {
   const p = Array.isArray(q) ? { zones: [], quests: q }
     : (q && typeof q === "object" ? q : { zones: [], quests: [] });

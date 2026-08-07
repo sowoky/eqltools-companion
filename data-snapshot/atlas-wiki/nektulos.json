@@ -591,7 +591,11 @@
     47,
     48
    ],
-   "loc": null,
+   "loc": [
+    -766.0,
+    1968.0,
+    null
+   ],
    "lvl": "14",
    "n": "a darkwater piranha",
    "named": false,
@@ -1882,7 +1886,7 @@
    "u": "https://eqlwiki.com/index.php/Venenzi_Oberzendi"
   }
  ],
- "updated": "2026-05-25T17:50:20Z",
+ "updated": "2026-08-02T03:27:58Z",
  "wikiTitle": "Nektulos Forest",
  "wikiUrl": "https://eqlwiki.com/index.php/Nektulos_Forest",
  "zone": "nektulos"

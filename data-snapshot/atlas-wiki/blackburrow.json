@@ -610,6 +610,7 @@
     "Rare",
     "Ultra Rare",
     "Ultra Rare",
+    "Common",
     "Rare",
     "Ultra Rare",
     "Ultra Rare"
@@ -619,6 +620,7 @@
     8,
     23,
     31,
+    39,
     40,
     75,
     91
@@ -1011,9 +1013,9 @@
     80
    ],
    "loc": [
-    -162.0,
-    452.0,
-    null
+    -163.0,
+    465.0,
+    -142.0
    ],
    "lvl": "18",
    "n": "Refugee Splitpaw",
@@ -1051,31 +1053,12 @@
    "loc": [
     -150.0,
     384.0,
-    null
+    -118.0
    ],
    "lvl": "20",
    "n": "Sabertooth Overseer",
    "named": true,
    "u": "https://eqlwiki.com/index.php/Sabertooth_Overseer"
-  },
-  {
-   "dr": [
-    "Rare",
-    "Uncommon"
-   ],
-   "drops": [
-    78,
-    81
-   ],
-   "loc": [
-    49.0,
-    357.0,
-    null
-   ],
-   "lvl": "20",
-   "n": "Sabertooth Overseer",
-   "named": true,
-   "u": "https://eqlwiki.com/index.php/Splitpaw_Sharpshooter"
   },
   {
    "dr": [
@@ -1179,6 +1162,25 @@
   },
   {
    "dr": [
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    78,
+    81
+   ],
+   "loc": [
+    45.0,
+    360.0,
+    -81.0
+   ],
+   "lvl": "20",
+   "n": "Splitpaw Sharpshooter",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Splitpaw_Sharpshooter"
+  },
+  {
+   "dr": [
     "Common",
     "Common",
     "Rare",
@@ -1232,7 +1234,7 @@
    "u": "https://eqlwiki.com/index.php/Tranixx_Darkpaw"
   }
  ],
- "updated": "2026-07-14T17:15:47Z",
+ "updated": "2026-08-03T21:29:06Z",
  "wikiTitle": "Blackburrow",
  "wikiUrl": "https://eqlwiki.com/index.php/Blackburrow",
  "zone": "blackburrow"

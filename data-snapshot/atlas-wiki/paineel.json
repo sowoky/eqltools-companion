@@ -933,6 +933,19 @@
    "dr": [],
    "drops": [],
    "loc": [
+    726.0,
+    856.0,
+    -54.0
+   ],
+   "lvl": "50",
+   "n": "Jotayi Ibupran",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jotayi_Ibupran"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
     1145.0,
     866.0,
     null
@@ -1269,7 +1282,7 @@
    "u": "https://eqlwiki.com/index.php/Verolk_Kishneal"
   }
  ],
- "updated": "2026-05-25T17:55:09Z",
+ "updated": "2026-07-31T19:56:19Z",
  "wikiTitle": "Paineel",
  "wikiUrl": "https://eqlwiki.com/index.php/Paineel",
  "zone": "paineel"

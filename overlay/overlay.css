@@ -149,3 +149,21 @@ body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 }
 #grip:hover { background: linear-gradient(135deg, transparent 50%, rgba(231,185,78,.85) 50%); }
 body.through #grip { display: none; }  /* resizing needs the mouse; unpin first */
+
+/* Stats view — session line, then the last fights */
+#ostats { overflow-y: auto; flex: 1; }
+#ostats[hidden] { display: none; }
+#ostats::-webkit-scrollbar { width: 5px; }
+#ostats::-webkit-scrollbar-thumb { background: rgba(201, 149, 42, .35); border-radius: 3px; }
+#ostats::-webkit-scrollbar-thumb:hover { background: rgba(231, 185, 78, .6); }
+.os-sess { padding: 3px 7px 4px; border-bottom: 1px solid rgba(201, 149, 42, .25); }
+.os-zone { color: #9ccc9c; font-weight: 600; margin-right: 7px; }
+.os-c { margin-right: 8px; white-space: nowrap; color: #ccc4de; }
+.os-c b { color: #e7b94e; font-weight: 600; }
+.os-fights { list-style: none; padding: 2px 0; }
+.os-fights li { display: flex; justify-content: space-between; gap: 8px; padding: 1px 7px; border-bottom: 1px solid rgba(44, 37, 69, .45); }
+.os-fights li:last-child { border-bottom: none; }
+.os-mob { color: #ccc4de; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.os-nums { color: #8d84a8; white-space: nowrap; font-size: 10.5px; }
+.os-dim .os-mob { color: #8d84a8; }
+.os-none { padding: 5px 7px; color: #8d84a8; }

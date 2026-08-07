@@ -22,20 +22,24 @@ let THROUGH = false;
 let PREFS = { fontScale: 1, showKills: true, questOnly: false, view: "loot" };
 const FEED_CAP = 50; // matches main's relay ring; the window scrolls, not truncates
 
-/* Two views, tab-switched: Tracked (quest working lists) and Loot (the feed).
-   The choice persists through main's prefs like every other overlay pref. */
+/* Three views, tab-switched: Tracked (quest working lists), Loot (the feed),
+   Stats (session + last fights). The choice persists through main's prefs
+   like every other overlay pref. */
 const filtersEl = document.getElementById("filters");
+const statsEl = document.getElementById("ostats");
+const VIEWS = { tracked: "otTracked", loot: "otLoot", stats: "otStats" };
 function applyView() {
-  const t = PREFS.view === "tracked";
-  questsEl.hidden = !t;
-  feedEl.hidden = t;
-  filtersEl.hidden = t;
-  document.getElementById("otTracked").classList.toggle("on", t);
-  document.getElementById("otLoot").classList.toggle("on", !t);
+  const v = VIEWS[PREFS.view] ? PREFS.view : "loot";
+  questsEl.hidden = v !== "tracked";
+  feedEl.hidden = v !== "loot";
+  filtersEl.hidden = v !== "loot";
+  statsEl.hidden = v !== "stats";
+  for (const [name, id] of Object.entries(VIEWS))
+    document.getElementById(id).classList.toggle("on", name === v);
   // the grouping toggle belongs to Tracked; renderQuests also hides it when
   // the payload carries no zones to group by
   const qv = document.getElementById("qView");
-  if (qv) qv.hidden = !t || !(TRACKED.zones || []).length;
+  if (qv) qv.hidden = v !== "tracked" || !(TRACKED.zones || []).length;
 }
 document.getElementById("otabs").addEventListener("click", e => {
   const b = e.target.closest("[data-oview]");
@@ -239,6 +243,33 @@ if (qViewEl) qViewEl.addEventListener("click", () => {
 const asTracked = q => Array.isArray(q) ? { zones: [], quests: q } : (q || { zones: [], quests: [] });
 window.companion.onFeedQuests(q => { TRACKED = asTracked(q); renderQuests(); rehotspot(); });
 
+/* Stats view — session numbers for the current zone visit and the last
+   fights, pre-resolved by the main renderer's engine run. Display only. */
+let STATS = null;
+function renderOStats() {
+  if (!STATS || !STATS.session) { statsEl.innerHTML = `<div class="os-none">No combat yet.</div>`; return; }
+  const s = STATS.session;
+  const n = v => Math.round(v).toLocaleString();
+  const bits = [];
+  if (s.mins) bits.push(`<b>${s.mins}m</b> active`);
+  bits.push(`<b>${n(s.dmg)}</b> dmg`);
+  if (s.dps != null) bits.push(`<b>${n(s.dps)}</b> dps`);
+  bits.push(`<b>${s.kills}</b> kills`);
+  if (s.xp) bits.push(`<b>${s.xp}%</b> xp`);
+  if (s.kph != null && s.kills) bits.push(`<b>${s.kph}</b> kills/h`);
+  if (s.xph != null && s.xp) bits.push(`<b>${s.xph}%</b> xp/h`);
+  if (s.taken) bits.push(`<b>${n(s.taken)}</b> taken`);
+  let h = `<div class="os-sess">${s.zone ? `<span class="os-zone">${esc(s.zone)}</span>` : ""}` +
+    bits.map(b => `<span class="os-c">${b}</span>`).join("") + `</div>`;
+  if (STATS.fights && STATS.fights.length) {
+    h += `<ul class="os-fights">` + STATS.fights.map(f =>
+      `<li${f.team ? "" : ` class="os-dim"`}><span class="os-mob">${f.killed ? (f.team ? "✓ " : "✕ ") : ""}${esc(f.mob)}</span>` +
+      `<span class="os-nums">${f.secs}s · ${n(f.dmg)} dmg · ${n(f.dps)} dps${f.taken ? ` · ${n(f.taken)} taken` : ""}</span></li>`).join("") + `</ul>`;
+  }
+  statsEl.innerHTML = h;
+}
+window.companion.onFeedStats(s => { STATS = s; renderOStats(); rehotspot(); });
+
 function setMode(clickThrough, opacity) {
   THROUGH = !!clickThrough;
   if (opacity !== undefined) document.body.style.opacity = opacity;
@@ -249,7 +280,7 @@ function setMode(clickThrough, opacity) {
     : "Click-through: the game gets the mouse. This button and quest links stay clickable.";
 }
 
-window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests }) => {
+window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests, stats }) => {
   if (prefs) PREFS = { ...PREFS, ...prefs };
   panelEl.style.zoom = PREFS.fontScale;
   setMode(clickThrough, opacity);
@@ -261,6 +292,8 @@ window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, ques
   setZone(zone);
   TRACKED = asTracked(quests);
   renderQuests();
+  if (stats) STATS = stats;
+  renderOStats();
   applyView();
 });
 window.companion.onOverlayMode(({ clickThrough, opacity }) => setMode(clickThrough, opacity));

@@ -2015,7 +2015,7 @@
   {
    "dr": [
     "Ultra Rare",
-    "Always",
+    null,
     "Ultra Rare",
     "Ultra Rare",
     "Ultra Rare",
@@ -2152,8 +2152,8 @@
     54
    ],
    "loc": [
-    -5607.0,
-    151.0,
+    -235.0,
+    1580.0,
     null
    ],
    "lvl": "22",
@@ -2575,7 +2575,7 @@
    "u": "https://eqlwiki.com/index.php/Yeka_Ias"
   }
  ],
- "updated": "2026-07-13T01:20:19Z",
+ "updated": "2026-08-02T01:03:25Z",
  "wikiTitle": "Southern Karana",
  "wikiUrl": "https://eqlwiki.com/index.php/Southern_Karana",
  "zone": "southkarana"
