@@ -325,4 +325,9 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .cbt-sub { border-collapse: collapse; font-size: 12px; }
 .cbt-sub th { text-align: left; color: var(--ink-dim); font-weight: 500; padding: 1px 12px 1px 0; }
 .cbt-sub td { padding: 1px 12px 1px 0; }
+.cbt-sub + .cbt-sub { margin-top: 8px; }
 .cb-line { margin-top: 6px; }
+.cb-raidhead { cursor: pointer; margin-bottom: 8px; color: var(--gold-pale); }
+.cb-raidhead:hover { color: var(--ink); }
+.cb-caret { color: var(--ink-dim); }
+.cbraid { margin-bottom: 14px; }

@@ -1268,24 +1268,44 @@ const E = window.EQLLog;
 const CB = {
   hist: [],            // frozen rows from earlier zone visits, oldest first
   histKeys: new Set(),
+  encHist: [],         // frozen ENCOUNTER rows (overlapping fights grouped)
+  encKeys: new Set(),
   live: [],            // raw lines of the current zone visit
+  zoneLine: null,      // the visit's zone-entry line, pinned when live caps
   owner: null,
   run: null,           // last live engine result {P, side, seg}
   session: null,       // {a, kills} for the live window
   runMs: 0,            // last parse duration — drives the adaptive cadence
   timer: null, dirty: false,
   sel: null,           // expanded fight key
+  raidOpen: false,     // Everyone's-damage table shown
+  raidSel: null,       // expanded raid actor
+  encCache: new Map(), // encounter key -> {sig, detail} drill-down memo
 };
+let OVERLAY_SHOWN = false;
 const CB_SEED_LINES = 60000; // bootstrap window (whole visits within it)
 const CB_LIVE_LINES = 40000; // cap on one visit's window — past it the window
                              // truncates, the same semantics as the site's 40 MB cap
 const CB_HIST_CAP = 40;      // frozen fights kept
 // the engine's own zone rule: these entries are not zone changes
 const CB_ZONE_RX = /^\[.{24}\] You have entered (?!an area|an Arena|the Drunken Monkey).+\.$/;
+/* A marathon visit overruns CB_LIVE_LINES and a plain tail-slice would cut
+   the visit's own zone-entry line — losing the zone readout and the
+   claims-cut-at-window-start property. Keep the zone line pinned at the
+   head: the window becomes "the zone entry plus the freshest N lines" —
+   the same attribution contract, with a gap the engine's rate math already
+   handles (found live: an 18-minute Plane of Hate raid visit). */
+function capLive() {
+  if (CB.live.length <= CB_LIVE_LINES) return;
+  CB.live = CB.live.slice(-CB_LIVE_LINES);
+  if (CB.zoneLine && CB.live[0] !== CB.zoneLine) CB.live.unshift(CB.zoneLine);
+}
 
 function combatSeed(file, text) {
   CB.owner = (file.match(/eqlog_([^_]+)_/) || [])[1] || null;
-  CB.hist = []; CB.histKeys = new Set(); CB.live = []; CB.run = null; CB.session = null; CB.sel = null;
+  CB.hist = []; CB.histKeys = new Set(); CB.encHist = []; CB.encKeys = new Set();
+  CB.live = []; CB.run = null; CB.session = null; CB.sel = null; CB.raidSel = null;
+  CB.encCache = new Map();
   // the bootstrap tail can be 40 MB; slice and parse off the handler's stack
   setTimeout(() => {
     let lines = text.split(/\r?\n/).filter(l => l.length);
@@ -1295,7 +1315,8 @@ function combatSeed(file, text) {
     // no zone line in the whole tail: keep a bounded live window and no history
     if (cut < 0 && lines.length > 10000) lines = lines.slice(-10000);
     CB.live = lines.slice(Math.max(0, cut));
-    if (CB.live.length > CB_LIVE_LINES) CB.live = CB.live.slice(-CB_LIVE_LINES);
+    CB.zoneLine = cut >= 0 ? lines[cut] : null;
+    capLive();
     if (cut > 0) {
       const r = combatParse(lines.slice(0, cut));
       if (r) combatFreeze(r);
@@ -1309,7 +1330,7 @@ function combatFeed(lines) {
     CB.live.push(l);
     if (CB_ZONE_RX.test(l)) combatRollVisit(l);
   }
-  if (CB.live.length > CB_LIVE_LINES) CB.live = CB.live.slice(-CB_LIVE_LINES);
+  capLive();
   CB.dirty = true;
   combatSoon();
 }
@@ -1321,6 +1342,7 @@ function combatRollVisit(zoneLine) {
   const r = combatParse(CB.live);
   if (r) combatFreeze(r);
   CB.live = [zoneLine];
+  CB.zoneLine = zoneLine;
   CB.run = null; CB.session = null;
 }
 
@@ -1347,6 +1369,22 @@ function combatFreeze(r) {
     for (const row of CB.hist.slice(0, CB.hist.length - CB_HIST_CAP)) CB.histKeys.delete(row.key);
     CB.hist = CB.hist.slice(-CB_HIST_CAP);
   }
+  // encounter rows freeze alongside — the overlay's drill-down survives the
+  // visit roll the same way the per-fight expansions do. Only the groups that
+  // will survive the cap get the analyze() pass (a marathon farming visit can
+  // hold far more), and the live memo serves the ones it already computed.
+  const groups = encounterize(r.seg.fights).slice(-CB_HIST_CAP);
+  for (const g of groups) {
+    const row = encRow(g, r);
+    if (CB.encKeys.has(row.key)) continue;
+    row.detail = encDetailCached(row, g, r);
+    CB.encHist.push(row); CB.encKeys.add(row.key);
+  }
+  if (CB.encHist.length > CB_HIST_CAP) {
+    for (const row of CB.encHist.slice(0, CB.encHist.length - CB_HIST_CAP)) CB.encKeys.delete(row.key);
+    CB.encHist = CB.encHist.slice(-CB_HIST_CAP);
+  }
+  CB.encCache = new Map(); // per-visit memo; frozen rows carry their detail
 }
 
 function combatRow(f, r) {
@@ -1360,19 +1398,120 @@ function combatRow(f, r) {
   };
 }
 
-/* The site's fight-focus slice, verbatim: the fight's own damage/miss events
-   plus every non-combat event in its span. */
-function combatDetailFor(f, r) {
-  const t0 = f.start - 2000, t1 = f.end.getTime() + 2000;
+/* The site's fight-focus slice, generalized to a SET of mobs: their own
+   damage/miss events plus every non-combat event in the span, through one
+   analyze() pass — so every drill-down number is the engine's own and can
+   never disagree with eqltools.com/log-parser. */
+function combatSliceDetail(names, start, end, r) {
+  const t0 = start - 2000, t1 = end.getTime() + 2000;
   const evs = r.P.events.filter(e => e.ts >= t0 && e.ts <= t1 &&
-    (e.src === f.mob || e.tgt === f.mob || (e.k !== "dmg" && e.k !== "miss")));
+    (names.has(e.src) || names.has(e.tgt) || (e.k !== "dmg" && e.k !== "miss")));
   const oc = r.P.who ? r.P.who.classes.split("/") : null;
   const a = E.analyze(r.P, evs, r.side, oc);
   return {
-    sources: a.sources.slice(0, 6).map(s => ({ name: s.name, side: s.side, hits: s.hits, dmg: s.dmg, max: s.max, crit: s.crit })),
-    taken: a.taken.dmg, avoided: a.taken.avoid.reduce((n, [, c]) => n + c, 0),
-    healTot: a.healTot, healInTot: a.healInTot,
+    tot: { you: a.tot.you, pet: a.tot.pet, charm: a.tot.charm },
+    sources: a.sources.slice(0, 14).map(s => ({ name: s.name, side: s.side, hits: s.hits, dmg: s.dmg, max: s.max, crit: s.crit })),
+    takenBy: a.takenBy.slice(0, 10).map(t => ({ src: t.src, name: t.name, hits: t.hits, dmg: t.dmg, max: t.max, res: t.res })),
+    taken: a.taken.dmg, avoid: a.taken.avoid,
+    healTot: a.healTot, healInTot: a.healInTot, petTaken: a.petTaken,
   };
+}
+function combatDetailFor(f, r) { return combatSliceDetail(new Set([f.mob]), f.start, f.end, r); }
+
+/* One ENCOUNTER = every fight that overlapped in time — the pull plus its
+   adds. A fight opening while the previous group is still running joins it;
+   a chain-pull that starts after the last mob dropped is a new encounter. */
+function encounterize(fights) {
+  const fs = fights.filter(f => f.total > 0 || f.taken > 0).sort((a, b) => a.start - b.start);
+  const groups = [];
+  for (const f of fs) {
+    const g = groups[groups.length - 1];
+    if (g && f.start <= g.end) { g.fights.push(f); if (f.end > g.end) g.end = f.end; }
+    else groups.push({ start: f.start, end: f.end, fights: [f] });
+  }
+  return groups;
+}
+
+// same identity rule as fkey: (start second, first mob) survives re-parses
+function encRow(g, r) {
+  const sum = k => g.fights.reduce((a, f) => a + f[k], 0);
+  // "team" = the kill was OURS in the way a player means it: our blow landed
+  // it, or the server credited us (xp/coin burst) — in a raid the killing
+  // blow is usually someone else's while the kill is still yours
+  const mobs = g.fights.map(f => ({
+    mob: f.mob, killed: f.killed,
+    team: f.killed && (f.killer === r.P.owner || r.side.claims.at(f.killer, f.end) || f.xp > 0 || f.coin > 0),
+    dmg: f.total, taken: f.taken, xp: Math.round(f.xp * 10) / 10, coin: f.coin,
+  }));
+  return {
+    key: `${g.start.getTime()}~${g.fights[0].mob}`, ts: g.start,
+    secs: Math.max(1, Math.round((g.end - g.start) / 1000)),
+    mobs, total: sum("total"), taken: sum("taken"),
+    xp: Math.round(sum("xp") * 10) / 10, coin: sum("coin"),
+    kills: mobs.filter(m => m.killed).length,
+    team: mobs.some(m => m.team),
+    detail: null,
+  };
+}
+const encDetail = (g, r) => combatSliceDetail(new Set(g.fights.map(f => f.mob)), g.start, g.end, r);
+/* Drill-down memo: an analyze() pass per encounter per tick is waste when the
+   encounter hasn't changed. The signature covers every encRow number — any
+   new damage/kill/xp moves one of them; a heals-only second can serve one
+   stale healTot and self-corrects on the next swing. Cleared per visit. */
+const encSig = row => `${row.secs}|${row.total}|${row.taken}|${row.xp}|${row.coin}|${row.kills}|${row.mobs.length}`;
+function encDetailCached(row, g, r) {
+  const hit = CB.encCache.get(row.key);
+  const sig = encSig(row);
+  if (hit && hit.sig === sig) return hit.detail;
+  const detail = encDetail(g, r);
+  CB.encCache.set(row.key, { sig, detail });
+  return detail;
+}
+
+/* Raid meter: EVERYONE the log shows damaging a mob this visit — you, your
+   pet/charm, other players, their pets — one row per actor name, expandable
+   to that actor's per-source split. Engine-consumer code, not engine code:
+   the meter reads P.events/side()/mobSet, so it can never disagree with the
+   engine about attribution. A text log can't tell another player's summoned
+   pet from a player (both are bare capitalized names) and can't tie either
+   to an owner, so rows stay per-name; only YOUR side is labeled. */
+function raidTable(r) {
+  if (!r) return null;
+  if (r._raid !== undefined) return r._raid; // computed once per engine run
+  const actors = new Map();
+  const times = [];
+  for (const e of r.P.events) {
+    if (e.k !== "dmg" || !e.src || !e.tgt) continue;
+    if (!r.P.mobSet.has(e.tgt) || e.tgt === e.src) continue;
+    // a claimed target is YOUR charm wearing a mob's name — damage to it is
+    // damage taken, not raid damage (another player's charm can't be told
+    // from a mob brawl; those rows stay, labeled as the mob they are)
+    if (r.side.claims.at(e.tgt, e.ts)) continue;
+    const s = r.side(e);
+    // a mob damaging a mob with no claim is unattributable — someone's charm
+    // or a brawl; it still swung for our side, so it stays, labeled by name
+    let a = actors.get(e.src);
+    if (!a) { a = { name: e.src, who: s === "othermob" ? "mob" : s, dmg: 0, hits: 0, max: 0, crit: 0, srcs: new Map() }; actors.set(e.src, a); }
+    a.dmg += e.amt; a.hits++; if (e.crit) a.crit++; if (e.amt > a.max) a.max = e.amt;
+    const phys = e.cat === "melee" || e.cat === "ranged";
+    const nm = phys ? (e.cat === "ranged" ? "ranged" : (e.verb === "hit" ? "auto-attack" : e.verb)) : e.spell || "unknown";
+    const sr = a.srcs.get(nm) || { name: nm, hits: 0, dmg: 0, max: 0, crit: 0 };
+    sr.hits++; sr.dmg += e.amt; if (e.crit) sr.crit++; if (e.amt > sr.max) sr.max = e.amt;
+    a.srcs.set(nm, sr);
+    times.push(e.ts);
+  }
+  if (!actors.size) return (r._raid = null);
+  // raid-wide combat seconds: the same 30s-gap rule as the engine's team
+  // denominator, over every counted event — one shared clock for all rows
+  let secs = 0, s0 = null, last = null;
+  for (const t of times) { if (last && (t - last) / 1000 > 30) { secs += (last - s0) / 1000 + 1; s0 = t; } if (!s0) s0 = t; last = t; }
+  if (s0) secs += (last - s0) / 1000 + 1;
+  const rows = [...actors.values()].sort((a, b) => b.dmg - a.dmg).slice(0, 16).map(a => ({
+    name: a.name, who: a.who, dmg: a.dmg, hits: a.hits, max: a.max, crit: a.crit,
+    sources: [...a.srcs.values()].sort((x, y) => y.dmg - x.dmg).slice(0, 8),
+  }));
+  const total = [...actors.values()].reduce((n, a) => n + a.dmg, 0);
+  return (r._raid = { secs: Math.round(secs), total, actors: rows });
 }
 
 function combatSoon() {
@@ -1437,8 +1576,9 @@ function renderCombat() {
       (a.copper ? cell(fmtCu(a.copper), "coin") : "");
     sEl.hidden = false;
   } else sEl.hidden = true;
-  if (!rows.length) { body.innerHTML = ""; return; }
-  let h = `<table class="qtab cbt"><thead><tr><th>Time</th><th>Mob</th><th></th><th>Dur</th><th>Damage</th><th>DPS</th><th>Taken</th><th>XP</th></tr></thead><tbody>`;
+  if (!rows.length) { body.innerHTML = raidHtml(); return; }
+  let h = raidHtml();
+  h += `<table class="qtab cbt"><thead><tr><th>Time</th><th>Mob</th><th></th><th>Dur</th><th>Damage</th><th>DPS</th><th>Taken</th><th>XP</th></tr></thead><tbody>`;
   for (const row of rows) {
     const open = CB.sel === row.key;
     h += `<tr class="cbr${row.team ? "" : " cb-dim"}" data-fight="${esc(row.key)}">` +
@@ -1470,26 +1610,77 @@ function combatDetailHtml(row) {
   const src = d.sources.map(s =>
     `<tr><td>${esc(s.name)}${s.side !== "you" ? ` <span class="dim">${s.side}</span>` : ""}</td>` +
     `<td>${s.hits}</td><td class="cb-dmg">${fmtN(s.dmg)}</td><td>${fmtN(s.max)}</td><td>${s.crit || "—"}</td></tr>`).join("");
+  const tkn = (d.takenBy || []).map(t =>
+    `<tr><td>${esc(t.src)} <span class="dim">${esc(t.name)}</span></td>` +
+    `<td>${t.hits}</td><td class="cb-dmg">${fmtN(t.dmg)}</td><td>${fmtN(t.max)}</td><td>${t.res || "—"}</td></tr>`).join("");
   const bits = [];
   if (row.you) bits.push(`you ${fmtN(row.you)}`);
   if (row.pet) bits.push(`pet ${fmtN(row.pet)}`);
   if (row.charm) bits.push(`charm ${fmtN(row.charm)}`);
-  if (d.taken) bits.push(`taken ${fmtN(d.taken)}`);
-  if (d.avoided) bits.push(`${d.avoided} avoided`);
+  for (const [how, n] of d.avoid || []) bits.push(`${how} ×${n}`);
   if (d.healTot) bits.push(`healed ${fmtN(d.healTot)}`);
+  if (d.healInTot) bits.push(`took heals ${fmtN(d.healInTot)}`);
+  if (d.petTaken) bits.push(`pet took ${fmtN(d.petTaken)}`);
   if (row.coin) bits.push(fmtCu(row.coin));
   return (src ? `<table class="cbt-sub"><thead><tr><th>Source</th><th>Hits</th><th>Damage</th><th>Max</th><th>Crits</th></tr></thead><tbody>${src}</tbody></table>` : "") +
+    (tkn ? `<table class="cbt-sub"><thead><tr><th>Hit you with</th><th>Hits</th><th>Damage</th><th>Max</th><th>Resisted</th></tr></thead><tbody>${tkn}</tbody></table>` : "") +
     (bits.length ? `<p class="dim cb-line">${bits.join(" · ")}</p>` : "");
 }
 
+/* Everyone's damage this visit — the raid meter, on the Combat tab too.
+   Collapsed to its header row until clicked; each actor row expands to that
+   actor's source split. */
+function raidHtml() {
+  if (!CB.run) return "";
+  const rt = raidTable(CB.run);
+  if (!rt || rt.actors.length < 2) return ""; // solo: the fight list already says it all
+  const secs = Math.max(1, rt.secs);
+  let h = `<div class="cb-raidhead" data-raidtoggle><span class="cb-caret">${CB.raidOpen ? "▾" : "▸"}</span> ` +
+    `Everyone's damage <span class="dim">· ${rt.actors.length} actors · ${fmtN(rt.total)} dmg · ${fmtN(rt.total / secs)} dps</span></div>`;
+  if (!CB.raidOpen) return h;
+  h += `<table class="qtab cbt cbraid"><thead><tr><th>Actor</th><th>%</th><th>Damage</th><th>DPS</th><th>Hits</th><th>Max</th><th>Crits</th></tr></thead><tbody>`;
+  for (const a of rt.actors) {
+    const tag = a.who === "you" ? " (you)" : a.who === "pet" ? " (your pet)" : a.who === "charm" ? " (your charm)" : a.who === "mob" ? " (mob)" : "";
+    h += `<tr class="cbr" data-raidactor="${esc(a.name)}"><td class="cb-mob">${esc(a.name)}<span class="dim">${tag}</span></td>` +
+      `<td>${(a.dmg / rt.total * 100).toFixed(0)}%</td><td class="cb-dmg">${fmtN(a.dmg)}</td>` +
+      `<td>${fmtN(a.dmg / secs)}</td><td>${a.hits}</td><td>${fmtN(a.max)}</td><td>${a.crit || "—"}</td></tr>`;
+    if (CB.raidSel === a.name) {
+      const srcs = a.sources.map(s =>
+        `<tr><td>${esc(s.name)}</td><td>${s.hits}</td><td class="cb-dmg">${fmtN(s.dmg)}</td><td>${fmtN(s.max)}</td><td>${s.crit || "—"}</td></tr>`).join("");
+      h += `<tr class="cbd"><td colspan="7"><table class="cbt-sub"><thead><tr><th>Source</th><th>Hits</th><th>Damage</th><th>Max</th><th>Crits</th></tr></thead><tbody>${srcs}</tbody></table></td></tr>`;
+    }
+  }
+  return h + "</tbody></table>";
+}
+
 /* Overlay payload — pre-resolved like every other feed:* relay; the overlay
-   holds no engine. Pushed only when the numbers changed. */
+   holds no engine. Encounters, newest first: frozen visits from encHist plus
+   the live visit's groups, with the full drill-down detail on each so the
+   overlay can expand a fight without asking anything back. Pushed only when
+   the numbers changed. */
+const CB_OVERLAY_ENCS = 8;
+function encounterRows() {
+  const rows = CB.encHist.slice();
+  if (CB.run) for (const g of encounterize(CB.run.seg.fights)) {
+    const row = encRow(g, CB.run);
+    row.live = g; // live rows keep their group so detail computes on demand
+    rows.push(row);
+  }
+  return rows.sort((a, b) => b.ts - a.ts);
+}
 let lastStatsJson = "";
 function pushStats() {
   if (!CB.session) return;
   const { a, kills } = CB.session;
   const visit = CB.run.seg.visits[CB.run.seg.visits.length - 1] || null;
+  // detail and the raid table are computed only while the overlay can see
+  // them; opening the overlay re-pushes (renderOverlayState), so a hidden
+  // overlay costs one cheap summary per tick instead of analyze() passes
+  const encs = encounterRows().slice(0, CB_OVERLAY_ENCS);
+  if (OVERLAY_SHOWN)
+    for (const row of encs) if (!row.detail && row.live) row.detail = encDetailCached(row, row.live, CB.run);
   const p = {
+    raid: OVERLAY_SHOWN ? raidTable(CB.run) : null,
     session: {
       zone: visit ? visit.name : null,
       mins: Math.round(a.activeSecs / 60),
@@ -1499,10 +1690,12 @@ function pushStats() {
       kph: a.activeSecs >= 120 ? Math.round(kills / (a.activeSecs / 3600)) : null,
       xph: a.activeSecs >= 120 ? Math.round(a.xp / (a.activeSecs / 3600) * 10) / 10 : null,
       taken: a.taken.dmg,
+      coin: a.copper || 0,
     },
-    fights: combatRows().slice(0, 3).map(r => ({
-      mob: r.mob, secs: r.secs, dmg: r.total, dps: Math.round(r.total / r.secs),
-      taken: r.taken, killed: r.killed, team: r.team,
+    fights: encs.map(r => ({
+      key: r.key, mobs: r.mobs, secs: r.secs, dmg: r.total,
+      dps: Math.round(r.total / r.secs), taken: r.taken,
+      xp: r.xp, coin: r.coin, kills: r.kills, team: r.team, detail: r.detail,
     })),
   };
   const j = JSON.stringify(p);
@@ -1607,6 +1800,11 @@ function renderUpdate(u) {
 }
 
 function renderOverlayState(o) {
+  // the stats drill-down is computed only while the overlay can see it; a
+  // fresh open re-pushes so the window never seeds from a detail-less payload
+  const wasShown = OVERLAY_SHOWN;
+  OVERLAY_SHOWN = !!o.shown;
+  if (OVERLAY_SHOWN && !wasShown) { lastStatsJson = ""; pushStats(); }
   $("btnOverlay").textContent = o.shown ? "Hide overlay" : "Overlay";
   $("btnOverlay2").textContent = o.shown ? "Hide overlay" : "Show overlay";
   $("setClickThrough").checked = o.clickThrough;
@@ -1719,6 +1917,10 @@ async function main() {
   });
 
   document.addEventListener("click", e => {
+    const rt = e.target.closest("[data-raidtoggle]");
+    if (rt) { CB.raidOpen = !CB.raidOpen; renderCombat(); return; }
+    const ra = e.target.closest("[data-raidactor]");
+    if (ra) { CB.raidSel = CB.raidSel === ra.dataset.raidactor ? null : ra.dataset.raidactor; renderCombat(); return; }
     const cf = e.target.closest("[data-fight]");
     if (cf) { CB.sel = CB.sel === cf.dataset.fight ? null : cf.dataset.fight; renderCombat(); return; }
     const tk = e.target.closest("[data-track]");

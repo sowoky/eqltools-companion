@@ -243,13 +243,64 @@ if (qViewEl) qViewEl.addEventListener("click", () => {
 const asTracked = q => Array.isArray(q) ? { zones: [], quests: q } : (q || { zones: [], quests: [] });
 window.companion.onFeedQuests(q => { TRACKED = asTracked(q); renderQuests(); rehotspot(); });
 
-/* Stats view — session numbers for the current zone visit and the last
-   fights, pre-resolved by the main renderer's engine run. Display only. */
-let STATS = null;
+/* Stats view — session numbers for the current zone visit, then two
+   sub-views: FIGHTS (encounters — the pull plus its adds — each expandable
+   to the full drill-down) and RAID (everyone's damage the log shows, sorted,
+   each actor expandable to their source split). All numbers arrive
+   pre-resolved from the main renderer's engine run; this window only draws
+   and remembers which rows are open. */
+let STATS = null, OVIEW = "fights", OSEL = null, ORSEL = null;
+const n = v => Math.round(v).toLocaleString();
+const fmtCu = cu => {
+  cu = Math.round(cu);
+  const p = Math.floor(cu / 1000), g = Math.floor(cu % 1000 / 100), s = Math.floor(cu % 100 / 10);
+  return p ? `${n(p)}p ${g}g` : g ? `${g}g ${s}s` : `${s}s ${cu % 10}c`;
+};
+const SIDE_LBL = { you: "you", pet: "your pet", charm: "charm" };
+const RAID_LBL = { you: "you", pet: "your pet", charm: "your charm", mob: "mob" };
+
+function osrcRows(rows) {
+  return rows.map(s =>
+    `<tr><td class="os-tn">${esc(s.name)}</td><td>${s.hits}×</td>` +
+    `<td class="os-td">${n(s.dmg)}</td><td>${n(s.max)} max</td><td>${s.crit ? s.crit + " crit" : ""}</td></tr>`).join("");
+}
+
+function encDetailHtml(f) {
+  const d = f.detail;
+  let h = `<div class="os-x">`;
+  if (f.mobs && f.mobs.length > 1) {
+    h += `<table class="os-t">` + f.mobs.map(m =>
+      `<tr><td class="os-tn">${m.killed ? (m.team ? "✓ " : "✕ ") : ""}${esc(m.mob)}</td>` +
+      `<td class="os-td">${n(m.dmg)}</td><td>${m.taken ? n(m.taken) + " to you" : ""}</td>` +
+      `<td>${m.xp ? m.xp + "% xp" : ""}</td></tr>`).join("") + `</table>`;
+  }
+  if (d) {
+    for (const side of ["you", "pet", "charm"]) {
+      const rows = d.sources.filter(s => s.side === side);
+      if (!rows.length) continue;
+      h += `<div class="os-h os-${side}">${SIDE_LBL[side]} · ${n(d.tot[side])}</div>` +
+        `<table class="os-t">${osrcRows(rows)}</table>`;
+    }
+    if (d.takenBy && d.takenBy.length) {
+      h += `<div class="os-h os-tk">hit you · ${n(d.taken)}</div><table class="os-t">` +
+        d.takenBy.map(t =>
+          `<tr><td class="os-tn">${esc(t.src)} <span class="os-d">${esc(t.name)}</span></td><td>${t.hits}×</td>` +
+          `<td class="os-td">${n(t.dmg)}</td><td>${n(t.max)} max</td><td>${t.res ? t.res + " resisted" : ""}</td></tr>`).join("") + `</table>`;
+    }
+    const bits = [];
+    for (const [how, c] of d.avoid || []) bits.push(`${how} ×${c}`);
+    if (d.healTot) bits.push(`healed ${n(d.healTot)}`);
+    if (d.healInTot) bits.push(`took heals ${n(d.healInTot)}`);
+    if (d.petTaken) bits.push(`pet took ${n(d.petTaken)}`);
+    if (f.coin) bits.push(fmtCu(f.coin));
+    if (bits.length) h += `<div class="os-d os-foot">${bits.join(" · ")}</div>`;
+  }
+  return h + `</div>`;
+}
+
 function renderOStats() {
   if (!STATS || !STATS.session) { statsEl.innerHTML = `<div class="os-none">No combat yet.</div>`; return; }
   const s = STATS.session;
-  const n = v => Math.round(v).toLocaleString();
   const bits = [];
   if (s.mins) bits.push(`<b>${s.mins}m</b> active`);
   bits.push(`<b>${n(s.dmg)}</b> dmg`);
@@ -259,15 +310,50 @@ function renderOStats() {
   if (s.kph != null && s.kills) bits.push(`<b>${s.kph}</b> kills/h`);
   if (s.xph != null && s.xp) bits.push(`<b>${s.xph}%</b> xp/h`);
   if (s.taken) bits.push(`<b>${n(s.taken)}</b> taken`);
+  if (s.coin) bits.push(`<b>${fmtCu(s.coin)}</b>`);
   let h = `<div class="os-sess">${s.zone ? `<span class="os-zone">${esc(s.zone)}</span>` : ""}` +
     bits.map(b => `<span class="os-c">${b}</span>`).join("") + `</div>`;
-  if (STATS.fights && STATS.fights.length) {
-    h += `<ul class="os-fights">` + STATS.fights.map(f =>
-      `<li${f.team ? "" : ` class="os-dim"`}><span class="os-mob">${f.killed ? (f.team ? "✓ " : "✕ ") : ""}${esc(f.mob)}</span>` +
-      `<span class="os-nums">${f.secs}s · ${n(f.dmg)} dmg · ${n(f.dps)} dps${f.taken ? ` · ${n(f.taken)} taken` : ""}</span></li>`).join("") + `</ul>`;
+  const raid = STATS.raid && STATS.raid.actors && STATS.raid.actors.length > 1 ? STATS.raid : null;
+  const view = raid && OVIEW === "raid" ? "raid" : "fights";
+  if (raid) {
+    h += `<div class="os-sub">` +
+      `<button data-osub="fights" class="${view === "fights" ? "on" : ""}">fights</button>` +
+      `<button data-osub="raid" class="${view === "raid" ? "on" : ""}">raid</button></div>`;
+  }
+  if (view === "raid") {
+    const secs = Math.max(1, raid.secs);
+    h += `<div class="os-d os-rline">${n(raid.total)} dmg · ${n(raid.total / secs)} dps · ${Math.round(secs / 60)}m of combat</div>` +
+      `<ul class="os-fights">` + raid.actors.map(a => {
+        const tag = RAID_LBL[a.who] ? ` <span class="os-d">${RAID_LBL[a.who]}</span>` : "";
+        let li = `<li data-ract="${esc(a.name)}"><span class="os-mob">${esc(a.name)}${tag}</span>` +
+          `<span class="os-nums">${(a.dmg / raid.total * 100).toFixed(0)}% · ${n(a.dmg)} · ${n(a.dmg / secs)} dps</span></li>`;
+        if (ORSEL === a.name)
+          li += `<li class="os-xrow"><div class="os-x"><table class="os-t">${osrcRows(a.sources)}</table></div></li>`;
+        return li;
+      }).join("") + `</ul>`;
+  } else if (STATS.fights && STATS.fights.length) {
+    h += `<ul class="os-fights">` + STATS.fights.map(f => {
+      const label = f.mobs && f.mobs.length
+        ? esc(f.mobs[0].mob) + (f.mobs.length > 1 ? ` <span class="os-d">+${f.mobs.length - 1}</span>` : "")
+        : esc(f.mob || "?");
+      const marks = f.kills > 1 ? `${f.team ? "✓" : "✕"}×${f.kills} ` : f.kills ? (f.team ? "✓ " : "✕ ") : "";
+      let li = `<li data-enc="${esc(f.key || "")}"${f.team ? "" : ` class="os-dim"`}>` +
+        `<span class="os-mob">${marks}${label}</span>` +
+        `<span class="os-nums">${f.secs}s · ${n(f.dmg)} · ${n(f.dps)} dps${f.taken ? ` · ${n(f.taken)} tkn` : ""}${f.xp ? ` · ${f.xp}%` : ""}</span></li>`;
+      if (OSEL && OSEL === f.key) li += `<li class="os-xrow">${encDetailHtml(f)}</li>`;
+      return li;
+    }).join("") + `</ul>`;
   }
   statsEl.innerHTML = h;
 }
+statsEl.addEventListener("click", e => {
+  const sb = e.target.closest("[data-osub]");
+  if (sb) { OVIEW = sb.dataset.osub; renderOStats(); rehotspot(); return; }
+  const en = e.target.closest("[data-enc]");
+  if (en) { OSEL = OSEL === en.dataset.enc ? null : en.dataset.enc; renderOStats(); rehotspot(); return; }
+  const ra = e.target.closest("[data-ract]");
+  if (ra) { ORSEL = ORSEL === ra.dataset.ract ? null : ra.dataset.ract; renderOStats(); rehotspot(); }
+});
 window.companion.onFeedStats(s => { STATS = s; renderOStats(); rehotspot(); });
 
 function setMode(clickThrough, opacity) {
@@ -327,10 +413,13 @@ document.addEventListener("mousemove", e => {
 /* A rebuild can swap the DOM out from under a pinned cursor — the hotspot
    state must track what is under the pointer NOW, or the next game click
    gets swallowed by a window that thinks it's still over a link. */
+// everything actionable while pinned — quest links, controls, and the Stats
+// drill-down rows (fights, raid actors, the sub-view switch)
+const HOTSPOT_SEL = "[data-url], #btnPin, #filters, #otabs, [data-enc], [data-ract], [data-osub]";
 function rehotspot() {
   if (!THROUGH) return;
   const el = document.elementFromPoint(MX, MY);
-  const hot = el && el.closest ? el.closest("[data-url], #btnPin, #filters, #otabs") : null;
+  const hot = el && el.closest ? el.closest(HOTSPOT_SEL) : null;
   window.companion.overlayHotspot(!!hot);
 }
 
@@ -347,7 +436,7 @@ document.addEventListener("mouseover", e => {
     tipEl.hidden = false; moveTip(e.clientX, e.clientY);
   } else tipEl.hidden = true;
   if (!THROUGH) return;
-  const hot = e.target.closest ? e.target.closest("[data-url], #btnPin, #filters, #otabs") : null;
+  const hot = e.target.closest ? e.target.closest(HOTSPOT_SEL) : null;
   window.companion.overlayHotspot(!!hot);
 });
 document.addEventListener("mouseout", e => {

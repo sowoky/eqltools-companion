@@ -163,7 +163,34 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unpin first 
 .os-fights { list-style: none; padding: 2px 0; }
 .os-fights li { display: flex; justify-content: space-between; gap: 8px; padding: 1px 7px; border-bottom: 1px solid rgba(44, 37, 69, .45); }
 .os-fights li:last-child { border-bottom: none; }
+.os-fights li[data-enc], .os-fights li[data-ract] { cursor: pointer; }
+.os-fights li[data-enc]:hover, .os-fights li[data-ract]:hover { background: rgba(44, 37, 69, .5); }
 .os-mob { color: #ccc4de; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.os-nums { color: #8d84a8; white-space: nowrap; font-size: 10.5px; }
+.os-nums { color: #8d84a8; white-space: nowrap; font-size: 10.5px; overflow: hidden; text-overflow: ellipsis; }
 .os-dim .os-mob { color: #8d84a8; }
 .os-none { padding: 5px 7px; color: #8d84a8; }
+
+/* stats sub-views (fights | raid) and the drill-down expansion */
+.os-sub { display: flex; gap: 2px; padding: 0 6px; border-bottom: 1px solid rgba(44, 37, 69, .6); }
+.os-sub button {
+  background: none; border: none; border-bottom: 2px solid transparent;
+  color: #8d84a8; font: 10px "Segoe UI", system-ui, sans-serif;
+  padding: 1px 7px 0; cursor: pointer;
+}
+.os-sub button:hover { color: #ece8f7; }
+.os-sub button.on { color: #e7b94e; border-bottom-color: #c9952a; }
+.os-rline { padding: 2px 7px 1px; }
+.os-xrow { display: block !important; padding: 0 !important; cursor: default; }
+.os-x { padding: 2px 7px 4px 14px; background: rgba(23, 18, 39, .55); font-size: 10.5px; }
+.os-h { font-weight: 600; margin-top: 3px; }
+.os-h.os-you { color: #e7b94e; }
+.os-h.os-pet { color: #9ccc9c; }
+.os-h.os-charm { color: #cf9be0; }
+.os-h.os-tk { color: #e08f8f; }
+.os-t { border-collapse: collapse; width: 100%; }
+.os-t td { padding: 0 6px 0 0; white-space: nowrap; color: #ccc4de; font-size: 10.5px; }
+.os-t td.os-tn { max-width: 130px; overflow: hidden; text-overflow: ellipsis; }
+.os-t td.os-td { color: #e7b94e; text-align: right; }
+.os-t td:not(.os-tn):not(.os-td) { color: #8d84a8; }
+.os-d { color: #8d84a8; }
+.os-foot { margin-top: 3px; }
