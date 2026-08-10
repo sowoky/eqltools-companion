@@ -735,6 +735,33 @@ function compsFor(q, have) {
   return { q, comps: rows, got, need: rows.length, done: rows.length > 0 && got === rows.length };
 }
 
+/* Pool tracked plans into one shopping list: an item two quests want is one
+   thing to farm, at the larger requirement. The tag names the quest by its
+   SHORT name (a tracked turn-in is "Paladin Test of Sacrifice", never
+   "… — Paladin Plane of Sky Tests" — the hub is noise on an item row), and
+   `tt` carries what the quest pays, for the hover (Kyle, 2026-08-09: "when i
+   mouse over the quest name, show me the reward"). */
+function mergePlans(plans) {
+  const merged = new Map();
+  for (const p of plans) {
+    const name = p.q.sn || p.q.n;
+    const rew = (p.q.rewards || []).slice(0, 4).join(", ");
+    for (const c of p.comps) {
+      const k = itemKey(c.n), cur = merged.get(k);
+      if (cur) { cur.want = Math.max(cur.want, c.want); cur.quests.set(name, rew); }
+      else merged.set(k, { n: c.n, want: c.want, have: c.have,
+                           quests: new Map([[name, rew]]) });
+    }
+  }
+  return [...merged.values()].map(r => {
+    const names = [...r.quests.keys()];
+    const tt = names.map(n => r.quests.get(n) ? `${n} → ${r.quests.get(n)}` : n).join("\n");
+    return { n: r.n, want: r.want, have: r.have,
+             tag: names.length > 1 ? `${names.length} quests` : names[0],
+             ...(tt ? { tt } : {}) };
+  });
+}
+
 /* A tracked key is a quest path, or "path::partIndex" for ONE turn-in off a
    hub page — the Plane of Sky test pages are five separate quests wearing one
    URL, and tracking "Paladin Test of Love" must not drag the other four
@@ -751,9 +778,12 @@ function trackedPlan(key, have) {
   const held = n => heldCount(have, n);
   const rows = p.c.map(([n, want]) => ({ n, want, have: held(n), fr: q.from && q.from[n] }));
   const got = rows.filter(c => c.have >= c.want).length;
+  const short = p.n || `Turn-in ${+key.slice(ix + 2) + 1}`;
   const pq = {
     ...q, t: key, wk: q.t,
-    n: `${p.n || `Turn-in ${+key.slice(ix + 2) + 1}`} — ${q.n}`,
+    // full name for browser rows (the hub gives context in a big table);
+    // sn for the overlay and zone-view tags, where the hub is just noise
+    n: `${short} — ${q.n}`, sn: short,
     giver: p.g || q.giver, rewards: p.r || [], need: p.c,
     items: p.c.map(([n]) => n), parts: [], split: undefined,
     steps: undefined, roles: undefined,
@@ -976,7 +1006,7 @@ function zoneItemRow(r, zone) {
   const fr = !done && r.fr && T2Q.get(r.fr)
     ? `<a class="wk qfrom" data-wiki="${esc(r.fr)}">reward of ${esc(T2Q.get(r.fr).n)}</a>` : "";
   return `<li class="qc ${done ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(r.n)}${count}
-    ${r.tag ? `<span class="qtag">${esc(r.tag)}</span>` : ""}
+    ${r.tag ? `<span class="qtag"${r.tt ? ` title="${esc(r.tt)}"` : ""}>${esc(r.tag)}</span>` : ""}
     ${who ? `<span class="qsrc dim">${who}</span>` : ""}${fr ? `<span class="qsrc dim">${fr}</span>` : ""}</li>`;
 }
 
@@ -1036,6 +1066,7 @@ function pushQuests() {
       n: c.n, have: c.have, want: c.want, url: itemUrl(c.n),
       mobs: s.mobs.slice(0, 3), ...(note ? { note } : {}),
       ...(c.tag ? { tag: c.tag } : {}),
+      ...(c.tt ? { tt: c.tt } : {}),
     };
   };
   // no source table (a dataset older than this app) means no zone answer at
@@ -1051,17 +1082,7 @@ function pushQuests() {
 
   // one item two quests want is one thing to farm — same merge the main window
   // does, so the two views can never disagree about what is left
-  const merged = new Map();
-  for (const p of plans) {
-    for (const c of p.comps) {
-      const k = itemKey(c.n), cur = merged.get(k);
-      if (cur) { cur.want = Math.max(cur.want, c.want); cur.quests.add(p.q.n); }
-      else merged.set(k, { n: c.n, want: c.want, have: c.have, quests: new Set([p.q.n]) });
-    }
-  }
-  const pooled = [...merged.values()].map(r => ({
-    ...r, tag: r.quests.size > 1 ? `${r.quests.size} quests` : [...r.quests][0],
-  }));
+  const pooled = mergePlans(plans);
 
   // the one thing to do next per quest, for the overlay's quest rows
   const nextLine = q => {
@@ -1076,9 +1097,11 @@ function pushQuests() {
     zones: packZones(pooled),
     quests: plans.map(p => {
       const nx = nextLine(p.q);
+      const rew = (p.q.rewards || []).slice(0, 4).join(", ");
       return {
-      n: p.q.n, url: base ? base + (p.q.wk || p.q.t) : "",
+      n: p.q.sn || p.q.n, url: base ? base + (p.q.wk || p.q.t) : "",
       got: p.got, need: p.need, done: p.done, oe: !!p.q.oe,
+      ...(rew ? { rew } : {}),
       ...(nx ? { next: nx } : {}),
       zones: packZones(p.comps),
       ...(hasSrc() ? {} : { comps: packFlat(p.comps) }),
@@ -1409,18 +1432,7 @@ function renderTrackedTab() {
   if (TRACK_VIEW === "zone" && hasSrc() && plans.length > 1) {
     // one item wanted by two quests is one thing to farm, so the rows merge and
     // carry the largest requirement; the tag names every quest waiting on it
-    const merged = new Map();
-    for (const p of plans) {
-      for (const c of p.comps) {
-        const k = itemKey(c.n);
-        const cur = merged.get(k);
-        if (cur) { cur.want = Math.max(cur.want, c.want); cur.quests.add(p.q.n); }
-        else merged.set(k, { n: c.n, want: c.want, have: c.have, quests: new Set([p.q.n]) });
-      }
-    }
-    const rows = [...merged.values()].map(r => ({
-      ...r, tag: r.quests.size > 1 ? `${r.quests.size} quests` : [...r.quests][0],
-    }));
+    const rows = mergePlans(plans);
     const left = rows.filter(r => r.have < r.want).length;
     $("trackedMeta").textContent =
       `${rows.length} item${rows.length === 1 ? "" : "s"} across ${plans.length} quests · ${left} still to get`;

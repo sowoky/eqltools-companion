@@ -161,9 +161,11 @@ function itemLi(it) {
   if (it.tag) {
     const t = document.createElement("span");
     t.className = "tqc__tag"; t.textContent = it.tag;
+    if (it.tt) t.title = it.tt;   // hover: what the quest(s) pay
     cl.append(t);
   }
-  const src = !done && ((it.mobs && it.mobs.join(", ")) || it.note);
+  // note AND mobs: 'Isle 6 · Bazzt Zzzt' — the island rides alongside the boss
+  const src = !done && [it.note, it.mobs && it.mobs.join(", ")].filter(Boolean).join(" · ");
   if (src) {
     const s = document.createElement("span");
     s.className = "tqc__src"; s.textContent = src;
@@ -210,7 +212,9 @@ function renderQuests() {
   for (const q of quests) {
     const li = document.createElement("li");
     li.className = q.done ? "tq is-done" : "tq";
-    li.append(link(q.n, q.url, "tq__n"));
+    const nm = link(q.n, q.url, "tq__n");
+    if (q.rew) nm.title = `reward: ${q.rew}`;
+    li.append(nm);
     if (q.oe) {
       const o = document.createElement("span");
       o.className = "oe"; o.textContent = "out of era";
