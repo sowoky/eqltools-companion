@@ -74,6 +74,7 @@ body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 .tq .oe { margin-left: 5px; }
 .tq__c { float: right; font-weight: 600; color: #ccc4de; }
 .tq.is-done .tq__c { color: #e7b94e; }
+.tq__next { clear: both; font-size: 11px; color: #b9aed6; padding: 1px 0 0 2px; }
 .tzs { list-style: none; padding: 2px 0 0 4px; }
 .tz { padding: 1px 0 2px; }
 .tz.is-done { opacity: .55; }

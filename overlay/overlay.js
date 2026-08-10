@@ -219,6 +219,12 @@ function renderQuests() {
     const c = document.createElement("span");
     c.className = "tq__c"; c.textContent = q.done ? `✓ ${q.got}/${q.need}` : `${q.got}/${q.need}`;
     li.append(c);
+    if (q.next) {
+      // the one thing to do next on this quest, resolved by the main window
+      const nx = document.createElement("div");
+      nx.className = "tq__next"; nx.textContent = `next: ${q.next}`;
+      li.append(nx);
+    }
     const ul = document.createElement("ul");
     if ((q.zones || []).length) {
       ul.className = "tzs";

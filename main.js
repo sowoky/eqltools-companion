@@ -90,7 +90,9 @@ function createMainWindow() {
       // EQLC_SHOT=<png> writes a screenshot and quits — the agent has no eyes
       // on this window otherwise, and "the probe says the DOM is right" is not
       // the same as having looked at it. Waits out EQLC_EXEC's own async work.
-      if (process.env.EQLC_SHOT) setTimeout(async () => {
+      // A directory value belongs to the 5s interval loop below, not this
+      // one-shot — quitting on it cut a live-log test off mid-run.
+      if (process.env.EQLC_SHOT && process.env.EQLC_SHOT.endsWith(".png")) setTimeout(async () => {
         try {
           const img = await mainWin.webContents.capturePage();
           fs.writeFileSync(process.env.EQLC_SHOT, img.toPNG());
@@ -341,7 +343,7 @@ function readJson(p) {
    cannot answer, and could only say so. Below the floor we fall back to the
    bundled snapshot until the next refresh brings the live file up. Raise the
    number here in the same commit that starts depending on the new field. */
-const MIN_SCHEMA = { "quest-items.json": 3, "item-tooltips.json": 1 };
+const MIN_SCHEMA = { "quest-items.json": 4, "item-tooltips.json": 1 };
 
 function loadDatasets() {
   const out = {};

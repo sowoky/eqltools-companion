@@ -23,6 +23,9 @@ let QZONES = {};      // zone display name -> wiki path
 let QIDX_L = new Map(), TIDX_L = new Map(), QSRC_L = {}, QDROPS_L = {};
 let TDATA = null;     // item-tooltips.json
 let TIDX = new Map(); // normName(item) -> {n, t, ic, sb: [lines]}
+let GEO = null;       // quest-items.json geo: {nodes: {name: {adj, keys, oe}}, alias}
+let KEY2NODE = new Map(); // atlas zone key -> geo node name
+let NPCLOC = {};      // NPC display name -> {t, z, loc}
 
 function buildIndexes(datasets) {
   const kd = datasets["kills-data.json"], qd = datasets["quest-items.json"];
@@ -50,6 +53,13 @@ function buildIndexes(datasets) {
     QDROPS = QDATA.drops || {};
     QSRC = QDATA.src || {};
     QZONES = QDATA.zones || {};
+    GEO = QDATA.geo || null;
+    NPCLOC = QDATA.npcs || {};
+    KEY2NODE = new Map();
+    if (GEO) {
+      for (const [name, node] of Object.entries(GEO.nodes))
+        for (const k of node.keys || []) KEY2NODE.set(k, name);
+    }
   }
   const td = datasets["item-tooltips.json"];
   TDATA = td ? td.data : null;
@@ -140,6 +150,7 @@ function onLines({ file, lines }) {
     lastStreamZone = stream.zone;
     pushZone();
     if (ZONE.follow && DATA && DATA.zones[stream.zone]) selectZone(stream.zone);
+    renderQuestsSoon(); // the by-zone ordering starts from where you stand
   }
   renderStatus();
 }
@@ -719,9 +730,113 @@ function heldCount(have, name) {
 function compsFor(q, have) {
   const held = n => heldCount(have, n);
   const rows = (q.need && q.need.length ? q.need : (q.items || []).map(n => [n, 1]))
-    .map(([n, want]) => ({ n, want, have: held(n) }));
+    .map(([n, want]) => ({ n, want, have: held(n), fr: q.from && q.from[n] }));
   const got = rows.filter(c => c.have >= c.want).length;
   return { q, comps: rows, got, need: rows.length, done: rows.length > 0 && got === rows.length };
+}
+
+/* A tracked key is a quest path, or "path::partIndex" for ONE turn-in off a
+   hub page — the Plane of Sky test pages are five separate quests wearing one
+   URL, and tracking "Paladin Test of Love" must not drag the other four
+   tests' shopping lists along (Kyle, 2026-08-09). A part-plan is a pared-down
+   pseudo-quest: that part's items only, the base page kept for the wiki link. */
+function trackedPlan(key, have) {
+  const ix = key.indexOf("::");
+  const t = ix < 0 ? key : key.slice(0, ix);
+  const q = T2Q.get(t);
+  if (!q) return null;
+  if (ix < 0) return compsFor(q, have);
+  const p = (q.parts || [])[+key.slice(ix + 2)];
+  if (!p) return null;
+  const held = n => heldCount(have, n);
+  const rows = p.c.map(([n, want]) => ({ n, want, have: held(n), fr: q.from && q.from[n] }));
+  const got = rows.filter(c => c.have >= c.want).length;
+  const pq = {
+    ...q, t: key, wk: q.t,
+    n: `${p.n || `Turn-in ${+key.slice(ix + 2) + 1}`} — ${q.n}`,
+    giver: p.g || q.giver, rewards: [], need: p.c,
+    items: p.c.map(([n]) => n), parts: [], split: undefined,
+    steps: undefined, roles: undefined,
+  };
+  return { q: pq, comps: rows, got, need: rows.length,
+           done: rows.length > 0 && got === rows.length };
+}
+
+/* ── step state ───────────────────────────────────────────────────────────
+   Quests with a parsed step graph (q.steps) know their order: what's done,
+   what you can do right now, and what is locked behind an earlier hand-in.
+   Locked steps are noise while wandering — the UI folds them away (Kyle,
+   2026-08-09: "things they can't do yet is noise").
+
+   done, inferred from the bag: a made step (give/combine) is done when its
+   product is in hand, or when anything consuming that product is done — you
+   can't hold the Gleaming coin without having handed over the Glowing one.
+   World pickups pool: holding 3 of the 10 coins marks 3 pins done. */
+function stepState(q, have) {
+  const steps = q.steps || [];
+  if (!steps.length) return null;
+  const held = n => heldCount(have, n);
+  const done = new Map();
+  const outsHeld = st => (st.out || []).length &&
+    st.out.every(([n]) => held(n) >= 1);
+  for (let j = steps.length - 1; j >= 0; j--) {
+    const st = steps[j];
+    const consumerDone = steps.some(s2 => (s2.pre || []).includes(st.i) && done.get(s2.i));
+    // world pickups (no inputs) are pooled below — ten coin pins all "hold"
+    // the same 3 coins, and marking them all done here read 3/10 as complete
+    done.set(st.i, consumerDone || ((st.in || st.tool) ? outsHeld(st) : false));
+  }
+  // pooled world pickups: the first `held` pins of an item count as done
+  const pools = new Map();
+  for (const st of steps) {
+    if (st.in || st.tool || !(st.out || []).length) continue;
+    if (done.get(st.i)) continue;
+    const n = st.out[0][0];
+    if (!pools.has(n)) pools.set(n, []);
+    pools.get(n).push(st);
+  }
+  for (const [n, pins] of pools) {
+    // pins already done via a consumer stay done; these are the leftovers
+    const already = steps.filter(s2 => (s2.out || []).some(([m]) => m === n) && done.get(s2.i)).length;
+    let k = Math.max(0, Math.min(held(n) - already, pins.length));
+    for (const st of pins) { if (k <= 0) break; done.set(st.i, true); k--; }
+  }
+  const actionable = st => !done.get(st.i) &&
+    (st.pre || []).every(i => done.get(i));
+  const states = steps.map(st => ({
+    st, done: !!done.get(st.i), can: actionable(st),
+  }));
+  const next = states.find(s => s.can && (s.st.k === "give" || s.st.k === "combine"))
+    || states.find(s => s.can);
+  const finalGive = [...steps].reverse().find(st => st.k === "give" && (st.in || []).length);
+  const handinReady = !!finalGive && finalGive.in.every(([n, w]) => held(n) >= w) &&
+    (finalGive.pre || []).every(i => done.get(i));
+  return { states, next: next ? next.st : null, handinReady,
+           doneN: states.filter(s => s.done).length };
+}
+
+// one line of a step as the player acts on it: what, where, from whom
+function stepLine(st, cls) {
+  const zone = st.z ? `<span class="dim"> · ${esc(st.z)}</span>` : "";
+  const loc = st.loc ? `<span class="dim"> (${esc(st.loc)})</span>` : "";
+  const npc = st.npc && NPCLOC[st.npc] && NPCLOC[st.npc].z && !st.z
+    ? `<span class="dim"> · ${esc(NPCLOC[st.npc].z)}${NPCLOC[st.npc].loc ? ` (${esc(NPCLOC[st.npc].loc)})` : ""}</span>` : "";
+  return `<li class="qc qstep ${cls}"><span class="kchk"></span>${esc(st.txt)}${zone}${loc}${npc}</li>`;
+}
+
+const QSTEPS_OPEN = new Set(); // quests whose locked-steps fold is expanded
+function stepsHtml(q, ss) {
+  if (!ss) return "";
+  const doable = ss.states.filter(s => s.can);
+  const locked = ss.states.filter(s => !s.done && !s.can);
+  const open = QSTEPS_OPEN.has(q.t);
+  return `<div class="qsteps">
+    ${ss.doneN ? `<div class="qsteps__done dim">✓ ${ss.doneN} of ${ss.states.length} steps done</div>` : ""}
+    <ul class="qcomps">${doable.map(s => stepLine(s.st, "is-can")).join("")}</ul>
+    ${locked.length ? `<button class="qparts__toggle" data-steps="${esc(q.t)}">${open ? "▾" : "▸"}
+      ${locked.length} later step${locked.length === 1 ? "" : "s"} — locked until the ones above are done</button>
+      ${open ? `<ul class="qcomps">${locked.map(s => stepLine(s.st, "is-locked")).join("")}</ul>` : ""}` : ""}
+  </div>`;
 }
 
 /* ── where an item comes from ─────────────────────────────────────────────
@@ -759,22 +874,60 @@ function bucketsFor(name) {
 // how you get this item IN this zone: the mobs to kill, or — when the zone is
 // on the item's soldby/foraged list rather than its dropsfrom — what to do
 // instead. "Freeport" under a gem means buy it, and a list of mobs to kill
-// there would be a lie of omission.
-const KIND_LABEL = { vendor: "from a merchant", forage: "forage" };
+// there would be a lie of omission. A ground spawn gets its coordinates: "in
+// Grobb" is a swamp-sized haystack, "(+197, -261)" is a coin in a pool.
+const KIND_LABEL = { vendor: "from a merchant", forage: "forage", buy: "buy it" };
 function sourceIn(name, zone) {
   const s = srcFor(name);
   if (!s) return { mobs: [] };
+  // Plane of Sky items carry their island — the only "where" that matters up there
+  const isl = s.isl ? `Isle ${s.isl}` : "";
   const mobs = (s.m && s.m[zone]) || [];
-  if (mobs.length) return { mobs };
+  if (mobs.length) return { mobs, isl };
+  const locs = (s.g && s.g[zone]) || [];
+  if (locs.length)
+    return { mobs: [], isl, note: `ground spawn · ${locs.slice(0, 2).join(" / ")}` };
+  const vend = (s.v && s.v[zone]) || [];
+  if (vend.length) {
+    const [npc, where] = vend[0];
+    return { mobs: [], isl, note: `sold by ${npc}${where ? ` · ${where}` : ""}` };
+  }
   const i = (s.z || []).indexOf(zone);
   const kind = i >= 0 && s.k ? s.k[i] : null;
-  return { mobs: [], note: KIND_LABEL[kind] || "" };
+  return { mobs: [], isl, note: KIND_LABEL[kind] || "" };
 }
 
-/* rows [{n, want, have, tag?}] -> ordered zone buckets. Zones with something
-   still outstanding sort first (that is the reason you are reading the list),
-   then by how much is left, then alphabetically; the two catch-all buckets sit
-   at the bottom whatever they hold. */
+/* ── zone distance: how far is each zone from where the player stands ─────
+   The dataset ships the wiki's zone adjacency graph (geo). BFS from the
+   current zone's node gives every zone a hop count; out-of-era zones aren't
+   in the game and don't get walked. Cached per starting node. */
+let DIST = { from: null, map: null };
+const geoNode = z => GEO && (GEO.nodes[z] ? z : GEO.alias[z] || null);
+function zoneDists() {
+  if (!GEO) return null;
+  const from = KEY2NODE.get(lastStreamZone) || null;
+  if (!from) return null;
+  if (DIST.from === from) return DIST.map;
+  const d = new Map([[from, 0]]);
+  const q = [from];
+  while (q.length) {
+    const n = q.shift();
+    for (const m of GEO.nodes[n].adj) {
+      const node = GEO.nodes[m];
+      if (node && !node.oe && !d.has(m)) { d.set(m, d.get(n) + 1); q.push(m); }
+    }
+  }
+  DIST = { from, map: d };
+  return d;
+}
+
+/* rows [{n, want, have, tag?}] -> ordered zone buckets. The zone you are
+   standing in comes first, then the rest by how many zones away they are —
+   and at equal distance the dead-end zone wins (Mistmoore before Greater
+   Faydark from Lesser Faydark: you can reach GFay from plenty of other
+   places, but Mistmoore only through here, so do it while you're close).
+   Zones with something outstanding still outrank cleared ones, and the two
+   catch-all buckets sit at the bottom whatever they hold. */
 function zoneBuckets(rows) {
   const by = new Map();
   for (const r of rows) {
@@ -783,14 +936,21 @@ function zoneBuckets(rows) {
       by.get(z).push(r);
     }
   }
+  const dist = zoneDists();
   const out = [...by.entries()].map(([z, items]) => {
     items.sort((a, b) => (a.have >= a.want) - (b.have >= b.want) ||
       (a.n.toLowerCase() < b.n.toLowerCase() ? -1 : 1));
-    return { z, items, left: items.filter(r => r.have < r.want).length };
+    const node = dist ? geoNode(z) : null;
+    // no graph or no known position: d/deg flat, the old ordering stands
+    const d = !dist ? 0 : node && dist.has(node) ? dist.get(node) : 9999;
+    const deg = !dist ? 0 : node ? (GEO.nodes[node].adj || []).length : 99;
+    return { z, items, d, deg,
+             left: items.filter(r => r.have < r.want).length };
   });
   out.sort((a, b) => {
     const ca = a.z in BUCKET_LABEL, cb = b.z in BUCKET_LABEL;
-    return (ca - cb) || ((b.left > 0) - (a.left > 0)) || (b.left - a.left) ||
+    return (ca - cb) || ((b.left > 0) - (a.left > 0)) ||
+      (a.d - b.d) || (a.deg - b.deg) || (b.left - a.left) ||
       (a.z < b.z ? -1 : 1);
   });
   return out;
@@ -807,13 +967,17 @@ function zoneItemRow(r, zone) {
   const src = done ? { mobs: [] } : sourceIn(r.n, zone);
   const count = r.want > 1 || r.have
     ? `<span class="qct ${done ? "is-ok" : ""}">${r.have}/${r.want}</span>` : "";
-  const who = src.mobs.slice(0, 3).map(m => {
+  const mobsHtml = src.mobs.slice(0, 3).map(m => {
     const t = mobPath(r.n, m);
     return t ? `<a class="wk" data-wiki="${esc(t)}">${esc(m)}</a>` : esc(m);
   }).join(", ") || esc(src.note || "");
+  const who = src.isl ? `${esc(src.isl)}${mobsHtml ? ` · ${mobsHtml}` : ""}` : mobsHtml;
+  // an item that is another quest's reward is a quest to do, not a mob to farm
+  const fr = !done && r.fr && T2Q.get(r.fr)
+    ? `<a class="wk qfrom" data-wiki="${esc(r.fr)}">reward of ${esc(T2Q.get(r.fr).n)}</a>` : "";
   return `<li class="qc ${done ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(r.n)}${count}
     ${r.tag ? `<span class="qtag">${esc(r.tag)}</span>` : ""}
-    ${who ? `<span class="qsrc dim">${who}</span>` : ""}</li>`;
+    ${who ? `<span class="qsrc dim">${who}</span>` : ""}${fr ? `<span class="qsrc dim">${fr}</span>` : ""}</li>`;
 }
 
 // the pre-zone-grouping rendering, kept for datasets that predate `src`:
@@ -863,13 +1027,14 @@ function pushQuests() {
   const have = haveMap();
   const base = QDATA.base || (DATA && DATA.base) || "";
   const itemUrl = n => { const t = lookupItem(TIDX, n); return t && base ? base + t.t : ""; };
-  const plans = TRACKED.map(t => T2Q.get(t)).filter(Boolean).map(q => compsFor(q, have));
+  const plans = TRACKED.map(k => trackedPlan(k, have)).filter(Boolean);
 
   const packRow = (c, zone) => {
     const s = c.have >= c.want ? { mobs: [] } : sourceIn(c.n, zone);
+    const note = [s.isl, s.note].filter(Boolean).join(" · ");
     return {
       n: c.n, have: c.have, want: c.want, url: itemUrl(c.n),
-      mobs: s.mobs.slice(0, 3), ...(s.note ? { note: s.note } : {}),
+      mobs: s.mobs.slice(0, 3), ...(note ? { note } : {}),
       ...(c.tag ? { tag: c.tag } : {}),
     };
   };
@@ -898,11 +1063,23 @@ function pushQuests() {
     ...r, tag: r.quests.size > 1 ? `${r.quests.size} quests` : [...r.quests][0],
   }));
 
+  // the one thing to do next per quest, for the overlay's quest rows
+  const nextLine = q => {
+    const ss = stepState(q, have);
+    if (!ss || !ss.next) return null;
+    const st = ss.next;
+    const where = st.z || (st.npc && NPCLOC[st.npc] && NPCLOC[st.npc].z) || "";
+    return `${st.txt.slice(0, 90)}${where ? ` · ${where}` : ""}`;
+  };
+
   window.companion.sendQuests({
     zones: packZones(pooled),
-    quests: plans.map(p => ({
-      n: p.q.n, url: base ? base + p.q.t : "",
+    quests: plans.map(p => {
+      const nx = nextLine(p.q);
+      return {
+      n: p.q.n, url: base ? base + (p.q.wk || p.q.t) : "",
       got: p.got, need: p.need, done: p.done, oe: !!p.q.oe,
+      ...(nx ? { next: nx } : {}),
       zones: packZones(p.comps),
       ...(hasSrc() ? {} : { comps: packFlat(p.comps) }),
       parts: (p.q.parts || []).map(pt => ({
@@ -911,7 +1088,8 @@ function pushQuests() {
           n, want, have: heldCount(have, n),
         })),
       })),
-    })),
+      };
+    }),
   });
 }
 
@@ -920,7 +1098,7 @@ function pushQuests() {
 // it changes what the whole row means.
 function questFacts(q, chain) {
   const oe = q.oe ? `out of era — ${String(q.era || "").replace(/\s*Era$/i, "") || "?"}` : "";
-  return [oe, q.lvl ? `lvl ${q.lvl}` : "", (q.classes || []).filter(c => c && c !== "?").join("/"),
+  return [oe, q.lvl ? `lvl ${q.lvl}${q.lvlUse ? ` (use ${q.lvlUse})` : ""}` : "", (q.classes || []).filter(c => c && c !== "?").join("/"),
     q.zone, q.giver ? `→ ${q.giver}` : "", chain ? "multi-step chain — no single turn-in" : ""]
     .filter(Boolean).join(" · ");
 }
@@ -952,11 +1130,16 @@ function partsHtml(q, have) {
   const rows = parts.map((p, i) => {
     const cs = p.c.map(([n, want]) => ({ n, want, have: held(n) }));
     const got = cs.filter(c => c.have >= c.want).length;
+    // a hub page's turn-in is its own quest in all but URL (the five Sky
+    // tests share one page) — each is trackable alone
+    const pkey = `${q.t}::${i}`;
+    const ptracked = TRACKED.includes(pkey);
     return `<li class="qpart ${got === cs.length ? "is-ready" : ""}">
       <div class="qpart__head">
         <span class="qpart__n">${esc(p.n || "Also listed on this page")}</span>
         ${p.g ? `<span class="dim">→ ${esc(p.g)}</span>` : ""}
         <span class="qprog">${got}/${cs.length}</span>
+        <button class="btn btn--mini qtrk" data-track="${esc(pkey)}">${ptracked ? "Untrack" : "Track"}</button>
       </div>
       <ul class="qcomps">${cs.map(c => `<li class="qc ${c.have >= c.want ? "is-have" : ""}">
         <span class="kchk"></span>${itemSpan(c.n)}${c.want > 1 || c.have ? `<span class="qct ${c.have >= c.want ? "is-ok" : ""}">${c.have}/${c.want}</span>` : ""}</li>`).join("")}</ul>
@@ -971,7 +1154,9 @@ function partsHtml(q, have) {
 // rows, the Tracked tab, and the browser's expanded rows
 function questDetail(p, have) {
   const { q } = p;
-  const comps = zoneGroupsHtml(p.comps) + (have ? partsHtml(q, have) : "");
+  const ss = have ? stepState(q, have) : null;
+  const comps = (ss ? stepsHtml(q, ss) : "")
+    + zoneGroupsHtml(p.comps) + (have ? partsHtml(q, have) : "");
   const rew = (q.rewards || []).length
     ? `<div class="qrew">reward: ${q.rewards.slice(0, 10).map(r => `<span data-tt="${esc(r)}">${esc(r)}</span>`).join(", ")}${q.rewards.length > 10 ? ` <span class="dim">+${q.rewards.length - 10} more</span>` : ""}</div>`
     : "";
@@ -993,9 +1178,13 @@ function questRow(p, tracked, have) {
   // here — but they have no single hand-in NPC, so calling them "ready to
   // hand in" would be a lie. Say what they are instead.
   const facts = questFacts(q, !q.giver && !q.zone);
-  return `<li class="qrow ${p.done ? "is-ready" : ""} ${tracked ? "is-tracked" : ""}">
+  // a chain quest is READY when the FINAL hand-in is satisfiable, not when
+  // the base materials are pocketed — 10 coins in the bag is step 13 of 17
+  const ss = have ? stepState(q, have) : null;
+  const ready = ss ? ss.handinReady : p.done;
+  return `<li class="qrow ${ready ? "is-ready" : ""} ${tracked ? "is-tracked" : ""}">
     <div class="qrow__head">
-      <a class="wk" data-wiki="${esc(q.t || "")}">${esc(q.n)}</a>
+      <a class="wk" data-wiki="${esc(q.wk || q.t || "")}">${esc(q.n)}</a>
       <span class="qprog">${p.got}/${p.need}</span>
       ${facts ? `<span class="dim">${esc(facts)}</span>` : ""}
       <button class="btn btn--mini qtrk" data-track="${esc(q.t)}">${tracked ? "Untrack" : "Track"}</button>
@@ -1177,20 +1366,19 @@ function renderTrackedTab() {
     body.innerHTML = ""; empty.hidden = true; if (head) head.hidden = true;
     return;
   }
-  const tracked = TRACKED.map(t => T2Q.get(t)).filter(Boolean);
-  empty.hidden = tracked.length > 0;
-  if (head) head.hidden = tracked.length < 1;
+  const have = haveMap();
+  const plans = TRACKED.map(k => trackedPlan(k, have)).filter(Boolean);
+  empty.hidden = plans.length > 0;
+  if (head) head.hidden = plans.length < 1;
   // the by-zone view needs the source table; offering the toggle without it
   // would switch to an empty answer
   const seg = document.querySelector(".seg");
   if (seg) seg.hidden = !hasSrc();
   banner.hidden = hasSrc();
   if (!hasSrc()) banner.textContent = STALE_DATA_NOTE;
-  if (!tracked.length) { body.innerHTML = ""; return; }
-  const have = haveMap();
-  const plans = tracked.map(q => compsFor(q, have));
+  if (!plans.length) { body.innerHTML = ""; return; }
 
-  if (TRACK_VIEW === "zone" && hasSrc() && tracked.length > 1) {
+  if (TRACK_VIEW === "zone" && hasSrc() && plans.length > 1) {
     // one item wanted by two quests is one thing to farm, so the rows merge and
     // carry the largest requirement; the tag names every quest waiting on it
     const merged = new Map();
@@ -1207,12 +1395,12 @@ function renderTrackedTab() {
     }));
     const left = rows.filter(r => r.have < r.want).length;
     $("trackedMeta").textContent =
-      `${rows.length} item${rows.length === 1 ? "" : "s"} across ${tracked.length} quests · ${left} still to get`;
+      `${rows.length} item${rows.length === 1 ? "" : "s"} across ${plans.length} quests · ${left} still to get`;
     body.innerHTML = zoneGroupsHtml(rows);
   } else {
     const ready = plans.filter(p => p.done).length;
-    $("trackedMeta").textContent = tracked.length > 1
-      ? `${tracked.length} quests · ${ready} ready to hand in` : "";
+    $("trackedMeta").textContent = plans.length > 1
+      ? `${plans.length} quests · ${ready} ready to hand in` : "";
     body.innerHTML = `<ul class="qlist">${plans.map(p => questRow(p, true, have)).join("")}</ul>`;
   }
   retip();
@@ -1931,6 +2119,12 @@ async function main() {
     if (pt) {
       const t = pt.dataset.parts;
       QPARTS_OPEN.has(t) ? QPARTS_OPEN.delete(t) : QPARTS_OPEN.add(t);
+      renderQuests(); return;
+    }
+    const stp = e.target.closest("[data-steps]");
+    if (stp) {
+      const t = stp.dataset.steps;
+      QSTEPS_OPEN.has(t) ? QSTEPS_OPEN.delete(t) : QSTEPS_OPEN.add(t);
       renderQuests(); return;
     }
     const sh = e.target.closest("[data-qsort]");

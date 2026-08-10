@@ -189,6 +189,14 @@ a.zg__name:hover { color: var(--gold-pale); }
 .qsrc a { color: var(--wiki); text-decoration: none; cursor: pointer; }
 .qsrc a:hover { color: var(--gold-pale); }
 
+/* ── steps — the quest's ordered plan: doable now, locked folded away ──── */
+.qsteps { margin: 4px 0 8px; }
+.qsteps__done { font-size: 11px; margin-bottom: 2px; }
+.qstep { font-size: 12px; }
+.qstep.is-can .kchk { border-color: var(--gold); }
+.qstep.is-locked { color: var(--ink-dim); }
+.qfrom { font-style: italic; }
+
 /* ── turn-ins — what you hand to whom, folded away until asked for ─────── */
 .qparts { margin-top: 8px; }
 .qparts__toggle {
