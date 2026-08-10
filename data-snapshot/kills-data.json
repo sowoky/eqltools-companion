@@ -1302,6 +1302,13 @@
      "t": "A_shadowknight_(Troll)"
     },
     {
+     "lv": null,
+     "lvl": "",
+     "n": "a skeletal excavator",
+     "named": false,
+     "t": "A_skeletal_excavator"
+    },
+    {
      "lv": 23.5,
      "lvl": "22-25",
      "n": "a Teir`Dal priestess",
@@ -5565,6 +5572,13 @@
      "t": "A_broken_golem"
     },
     {
+     "lv": null,
+     "lvl": "",
+     "n": "a decrepit warder",
+     "named": false,
+     "t": "A_decrepit_warder"
+    },
+    {
      "lv": 58.0,
      "lvl": "58",
      "n": "a dracoliche",
@@ -6282,6 +6296,13 @@
    "city": true,
    "mobs": [
     {
+     "lv": null,
+     "lvl": "",
+     "n": "a orc centurion",
+     "named": false,
+     "t": "An_orc_centurion"
+    },
+    {
      "lv": 12.5,
      "lvl": "3-17 / 13-17 (Qeynos Aqueducts)",
      "n": "a shark",
@@ -6972,6 +6993,13 @@
      "n": "Merko Quetalis",
      "named": true,
      "t": "Merko_Quetalis"
+    },
+    {
+     "lv": 70.0,
+     "lvl": "70",
+     "n": "Nashia Lanseb",
+     "named": true,
+     "t": "Nashia_Lanseb"
     },
     {
      "lv": 15.0,
@@ -10026,8 +10054,8 @@
      "t": "Grandmaster_H%60Qilm"
     },
     {
-     "lv": 58.0,
-     "lvl": "58",
+     "lv": 56.0,
+     "lvl": "56",
      "n": "Grandmaster R`Tal",
      "named": true,
      "t": "Grandmaster_R%60Tal"
@@ -10096,15 +10124,15 @@
      "t": "Magi_P%60Tasa"
     },
     {
-     "lv": 58.0,
-     "lvl": "58",
+     "lv": 56.0,
+     "lvl": "56",
      "n": "Master of Spite",
      "named": true,
      "t": "Master_of_Spite"
     },
     {
-     "lv": 58.0,
-     "lvl": "58",
+     "lv": 56.0,
+     "lvl": "56",
      "n": "Mistress of Scorn",
      "named": true,
      "t": "Mistress_of_Scorn"
@@ -17332,13 +17360,6 @@
    "city": false,
    "mobs": [
     {
-     "lv": 11.0,
-     "lvl": "9 - 13",
-     "n": "a cistern asp",
-     "named": false,
-     "t": "A_Cistern_Asp"
-    },
-    {
      "lv": 1.0,
      "lvl": "1",
      "n": "a coyote",
@@ -22345,6 +22366,13 @@
      "n": "Varsoon the Undying",
      "named": true,
      "t": "Varsoon_the_Undying"
+    },
+    {
+     "lv": 12.0,
+     "lvl": "12",
+     "n": "Yollis Jenkins",
+     "named": true,
+     "t": "Yollis_Jenkins"
     }
    ],
    "name": "Qeynos Hills"
@@ -26036,7 +26064,28 @@
      "lvl": "22-24",
      "n": "a heretic invader",
      "named": false,
+     "t": "A_heretic_invader(Necromancer)"
+    },
+    {
+     "lv": 23.0,
+     "lvl": "22-24",
+     "n": "a heretic invader",
+     "named": false,
+     "t": "A_heretic_invader(Shadow_Knight)"
+    },
+    {
+     "lv": 23.0,
+     "lvl": "22-24",
+     "n": "a heretic invader",
+     "named": false,
      "t": "Heretic_Invader"
+    },
+    {
+     "lv": 60.0,
+     "lvl": "60",
+     "n": "a heretic shiphand",
+     "named": false,
+     "t": "A_heretic_shiphand"
     },
     {
      "lv": 29.0,
@@ -26081,8 +26130,8 @@
      "t": "A_hunting_kobold"
     },
     {
-     "lv": 21.0,
-     "lvl": "21",
+     "lv": 21.5,
+     "lvl": "21-22",
      "n": "a jungle spiritling",
      "named": false,
      "t": "A_jungle_spiritling"
@@ -26095,22 +26144,22 @@
      "t": "A_kejek_leopard"
     },
     {
-     "lv": 16.0,
-     "lvl": "16ish",
+     "lv": 15.0,
+     "lvl": "14-16",
      "n": "a kejek leopardess",
      "named": false,
      "t": "A_kejek_leopardess"
     },
     {
      "lv": 27.0,
-     "lvl": "26-28?",
+     "lvl": "26-28",
      "n": "a kejek tiger",
      "named": false,
      "t": "A_kejek_tiger"
     },
     {
      "lv": 21.0,
-     "lvl": "21",
+     "lvl": "20-22?",
      "n": "a kejek tigress",
      "named": false,
      "t": "A_kejek_tigress"
@@ -26179,6 +26228,13 @@
      "t": "A_kejekan_miner"
     },
     {
+     "lv": 27.0,
+     "lvl": "27",
+     "n": "a kejekan mujahed",
+     "named": false,
+     "t": "A_kejekan_mujahed"
+    },
+    {
      "lv": 25.0,
      "lvl": "25",
      "n": "a kejekan pasdar",
@@ -26221,8 +26277,8 @@
      "t": "A_mature_panda"
     },
     {
-     "lv": 25.0,
-     "lvl": "25",
+     "lv": 26.0,
+     "lvl": "25-27",
      "n": "A mountain spiritling",
      "named": true,
      "t": "A_mountain_spiritling"
@@ -26235,8 +26291,8 @@
      "t": "A_panda_cub"
     },
     {
-     "lv": 5.0,
-     "lvl": "5?",
+     "lv": 7.0,
+     "lvl": "7",
      "n": "a rabbit",
      "named": false,
      "t": "A_rabbit"
@@ -26256,8 +26312,8 @@
      "t": "A_raging_kobold"
     },
     {
-     "lv": 20.0,
-     "lvl": "20",
+     "lv": 20.5,
+     "lvl": "20-21",
      "n": "a raging kobold savage",
      "named": false,
      "t": "A_raging_kobold_savage"
@@ -26268,6 +26324,13 @@
      "n": "a savage kobold",
      "named": false,
      "t": "A_savage_kobold"
+    },
+    {
+     "lv": 60.0,
+     "lvl": "60",
+     "n": "a scorned shiphand",
+     "named": false,
+     "t": "A_scorned_shiphand"
     },
     {
      "lv": 14.0,
@@ -26333,8 +26396,8 @@
      "t": "Arglar_the_Tormentor"
     },
     {
-     "lv": 35.0,
-     "lvl": "35",
+     "lv": 33.0,
+     "lvl": "33",
      "n": "Disciple Okarote",
      "named": true,
      "t": "Disciple_Okarote"
@@ -26499,6 +26562,13 @@
      "n": "Spowry",
      "named": true,
      "t": "Spowry"
+    },
+    {
+     "lv": 60.0,
+     "lvl": "60",
+     "n": "Wejnir D`Vir",
+     "named": true,
+     "t": "Wejnir_D%60Vir"
     },
     {
      "lv": 20.0,

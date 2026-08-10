@@ -857,6 +857,15 @@
    "dr": [],
    "drops": [],
    "loc": null,
+   "lvl": "",
+   "n": "a skeletal excavator",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_skeletal_excavator"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
    "lvl": "22-25",
    "n": "a Teir`Dal priestess",
    "named": false,
@@ -1271,7 +1280,7 @@
    "u": "https://eqlwiki.com/index.php/Zeek"
   }
  ],
- "updated": "2026-08-03T23:00:11Z",
+ "updated": "2026-08-09T00:38:13Z",
  "wikiTitle": "Befallen",
  "wikiUrl": "https://eqlwiki.com/index.php/Befallen",
  "zone": "befallen"

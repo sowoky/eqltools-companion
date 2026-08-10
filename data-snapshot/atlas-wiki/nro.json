@@ -17,10 +17,6 @@
    "u": "https://eqlwiki.com/index.php/Armadillo_Husk"
   },
   {
-   "n": "Asp Poison Sac",
-   "u": "https://eqlwiki.com/index.php/Asp_Poison_Sac"
-  },
-  {
    "n": "Black Pearl",
    "u": "https://eqlwiki.com/index.php/Black_Pearl"
   },
@@ -88,11 +84,6 @@
   {
    "n": "Giant Scarab Eye",
    "u": "https://eqlwiki.com/index.php/Giant_Scarab_Eye"
-  },
-  {
-   "g": 1,
-   "n": "Giant Snake Fang",
-   "u": "https://eqlwiki.com/index.php/Giant_Snake_Fang"
   },
   {
    "g": 1,
@@ -327,10 +318,6 @@
    "u": "https://eqlwiki.com/index.php/Snake_Fang"
   },
   {
-   "n": "Snake Venom Sac",
-   "u": "https://eqlwiki.com/index.php/Snake_Venom_Sac"
-  },
-  {
    "n": "Spider Legs",
    "u": "https://eqlwiki.com/index.php/Spider_Legs"
   },
@@ -384,23 +371,6 @@
  },
  "mobs": [
   {
-   "dr": [
-    null,
-    null,
-    null
-   ],
-   "drops": [
-    4,
-    21,
-    72
-   ],
-   "loc": null,
-   "lvl": "9 - 13",
-   "n": "a cistern asp",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_Cistern_Asp"
-  },
-  {
    "dr": [],
    "drops": [],
    "loc": null,
@@ -420,13 +390,13 @@
     "Rare"
    ],
    "drops": [
-    15,
-    48,
-    56,
-    60,
-    61,
-    76,
-    82
+    14,
+    46,
+    54,
+    58,
+    59,
+    73,
+    79
    ],
    "loc": null,
    "lvl": "13 - 15",
@@ -439,7 +409,7 @@
     "Uncommon"
    ],
    "drops": [
-    10
+    9
    ],
    "loc": null,
    "lvl": "11-13",
@@ -452,7 +422,7 @@
     "Rare"
    ],
    "drops": [
-    10
+    9
    ],
    "loc": null,
    "lvl": "15",
@@ -465,7 +435,7 @@
     null
    ],
    "drops": [
-    74
+    71
    ],
    "loc": null,
    "lvl": "7-9",
@@ -483,10 +453,10 @@
    ],
    "drops": [
     0,
-    13,
-    73,
-    74,
-    79
+    12,
+    70,
+    71,
+    76
    ],
    "loc": null,
    "lvl": "11-13",
@@ -500,8 +470,8 @@
     "Uncommon"
    ],
    "drops": [
-    8,
-    81
+    7,
+    78
    ],
    "loc": null,
    "lvl": "3-4",
@@ -530,8 +500,10 @@
     "Always"
    ],
    "drops": [
-    22,
-    28,
+    20,
+    26,
+    42,
+    43,
     44,
     45,
     46,
@@ -542,11 +514,9 @@
     51,
     52,
     53,
-    54,
-    55,
-    59,
-    62,
-    80
+    57,
+    60,
+    77
    ],
    "loc": [
     -1371.0,
@@ -564,8 +534,8 @@
     null
    ],
    "drops": [
-    59,
-    83
+    57,
+    80
    ],
    "loc": null,
    "lvl": "6 ~ 10",
@@ -584,13 +554,13 @@
     "Uncommon"
    ],
    "drops": [
-    8,
-    23,
+    7,
+    21,
+    30,
     32,
-    34,
-    35,
-    42,
-    57
+    33,
+    40,
+    55
    ],
    "loc": null,
    "lvl": "5 - 10",
@@ -605,9 +575,9 @@
     null
    ],
    "drops": [
-    43,
-    70,
-    71
+    41,
+    68,
+    69
    ],
    "loc": null,
    "lvl": "3-7",
@@ -636,21 +606,21 @@
    ],
    "drops": [
     1,
+    4,
     5,
     6,
-    7,
+    15,
     16,
-    17,
-    24,
+    22,
+    23,
     25,
-    27,
+    34,
+    35,
     36,
-    37,
-    38,
-    63,
-    69,
-    77,
-    78
+    61,
+    67,
+    74,
+    75
    ],
    "loc": null,
    "lvl": "33-37",
@@ -666,10 +636,10 @@
     null
    ],
    "drops": [
+    18,
     19,
-    20,
-    41,
-    64
+    39,
+    62
    ],
    "loc": null,
    "lvl": "9-11",
@@ -682,7 +652,7 @@
     "Rare"
    ],
    "drops": [
-    15
+    14
    ],
    "loc": [
     -987.0,
@@ -701,7 +671,7 @@
    ],
    "drops": [
     3,
-    8
+    7
    ],
    "loc": [
     2750.0,
@@ -725,14 +695,14 @@
     "Ultra Rare"
    ],
    "drops": [
-    9,
+    8,
+    27,
+    28,
     29,
-    30,
-    31,
-    39,
-    40,
-    58,
-    75
+    37,
+    38,
+    56,
+    72
    ],
    "loc": [
     -413.0,
@@ -762,7 +732,7 @@
     "Ultra Rare"
    ],
    "drops": [
-    14
+    13
    ],
    "loc": [
     1311.0,
@@ -783,7 +753,7 @@
    "drops": [
     2,
     3,
-    67
+    65
    ],
    "loc": [
     -1440.0,
@@ -816,10 +786,10 @@
     "Common"
    ],
    "drops": [
-    11,
-    26,
-    33,
-    68
+    10,
+    24,
+    31,
+    66
    ],
    "loc": [
     2885.0,
@@ -839,10 +809,10 @@
     "Common"
    ],
    "drops": [
-    11,
-    26,
-    33,
-    68
+    10,
+    24,
+    31,
+    66
    ],
    "loc": [
     3458.0,
@@ -862,10 +832,10 @@
     "Common"
    ],
    "drops": [
-    11,
-    26,
-    33,
-    68
+    10,
+    24,
+    31,
+    66
    ],
    "loc": [
     3381.0,
@@ -882,7 +852,7 @@
     "28%"
    ],
    "drops": [
-    12
+    11
    ],
    "loc": null,
    "lvl": "3-10",
@@ -895,7 +865,7 @@
     null
    ],
    "drops": [
-    18
+    17
    ],
    "loc": [
     2158.0,
@@ -913,8 +883,8 @@
     null
    ],
    "drops": [
-    65,
-    66
+    63,
+    64
    ],
    "loc": [
     -125.0,
@@ -927,7 +897,7 @@
    "u": "https://eqlwiki.com/index.php/Rahotep"
   }
  ],
- "updated": "2026-08-02T00:50:44Z",
+ "updated": "2026-08-04T21:51:43Z",
  "wikiTitle": "Northern Desert of Ro",
  "wikiUrl": "https://eqlwiki.com/index.php/Northern_Desert_of_Ro",
  "zone": "nro"

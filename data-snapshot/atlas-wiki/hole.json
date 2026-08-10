@@ -926,9 +926,9 @@
   },
   {
    "dr": [
+    "Common",
     "Rare",
-    "Rare",
-    null
+    "Common"
    ],
    "drops": [
     16,
@@ -1044,7 +1044,7 @@
    "u": "https://eqlwiki.com/index.php/Urwenae_the_Cold"
   }
  ],
- "updated": "2026-08-03T05:32:35Z",
+ "updated": "2026-08-08T10:37:23Z",
  "wikiTitle": "The Hole",
  "wikiUrl": "https://eqlwiki.com/index.php/The_Hole",
  "zone": "hole"

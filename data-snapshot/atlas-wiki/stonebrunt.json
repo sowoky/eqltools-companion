@@ -10,10 +10,6 @@
    "u": "https://eqlwiki.com/index.php/Ale"
   },
   {
-   "n": "Amber",
-   "u": "https://eqlwiki.com/index.php/Amber"
-  },
-  {
    "g": 1,
    "n": "Ancient Snake Fang",
    "u": "https://eqlwiki.com/index.php/Ancient_Snake_Fang"
@@ -323,10 +319,6 @@
    "u": "https://eqlwiki.com/index.php/Dirt_Soiled_Robe%2A"
   },
   {
-   "n": "Emerald",
-   "u": "https://eqlwiki.com/index.php/Emerald"
-  },
-  {
    "g": 1,
    "n": "Etched Iron Girdle",
    "u": "https://eqlwiki.com/index.php/Etched_Iron_Girdle"
@@ -371,14 +363,6 @@
    "u": "https://eqlwiki.com/index.php/Fine_Steel_Tonfa"
   },
   {
-   "n": "Fire Emerald",
-   "u": "https://eqlwiki.com/index.php/Fire_Emerald"
-  },
-  {
-   "n": "Fire Opal",
-   "u": "https://eqlwiki.com/index.php/Fire_Opal"
-  },
-  {
    "n": "Fish Wine",
    "u": "https://eqlwiki.com/index.php/Fish_Wine"
   },
@@ -386,10 +370,6 @@
    "g": 1,
    "n": "Fishing Pole",
    "u": "https://eqlwiki.com/index.php/Fishing_Pole"
-  },
-  {
-   "n": "Flame of Vox",
-   "u": "https://eqlwiki.com/index.php/Flame_of_Vox"
   },
   {
    "g": 1,
@@ -455,11 +435,6 @@
    "g": 1,
    "n": "Gloves of the Rock Climber",
    "u": "https://eqlwiki.com/index.php/Gloves_of_the_Rock_Climber"
-  },
-  {
-   "g": 1,
-   "n": "Golden Pendant",
-   "u": "https://eqlwiki.com/index.php/Golden_Pendant"
   },
   {
    "n": "Gorilla Fang",
@@ -604,15 +579,6 @@
    "u": "https://eqlwiki.com/index.php/Odd_Cold_Iron_Necklace"
   },
   {
-   "n": "Opal",
-   "u": "https://eqlwiki.com/index.php/Opal"
-  },
-  {
-   "g": 1,
-   "n": "Opal Bracelet",
-   "u": "https://eqlwiki.com/index.php/Opal_Bracelet"
-  },
-  {
    "g": 1,
    "n": "Panda Claws",
    "u": "https://eqlwiki.com/index.php/Panda_Claws"
@@ -624,15 +590,6 @@
   {
    "n": "Patch of Gorilla Fur",
    "u": "https://eqlwiki.com/index.php/Patch_of_Gorilla_Fur"
-  },
-  {
-   "g": 1,
-   "n": "Pearl Ring",
-   "u": "https://eqlwiki.com/index.php/Pearl_Ring"
-  },
-  {
-   "n": "Peridot",
-   "u": "https://eqlwiki.com/index.php/Peridot"
   },
   {
    "g": 1,
@@ -680,14 +637,6 @@
   {
    "n": "Ruined Cat Pelt",
    "u": "https://eqlwiki.com/index.php/Ruined_Cat_Pelt"
-  },
-  {
-   "n": "Rune of Al'Kabor",
-   "u": "https://eqlwiki.com/index.php/Rune_of_Al'Kabor"
-  },
-  {
-   "n": "Rune of Regeneration",
-   "u": "https://eqlwiki.com/index.php/Rune_of_Regeneration"
   },
   {
    "n": "Short Ale",
@@ -788,10 +737,6 @@
    "u": "https://eqlwiki.com/index.php/Spirit_Reaver"
   },
   {
-   "n": "Star Ruby",
-   "u": "https://eqlwiki.com/index.php/Star_Ruby"
-  },
-  {
    "g": 1,
    "n": "Targ Shield",
    "u": "https://eqlwiki.com/index.php/Targ_Shield"
@@ -805,10 +750,6 @@
    "u": "https://eqlwiki.com/index.php/Tiger_Skin"
   },
   {
-   "n": "Topaz",
-   "u": "https://eqlwiki.com/index.php/Topaz"
-  },
-  {
    "n": "Turquoise",
    "u": "https://eqlwiki.com/index.php/Turquoise"
   },
@@ -820,18 +761,6 @@
   {
    "n": "White Wine",
    "u": "https://eqlwiki.com/index.php/White_Wine"
-  },
-  {
-   "n": "Words of Dissemination",
-   "u": "https://eqlwiki.com/index.php/Words_of_Dissemination"
-  },
-  {
-   "n": "Words of Parasitism",
-   "u": "https://eqlwiki.com/index.php/Words_of_Parasitism"
-  },
-  {
-   "n": "Words of Possession",
-   "u": "https://eqlwiki.com/index.php/Words_of_Possession"
   },
   {
    "g": 1,
@@ -855,9 +784,9 @@
     "Rare"
    ],
    "drops": [
-    108,
-    112,
-    138
+    102,
+    106,
+    128
    ],
    "loc": [
     472.0,
@@ -889,18 +818,18 @@
   },
   {
    "dr": [
-    "Common",
-    "Common",
-    "Uncommon",
-    "Uncommon",
-    "Common"
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "drops": [
-    100,
+    94,
+    111,
+    113,
     117,
-    119,
-    123,
-    146
+    136
    ],
    "loc": null,
    "lvl": "20-22",
@@ -915,9 +844,9 @@
     "Rare"
    ],
    "drops": [
-    55,
-    108,
-    161
+    54,
+    102,
+    149
    ],
    "loc": [
     472.0,
@@ -944,17 +873,17 @@
     "Ultra Rare"
    ],
    "drops": [
+    18,
     19,
     20,
     21,
-    22,
-    44,
-    63,
+    43,
+    62,
+    102,
+    103,
+    107,
     108,
-    109,
-    113,
-    114,
-    129
+    123
    ],
    "loc": [
     -642.0,
@@ -1013,7 +942,8 @@
     "Ultra Rare"
    ],
    "drops": [
-    8,
+    7,
+    9,
     10,
     11,
     12,
@@ -1028,7 +958,7 @@
     21,
     22,
     23,
-    24,
+    32,
     33,
     34,
     35,
@@ -1040,22 +970,21 @@
     41,
     42,
     43,
-    44,
-    53,
-    57,
+    52,
+    56,
+    62,
     63,
-    64,
-    98,
+    92,
+    102,
+    103,
+    105,
+    107,
     108,
-    109,
-    111,
-    113,
     114,
-    120,
-    128,
-    129,
-    151,
-    175
+    122,
+    123,
+    139,
+    161
    ],
    "loc": [
     -642.0,
@@ -1078,6 +1007,46 @@
   },
   {
    "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    65,
+    93,
+    121
+   ],
+   "loc": null,
+   "lvl": "22-24",
+   "n": "a heretic invader",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_heretic_invader(Necromancer)"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    69,
+    72,
+    73,
+    74,
+    93,
+    100
+   ],
+   "loc": null,
+   "lvl": "22-24",
+   "n": "a heretic invader",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_heretic_invader(Shadow_Knight)"
+  },
+  {
+   "dr": [
     "Always",
     "Rare",
     "Rare",
@@ -1088,14 +1057,14 @@
     "Rare"
    ],
    "drops": [
-    66,
-    71,
-    75,
-    76,
-    99,
-    106,
-    127,
-    171
+    65,
+    69,
+    73,
+    74,
+    93,
+    100,
+    121,
+    158
    ],
    "loc": [
     -1513.0,
@@ -1106,6 +1075,19 @@
    "n": "a heretic invader",
    "named": false,
    "u": "https://eqlwiki.com/index.php/Heretic_Invader"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -4428.0,
+    -3404.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "a heretic shiphand",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_heretic_shiphand"
   },
   {
    "dr": [],
@@ -1123,9 +1105,9 @@
     "Uncommon"
    ],
    "drops": [
-    70,
-    79,
-    109
+    68,
+    75,
+    103
    ],
    "loc": null,
    "lvl": "22-24",
@@ -1154,23 +1136,23 @@
     "Rare"
    ],
    "drops": [
+    9,
     10,
     11,
     12,
     13,
     14,
-    15,
+    16,
     17,
     18,
     19,
-    20,
-    24,
-    108,
-    109,
-    111,
-    113,
-    128,
-    129
+    23,
+    102,
+    103,
+    105,
+    107,
+    122,
+    123
    ],
    "loc": [
     3746.0,
@@ -1191,11 +1173,11 @@
     "Common"
    ],
    "drops": [
-    100,
-    119,
-    123,
-    146,
-    173
+    94,
+    113,
+    117,
+    136,
+    160
    ],
    "loc": null,
    "lvl": "32-35",
@@ -1212,11 +1194,11 @@
     "Common"
    ],
    "drops": [
-    100,
-    119,
-    123,
-    146,
-    173
+    94,
+    113,
+    117,
+    136,
+    160
    ],
    "loc": null,
    "lvl": "29-31",
@@ -1232,8 +1214,8 @@
    ],
    "drops": [
     1,
-    83,
-    109
+    78,
+    103
    ],
    "loc": null,
    "lvl": "16 ~ 18",
@@ -1243,35 +1225,35 @@
   },
   {
    "dr": [
-    "Uncommon",
-    "Common"
-   ],
-   "drops": [
-    56,
-    105
-   ],
-   "loc": [
-    -4691.0,
-    2835.0,
+    null,
     null
    ],
-   "lvl": "21",
+   "drops": [
+    55,
+    99
+   ],
+   "loc": null,
+   "lvl": "21-22",
    "n": "a jungle spiritling",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_jungle_spiritling"
   },
   {
    "dr": [
-    "Always"
-   ],
-   "drops": [
-    60
-   ],
-   "loc": [
-    -929.0,
-    -1907.0,
+    null,
+    null,
+    null,
+    null,
     null
    ],
+   "drops": [
+    59,
+    94,
+    113,
+    117,
+    136
+   ],
+   "loc": null,
    "lvl": "17-19",
    "n": "a kejek leopard",
    "named": false,
@@ -1279,59 +1261,73 @@
   },
   {
    "dr": [
-    "Always"
-   ],
-   "drops": [
-    60
-   ],
-   "loc": [
-    -929.0,
-    -1907.0,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
-   "lvl": "16ish",
+   "drops": [
+    59,
+    94,
+    112,
+    113,
+    117,
+    136
+   ],
+   "loc": null,
+   "lvl": "14-16",
    "n": "a kejek leopardess",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_kejek_leopardess"
   },
   {
    "dr": [
-    "Always",
-    "Common"
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "drops": [
-    60,
-    173
+    59,
+    94,
+    113,
+    117,
+    136,
+    160
    ],
    "loc": [
     -929.0,
     -1907.0,
     null
    ],
-   "lvl": "26-28?",
+   "lvl": "26-28",
    "n": "a kejek tiger",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_kejek_tiger"
   },
   {
    "dr": [
-    "Rare",
-    "Uncommon",
-    "Rare",
-    "Common",
-    "Common",
-    "Rare"
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "drops": [
-    100,
-    119,
-    123,
-    146,
-    172,
-    173
+    94,
+    113,
+    117,
+    136,
+    159,
+    160
    ],
    "loc": null,
-   "lvl": "21",
+   "lvl": "20-22?",
    "n": "a kejek tigress",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_kejek_tigress"
@@ -1352,18 +1348,18 @@
     "Rare"
    ],
    "drops": [
-    24,
-    43,
-    45,
+    23,
+    42,
+    44,
+    56,
     57,
-    58,
-    60,
-    64,
-    84,
-    140,
-    141,
-    142,
-    143
+    59,
+    63,
+    79,
+    130,
+    131,
+    132,
+    133
    ],
    "loc": [
     1606.0,
@@ -1398,7 +1394,7 @@
     "Always"
    ],
    "drops": [
-    80
+    76
    ],
    "loc": [
     -3966.0,
@@ -1456,12 +1452,12 @@
     null
    ],
    "drops": [
-    45,
-    58,
-    84,
-    116,
-    137,
-    153
+    44,
+    57,
+    79,
+    110,
+    127,
+    141
    ],
    "loc": [
     2038.0,
@@ -1472,6 +1468,15 @@
    "n": "a kejekan miner",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_kejekan_miner"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "27",
+   "n": "a kejekan mujahed",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kejekan_mujahed"
   },
   {
    "dr": [],
@@ -1500,11 +1505,11 @@
     "Rare"
    ],
    "drops": [
-    16,
-    23,
-    108,
-    109,
-    129
+    15,
+    22,
+    102,
+    103,
+    123
    ],
    "loc": null,
    "lvl": "13-16",
@@ -1554,7 +1559,8 @@
    ],
    "drops": [
     1,
-    8,
+    7,
+    9,
     10,
     11,
     12,
@@ -1569,33 +1575,28 @@
     21,
     22,
     23,
-    24,
-    46,
-    53,
-    57,
+    45,
+    52,
+    56,
+    62,
     63,
-    64,
-    79,
-    98,
-    101,
+    75,
+    92,
+    95,
+    102,
+    103,
+    107,
     108,
-    109,
-    113,
     114,
-    120,
-    122,
-    144,
-    149,
-    150,
-    151,
-    175,
-    177
+    116,
+    134,
+    137,
+    138,
+    139,
+    161,
+    163
    ],
-   "loc": [
-    -4822.0,
-    1188.0,
-    null
-   ],
+   "loc": null,
    "lvl": "17",
    "n": "a lesser kobold shaman",
    "named": false,
@@ -1607,8 +1608,8 @@
     "Uncommon"
    ],
    "drops": [
-    69,
-    125
+    67,
+    119
    ],
    "loc": [
     279.0,
@@ -1622,16 +1623,18 @@
   },
   {
    "dr": [
-    "Uncommon",
     null,
-    "Rare",
-    "Common"
+    null,
+    null,
+    null,
+    null
    ],
    "drops": [
-    9,
+    8,
+    25,
+    118,
     124,
-    132,
-    133
+    125
    ],
    "loc": [
     -1804.0,
@@ -1645,35 +1648,33 @@
   },
   {
    "dr": [
-    "Rare",
-    "Very Rare"
-   ],
-   "drops": [
-    56,
-    126
-   ],
-   "loc": [
-    2606.0,
-    -2145.0,
+    null,
     null
    ],
-   "lvl": "25",
+   "drops": [
+    55,
+    120
+   ],
+   "loc": null,
+   "lvl": "25-27",
    "n": "A mountain spiritling",
    "named": true,
    "u": "https://eqlwiki.com/index.php/A_mountain_spiritling"
   },
   {
    "dr": [
-    "Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Common"
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "drops": [
-    9,
-    103,
-    132,
-    133
+    8,
+    25,
+    118,
+    124,
+    125
    ],
    "loc": null,
    "lvl": "27 - 30",
@@ -1685,7 +1686,7 @@
    "dr": [],
    "drops": [],
    "loc": null,
-   "lvl": "5?",
+   "lvl": "7",
    "n": "a rabbit",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_rabbit"
@@ -1705,8 +1706,8 @@
     "Common"
    ],
    "drops": [
-    83,
-    109
+    78,
+    103
    ],
    "loc": null,
    "lvl": "21",
@@ -1741,36 +1742,36 @@
     "Ultra Rare"
    ],
    "drops": [
-    8,
+    7,
+    21,
     22,
-    23,
+    47,
     48,
     49,
     50,
-    51,
+    52,
     53,
-    54,
-    83,
-    108,
-    109,
-    111,
-    157,
-    159,
-    160,
-    161,
-    162,
-    163,
-    164,
-    165,
-    166,
-    167
+    78,
+    102,
+    103,
+    105,
+    145,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155
    ],
    "loc": [
     -1591.0,
     -165.0,
     null
    ],
-   "lvl": "20",
+   "lvl": "20-21",
    "n": "a raging kobold savage",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_raging_kobold_savage"
@@ -1831,12 +1832,13 @@
    ],
    "drops": [
     1,
+    6,
     7,
-    8,
+    21,
     22,
     23,
     24,
-    25,
+    45,
     46,
     47,
     48,
@@ -1846,51 +1848,59 @@
     52,
     53,
     54,
-    55,
-    57,
+    56,
+    62,
     63,
-    64,
-    79,
-    83,
-    98,
-    101,
+    75,
+    78,
+    92,
+    95,
+    103,
+    104,
+    105,
+    108,
     109,
-    110,
-    111,
     114,
-    115,
-    120,
-    122,
-    144,
+    116,
+    134,
+    137,
+    138,
+    139,
+    140,
+    145,
+    146,
+    147,
+    148,
     149,
     150,
     151,
     152,
-    157,
-    158,
-    159,
-    160,
+    153,
+    154,
+    155,
+    156,
     161,
-    162,
     163,
-    164,
-    165,
-    166,
-    167,
-    168,
-    175,
-    177,
-    182
+    165
    ],
-   "loc": [
-    -1862.0,
-    -1774.0,
-    null
-   ],
+   "loc": null,
    "lvl": "18",
    "n": "a savage kobold",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_savage_kobold"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -4428.0,
+    -3404.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "a scorned shiphand",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_scorned_shiphand"
   },
   {
    "dr": [
@@ -1900,10 +1910,10 @@
     "Rare"
    ],
    "drops": [
-    83,
-    108,
-    109,
-    165
+    78,
+    102,
+    103,
+    153
    ],
    "loc": null,
    "lvl": "13-15",
@@ -1915,8 +1925,8 @@
    "dr": [],
    "drops": [],
    "loc": [
-    470.0,
-    -39.0,
+    475.0,
+    -69.0,
     null
    ],
    "lvl": "1",
@@ -1926,18 +1936,14 @@
   },
   {
    "dr": [
-    "Uncommon",
-    "Uncommon"
-   ],
-   "drops": [
-    56,
-    176
-   ],
-   "loc": [
-    -2023.0,
-    -2129.0,
+    null,
     null
    ],
+   "drops": [
+    55,
+    162
+   ],
+   "loc": null,
    "lvl": "15",
    "n": "a valley spiritling",
    "named": false,
@@ -1952,11 +1958,11 @@
     "Uncommon"
    ],
    "drops": [
-    65,
-    69,
+    64,
+    67,
+    91,
     97,
-    103,
-    134
+    126
    ],
    "loc": [
     -2686.0,
@@ -1970,50 +1976,20 @@
   },
   {
    "dr": [
-    "Ultra Rare",
-    "Ultra Rare",
-    "Uncommon",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Common",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare"
-   ],
-   "drops": [
-    9,
-    26,
-    67,
-    77,
-    78,
-    81,
-    96,
-    130,
-    131,
-    132,
-    133,
-    135,
-    136,
-    147,
-    148,
-    178,
-    179,
-    180
-   ],
-   "loc": [
-    3172.0,
-    3164.0,
+    null,
+    null,
+    null,
+    null,
     null
    ],
+   "drops": [
+    8,
+    25,
+    118,
+    124,
+    125
+   ],
+   "loc": null,
    "lvl": "31",
    "n": "a young panda",
    "named": false,
@@ -2027,10 +2003,10 @@
     "Rare"
    ],
    "drops": [
-    65,
-    69,
-    97,
-    134
+    64,
+    67,
+    91,
+    126
    ],
    "loc": [
     -1170.0,
@@ -2044,34 +2020,20 @@
   },
   {
    "dr": [
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare"
-   ],
-   "drops": [
-    2,
-    26,
-    67,
-    78,
-    130,
-    132,
-    133,
-    136,
-    170,
-    174
-   ],
-   "loc": [
-    1760.0,
-    3434.0,
+    null,
+    null,
+    null,
+    null,
     null
    ],
+   "drops": [
+    8,
+    25,
+    118,
+    124,
+    125
+   ],
+   "loc": null,
    "lvl": "34",
    "n": "an elder panda",
    "named": false,
@@ -2079,24 +2041,20 @@
   },
   {
    "dr": [
-    "Rare",
-    "Uncommon",
-    "Uncommon",
-    "Rare",
-    "Rare"
-   ],
-   "drops": [
-    90,
-    91,
-    154,
-    155,
-    156
-   ],
-   "loc": [
-    -430.0,
-    -95.0,
+    null,
+    null,
+    null,
+    null,
     null
    ],
+   "drops": [
+    85,
+    86,
+    142,
+    143,
+    144
+   ],
+   "loc": null,
    "lvl": "21-23",
    "n": "an emerald adder",
    "named": false,
@@ -2110,10 +2068,10 @@
     "Uncommon"
    ],
    "drops": [
-    28,
-    52,
-    59,
-    162
+    27,
+    51,
+    58,
+    150
    ],
    "loc": [
     3784.0,
@@ -2130,10 +2088,10 @@
    "drops": [],
    "loc": [
     1224.0,
-    -616.0,
+    -625.0,
     null
    ],
-   "lvl": "35",
+   "lvl": "33",
    "n": "Disciple Okarote",
    "named": true,
    "u": "https://eqlwiki.com/index.php/Disciple_Okarote"
@@ -2143,7 +2101,7 @@
     "Uncommon"
    ],
    "drops": [
-    181
+    164
    ],
    "loc": [
     1363.0,
@@ -2161,8 +2119,8 @@
     "Always"
    ],
    "drops": [
-    75,
-    80
+    73,
+    76
    ],
    "loc": [
     -4050.0,
@@ -2191,10 +2149,10 @@
     null
    ],
    "drops": [
-    9,
-    85,
-    86,
-    145
+    8,
+    80,
+    81,
+    135
    ],
    "loc": [
     1822.0,
@@ -2215,11 +2173,11 @@
     null
    ],
    "drops": [
+    28,
     29,
     30,
     31,
-    32,
-    83
+    78
    ],
    "loc": [
     -5000.0,
@@ -2240,11 +2198,11 @@
     null
    ],
    "drops": [
+    26,
     27,
-    28,
-    31,
-    83,
-    144
+    30,
+    78,
+    134
    ],
    "loc": [
     3791.0,
@@ -2278,11 +2236,11 @@
     "Ultra Rare"
    ],
    "drops": [
+    70,
+    71,
     72,
-    73,
-    74,
-    99,
-    169
+    93,
+    157
    ],
    "loc": [
     602.0,
@@ -2313,8 +2271,8 @@
     "Common"
    ],
    "drops": [
-    100,
-    173
+    94,
+    160
    ],
    "loc": [
     1249.0,
@@ -2331,7 +2289,7 @@
     "Always"
    ],
    "drops": [
-    58
+    57
    ],
    "loc": [
     1221.0,
@@ -2364,10 +2322,10 @@
     "Uncommon"
    ],
    "drops": [
-    45,
-    60,
-    84,
-    102
+    44,
+    59,
+    79,
+    96
    ],
    "loc": [
     1281.0,
@@ -2386,9 +2344,9 @@
     "Common"
    ],
    "drops": [
-    93,
-    94,
-    95
+    88,
+    89,
+    90
    ],
    "loc": [
     1734.0,
@@ -2409,11 +2367,11 @@
     null
    ],
    "drops": [
-    87,
-    88,
-    104,
-    118,
-    139
+    82,
+    83,
+    98,
+    112,
+    129
    ],
    "loc": [
     2000.0,
@@ -2431,8 +2389,8 @@
     null
    ],
    "drops": [
-    22,
-    29
+    21,
+    28
    ],
    "loc": [
     -599.0,
@@ -2464,11 +2422,11 @@
    ],
    "drops": [
     0,
-    22,
+    21,
+    60,
     61,
-    62,
-    68,
-    107
+    66,
+    101
    ],
    "loc": null,
    "lvl": "30",
@@ -2481,7 +2439,7 @@
     "Uncommon"
    ],
    "drops": [
-    22
+    21
    ],
    "loc": [
     1293.0,
@@ -2515,11 +2473,11 @@
     "Rare"
    ],
    "drops": [
+    2,
     3,
     4,
     5,
-    6,
-    121
+    115
    ],
    "loc": [
     3517.0,
@@ -2539,10 +2497,10 @@
     null
    ],
    "drops": [
-    82,
-    89,
-    92,
-    146
+    77,
+    84,
+    87,
+    136
    ],
    "loc": [
     1696.0,
@@ -2562,10 +2520,10 @@
     "Common"
    ],
    "drops": [
-    100,
-    119,
-    123,
-    146
+    94,
+    113,
+    117,
+    136
    ],
    "loc": [
     1245.0,
@@ -2581,6 +2539,19 @@
    "dr": [],
    "drops": [],
    "loc": [
+    -4000.0,
+    -3423.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Wejnir D`Vir",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wejnir_D%60Vir"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
     1212.0,
     -591.0,
     null
@@ -2591,7 +2562,7 @@
    "u": "https://eqlwiki.com/index.php/Yuio_Kaliio"
   }
  ],
- "updated": "2026-08-03T15:17:41Z",
+ "updated": "2026-08-09T13:02:04Z",
  "wikiTitle": "Stonebrunt Mountains",
  "wikiUrl": "https://eqlwiki.com/index.php/Stonebrunt_Mountains",
  "zone": "stonebrunt"

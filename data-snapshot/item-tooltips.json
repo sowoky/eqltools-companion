@@ -1374,18 +1374,6 @@
    ],
    "t": "A_Froglok_Hex_Doll"
   },
-  "a fungus eye": {
-   "ic": 885,
-   "n": "A fungus eye",
-   "sb": [
-    "LORE ITEM NO DROP",
-    "Slot: PRIMARY SECONDARY",
-    "WT: 0.2 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_fungus_eye"
-  },
   "a ghouls heart": {
    "ic": 1003,
    "n": "A Ghoul's Heart",
@@ -1420,7 +1408,7 @@
     "DMG: 15",
     "WT: 0.0 Size: TINY",
     "Class: ALL",
-    "Race: BAR ELF TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "A_Giant's_Broom"
   },
@@ -1941,17 +1929,6 @@
    ],
    "t": "A_Shimmering_Orb"
   },
-  "a shining stone": {
-   "ic": 945,
-   "n": "A Shining Stone",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO TRADE",
-    "WT: 0.1 Size: TINY",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Shining_Stone"
-  },
   "a shovel": {
    "ic": 891,
    "n": "A Shovel",
@@ -2253,7 +2230,7 @@
     "DMG: 45",
     "WT: 9.4 Size: LARGE",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "A_Weighted_Axe"
   },
@@ -2802,7 +2779,7 @@
     "Effect: Superior Healing (Must Equip, Casting Time: Instant) at Level 30",
     "WT: 9.5 Size: LARGE",
     "Class: CLR PAL",
-    "Race: ALL except TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Aegis_of_Life"
   },
@@ -4718,7 +4695,7 @@
     "AC: 2",
     "WT: 0.6 Size: SMALL",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Apprentice_Skullcap_-_1st_Rank"
   },
@@ -4731,7 +4708,7 @@
     "AC: 3",
     "WT: 0.6 Size: SMALL",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Apprentice_Skullcap_-_2nd_Rank"
   },
@@ -4744,7 +4721,7 @@
     "AC: 4",
     "WT: 0.6 Size: SMALL",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Apprentice_Skullcap_-_3rd_Rank"
   },
@@ -7379,7 +7356,7 @@
     "Effect: Winter's Roar (Combat, Casting Time: Instant) at Level 30",
     "WT: 10.0 Size: LARGE",
     "Class: SHM",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Barbarian_Spiritist%60s_Hammer"
   },
@@ -7411,6 +7388,7 @@
    "ic": 804,
    "n": "Barbed Bone Chips",
    "sb": [
+    "Quest",
     "WT: 0.1 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -7795,7 +7773,7 @@
     "AC: 14",
     "WT: 10.0 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Basalt_Carapace"
   },
@@ -8254,7 +8232,7 @@
    "ic": 835,
    "n": "Bear Paw's Pelt",
    "sb": [
-    "LORE ITEM NO DROP",
+    "No Trade, Quest",
     "WT: 8.5 Size: LARGE",
     "Class: ALL",
     "Race: ALL"
@@ -8393,7 +8371,7 @@
     "INT: +10",
     "WT: 9.5 Size: LARGE",
     "Class: SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Beckon"
   },
@@ -9032,7 +9010,7 @@
    "ic": 1037,
    "n": "Berries",
    "sb": [
-    "This is a meal!",
+    "Quest",
     "WT: 0.8 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -9231,7 +9209,7 @@
     "WIS: +5 INT: +5 MANA: +30",
     "WT: 0.4 Size: SMALL",
     "Class: CLR DRU NEC WIZ MAG ENC",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Bindings_of_the_Scribe"
   },
@@ -9247,7 +9225,9 @@
    "ic": 778,
    "n": "Binelen's Succulence",
    "sb": [
-    "WT: 0.1 Size: TINY"
+    "WT: 0.1 Size: TINY",
+    "Class: None",
+    "Race: None"
    ],
    "t": "Binelen's_Succulence"
   },
@@ -9506,7 +9486,7 @@
     "AC: 3",
     "WT: 1.4 Size: MEDIUM",
     "Class: SHD",
-    "Race: TRL"
+    "Race: ALL"
    ],
    "t": "Black_and_Green_Tunic%2A"
   },
@@ -9581,7 +9561,7 @@
     "HP: +10 MANA: +10",
     "WT: 7.5 Size: LARGE",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Black_Chitin_Leggings"
   },
@@ -10125,7 +10105,7 @@
    "sb": [
     "Slot: EAR",
     "AC: 2",
-    "HP: +35 MANA: +25",
+    "HP: +35 MANA: +25 END: +25",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
@@ -10180,7 +10160,7 @@
     "SV POISON: +1",
     "WT: 9.0 Size: MEDIUM",
     "Class: SHD",
-    "Race: OGR"
+    "Race: ALL"
    ],
    "t": "Black_Shadow_Tunic"
   },
@@ -10305,7 +10285,7 @@
     "AC: 6",
     "WT: 5.0 Size: SMALL",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Armplates"
   },
@@ -10318,7 +10298,7 @@
     "AC: 5",
     "WT: 6.5 Size: MEDIUM",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Boots"
   },
@@ -10331,7 +10311,7 @@
     "AC: 5",
     "WT: 3.5 Size: SMALL",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Bracers"
   },
@@ -10344,7 +10324,7 @@
     "AC: 6",
     "WT: 2.0 Size: LARGE",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Cape"
   },
@@ -10357,7 +10337,7 @@
     "AC: 5",
     "WT: 3.5 Size: SMALL",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Collar"
   },
@@ -10370,7 +10350,7 @@
     "AC: 5",
     "WT: 6.0 Size: SMALL",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Crown"
   },
@@ -10383,7 +10363,7 @@
     "AC: 6",
     "WT: 5.5 Size: SMALL",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Gloves"
   },
@@ -10396,7 +10376,7 @@
     "AC: 7",
     "WT: 7.0 Size: MEDIUM",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Legplates"
   },
@@ -10409,7 +10389,7 @@
     "AC: 12",
     "WT: 9.0 Size: MEDIUM",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Mail"
   },
@@ -10423,7 +10403,7 @@
     "DEX: +7 CHA: -9",
     "WT: 1.0 Size: SMALL",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Mask"
   },
@@ -10436,7 +10416,7 @@
     "AC: 5",
     "WT: 5.0 Size: SMALL",
     "Class: ROG",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Pauldrons"
   },
@@ -10469,7 +10449,7 @@
     "AC: 5",
     "WT: 4.0 Size: SMALL",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Black_Wolf_Waistband"
   },
@@ -11742,7 +11722,7 @@
     "Effect: Firefist (Worn)",
     "WT: 3.8 Size: MEDIUM",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Blazing_Gauntlets_of_Fennin_Ro"
   },
@@ -13998,7 +13978,7 @@
    "ic": 1032,
    "n": "Bone Barbs",
    "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
+    "No Trade, Quest",
     "WT: 0.4 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -14744,7 +14724,7 @@
     "SV COLD: +5",
     "WT: 4.9 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Boots_of_the_Huntsman"
   },
@@ -14806,7 +14786,7 @@
     "SV DISEASE: +6",
     "WT: 4.9 Size: MEDIUM",
     "Class: CLR",
-    "Race: ALL except BAR ELF TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Boots_of_the_Reliant"
   },
@@ -14891,7 +14871,7 @@
     "Slot: FEET",
     "WT: 10.5 Size: MEDIUM",
     "Class: WAR SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Boots_of_Zorash"
   },
@@ -14920,7 +14900,7 @@
    "ic": 704,
    "n": "Bottle",
    "sb": [
-    "QUEST ITEM",
+    "Quest",
     "WT: 0.1 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -15807,7 +15787,7 @@
     "WIS: +5",
     "WT: 3.0 Size: SMALL",
     "Class: CLR",
-    "Race: ALL except BAR ELF TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Bracers_of_the_Reverent"
   },
@@ -18059,9 +18039,9 @@
   },
   "bunker cell no 1": {
    "ic": 790,
-   "n": "Bunker Cell #1",
+   "n": "Bunker Cell No 1",
    "sb": [
-    "LORE ITEM NO DROP",
+    "No Trade, Quest",
     "WT: 0.2 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -18152,6 +18132,28 @@
     "Race: ALL"
    ],
    "t": "Burning_Rapier"
+  },
+  "burning soul of the pestilent": {
+   "ic": null,
+   "n": "Burning Soul of the Pestilent",
+   "sb": [
+    "No Trade, Quest",
+    "Size: TINY",
+    "Class: None",
+    "Race: None"
+   ],
+   "t": "Burning_Soul_of_the_Pestilent"
+  },
+  "burning soul of the pious": {
+   "ic": null,
+   "n": "Burning Soul of the Pious",
+   "sb": [
+    "No Trade, Quest",
+    "Size: TINY",
+    "Class: None",
+    "Race: None"
+   ],
+   "t": "Burning_Soul_of_the_Pious"
   },
   "burnished wooden stave": {
    "ic": 602,
@@ -18513,7 +18515,7 @@
     "AC: 7",
     "WT: 1.9 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Belt"
   },
@@ -18525,7 +18527,7 @@
     "AC: 8",
     "WT: 3.8 Size: MEDIUM",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Boots"
   },
@@ -18537,7 +18539,7 @@
     "AC: 7",
     "WT: 1.5 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Bracelet"
   },
@@ -18549,7 +18551,7 @@
     "AC: 9",
     "WT: 3.4 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Cap"
   },
@@ -18561,7 +18563,7 @@
     "AC: 8",
     "WT: 3.0 Size: LARGE",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Cape"
   },
@@ -18573,7 +18575,7 @@
     "AC: 16",
     "WT: 5.6 Size: MEDIUM",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Coat"
   },
@@ -18585,7 +18587,7 @@
     "AC: 8",
     "WT: 3.0 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Gloves"
   },
@@ -18597,7 +18599,7 @@
     "AC: 6",
     "WT: 1.5 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Gorget"
   },
@@ -18609,7 +18611,7 @@
     "AC: 10",
     "WT: 4.1 Size: MEDIUM",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Leggings"
   },
@@ -18621,7 +18623,7 @@
     "AC: 7",
     "WT: 2.6 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Mantle"
   },
@@ -18633,7 +18635,7 @@
     "AC: 5",
     "WT: 0.8 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Mask"
   },
@@ -18645,7 +18647,7 @@
     "AC: 8",
     "WT: 2.6 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Cabilis_Scale_Sleeves"
   },
@@ -20776,7 +20778,7 @@
     "SV FIRE: +5 SV POISON: +5",
     "WT: 5.5 Size: MEDIUM",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Charred_Boots"
   },
@@ -20803,7 +20805,7 @@
     "DEX: +3 INT: +5",
     "WT: 4.5 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Charred_Gauntlets"
   },
@@ -20817,7 +20819,7 @@
     "STR: +3 STA: +6",
     "WT: 9.0 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Charred_Guardian_Breastplate"
   },
@@ -20952,7 +20954,7 @@
     "STR: +9",
     "WT: 15.0 Size: LARGE",
     "Class: WAR PAL SHD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Chestplate_of_the_Dark_Flame"
   },
@@ -20982,7 +20984,7 @@
     "SV FIRE: +10",
     "WT: 6.5 Size: LARGE",
     "Class: WAR CLR PAL RNG SHD DRU BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Chetari_Bonecrafted_Shield"
   },
@@ -21432,7 +21434,7 @@
     "SV POISON: +10",
     "WT: 6.5 Size: MEDIUM",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Chitin_Shell_Armor"
   },
@@ -23492,7 +23494,7 @@
     "Effect: Strength of the Kunzar (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 6.5 Size: MEDIUM",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Cobalt_Boots"
   },
@@ -23506,7 +23508,7 @@
     "Effect: Shrink (Must Equip, Casting Time: 7.3) at Level 45",
     "WT: 4.0 Size: SMALL",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Cobalt_Bracer"
   },
@@ -23521,7 +23523,7 @@
     "Effect: Invigorate (Must Equip, Casting Time: 15.0) at Level 45",
     "WT: 20.0 Size: LARGE",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Cobalt_Breastplate"
   },
@@ -23750,7 +23752,7 @@
     "Effect: Reckless Strength (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 5.0 Size: SMALL",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Cobalt_Gauntlets"
   },
@@ -23779,7 +23781,7 @@
     "Effect: Serpent Sight (Worn)",
     "WT: 10.0 Size: SMALL",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Cobalt_Helm"
   },
@@ -23804,7 +23806,7 @@
     "Effect: Lesser Shielding (Must Equip, Casting Time: 9.0) at Level 45",
     "WT: 6.5 Size: SMALL",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Cobalt_Vambraces"
   },
@@ -25548,7 +25550,7 @@
     "DEX: +2 AGI: +2 HP: +10",
     "WT: 1.0 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Cougarskin_Mask"
   },
@@ -25821,7 +25823,7 @@
     "DEX: +2 INT: +2",
     "WT: 4.0 Size: SMALL",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crafted_Bracers"
   },
@@ -25849,7 +25851,7 @@
     "STR: +5",
     "WT: 5.0 Size: SMALL",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crafted_Gauntlets"
   },
@@ -25864,7 +25866,7 @@
     "SV FIRE: +2 SV COLD: +2",
     "WT: 7.5 Size: LARGE",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crafted_Greaves"
   },
@@ -25879,7 +25881,7 @@
     "SV MAGIC: +2",
     "WT: 6.0 Size: SMALL",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crafted_Helm"
   },
@@ -25894,7 +25896,7 @@
     "SV MAGIC: +2",
     "WT: 4.5 Size: SMALL",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crafted_Pauldron"
   },
@@ -25908,7 +25910,7 @@
     "AGI: +5",
     "WT: 6.5 Size: MEDIUM",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crafted_Plate_Boots"
   },
@@ -25923,7 +25925,7 @@
     "SV DISEASE: +2 SV POISON: +2",
     "WT: 6.5 Size: SMALL",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crafted_Vambraces"
   },
@@ -26448,7 +26450,7 @@
     "STR: +6 CHA: +3",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crested_Helm"
   },
@@ -26712,7 +26714,7 @@
     "Class: MAG",
     "Race: ALL"
    ],
-   "t": "Crown_of_Elemental_Mastery"
+   "t": "Crown_Of_Elemental_Mastery"
   },
   "crown of forbidden rites": {
    "ic": 523,
@@ -27043,7 +27045,7 @@
     "AC: 1",
     "WT: 1.3 Size: SMALL",
     "Class: WAR SHD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Crushbone_Belt"
   },
@@ -27085,7 +27087,7 @@
     "AC: 1",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Crushbone_Shoulderpads"
   },
@@ -27285,7 +27287,7 @@
     "STR: +6 DEX: -2 STA: +12 CHA: -5",
     "WT: 6.5 Size: MEDIUM",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crustacean_Shell_Boots"
   },
@@ -27299,7 +27301,7 @@
     "STR: +5 STA: +4 CHA: -5",
     "WT: 4.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crustacean_Shell_Bracers"
   },
@@ -27313,7 +27315,7 @@
     "STR: +5 STA: +15 CHA: -8",
     "WT: 10.0 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crustacean_Shell_Breastplate"
   },
@@ -27327,7 +27329,7 @@
     "STR: +8 CHA: -5",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crustacean_Shell_Gauntlets"
   },
@@ -27341,7 +27343,7 @@
     "STR: +4 DEX: -4 STA: +16 CHA: -4",
     "WT: 7.5 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crustacean_Shell_Greaves"
   },
@@ -27355,7 +27357,7 @@
     "STA: +10 CHA: -5",
     "WT: 6.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crustacean_Shell_Helm"
   },
@@ -27382,7 +27384,7 @@
     "STR: +8 DEX: -4 STA: +12 CHA: -4",
     "WT: 6.5 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Crustacean_Shell_Vambraces"
   },
@@ -29493,7 +29495,7 @@
   },
   "cyclops skull": {
    "ic": 1070,
-   "n": "Cyclops skull",
+   "n": "Cyclops Skull",
    "sb": [
     "WT: 10.0 Size: GIANT",
     "Class: ALL",
@@ -29795,7 +29797,7 @@
     "NO DROP",
     "WT: 6.0 Size: SMALL",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Damaged_Militia_Helm"
   },
@@ -29978,7 +29980,7 @@
    "ic": 1070,
    "n": "Dareb's Skull",
    "sb": [
-    "LORE ITEM",
+    "Quest",
     "WT: 2.0 Size: MEDIUM",
     "Class: ALL",
     "Race: ALL"
@@ -29995,7 +29997,7 @@
     "INT: +2",
     "WT: 0.9 Size: SMALL",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Dark_Binder_Skullcap"
   },
@@ -30725,7 +30727,7 @@
    "ic": 1070,
    "n": "Darkbone Skull",
    "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
+    "No Trade, Quest",
     "WT: 1.5 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -31253,7 +31255,7 @@
     "AC: 1",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Deathfist_Shoulderpads"
   },
@@ -31321,7 +31323,7 @@
     "LORE ITEM NO DROP",
     "WT: 6.5 Size: MEDIUM",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Decayed_Left_Boot"
   },
@@ -31343,7 +31345,7 @@
     "LORE ITEM NO DROP",
     "WT: 5.5 Size: SMALL",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Decayed_Left_Gauntlet"
   },
@@ -31376,7 +31378,7 @@
     "LORE ITEM NO DROP",
     "WT: 6.5 Size: MEDIUM",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Decayed_Right_Boot"
   },
@@ -31398,7 +31400,7 @@
     "LORE ITEM NO DROP",
     "WT: 2.5 Size: SMALL",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Decayed_Right_Gauntlet"
   },
@@ -31644,7 +31646,7 @@
     "Effect: Endure Magic (Must Equip, Casting Time: 5.0) at Level 45",
     "WT: 6.5 Size: MEDIUM",
     "Class: PAL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Deepwater_Boots"
   },
@@ -31674,7 +31676,7 @@
     "Recast Delay: None, Uses reagent",
     "WT: 10.0 Size: LARGE",
     "Class: PAL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Deepwater_Breastplate"
   },
@@ -31688,7 +31690,7 @@
     "Effect: Cancel Magic (Must Equip, Casting Time: 7.0) at Level 45",
     "WT: 5.0 Size: SMALL",
     "Class: PAL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Deepwater_Gauntlets"
   },
@@ -31714,7 +31716,7 @@
     "Effect: Spirit Strength (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 7.5 Size: LARGE",
     "Class: PAL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Deepwater_Greaves"
   },
@@ -31751,7 +31753,7 @@
    "ic": 696,
    "n": "Deepwater Ink",
    "sb": [
-    "QUEST ITEM",
+    "Quest",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
@@ -31768,7 +31770,7 @@
     "Effect: Soothe (Must Equip, Casting Time: 7.0) at Level 45",
     "WT: 6.5 Size: SMALL",
     "Class: PAL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Deepwater_Vambraces"
   },
@@ -31796,7 +31798,7 @@
     "AC: 4",
     "WT: 0.7 Size: MEDIUM",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Defiled_Drape_of_the_Brood"
   },
@@ -31964,7 +31966,7 @@
     "SV COLD: +2",
     "WT: 10.0 Size: MEDIUM",
     "Class: SHM NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Dented_Battleshield"
   },
@@ -32476,7 +32478,7 @@
     "AC: 2",
     "WT: 1.2 Size: MEDIUM",
     "Class: SHM",
-    "Race: OGR"
+    "Race: ALL"
    ],
    "t": "Dirty_Patched_Fur_Tunic%2A"
   },
@@ -32732,7 +32734,7 @@
     "WIS: +2 INT: +2",
     "WT: 2.7 Size: TINY",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Diviner's_Bowl"
   },
@@ -32999,7 +33001,7 @@
     "Effect: Tremor (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 6.5 Size: MEDIUM",
     "Class: CLR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Donal's_Boots_of_Mourning"
   },
@@ -33013,7 +33015,7 @@
     "Effect: Pacify (Must Equip, Casting Time: 7.0) at Level 45",
     "WT: 4.0 Size: SMALL",
     "Class: CLR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Donal's_Bracer_of_Mourning"
   },
@@ -33042,7 +33044,7 @@
     "Effect: Armor of Faith (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 5.0 Size: SMALL",
     "Class: CLR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Donal's_Gauntlets_of_Mourning"
   },
@@ -33056,7 +33058,7 @@
     "Effect: Yaulp II (Must Equip, Casting Time: 1.0) at Level 45",
     "WT: 6.0 Size: SMALL",
     "Class: CLR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Donal's_Helm_of_Mourning"
   },
@@ -33071,7 +33073,7 @@
     "Effect: Symbol of Naltron (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 7.5 Size: LARGE",
     "Class: CLR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Donal's_Leggings_of_Mourning"
   },
@@ -33085,7 +33087,7 @@
     "Effect: Valor (Must Equip, Casting Time: 12.0) at Level 45",
     "WT: 6.5 Size: SMALL",
     "Class: CLR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Donal's_Vambraces_of_Mourning"
   },
@@ -33892,7 +33894,7 @@
     "STA: +1",
     "WT: 6.3 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Plate_Gauntlets"
   },
@@ -33905,7 +33907,7 @@
     "STA: +1",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Plate_Girdle"
   },
@@ -33932,7 +33934,7 @@
     "STA: +1",
     "WT: 8.1 Size: MEDIUM",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Steel_Boots"
   },
@@ -33945,7 +33947,7 @@
     "STA: +1",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Steel_Bracers"
   },
@@ -33958,7 +33960,7 @@
     "STA: +2",
     "WT: 12.5 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Steel_Breastplate"
   },
@@ -33985,7 +33987,7 @@
     "STA: +1",
     "WT: 6.9 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Steel_Cloak"
   },
@@ -33998,7 +34000,7 @@
     "STA: +1",
     "WT: 5.0 Size: MEDIUM",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Steel_Collar"
   },
@@ -34011,7 +34013,7 @@
     "STA: +1",
     "WT: 9.4 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Steel_Greaves"
   },
@@ -34038,7 +34040,7 @@
     "STA: +1",
     "WT: 1.9 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Steel_Mask"
   },
@@ -34065,7 +34067,7 @@
     "STA: +1",
     "WT: 5.6 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Steel_Pauldron"
   },
@@ -34078,7 +34080,7 @@
     "STA: +1",
     "WT: 8.1 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Drakkel_Steel_Vambraces"
   },
@@ -34157,7 +34159,7 @@
     "AC: 4",
     "WT: 0.7 Size: MEDIUM",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Drape_of_the_Brood"
   },
@@ -34171,7 +34173,7 @@
     "SV MAGIC: +10",
     "WT: 0.7 Size: MEDIUM",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Drape_of_the_Seacasters"
   },
@@ -34238,7 +34240,7 @@
     "STR: +3 STA: +3",
     "WT: 3.5 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Dreadscale_Boots"
   },
@@ -34253,7 +34255,7 @@
     "SV FIRE: +2 SV COLD: +2",
     "WT: 1.8 Size: SMALL",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Dreadscale_Bracer"
   },
@@ -34268,7 +34270,7 @@
     "SV MAGIC: +3",
     "WT: 6.0 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Dreadscale_Breastplate"
   },
@@ -34283,7 +34285,7 @@
     "SV MAGIC: +5",
     "WT: 3.0 Size: SMALL",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Dreadscale_Gauntlets"
   },
@@ -34298,7 +34300,7 @@
     "SV MAGIC: +3",
     "WT: 4.0 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Dreadscale_Greaves"
   },
@@ -34313,7 +34315,7 @@
     "SV FIRE: +5 SV DISEASE: +5 SV COLD: +5 SV MAGIC: +5 SV POISON: +5",
     "WT: 3.0 Size: SMALL",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Dreadscale_Helm"
   },
@@ -34328,7 +34330,7 @@
     "SV DISEASE: +5 SV POISON: +5",
     "WT: 1.0 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Dreadscale_Mask"
   },
@@ -34342,7 +34344,7 @@
     "STR: +4 DEX: +3 HP: +10",
     "WT: 3.5 Size: SMALL",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Dreadscale_Vambraces"
   },
@@ -36927,6 +36929,17 @@
     "Race: ALL"
    ],
    "t": "Efreeti_Zweihander"
+  },
+  "efreetis key": {
+   "ic": 952,
+   "n": "Efreeti's Key",
+   "sb": [
+    "No Trade",
+    "WT: 1.0 Size: Small",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "Efreeti's_Key"
   },
   "egg nog": {
    "ic": 856,
@@ -40537,7 +40550,7 @@
     "STR: +2 WIS: +2",
     "WT: 3.0 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Erudehide_Tunic"
   },
@@ -42091,7 +42104,7 @@
     "AC: 2",
     "WT: 0.8 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Faded_Blue_Tunic%2A"
   },
@@ -42580,7 +42593,7 @@
     "DMG: 5",
     "WT: 2.0 Size: MEDIUM",
     "Class: WAR ROG SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Fang_of_the_Wolf"
   },
@@ -42713,7 +42726,7 @@
     "Recommended level of 10 Required level of 0",
     "WT: 1.0 Size: MEDIUM",
     "Class: RNG",
-    "Race: ELF, DEF, HEF"
+    "Race: ALL"
    ],
    "t": "Faydark_Champions_Long_Sword"
   },
@@ -42726,7 +42739,7 @@
     "CHA: +2",
     "WT: 3.5 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Faydark_Ringmail_Boots"
   },
@@ -42739,7 +42752,7 @@
     "CHA: +2",
     "WT: 0.9 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Faydark_Ringmail_Bracer"
   },
@@ -42765,7 +42778,7 @@
     "CHA: +3",
     "WT: 3.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Faydark_Ringmail_Coif"
   },
@@ -42778,7 +42791,7 @@
     "CHA: +1",
     "WT: 1.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Faydark_Ringmail_Collar"
   },
@@ -42791,7 +42804,7 @@
     "CHA: +2",
     "WT: 2.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Faydark_Ringmail_Gloves"
   },
@@ -42804,7 +42817,7 @@
     "CHA: +2",
     "WT: 2.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Faydark_Ringmail_Mantle"
   },
@@ -42817,7 +42830,7 @@
     "CHA: +4",
     "WT: 4.0 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Faydark_Ringmail_Pants"
   },
@@ -42830,7 +42843,7 @@
     "CHA: +2",
     "WT: 1.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Faydark_Ringmail_Skirt"
   },
@@ -42843,7 +42856,7 @@
     "CHA: +2",
     "WT: 2.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Faydark_Ringmail_Sleeves"
   },
@@ -42872,7 +42885,7 @@
    "ic": 979,
    "n": "Faydwer Shaker",
    "sb": [
-    "QUEST ITEM",
+    "Quest",
     "WT: 0.4 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -43421,7 +43434,7 @@
     "SV FIRE: +5",
     "WT: 6.5 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Fiery_Vambraces"
   },
@@ -44798,7 +44811,8 @@
    "ic": 926,
    "n": "Fishing Grubs",
    "sb": [
-    "QUEST ITEM",
+    "Quest",
+    "Slot: Ammo",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
@@ -44953,8 +44967,9 @@
    "ic": 778,
    "n": "Fixxin Followigs Silvery Blades",
    "sb": [
-    "LORE ITEM",
-    "WT: 0.1 Size: SMALL"
+    "WT: 0.1 Size: SMALL",
+    "Class: None",
+    "Race: None"
    ],
    "t": "Fixxin_Followigs_Silvery_Blades"
   },
@@ -46094,7 +46109,7 @@
     "DMG: 10 AC: 3",
     "WT: 13.5 Size: GIANT",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Footman's_Pike"
   },
@@ -47512,7 +47527,7 @@
     "Effect: Yaulp II (Combat, Casting Time: Instant)",
     "WT: 10.0 Size: LARGE",
     "Class: WAR SHD SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Frost_Giant_Femur"
   },
@@ -48032,7 +48047,6 @@
    "ic": 1037,
    "n": "Fruit",
    "sb": [
-    "This is a meal!",
     "WT: 0.8 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -48182,7 +48196,7 @@
    "ic": 690,
    "n": "Full Gathering Satchel",
    "sb": [
-    "LORE ITEM NO DROP",
+    "NO DROP",
     "WT: 2.8 Size: LARGE",
     "Class: ALL",
     "Race: ALL"
@@ -48467,6 +48481,18 @@
    ],
    "t": "Fungus_Dung_Pie"
   },
+  "fungus eye": {
+   "ic": 885,
+   "n": "Fungus Eye",
+   "sb": [
+    "Lore Equipped, No Trade, Quest, Placeable",
+    "Slot: PRIMARY SECONDARY",
+    "WT: 0.2 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "Fungus_Eye"
+  },
   "fungus spores": {
    "ic": 855,
    "n": "Fungus Spores",
@@ -48748,7 +48774,7 @@
     "WIS: +15",
     "WT: 8.5 Size: LARGE",
     "Class: SHM",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Gardash"
   },
@@ -48778,7 +48804,7 @@
     "STR: +2 DEX: +1",
     "WT: 2.0 Size: MEDIUM",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Gargantuan_Panda_Pelt"
   },
@@ -48931,7 +48957,7 @@
     "DMG: 30",
     "WT: 8.8 Size: LARGE",
     "Class: WAR CLR SHD SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Gatorsmash_Maul"
   },
@@ -49119,7 +49145,7 @@
     "SV COLD: +5",
     "WT: 3.8 Size: SMALL",
     "Class: CLR",
-    "Race: ALL except BAR ELF TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Gauntlets_of_the_Ardent"
   },
@@ -49557,7 +49583,7 @@
    "ic": 797,
    "n": "Ghoul Carrion",
    "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
+    "No Trade, Quest",
     "WT: 2.0 Size: MEDIUM",
     "Class: ALL",
     "Race: ALL"
@@ -49568,7 +49594,7 @@
    "ic": 519,
    "n": "Ghoulbane",
    "sb": [
-    "NO TRADE MAGIC ITEM LORE ITEM",
+    "NO TRADE LORE EQUPPED PLACEABLE QUEST",
     "Slot: PRIMARY",
     "Skill: 1H Slashing Atk Delay: 34",
     "DMG: 15",
@@ -49718,7 +49744,7 @@
     "SV COLD: +5",
     "WT: 8.0 Size: LARGE",
     "Class: WAR SHD SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Giant_Foreman's_Tunic"
   },
@@ -49805,7 +49831,7 @@
     "SV COLD: +5",
     "WT: 8.0 Size: LARGE",
     "Class: WAR SHD SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Giant_Lord's_Tunic"
   },
@@ -50187,7 +50213,7 @@
     "INT: +1",
     "WT: 1.0 Size: MEDIUM",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Giant_Sized_Monocle"
   },
@@ -50254,7 +50280,7 @@
     "AC: 10",
     "WT: 6.0 Size: LARGE",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Giant_Warrior_Helmet"
   },
@@ -50321,7 +50347,7 @@
     "SV COLD: +5",
     "WT: 12.0 Size: MEDIUM",
     "Class: WAR SHD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Giant_Woven_Vest"
   },
@@ -50813,7 +50839,7 @@
     "STR: +2 HP: +5",
     "WT: 10.0 Size: LARGE",
     "Class: WAR SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Gleaming_Serrated_Blade"
   },
@@ -50948,7 +50974,7 @@
    "ic": 507,
    "n": "Globe of Mist",
    "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
+    "No Trade, Quest",
     "WT: 0.3 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -52294,7 +52320,7 @@
     "DEX: -2 HP: +10",
     "WT: 6.2 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Chain_Coif"
   },
@@ -52308,7 +52334,7 @@
     "SV DISEASE: -2",
     "WT: 3.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Chainmail_Bracelet"
   },
@@ -52321,7 +52347,7 @@
     "STR: -2 HP: +10",
     "WT: 5.5 Size: LARGE",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Chainmail_Cape"
   },
@@ -52334,7 +52360,7 @@
     "STA: -2 HP: +20",
     "WT: 10.8 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Chainmail_Coat"
   },
@@ -52348,7 +52374,7 @@
     "SV POISON: -2",
     "WT: 6.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Chainmail_Gloves"
   },
@@ -52361,7 +52387,7 @@
     "WIS: -2 HP: +10",
     "WT: 3.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Chainmail_Mantle"
   },
@@ -52374,7 +52400,7 @@
     "CHA: -2 HP: +10",
     "WT: 3.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Chainmail_Neckguard"
   },
@@ -52387,7 +52413,7 @@
     "AGI: -2 HP: +10",
     "WT: 3.7 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Chainmail_Skirt"
   },
@@ -52401,7 +52427,7 @@
     "SV FIRE: -2",
     "WT: 3.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Iron_Armplates"
   },
@@ -52415,7 +52441,7 @@
     "SV FIRE: -2",
     "WT: 7.5 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Iron_Boots"
   },
@@ -52429,7 +52455,7 @@
     "SV COLD: -3",
     "WT: 8.2 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Iron_Legplates"
   },
@@ -52442,7 +52468,7 @@
     "HP: +10",
     "WT: 1.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Goblin_Forged_Iron_Mask"
   },
@@ -52719,7 +52745,7 @@
     "SV POISON: +1",
     "WT: 0.4 Size: SMALL",
     "Class: MNK",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Goblin_Sparring_Gloves"
   },
@@ -53224,7 +53250,7 @@
     "STR: +7 INT: +7",
     "WT: 2.5 Size: MEDIUM",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Golden_Bracer"
   },
@@ -53355,7 +53381,7 @@
     "AGI: +5 MANA: +20",
     "WT: 3.0 Size: SMALL",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Golden_Efreeti_Bracers"
   },
@@ -53369,7 +53395,7 @@
     "STR: +5 WIS: +10",
     "WT: 7.5 Size: LARGE",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Golden_Efreeti_Chestplate"
   },
@@ -53384,7 +53410,7 @@
     "SV DISEASE: +10",
     "WT: 3.8 Size: SMALL",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Golden_Efreeti_Gauntlets"
   },
@@ -53398,7 +53424,7 @@
     "DEX: +10 AGI: +9",
     "WT: 5.6 Size: LARGE",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Golden_Efreeti_Greaves"
   },
@@ -53442,7 +53468,7 @@
     "DEX: +6 STA: +10",
     "WT: 4.9 Size: SMALL",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Golden_Efreeti_Vambraces"
   },
@@ -53933,8 +53959,7 @@
    "n": "Golem Metal Wand",
    "sb": [
     "Attunable",
-    "Charges: Unlimited",
-    "Effect: Pillage Enchantment (Any Slot, Casting Time: 1.5)",
+    "Effect: Pillage Enchantment (Must Equip, Casting Time: 4.0, Cooldown 240)",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL",
@@ -54380,7 +54405,7 @@
     "STR: +4 STA: +7",
     "WT: 0.8 Size: SMALL",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Granite_Bracer"
   },
@@ -54875,7 +54900,7 @@
     "SV POISON: +5",
     "WT: 5.6 Size: LARGE",
     "Class: CLR",
-    "Race: ALL except BAR ELF TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Greaves_of_the_Penitent"
   },
@@ -55136,7 +55161,7 @@
     "AC: 3",
     "WT: 1.4 Size: MEDIUM",
     "Class: SHD",
-    "Race: OGR"
+    "Race: ALL"
    ],
    "t": "Green_Stained_Skin_Tunic%2A"
   },
@@ -55206,7 +55231,7 @@
     "SV DISEASE: +10 SV MAGIC: +25 SV POISON: +5",
     "WT: 4.0 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Greenmist"
   },
@@ -55220,7 +55245,7 @@
     "STR: +5 STA: +5 INT: +5 AGI: +5 HP: +30 MANA: +30",
     "WT: 3.5 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Greenmist_Boots"
   },
@@ -55235,7 +55260,7 @@
     "SV FIRE: +5 SV COLD: +5",
     "WT: 1.8 Size: SMALL",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Greenmist_Bracer"
   },
@@ -55250,7 +55275,7 @@
     "SV MAGIC: +5",
     "WT: 6.0 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Greenmist_Breastplate"
   },
@@ -55276,7 +55301,7 @@
     "SV DISEASE: +5 SV MAGIC: +5 SV POISON: +5",
     "WT: 4.0 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Greenmist_Greaves"
   },
@@ -55291,7 +55316,7 @@
     "SV FIRE: +5 SV DISEASE: +5 SV COLD: +5 SV MAGIC: +5 SV POISON: +5",
     "WT: 3.0 Size: SMALL",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Greenmist_Helm"
   },
@@ -55329,7 +55354,7 @@
     "SV DISEASE: +5 SV POISON: +5",
     "WT: 1.0 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Greenmist_Mask"
   },
@@ -55343,7 +55368,7 @@
     "STR: +5 DEX: +6 WIS: +5 HP: +20",
     "WT: 3.5 Size: SMALL",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Greenmist_Vambraces"
   },
@@ -55736,6 +55761,16 @@
    ],
    "t": "Grizzleknot_Bark"
   },
+  "grizzly bear head": {
+   "ic": 1633,
+   "n": "Grizzly Bear Head",
+   "sb": [
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "Grizzly_Bear_Head"
+  },
   "grizzly bear skin": {
    "ic": 554,
    "n": "Grizzly Bear Skin",
@@ -55799,7 +55834,7 @@
     "SV FIRE: +5",
     "WT: 3.0 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Grobb_Oven_Mittens"
   },
@@ -56004,7 +56039,7 @@
     "STR: +5 DEX: +4 HP: +15 MANA: +15",
     "WT: 3.5 Size: MEDIUM",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Guardian_Arms"
   },
@@ -56064,7 +56099,7 @@
     "SV DISEASE: +6 SV POISON: +6",
     "WT: 2.0 Size: MEDIUM",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Guardian_Choker"
   },
@@ -56079,7 +56114,7 @@
     "SV FIRE: +5 SV COLD: +5",
     "WT: 2.5 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Guardian_Gauntlets"
   },
@@ -56094,7 +56129,7 @@
     "SV MAGIC: +5",
     "WT: 2.0 Size: SMALL",
     "Class: WAR CLR PAL SHD MNK BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Guardian_Girdle"
   },
@@ -56109,7 +56144,7 @@
     "SV DISEASE: +6 SV POISON: +6",
     "WT: 3.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Guardian_Helmet"
   },
@@ -56139,7 +56174,7 @@
     "SV MAGIC: +6",
     "WT: 2.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Guardian_Pauldrons"
   },
@@ -56168,7 +56203,7 @@
     "STA: +3 HP: +10",
     "WT: 5.0 Size: MEDIUM",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Guardian_Shield"
   },
@@ -56369,7 +56404,7 @@
   },
   "h. k. 102": {
    "ic": 1081,
-   "n": "H.K. 102",
+   "n": "H. K. 102",
    "sb": [
     "LORE ITEM NO DROP",
     "WT: 0.1 Size: SMALL",
@@ -56650,7 +56685,7 @@
     "DMG: 13",
     "WT: 10.0 Size: LARGE",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Hammer_of_Flattening"
   },
@@ -58269,7 +58304,7 @@
     "STR: +9 AGI: +5",
     "WT: 4.0 Size: SMALL",
     "Class: ALL",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Helm_of_Rile"
   },
@@ -58622,7 +58657,7 @@
     "WIS: +1",
     "WT: 1.9 Size: MEDIUM",
     "Class: WAR SHD SHM NEC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Hierophant's_Knife"
   },
@@ -60003,7 +60038,7 @@
     "Effect: Velium Shards (Must Equip, Casting Time: 3.0) at Level 35",
     "WT: 0.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG",
-    "Race: ALL except BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Ice_Forged_Shackles"
   },
@@ -60706,7 +60741,7 @@
     "SV COLD: +5",
     "WT: 7.5 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Icy_Greaves"
   },
@@ -61410,7 +61445,7 @@
     "SV COLD: +2",
     "WT: 7.5 Size: MEDIUM",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Iksar_Skyiron_Targ_Shield"
   },
@@ -61952,7 +61987,7 @@
     "STR: +2 WIS: +2",
     "WT: 1.9 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Belt"
   },
@@ -61966,7 +62001,7 @@
     "STR: +2 WIS: +2",
     "WT: 3.8 Size: MEDIUM",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Boots"
   },
@@ -61980,7 +62015,7 @@
     "STR: +2 WIS: +2",
     "WT: 1.5 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Bracelet"
   },
@@ -61994,7 +62029,7 @@
     "STR: +2 WIS: +2",
     "WT: 3.4 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Cap"
   },
@@ -62008,7 +62043,7 @@
     "STR: +4 WIS: +2",
     "WT: 3.0 Size: LARGE",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Cape"
   },
@@ -62022,7 +62057,7 @@
     "STR: +4 WIS: +2",
     "WT: 5.6 Size: MEDIUM",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Coat"
   },
@@ -62036,7 +62071,7 @@
     "STR: +2 WIS: +2",
     "WT: 3.0 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Gloves"
   },
@@ -62050,7 +62085,7 @@
     "STR: +2 WIS: +2",
     "WT: 1.5 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Gorget"
   },
@@ -62064,7 +62099,7 @@
     "STR: +4 WIS: +2",
     "WT: 4.1 Size: MEDIUM",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Leggings"
   },
@@ -62078,7 +62113,7 @@
     "STR: +2 WIS: +2",
     "WT: 2.6 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Mantle"
   },
@@ -62092,7 +62127,7 @@
     "STR: +2 WIS: +2",
     "WT: 0.8 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Mask"
   },
@@ -62106,7 +62141,7 @@
     "STR: +2 WIS: +2",
     "WT: 2.6 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Imbued_Cabilis_Scale_Sleeves"
   },
@@ -65351,7 +65386,7 @@
   },
   "imbued ogre war boots (cazic thule)": {
    "ic": 524,
-   "n": "Imbued Ogre War Boots",
+   "n": "Imbued Ogre War Boots (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: FEET",
@@ -65360,14 +65395,14 @@
     "SV MAGIC: +2",
     "WT: 9.1 Size: MEDIUM",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Boots_(Cazic_Thule)"
   },
   "imbued ogre war boots (rallos zek)": {
    "ic": 524,
-   "n": "Imbued Ogre War Boots",
+   "n": "Imbued Ogre War Boots (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: FEET",
@@ -65376,14 +65411,14 @@
     "SV MAGIC: +2",
     "WT: 9.1 Size: MEDIUM",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Boots_(Rallos_Zek)"
   },
   "imbued ogre war bracer (cazic thule)": {
    "ic": 516,
-   "n": "Imbued Ogre War Bracer",
+   "n": "Imbued Ogre War Bracer (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: WRIST",
@@ -65392,14 +65427,14 @@
     "SV MAGIC: +2",
     "WT: 5.5 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Bracer_(Cazic_Thule)"
   },
   "imbued ogre war bracer (rallos zek)": {
    "ic": 516,
-   "n": "Imbued Ogre War Bracer",
+   "n": "Imbued Ogre War Bracer (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: WRIST",
@@ -65408,14 +65443,14 @@
     "SV MAGIC: +2",
     "WT: 5.5 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Bracer_(Rallos_Zek)"
   },
   "imbued ogre war breastplate (cazic thule)": {
    "ic": 624,
-   "n": "Imbued Ogre War Breastplate",
+   "n": "Imbued Ogre War Breastplate (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: CHEST",
@@ -65424,14 +65459,14 @@
     "SV MAGIC: +2",
     "WT: 14.0 Size: LARGE",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Breastplate_(Cazic_Thule)"
   },
   "imbued ogre war breastplate (rallos zek)": {
    "ic": 624,
-   "n": "Imbued Ogre War Breastplate",
+   "n": "Imbued Ogre War Breastplate (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: CHEST",
@@ -65440,14 +65475,14 @@
     "SV MAGIC: +2",
     "WT: 14.0 Size: LARGE",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Breastplate_(Rallos_Zek)"
   },
   "imbued ogre war cloak (cazic thule)": {
    "ic": 663,
-   "n": "Imbued Ogre War Cloak",
+   "n": "Imbued Ogre War Cloak (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: BACK",
@@ -65456,14 +65491,14 @@
     "SV MAGIC: +2",
     "WT: 7.5 Size: LARGE",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Cloak_(Cazic_Thule)"
   },
   "imbued ogre war cloak (rallos zek)": {
    "ic": 663,
-   "n": "Imbued Ogre War Cloak",
+   "n": "Imbued Ogre War Cloak (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: BACK",
@@ -65472,14 +65507,14 @@
     "SV MAGIC: +2",
     "WT: 7.5 Size: LARGE",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Cloak_(Rallos_Zek)"
   },
   "imbued ogre war collar (cazic thule)": {
    "ic": 626,
-   "n": "Imbued Ogre War Collar",
+   "n": "Imbued Ogre War Collar (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: NECK",
@@ -65488,14 +65523,14 @@
     "SV MAGIC: +2",
     "WT: 5.5 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Collar_(Cazic_Thule)"
   },
   "imbued ogre war collar (rallos zek)": {
    "ic": 626,
-   "n": "Imbued Ogre War Collar",
+   "n": "Imbued Ogre War Collar (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: NECK",
@@ -65504,14 +65539,14 @@
     "SV MAGIC: +2",
     "WT: 5.5 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Collar_(Rallos_Zek)"
   },
   "imbued ogre war gauntlets (cazic thule)": {
    "ic": 531,
-   "n": "Imbued Ogre War Gauntlets",
+   "n": "Imbued Ogre War Gauntlets (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: HANDS",
@@ -65520,14 +65555,14 @@
     "SV MAGIC: +2",
     "WT: 7.3 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Gauntlets_(Cazic_Thule)"
   },
   "imbued ogre war gauntlets (rallos zek)": {
    "ic": 531,
-   "n": "Imbued Ogre War Gauntlets",
+   "n": "Imbued Ogre War Gauntlets (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: HANDS",
@@ -65536,14 +65571,14 @@
     "SV MAGIC: +2",
     "WT: 7.3 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Gauntlets_(Rallos_Zek)"
   },
   "imbued ogre war girdle (cazic thule)": {
    "ic": 549,
-   "n": "Imbued Ogre War Girdle",
+   "n": "Imbued Ogre War Girdle (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: WAIST",
@@ -65552,14 +65587,14 @@
     "SV MAGIC: +2",
     "WT: 6.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Girdle_(Cazic_Thule)"
   },
   "imbued ogre war girdle (rallos zek)": {
    "ic": 549,
-   "n": "Imbued Ogre War Girdle",
+   "n": "Imbued Ogre War Girdle (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: WAIST",
@@ -65568,14 +65603,14 @@
     "SV MAGIC: +2",
     "WT: 6.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Girdle_(Rallos_Zek)"
   },
   "imbued ogre war greaves (cazic thule)": {
    "ic": 540,
-   "n": "Imbued Ogre War Greaves",
+   "n": "Imbued Ogre War Greaves (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: LEGS",
@@ -65584,14 +65619,14 @@
     "SV MAGIC: +2",
     "WT: 10.4 Size: LARGE",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Greaves_(Cazic_Thule)"
   },
   "imbued ogre war greaves (rallos zek)": {
    "ic": 540,
-   "n": "Imbued Ogre War Greaves",
+   "n": "Imbued Ogre War Greaves (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: LEGS",
@@ -65600,7 +65635,7 @@
     "SV MAGIC: +2",
     "WT: 10.4 Size: LARGE",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Greaves_(Rallos_Zek)"
@@ -65623,7 +65658,7 @@
   },
   "imbued ogre war helm (cazic thule)": {
    "ic": 550,
-   "n": "Imbued Ogre War Helm",
+   "n": "Imbued Ogre War Helm (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: HEAD",
@@ -65632,14 +65667,14 @@
     "SV MAGIC: +2",
     "WT: 9.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Helm_(Cazic_Thule)"
   },
   "imbued ogre war helm (rallos zek)": {
    "ic": 550,
-   "n": "Imbued Ogre War Helm",
+   "n": "Imbued Ogre War Helm (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: HEAD",
@@ -65648,7 +65683,7 @@
     "SV MAGIC: +2",
     "WT: 9.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Helm_(Rallos_Zek)"
@@ -65671,7 +65706,7 @@
   },
   "imbued ogre war pauldron (cazic thule)": {
    "ic": 798,
-   "n": "Imbued Ogre War Pauldron",
+   "n": "Imbued Ogre War Pauldron (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: SHOULDERS",
@@ -65680,14 +65715,14 @@
     "SV MAGIC: +2",
     "WT: 6.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Pauldron_(Cazic_Thule)"
   },
   "imbued ogre war pauldron (rallos zek)": {
    "ic": 798,
-   "n": "Imbued Ogre War Pauldron",
+   "n": "Imbued Ogre War Pauldron (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: SHOULDERS",
@@ -65696,14 +65731,14 @@
     "SV MAGIC: +2",
     "WT: 6.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Pauldron_(Rallos_Zek)"
   },
   "imbued ogre war vambraces (cazic thule)": {
    "ic": 622,
-   "n": "Imbued Ogre War Vambraces",
+   "n": "Imbued Ogre War Vambraces (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: ARMS",
@@ -65712,14 +65747,14 @@
     "SV MAGIC: +2",
     "WT: 9.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Cazic-Thule"
    ],
    "t": "Imbued_Ogre_War_Vambraces_(Cazic_Thule)"
   },
   "imbued ogre war vambraces (rallos zek)": {
    "ic": 622,
-   "n": "Imbued Ogre War Vambraces",
+   "n": "Imbued Ogre War Vambraces (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: ARMS",
@@ -65728,14 +65763,14 @@
     "SV MAGIC: +2",
     "WT: 9.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Vambraces_(Rallos_Zek)"
   },
   "imbued ogre war visor (cazic thule)": {
    "ic": 772,
-   "n": "Imbued Ogre War Visor",
+   "n": "Imbued Ogre War Visor (Cazic Thule)",
    "sb": [
     "MAGIC ITEM",
     "Slot: FACE",
@@ -65744,14 +65779,14 @@
     "SV MAGIC: +2",
     "WT: 2.2 Size: SMALL",
     "Class: WAR SHD",
-    "Race: TRL OGR",
+    "Race: ALL",
     "Deity: Cazic Thule"
    ],
    "t": "Imbued_Ogre_War_Visor_(Cazic_Thule)"
   },
   "imbued ogre war visor (rallos zek)": {
    "ic": 772,
-   "n": "Imbued Ogre War Visor",
+   "n": "Imbued Ogre War Visor (Rallos Zek)",
    "sb": [
     "MAGIC ITEM",
     "Slot: FACE",
@@ -65760,7 +65795,7 @@
     "SV MAGIC: +2",
     "WT: 2.2 Size: SMALL",
     "Class: WAR SHD",
-    "Race: BAR TRL OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Imbued_Ogre_War_Visor_(Rallos_Zek)"
@@ -67590,7 +67625,7 @@
     "STR: +6 DEX: +6",
     "WT: 4.5 Size: MEDIUM",
     "Class: WAR SHD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Incarnadine_Boots"
   },
@@ -67604,7 +67639,7 @@
     "STR: +5 AGI: +5",
     "WT: 3.0 Size: MEDIUM",
     "Class: WAR SHD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Incarnadine_Bracers"
   },
@@ -67633,7 +67668,7 @@
     "DEX: +4 STA: +4 AGI: +4",
     "WT: 2.5 Size: MEDIUM",
     "Class: WAR SHD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Incarnadine_Gauntlets"
   },
@@ -67647,7 +67682,7 @@
     "STA: +6 AGI: +6",
     "WT: 5.5 Size: MEDIUM",
     "Class: WAR SHD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Incarnadine_Greaves"
   },
@@ -67661,7 +67696,7 @@
     "INT: +5 AGI: +5",
     "WT: 4.5 Size: MEDIUM",
     "Class: WAR SHD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Incarnadine_Helm"
   },
@@ -67689,7 +67724,7 @@
     "STR: +2 DEX: +4 INT: +2",
     "WT: 4.5 Size: MEDIUM",
     "Class: WAR SHD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Incarnadine_Vambraces"
   },
@@ -68091,7 +68126,7 @@
     "Effect: Yaulp (Must Equip, Casting Time: 4.0)",
     "WT: 0.1 Size: TINY",
     "Class: SHM",
-    "Race: OGR",
+    "Race: ALL",
     "Deity: Rallos Zek"
    ],
    "t": "Initiate_Symbol_of_Rallos_Zek"
@@ -68107,7 +68142,7 @@
     "Effect: Hammer of Wrath (Must Equip, Casting Time: 6.0)",
     "WT: 0.1 Size: TINY",
     "Class: SHM",
-    "Race: BAR",
+    "Race: ALL",
     "Deity: The Tribunal"
    ],
    "t": "Initiate_Symbol_of_the_Tribunal"
@@ -68585,7 +68620,7 @@
     "SV DISEASE: +3 SV POISON: +3",
     "WT: 4.5 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Iron_Cudgel_of_the_Channeler"
   },
@@ -68599,7 +68634,7 @@
     "DMG: 4",
     "WT: 5.0 Range: 40 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Iron_Cudgel_of_the_Clairvoyant"
   },
@@ -68613,7 +68648,7 @@
     "DMG: 4",
     "WT: 4.5 Range: 40 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Iron_Cudgel_of_the_Mystic"
   },
@@ -68627,7 +68662,7 @@
     "DMG: 4",
     "WT: 5.0 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR ELF TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Iron_Cudgel_of_the_Petitioner"
   },
@@ -68641,7 +68676,7 @@
     "DMG: 5",
     "WT: 4.0 Range: 40 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Iron_Cudgel_of_the_Prophet"
   },
@@ -68655,7 +68690,7 @@
     "DMG: 4",
     "WT: 5.0 Range: 40 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Iron_Cudgel_of_the_Seer"
   },
@@ -69886,7 +69921,7 @@
     "Effect: Nimble (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 6.5 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Jaundiced_Bone_Boots"
   },
@@ -69900,7 +69935,7 @@
     "Effect: Winter's Roar (Must Equip, Casting Time: 8.0) at Level 45",
     "WT: 4.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Jaundiced_Bone_Bracer"
   },
@@ -69915,7 +69950,7 @@
     "Effect: Bramblecoat (Must Equip, Casting Time: 12.0) at Level 45",
     "WT: 10.0 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Jaundiced_Bone_Breastplate"
   },
@@ -69929,7 +69964,7 @@
     "Effect: Deftness (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 5.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Jaundiced_Bone_Gauntlets"
   },
@@ -69944,7 +69979,7 @@
     "Effect: Health (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 7.5 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Jaundiced_Bone_Greaves"
   },
@@ -69958,7 +69993,7 @@
     "Effect: Glamour (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 6.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Jaundiced_Bone_Helm"
   },
@@ -69972,7 +70007,7 @@
     "Effect: Furious Strength (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 6.5 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Jaundiced_Bone_Vambraces"
   },
@@ -70357,7 +70392,7 @@
     "MANA: +15",
     "WT: 0.8 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Kaglari_Mana_Doll"
   },
@@ -71295,7 +71330,7 @@
     "DMG: 5",
     "WT: 5.5 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Knave's_Khukri"
   },
@@ -71706,7 +71741,7 @@
    "ic": 739,
    "n": "Kobold Shaman's Pouch",
    "sb": [
-    "LORE ITEM NO DROP",
+    "No Trade, Quest",
     "WT: 0.6 Weight Reduction: 10%",
     "Capacity: 6 Size Capacity: MEDIUM"
    ],
@@ -71762,7 +71797,7 @@
     "STR: +2 DEX: +1",
     "WT: 2.0 Size: MEDIUM",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Kodiak_Pelt"
   },
@@ -71952,7 +71987,7 @@
     "SV DISEASE: +5 SV POISON: +5",
     "WT: 10.5 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Kromzek_Foreman_Helm"
   },
@@ -72098,7 +72133,7 @@
     "SV FIRE: +6 SV POISON: +2",
     "WT: 2.6 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Kylong_Arm_Guards"
   },
@@ -72111,7 +72146,7 @@
     "SV COLD: +5 SV MAGIC: +5",
     "WT: 3.8 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Kylong_Boots"
   },
@@ -72125,7 +72160,7 @@
     "STR: +5 DEX: -2 WIS: +3",
     "WT: 0.8 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Kylong_Chestplate"
   },
@@ -72139,7 +72174,7 @@
     "SV DISEASE: +2 SV MAGIC: +2",
     "WT: 3.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Kylong_Gauntlets"
   },
@@ -72153,7 +72188,7 @@
     "STR: +4",
     "WT: 4.1 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Kylong_Greaves"
   },
@@ -72198,7 +72233,7 @@
     "SV MAGIC: +7 SV POISON: +4",
     "WT: 3.4 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Kylong_War_Helm"
   },
@@ -72211,7 +72246,7 @@
     "STR: +4 CHA: +4",
     "WT: 1.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Kylong_Wrist_Guards"
   },
@@ -72660,7 +72695,7 @@
     "AC: 6",
     "WT: 3.1 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Belt"
   },
@@ -72672,7 +72707,7 @@
     "AC: 6",
     "WT: 6.3 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Boots"
   },
@@ -72684,7 +72719,7 @@
     "AC: 6",
     "WT: 2.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Bracer"
   },
@@ -72696,7 +72731,7 @@
     "AC: 7",
     "WT: 5.0 Size: LARGE",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Cloak"
   },
@@ -72708,7 +72743,7 @@
     "AC: 7",
     "WT: 3.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Gauntlets"
   },
@@ -72720,7 +72755,7 @@
     "AC: 5",
     "WT: 2.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Gorget"
   },
@@ -72732,7 +72767,7 @@
     "AC: 8",
     "WT: 5.6 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Helm"
   },
@@ -72744,7 +72779,7 @@
     "AC: 8",
     "WT: 6.9 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Leggings"
   },
@@ -72756,7 +72791,7 @@
     "AC: 15",
     "WT: 9.4 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Mail"
   },
@@ -72768,7 +72803,7 @@
     "AC: 6",
     "WT: 4.4 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Mantle"
   },
@@ -72780,7 +72815,7 @@
     "AC: 4",
     "WT: 1.3 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Mask"
   },
@@ -72792,7 +72827,7 @@
     "AC: 7",
     "WT: 4.4 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Banded_Sleeves"
   },
@@ -72831,7 +72866,8 @@
    "sb": [
     "WT: 1.5 Size: TINY",
     "Class: ALL",
-    "Race: ALL"
+    "Race: ALL",
+    "Value: 9 silver 9 copper"
    ],
    "t": "Large_Block_of_Clay"
   },
@@ -72856,7 +72892,7 @@
     "SV DISEASE: +1",
     "WT: 9.5 Size: LARGE",
     "Class: WAR CLR PAL RNG SHD DRU BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Bone_Shield"
   },
@@ -73040,7 +73076,7 @@
     "AC: 4",
     "WT: 3.8 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Buckler"
   },
@@ -73062,19 +73098,19 @@
     "AC: 7",
     "WT: 5.6 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Chain_Coif"
   },
   "large chainmail belt": {
    "ic": 562,
-   "n": "Chainmail Belt",
+   "n": "Large Chainmail Belt",
    "sb": [
     "Slot: WAIST",
     "AC: 5",
     "WT: 3.1 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Chainmail_Belt"
   },
@@ -73105,7 +73141,7 @@
     "AC: 2",
     "WT: 0.4 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Cap"
   },
@@ -73117,7 +73153,7 @@
     "AC: 2",
     "WT: 0.6 Size: MEDIUM",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Cape"
   },
@@ -73129,7 +73165,7 @@
     "AC: 1",
     "WT: 0.3 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Choker"
   },
@@ -73141,7 +73177,7 @@
     "AC: 1",
     "WT: 0.3 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Cord"
   },
@@ -73153,7 +73189,7 @@
     "AC: 2",
     "WT: 0.5 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Gloves"
   },
@@ -73165,7 +73201,7 @@
     "AC: 3",
     "WT: 0.9 Size: MEDIUM",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Pants"
   },
@@ -73177,7 +73213,7 @@
     "AC: 2",
     "WT: 0.6 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Sandals"
   },
@@ -73189,7 +73225,7 @@
     "AC: 1",
     "WT: 0.4 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Shawl"
   },
@@ -73201,7 +73237,7 @@
     "AC: 4",
     "WT: 1.3 Size: MEDIUM",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Shirt"
   },
@@ -73213,7 +73249,7 @@
     "AC: 2",
     "WT: 0.5 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Sleeves"
   },
@@ -73225,7 +73261,7 @@
     "AC: 1",
     "WT: 0.3 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Veil"
   },
@@ -73237,7 +73273,7 @@
     "AC: 1",
     "WT: 0.4 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Cloth_Wristband"
   },
@@ -73337,7 +73373,7 @@
     "AC: 10",
     "WT: 8.1 Size: MEDIUM",
     "Class: WAR SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Plate_Boots"
   },
@@ -73349,7 +73385,7 @@
     "AC: 9",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Plate_Bracer"
   },
@@ -73361,7 +73397,7 @@
     "AC: 8",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Plate_Collar"
   },
@@ -73373,7 +73409,7 @@
     "AC: 11",
     "WT: 6.3 Size: SMALL",
     "Class: WAR SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Plate_Gauntlets"
   },
@@ -73385,7 +73421,7 @@
     "AC: 9",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Plate_Girdle"
   },
@@ -73397,7 +73433,7 @@
     "AC: 12",
     "WT: 9.4 Size: LARGE",
     "Class: WAR SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Plate_Greaves"
   },
@@ -73421,7 +73457,7 @@
     "AC: 10",
     "WT: 5.6 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Plate_Pauldron"
   },
@@ -73433,7 +73469,7 @@
     "AC: 10",
     "WT: 8.1 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Plate_Vambraces"
   },
@@ -73445,7 +73481,7 @@
     "AC: 7",
     "WT: 1.9 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Plate_Visor"
   },
@@ -73457,7 +73493,7 @@
     "AC: 10",
     "WT: 6.9 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Splinted_Cloak"
   },
@@ -73469,7 +73505,7 @@
     "AC: 19",
     "WT: 12.5 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Fine_Steel_Breastplate"
   },
@@ -73534,7 +73570,7 @@
     "AC: 8",
     "WT: 12.5 Size: LARGE",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Kite_Shield"
   },
@@ -73567,7 +73603,7 @@
     "AC: 3",
     "WT: 1.3 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Belt"
   },
@@ -73579,7 +73615,7 @@
     "AC: 4",
     "WT: 3.1 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Boots"
   },
@@ -73591,7 +73627,7 @@
     "AC: 4",
     "WT: 2.5 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Cloak"
   },
@@ -73603,7 +73639,7 @@
     "AC: 4",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Gloves"
   },
@@ -73615,7 +73651,7 @@
     "AC: 3",
     "WT: 0.6 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Gorget"
   },
@@ -73627,7 +73663,7 @@
     "AC: 5",
     "WT: 5.0 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Kilt"
   },
@@ -73639,7 +73675,7 @@
     "AC: 5",
     "WT: 5.0 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Leggings"
   },
@@ -73651,7 +73687,7 @@
     "AC: 2",
     "WT: 0.5 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Mask"
   },
@@ -73663,7 +73699,7 @@
     "AC: 3",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Shoulderpads"
   },
@@ -73675,7 +73711,7 @@
     "AC: 4",
     "WT: 0.8 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Skullcap"
   },
@@ -73687,7 +73723,7 @@
     "AC: 4",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Sleeves"
   },
@@ -73699,7 +73735,7 @@
     "AC: 8",
     "WT: 4.4 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Tunic"
   },
@@ -73711,7 +73747,7 @@
     "AC: 3",
     "WT: 1.3 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Leather_Wristbands"
   },
@@ -73795,7 +73831,7 @@
     "AC: 1",
     "WT: 0.6 Size: SMALL",
     "Class: ALL",
-    "Race: BAR ELF TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Muddy_Sandals"
   },
@@ -73829,7 +73865,7 @@
     "AC: 7",
     "WT: 5.8 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Boots"
   },
@@ -73841,7 +73877,7 @@
     "AC: 7",
     "WT: 2.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Bracelet"
   },
@@ -73853,7 +73889,7 @@
     "AC: 8",
     "WT: 4.5 Size: LARGE",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Cloak"
   },
@@ -73865,7 +73901,7 @@
     "AC: 9",
     "WT: 5.1 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Coif"
   },
@@ -73877,7 +73913,7 @@
     "AC: 8",
     "WT: 4.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Gloves"
   },
@@ -73889,7 +73925,7 @@
     "AC: 6",
     "WT: 2.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Gorget"
   },
@@ -73901,7 +73937,7 @@
     "AC: 9",
     "WT: 6.4 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Leggings"
   },
@@ -73913,7 +73949,7 @@
     "AC: 16",
     "WT: 8.9 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Mail"
   },
@@ -73925,7 +73961,7 @@
     "AC: 7",
     "WT: 3.9 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Mantle"
   },
@@ -73937,7 +73973,7 @@
     "AC: 7",
     "WT: 2.6 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Skirt"
   },
@@ -73949,7 +73985,7 @@
     "AC: 8",
     "WT: 3.9 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Sleeves"
   },
@@ -73961,7 +73997,7 @@
     "AC: 5",
     "WT: 0.8 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ornate_Chain_Veil"
   },
@@ -73973,7 +74009,7 @@
     "AC: 3",
     "WT: 3.1 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Patchwork_Boots"
   },
@@ -73985,7 +74021,7 @@
     "AC: 3",
     "WT: 2.5 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Patchwork_Cloak"
   },
@@ -73998,7 +74034,7 @@
     "AC: 4",
     "WT: 5.0 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Patchwork_Pants"
   },
@@ -74010,7 +74046,7 @@
     "AC: 3",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Patchwork_Sleeves"
   },
@@ -74022,7 +74058,7 @@
     "AC: 6",
     "WT: 4.4 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Patchwork_Tunic"
   },
@@ -74074,7 +74110,7 @@
     "AC: 9",
     "WT: 6.3 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Plate_Gauntlets"
   },
@@ -74086,7 +74122,7 @@
     "AC: 7",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Plate_Girdle"
   },
@@ -74158,7 +74194,7 @@
     "AC: 10",
     "WT: 7.5 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Platemail_Helm"
   },
@@ -74190,7 +74226,7 @@
     "AC: 5",
     "WT: 1.3 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Belt"
   },
@@ -74202,7 +74238,7 @@
     "AC: 6",
     "WT: 3.1 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Boots"
   },
@@ -74214,7 +74250,7 @@
     "AC: 6",
     "WT: 2.5 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Cloak"
   },
@@ -74226,7 +74262,7 @@
     "AC: 6",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Gloves"
   },
@@ -74238,7 +74274,7 @@
     "AC: 5",
     "WT: 0.6 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Gorget"
   },
@@ -74250,7 +74286,7 @@
     "AC: 7",
     "WT: 5.0 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Leggings"
   },
@@ -74262,7 +74298,7 @@
     "AC: 4",
     "WT: 0.5 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Mask"
   },
@@ -74274,7 +74310,7 @@
     "AC: 5",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Shoulderpads"
   },
@@ -74286,7 +74322,7 @@
     "AC: 6",
     "WT: 0.8 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Skullcap"
   },
@@ -74298,7 +74334,7 @@
     "AC: 6",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Sleeves"
   },
@@ -74310,7 +74346,7 @@
     "AC: 11",
     "WT: 4.4 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Tunic"
   },
@@ -74322,19 +74358,19 @@
     "AC: 5",
     "WT: 1.3 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Reinforced_Wristbands"
   },
   "large ringmail belt": {
    "ic": 562,
-   "n": "Ringmail Belt",
+   "n": "Large Ringmail Belt",
    "sb": [
     "Slot: WAIST",
     "AC: 5",
     "WT: 4.1 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Ringmail_Belt"
   },
@@ -74346,7 +74382,7 @@
     "AC: 6",
     "WT: 6.2 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR ELF TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Round_Shield"
   },
@@ -74404,6 +74440,17 @@
     "Capacity: 8 Size Capacity: TINY"
    ],
    "t": "Large_Scroll_Case"
+  },
+  "large section of kobold bone": {
+   "ic": 804,
+   "n": "Large Section of Kobold Bone",
+   "sb": [
+    "Quest",
+    "Size: SMALL",
+    "Class: None",
+    "Race: None"
+   ],
+   "t": "Large_Section_of_Kobold_Bone"
   },
   "large sewing kit": {
    "ic": 892,
@@ -74517,7 +74564,7 @@
     "AC: 8",
     "WT: 8.6 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Splinted_Bronze_Cloak"
   },
@@ -74529,7 +74576,7 @@
     "AC: 8",
     "WT: 6.9 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Splinted_Cloak"
   },
@@ -74541,7 +74588,7 @@
     "AC: 7",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Steel_Bracers"
   },
@@ -74553,7 +74600,7 @@
     "AC: 17",
     "WT: 12.5 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Steel_Breastplate"
   },
@@ -74565,7 +74612,7 @@
     "AC: 6",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Steel_Collar"
   },
@@ -74577,7 +74624,7 @@
     "AC: 10",
     "WT: 9.4 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Steel_Greaves"
   },
@@ -74589,7 +74636,7 @@
     "AC: 15",
     "WT: 9.4 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Steel_Kilt"
   },
@@ -74601,7 +74648,7 @@
     "AC: 5",
     "WT: 1.9 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Steel_Mask"
   },
@@ -74613,7 +74660,7 @@
     "AC: 8",
     "WT: 5.6 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Steel_Pauldron"
   },
@@ -74625,7 +74672,7 @@
     "AC: 8",
     "WT: 8.1 Size: MEDIUM",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Steel_Plate_Boots"
   },
@@ -74637,7 +74684,7 @@
     "AC: 3",
     "WT: 0.6 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Steel_Torque"
   },
@@ -74649,7 +74696,7 @@
     "AC: 8",
     "WT: 8.1 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Steel_Vambraces"
   },
@@ -74661,7 +74708,7 @@
     "AC: 7",
     "WT: 8.3 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Targ_Shield"
   },
@@ -74780,7 +74827,7 @@
     "AC: 10",
     "WT: 18.7 Size: LARGE",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Tower_Shield"
   },
@@ -74811,7 +74858,7 @@
     "AC: 7",
     "WT: 15.6 Size: LARGE",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Large_Wooden_Kite_Shield"
   },
@@ -74823,7 +74870,7 @@
     "AC: 5",
     "WT: 6.2 Size: MEDIUM",
     "Class: ALL except MNK NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Large_Wooden_Shield"
   },
@@ -75402,7 +75449,7 @@
     "DMG: 10",
     "WT: 9.0 Size: LARGE",
     "Class: WAR",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Leg-Chopper"
   },
@@ -75480,7 +75527,7 @@
     "SV DISEASE: +10 SV POISON: +5",
     "WT: 4.0 Size: MEDIUM",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Legionnaire_Scale_Boots"
   },
@@ -75495,7 +75542,7 @@
     "SV FIRE: +10 SV COLD: +10",
     "WT: 1.5 Size: SMALL",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Legionnaire_Scale_Bracers"
   },
@@ -75510,7 +75557,7 @@
     "SV DISEASE: +5 SV MAGIC: +10 SV POISON: +5",
     "WT: 7.0 Size: LARGE",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Legionnaire_Scale_Breastplate"
   },
@@ -75525,7 +75572,7 @@
     "SV POISON: +15",
     "WT: 2.5 Size: SMALL",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Legionnaire_Scale_Gauntlets"
   },
@@ -75540,7 +75587,7 @@
     "SV FIRE: +5 SV COLD: +5",
     "WT: 5.0 Size: LARGE",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Legionnaire_Scale_Greaves"
   },
@@ -75555,7 +75602,7 @@
     "SV DISEASE: +5 SV COLD: +5 SV MAGIC: +10",
     "WT: 3.5 Size: SMALL",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Legionnaire_Scale_Helm"
   },
@@ -75570,7 +75617,7 @@
     "SV MAGIC: +5",
     "WT: 3.0 Size: SMALL",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Legionnaire_Scale_Pauldron"
   },
@@ -75585,7 +75632,7 @@
     "SV DISEASE: +5 SV POISON: +5",
     "WT: 3.0 Size: SMALL",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Legionnaire_Scale_Vambraces"
   },
@@ -75614,7 +75661,7 @@
     "SV MAGIC: +10",
     "WT: 12.0 Size: GIANT",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Legionnaire's_Mancatcher"
   },
@@ -77056,7 +77103,7 @@
     "Effect: Enduring Breath (Any Slot, Casting Time: Instant)",
     "WT: 4.0 Size: MEDIUM",
     "Class: SHD",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Lord_of_Pain's_Khukri"
   },
@@ -77521,7 +77568,7 @@
    "sb": [
     "MAGIC ITEM NO DROP",
     "Slot: FEET",
-    "AC: 20",
+    "AC: 15",
     "WIS: +5 INT: +5 AGI: +5",
     "SV DISEASE: +15 SV POISON: +15",
     "WT: 4.9 Size: MEDIUM",
@@ -77565,7 +77612,7 @@
    "sb": [
     "MAGIC ITEM NO DROP",
     "Slot: HANDS",
-    "AC: 16",
+    "AC: 12",
     "DEX: +5 STA: +5 HP: +50",
     "WT: 3.8 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
@@ -77579,7 +77626,7 @@
    "sb": [
     "MAGIC ITEM NO DROP",
     "Slot: LEGS",
-    "AC: 20",
+    "AC: 15",
     "STR: +5 STA: +5 AGI: +5",
     "WT: 5.6 Size: LARGE",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
@@ -77593,7 +77640,7 @@
    "sb": [
     "MAGIC ITEM NO DROP",
     "Slot: HEAD",
-    "AC: 20",
+    "AC: 15",
     "CHA: +5 INT: +5",
     "WT: 4.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
@@ -77607,7 +77654,7 @@
    "sb": [
     "MAGIC ITEM NO DROP",
     "Slot: ARMS",
-    "AC: 20",
+    "AC: 15",
     "STR: +9 DEX: +5",
     "WT: 4.9 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
@@ -78890,7 +78937,7 @@
     "DEX: +1 CHA: -5",
     "WT: 1.0 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Marauder_Snout_Ring"
   },
@@ -78904,7 +78951,7 @@
     "STA: +3 CHA: -10",
     "WT: 1.0 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Marauder_Snout_Ring_'MM'"
   },
@@ -79969,7 +80016,7 @@
    "n": "Medicine Bag",
    "sb": [
     "WT: 0.4 Weight Reduction: 0%",
-    "Capacity: 6 Size Capacity: LARGE"
+    "Capacity: 8 Size Capacity: LARGE"
    ],
    "t": "Medicine_Bag"
   },
@@ -81019,7 +81066,7 @@
     "DMG: 9 AC: 2",
     "WT: 13.5 Size: GIANT",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Militia's_Pike"
   },
@@ -81190,7 +81237,7 @@
     "SV POISON: +10",
     "WT: 2.7 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Minotaur_Hero_Shackles"
   },
@@ -81601,7 +81648,7 @@
     "AGI: +15 HP: +30",
     "WT: 10.0 Size: LARGE",
     "Class: WAR CLR PAL RNG SHD BRD ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mithril_Breastplate"
   },
@@ -81691,7 +81738,7 @@
     "SV MAGIC: +5",
     "WT: 3.7 Size: SMALL",
     "Class: WAR PAL RNG SHD BRD ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mithril_Greaves"
   },
@@ -81706,7 +81753,7 @@
     "SV FIRE: +15 SV DISEASE: +15 SV COLD: +15 SV MAGIC: +15 SV POISON: +15",
     "WT: 3.7 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mithril_Helm"
   },
@@ -81720,7 +81767,7 @@
     "STR: +9 STA: +9",
     "WT: 2.0 Size: SMALL",
     "Class: WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mithril_Plated_Girth"
   },
@@ -82087,7 +82134,7 @@
     "SV MAGIC: +5",
     "WT: 3.7 Size: SMALL",
     "Class: WAR PAL RNG SHD BRD ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mithril_Vambraces"
   },
@@ -82399,7 +82446,7 @@
     "LORE ITEM NO DROP",
     "WT: 0.2 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Monogrammed_Cloth"
   },
@@ -82750,7 +82797,7 @@
     "Effect: Fade (Must Equip, Casting Time: 3.0) at Level 45",
     "WT: 6.5 Size: MEDIUM",
     "Class: ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mrylokar's_Boots"
   },
@@ -82764,7 +82811,7 @@
     "Effect: Summon Throwing Dagger (Must Equip, Casting Time: 15.0) at Level 45",
     "WT: 4.0 Size: SMALL",
     "Class: ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mrylokar's_Bracer"
   },
@@ -82779,7 +82826,7 @@
     "Effect: Invigorate (Must Equip, Casting Time: 6.0) at Level 45",
     "WT: 10.0 Size: LARGE",
     "Class: ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mrylokar's_Breastplate"
   },
@@ -82829,7 +82876,7 @@
     "Effect: Cancel Magic (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 5.0 Size: SMALL",
     "Class: ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mrylokar's_Gauntlets"
   },
@@ -82859,7 +82906,7 @@
     "Effect: Invigor (Must Equip, Casting Time: 7.0) at Level 45",
     "WT: 7.5 Size: LARGE",
     "Class: ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mrylokar's_Greaves"
   },
@@ -82873,7 +82920,7 @@
     "Effect: Ultravision (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 6.0 Size: SMALL",
     "Class: ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mrylokar's_Helm"
   },
@@ -82887,7 +82934,7 @@
     "Effect: Strength of Earth (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 6.5 Size: SMALL",
     "Class: ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Mrylokar's_Vambraces"
   },
@@ -82939,7 +82986,7 @@
     "AC: 2",
     "WT: 1.2 Size: MEDIUM",
     "Class: SHM",
-    "Race: TRL"
+    "Race: ALL"
    ],
    "t": "Muck_Stained_Tunic%2A"
   },
@@ -82963,7 +83010,7 @@
     "AC: 4",
     "WT: 1.6 Size: MEDIUM",
     "Class: WAR",
-    "Race: TRL"
+    "Race: ALL"
    ],
    "t": "Mud_Covered_Tunic"
   },
@@ -82976,7 +83023,7 @@
     "AC: 4",
     "WT: 1.6 Size: MEDIUM",
     "Class: WAR",
-    "Race: TRL"
+    "Race: ALL"
    ],
    "t": "Mud_Covered_Tunic%2A"
   },
@@ -83000,7 +83047,7 @@
     "AC: 4",
     "WT: 1.6 Size: MEDIUM",
     "Class: WAR",
-    "Race: OGR"
+    "Race: ALL"
    ],
    "t": "Mud_Stained_Skin_Tunic%2A"
   },
@@ -83068,7 +83115,7 @@
    "ic": 784,
    "n": "Muffin",
    "sb": [
-    "This is a snack!",
+    "Quest",
     "WT: 0.1 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -86071,7 +86118,7 @@
     "INT: +3",
     "WT: 0.9 Size: SMALL",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Occultist_Skullcap"
   },
@@ -86135,9 +86182,9 @@
    "ic": 566,
    "n": "Odd Cold Iron Necklace",
    "sb": [
-    "NO DROP",
+    "No Trade, Quest",
     "Slot: NECK",
-    "WT: 0.0 Size: TINY",
+    "Size: TINY",
     "Class: ALL",
     "Race: ALL"
    ],
@@ -86211,7 +86258,7 @@
     "HP: +8",
     "WT: 6.2 Size: MEDIUM",
     "Class: WAR SHD SHM",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_Bouncer_Shield"
   },
@@ -86225,7 +86272,7 @@
     "SV FIRE: +5",
     "WT: 6.6 Size: MEDIUM",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Ogre_Butcher_Apron"
   },
@@ -86238,7 +86285,7 @@
     "SV DISEASE: +25 SV POISON: +25",
     "WT: 1.9 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_Butcher_Gloves"
   },
@@ -86804,7 +86851,7 @@
     "AC: 13",
     "WT: 9.1 Size: MEDIUM",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Boots"
   },
@@ -86817,7 +86864,7 @@
     "AC: 11",
     "WT: 5.5 Size: SMALL",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Bracers"
   },
@@ -86830,7 +86877,7 @@
     "AC: 26",
     "WT: 14.0 Size: LARGE",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Breastplate"
   },
@@ -86843,7 +86890,7 @@
     "AC: 9",
     "WT: 5.5 Size: SMALL",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Collar"
   },
@@ -86856,7 +86903,7 @@
     "AC: 13",
     "WT: 7.3 Size: SMALL",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Gauntlets"
   },
@@ -86869,7 +86916,7 @@
     "AC: 10",
     "WT: 6.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Girdle"
   },
@@ -86882,7 +86929,7 @@
     "AC: 18",
     "WT: 10.4 Size: LARGE",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Greaves"
   },
@@ -86895,7 +86942,7 @@
     "AC: 14",
     "WT: 9.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Helm"
   },
@@ -86908,7 +86955,7 @@
     "AC: 12",
     "WT: 6.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Pauldron"
   },
@@ -86921,7 +86968,7 @@
     "AC: 14",
     "WT: 9.0 Size: SMALL",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Vambraces"
   },
@@ -86934,7 +86981,7 @@
     "AC: 7",
     "WT: 2.2 Size: SMALL",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Plate_Visor"
   },
@@ -86947,7 +86994,7 @@
     "AC: 11",
     "WT: 7.5 Size: LARGE",
     "Class: WAR SHD",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Ogre_War_Splinted_Cloak"
   },
@@ -87471,7 +87518,7 @@
     "AC: 8",
     "WT: 6.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Opoline_Helm"
   },
@@ -88887,6 +88934,16 @@
    ],
    "t": "Palladius%60_Axe_of_Slaughter"
   },
+  "panda bear skull": {
+   "ic": 1633,
+   "n": "Panda Bear Skull",
+   "sb": [
+    "WT: 0.6 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "Panda_Bear_Skull"
+  },
   "panda claws": {
    "ic": 975,
    "n": "Panda Claws",
@@ -89234,7 +89291,7 @@
     "DMG: 8 AC: 1",
     "WT: 13.5 Size: GIANT",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Partisan's_Pike"
   },
@@ -89412,7 +89469,7 @@
     "AC: 3",
     "WT: 1.0 Size: MEDIUM",
     "Class: WAR",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Patched_Fur_Tunic%2A"
   },
@@ -91712,7 +91769,6 @@
    "ic": 584,
    "n": "Pod of Water",
    "sb": [
-    "This is a drink!",
     "WT: 0.5 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -92717,7 +92773,7 @@
    "ic": 582,
    "n": "Pouch of Silver Dust",
    "sb": [
-    "LORE ITEM NO DROP",
+    "No Trade, Quest",
     "WT: 1.0 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -93037,7 +93093,7 @@
    "ic": 571,
    "n": "Preserved Hops",
    "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
+    "No Trade",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
@@ -93401,7 +93457,7 @@
     "Effect: Rage of Xyzith (Combat, Casting Time: Instant) at Level 50",
     "WT: 8.0 Size: GIANT",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Pride_of_the_Legion"
   },
@@ -94716,7 +94772,6 @@
    "ic": 925,
    "n": "Rabbit Meat",
    "sb": [
-    "This is a meal!",
     "WT: 0.6 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -97410,7 +97465,7 @@
     "INT: +4 MANA: +5",
     "WT: 0.6 Size: SMALL",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Revenant_Skullcap"
   },
@@ -97502,7 +97557,7 @@
     "AC: 3",
     "WT: 0.5 Size: TINY",
     "Class: WAR SHD SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rhino_Hide_Collar"
   },
@@ -97562,7 +97617,7 @@
     "AC: 2",
     "WT: 0.4 Size: SMALL",
     "Class: WAR SHD SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rhino_Hide_Snout_Guard"
   },
@@ -99079,7 +99134,7 @@
     "Effect: Malaisement (Any Slot/Can Equip, Casting Time: Instant) at Level 35",
     "WT: 1.5 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rod_of_Malisement"
   },
@@ -99320,7 +99375,6 @@
    "ic": 583,
    "n": "Roots",
    "sb": [
-    "This is a meal!",
     "WT: 1.0 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -99451,7 +99505,7 @@
     "Slot: FACE",
     "WT: 0.2 Size: SMALL",
     "Class: ALL",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rotted_Illegible_Scroll"
   },
@@ -100316,7 +100370,7 @@
     "AC: 9",
     "WT: 2.3 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Rubicite_Bracers"
   },
@@ -100344,7 +100398,7 @@
     "AGI: +5",
     "WT: 3.0 Size: LARGE",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Rubicite_Cloak"
   },
@@ -100358,7 +100412,7 @@
     "DEX: +5",
     "WT: 2.4 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Rubicite_Collar"
   },
@@ -100411,7 +100465,7 @@
     "CHA: +5",
     "WT: 0.8 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Rubicite_Mask"
   },
@@ -100425,7 +100479,7 @@
     "STR: +5",
     "WT: 2.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Rubicite_Pauldron"
   },
@@ -101190,7 +101244,7 @@
     "Effect: Extinguish Fatigue (Any Slot/Can Equip, Casting Time: 5.5)",
     "WT: 3.0 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rune_Crafter's_Boots"
   },
@@ -101205,7 +101259,7 @@
     "Effect: Ultravision (Any Slot/Can Equip, Casting Time: 8.0)",
     "WT: 3.5 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rune_Crafter's_Bracer"
   },
@@ -101220,7 +101274,7 @@
     "Effect: Riotous Health (Any Slot/Can Equip, Casting Time: 9.0)",
     "WT: 9.0 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rune_Crafter's_Breastplate"
   },
@@ -101234,7 +101288,7 @@
     "STR: +1 CHA: +2 WIS: +2 MANA: +10",
     "WT: 4.5 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rune_Crafter's_Gauntlets"
   },
@@ -101249,7 +101303,7 @@
     "Effect: Abolish Disease (Any Slot/Can Equip, Casting Time: 11.0)",
     "WT: 6.0 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rune_Crafter's_Greaves"
   },
@@ -101263,7 +101317,7 @@
     "STA: +5 WIS: +5 MANA: +15",
     "WT: 5.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rune_Crafter's_Helm"
   },
@@ -101277,7 +101331,7 @@
     "STR: +1 DEX: +1 STA: +1 WIS: +3 HP: +10 MANA: +15",
     "WT: 5.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Rune_Crafter's_Vambraces"
   },
@@ -101292,7 +101346,7 @@
     "SV COLD: +7",
     "WT: 4.9 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Rune_Etched_Boots"
   },
@@ -101306,7 +101360,7 @@
     "CHA: +5 WIS: +5 INT: +5",
     "WT: 3.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Rune_Etched_Bracer"
   },
@@ -101320,7 +101374,7 @@
     "STA: +9 WIS: +13 MANA: +25",
     "WT: 7.5 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Rune_Etched_Chestplate"
   },
@@ -101335,7 +101389,7 @@
     "SV FIRE: +7",
     "WT: 3.8 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Rune_Etched_Gauntlets"
   },
@@ -101350,7 +101404,7 @@
     "SV DISEASE: +7",
     "WT: 5.6 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Rune_Etched_Greaves"
   },
@@ -101365,7 +101419,7 @@
     "SV POISON: +7",
     "WT: 4.5 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Rune_Etched_Helm"
   },
@@ -101396,7 +101450,7 @@
     "SV MAGIC: +7",
     "WT: 4.9 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Rune_Etched_Vambraces"
   },
@@ -102069,7 +102123,7 @@
     "SV DISEASE: +10 SV MAGIC: +10 SV POISON: +10",
     "WT: 5.0 Size: LARGE",
     "Class: WAR SHD ROG SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Runebranded_Stone_Buckler"
   },
@@ -102138,7 +102192,7 @@
     "Skill: Piercing Atk Delay: 29",
     "DMG: 5",
     "SV FIRE: +10 SV COLD: +10 SV MAGIC: +10",
-    "WT: 4.5 Range: 50 Size: MEDIUM",
+    "WT: 4.5 Size: MEDIUM",
     "Class: WAR RNG SHD BRD ROG",
     "Race: ALL"
    ],
@@ -104305,7 +104359,9 @@
    "ic": 850,
    "n": "Sapphire Necklace",
    "sb": [
+    "Attunable",
     "Slot: NECK",
+    "AC: 1",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
@@ -104656,7 +104712,7 @@
     "SV MAGIC: +10",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Sarnak_Headguard"
   },
@@ -105147,7 +105203,7 @@
     "SV FIRE: +8 SV DISEASE: +8 SV COLD: +8 SV POISON: +8",
     "WT: 3.6 Size: MEDIUM",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Hierophant_Boots"
   },
@@ -105161,7 +105217,7 @@
     "STR: +5 CHA: +5 WIS: +5 HP: +10",
     "WT: 1.8 Size: SMALL",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Hierophant_Bracers"
   },
@@ -105176,7 +105232,7 @@
     "SV DISEASE: +10 SV MAGIC: +10 SV POISON: +10",
     "WT: 6.0 Size: LARGE",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Hierophant_Breastplate"
   },
@@ -105190,7 +105246,7 @@
     "DEX: +10 STA: +5 WIS: +5 AGI: +10 MANA: +30",
     "WT: 3.0 Size: LARGE",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Hierophant_Cloak"
   },
@@ -105205,7 +105261,7 @@
     "SV COLD: +5",
     "WT: 2.8 Size: SMALL",
     "Class: SHM",
-    "Race: IKS",
+    "Race: ALL",
     "Slot 1, Type 7 (General: Group)"
    ],
    "t": "Scaled_Hierophant_Gauntlets"
@@ -105221,7 +105277,7 @@
     "SV FIRE: +8 SV COLD: +8 SV MAGIC: +8",
     "WT: 4.2 Size: LARGE",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Hierophant_Greaves"
   },
@@ -105236,7 +105292,7 @@
     "SV COLD: +5",
     "WT: 3.5 Size: SMALL",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Hierophant_Helm"
   },
@@ -105250,7 +105306,7 @@
     "STA: +10 WIS: +5 AGI: +5",
     "WT: 3.7 Size: SMALL",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Hierophant_Vambraces"
   },
@@ -105371,7 +105427,7 @@
     "SV DISEASE: +5 SV POISON: +5",
     "WT: 3.6 Size: MEDIUM",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Mystic_Boots"
   },
@@ -105385,7 +105441,7 @@
     "STR: +2 WIS: +2",
     "WT: 1.8 Size: SMALL",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Mystic_Bracers"
   },
@@ -105400,7 +105456,7 @@
     "SV DISEASE: +5 SV MAGIC: +5 SV POISON: +5",
     "WT: 6.0 Size: LARGE",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Mystic_Breastplate"
   },
@@ -105414,7 +105470,7 @@
     "STA: +5 MANA: +10",
     "WT: 3.0 Size: LARGE",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Mystic_Cloak"
   },
@@ -105429,7 +105485,7 @@
     "SV COLD: +5",
     "WT: 2.8 Size: SMALL",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Mystic_Gauntlets"
   },
@@ -105444,7 +105500,7 @@
     "SV FIRE: +5 SV COLD: +5 SV MAGIC: +5",
     "WT: 4.2 Size: LARGE",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Mystic_Greaves"
   },
@@ -105459,7 +105515,7 @@
     "SV COLD: +2",
     "WT: 3.5 Size: SMALL",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Mystic_Helm"
   },
@@ -105473,7 +105529,7 @@
     "STA: +5 WIS: +2 AGI: +5",
     "WT: 3.7 Size: SMALL",
     "Class: SHM",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Scaled_Mystic_Vambraces"
   },
@@ -105898,7 +105954,7 @@
     "SV FIRE: +8 SV DISEASE: +8 SV COLD: +8 SV MAGIC: +8 SV POISON: +8",
     "WT: 2.5 Size: MEDIUM",
     "Class: ROG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Scintillating_Bracer_of_Protection"
   },
@@ -105911,7 +105967,7 @@
     "STA: +10",
     "WT: 2.5 Size: MEDIUM",
     "Class: WAR SHD ROG",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Scorched_Pauldrons"
   },
@@ -106616,7 +106672,7 @@
    "ic": 1015,
    "n": "Seahorse Scales",
    "sb": [
-    "QUEST ITEM",
+    "Quest",
     "WT: 0.1 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -106833,7 +106889,7 @@
     "SV DISEASE: +2 SV MAGIC: +2",
     "WT: 1.9 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Belt"
   },
@@ -106848,7 +106904,7 @@
     "SV COLD: +2 SV MAGIC: +2",
     "WT: 3.8 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Boots"
   },
@@ -106862,7 +106918,7 @@
     "STR: +4 CHA: +4",
     "WT: 1.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Bracelet"
   },
@@ -106877,7 +106933,7 @@
     "SV MAGIC: +2 SV POISON: +2",
     "WT: 3.4 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Cap"
   },
@@ -106892,7 +106948,7 @@
     "SV COLD: +2 SV POISON: +2",
     "WT: 3.0 Size: LARGE",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Cape"
   },
@@ -106907,7 +106963,7 @@
     "SV DISEASE: +2 SV COLD: +2 SV MAGIC: +2",
     "WT: 5.6 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Coat"
   },
@@ -106922,7 +106978,7 @@
     "SV DISEASE: +2 SV MAGIC: +2",
     "WT: 3.0 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Gloves"
   },
@@ -106937,7 +106993,7 @@
     "SV FIRE: +2 SV POISON: +2",
     "WT: 4.1 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Leggings"
   },
@@ -106952,7 +107008,7 @@
     "SV FIRE: +2 SV DISEASE: +2",
     "WT: 2.6 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Mantle"
   },
@@ -106967,7 +107023,7 @@
     "SV FIRE: +2 SV DISEASE: +2",
     "WT: 0.8 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Mask"
   },
@@ -106982,7 +107038,7 @@
     "SV COLD: +2 SV POISON: +2",
     "WT: 1.5 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Neckguard"
   },
@@ -106997,7 +107053,7 @@
     "SV FIRE: +2 SV POISON: +2",
     "WT: 2.6 Size: SMALL",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Sebilite_Scale_Vambraces"
   },
@@ -108202,6 +108258,21 @@
    ],
    "t": "Shadow_Greaves"
   },
+  "shadow rage leggings": {
+   "ic": null,
+   "n": "Shadow Rage Leggings",
+   "sb": [
+    "Lore Equipped, No Trade, Quest",
+    "Slot: LEGS",
+    "AC: 12",
+    "WIS: 6 AGI: 6 END: 10",
+    "SV Fire: 2 SV Disease: 8",
+    "WT: 4.5 Size: LARGE",
+    "Class: BER",
+    "Race: ALL"
+   ],
+   "t": "Shadow_Rage_Leggings"
+  },
   "shadow rage sleeves": {
    "ic": 622,
    "n": "Shadow Rage Sleeves",
@@ -108634,7 +108705,7 @@
     "Effect: Nullify Magic (Must Equip, Casting Time: Instant) at Level 45",
     "WT: 3.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Shamanistic_Shenanigan_Gauntlets"
   },
@@ -108649,7 +108720,7 @@
     "SV FIRE: +5 SV COLD: +5",
     "WT: 4.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Shamanistic_Shenannigan_Arm_Guard"
   },
@@ -108681,7 +108752,7 @@
     "SV DISEASE: +5 SV POISON: +5",
     "WT: 2.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Shamanistic_Shenannigan_Bracer"
   },
@@ -108696,7 +108767,7 @@
     "SV DISEASE: +15 SV MAGIC: +10 SV POISON: +15",
     "WT: 6.0 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Shamanistic_Shenannigan_Chestplate"
   },
@@ -108728,7 +108799,7 @@
     "Effect: Ring of Misty (Must Equip, Casting Time: Instant) at Level 45",
     "WT: 6.0 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Shamanistic_Shenannigan_Greaves"
   },
@@ -108744,7 +108815,7 @@
     "Effect: Ultravision (Worn)",
     "WT: 1.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Shamanistic_Shenannigan_Helm"
   },
@@ -109692,7 +109763,7 @@
     "STR: +3 DEX: -3 CHA: -5 WIS: +5 INT: +5 MANA: +30",
     "WT: 9.7 Size: GIANT",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Shield_of_Falsehood"
   },
@@ -109867,7 +109938,7 @@
     "STR: +5 HP: +25 MANA: +25",
     "WT: 0.5 Size: TINY",
     "Class: CLR",
-    "Race: ALL except BAR ELF TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Shield_of_the_Devout"
   },
@@ -110298,7 +110369,7 @@
     "SV POISON: +5",
     "WT: 5.0 Size: SMALL",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Shin_Gauntlets"
   },
@@ -110312,7 +110383,7 @@
     "SV DISEASE: +5",
     "WT: 7.5 Size: LARGE",
     "Class: WAR CLR PAL SHD BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Shin_Greaves"
   },
@@ -110450,6 +110521,17 @@
     "Race: ALL"
    ],
    "t": "Shining_Star_of_Light"
+  },
+  "shining stone": {
+   "ic": 945,
+   "n": "Shining Stone",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO TRADE",
+    "WT: 0.1 Size: TINY",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "Shining_Stone"
   },
   "shining vambraces": {
    "ic": 622,
@@ -110967,7 +111049,7 @@
    "ic": 828,
    "n": "Short Beer",
    "sb": [
-    "QUEST ITEM",
+    "Quest",
     "WT: 0.4 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -111502,7 +111584,7 @@
     "WIS: +10",
     "WT: 9.5 Size: LARGE",
     "Class: PAL",
-    "Race: ALL except TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Silent_Watch_Shield"
   },
@@ -113706,8 +113788,8 @@
    "n": "Skull Ale",
    "sb": [
     "WT: 1.2 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
+    "Class: None",
+    "Race: None"
    ],
    "t": "Skull_Ale"
   },
@@ -113825,7 +113907,7 @@
     "WIS: +3 INT: +4 MANA: +10",
     "WT: 0.1 Size: TINY",
     "Class: CLR DRU SHM NEC WIZ MAG ENC",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Skullchip_Bracelet"
   },
@@ -114378,7 +114460,7 @@
    "sb": [
     "LORE ITEM",
     "Charges: 3",
-    "Effect: Shiftless Deeds (Any Slot/Can Equip, Casting Time: 2.5) at Level 45",
+    "Effect: Shiftless Deeds (Any Slot/Can Equip, Casting Time: instant) at Level 45",
     "WT: 1.0 Size: SMALL",
     "Class: MNK",
     "Race: ALL"
@@ -114787,7 +114869,8 @@
     "QUEST ITEM",
     "WT: 0.5 Size: TINY",
     "Class: ALL",
-    "Race: ALL"
+    "Race: ALL",
+    "Value: 1 silver 5 copper"
    ],
    "t": "Small_Block_of_Clay"
   },
@@ -114875,11 +114958,11 @@
    "ic": 1138,
    "n": "Small Brick of High Quality Ore",
    "sb": [
-    "QUEST ITEM",
-    "WT: 7.0",
-    "Size: SMALL",
+    "Quest",
+    "WT: 7.0 Size: SMALL",
     "Class: ALL",
-    "Race: ALL"
+    "Race: ALL",
+    "Value: 5 platinum 6 gold 1 silver"
    ],
    "t": "Small_Brick_of_High_Quality_Ore"
   },
@@ -117742,7 +117825,7 @@
     "DMG: 11 AC: 4",
     "WT: 13.5 Size: GIANT",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Soldier's_Pike"
   },
@@ -117942,7 +118025,7 @@
     "SV MAGIC: +5",
     "WT: 0.6 Size: SMALL",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Sorcerer_Skullcap"
   },
@@ -118290,7 +118373,7 @@
     "STA: +2",
     "WT: 0.4 Size: SMALL",
     "Class: MNK",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Sparring_Arm_Guards"
   },
@@ -118303,7 +118386,7 @@
     "AGI: +2",
     "WT: 0.5 Size: SMALL",
     "Class: MNK",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Sparring_Clogs"
   },
@@ -118316,7 +118399,7 @@
     "SV COLD: +2",
     "WT: 0.2 Size: SMALL",
     "Class: MNK",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Sparring_Collar"
   },
@@ -118329,7 +118412,7 @@
     "SV DISEASE: +3",
     "WT: 0.2 Size: SMALL",
     "Class: MNK",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Sparring_Facemask"
   },
@@ -118342,7 +118425,7 @@
     "SV POISON: +3",
     "WT: 0.4 Size: SMALL",
     "Class: MNK",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Sparring_Grappler_Gloves"
   },
@@ -118356,7 +118439,7 @@
     "SV FIRE: +3",
     "WT: 1.0 Size: MEDIUM",
     "Class: MNK",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Sparring_Harness"
   },
@@ -118382,7 +118465,7 @@
     "STR: +1 HP: +5",
     "WT: 0.2 Size: SMALL",
     "Class: MNK",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Sparring_Rib_Pad"
   },
@@ -118396,7 +118479,7 @@
     "SV COLD: +2",
     "WT: 0.7 Size: MEDIUM",
     "Class: MNK",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Sparring_Shin_Guards"
   },
@@ -118409,7 +118492,7 @@
     "DEX: +1 HP: +2",
     "WT: 0.3 Size: SMALL",
     "Class: MNK",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Sparring_Shoulder_Pads"
   },
@@ -119016,7 +119099,7 @@
    "ic": 507,
    "n": "Sphere of Unrest",
    "sb": [
-    "MAGIC ITEM LORE NO TRADE",
+    "Lore Equipped, No Trade, Quest, Placeable",
     "Slot: PRIMARY SECONDARY",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
@@ -119192,7 +119275,7 @@
    "ic": 881,
    "n": "Spices",
    "sb": [
-    "QUEST ITEM",
+    "Quest",
     "WT: 0.1 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -119630,7 +119713,7 @@
     "Effect: Riotous Health (Any Slot/Can Equip, Casting Time: 9.0) at Level 50",
     "WT: 9.0 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Spirit_Caller's_Breastplate"
   },
@@ -119771,7 +119854,7 @@
     "SV MAGIC: +6",
     "WT: 7.5 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Spirit_Talker's_War_Lance"
   },
@@ -119799,7 +119882,7 @@
     "Effect: Extinguish Fatigue (Must Equip, Casting Time: 5.5)",
     "WT: 3.0 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Spirit_Weaver's_Boots"
   },
@@ -119814,7 +119897,7 @@
     "Effect: Ultravision (Any Slot/Can Equip, Casting Time: 8.0)",
     "WT: 3.5 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Spirit_Weaver's_Bracer"
   },
@@ -119829,7 +119912,7 @@
     "Effect: Riotous Health (Must Equip, Casting Time: 9.0)",
     "WT: 9.0 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Spirit_Weaver's_Breastplate"
   },
@@ -119843,7 +119926,7 @@
     "DEX: +5 WIS: +5 MANA: +15",
     "WT: 5.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Spirit_Weaver's_Coif"
   },
@@ -119857,7 +119940,7 @@
     "STR: +1 CHA: +2 WIS: +2 MANA: +10",
     "WT: 4.5 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Spirit_Weaver's_Gauntlets"
   },
@@ -119872,7 +119955,7 @@
     "Effect: Abolish Disease (Must Equip, Casting Time: 11.0)",
     "WT: 6.0 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Spirit_Weaver's_Greaves"
   },
@@ -119886,7 +119969,7 @@
     "STR: +3 DEX: +1 STA: +1 WIS: +1 HP: +10 MANA: +15",
     "WT: 5.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Spirit_Weaver's_Vambraces"
   },
@@ -120188,7 +120271,7 @@
     "WIS: +10",
     "WT: 7.5 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Spitestone_Shield"
   },
@@ -120378,7 +120461,7 @@
     "DMG: 17",
     "WT: 5.5 Size: MEDIUM",
     "Class: PAL SHD",
-    "Race: ALL except BAR ELF"
+    "Race: ALL"
    ],
    "t": "Sporali_Defender's_Blade"
   },
@@ -120749,12 +120832,11 @@
    "ic": 811,
    "n": "Staff of Elemental Mastery: Water",
    "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
+    "Lore Equipped, No Trade, Quest, Placeable",
     "Slot: PRIMARY",
     "Skill: 2H Blunt Atk Delay: 30",
     "DMG: 15",
     "Effect: Reclaim Energy (Any Slot/Can Equip, Casting Time: Instant) at Level 40",
-    "Focus Effect: Servant of Water",
     "WT: 5.0 Size: LARGE",
     "Class: MAG",
     "Race: ALL"
@@ -121063,7 +121145,7 @@
     "Recommended level of 10.",
     "WT: 1.0 Size: MEDIUM",
     "Class: SHM",
-    "Race: TRL"
+    "Race: ALL"
    ],
    "t": "Staff_of_the_Spiritcharmer"
   },
@@ -121122,7 +121204,7 @@
     "Skill: 1H Blunt Atk Delay: 33",
     "DMG: 9",
     "CHA: -9",
-    "Effect: Chaotic Feedback (Combat, Casting Time: Instant) at Level 28",
+    "Effect: Chaotic Feedback (Combat, Casting Time: Instant, Rate +75%) at Level 28",
     "WT: 6.5 Size: LARGE",
     "Class: BRD NEC WIZ MAG ENC",
     "Race: ALL"
@@ -121868,7 +121950,7 @@
   },
   "stein (of water)": {
    "ic": 708,
-   "n": "A Stein",
+   "n": "Stein (of Water)",
    "sb": [
     "MAGIC ITEM LORE ITEM",
     "WT: 1.0 Size: SMALL",
@@ -121995,7 +122077,7 @@
     "BACKSTAB: 6",
     "Effect: Blood Claw (Combat, Casting Time: Instant) at Level 18",
     "WT: 3.5 Size: MEDIUM",
-    "Class: SHD ROG NEC",
+    "Class: SHD ROG NEC BST",
     "Race: ALL"
    ],
    "t": "Stiletto_of_the_Bloodclaw"
@@ -122095,7 +122177,7 @@
     "SV FIRE: +30 SV COLD: +30",
     "WT: 7.0 Size: TINY",
     "Class: WAR SHD MNK SHM NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Stone_of_Morid"
   },
@@ -122279,7 +122361,7 @@
     "DMG: 17",
     "WT: 13.0 Size: MEDIUM",
     "Class: WAR PAL RNG SHD",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Stormguard_Battle_Axe"
   },
@@ -122309,7 +122391,7 @@
     "DMG: 9",
     "WT: 8.5 Range: 40 Size: MEDIUM",
     "Class: WAR CLR PAL RNG DRU ROG",
-    "Race: ALL except TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Stormguard_Battle_Hammer"
   },
@@ -123603,7 +123685,7 @@
     "AC: 8",
     "WT: 8.1 Size: MEDIUM",
     "Class: BRD CLR PAL SHD WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Summoned%3A_Phantom_Plate_Boots"
   },
@@ -123616,7 +123698,7 @@
     "AC: 7",
     "WT: 5.0 Size: SMALL",
     "Class: BRD CLR PAL SHD WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Summoned%3A_Phantom_Plate_Bracers"
   },
@@ -123629,7 +123711,7 @@
     "AC: 17",
     "WT: 12.5 Size: LARGE",
     "Class: BRD CLR PAL SHD WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Summoned%3A_Phantom_Plate_Breastplate"
   },
@@ -123642,7 +123724,7 @@
     "AC: 9",
     "WT: 6.2 Size: SMALL",
     "Class: BRD CLR PAL SHD WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Summoned%3A_Phantom_Plate_Gauntlets"
   },
@@ -123655,7 +123737,7 @@
     "AC: 10",
     "WT: 9.4 Size: SMALL",
     "Class: BRD CLR PAL SHD WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Summoned%3A_Phantom_Plate_Greaves"
   },
@@ -123668,7 +123750,7 @@
     "AC: 10",
     "WT: 7.5 Size: SMALL",
     "Class: BRD CLR PAL SHD WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Summoned%3A_Phantom_Plate_Helm"
   },
@@ -123681,7 +123763,7 @@
     "AC: 8",
     "WT: 8.1 Size: SMALL",
     "Class: BRD CLR PAL SHD WAR",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Summoned%3A_Phantom_Plate_Vambraces"
   },
@@ -123944,7 +124026,7 @@
     "Slot: PRIMARY SECONDARY",
     "Skill: 1H Slashing Atk Delay: 27",
     "DMG: 7",
-    "Effect: Ward Summoned (Combat, Casting Time: Instant) at Level 20",
+    "Effect: Ward Summoned (Combat, Casting Time: Instant, Rate: +289%) at Level 20",
     "WT: 6.5 Size: MEDIUM",
     "Class: WAR PAL RNG SHD BRD ROG",
     "Race: ALL"
@@ -124728,7 +124810,7 @@
     "SV COLD: +7",
     "WT: 0.3 Size: SMALL",
     "Class: ALL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Symbol_of_Loyalty_to_Vox"
   },
@@ -125367,7 +125449,7 @@
     "DMG: 11",
     "WT: 14.0 Size: GIANT",
     "Class: WAR PAL RNG SHD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Tarnished_Halberd"
   },
@@ -126092,7 +126174,7 @@
   },
   "teirdal adamantite boots (enchanted)": {
    "ic": 524,
-   "n": "Teir`Dal Adamantite Boots",
+   "n": "Teir`Dal Adamantite Boots (Enchanted)",
    "sb": [
     "Slot: FEET",
     "AC: 13",
@@ -126105,7 +126187,7 @@
   },
   "teirdal adamantite boots (imbued)": {
    "ic": 524,
-   "n": "Teir`Dal Adamantite Boots",
+   "n": "Teir`Dal Adamantite Boots (Imbued)",
    "sb": [
     "Slot: FEET",
     "AC: 13",
@@ -126131,7 +126213,7 @@
   },
   "teirdal adamantite bracers (enchanted)": {
    "ic": 516,
-   "n": "Teir`Dal Adamantite Bracers",
+   "n": "Teir`Dal Adamantite Bracers (Enchanted)",
    "sb": [
     "Slot: WRIST",
     "AC: 11",
@@ -126144,7 +126226,7 @@
   },
   "teirdal adamantite bracers (imbued)": {
    "ic": 516,
-   "n": "Teir`Dal Adamantite Bracers",
+   "n": "Teir`Dal Adamantite Bracers (Imbued)",
    "sb": [
     "Slot: WRIST",
     "AC: 11",
@@ -126170,7 +126252,7 @@
   },
   "teirdal adamantite breastplate (enchanted)": {
    "ic": 624,
-   "n": "Teir`Dal Adamantite Breastplate",
+   "n": "Teir`Dal Adamantite Breastplate (Enchanted)",
    "sb": [
     "Slot: CHEST",
     "AC: 26",
@@ -126183,7 +126265,7 @@
   },
   "teirdal adamantite breastplate (imbued)": {
    "ic": 624,
-   "n": "Teir`Dal Adamantite Breastplate",
+   "n": "Teir`Dal Adamantite Breastplate (Imbued)",
    "sb": [
     "Slot: CHEST",
     "AC: 26",
@@ -126209,7 +126291,7 @@
   },
   "teirdal adamantite cloak (enchanted)": {
    "ic": 663,
-   "n": "Teir`Dal Adamantite Cloak",
+   "n": "Teir`Dal Adamantite Cloak (Enchanted)",
    "sb": [
     "Slot: BACK",
     "AC: 14",
@@ -126248,7 +126330,7 @@
   },
   "teirdal adamantite collar (enchanted)": {
    "ic": 626,
-   "n": "Teir`Dal Adamantite Collar",
+   "n": "Teir`Dal Adamantite Collar (Enchanted)",
    "sb": [
     "Slot: NECK",
     "AC: 9",
@@ -126261,7 +126343,7 @@
   },
   "teirdal adamantite collar (imbued)": {
    "ic": 626,
-   "n": "Teir`Dal Adamantite Collar",
+   "n": "Teir`Dal Adamantite Collar (Imbued)",
    "sb": [
     "Slot: NECK",
     "AC: 9",
@@ -126287,7 +126369,7 @@
   },
   "teirdal adamantite gauntlets (enchanted)": {
    "ic": 531,
-   "n": "Teir`Dal Adamantite Gauntlets",
+   "n": "Teir`Dal Adamantite Gauntlets (Enchanted)",
    "sb": [
     "Slot: HANDS",
     "AC: 13",
@@ -126300,7 +126382,7 @@
   },
   "teirdal adamantite gauntlets (imbued)": {
    "ic": 531,
-   "n": "Teir`Dal Adamantite Gauntlets",
+   "n": "Teir`Dal Adamantite Gauntlets (Imbued)",
    "sb": [
     "Slot: HANDS",
     "AC: 13",
@@ -126326,7 +126408,7 @@
   },
   "teirdal adamantite girdle (enchanted)": {
    "ic": 549,
-   "n": "Teir`Dal Adamantite Girdle",
+   "n": "Teir`Dal Adamantite Girdle (Enchanted)",
    "sb": [
     "Slot: WAIST",
     "AC: 10",
@@ -126378,7 +126460,7 @@
   },
   "teirdal adamantite greaves (enchanted)": {
    "ic": 540,
-   "n": "Teir`Dal Adamantite Greaves",
+   "n": "Teir`Dal Adamantite Greaves (Enchanted)",
    "sb": [
     "Slot: LEGS",
     "AC: 18",
@@ -126391,7 +126473,7 @@
   },
   "teirdal adamantite greaves (imbued)": {
    "ic": 540,
-   "n": "Teir`Dal Adamantite Greaves",
+   "n": "Teir`Dal Adamantite Greaves (Imbued)",
    "sb": [
     "Slot: LEGS",
     "AC: 18",
@@ -126417,7 +126499,7 @@
   },
   "teirdal adamantite helm (enchanted)": {
    "ic": 550,
-   "n": "Teir`Dal Adamantite Helm",
+   "n": "Teir`Dal Adamantite Helm (Enchanted)",
    "sb": [
     "Slot: HEAD",
     "AC: 14",
@@ -126430,7 +126512,7 @@
   },
   "teirdal adamantite helm (imbued)": {
    "ic": 550,
-   "n": "Teir`Dal Adamantite Helm",
+   "n": "Teir`Dal Adamantite Helm (Imbued)",
    "sb": [
     "Slot: HEAD",
     "AC: 14",
@@ -126456,7 +126538,7 @@
   },
   "teirdal adamantite pauldron (enchanted)": {
    "ic": 798,
-   "n": "Teir`Dal Adamantite Pauldron",
+   "n": "Teir`Dal Adamantite Pauldron (Enchanted)",
    "sb": [
     "Slot: SHOULDERS",
     "AC: 12",
@@ -126469,7 +126551,7 @@
   },
   "teirdal adamantite pauldron (imbued)": {
    "ic": 798,
-   "n": "Teir`Dal Adamantite Pauldron",
+   "n": "Teir`Dal Adamantite Pauldron (Imbued)",
    "sb": [
     "Slot: SHOULDERS",
     "AC: 12",
@@ -126495,7 +126577,7 @@
   },
   "teirdal adamantite vambraces (enchanted)": {
    "ic": 622,
-   "n": "Teir`Dal Adamantite Vambraces",
+   "n": "Teir`Dal Adamantite Vambraces (Enchanted)",
    "sb": [
     "Slot: ARMS",
     "AC: 14",
@@ -126508,7 +126590,7 @@
   },
   "teirdal adamantite vambraces (imbued)": {
    "ic": 622,
-   "n": "Teir`Dal Adamantite Vambraces",
+   "n": "Teir`Dal Adamantite Vambraces (Imbued)",
    "sb": [
     "Slot: ARMS",
     "AC: 14",
@@ -126534,7 +126616,7 @@
   },
   "teirdal adamantite visor (enchanted)": {
    "ic": 772,
-   "n": "Teir`Dal Adamantite Visor",
+   "n": "Teir`Dal Adamantite Visor (Enchanted)",
    "sb": [
     "Slot: FACE",
     "AC: 7",
@@ -126547,7 +126629,7 @@
   },
   "teirdal adamantite visor (imbued)": {
    "ic": 772,
-   "n": "Teir`Dal Adamantite Visor",
+   "n": "Teir`Dal Adamantite Visor (Imbued)",
    "sb": [
     "Slot: FACE",
     "AC: 7",
@@ -127190,8 +127272,10 @@
    "ic": 504,
    "n": "Testimony of Truth",
    "sb": [
-    "LORE ITEM NO DROP QUEST ITEM",
-    "WT: 0.0 Size: TINY"
+    "No Trade, Quest",
+    "Size: TINY",
+    "Class: None",
+    "Race: None"
    ],
    "t": "Testimony_of_Truth"
   },
@@ -127743,7 +127827,7 @@
    "ic": 698,
    "n": "Thick Caustic Fluid",
    "sb": [
-    "LORE ITEM NO DROP",
+    "No Trade",
     "WT: 0.4 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -128097,7 +128181,7 @@
     "DMG: 36",
     "WT: 25.5 Range: 200 Size: LARGE",
     "Class: WAR SHD ROG",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Throwing_Boulder"
   },
@@ -128158,7 +128242,7 @@
     "Effect: Cazic Portal (Any Slot/Can Equip, Casting Time: Instant) at Level 45",
     "WT: 1.0 Size: SMALL",
     "Class: WIZ",
-    "Race: ALL except BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Thulian_Wand"
   },
@@ -128295,7 +128379,7 @@
    "ic": 854,
    "n": "Thunderhoof Mushroom",
    "sb": [
-    "This is a meal!",
+    "Quest",
     "WT: 0.6 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -129000,7 +129084,7 @@
    "ic": 646,
    "n": "Token of Bravery",
    "sb": [
-    "LORE ITEM NO DROP QUEST ITEM",
+    "No Trade, Quest",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
@@ -129011,7 +129095,7 @@
    "ic": 646,
    "n": "Token of Generosity",
    "sb": [
-    "LORE ITEM NO DROP QUEST ITEM",
+    "No Trade, Quest",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
@@ -129022,7 +129106,7 @@
    "ic": 645,
    "n": "Token of Truth",
    "sb": [
-    "LORE ITEM NO TRADE",
+    "No Trade, Quest",
     "WT: 0.1 Size: TINY",
     "Class: ALL",
     "Race: ALL"
@@ -129039,7 +129123,7 @@
     "Effect: Invigor (Must Equip, Casting Time: 7.0) at Level 45",
     "WT: 6.5 Size: MEDIUM",
     "Class: RNG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Tolan's_Darkwood_Boots"
   },
@@ -129053,7 +129137,7 @@
     "Effect: Summon Arrows (Must Equip, Casting Time: 15.0) at Level 45",
     "WT: 4.0 Size: SMALL",
     "Class: RNG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Tolan's_Darkwood_Bracer"
   },
@@ -129082,7 +129166,7 @@
     "Effect: Snare (Must Equip, Casting Time: 4.0) at Level 45",
     "WT: 5.0 Size: SMALL",
     "Class: RNG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Tolan's_Darkwood_Gauntlets"
   },
@@ -129097,7 +129181,7 @@
     "Effect: Cancel Magic (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 7.5 Size: LARGE",
     "Class: RNG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Tolan's_Darkwood_Greaves"
   },
@@ -129111,7 +129195,7 @@
     "Effect: Superior Camouflage (Must Equip, Casting Time: 10.0) at Level 45",
     "WT: 6.0 Size: SMALL",
     "Class: RNG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Tolan's_Darkwood_Helm"
   },
@@ -129125,7 +129209,7 @@
     "Effect: Stinging Swarm (Must Equip, Casting Time: 4.0) at Level 45",
     "WT: 6.5 Size: SMALL",
     "Class: RNG",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Tolan's_Darkwood_Vambraces"
   },
@@ -129270,7 +129354,7 @@
     "SV DISEASE: -10",
     "WT: 4.0 Size: SMALL",
     "Class: NEC MAG ENC",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Tome_of_Miragul"
   },
@@ -129302,7 +129386,7 @@
     "SV DISEASE: -10 SV MAGIC: -10",
     "WT: 4.0 Size: TINY",
     "Class: NEC",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Tome_of_the_Eternal"
   },
@@ -129881,7 +129965,7 @@
     "AC: 2",
     "WT: 0.8 Size: MEDIUM",
     "Class: ROG",
-    "Race: BAR"
+    "Race: ALL"
    ],
    "t": "Torn_White_Tunic%2A"
   },
@@ -129914,11 +129998,11 @@
     "Attunable",
     "Slot: PRIMARY",
     "Skill: 2H Blunt Atk Delay: 30",
-    "DMG: 16",
+    "DMG: 15",
     "Effect: Stun (Req Level 30)",
-    "HP: +21 End: +21",
+    "HP: +20 End: +20",
     "STR: +9 AGI: -5",
-    "WT: 9.1 Size:MEDIUM",
+    "WT: 10 Size:MEDIUM",
     "Class: WAR, MNK, BST, BER",
     "Race: ALL"
    ],
@@ -130028,7 +130112,7 @@
     "STR: +5",
     "WT: 3.6 Size: MEDIUM",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Totemic_Boots"
   },
@@ -130042,7 +130126,7 @@
     "DEX: +5",
     "WT: 2.3 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Totemic_Bracers"
   },
@@ -130070,7 +130154,7 @@
     "STA: +5",
     "WT: 3.0 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Totemic_Cloak"
   },
@@ -130085,7 +130169,7 @@
     "SV COLD: +5",
     "WT: 2.8 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Totemic_Gauntlets"
   },
@@ -130100,7 +130184,7 @@
     "SV FIRE: +5",
     "WT: 4.2 Size: LARGE",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Totemic_Greaves"
   },
@@ -130114,7 +130198,7 @@
     "WIS: +5",
     "WT: 3.5 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Totemic_Helm"
   },
@@ -130128,7 +130212,7 @@
     "AGI: +5",
     "WT: 3.7 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Totemic_Vambraces"
   },
@@ -130274,7 +130358,7 @@
     "SV DISEASE: +5",
     "WT: 0.3 Size: LARGE",
     "Class: WAR SHD SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Trakanasaur_Hide_Gloves"
   },
@@ -130289,7 +130373,7 @@
     "SV DISEASE: +5",
     "WT: 0.5 Size: LARGE",
     "Class: WAR SHD SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Trakanasaur_Hide_Leggings"
   },
@@ -130303,7 +130387,7 @@
     "STR: +5",
     "WT: 0.4 Size: LARGE",
     "Class: WAR SHD SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Trakanasaur_Hide_Sleeves"
   },
@@ -130317,7 +130401,7 @@
     "STA: +5",
     "WT: 0.8 Size: LARGE",
     "Class: WAR SHD SHM",
-    "Race: BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Trakanasaur_Hide_Tunic"
   },
@@ -130670,7 +130754,7 @@
    "ic": 1163,
    "n": "Trident of the Seven Seas",
    "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
+    "Lore Equipped, No Trade, Placeable",
     "Slot: PRIMARY",
     "Skill: Piercing Atk Delay: 30",
     "DMG: 10",
@@ -130859,7 +130943,7 @@
     "SV DISEASE: +3 SV POISON: +3",
     "WT: 4.0 Size: MEDIUM",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Trooper_Scale_Boots"
   },
@@ -130873,7 +130957,7 @@
     "DEX: +2 STA: +4 INT: +2",
     "WT: 1.5 Size: SMALL",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Trooper_Scale_Bracers"
   },
@@ -130888,7 +130972,7 @@
     "SV MAGIC: +5",
     "WT: 7.0 Size: LARGE",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Trooper_Scale_Breastplate"
   },
@@ -130902,7 +130986,7 @@
     "STR: +5 DEX: +2",
     "WT: 2.5 Size: SMALL",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Trooper_Scale_Gauntlets"
   },
@@ -130917,7 +131001,7 @@
     "SV FIRE: +2 SV COLD: +2",
     "WT: 5.0 Size: LARGE",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Trooper_Scale_Greaves"
   },
@@ -130932,7 +131016,7 @@
     "SV MAGIC: +2",
     "WT: 3.5 Size: SMALL",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Trooper_Scale_Helm"
   },
@@ -130947,7 +131031,7 @@
     "SV MAGIC: +2",
     "WT: 3.0 Size: SMALL",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Trooper_Scale_Pauldron"
   },
@@ -130962,7 +131046,7 @@
     "SV DISEASE: +2 SV POISON: +2",
     "WT: 3.0 Size: SMALL",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Trooper_Scale_Vambraces"
   },
@@ -130989,7 +131073,7 @@
     "DMG: 12 AC: 5",
     "WT: 13.5 Size: GIANT",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Trooper's_Pike"
   },
@@ -131204,7 +131288,7 @@
     "AC: 11",
     "WT: 3.0 Size: MEDIUM",
     "Class: WAR CLR PAL RNG BRD ROG",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Truesilver_Mail_Boots"
   },
@@ -131217,7 +131301,7 @@
     "AC: 10",
     "WT: 2.0 Size: SMALL",
     "Class: WAR CLR PAL RNG BRD ROG",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Truesilver_Mail_Bracelets"
   },
@@ -131230,7 +131314,7 @@
     "AC: 13",
     "WT: 3.0 Size: SMALL",
     "Class: WAR CLR PAL RNG BRD ROG",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Truesilver_Mail_Coif"
   },
@@ -131243,7 +131327,7 @@
     "AC: 12",
     "WT: 2.5 Size: SMALL",
     "Class: WAR CLR PAL RNG BRD ROG",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Truesilver_Mail_Gloves"
   },
@@ -131256,7 +131340,7 @@
     "AC: 13",
     "WT: 3.5 Size: LARGE",
     "Class: WAR CLR PAL RNG BRD ROG",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Truesilver_Mail_Pants"
   },
@@ -131269,7 +131353,7 @@
     "AC: 20",
     "WT: 5.0 Size: LARGE",
     "Class: WAR CLR PAL RNG BRD ROG",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Truesilver_Mail_Shirt"
   },
@@ -131282,7 +131366,7 @@
     "AC: 11",
     "WT: 3.5 Size: SMALL",
     "Class: WAR CLR PAL RNG BRD ROG",
-    "Race: ALL except TRL OGR"
+    "Race: ALL"
    ],
    "t": "Truesilver_Mail_Sleeves"
   },
@@ -131478,6 +131562,16 @@
     "Race: ALL"
    ],
    "t": "Tuft_of_Dire_Wolf_Fur"
+  },
+  "tuft of panda bear fur": {
+   "ic": 553,
+   "n": "Tuft of Panda Bear Fur",
+   "sb": [
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "Tuft_of_Panda_Bear_Fur"
   },
   "tumpy tonic": {
    "ic": 1029,
@@ -133787,7 +133881,7 @@
     "SV FIRE: +5",
     "WT: 4.9 Size: SMALL",
     "Class: CLR",
-    "Race: ALL except BAR ELF TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Vambraces_of_the_Fervent"
   },
@@ -133962,7 +134056,6 @@
    "ic": 1011,
    "n": "Vegetables",
    "sb": [
-    "This is a snack!",
     "WT: 0.6 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -134894,7 +134987,7 @@
   },
   "velium sapphire necklace": {
    "ic": 1043,
-   "n": "Sapphire Velium Necklace",
+   "n": "Velium Sapphire Necklace",
    "sb": [
     "Slot: NECK",
     "STR: +8 INT: +8",
@@ -134998,7 +135091,7 @@
     "DMG: 36",
     "WT: 1.5 Range: 200 Size: LARGE",
     "Class: WAR SHD ROG",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Velium_Spear_of_Impaling"
   },
@@ -135752,7 +135845,7 @@
    "ic": 1157,
    "n": "Vial of Healing Liquid",
    "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP QUEST ITEM",
+    "NO DROP QUEST ITEM",
     "WT: 0.2 Size: TINY",
     "Class: ALL",
     "Race: ALL"
@@ -136216,6 +136309,7 @@
    "ic": 2899,
    "n": "Void-Touched Potential",
    "sb": [
+    "No Trade, No Destroy",
     "Class: ALL",
     "Race: ALL",
     "Size: TINY"
@@ -136368,11 +136462,10 @@
    "ic": 890,
    "n": "Wakizashi of the Frozen Skies",
    "sb": [
-    "MAGIC ITEM",
     "Slot: PRIMARY SECONDARY",
     "Skill: 1H Slashing Atk Delay: 22",
     "DMG: 6",
-    "Effect: Spirit Strike (Combat, Casting Time: Instant) at Level 35",
+    "Effect: Spirit Strike (Combat, Casting Time: Instant, Rate +50%) at Level 35",
     "WT: 1.5 Size: MEDIUM",
     "Class: WAR PAL RNG SHD BRD ROG",
     "Race: ALL"
@@ -136402,7 +136495,7 @@
     "Percussion Resonance: 13",
     "WT: 0.5 Size: SMALL",
     "Class: BRD",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Walrus_Skin_Drum"
   },
@@ -136457,7 +136550,7 @@
     "Effect: Allure (Any Slot/Can Equip, Casting Time: Instant) at Level 45",
     "WT: 1.0 Size: SMALL",
     "Class: ENC",
-    "Race: ALL except BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Wand_of_Allure"
   },
@@ -136485,7 +136578,7 @@
     "Effect: Cascading Darkness (Any Slot/Can Equip, Casting Time: Instant) at Level 45",
     "WT: 1.0 Size: SMALL",
     "Class: NEC",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Wand_of_Darkness"
   },
@@ -136498,7 +136591,7 @@
     "Effect: Shock of Frost (Any Slot, Casting Time: Instant)",
     "WT: 1.0 Size: SMALL",
     "Class: NEC WIZ MAG ENC",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Wand_of_Frost_Bolts"
   },
@@ -136528,7 +136621,7 @@
     "Effect: Shield of Lava (Any Slot/Can Equip, Casting Time: Instant) at Level 45",
     "WT: 1.0 Size: SMALL",
     "Class: MAG",
-    "Race: ALL except BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Wand_of_Lava"
   },
@@ -136587,7 +136680,7 @@
     "Effect: Drain Soul (Any Slot/Can Equip, Casting Time: Instant) at Level 45",
     "WT: 1.0 Size: SMALL",
     "Class: NEC",
-    "Race: ALL except BAR TRL OGR"
+    "Race: ALL"
    ],
    "t": "Wand_of_Souls"
   },
@@ -136601,7 +136694,7 @@
     "Effect: Swift Like the Wind (Any Slot/Can Equip, Casting Time: Instant) at Level 45",
     "WT: 1.0 Size: SMALL",
     "Class: ENC",
-    "Race: ALL except BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Wand_of_Swiftness"
   },
@@ -136615,7 +136708,7 @@
     "Effect: Shock of Swords (Any Slot/Can Equip, Casting Time: Instant) at Level 45",
     "WT: 1.0 Size: SMALL",
     "Class: MAG",
-    "Race: ALL except BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Wand_of_Swords"
   },
@@ -136923,7 +137016,7 @@
     "Effect: Stun (Combat, Casting Time: Instant) at Level 20",
     "WT: 12.0 Size: GIANT",
     "Class: WAR",
-    "Race: IKS"
+    "Race: ALL"
    ],
    "t": "Warlord_Mancatcher"
   },
@@ -137140,7 +137233,7 @@
     "Effect: Spirit of Wolf (Must Equip, Casting Time: Instant) at Level 10",
     "WT: 6.5 Size: MEDIUM",
     "Class: WAR CLR PAL RNG SHD BRD ROG SHM",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Watchman_Boots"
   },
@@ -138764,7 +138857,7 @@
     "STA: +5 CHA: +9 INT: +5",
     "WT: 4.9 Size: MEDIUM",
     "Class: PAL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Wind_Etched_Boots_of_Ro"
   },
@@ -138779,7 +138872,7 @@
     "SV POISON: +5",
     "WT: 3.0 Size: SMALL",
     "Class: PAL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Wind_Etched_Bracers_of_Ro"
   },
@@ -138794,7 +138887,7 @@
     "SV DISEASE: +10",
     "WT: 3.8 Size: SMALL",
     "Class: PAL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Wind_Etched_Gauntlets_of_Ro"
   },
@@ -138809,9 +138902,174 @@
     "SV MAGIC: +13",
     "WT: 4.5 Size: SMALL",
     "Class: PAL",
-    "Race: ALL except IKS"
+    "Race: ALL"
    ],
    "t": "Wind_Etched_Helm_of_Ro"
+  },
+  "wind rune azia": {
+   "ic": 966,
+   "n": "Wind Rune Azia",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: WAR RNG DRU BRD NEC MAG BER",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Azia"
+  },
+  "wind rune beza": {
+   "ic": 966,
+   "n": "Wind Rune Beza",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: WAR SHD MNK SHM ENC BST",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Beza"
+  },
+  "wind rune caza": {
+   "ic": 966,
+   "n": "Wind Rune Caza",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: CLR MNK BRD NEC WIZ ENC",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Caza"
+  },
+  "wind rune dena": {
+   "ic": 966,
+   "n": "Wind Rune Dena",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: WAR SHD DRU ROG WIZ MAG BER",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Dena"
+  },
+  "wind rune ena": {
+   "ic": 966,
+   "n": "Wind Rune Ena",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: CLR RNG DRU ROG SHM MAG BER",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Ena"
+  },
+  "wind rune fana": {
+   "ic": 966,
+   "n": "Wind Rune Fana",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: WAR SHD BRD NEC WIZ ENC",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Fana"
+  },
+  "wind rune geza": {
+   "ic": 966,
+   "n": "Wind Rune Geza",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: PAL MNK ROG SHM WIZ BST",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Geza"
+  },
+  "wind rune heda": {
+   "ic": 966,
+   "n": "Wind Rune Heda",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: RNG SHD BRD SHM MAG BST",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Heda"
+  },
+  "wind rune izah": {
+   "ic": 966,
+   "n": "Wind Rune Izah",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: PAL SHD DRU ROG WIZ ENC BST",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Izah"
+  },
+  "wind rune jaka": {
+   "ic": 966,
+   "n": "Wind Rune Jaka",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: WAR MNK ROG WIZ BER",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Jaka"
+  },
+  "wind rune kala": {
+   "ic": 966,
+   "n": "Wind Rune Kala",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: CLR RNG SHD DRU BRD SHM BST",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Kala"
+  },
+  "wind rune lena": {
+   "ic": 966,
+   "n": "Wind Rune Lena",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: CLR PAL MNK NEC MAG BER",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Lena"
+  },
+  "wind rune meda": {
+   "ic": 966,
+   "n": "Wind Rune Meda",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: NONE",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Meda"
+  },
+  "wind rune neza": {
+   "ic": 966,
+   "n": "Wind Rune Neza",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: WAR CLR RNG MNK NEC MAG",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Neza"
+  },
+  "wind rune ozah": {
+   "ic": 966,
+   "n": "Wind Rune Ozah",
+   "sb": [
+    "No Trade, Quest",
+    "WT: 1.0 Size: MEDIUM",
+    "Class: PAL SHD ROG NEC ENC BER",
+    "Race: ALL"
+   ],
+   "t": "Wind_Rune_Ozah"
   },
   "wind saber": {
    "ic": 1104,
@@ -139350,7 +139608,7 @@
     "Effect: Malaisement (Combat, Casting Time: Instant) at Level 35",
     "WT: 6.5 Size: LARGE",
     "Class: SHM",
-    "Race: TRL OGR"
+    "Race: ALL"
    ],
    "t": "Withered_Totem_of_Widdershins"
   },
@@ -139467,7 +139725,7 @@
     "SV MAGIC: +4",
     "WT: 5.0 Size: SMALL",
     "Class: SHM",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Wolf_Caller's_Helm"
   },
@@ -141714,7 +141972,7 @@
     "CHA: -2",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: BAR TRL OGR IKS"
+    "Race: ALL"
    ],
    "t": "Wrath_Orc_Wristbands"
   },

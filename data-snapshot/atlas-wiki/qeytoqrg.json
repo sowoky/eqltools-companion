@@ -1353,9 +1353,18 @@
    "n": "Varsoon the Undying",
    "named": true,
    "u": "https://eqlwiki.com/index.php/Varsoon_the_Undying"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "12",
+   "n": "Yollis Jenkins",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Yollis_Jenkins"
   }
  ],
- "updated": "2026-07-21T16:26:12Z",
+ "updated": "2026-08-05T21:54:56Z",
  "wikiTitle": "Qeynos Hills",
  "wikiUrl": "https://eqlwiki.com/index.php/Qeynos_Hills",
  "zone": "qeytoqrg"

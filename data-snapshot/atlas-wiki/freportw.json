@@ -1565,7 +1565,7 @@
    "loc": [
     -204.0,
     -497.0,
-    null
+    -10.5
    ],
    "lvl": "28",
    "n": "Pandos Flintside",
@@ -1858,7 +1858,7 @@
    "u": "https://eqlwiki.com/index.php/Vun_Winstone"
   }
  ],
- "updated": "2026-07-31T10:27:46Z",
+ "updated": "2026-08-07T00:19:32Z",
  "wikiTitle": "West Freeport",
  "wikiUrl": "https://eqlwiki.com/index.php/West_Freeport",
  "zone": "freportw"

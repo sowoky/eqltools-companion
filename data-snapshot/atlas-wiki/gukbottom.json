@@ -2303,11 +2303,13 @@
   {
    "dr": [
     "Rare",
-    "Common"
+    "Common",
+    "Rare"
    ],
    "drops": [
     27,
-    28
+    28,
+    91
    ],
    "loc": [
     930.0,
@@ -2979,7 +2981,7 @@
    "u": "https://eqlwiki.com/index.php/The_Ghoul_Lord"
   }
  ],
- "updated": "2026-08-01T18:57:00Z",
+ "updated": "2026-08-08T20:30:14Z",
  "wikiTitle": "Lower Guk",
  "wikiUrl": "https://eqlwiki.com/index.php/Lower_Guk",
  "zone": "gukbottom"

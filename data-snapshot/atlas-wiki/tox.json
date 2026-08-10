@@ -460,7 +460,7 @@
     "Rare",
     "Uncommon",
     "Rare",
-    "Always"
+    null
    ],
    "drops": [
     12,
@@ -1343,7 +1343,7 @@
    "u": "https://eqlwiki.com/index.php/Veisha_Fathomwalker"
   }
  ],
- "updated": "2026-08-01T14:18:05Z",
+ "updated": "2026-08-08T03:26:20Z",
  "wikiTitle": "Toxxulia Forest",
  "wikiUrl": "https://eqlwiki.com/index.php/Toxxulia_Forest",
  "zone": "tox"

@@ -1916,11 +1916,11 @@
     144
    ],
    "loc": [
-    -72.0,
-    317.0,
+    -64.0,
+    -452.0,
     null
    ],
-   "lvl": "58",
+   "lvl": "56",
    "n": "Grandmaster R`Tal",
    "named": true,
    "u": "https://eqlwiki.com/index.php/Grandmaster_R%60Tal"
@@ -2220,11 +2220,11 @@
     139
    ],
    "loc": [
-    206.0,
-    -442.0,
+    199.0,
+    -445.0,
     null
    ],
-   "lvl": "58",
+   "lvl": "56",
    "n": "Master of Spite",
    "named": true,
    "u": "https://eqlwiki.com/index.php/Master_of_Spite"
@@ -2259,11 +2259,11 @@
     141
    ],
    "loc": [
-    -164.0,
-    -63.0,
+    -136.0,
+    -181.0,
     null
    ],
-   "lvl": "58",
+   "lvl": "56",
    "n": "Mistress of Scorn",
    "named": true,
    "u": "https://eqlwiki.com/index.php/Mistress_of_Scorn"
@@ -2348,7 +2348,7 @@
    "u": "https://eqlwiki.com/index.php/Vicar_M%60Kari"
   }
  ],
- "updated": "2026-07-28T00:44:15Z",
+ "updated": "2026-08-08T13:01:29Z",
  "wikiTitle": "Plane of Hate",
  "wikiUrl": "https://eqlwiki.com/index.php/Plane_of_Hate",
  "zone": "hateplane"

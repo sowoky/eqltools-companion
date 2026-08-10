@@ -1515,7 +1515,7 @@
   },
   {
    "dr": [
-    "Uncommon"
+    null
    ],
    "drops": [
     77
@@ -2639,7 +2639,7 @@
    "u": "https://eqlwiki.com/index.php/Zyle_Bensmill"
   }
  ],
- "updated": "2026-08-03T21:32:15Z",
+ "updated": "2026-08-09T23:46:37Z",
  "wikiTitle": "Ocean of Tears",
  "wikiUrl": "https://eqlwiki.com/index.php/Ocean_of_Tears",
  "zone": "oot"

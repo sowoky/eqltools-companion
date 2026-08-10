@@ -754,7 +754,7 @@ function trackedPlan(key, have) {
   const pq = {
     ...q, t: key, wk: q.t,
     n: `${p.n || `Turn-in ${+key.slice(ix + 2) + 1}`} — ${q.n}`,
-    giver: p.g || q.giver, rewards: [], need: p.c,
+    giver: p.g || q.giver, rewards: p.r || [], need: p.c,
     items: p.c.map(([n]) => n), parts: [], split: undefined,
     steps: undefined, roles: undefined,
   };
@@ -1138,6 +1138,7 @@ function partsHtml(q, have) {
       <div class="qpart__head">
         <span class="qpart__n">${esc(p.n || "Also listed on this page")}</span>
         ${p.g ? `<span class="dim">→ ${esc(p.g)}</span>` : ""}
+        ${(p.r || []).length ? `<span class="dim">reward: ${p.r.map(esc).join(", ")}</span>` : ""}
         <span class="qprog">${got}/${cs.length}</span>
         <button class="btn btn--mini qtrk" data-track="${esc(pkey)}">${ptracked ? "Untrack" : "Track"}</button>
       </div>
@@ -1274,6 +1275,11 @@ function qbMatch(q) {
   if (needle && ![q.n, q.giver, q.zone, q.era, ...(q.items || []), ...(q.rewards || []),
     ...(q.relatedZones || []), ...(q.relatedNpcs || []), ...(q.classes || [])]
     .some(s => s && String(s).toLowerCase().includes(needle))) return false;
+  return qbFilters(q);
+}
+
+// the non-search filters, shared by quest rows and their part rows
+function qbFilters(q) {
   // a quest with no class list is open to everyone — it passes any class filter
   if (QB.cls && (q.classes || []).length && !q.classes.some(c => c === QB.cls || c === "Any")) return false;
   if (QB.zone && q.zone !== QB.zone) return false;
@@ -1284,6 +1290,16 @@ function qbMatch(q) {
   if (min && q.lvl < min) return false;
   if (max && q.lvl > max) return false;
   return true;
+}
+
+/* A hub page's turn-in matches on ITS OWN name, giver, items and — the part
+   Kyle actually searched for — its own reward: "aldryn" must surface
+   "Paladin Test of Sacrifice", not just the hub (2026-08-09). */
+function qbMatchPart(q, p) {
+  const needle = QB.q.trim().toLowerCase();
+  if (needle && ![p.n, p.g, q.n, ...(p.c || []).map(([n]) => n), ...(p.r || [])]
+    .some(s => s && String(s).toLowerCase().includes(needle))) return false;
+  return qbFilters(q);
 }
 
 const QB_SORTS = {
@@ -1300,7 +1316,8 @@ function qbRow(p, tracked, open, have) {
   // a page the parts walk split IS a chain, and now says how many turn-ins;
   // the old guess (no giver and no zone) stays for pages it couldn't split
   const parts = (q.parts || []).length;
-  const chain = q.split ? `${parts} turn-ins`
+  // a part row (q.wk = its hub) is one turn-in by construction — no tag
+  const chain = q.wk ? "" : q.split ? `${parts} turn-ins`
     : (q.items && q.items.length && !q.giver && !q.zone ? "chain" : "");
   return `<tr class="qbr ${p.done ? "is-ready" : ""} ${q.oe ? "is-oe" : ""} ${open ? "is-open" : ""}" data-qx="${esc(q.t)}">
     <td class="qb-trk"><button class="btn btn--mini" data-track="${esc(q.t)}">${tracked ? "Untrack" : "Track"}</button></td>
@@ -1324,7 +1341,18 @@ function renderQuestBrowser() {
   }
   const have = haveMap();
   const trackedSet = new Set(TRACKED);
-  const rows = QDATA.quests.filter(qbMatch).map(q => compsFor(q, have));
+  // a split page's named turn-ins are quests in their own right: they get
+  // their own searchable, trackable rows beside the hub's
+  const rows = [];
+  for (const q of QDATA.quests) {
+    if (qbMatch(q)) rows.push(compsFor(q, have));
+    if (q.split) (q.parts || []).forEach((p, i) => {
+      if (p.n && p.c.length && qbMatchPart(q, p)) {
+        const plan = trackedPlan(`${q.t}::${i}`, have);
+        if (plan) rows.push(plan);
+      }
+    });
+  }
   const key = QB_SORTS[QB.sort] || QB_SORTS.name;
   rows.sort((a, b) => {
     const ka = key(a), kb = key(b);

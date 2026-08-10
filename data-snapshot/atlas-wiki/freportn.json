@@ -359,6 +359,19 @@
    "dr": [],
    "drops": [],
    "loc": [
+    -91.0,
+    584.0,
+    null
+   ],
+   "lvl": "70",
+   "n": "Nashia Lanseb",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nashia_Lanseb"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
     80.0,
     5.0,
     null
@@ -1400,7 +1413,7 @@
    "u": "https://eqlwiki.com/index.php/Zigg_Flin"
   }
  ],
- "updated": "2026-07-18T20:56:58Z",
+ "updated": "2026-08-07T06:02:38Z",
  "wikiTitle": "North Freeport",
  "wikiUrl": "https://eqlwiki.com/index.php/North_Freeport",
  "zone": "freportn"

@@ -80,7 +80,6 @@
    "u": "https://eqlwiki.com/index.php/Bloodstone_Ring"
   },
   {
-   "g": 1,
    "n": "Bone Barbs",
    "u": "https://eqlwiki.com/index.php/Bone_Barbs"
   },
@@ -1550,8 +1549,8 @@
   },
   {
    "dr": [
-    "Common",
-    "Always"
+    null,
+    null
    ],
    "drops": [
     55,
@@ -1747,8 +1746,8 @@
   },
   {
    "dr": [
-    "Always",
-    "Always"
+    null,
+    null
    ],
    "drops": [
     55,
@@ -2257,8 +2256,8 @@
   },
   {
    "dr": [
-    "Common",
-    "Always"
+    null,
+    null
    ],
    "drops": [
     55,
@@ -2586,7 +2585,7 @@
    "u": "https://eqlwiki.com/index.php/Zazaphenebti"
   }
  ],
- "updated": "2026-07-20T21:10:24Z",
+ "updated": "2026-08-07T20:12:50Z",
  "wikiTitle": "Rathe Mountains",
  "wikiUrl": "https://eqlwiki.com/index.php/Rathe_Mountains",
  "zone": "rathemtn"
