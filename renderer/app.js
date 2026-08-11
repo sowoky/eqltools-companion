@@ -794,25 +794,73 @@ function invView(r) {
 
 /* every column click-sorts; blanks always sink to the bottom whatever the
    direction; d0 is the first-click direction (numbers open biggest-first) */
+/* The Quests cell — the reason this table exists: every quest wanting the
+   item, INLINE and readable in the row (Kyle, 2026-08-10: "all i really want
+   is to figure out if items are for quests and what quests … links.
+   tooltips."). Same shape as the overlay's loot rows: linked quest name,
+   " → " the rewards as EQ-tooltip spans. Capped per row, expandable through
+   the same FEED_OPEN space the feed chips use. */
+function invQuestsCell(v) {
+  const QCAP = 3, RCAP = 3;
+  const open = FEED_OPEN.has(v.r.id);
+  const qlist = open ? v.quests : v.quests.slice(0, QCAP);
+  const lines = qlist.map(q => {
+    const oe = q.oe ? ` <span class="oe">out of era</span>` : "";
+    const link = `<a class="wk" data-wiki="${esc(q.t)}">${esc(q.n)}</a>`;
+    if (q.as === "r") return `<div class="iv-qline"><span class="dim">reward from</span> ${link}${oe}</div>`;
+    const rew = q.rewards.length
+      ? ` <span class="dim">→</span> ${q.rewards.slice(0, RCAP).map(r => `<span class="itn" data-tt="${esc(r)}">${esc(r)}</span>`).join(", ")}${q.rewards.length > RCAP ? ` <span class="dim">+${q.rewards.length - RCAP}</span>` : ""}`
+      : "";
+    return `<div class="iv-qline">${link}${oe}${rew}</div>`;
+  });
+  const more = v.quests.length > QCAP && !open
+    ? `<div class="iv-qline iv-qmore" data-open="${v.r.id}">+${v.quests.length - QCAP} more quests</div>` : "";
+  return lines.join("") + more;
+}
+
+/* Every column the data can fill exists; WHICH show is the player's call
+   (the columns picker, persisted). Defaults are the quest-ID job — where,
+   what, how many, which quests — not a stat sheet. */
 const IV_COLS = [
-  { k: "where", h: "Where", d0: 1, key: v => v.r.idx },
-  { k: "item", h: "Item", d0: 1, key: v => v.r.name.toLowerCase() },
-  { k: "qty", h: "Qty", d0: -1, key: v => v.r.count > 1 ? v.r.count : null },
-  { k: "tier", h: "Tier", d0: -1, key: v => v.r.tier || null },
-  { k: "slot", h: "Slot", d0: 1, key: v => v.slotTxt || null },
-  { k: "ac", h: "AC", d0: -1, key: v => v.ac },
-  { k: "ratio", h: "Dmg/Dly", d0: -1, key: v => v.ratio },
-  { k: "stats", h: "Stats", d0: -1, key: v => v.statSum },
-  { k: "sv", h: "Resists", d0: -1, key: v => v.svSum },
-  { k: "wt", h: "Wt", d0: -1, key: v => v.wt },
-  { k: "eff", h: "Effect", d0: 1, key: v => v.effTxt.toLowerCase() || null },
-  { k: "trade", h: "Trade", d0: 1, key: v => v.tradeRank },
-  { k: "flags", h: "Flags", d0: 1, key: v => v.flagsTxt || null },
-  { k: "cls", h: "Class", d0: 1, key: v => v.clsTxt || null },
-  { k: "era", h: "Era", d0: 1, key: v => v.eraKey },
-  { k: "src", h: "Source", d0: 1, key: v => v.src.cell.toLowerCase() || null },
-  { k: "quests", h: "Quests", d0: -1, key: v => v.quests.length || null },
+  { k: "where", h: "Where", d0: 1, key: v => v.r.idx, cell: v => `<td class="iv-where">${esc(v.r.loc)}</td>` },
+  { k: "item", h: "Item", d0: 1, always: true, key: v => v.r.name.toLowerCase(), cell: v => {
+    // the name already prints "+N" and "(Exaltation)" — no chips restating it
+    const badges = (v.r.kids ? `<span class="ivb">${v.r.kids.length} inside</span>` : "") +
+      (v.vars ? `<span class="ivb" title="the wiki lists ${v.vars.length} items with this name — the columns show the first; open the row for all of them">${v.vars.length} variants</span>` : "");
+    return `<td class="iv-item">${itemSpan(v.r.name, true)}${badges}</td>`;
+  } },
+  { k: "qty", h: "Qty", d0: -1, key: v => v.r.count > 1 ? v.r.count : null, cell: v => `<td class="iv-n">${v.r.count > 1 ? v.r.count : ""}</td>` },
+  { k: "quests", h: "Quests", d0: -1, key: v => v.quests.length || null, cell: v => `<td class="iv-q">${invQuestsCell(v)}</td>` },
+  { k: "tier", h: "Tier", d0: -1, key: v => v.r.tier || null, cell: v => `<td class="iv-n">${v.r.tier || ""}</td>` },
+  { k: "slot", h: "Slot", d0: 1, key: v => v.slotTxt || null, cell: v => `<td>${esc(v.slotTxt)}</td>` },
+  { k: "ac", h: "AC", d0: -1, key: v => v.ac, cell: v => `<td class="iv-n">${v.ac ?? ""}</td>` },
+  { k: "ratio", h: "Dmg/Dly", d0: -1, key: v => v.ratio, cell: v => `<td class="iv-n">${v.ratioTxt}</td>` },
+  { k: "stats", h: "Stats", d0: -1, key: v => v.statSum, cell: v => `<td>${esc(v.statsTxt)}</td>` },
+  { k: "sv", h: "Resists", d0: -1, key: v => v.svSum, cell: v => `<td>${esc(v.svTxt)}</td>` },
+  { k: "wt", h: "Wt", d0: -1, key: v => v.wt, cell: v => `<td class="iv-n">${v.wt ?? ""}</td>` },
+  { k: "eff", h: "Effect", d0: 1, key: v => v.effTxt.toLowerCase() || null, cell: v => `<td class="iv-eff">${esc(v.effTxt)}</td>` },
+  { k: "trade", h: "Trade", d0: 1, key: v => v.tradeRank, cell: v => `<td>${esc(v.trade)}</td>` },
+  { k: "flags", h: "Flags", d0: 1, key: v => v.flagsTxt || null, cell: v => `<td>${esc(v.flagsTxt)}</td>` },
+  { k: "cls", h: "Class", d0: 1, key: v => v.clsTxt || null, cell: v => `<td class="iv-cls">${esc(v.clsTxt)}</td>` },
+  { k: "era", h: "Era", d0: 1, key: v => v.eraKey, cell: v => `<td>${v.oe ? `<span class="oe">out of era</span>` : esc(v.eraTxt)}</td>` },
+  { k: "src", h: "Source", d0: 1, key: v => v.src.cell.toLowerCase() || null, cell: v => `<td class="iv-src">${esc(v.src.cell)}</td>` },
 ];
+const IV_DEFAULT_COLS = ["where", "item", "qty", "quests"];
+const IV_COLS_KEY = "eqlt-companion-invcols-v1";
+let IV_SHOW = new Set(IV_DEFAULT_COLS);
+function loadInvCols() {
+  try {
+    const a = JSON.parse(localStorage.getItem(IV_COLS_KEY));
+    if (Array.isArray(a) && a.length) IV_SHOW = new Set(a.filter(k => IV_COLS.some(c => c.k === k)));
+  } catch { /* defaults stand */ }
+  IV_SHOW.add("item");
+}
+function saveInvCols() { try { localStorage.setItem(IV_COLS_KEY, JSON.stringify([...IV_SHOW])); } catch {} }
+const invVisibleCols = () => IV_COLS.filter(c => IV_SHOW.has(c.k));
+function renderInvColPicker() {
+  $("invColsBody").innerHTML = IV_COLS.map(c => `<label class="chk invcols__row">
+    <input type="checkbox" data-ivcol="${c.k}" ${IV_SHOW.has(c.k) ? "checked" : ""} ${c.always ? "disabled" : ""}> ${c.h}</label>`).join("");
+}
 function cmpNullLast(a, b, dir) {
   if (a == null && b == null) return 0;
   if (a == null) return 1;
@@ -832,38 +880,15 @@ function populateInvFilters() {
   if (IV.cls) $("invClass").value = IV.cls;
 }
 
-function invRow(v) {
-  const r = v.r;
-  const open = IV_OPEN.has(r.id);
-  const where = r.parent
-    ? `${esc(r.loc)} <span class="dim">in ${esc(r.parent.name)}</span>`
-    : esc(r.loc);
-  // the name already prints "+N" and "(Exaltation)" — no chips restating it
-  const badges = (r.kids ? `<span class="ivb">${r.kids.length} inside</span>` : "") +
-    (v.vars ? `<span class="ivb" title="the wiki lists ${v.vars.length} items with this name — the columns show the first; open the row for all of them">${v.vars.length} variants</span>` : "");
-  return `<tr class="ivr ${v.quests.length ? "is-quest" : ""} ${v.oe ? "is-oe" : ""} ${open ? "is-open" : ""}" data-ivx="${r.id}">
-    <td class="iv-where">${where}</td>
-    <td class="iv-item">${itemSpan(r.name, true)}${badges}</td>
-    <td class="iv-n">${r.count > 1 ? r.count : ""}</td>
-    <td class="iv-n">${r.tier || ""}</td>
-    <td>${esc(v.slotTxt)}</td>
-    <td class="iv-n">${v.ac ?? ""}</td>
-    <td class="iv-n">${v.ratioTxt}</td>
-    <td>${esc(v.statsTxt)}</td>
-    <td>${esc(v.svTxt)}</td>
-    <td class="iv-n">${v.wt ?? ""}</td>
-    <td class="iv-eff">${esc(v.effTxt)}</td>
-    <td>${esc(v.trade)}</td>
-    <td>${esc(v.flagsTxt)}</td>
-    <td class="iv-cls">${esc(v.clsTxt)}</td>
-    <td>${v.oe ? `<span class="oe">out of era</span>` : esc(v.eraTxt)}</td>
-    <td class="iv-src">${esc(v.src.cell)}</td>
-    <td class="iv-n">${v.quests.length || ""}</td>
-  </tr>` + (open ? `<tr class="ivd"><td colspan="${IV_COLS.length}">${invDetail(v)}</td></tr>` : "");
+function invRow(v, cols) {
+  const open = IV_OPEN.has(v.r.id);
+  return `<tr class="ivr ${v.quests.length ? "is-quest" : ""} ${v.oe ? "is-oe" : ""} ${open ? "is-open" : ""}" data-ivx="${v.r.id}">
+    ${cols.map(c => c.cell(v)).join("\n    ")}
+  </tr>` + (open ? `<tr class="ivd"><td colspan="${cols.length}">${invDetail(v)}</td></tr>` : "");
 }
 
 function invDetail(v) {
-  const r = v.r, g = v.g;
+  const g = v.g;
   const parts = [];
   if (v.vars) {
     const gbase = (GDATA && GDATA.base) || "";
@@ -893,8 +918,6 @@ function invDetail(v) {
   if (g && g.eff && g.eff.length) parts.push(`<div>${g.eff.map(e =>
     `${esc(e.n)}${e.m || e.l || (e.ct && e.ct !== "Instant") ? ` <span class="dim">(${[e.m, e.l && `lvl ${e.l}`, e.ct && e.ct !== "Instant" && e.ct].filter(Boolean).map(esc).join(", ")})</span>` : ""}`).join(" · ")}</div>`);
   if (g && g.ex) parts.push(`<div class="dim">${Object.entries(g.ex).map(([k2, val]) => esc(`${k2}: ${val}`)).join(" · ")}</div>`);
-  if (r.kids) parts.push(`<div class="dim">holds: ${r.kids.map(k2 => esc(k2.name)).join(", ")}</div>`);
-  if (v.quests.length) parts.push(questChips(v.quests, r.id));
   if (!parts.length) parts.push(`<span class="dim">nothing more known about this item</span>`);
   return parts.join("");
 }
@@ -933,16 +956,19 @@ function renderInv() {
     .filter(([k]) => k === "all" || counts[k])
     .map(([k, label]) => `<button class="invtab ${IV.tab === k ? "is-on" : ""}" data-ivtab="${k}">${label} <span class="invtab__n">${counts[k] || 0}</span></button>`).join("");
   const rows = pool.filter(v => IV.tab === "all" || v.r.sec === IV.tab);
-  const col = IV_COLS.find(c => c.k === IV.sort) || IV_COLS[0];
+  const cols = invVisibleCols();
+  if (!IV_SHOW.has(IV.sort)) { IV.sort = cols[0].k; IV.dir = cols[0].d0; } // hiding the sorted column resets the sort
+  const col = IV_COLS.find(c => c.k === IV.sort) || cols[0];
   rows.sort((a, b) => cmpNullLast(col.key(a), col.key(b), IV.dir) || (a.r.idx - b.r.idx));
-  const wt = rows.reduce((n, v) => n + (v.wt != null ? v.wt * v.r.count : 0), 0);
+  // the weight total belongs to the Wt column — hidden column, no stray number
+  const wt = IV_SHOW.has("wt") ? rows.reduce((n, v) => n + (v.wt != null ? v.wt * v.r.count : 0), 0) : null;
   $("invMeta").textContent =
-    `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()} · ${rows.length} of ${INV.rows.length} items · ${Math.round(wt * 10) / 10} wt`;
+    `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()} · ${rows.length} of ${INV.rows.length} items${wt != null ? ` · ${Math.round(wt * 10) / 10} wt` : ""}`;
   const arrow = k => IV.sort === k ? (IV.dir > 0 ? " ▲" : " ▼") : "";
   body.innerHTML = rows.length
-    ? `<table class="qtab ivt"><thead><tr>${IV_COLS.map(c =>
-        `<th class="is-sort" data-ivsort="${c.k}">${c.h}${arrow(c.k)}</th>`).join("")}</tr></thead>
-      <tbody>${rows.map(invRow).join("")}</tbody></table>`
+    ? `<table class="qtab ivt"><thead><tr>${cols.map(c =>
+        `<th class="is-sort${c.k === "item" ? " iv-item" : ""}" data-ivsort="${c.k}">${c.h}${arrow(c.k)}</th>`).join("")}</tr></thead>
+      <tbody>${rows.map(v => invRow(v, cols)).join("")}</tbody></table>`
     : `<p class="empty">Nothing matches those filters.</p>`;
   retip();
 }
@@ -2398,6 +2424,18 @@ async function main() {
   $("invSearch").addEventListener("input", renderInv);
   $("invTrade").addEventListener("change", e => { IV.trade = e.target.value; renderInv(); });
   $("invClass").addEventListener("change", e => { IV.cls = e.target.value; renderInv(); });
+  loadInvCols(); renderInvColPicker();
+  $("invColsBody").addEventListener("change", e => {
+    const k = e.target.dataset.ivcol;
+    if (!k) return;
+    e.target.checked ? IV_SHOW.add(k) : IV_SHOW.delete(k);
+    saveInvCols(); renderInv();
+  });
+  // click-away closes the picker; clicks inside it stay in it
+  document.addEventListener("click", e => {
+    const w = $("invColsWrap");
+    if (w && w.open && !w.contains(e.target)) w.open = false;
+  });
   $("zoneFilter").addEventListener("input", renderZoneTab);
   $("tiSearch").addEventListener("input", e => { TURNIN.q = e.target.value; renderTurnins(); });
   $("qReadyOnly").addEventListener("change", e => { TURNIN.readyOnly = e.target.checked; renderTurnins(); });
