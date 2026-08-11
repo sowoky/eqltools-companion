@@ -20,9 +20,12 @@ let QDROPS = {};      // normName(item) -> [[mob, mobPath, zone, zonePath], ...]
 let QSRC = {};        // itemKey(item) -> {z:[zone], k:[kind], m:{zone:[mob]}, many, various, r:{c,to}}
 let QZONES = {};      // zone display name -> wiki path
 // article-stripped fallbacks, consulted only when the exact key misses
-let QIDX_L = new Map(), TIDX_L = new Map(), QSRC_L = {}, QDROPS_L = {};
+let QIDX_L = new Map(), TIDX_L = new Map(), GIDX_L = new Map(), QSRC_L = {}, QDROPS_L = {};
 let TDATA = null;     // item-tooltips.json
 let TIDX = new Map(); // normName(item) -> {n, t, ic, sb: [lines]}
+let GDATA = null;     // gear-data.json — stats, flags, slots, classes, drop sources
+let GIDX = new Map(); // itemKey(item) -> gear record (the name's FIRST wiki record, same pick as /gear)
+let GVARS = new Map(); // itemKey(item) -> [all records sharing that display name], only when > 1
 let GEO = null;       // quest-items.json geo: {nodes: {name: {adj, keys, oe}}, alias}
 let KEY2NODE = new Map(); // atlas zone key -> geo node name
 let NPCLOC = {};      // NPC display name -> {t, z, loc}
@@ -66,7 +69,32 @@ function buildIndexes(datasets) {
   SOURCES.tooltips = td ? td.source : "none";
   TIDX = new Map();
   if (TDATA) for (const [nk, e] of Object.entries(TDATA.items)) TIDX.set(nk, e);
-  QIDX_L = looseIndex(QIDX); TIDX_L = looseIndex(TIDX);
+  const gd = datasets["gear-data.json"];
+  GDATA = gd ? gd.data : null;
+  SOURCES.gear = gd ? gd.source : "none";
+  GIDX = new Map(); GVARS = new Map();
+  /* 57 display names map to several distinct wiki records (deity armor
+     variants, "(Sky)" pages, material variants) and a dump only carries the
+     display name — fusing them silently would show the wrong item's stats
+     (the A-Sapphire lesson). The dataset's own `names` table resolves the
+     name to its record list; the FIRST record is what /gear shows for the
+     same name, so the two tools agree, and the full list surfaces in the
+     row detail as "N variants" instead of being hidden. */
+  if (GDATA && GDATA.names) {
+    for (const keys of Object.values(GDATA.names)) {
+      const recs = keys.map(k => GDATA.items[k]).filter(Boolean);
+      if (!recs.length) continue;
+      const key = itemKey(recs[0].n);
+      if (!GIDX.has(key)) GIDX.set(key, recs[0]);
+      if (recs.length > 1 && !GVARS.has(key)) GVARS.set(key, recs);
+    }
+  } else if (GDATA) {
+    for (const rec of Object.values(GDATA.items)) {
+      const key = itemKey(rec.n);
+      if (!GIDX.has(key)) GIDX.set(key, rec);
+    }
+  }
+  QIDX_L = looseIndex(QIDX); TIDX_L = looseIndex(TIDX); GIDX_L = looseIndex(GIDX);
   QSRC_L = looseObj(QSRC); QDROPS_L = looseObj(QDROPS);
 }
 
@@ -559,37 +587,70 @@ function renderZoneTab() {
   retip();
 }
 
-/* ── inventory tab ────────────────────────────────────────────────────────
+/* ── inventory tab — the whole bag corpus as one sortable table ───────────
    /out inventory writes a TSV — header Location/Name/ID/Count/Slots, CRLF,
    "Empty" placeholder rows — validated against a real live-play dump.
-   Main ships the newest file whenever it changes; rows keep their raw
-   Location (collect full), the section grouping is display-only. */
-const INV = { file: null, mtime: 0, rows: null };
+   Sections observed in real dumps (docs/DATA-COLLECTION.md): worn slots
+   (+ -SlotN socket rows), General 1–12 (+bag sub-slots), Held, Bank 1–24,
+   SharedBank 1–6, Personal-Depot, KeyRing; the Dragon's Hoard only while its
+   window is open. Rows keep their raw Location (collect full) — the area
+   subtabs, parent/child nesting, and every enrichment column are display,
+   resolved at render time from the live datasets so a data refresh re-answers
+   the same dump. */
+const INV = { file: null, mtime: 0, rows: null, problem: null };
+const IV = { tab: "all", trade: "", cls: "", sort: "where", dir: 1 };
+const IV_OPEN = new Set(); // expanded rows, keyed by row id
 const WORN_RX = /^(Charm|Ear|Head|Face|Neck|Shoulders|Arms|Back|Wrist|Range|Hands|Primary|Secondary|Fingers?|Ring|Chest|Legs|Feet|Waist|Ammo|Power Source)(-Slot\d+)?$/;
+/* The client writes "General 1" WITH a space but "Bank1" without — matchers
+   take an optional space so a format nudge doesn't reclassify. No real dump
+   with the Dragon's Hoard open has been captured yet, so its location string
+   is unconfirmed — the prefix matcher is deliberately loose, and any location
+   nothing matches lands in Elsewhere instead of vanishing. */
 const INV_SECTIONS = [
-  ["Worn", loc => WORN_RX.test(loc)],
-  ["Held", loc => /^(Held|Any Slot)$/.test(loc)],
-  ["Carried", loc => /^General ?\d+/.test(loc)],
-  // the client writes "General 1" WITH a space but "Bank1" without — both
-  // matchers take an optional space so a format nudge doesn't reclassify
-  ["Bank", loc => /^Bank ?\d+/.test(loc)],
-  ["Shared bank", loc => /^SharedBank/.test(loc)],
-  ["Depot", loc => /^Personal-Depot/.test(loc)],
-  ["Key ring", loc => /^KeyRing/.test(loc)],
+  ["worn", "Worn", loc => WORN_RX.test(loc)],
+  ["bags", "Bags", loc => /^(General ?\d+|Held$|Any Slot$)/.test(loc)],
+  ["bank", "Bank", loc => /^Bank ?\d+/.test(loc)],
+  ["shared", "Shared bank", loc => /^SharedBank/.test(loc)],
+  ["depot", "Depot", loc => /^Personal-Depot/.test(loc)],
+  ["hoard", "Dragon's hoard", loc => /^Dragon/i.test(loc)],
+  ["keyring", "Key ring", loc => /^KeyRing/.test(loc)],
+  ["other", "Elsewhere", () => true],
 ];
+const invSection = loc => INV_SECTIONS.find(([, , test]) => test(loc))[0];
 
+const TIER_RX = /\s\+(\d+)$/; // the same "+N" decoration /gear parses
 function parseInventory(text) {
-  const rows = [];
+  const rows = [], byLoc = new Map();
   for (const raw of text.split(/\r?\n/)) {
     const f = raw.replace(/\r$/, "").split("\t");
     // The dump is two concatenated tables: Location/Name/ID/Count/Slots, then
     // a 3-column KeyRing/Name/ID table with its own header — skip BOTH header
     // rows by shape, not by first column.
     if (f.length < 3 || (f[1] === "Name" && f[2] === "ID")) continue;
-    const name = f[1];
+    const loc = f[0], name = f[1];
     if (!name || name === "Empty") continue;
+    // client decorations, outermost first: "Name +4 (Exaltation)*" (stripDecor
+    // peels them in the same order)
+    const tm = TIER_RX.exec(name.replace(/\*+$/, "").replace(/\s*\(Exaltation\)$/, ""));
+    const pm = /^(.+)-Slot\d+$/.exec(loc);
     // id joins the FEED_OPEN chip-expand space; itemId is the client's item ID
-    rows.push({ loc: f[0], name, itemId: +f[2] || 0, count: +f[3] || 1, id: ++FEED_ID });
+    rows.push({
+      loc, name, itemId: +f[2] || 0, count: +f[3] || 1, id: ++FEED_ID,
+      idx: rows.length, sec: invSection(loc),
+      tier: tm ? Math.min(10, +tm[1]) : 0,
+      parentLoc: pm ? pm[1] : null, parent: null, kids: null,
+    });
+    // EVERY row is a potential parent — a socketed item sitting in a bag slot
+    // makes its rune a "General 1-Slot2-Slot1" child of a row that is itself
+    // a child (KeyRing rows repeat one loc; nothing references them, harmless)
+    byLoc.set(loc, rows[rows.length - 1]);
+  }
+  // General5-Slot3 sits in the container at General5; Chest-Slot1 sits in the
+  // item worn on Chest; deeper chains resolve one level at a time
+  for (const r of rows) {
+    if (!r.parentLoc) continue;
+    const p = byLoc.get(r.parentLoc);
+    if (p) { r.parent = p; (p.kids || (p.kids = [])).push(r); }
   }
   return rows;
 }
@@ -606,38 +667,283 @@ function onInvStatus({ problem }) {
   renderInv(); renderQuests();
 }
 
+/* ── enrichment — every column resolves from the datasets per render ────── */
+const gearFor = name => lookupLoose(GIDX, GIDX_L, name);
+const STAT_ORDER = ["hp", "mana", "end", "str", "sta", "agi", "dex", "wis", "int", "cha", "atk"];
+const STAT_LABEL = { hp: "HP", mana: "MANA", end: "END", str: "STR", sta: "STA", agi: "AGI", dex: "DEX", wis: "WIS", int: "INT", cha: "CHA", atk: "ATK" };
+const SV_LABEL = { f: "F", c: "C", m: "M", d: "D", p: "P", v: "VOID" };
+const FLAG_WORD = { magic: "magic", lore: "lore", lore_equipped: "lore-equipped", temporary: "temporary", expendable: "expendable", quest: "quest", no_rent: "no rent", placeable: "placeable", artifact: "artifact" };
+
+function tradeOf(name, g) {
+  if (g && g.fl) {
+    if (g.fl.includes("no_drop")) return "no drop";
+    if (g.fl.includes("no_trade")) return "no trade";
+    if (g.fl.includes("attunable")) return "attunable";
+    return "yes";
+  }
+  if (g) return "yes"; // a gear record with no flags at all states no restriction
+  // no gear record — the tooltip's own flag line still knows the hard ones
+  const ti = lookupLoose(TIDX, TIDX_L, name);
+  if (!ti) return "";
+  const text = (ti.sb || []).join(" ");
+  if (text.includes("NO DROP")) return "no drop";
+  if (text.includes("NO TRADE")) return "no trade";
+  return "yes";
+}
+
+function invFlagsOf(name, g) {
+  if (g && g.fl) return g.fl.filter(f => FLAG_WORD[f]).map(f => FLAG_WORD[f]).join(" ");
+  const ti = lookupLoose(TIDX, TIDX_L, name);
+  const text = ((ti && ti.sb) || []).join(" ");
+  const out = [];
+  if (text.includes("MAGIC ITEM")) out.push("magic");
+  if (text.includes("LORE ITEM")) out.push("lore");
+  if (text.includes("TEMPORARY")) out.push("temporary");
+  if (text.includes("EXPENDABLE")) out.push("expendable");
+  if (text.includes("QUEST ITEM")) out.push("quest");
+  return out.join(" ");
+}
+
+/* class/race sets ship as {"all":1} | {"all":1,"x":[..]} | {"c":[..]} | {"none":1} */
+function codesText(c) {
+  if (!c) return "";
+  if (c.none) return "NONE";
+  if (c.all) return c.x && c.x.length ? "ALL except " + c.x.join(" ") : "ALL";
+  return (c.c || []).join(" ");
+}
+
+/* Where an item comes from: the gear dataset's source table first (zones with
+   mobs, level and rarity), the quest-items source table for everything it
+   doesn't cover. zones is [zone, [[mob, lvl, rarity]...], note?] triples. */
+function srcSummary(r, g) {
+  const kinds = [];
+  let zones = null;
+  if (g && g.src && Object.keys(g.src).length) {
+    const s = g.src;
+    if (s.d && s.d.length) { kinds.push("drops"); zones = s.d.map(([z, mobs]) => [z, mobs, ""]); }
+    if (s.v) kinds.push("various mobs");
+    if (s.c) kinds.push("crafted");
+    if (s.s) kinds.push("merchant-sold");
+    if (s.f) kinds.push("foraged");
+    if (s.q) kinds.push("quest");
+  } else {
+    const s = srcFor(r.name);
+    if (s) {
+      if (s.many) kinds.push("many zones");
+      else if (s.z && s.z.length) {
+        kinds.push("drops");
+        zones = s.z.map(z => {
+          const si = sourceIn(r.name, z);
+          return [z, (si.mobs || []).map(mn => [mn, null, null]),
+            [si.isl, si.note].filter(Boolean).join(" · ")];
+        });
+      }
+    }
+  }
+  const rest = kinds.filter(k => k !== "drops");
+  const cell = zones
+    ? `${zones[0][0]}${zones.length > 1 ? ` +${zones.length - 1}` : ""}${rest.length ? ` · ${rest.join(", ")}` : ""}`
+    : rest.join(", ");
+  const hay = (zones || []).map(([z, mobs]) => z + " " + (mobs || []).map(m => m[0]).join(" ")).join(" ")
+    + " " + kinds.join(" ");
+  return { kinds, zones, cell, hay };
+}
+
+function invView(r) {
+  const T = window.EQLTier;
+  const g = gearFor(r.name) || null;
+  const quests = questRefsFor(r.name);
+  const v = { r, g, quests, oe: !!(g && g.oe) };
+  v.vars = GVARS.get(itemKey(r.name)) || GVARS.get(itemKey(stripDecor(r.name))) || null;
+  const st = g && g.st ? T.statsAt(g, r.tier) : null;
+  v.ac = st && st.ac != null ? st.ac : null;
+  const sb = []; let sum = 0;
+  if (st) for (const k of STAT_ORDER) if (st[k]) { sb.push(`${st[k] > 0 ? "+" : ""}${st[k]} ${STAT_LABEL[k]}`); sum += st[k]; }
+  v.statsTxt = sb.join(" "); v.statSum = sb.length ? sum : null;
+  const svb = []; let svSum = 0;
+  if (g && g.sv) for (const k of ["f", "c", "m", "d", "p", "v"]) {
+    const n = g.sv[k];
+    if (!n) continue;
+    svb.push(`${SV_LABEL[k]}${n > 0 ? "+" : ""}${n}`);
+    if (k !== "v") svSum += n; // SV VOID is the upgrade-tier marker — never summed (same rule as /gear)
+  }
+  v.svTxt = svb.join(" "); v.svSum = svb.length ? svSum : null;
+  if (g && g.dmg && g.dly) {
+    const dmg = T.statAt(g.dmg, r.tier);
+    v.ratioTxt = `${dmg}/${g.dly}`; v.ratio = dmg / g.dly;
+  } else { v.ratioTxt = ""; v.ratio = null; }
+  v.slotTxt = g && g.sl ? g.sl.join(" ") : "";
+  v.wt = g && g.wt != null ? g.wt : null;
+  const effs = [];
+  if (g && g.haste) effs.push(`haste +${g.haste}%`);
+  for (const e of (g && g.eff) || []) effs.push(e.n);
+  if (g && g.charges) effs.push(`${g.charges} charges`);
+  v.effTxt = effs.join(", ");
+  v.trade = tradeOf(r.name, g);
+  v.tradeRank = { yes: 0, attunable: 1, "no trade": 2, "no drop": 3 }[v.trade] ?? null;
+  v.flagsTxt = invFlagsOf(r.name, g);
+  v.clsTxt = g ? codesText(g.cls) : "";
+  v.eraTxt = g ? ERA_SHORT(g.era) : "";
+  v.eraKey = g && g.era ? (v.oe ? "z" : "a") + g.era : null;
+  v.src = srcSummary(r, g);
+  v.hay = [r.name, r.loc, r.parent && r.parent.name, v.slotTxt, v.statsTxt, v.svTxt, v.effTxt,
+    v.trade, v.flagsTxt, v.clsTxt, v.eraTxt, v.src.hay, ...quests.map(q => q.n)]
+    .filter(Boolean).join(" | ").toLowerCase();
+  return v;
+}
+
+/* every column click-sorts; blanks always sink to the bottom whatever the
+   direction; d0 is the first-click direction (numbers open biggest-first) */
+const IV_COLS = [
+  { k: "where", h: "Where", d0: 1, key: v => v.r.idx },
+  { k: "item", h: "Item", d0: 1, key: v => v.r.name.toLowerCase() },
+  { k: "qty", h: "Qty", d0: -1, key: v => v.r.count > 1 ? v.r.count : null },
+  { k: "tier", h: "Tier", d0: -1, key: v => v.r.tier || null },
+  { k: "slot", h: "Slot", d0: 1, key: v => v.slotTxt || null },
+  { k: "ac", h: "AC", d0: -1, key: v => v.ac },
+  { k: "ratio", h: "Dmg/Dly", d0: -1, key: v => v.ratio },
+  { k: "stats", h: "Stats", d0: -1, key: v => v.statSum },
+  { k: "sv", h: "Resists", d0: -1, key: v => v.svSum },
+  { k: "wt", h: "Wt", d0: -1, key: v => v.wt },
+  { k: "eff", h: "Effect", d0: 1, key: v => v.effTxt.toLowerCase() || null },
+  { k: "trade", h: "Trade", d0: 1, key: v => v.tradeRank },
+  { k: "flags", h: "Flags", d0: 1, key: v => v.flagsTxt || null },
+  { k: "cls", h: "Class", d0: 1, key: v => v.clsTxt || null },
+  { k: "era", h: "Era", d0: 1, key: v => v.eraKey },
+  { k: "src", h: "Source", d0: 1, key: v => v.src.cell.toLowerCase() || null },
+  { k: "quests", h: "Quests", d0: -1, key: v => v.quests.length || null },
+];
+function cmpNullLast(a, b, dir) {
+  if (a == null && b == null) return 0;
+  if (a == null) return 1;
+  if (b == null) return -1;
+  return (a < b ? -1 : a > b ? 1 : 0) * dir;
+}
+
+function populateInvFilters() {
+  const codes = new Set();
+  if (GDATA) for (const rec of Object.values(GDATA.items)) {
+    const c = rec.cls;
+    if (c && c.c) for (const code of c.c) codes.add(code);
+    if (c && c.x) for (const code of c.x) codes.add(code);
+  }
+  const opt = (v, label) => `<option value="${esc(v)}">${esc(label)}</option>`;
+  $("invClass").innerHTML = opt("", "any class") + [...codes].sort().map(c => opt(c, c)).join("");
+  if (IV.cls) $("invClass").value = IV.cls;
+}
+
+function invRow(v) {
+  const r = v.r;
+  const open = IV_OPEN.has(r.id);
+  const where = r.parent
+    ? `${esc(r.loc)} <span class="dim">in ${esc(r.parent.name)}</span>`
+    : esc(r.loc);
+  // the name already prints "+N" and "(Exaltation)" — no chips restating it
+  const badges = (r.kids ? `<span class="ivb">${r.kids.length} inside</span>` : "") +
+    (v.vars ? `<span class="ivb" title="the wiki lists ${v.vars.length} items with this name — the columns show the first; open the row for all of them">${v.vars.length} variants</span>` : "");
+  return `<tr class="ivr ${v.quests.length ? "is-quest" : ""} ${v.oe ? "is-oe" : ""} ${open ? "is-open" : ""}" data-ivx="${r.id}">
+    <td class="iv-where">${where}</td>
+    <td class="iv-item">${itemSpan(r.name, true)}${badges}</td>
+    <td class="iv-n">${r.count > 1 ? r.count : ""}</td>
+    <td class="iv-n">${r.tier || ""}</td>
+    <td>${esc(v.slotTxt)}</td>
+    <td class="iv-n">${v.ac ?? ""}</td>
+    <td class="iv-n">${v.ratioTxt}</td>
+    <td>${esc(v.statsTxt)}</td>
+    <td>${esc(v.svTxt)}</td>
+    <td class="iv-n">${v.wt ?? ""}</td>
+    <td class="iv-eff">${esc(v.effTxt)}</td>
+    <td>${esc(v.trade)}</td>
+    <td>${esc(v.flagsTxt)}</td>
+    <td class="iv-cls">${esc(v.clsTxt)}</td>
+    <td>${v.oe ? `<span class="oe">out of era</span>` : esc(v.eraTxt)}</td>
+    <td class="iv-src">${esc(v.src.cell)}</td>
+    <td class="iv-n">${v.quests.length || ""}</td>
+  </tr>` + (open ? `<tr class="ivd"><td colspan="${IV_COLS.length}">${invDetail(v)}</td></tr>` : "");
+}
+
+function invDetail(v) {
+  const r = v.r, g = v.g;
+  const parts = [];
+  if (v.vars) {
+    const gbase = (GDATA && GDATA.base) || "";
+    parts.push(`<div class="ivd__vars"><div class="dim">${v.vars.length} wiki items share this name — the columns show the first:</div>${v.vars.map(rec => {
+      const st = Object.entries(rec.st || {}).map(([k, n]) => `${n > 0 ? "+" : ""}${n} ${STAT_LABEL[k] || k.toUpperCase()}`).join(" ");
+      const bits = [(rec.sl || []).join(" "), st, rec.dmg && rec.dly ? `${rec.dmg}/${rec.dly}` : "",
+        ERA_SHORT(rec.era), codesText(rec.cls)].filter(Boolean).join(" · ");
+      return `<div><a class="wk" data-url="${esc(gbase + rec.t)}">${esc(rec.t.replace(/_/g, " "))}</a>${bits ? ` <span class="dim">${esc(bits)}</span>` : ""}</div>`;
+    }).join("")}</div>`);
+  }
+  if (v.src.zones) {
+    // a Fine Steel weapon drops in 51 zones from 200+ mobs — cap what one
+    // panel shows; the item's wiki page carries the full list
+    const ZCAP = 10, MCAP = 8;
+    parts.push(`<div class="ivd__src">${v.src.zones.slice(0, ZCAP).map(([z, mobs, note]) => {
+      const zl = QZONES[z] ? `<a class="wk" data-wiki="${esc(QZONES[z])}">${esc(z)}</a>` : esc(z);
+      const ms = (mobs || []).slice(0, MCAP).map(([mn, lvl, rar]) =>
+        `${mobSpan(mn)}${lvl || rar ? ` <span class="dim">(${esc([lvl, rar && String(rar).toLowerCase()].filter(Boolean).join(", "))})</span>` : ""}`).join(", ")
+        + (mobs && mobs.length > MCAP ? ` <span class="dim">+${mobs.length - MCAP} more</span>` : "");
+      const tail = [ms, note && esc(note)].filter(Boolean).join(" · ");
+      return `<div>${zl}${tail ? ` — ${tail}` : ""}</div>`;
+    }).join("")}${v.src.zones.length > ZCAP
+      ? `<div class="dim">+${v.src.zones.length - ZCAP} more zones — the full list is on the wiki page</div>` : ""}</div>`);
+  }
+  const rest = v.src.kinds.filter(k => k !== "drops");
+  if (rest.length) parts.push(`<div class="dim">${rest.map(esc).join(" · ")}</div>`);
+  if (g && g.eff && g.eff.length) parts.push(`<div>${g.eff.map(e =>
+    `${esc(e.n)}${e.m || e.l || (e.ct && e.ct !== "Instant") ? ` <span class="dim">(${[e.m, e.l && `lvl ${e.l}`, e.ct && e.ct !== "Instant" && e.ct].filter(Boolean).map(esc).join(", ")})</span>` : ""}`).join(" · ")}</div>`);
+  if (g && g.ex) parts.push(`<div class="dim">${Object.entries(g.ex).map(([k2, val]) => esc(`${k2}: ${val}`)).join(" · ")}</div>`);
+  if (r.kids) parts.push(`<div class="dim">holds: ${r.kids.map(k2 => esc(k2.name)).join(", ")}</div>`);
+  if (v.quests.length) parts.push(questChips(v.quests, r.id));
+  if (!parts.length) parts.push(`<span class="dim">nothing more known about this item</span>`);
+  return parts.join("");
+}
+
+const INV_HINT = $("invEmpty").innerHTML;
 function renderInv() {
-  const body = $("invBody"), empty = $("invEmpty");
+  const body = $("invBody"), empty = $("invEmpty"), tabs = $("invTabs"), banner = $("invBanner");
   if (!INV.rows) {
-    $("invMeta").textContent = "";
-    body.innerHTML = "";
-    empty.textContent = INV.problem || "No inventory dump found beside the log folder yet.";
+    $("invMeta").textContent = ""; body.innerHTML = ""; tabs.hidden = true; banner.hidden = true;
+    if (INV.problem) empty.textContent = INV.problem; else empty.innerHTML = INV_HINT;
     empty.hidden = false;
     return;
   }
   empty.hidden = true;
-  $("invMeta").textContent = `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()}`;
-  // Quest matches resolve at render time from the live QIDX, so a dataset
-  // refresh re-chips the same dump.
+  banner.hidden = !!GDATA;
+  if (!GDATA) banner.textContent = "Item stats, flags and sources need the gear dataset — refresh from eqltools.com in Settings.";
+  const needle = $("invSearch").value.trim().toLowerCase();
   const qOnly = $("invQuestOnly").checked;
-  const iNeedle = $("invSearch").value.trim().toLowerCase();
-  const rows = INV.rows.map(r => ({ ...r, quests: questRefsFor(r.name) }))
-    .filter(r => !qOnly || r.quests.length)
-    .filter(r => !iNeedle || r.name.toLowerCase().includes(iNeedle) || r.loc.toLowerCase().includes(iNeedle));
-  const buckets = INV_SECTIONS.map(([label]) => ({ label, rows: [] }));
-  const other = { label: "Elsewhere", rows: [] };
-  for (const r of rows) {
-    const i = INV_SECTIONS.findIndex(([, test]) => test(r.loc));
-    (i === -1 ? other : buckets[i]).rows.push(r);
-  }
-  buckets.push(other);
-  body.innerHTML = buckets.filter(b => b.rows.length).map(b => `
-    <h3>${b.label} (${b.rows.length})</h3>
-    <ul class="feed">${b.rows.map(r => `
-      <li class="ev ev--loot ${r.quests.length ? "is-quest" : ""}">
-        <span class="ev__t ev__t--loc">${esc(r.loc)}</span>
-        <span class="ev__body">${itemSpan(r.name, true)}${r.count > 1 ? ` ×${r.count}` : ""}${questChips(r.quests, r.id)}</span></li>`).join("")}
-    </ul>`).join("");
+  // a gear record with NO cls field is an unrestricted item (the wiki page had
+  // no Class: line) — /gear's legal() reads it the same way
+  const clsOk = v => !IV.cls || (v.g &&
+    (!v.g.cls || (v.g.cls.all ? !(v.g.cls.x || []).includes(IV.cls) : (v.g.cls.c || []).includes(IV.cls))));
+  const tradeOk = v => !IV.trade ||
+    (IV.trade === "yes" ? v.trade === "yes"
+      : IV.trade === "att" ? v.trade === "attunable"
+      : v.trade === "no drop" || v.trade === "no trade");
+  const pool = INV.rows.map(invView).filter(v =>
+    (!qOnly || v.quests.length) && tradeOk(v) && clsOk(v) &&
+    (!needle || v.hay.includes(needle)));
+  // subtab counts respect every other filter: searching shows WHERE the hits live
+  const counts = { all: pool.length };
+  for (const v of pool) counts[v.r.sec] = (counts[v.r.sec] || 0) + 1;
+  if (IV.tab !== "all" && !counts[IV.tab]) IV.tab = "all"; // a filter emptied the active tab
+  tabs.hidden = false;
+  tabs.innerHTML = [["all", "All"], ...INV_SECTIONS.map(([k, label]) => [k, label])]
+    .filter(([k]) => k === "all" || counts[k])
+    .map(([k, label]) => `<button class="invtab ${IV.tab === k ? "is-on" : ""}" data-ivtab="${k}">${label} <span class="invtab__n">${counts[k] || 0}</span></button>`).join("");
+  const rows = pool.filter(v => IV.tab === "all" || v.r.sec === IV.tab);
+  const col = IV_COLS.find(c => c.k === IV.sort) || IV_COLS[0];
+  rows.sort((a, b) => cmpNullLast(col.key(a), col.key(b), IV.dir) || (a.r.idx - b.r.idx));
+  const wt = rows.reduce((n, v) => n + (v.wt != null ? v.wt * v.r.count : 0), 0);
+  $("invMeta").textContent =
+    `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()} · ${rows.length} of ${INV.rows.length} items · ${Math.round(wt * 10) / 10} wt`;
+  const arrow = k => IV.sort === k ? (IV.dir > 0 ? " ▲" : " ▼") : "";
+  body.innerHTML = rows.length
+    ? `<table class="qtab ivt"><thead><tr>${IV_COLS.map(c =>
+        `<th class="is-sort" data-ivsort="${c.k}">${c.h}${arrow(c.k)}</th>`).join("")}</tr></thead>
+      <tbody>${rows.map(invRow).join("")}</tbody></table>`
+    : `<p class="empty">Nothing matches those filters.</p>`;
   retip();
 }
 
@@ -1955,6 +2261,7 @@ function renderData() {
   one(`Mob roster (${DATA ? Object.keys(DATA.zones).length + " zones" : "—"})`, DATA, SOURCES.kills);
   one(`Quest items (${QDATA ? QDATA.quests.length + " quests, " + Object.keys(QDATA.items).length + " items" : "—"})`, QDATA, SOURCES.quests);
   one(`Item tooltips (${TDATA ? Object.keys(TDATA.items).length + " items" : "—"})`, TDATA, SOURCES.tooltips);
+  one(`Gear (${GDATA ? Object.keys(GDATA.items).length + " items" : "—"})`, GDATA, SOURCES.gear);
   $("dataStatus").innerHTML = rows.join("");
 }
 
@@ -2065,14 +2372,14 @@ async function main() {
   $("setWitnessed").checked = s.witnessed;
 
   renderStatus(); renderTracker(); renderFeed(); renderData();
-  populateZoneSel(); renderZoneTab(); populateQuestFilters(); renderQuests(); initTip();
+  populateZoneSel(); renderZoneTab(); populateQuestFilters(); populateInvFilters(); renderQuests(); initTip();
 
   window.companion.onBootstrap(onBootstrap);
   window.companion.onLines(onLines);
   window.companion.onLogStatus(st => { LOGSTATUS = st; renderStatus(); });
   window.companion.onInvFile(onInvFile);
   window.companion.onInvStatus(onInvStatus);
-  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); renderInv(); populateQuestFilters(); renderQuests(); pushZone(); pushQuests(); });
+  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); populateInvFilters(); renderInv(); populateQuestFilters(); renderQuests(); pushZone(); pushQuests(); });
   window.companion.onOverlayState(renderOverlayState);
   window.companion.onUpdate(renderUpdate);
   renderUpdate(await window.companion.getUpdate());
@@ -2089,6 +2396,8 @@ async function main() {
   $("feedFilter").addEventListener("input", renderFeed);
   $("invQuestOnly").addEventListener("change", renderInv);
   $("invSearch").addEventListener("input", renderInv);
+  $("invTrade").addEventListener("change", e => { IV.trade = e.target.value; renderInv(); });
+  $("invClass").addEventListener("change", e => { IV.cls = e.target.value; renderInv(); });
   $("zoneFilter").addEventListener("input", renderZoneTab);
   $("tiSearch").addEventListener("input", e => { TURNIN.q = e.target.value; renderTurnins(); });
   $("qReadyOnly").addEventListener("change", e => { TURNIN.readyOnly = e.target.checked; renderTurnins(); });
@@ -2173,6 +2482,14 @@ async function main() {
       if (QB.sort === k) QB.dir = -QB.dir; else { QB.sort = k; QB.dir = 1; }
       renderQuestBrowser(); return;
     }
+    const ivt = e.target.closest("[data-ivtab]");
+    if (ivt) { IV.tab = ivt.dataset.ivtab; renderInv(); return; }
+    const ivs = e.target.closest("[data-ivsort]");
+    if (ivs) {
+      const k = ivs.dataset.ivsort, c = IV_COLS.find(x => x.k === k);
+      if (IV.sort === k) IV.dir = -IV.dir; else { IV.sort = k; IV.dir = (c && c.d0) || 1; }
+      renderInv(); return;
+    }
     const mo = e.target.closest("[data-open]");
     if (mo) { FEED_OPEN.add(+mo.dataset.open); renderFeed(); renderInv(); return; }
     const u = e.target.closest("[data-url]");
@@ -2180,6 +2497,13 @@ async function main() {
     const w = e.target.closest("[data-wiki]");
     const base = (DATA && DATA.base) || (QDATA && QDATA.base);
     if (w && base) { window.companion.openWiki(base + w.dataset.wiki); return; }
+    // anywhere else on an inventory row toggles its detail (links handled above)
+    const ivr = e.target.closest("tr.ivr");
+    if (ivr) {
+      const id = +ivr.dataset.ivx;
+      IV_OPEN.has(id) ? IV_OPEN.delete(id) : IV_OPEN.add(id);
+      renderInv(); return;
+    }
     // anywhere else on a browser row toggles its detail (links handled above)
     const qr = e.target.closest("tr.qbr");
     if (qr) {

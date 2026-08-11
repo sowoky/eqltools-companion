@@ -23,6 +23,11 @@ past works:
   own `shared.js` verbatim.
 - **Item tooltips** — mouse over any item name and get the in-game item
   window: flags, slot, AC, stats, effect, weight, classes, races.
+- **Inventory browser** — type `/out inventory` in game and every bag, bank
+  slot, depot, and Dragon's Hoard row lands in one table: stats at your
+  upgrade tier, resists, weight, effect, trade flags, class, era, which mobs
+  drop it in which zones, and which quests want it. Sort by any column,
+  search across all of it, filter by area, tradeability, or class.
 - **Auto-updates** — installed builds update themselves from GitHub
   Releases; portable/zip builds tell you when a new version is out.
 - **Zone browser** — the atlas mobs & drops data, following your character:

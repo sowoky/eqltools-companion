@@ -30,7 +30,7 @@ const HEADER = (rel) =>
   `   Edit the original; both the site and this app load the same logic. */\n`;
 
 mkdirSync(join(companion, "vendor"), { recursive: true });
-for (const rel of ["public/kills/shared.js", "public/kills/parse.js"]) {
+for (const rel of ["public/kills/shared.js", "public/kills/parse.js", "public/gear/tier.js"]) {
   const src = join(repo, rel);
   if (!existsSync(src)) {
     console.error(`sync-vendor: missing ${rel} — cannot build without it`);
@@ -43,7 +43,7 @@ for (const rel of ["public/kills/shared.js", "public/kills/parse.js"]) {
 
 mkdirSync(join(companion, "data-snapshot"), { recursive: true });
 let missing = 0;
-for (const rel of ["public/kills/data/kills-data.json", "public/companion/data/quest-items.json", "public/companion/data/item-tooltips.json"]) {
+for (const rel of ["public/kills/data/kills-data.json", "public/companion/data/quest-items.json", "public/companion/data/item-tooltips.json", "public/gear/data/gear-data.json"]) {
   const src = join(repo, rel);
   const out = join(companion, "data-snapshot", rel.split("/").pop());
   if (existsSync(src)) {

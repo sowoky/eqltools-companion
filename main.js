@@ -28,6 +28,7 @@ const REMOTE = {
   "kills-data.json": "https://eqltools.com/kills/data/kills-data.json",
   "quest-items.json": "https://eqltools.com/companion/data/quest-items.json",
   "item-tooltips.json": "https://eqltools.com/companion/data/item-tooltips.json",
+  "gear-data.json": "https://eqltools.com/gear/data/gear-data.json",
 };
 /* Data the embedded /log-parser page fetches. Cached under its site URL
    paths and served straight to the iframe by the eqlt:// protocol — the

@@ -89,9 +89,43 @@ main { flex: 1; overflow-y: auto; padding: 16px; }
 .quest:hover { border-color: var(--gold); color: var(--gold-pale); }
 .quest b { color: var(--gold-bright); font-weight: 600; }
 
-/* inventory */
-#invBody h3 { font-size: 14px; color: var(--gold-bright); margin: 14px 0 4px; }
-#invBody .ev__t--loc { flex: 0 0 118px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* inventory — the whole bag corpus as one sortable table */
+.pane--full { max-width: none; }
+.invtabs { display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap; }
+.invtabs[hidden] { display: none; }
+.invtab {
+  background: var(--bg-panel-2); color: var(--ink-soft); border: 1px solid var(--line);
+  border-radius: 6px; padding: 3px 10px; font: 12px var(--sans); cursor: pointer;
+}
+.invtab:hover { color: var(--gold-pale); border-color: var(--gold); }
+.invtab.is-on { background: var(--gold); color: var(--bg-deep); border-color: var(--gold); font-weight: 600; }
+.invtab.is-on .invtab__n { color: var(--bg-deep); }
+.invtab__n { font: 11px var(--mono); color: var(--ink-dim); }
+/* its own scroll box, both axes: 17 columns overflow 1100px, and sticky
+   headers need the scrolling ancestor to be this wrapper, not <main> */
+.invwrap { overflow: auto; max-height: calc(100vh - 250px); }
+.ivt th { top: 0; }
+/* the Item column stays frozen while the other 16 scroll — names anchor the row */
+.ivt th:nth-child(2), .ivt td.iv-item { position: sticky; left: 0; background: var(--bg-deep); z-index: 2; }
+.ivt th:nth-child(2) { z-index: 3; }
+.ivr:hover td.iv-item, .ivr.is-open td.iv-item { background: var(--bg-panel); }
+#invSearch { width: 250px; }
+.ivt td { white-space: nowrap; }
+.iv-n { font-family: var(--mono); font-size: 12px; text-align: right; }
+.ivt th, .ivt td { padding-right: 14px; }
+.iv-item { min-width: 160px; }
+.iv-src, .iv-eff, .iv-cls, .iv-where { max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
+.ivr { cursor: pointer; }
+.ivr:hover td { background: var(--bg-panel); }
+.ivr.is-open td { background: var(--bg-panel); border-bottom: none; }
+.ivr.is-quest td:first-child { border-left: 2px solid var(--gold); }
+.ivr.is-oe .iv-item .itn { color: var(--ink-dim); }
+.ivb {
+  font-size: 10px; color: var(--ink-dim); border: 1px solid var(--line);
+  border-radius: 4px; padding: 0 4px; margin-left: 6px; vertical-align: 1px;
+}
+.ivd > td { background: var(--bg-panel); border-bottom: 1px solid var(--line); padding: 8px 12px 10px; cursor: default; white-space: normal; }
+.ivd__src div { padding: 1px 0; font-size: 13px; }
 
 /* shared filter/search inputs across tab heads */
 .feedhead input[type="search"] {

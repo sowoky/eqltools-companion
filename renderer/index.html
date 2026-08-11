@@ -51,15 +51,25 @@
     <span class="dim">Logging must be on in game: <code>/log</code></span></p>
   </section>
 
-  <section id="tab-inv" class="pane">
-    <p class="dim">Type <code>/out inventory</code> in game; the dump loads here within a few seconds.</p>
-    <div class="feedhead">
-      <input id="invSearch" type="search" placeholder="filter item or slot">
+  <section id="tab-inv" class="pane pane--full">
+    <div id="invBanner" class="banner" hidden></div>
+    <div class="feedhead qbhead">
+      <input id="invSearch" type="search" placeholder="search name, slot, effect, source, quest">
+      <select id="invTrade">
+        <option value="">any trade</option>
+        <option value="yes">tradeable</option>
+        <option value="att">attunable</option>
+        <option value="no">no drop / no trade</option>
+      </select>
+      <select id="invClass"></select>
       <label class="chk"><input type="checkbox" id="invQuestOnly"> quest items only</label>
       <span id="invMeta" class="dim"></span>
     </div>
-    <div id="invBody"></div>
-    <p id="invEmpty" class="empty">No inventory dump found beside the log folder yet.</p>
+    <div id="invTabs" class="invtabs" hidden></div>
+    <div id="invBody" class="invwrap"></div>
+    <p id="invEmpty" class="empty">No inventory dump found beside the log folder yet.<br>
+    <span class="dim">Type <code>/out inventory</code> in game — the dump loads here within a few seconds.<br>
+    The dump only includes the Dragon's Hoard and the depot while their windows are open.</span></p>
   </section>
 
   <section id="tab-turnins" class="pane">
@@ -170,6 +180,7 @@
 
 <script src="../vendor/shared.js"></script>
 <script src="../vendor/parse.js"></script>
+<script src="../vendor/tier.js"></script>
 <script src="../vendor/site/log-parser/engine.js"></script>
 <script src="app.js"></script>
 </body>
