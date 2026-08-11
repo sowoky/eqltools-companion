@@ -2006,6 +2006,7 @@ function combatSliceDetail(names, start, end, r) {
     takenBy: a.takenBy.slice(0, 10).map(t => ({ src: t.src, name: t.name, hits: t.hits, dmg: t.dmg, max: t.max, res: t.res })),
     taken: a.taken.dmg, avoid: a.taken.avoid,
     healTot: a.healTot, healInTot: a.healInTot, petTaken: a.petTaken,
+    swings: a.swings,
   };
 }
 function combatDetailFor(f, r) { return combatSliceDetail(new Set([f.mob]), f.start, f.end, r); }
@@ -2216,7 +2217,38 @@ function combatDetailHtml(row) {
   if (row.coin) bits.push(fmtCu(row.coin));
   return (src ? `<table class="cbt-sub"><thead><tr><th>Source</th><th>Hits</th><th>Damage</th><th>Max</th><th>Crits</th></tr></thead><tbody>${src}</tbody></table>` : "") +
     (tkn ? `<table class="cbt-sub"><thead><tr><th>Hit you with</th><th>Hits</th><th>Damage</th><th>Max</th><th>Resisted</th></tr></thead><tbody>${tkn}</tbody></table>` : "") +
+    swingHtml(d.swings) +
     (bits.length ? `<p class="dim cb-line">${bits.join(" · ")}</p>` : "");
+}
+
+/* ── swing intervals ──────────────────────────────────────────────────────
+   How fast each actor is actually swinging, per weapon verb. Built for the
+   weapon-swap question: run the same pet through two fights and compare the
+   interval. Both the number and its range are shown because the range is what
+   says whether a difference is real — two fights whose ranges overlap have
+   not measurably changed, however different the middle numbers look. */
+const SW = { sort: "swings", dir: 1 };
+const SIDE_LABEL = { you: "you", pet: "your pet", charm: "your charm", othermob: "other", other: "other" };
+function swingHtml(rows) {
+  if (!rows || !rows.length) return "";
+  const key = r => SW.sort === "actor" ? r.actor.toLowerCase() : SW.sort === "verb" ? r.verb : r[SW.sort];
+  const sorted = rows.slice().sort((a, b) => {
+    const ka = key(a), kb = key(b);
+    return ((ka < kb ? -1 : ka > kb ? 1 : 0) * -SW.dir) || (b.swings - a.swings);
+  });
+  const arrow = k => SW.sort === k ? (SW.dir > 0 ? " ▼" : " ▲") : "";
+  const th = (k, label) => `<th class="is-sort" data-swsort="${k}">${label}${arrow(k)}</th>`;
+  return `<div class="cb-swingwrap"><table class="cbt-sub cb-swings"><thead><tr>` +
+    th("actor", "Swinging") + th("verb", "Attack") + th("swings", "Swings") +
+    th("engaged", "Engaged") + th("interval", "Every") + `<th>95% range</th>` +
+    `</tr></thead><tbody>` +
+    sorted.map(r => `<tr><td>${esc(r.actor)} <span class="dim">${SIDE_LABEL[r.side] || r.side}</span></td>` +
+      `<td>${esc(r.verb)}</td><td>${r.swings}</td><td>${r.engaged}s</td>` +
+      `<td class="cb-dmg">${r.interval.toFixed(2)}s</td>` +
+      `<td class="dim">${r.lo.toFixed(2)}–${r.hi == null ? "?" : r.hi.toFixed(2)}s</td></tr>`).join("") +
+    `</tbody></table></div><p class="dim cb-line cb-swingnote">Seconds between swings — not the weapon's ` +
+    `delay stat, since haste and double attacks fold in. For one actor across two fights those cancel: ` +
+    `overlapping ranges mean no measurable change.</p>`;
 }
 
 /* Everyone's damage this visit — the raid meter, on the Combat tab too.
@@ -2524,6 +2556,14 @@ async function main() {
   });
 
   document.addEventListener("click", e => {
+    // swing-table headers sit INSIDE an expanded fight row, so they have to
+    // win before [data-fight] or sorting would collapse the fight instead
+    const sw = e.target.closest("[data-swsort]");
+    if (sw) {
+      const k = sw.dataset.swsort;
+      if (SW.sort === k) SW.dir = -SW.dir; else { SW.sort = k; SW.dir = k === "actor" || k === "verb" ? -1 : 1; }
+      renderCombat(); return;
+    }
     const rt = e.target.closest("[data-raidtoggle]");
     if (rt) { CB.raidOpen = !CB.raidOpen; renderCombat(); return; }
     const ra = e.target.closest("[data-raidactor]");

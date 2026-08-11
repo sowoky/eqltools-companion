@@ -27,6 +27,10 @@ window.mkDot = elem => { const s = document.createElement("span"); s.className =
 /* ─── render helpers ──────────────────────────────────────────────────────*/
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+// Display only. othermob folds into "other": the label comes from the actor's
+// LAST swing, so a mob that fought both you and another mob would flip between
+// two labels arbitrarily. What a reader acts on is mine vs not-mine.
+const SIDE_LABEL = { you: "you", pet: "your pet", charm: "your charm", othermob: "other", other: "other" };
 const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; };
 const fmt = n => Math.round(n).toLocaleString();
 const pct = (n, d) => d ? `${(100 * n / d).toFixed(1)}%` : "—";
@@ -204,8 +208,9 @@ function tipProvider(arg) {
     case "swap": return `<h5>Loadout swap</h5><p>Swapping class loadouts changes your level and the log prints nothing. This log's considers stopped matching the known level here, so fights between the last agreeing con and the next level-up or /who line are filed under <b>Level unknown</b> instead of guessed. Typing <code>/who</code> after a swap re-anchors immediately.</p>`;
     case "pets": {
       const ns = TIPCTX.side.claims.names;
-      if (!ns.length) return `<h5>Pets</h5><p>Nothing answered you with ", Master." in this log. A pet identifies itself the first time you order it — one <code>/pet attack</code> and it counts.</p>`;
-      return `<h5>Your pets</h5><p>Claimed by their own tells — the client only ever shows you your own pet's answers.</p><p>${ns.map(c => `<b>${c.name}</b> (${c.kind}) — ${c.tells} tell${c.tells === 1 ? "" : "s"}, ${dtShort(c.from)} → ${dtShort(c.to)}`).join("<br>")}</p>`;
+      if (!ns.length) return `<h5>Pets</h5><p>Nothing answered you with ", Master." in this log, and no charm of yours landed. A pet identifies itself the first time you order it — one <code>/pet attack</code> and it counts.</p>`;
+      // tells === 0 can only be a charm grant: those are the two ways in
+      return `<h5>Your pets</h5><p>Claimed by their own tells, which the client only ever shows you for your own pet — or, for a charm, by the broadcast landing as your own cast finished.</p><p>${ns.map(c => `<b>${c.name}</b> (${c.kind}) — ${c.tells ? `${c.tells} tell${c.tells === 1 ? "" : "s"}` : "your charm cast"}, ${dtShort(c.from)} → ${dtShort(c.to)}`).join("<br>")}</p>`;
     }
     case "droprate": return `<h5>Observed drop rate</h5><p>Loot lines ÷ kills seen. The log has no line for opening an empty corpse, so a corpse you never looted still counts as a kill — the rate here can only run low, never high.</p>`;
     case "enchp": return `<h5>HP this fight</h5><p>Bracketed by overkill: the mob took some total damage, and the killing blow either landed in full or was capped by whatever HP was left — so its HP sits between total−lastblow+1 and total. Heals it received subtract. A trailing <b>?</b> means another same-name mob was in the fray; the log can't tell two of a name apart, so that bracket is unreliable and stays out of the mob's HP.</p>`;
@@ -341,6 +346,26 @@ function render() {
   });
   t.append(tb);
   if (!a.sources.length) t.append(el("tbody", null, `<tr><td colspan="10" class="empty">No damage from your side in this slice.</td></tr>`));
+
+  // swing intervals — how often each actor swings, per verb. The range is the
+  // point: two fights whose ranges overlap have not measurably changed, which
+  // is what a weapon swap actually has to beat to be worth anything.
+  const sp = $("swingPanel");
+  if (a.swings.length) {
+    sp.hidden = false;
+    const st = $("swingTable");
+    st.innerHTML = `<thead><tr><th>Swinging</th><th>Side</th><th>Attack</th><th>Swings</th><th>Engaged</th><th>Every</th><th>95% range</th></tr></thead>`;
+    const stb = el("tbody");
+    for (const r of a.swings) {
+      stb.append(el("tr", null,
+        `<td class="c-name">${mobCell(r.actor)}</td><td class="c-side">${esc(SIDE_LABEL[r.side] || r.side)}</td>` +
+        `<td class="c-name">${esc(r.verb)}</td><td>${fmt(r.swings)}</td><td data-sort="${r.engaged}">${fmt(r.engaged)}s</td>` +
+        `<td class="c-dmg" data-sort="${r.interval}">${r.interval.toFixed(2)}s</td>` +
+        `<td data-sort="${r.lo}">${r.lo.toFixed(2)}–${r.hi == null ? "?" : r.hi.toFixed(2)}s</td>`));
+    }
+    st.append(stb);
+    if (window.EQLSortable) window.EQLSortable.bindAll();
+  } else sp.hidden = true;
 
   // what hit you — incoming damage per (mob, ability), full resists joined
   const tp = $("takenPanel");

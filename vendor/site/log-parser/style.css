@@ -184,6 +184,8 @@ table { width: 100%; border-collapse: collapse; font-size: .95rem; }
 thead th { text-align: right; font-family: var(--font-accent), Georgia, serif; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-dim); font-weight: 500; padding: .3rem .55rem; border-bottom: 1px solid var(--line); }
 thead th:nth-child(2) { text-align: left; }
 #takenTable thead th:nth-child(3) { text-align: left; }
+#swingTable thead th:nth-child(1), #swingTable thead th:nth-child(3) { text-align: left; }
+.c-side { text-align: left; color: var(--ink-dim); font-size: .78rem; }
 /* mobs/loot lead with the name in column 1, not column 2 */
 #mobTable thead th:first-child, #lootTable thead th:first-child, .mini-tbl thead th:first-child { text-align: left; }
 #mobTable thead th:nth-child(2), #lootTable thead th:nth-child(2), .mini-tbl thead th:nth-child(2) { text-align: right; }

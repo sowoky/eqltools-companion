@@ -320,11 +320,14 @@ function parse(text, fileOwner) {
       case "stance": ev.push({ ts, k: "stance", name: m[8].trim() }); break;
       case "invoke": ev.push({ ts, k: "invoke", name: m[8].trim() }); break;
       // your spell fading off a NAME both refreshes its fight (like mez) and
-      // marks a moment the name can change hands (a charm break) — buildClaims
-      // treats every "shed" as a claim boundary
-      case "wornoff": if (m[9]) ev.push({ ts, k: "shed", tgt: resolve(m[9]) }); break;
+      // can be the moment the name changes hands. The SPELL rides along: only
+      // a charm breaking hands a mob back, and buildClaims uses the name to
+      // tell that apart from a debuff or buff merely expiring on your own pet.
+      case "wornoff": if (m[9]) ev.push({ ts, k: "shed", tgt: resolve(m[9]), spell: m[8] }); break;
       case "mezzed": ev.push({ ts, k: "mez", tgt: resolve(m[8]) }); break;
-      // proves the name is a mob (broadcast, casterless) — never a claim
+      // casterless broadcast — proves the name is a mob. It claims nothing on
+      // its own; buildClaims pairs it with YOUR OWN completed cast (see the
+      // charm-grant rule there) before it can hand you the mob.
       case "charmbc": ev.push({ ts, k: "charm_bc", tgt: resolve(m[8]) }); break;
       case "special": ev.push({ ts, k: "special", name: m[8], prev: m[9] || null }); break;
       case "login": ev.push({ ts, k: "login" }); break;
@@ -391,35 +394,140 @@ function parse(text, fileOwner) {
 }
 
 /* ─── claims: whose side is an actor on, and WHEN ──────────────────────────
-   The one surefire signal that an actor is yours is its second-person tell:
-   "<name> told you, '…, Master.'" The client shows you nobody's pet tells
-   but your own, and players can't produce the past-tense form. Ambient
-   /says ("At your service Master.") reach everyone standing nearby, so they
-   never claim — at a two-mage camp they would hand you the other mage's
-   pet. That exact failure shipped once: a mob-fights-mobs heuristic claimed
-   another player's charmed evil eye on the reference log. Surefire or
+   TWO surefire signals, both first-person: the actor's own tell, and your own
+   charm cast landing.
+
+   (1) The tell: "<name> told you, '…, Master.'" The client shows you nobody's
+   pet tells but your own, and players can't produce the past-tense form.
+   Ambient /says ("At your service Master.") reach everyone standing nearby,
+   so they never claim — at a two-mage camp they would hand you the other
+   mage's pet. That exact failure shipped once: a mob-fights-mobs heuristic
+   claimed another player's charmed evil eye on the reference log. Surefire or
    nothing; a pet that never answered an order stays unclaimed, and the
    footer tells the player one /pet attack fixes that.
 
+   (2) The charm grant: "You begin casting <S>." is a FIRST-PERSON line — no
+   other player's action can put it in your log — and "<N> has been charmed."
+   is the casterless broadcast of a charm landing. A broadcast locked to the
+   completion of your own uninterrupted cast is your charm. This exists
+   because the tell alone loses whole fights: a charmed mob only tells you
+   when you give it an attack-family order, so a player who charms and lets
+   the pet keep swinging produces no tell at all and 100% of its damage
+   silently vanishes from the meter (observed 2026-08-11: a charmed
+   Innoruuk`s Chosen soloed four consecutive named mobs and the parse showed
+   nothing for any of them).
+
+   The one way (2) could belong to someone else is a second charmer landing a
+   charm inside your own cast window, so that case is REFUSED rather than
+   guessed: if more than one broadcast falls in the window, neither is
+   claimed. That guard is what keeps this surefire rather than statistical —
+   the failure mode of the heuristic that shipped wrong was exactly "another
+   player's charm looked like mine", and here the parse declines instead.
+   A charm grant does NOT backdate: the mob was not yours before it landed.
+
    A claim is an INTERVAL, not a name: summoned-pet names come from a shared
    generator and charm hands mobs back, so "yours" has a start and an end.
-   The claim covers the actor's whole presence episode around its tells —
+   A tell-claimed episode covers the actor's whole presence around its tells —
    backdated to the last boundary, so the swings between summon (or charm)
    and your first order still count. Boundaries are the moments an actor can
    change hands:
      · its death line
      · you zoned or died (charm breaks on your death; a summoned pet that
        survives re-claims itself with its next tell)
-     · your spell wearing off it (the charm-break line)
+     · your CHARM breaking on it — not merely any spell fading. The old rule
+       cut on every "Your <S> spell has worn off of <N>", which meant a
+       Tashani, a haste, or a Harmony expiring on your own pet mid-fight
+       silently ended the claim and lost the rest of the fight. Which spells
+       charm is learned from the log itself (the ones that produced a grant
+       above), never hardcoded; with none learned the old broad cut stands,
+       so this is strictly narrower and never claims more on that path.
      · it damaging YOU — a charmed pet never hits its master; a broken one does
    Within one episode two same-named actors can't be told apart in a text
    log; that is the same limitation fights have, and the footer says so. */
+// A charm broadcast counts as yours only this long after your cast began —
+// wide enough for any charm cast time observed (Allure VII lands at +4s),
+// narrow enough that the ambiguity guard below is looking at one cast.
+const CHARM_WINDOW_S = 12;
+/* The client prints a spell's RANK when you start it ("You begin casting
+   Allure VII.") and drops it everywhere else ("Your Allure spell is
+   interrupted.", "Your Allure spell has worn off of <N>."). Comparing the two
+   forms literally never matches, so every spell name is compared by its base. */
+const spellBase = s => (s || "").replace(/\s+(?:[IVXLCDM]+|\d+)$/, "");
+
+/* Which "<N> has been charmed." broadcasts are YOURS, decided before the
+   claim loop runs so a charm break early in the log is still narrowed by a
+   charm spell learned later. Returns { grants, charmSpells, held }:
+     grants      — "<name>@<epoch ms>" of every broadcast proven yours
+     charmSpells — BASE names of the spells that produced one, from this log
+     held        — name -> [{t0, t1}] spans your charm is PROVEN to be on it */
+function charmGrants(events) {
+  const grants = new Set(), charmSpells = new Set(), held = new Map();
+  const bcs = events.filter(e => e.k === "charm_bc");
+  if (!bcs.length) return { grants, charmSpells, held };
+  const granted = [];
+  for (const bc of bcs) {
+    const T = bc.ts.getTime();
+    // your most recent cast that could still be in flight
+    let cast = null;
+    for (const e of events) {
+      if (e.ts.getTime() >= T) break;
+      if (e.k === "cast" && T - e.ts.getTime() <= CHARM_WINDOW_S * 1000) cast = e;
+    }
+    if (!cast) continue;
+    const C = cast.ts.getTime(), base = spellBase(cast.spell);
+    // a cast that never landed can't have charmed anything
+    const spoiled = events.some(e => e.ts.getTime() >= C && e.ts.getTime() <= T &&
+      ((e.k === "interrupt" || e.k === "fizzle" || e.k === "resist") && spellBase(e.spell) === base));
+    if (spoiled) continue;
+    // THE guard: one cast can only have charmed one mob. Two broadcasts in
+    // the window means a second charmer is in earshot and the log cannot say
+    // which is yours — so neither is claimed. Declining here is the whole
+    // reason this signal is surefire and not a guess.
+    const inWindow = bcs.filter(b => b.ts.getTime() > C && b.ts.getTime() <= C + CHARM_WINDOW_S * 1000);
+    if (inWindow.length !== 1) continue;
+    grants.add(`${bc.tgt}@${T}`);
+    charmSpells.add(base);
+    granted.push({ name: bc.tgt, t: bc.ts, base });
+  }
+  /* How long your charm PROVABLY held. "Your <S> spell has worn off of <N>"
+     is a first-person line: it proves your S was on N right up to that
+     moment. Between the grant and that break, N is yours no matter what else
+     the log says about a mob with that name — and that matters, because
+     EQL spawns duplicates. On 2026-08-11 two mobs both named Innoruuk`s
+     Chosen fought EACH OTHER; the hostile twin cleaved the player at
+     12:57:55 and died at 12:58:29, and the ordinary "it hit me, so my charm
+     broke" and "it died" boundaries fired on the player's still-charmed pet.
+     The Allure did not wear off until 13:03:04, so the pet was the player's
+     the whole time — including the named kill it made at 13:00:13, which the
+     meter had credited to nobody. Proof outranks inference: inside a held
+     span those two ambiguous boundaries are suppressed. A break with no
+     wear-off line still ends the span at the next grant or the log's end,
+     and your death and zoning still cut, so nothing runs away. */
+  for (const g of granted) {
+    let end = null;
+    for (const e of events) {
+      if (e.ts <= g.t) continue;
+      const isBreak = e.k === "shed" && e.tgt === g.name && spellBase(e.spell) === g.base;
+      const isRecharm = e.k === "charm_bc" && e.tgt === g.name;
+      if (isBreak || isRecharm) { end = e.ts; break; }
+    }
+    if (!end) continue; // unproven tail — the ordinary boundaries govern it
+    if (!held.has(g.name)) held.set(g.name, []);
+    held.get(g.name).push({ t0: g.t, t1: end });
+  }
+  return { grants, charmSpells, held };
+}
+
 function buildClaims(P) {
-  const open = new Map();   // name -> { t0, tells, anti }
+  const open = new Map();   // name -> { t0, tells, anti, granted }
   const claims = new Map(); // name -> [{ t0, t1, tells }]
   let lastTs = null;
+  const { grants, charmSpells, held } = charmGrants(P.events);
+  // inside a proven charm span, a same-named twin's hit on you or death line
+  // must not cut the claim — see charmGrants for why proof beats inference
+  const heldAt = (name, ts) => (held.get(name) || []).some(s => ts >= s.t0 && ts < s.t1);
   const push = (name, st, t1) => {
-    if (!st.tells || st.anti) return;
+    if ((!st.tells && !st.granted) || st.anti) return;
     if (!claims.has(name)) claims.set(name, []);
     claims.get(name).push({ t0: st.t0, t1, tells: st.tells });
   };
@@ -435,7 +543,7 @@ function buildClaims(P) {
   const touch = (name, ts) => {
     if (!name || name === P.owner) return null;
     let st = open.get(name);
-    if (!st) { st = { t0: ts, tells: 0, anti: false }; open.set(name, st); }
+    if (!st) { st = { t0: ts, tells: 0, anti: false, granted: false }; open.set(name, st); }
     return st;
   };
   for (const e of P.events) {
@@ -446,13 +554,27 @@ function buildClaims(P) {
         break;
       case "tell": { const st = touch(e.name, e.ts); if (st) st.tells++; break; }
       case "antitell": { const st = touch(e.name, e.ts); if (st) st.anti = true; break; }
-      case "shed": touch(e.tgt, e.ts); cut(e.tgt, e.ts, true); break;
+      // your charm landing starts a fresh episode AT the broadcast — anything
+      // the mob did before it was working for someone else
+      case "charm_bc": {
+        if (!grants.has(`${e.tgt}@${e.ts.getTime()}`)) break;
+        cut(e.tgt, e.ts, false);
+        const st = touch(e.tgt, e.ts);
+        if (st) { st.granted = true; st.t0 = e.ts; }
+        break;
+      }
+      // only the charm breaking hands the mob back; any other spell of yours
+      // expiring on your own pet is just a buff or debuff running out
+      case "shed":
+        touch(e.tgt, e.ts);
+        if (!charmSpells.size || charmSpells.has(spellBase(e.spell))) cut(e.tgt, e.ts, true);
+        break;
       case "kill":
-        if (e.tgt) { touch(e.tgt, e.ts); cut(e.tgt, e.ts, true); }
+        if (e.tgt) { touch(e.tgt, e.ts); if (!heldAt(e.tgt, e.ts)) cut(e.tgt, e.ts, true); }
         if (e.src) touch(e.src, e.ts);
         break;
       case "dmg":
-        if (e.src && e.tgt === P.owner) { touch(e.src, e.ts); cut(e.src, e.ts, false); break; }
+        if (e.src && e.tgt === P.owner) { touch(e.src, e.ts); if (!heldAt(e.src, e.ts)) cut(e.src, e.ts, false); break; }
         /* falls through — a normal damage event is just presence */
       case "miss": touch(e.src, e.ts); touch(e.tgt, e.ts); break;
       case "heal": touch(e.by, e.ts); touch(e.who, e.ts); break;
@@ -964,6 +1086,65 @@ function classOf(spell, ownerClasses) {
   return cl[0];
 }
 
+/* ─── swing intervals ─────────────────────────────────────────────────────
+   How often an actor actually swings, measured per attack verb. The log
+   timestamps every swing — landed or missed — to the second, so the RATE is
+   measurable even though the weapon's delay stat is not: what you observe
+   folds in haste and double/triple attacks, and the log never separates them.
+   So this reports the observed interval BETWEEN SWINGS and says so; it is not
+   a weapon delay and must never be labeled one.
+
+   What it IS good for is comparison. Double-attack rate and haste are
+   properties of the actor, not the weapon, so between two fights with the
+   same actor they cancel: if the interval moves, the weapon's delay moved.
+   That is the question this was built to answer (2026-08-11: did swapping a
+   charmed pet's weapon change its swing rate?).
+
+   Verbs stay split because the verb IS the damage type — a two-weapon actor
+   shows as two streams, which is the closest a text log gets to naming hands. */
+const SWING_MIN = 20;        // fewer swings than this and the interval is noise
+const SWING_GAP = 10;        // s between swings that means "stopped fighting"
+const SWING_MIN_INTERVALS = 10;
+const round2 = x => Math.floor(x * 100 + 0.5) / 100;
+function swingTable(events, side) {
+  const by = new Map();
+  for (const e of events) {
+    const swing = (e.k === "dmg" && e.cat === "melee") || (e.k === "miss" && e.how !== "protected");
+    if (!swing || !e.src || !e.verb) continue;
+    const key = `${e.src}|${e.verb}`;
+    let g = by.get(key);
+    if (!g) { g = { actor: e.src, side: null, verb: e.verb, ts: [] }; by.set(key, g); }
+    // An actor's side can change mid-log — a mob swings at you, you charm
+    // it, and it swings for you — so the group is labeled by its LAST
+    // swing: the actor's current relationship to you, not a stale
+    // pre-claim one. Only the label moves; the counts are side-blind.
+    g.side = side(e);
+    g.ts.push(Math.round(e.ts.getTime() / 1000));
+  }
+  const rows = [];
+  for (const g of by.values()) {
+    const n = g.ts.length;
+    if (n < SWING_MIN) continue;
+    g.ts.sort((a, b) => a - b);
+    // gaps longer than SWING_GAP are breaks in the engagement: drop the gap
+    // AND the time it spans, so a pause between pulls can't inflate the
+    // interval. What survives is time the actor was demonstrably swinging.
+    let engaged = 0, k = 0;
+    for (let i = 1; i < n; i++) { const d = g.ts[i] - g.ts[i - 1]; if (d <= SWING_GAP) { engaged += d; k++; } }
+    if (k < SWING_MIN_INTERVALS || engaged <= 0) continue;
+    // 95% bounds, Poisson on the swing count. Swings are near-periodic rather
+    // than Poisson, so this range is CONSERVATIVE — wider than the truth,
+    // which is the safe direction for a measurement someone will act on.
+    const hiK = k + 1.96 * Math.sqrt(k), loK = k - 1.96 * Math.sqrt(k);
+    rows.push({ actor: g.actor, side: g.side, verb: g.verb, swings: n, intervals: k,
+                engaged, interval: round2(engaged / k), lo: round2(engaged / hiK),
+                hi: loK > 0 ? round2(engaged / loK) : null });
+  }
+  rows.sort((a, b) => b.swings - a.swings || (a.actor < b.actor ? -1 : a.actor > b.actor ? 1 : 0) ||
+                      (a.verb < b.verb ? -1 : a.verb > b.verb ? 1 : 0));
+  return rows;
+}
+
 /* ─── analysis ────────────────────────────────────────────────────────────*/
 // DPS denominator = time spanned by the team's damage events. Gaps >30s don't count.
 function combatSecondsOf(events, side) {
@@ -1144,6 +1325,7 @@ function analyze(P, events, side, ownerClasses) {
     elem: [...elem.entries()].sort((a, b) => b[1] - a[1]),
     byClass: [...byClass.entries()].sort((a, b) => b[1] - a[1]),
     melee: { landed: mHit.length, missed: mMiss, dmg: meleeDmg, avg: mHit.length ? meleeDmg / mHit.length : 0, max: mHit.reduce((a, e) => Math.max(a, e.amt), 0), riposte },
+    swings: swingTable(events, side),
     skills: [...skills.values()].sort((a, b) => b.dmg - a.dmg),
     weapons: [...weapons.values()].sort((a, b) => b.dmg - a.dmg), ranged, mend,
     casts, interrupts, resists, fizzles, resistIn, petResists, deaths, combatSec: secs, wallSecs, activeSecs,
@@ -1163,7 +1345,7 @@ function analyze(P, events, side, ownerClasses) {
 /* ─── namespace ───────────────────────────────────────────────────────────*/
 const EQLLog = {
   parse, buildClaims, mkSide, buildFights, markTaint, buildMobStats, resolveHp,
-  buildLevelSpans, buildSegments, analyze, combatSecondsOf, classOf,
+  buildLevelSpans, buildSegments, analyze, combatSecondsOf, classOf, swingTable,
   loadSpellData, spellIcon, loadConBands, setConBands, conBand, conScore,
   conDiscriminative, fkey, epochSec, dayKey, inCopper, toDate, flagsOf,
   CLASS_ABBR, SKILL_VERBS, RANGED_VERBS, FIGHT_IDLE,

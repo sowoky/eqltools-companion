@@ -390,6 +390,13 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .cbt-sub th { text-align: left; color: var(--ink-dim); font-weight: 500; padding: 1px 12px 1px 0; }
 .cbt-sub td { padding: 1px 12px 1px 0; }
 .cbt-sub + .cbt-sub { margin-top: 8px; }
+/* swing-interval table: sortable like every other data table, and it scrolls
+   inside itself so a long actor name can't push the fight row sideways */
+.cb-swingwrap { overflow-x: auto; max-width: 100%; }
+.cb-swingnote { max-width: 560px; white-space: normal; }
+.cb-swings td:not(:first-child), .cb-swings th { white-space: nowrap; }
+.cbt-sub th.is-sort { cursor: pointer; user-select: none; }
+.cbt-sub th.is-sort:hover { color: var(--gold-pale); }
 .cb-line { margin-top: 6px; }
 .cb-raidhead { cursor: pointer; margin-bottom: 8px; color: var(--gold-pale); }
 .cb-raidhead:hover { color: var(--ink); }
