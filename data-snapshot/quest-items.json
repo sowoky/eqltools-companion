@@ -80504,11 +80504,11 @@
        1
       ],
       [
-       "Notes from the Greenmist Tome",
+       "Full Pack of Sarnak Heads",
        1
       ],
       [
-       "Full Pack of Sarnak Heads",
+       "Notes from the Greenmist Tome",
        1
       ]
      ],
@@ -85709,6 +85709,9 @@
        1
       ]
      ],
+     "pre": [
+      41
+     ],
      "txt": "Slay Venril Sathir in Karnor's Castle and loot a Pulsing Green Stone."
     },
     {
@@ -86041,6 +86044,9 @@
        "Pod of Seawater",
        1
       ]
+     ],
+     "pre": [
+      62
      ],
      "txt": "Kill Faydedar in Timorous Deep, loot Pod of Seawater.",
      "z": "Timorous Deep"
@@ -111272,11 +111278,11 @@
      "i": 56,
      "in": [
       [
-       "Shackle of Bronze",
+       "Shackle of Copper",
        1
       ],
       [
-       "Shackle of Copper",
+       "Shackle of Bronze",
        1
       ]
      ],
@@ -112125,11 +112131,11 @@
      "i": 8,
      "in": [
       [
-       "The Idol",
+       "Red Sash of Order",
        1
       ],
       [
-       "Red Sash of Order",
+       "The Idol",
        1
       ]
      ],
@@ -113049,11 +113055,11 @@
     {
      "c": [
       [
-       "Apprentice Ring",
+       "Head of Sir Edwin Motte",
        1
       ],
       [
-       "Head of Sir Edwin Motte",
+       "Apprentice Ring",
        1
       ]
      ],
@@ -113063,11 +113069,11 @@
     {
      "c": [
       [
-       "Apprentice Ring",
+       "Twisted Bone Earring",
        1
       ],
       [
-       "Twisted Bone Earring",
+       "Apprentice Ring",
        1
       ]
      ],
@@ -113095,7 +113101,7 @@
        1
       ],
       [
-       "Apprentice Ring",
+       "Head of Sir Edwin Motte",
        1
       ],
       [
@@ -113103,7 +113109,7 @@
        1
       ],
       [
-       "Head of Sir Edwin Motte",
+       "Apprentice Ring",
        1
       ]
      ],
@@ -113304,11 +113310,11 @@
      "i": 4,
      "in": [
       [
-       "Apprentice Ring",
+       "Head of Sir Edwin Motte",
        1
       ],
       [
-       "Head of Sir Edwin Motte",
+       "Apprentice Ring",
        1
       ]
      ],
@@ -113324,11 +113330,11 @@
      "i": 5,
      "in": [
       [
-       "Apprentice Ring",
+       "Twisted Bone Earring",
        1
       ],
       [
-       "Twisted Bone Earring",
+       "Apprentice Ring",
        1
       ]
      ],
@@ -113377,7 +113383,7 @@
        1
       ],
       [
-       "Apprentice Ring",
+       "Head of Sir Edwin Motte",
        1
       ],
       [
@@ -113385,7 +113391,7 @@
        1
       ],
       [
-       "Head of Sir Edwin Motte",
+       "Apprentice Ring",
        1
       ]
      ],
@@ -124598,11 +124604,11 @@
     {
      "c": [
       [
-       "Qeynos Badge of Honor",
+       "Seal of Vegalys",
        1
       ],
       [
-       "Seal of Vegalys",
+       "Qeynos Badge of Honor",
        1
       ]
      ],
@@ -125103,11 +125109,11 @@
      "i": 31,
      "in": [
       [
-       "Qeynos Badge of Honor",
+       "Seal of Vegalys",
        1
       ],
       [
-       "Seal of Vegalys",
+       "Qeynos Badge of Honor",
        1
       ]
      ],
@@ -128960,11 +128966,11 @@
     {
      "c": [
       [
-       "Forged Note to Courier",
+       "Drogan Warlord's Insignia",
        1
       ],
       [
-       "Drogan Warlord's Insignia",
+       "Forged Note to Courier",
        1
       ]
      ],
@@ -128987,11 +128993,11 @@
     {
      "c": [
       [
-       "Di'Zok Signet of Service",
+       "Head of Skargus",
        1
       ],
       [
-       "Head of Skargus",
+       "Di'Zok Signet of Service",
        1
       ]
      ],
@@ -129076,11 +129082,11 @@
      "i": 7,
      "in": [
       [
-       "Forged Note to Courier",
+       "Drogan Warlord's Insignia",
        1
       ],
       [
-       "Drogan Warlord's Insignia",
+       "Forged Note to Courier",
        1
       ]
      ],
@@ -129135,11 +129141,11 @@
      "i": 11,
      "in": [
       [
-       "Di'Zok Signet of Service",
+       "Head of Skargus",
        1
       ],
       [
-       "Head of Skargus",
+       "Di'Zok Signet of Service",
        1
       ]
      ],
@@ -130852,6 +130858,9 @@
        "Cazic Quill",
        1
       ]
+     ],
+     "pre": [
+      16
      ],
      "txt": "Kill General V`ghera. Loot General's Pouch and, if it drops, Cazic Quill*."
     },
@@ -146084,6 +146093,9 @@
        1
       ]
      ],
+     "pre": [
+      13
+     ],
      "txt": "Kill monstrous zombie and loot Monstrous Zombie Heart"
     },
     {
@@ -147781,12 +147793,12 @@
        4
       ],
       [
-       "Pieces of the Iceclad Map",
-       1
-      ],
-      [
        "Third part of an Iceclad Map",
        4
+      ],
+      [
+       "Pieces of the Iceclad Map",
+       1
       ]
      ],
      "g": "Bloodmaw",
@@ -147902,12 +147914,12 @@
        4
       ],
       [
-       "Pieces of the Iceclad Map",
-       1
-      ],
-      [
        "Third part of an Iceclad Map",
        4
+      ],
+      [
+       "Pieces of the Iceclad Map",
+       1
       ]
      ],
      "k": "give",
@@ -150358,6 +150370,9 @@
        1
       ]
      ],
+     "pre": [
+      25
+     ],
      "txt": "Dragon Necropolis: Kill Garzicor's Corpse to spawn Garzicor's Wraith at +1523, +1109"
     },
     {
@@ -151157,6 +151172,10 @@
      "i": 12,
      "in": [
       [
+       "Hilt of the Nobleman",
+       1
+      ],
+      [
        "Blade of Nobility",
        1
       ],
@@ -151166,10 +151185,6 @@
       ],
       [
        "A Ghoul's Heart",
-       1
-      ],
-      [
-       "Hilt of the Nobleman",
        1
       ]
      ],
@@ -155966,11 +155981,11 @@
        1
       ],
       [
-       "Diseased Tongue",
+       "Hierophant's Knife",
        1
       ],
       [
-       "Hierophant's Knife",
+       "Diseased Tongue",
        1
       ]
      ],
@@ -164106,11 +164121,11 @@
     {
      "c": [
       [
-       "Bog Juice",
+       "Bunker Cell No 1",
        1
       ],
       [
-       "Bunker Cell No 1",
+       "Bog Juice",
        1
       ]
      ],
@@ -164344,11 +164359,11 @@
      "i": 5,
      "in": [
       [
-       "Bog Juice",
+       "Bunker Cell No 1",
        1
       ],
       [
-       "Bunker Cell No 1",
+       "Bog Juice",
        1
       ]
      ],
@@ -164457,6 +164472,9 @@
        "Token of Truth",
        1
       ]
+     ],
+     "pre": [
+      12
      ],
      "txt": "Kill Guard Willia (to loot Token of Truth)"
     },

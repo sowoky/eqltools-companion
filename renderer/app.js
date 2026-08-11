@@ -1034,6 +1034,40 @@ function toggleTrack(t) {
 
 let LIVE_HAVE = new Map(); // normName -> qty looted since the current dump
 
+/* ── items the app CANNOT see you holding ─────────────────────────────────
+   Held counts come from a `/outputfile inventory` dump plus loot lines. Two
+   real holdings never reach either: something you bought from a merchant
+   (the client prints no line for an ordinary merchant sale — the "You've
+   bought" string belongs to the barter log) and something parked on your
+   pet (/outputfile has no `pet` option, and handing an item over prints
+   nothing). Both leave the tracker demanding an item you already own
+   (Kyle, 2026-08-11: bought a Fire Opal; Ghoulbane on the pet).
+
+   So the player can say it: a marked item counts as held, and every row
+   that leans on the mark SAYS it's a mark, never dressing it up as
+   something observed. Cleared by clicking again. */
+const HELD_KEY = "eqlt-companion-held-v1";
+let HELD = new Map();   // itemKey -> {n, c} the player says they hold
+function loadHeld() {
+  try {
+    const o = JSON.parse(localStorage.getItem(HELD_KEY)) || {};
+    HELD = new Map(Object.entries(o).filter(([, v]) => v && typeof v === "object")
+      .map(([k, v]) => [k, { n: String(v.n || k), c: Math.max(1, +v.c || 1) }]));
+  } catch { HELD = new Map(); }
+}
+function saveHeld() {
+  try { localStorage.setItem(HELD_KEY, JSON.stringify(Object.fromEntries(HELD))); } catch {}
+}
+// toggle: mark `want` of this item held, or drop the mark if it already has one
+function toggleHeld(name, want) {
+  const k = itemKey(name);
+  if (HELD.has(k)) HELD.delete(k);
+  else HELD.set(k, { n: name, c: Math.max(1, want || 1) });
+  saveHeld();
+  renderInv(); renderQuests(); pushQuests();
+}
+const heldMark = name => HELD.get(itemKey(name)) || null;
+
 // normName -> total count held, keyed BOTH raw and decoration-stripped so a
 // "Giant Snake Fang +4" in the dump answers a bare "Giant Snake Fang".
 /* itemKey, not normName: an inventory dump prints the item's real name, so
@@ -1047,6 +1081,9 @@ function haveMap() {
       m.set(k, (m.get(k) || 0) + r.count);
   }
   for (const [k, c] of LIVE_HAVE) m.set(k, (m.get(k) || 0) + c);
+  // a mark is a FLOOR, never a sum: re-dumping with the item finally visible
+  // must not read as two of them
+  for (const [k, v] of HELD) m.set(k, Math.max(m.get(k) || 0, v.c));
   return m;
 }
 // how many of a WIKI-named item the player holds: exact, then article-stripped
@@ -1071,17 +1108,34 @@ function compsFor(q, have) {
      SoulFire one comes from Assistant Kiolna, not The Prophet in Crushbone).
      The step knows better than the item page: source these rows from the
      step's NPC. */
-  const madeBy = new Map();
+  const madeBy = new Map();          // itemKey -> [every step producing it]
   for (const st of q.steps || []) {
-    if (st.k !== "give" || !st.npc) continue;
     for (const [n] of st.out || []) {
-      const z = st.z || (NPCLOC[st.npc] && NPCLOC[st.npc].z) || "";
-      if (!madeBy.has(itemKey(n))) madeBy.set(itemKey(n), { npc: st.npc, z });
+      const k2 = itemKey(n);
+      if (!madeBy.has(k2)) madeBy.set(k2, []);
+      madeBy.get(k2).push(st);
     }
   }
+  /* The zone list is a "do now" list, so it obeys the step graph the same
+     way the checklist does: an item whose EVERY producing step is locked
+     behind unmet prereqs (Testimony needs Token of Truth needs Guard Willia
+     needs both token turn-ins — Kyle, 2026-08-11) is not something to go
+     get yet. `lk` rows stay in the counts and the checklist but never
+     render as a zone row until the chain reaches them. */
+  const ss = stepState(q, have);
+  const stStateOf = new Map((ss ? ss.states : []).map(s => [s.st, s]));
   const rows = (q.need && q.need.length ? q.need : (q.items || []).map(n => [n, 1]))
-    .map(([n, want]) => ({ n, want, have: held(n), fr: q.from && q.from[n],
-                           st: madeBy.get(itemKey(n)) }));
+    .map(([n, want]) => {
+      const mks = madeBy.get(itemKey(n)) || [];
+      const giver = mks.find(st2 => st2.k === "give" && st2.npc);
+      const st = giver
+        ? { npc: giver.npc, z: giver.z || (NPCLOC[giver.npc] && NPCLOC[giver.npc].z) || "" }
+        : undefined;
+      const states = mks.map(st2 => stStateOf.get(st2)).filter(Boolean);
+      const lk = states.length > 0 && states.every(s2 => !s2.done && !s2.can);
+      return { n, want, have: held(n), fr: q.from && q.from[n],
+               ...(st ? { st } : {}), ...(lk ? { lk: true } : {}) };
+    });
   const got = rows.filter(c => c.have >= c.want).length;
   return { q, comps: rows, got, need: rows.length, done: rows.length > 0 && got === rows.length };
 }
@@ -1102,11 +1156,13 @@ function mergePlans(plans) {
       if (cur) {
         cur.want = Math.max(cur.want, c.want); cur.quests.set(name, rew);
         // one quest chain-makes it, another farms it: the pooled row can't
-        // claim the chain (same-named items are sometimes different items)
+        // claim the chain (same-named items are sometimes different items) —
+        // and it hides only when EVERY quest that wants it says locked
         if (!cur.st !== !c.st) cur.st = undefined;
+        cur.lk = cur.lk && c.lk;
       }
       else merged.set(k, { n: c.n, want: c.want, have: c.have, st: c.st,
-                           quests: new Map([[name, rew]]) });
+                           lk: !!c.lk, quests: new Map([[name, rew]]) });
     }
   }
   return [...merged.values()].map(r => {
@@ -1114,6 +1170,7 @@ function mergePlans(plans) {
     const tt = names.map(n => r.quests.get(n) ? `${n} → ${r.quests.get(n)}` : n).join("\n");
     return { n: r.n, want: r.want, have: r.have,
              ...(r.st ? { st: r.st } : {}),
+             ...(r.lk ? { lk: true } : {}),
              tag: names.length > 1 ? `${names.length} quests` : names[0],
              ...(tt ? { tt } : {}) };
   });
@@ -1315,30 +1372,56 @@ function zoneDists() {
    places, but Mistmoore only through here, so do it while you're close).
    Zones with something outstanding still outrank cleared ones, and the two
    catch-all buckets sit at the bottom whatever they hold. */
+/* A zone name's IDENTITY node: the node that IS this zone, because the
+   name's own atlas key sits on the node's key list ('North Freeport' is
+   freportn, a key of node 'Freeport'). Distinct from geo.alias, which also
+   carries distance HINTS ('Commonlands' points NEAR 'East Commonlands' but
+   is not it) — a hint must never merge two buckets into one. */
+function zoneIdentityNode(z) {
+  if (!GEO) return null;
+  if (GEO.nodes[z]) return z;
+  const key = NAME2KEY.get(String(z).toLowerCase());
+  return (key && KEY2NODE.get(key)) || null;
+}
+
 function zoneBuckets(rows) {
-  const by = new Map();
+  // One bucket per PLACE: 'Freeport' and 'North Freeport' are the same node
+  // and must not render as two lists (Kyle, 2026-08-11). Entries remember
+  // their own zone name so the source lookup and the shown half stay exact;
+  // an item stated at both granularities keeps only the specific one.
+  const by = new Map(); // bucket key -> Map(itemKey -> {c, z, specific})
   for (const r of rows) {
+    if (r.lk) continue; // chain-locked: not doable yet, the checklist shows why
     // chain-made rows live where their hand-in happens, not where the item's
     // global src points (which can be a same-named different item)
     const zs = r.st && r.st.z ? [r.st.z] : bucketsFor(r.n);
     for (const z of zs) {
-      if (!by.has(z)) by.set(z, []);
-      by.get(z).push(r);
+      const node = z in BUCKET_LABEL ? null : zoneIdentityNode(z);
+      const key = node || z;
+      if (!by.has(key)) by.set(key, new Map());
+      const g = by.get(key), ik = itemKey(r.n);
+      const specific = !!node && z !== node;
+      const cur = g.get(ik);
+      if (!cur || (specific && !cur.specific)) g.set(ik, { c: r, z, specific });
     }
   }
   const dist = zoneDists();
-  const out = [...by.entries()].map(([z, items]) => {
-    items.sort((a, b) => (a.have >= a.want) - (b.have >= b.want) ||
-      (a.n.toLowerCase() < b.n.toLowerCase() ? -1 : 1));
-    const node = dist ? geoNode(z) : null;
+  const out = [...by.entries()].map(([key, g]) => {
+    const entries = [...g.values()];
+    entries.sort((a, b) => (a.c.have >= a.c.want) - (b.c.have >= b.c.want) ||
+      (a.c.n.toLowerCase() < b.c.n.toLowerCase() ? -1 : 1));
+    // every entry naming one same half: the heading keeps that precision
+    const names = new Set(entries.map(e => e.z));
+    const z = names.size === 1 ? entries[0].z : key;
+    const node = dist ? geoNode(key) : null;
     // no graph or no known position: d/deg flat, the old ordering stands
     const d = !dist ? 0 : node && dist.has(node) ? dist.get(node) : 9999;
     const deg = !dist ? 0 : node ? (GEO.nodes[node].adj || []).length : 99;
-    return { z, items, d, deg,
-             left: items.filter(r => r.have < r.want).length };
+    return { z, key, entries, d, deg,
+             left: entries.filter(e => e.c.have < e.c.want).length };
   });
   out.sort((a, b) => {
-    const ca = a.z in BUCKET_LABEL, cb = b.z in BUCKET_LABEL;
+    const ca = a.key in BUCKET_LABEL, cb = b.key in BUCKET_LABEL;
     return (ca - cb) || ((b.left > 0) - (a.left > 0)) ||
       (a.d - b.d) || (a.deg - b.deg) || (b.left - a.left) ||
       (a.z < b.z ? -1 : 1);
@@ -1351,8 +1434,10 @@ const zoneLink = z => BUCKET_LABEL[z]
   : (QZONES[z] ? `<a class="wk zg__name" data-wiki="${esc(QZONES[z])}">${esc(z)}</a>`
     : `<span class="zg__name">${esc(z)}</span>`);
 
-// one item row inside a zone bucket: held/needed, and who drops it here
-function zoneItemRow(r, zone) {
+// one item row inside a zone bucket: held/needed, and who drops it here.
+// `zone` is the row's OWN zone name (exact src lookups); `bucketZ` the merged
+// heading — when they differ, the row carries the half ("· North Freeport")
+function zoneItemRow(r, zone, bucketZ) {
   const done = r.have >= r.want;
   const src = done ? { mobs: [] }
     : r.st ? { mobs: [], note: `turn-in at ${r.st.npc}` }
@@ -1363,14 +1448,24 @@ function zoneItemRow(r, zone) {
     const t = mobPath(r.n, m);
     return t ? `<a class="wk" data-wiki="${esc(t)}">${esc(m)}</a>` : esc(m);
   }).join(", ") || esc(src.note || "");
-  const who = src.isl ? `${esc(src.isl)}${mobsHtml ? ` · ${mobsHtml}` : ""}` : mobsHtml;
+  const half = !done && bucketZ && zone && zone !== bucketZ ? esc(zone) : "";
+  let who = src.isl ? `${esc(src.isl)}${mobsHtml ? ` · ${mobsHtml}` : ""}` : mobsHtml;
+  if (half) who = who ? `${who} · ${half}` : half;
   // an item that is another quest's reward is a quest to do, not a mob to farm
   const fr = !done && r.fr && T2Q.get(r.fr)
     ? `<a class="wk qfrom" data-wiki="${esc(r.fr)}">reward of ${esc(T2Q.get(r.fr).n)}</a>` : "";
-  return `<li class="qc ${done ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(r.n)}${count}
+  const mark = heldMark(r.n);
+  return `<li class="qc ${done ? "is-have" : ""} ${mark ? "is-marked" : ""}">${holdChk(r)}${itemSpan(r.n)}${count}
     ${r.tag ? `<span class="qtag"${r.tt ? ` title="${esc(r.tt)}"` : ""}>${esc(r.tag)}</span>` : ""}
-    ${who ? `<span class="qsrc dim">${who}</span>` : ""}${fr ? `<span class="qsrc dim">${fr}</span>` : ""}</li>`;
+    ${who ? `<span class="qsrc dim">${who}</span>` : ""}${fr ? `<span class="qsrc dim">${fr}</span>` : ""}
+    ${mark ? `<span class="qsrc dim">marked held — the app can't see a merchant buy or your pet's bags</span>` : ""}</li>`;
 }
+
+/* The checkbox on a component row is the "I have this" switch. It carries the
+   item name so one delegated listener serves every list that renders a row. */
+const holdChk = r =>
+  `<span class="kchk kchk--hold" data-hold="${esc(r.n)}" data-want="${r.want || 1}"
+     title="${heldMark(r.n) ? "Marked as held — click to clear" : "Mark as held (bought it, or it's on your pet)"}"></span>`;
 
 // the pre-zone-grouping rendering, kept for datasets that predate `src`:
 // item, held/needed, and the lowest-level droppers with their zone
@@ -1380,7 +1475,7 @@ function flatCompsHtml(rows) {
     const d = done ? [] : dropsFor(r.n).slice(0, 2);
     const src = d.map(([mn, mt, zn, zt]) =>
       `<a class="wk" data-wiki="${esc(mt)}">${esc(mn)}</a>${zn ? ` <span class="dim">·</span> <a class="wk" data-wiki="${esc(zt)}">${esc(zn)}</a>` : ""}`).join(", ");
-    return `<li class="qc ${done ? "is-have" : ""}"><span class="kchk"></span>${itemSpan(r.n)}
+    return `<li class="qc ${done ? "is-have" : ""} ${heldMark(r.n) ? "is-marked" : ""}">${holdChk(r)}${itemSpan(r.n)}
       ${r.want > 1 || r.have ? `<span class="qct ${done ? "is-ok" : ""}">${r.have}/${r.want}</span>` : ""}
       ${r.tag ? `<span class="qtag">${esc(r.tag)}</span>` : ""}
       ${src ? `<span class="qsrc dim">${src}</span>` : ""}</li>`;
@@ -1393,14 +1488,15 @@ function zoneGroupsHtml(rows) {
   if (!groups.length) return "";
   // a one-item quest doesn't need a boxed heading over a single row — most of
   // the Turn-ins tab is these, and the chrome outweighs the fact
-  if (groups.length === 1 && groups[0].items.length === 1) {
-    return `<ul class="qcomps qcomps--bare">${zoneItemRow(groups[0].items[0], groups[0].z)}
+  if (groups.length === 1 && groups[0].entries.length === 1) {
+    const e0 = groups[0].entries[0];
+    return `<ul class="qcomps qcomps--bare">${zoneItemRow(e0.c, e0.z, groups[0].z)}
       <li class="qc qc--where dim">${zoneLink(groups[0].z)}</li></ul>`;
   }
   return `<div class="zgs">${groups.map(g => `
     <div class="zg ${g.left ? "" : "is-done"}">
       <div class="zg__head">${zoneLink(g.z)}<span class="zg__n">${g.left ? `${g.left} to get` : "all held"}</span></div>
-      <ul class="qcomps">${g.items.map(r => zoneItemRow(r, g.z)).join("")}</ul>
+      <ul class="qcomps">${g.entries.map(e => zoneItemRow(e.c, e.z, g.z)).join("")}</ul>
     </div>`).join("")}</div>`;
 }
 
@@ -1421,23 +1517,25 @@ function pushQuests() {
   const itemUrl = n => { const t = lookupItem(TIDX, n); return t && base ? base + t.t : ""; };
   const plans = TRACKED.map(k => trackedPlan(k, have)).filter(Boolean);
 
-  const packRow = (c, zone) => {
+  const packRow = (c, zone, bucketZ) => {
     const s = c.have >= c.want ? { mobs: [] }
       : c.st ? { mobs: [], note: `turn-in at ${c.st.npc}` }
       : sourceIn(c.n, zone);
-    const note = [s.isl, s.note].filter(Boolean).join(" · ");
+    const half = c.have < c.want && bucketZ && zone && zone !== bucketZ ? zone : "";
+    const note = [s.isl, s.note, half].filter(Boolean).join(" · ");
     return {
       n: c.n, have: c.have, want: c.want, url: itemUrl(c.n),
       mobs: s.mobs.slice(0, 3), ...(note ? { note } : {}),
       ...(c.tag ? { tag: c.tag } : {}),
       ...(c.tt ? { tt: c.tt } : {}),
+      ...(heldMark(c.n) ? { mk: true } : {}),
     };
   };
   // no source table (a dataset older than this app) means no zone answer at
   // all — send the flat list instead of one bucket claiming the wiki is silent
   const packZones = rows => !hasSrc() ? [] : zoneBuckets(rows).map(g => ({
-    z: BUCKET_LABEL[g.z] || g.z, url: QZONES[g.z] && base ? base + QZONES[g.z] : "",
-    left: g.left, items: g.items.map(c => packRow(c, g.z)),
+    z: BUCKET_LABEL[g.key] || g.z, url: QZONES[g.z] && base ? base + QZONES[g.z] : "",
+    left: g.left, items: g.entries.map(e => packRow(e.c, e.z, g.z)),
   }));
   const packFlat = rows => rows.map(c => ({
     ...packRow(c, null),
@@ -1458,6 +1556,10 @@ function pushQuests() {
   };
 
   window.companion.sendQuests({
+    // how old the held counts are: a merchant buy or a pet hand-off never
+    // reaches a log line, so "you still need it" is only ever true as of the
+    // last dump — the overlay says so rather than implying live truth
+    inv: INV.mtime ? { age: Date.now() - INV.mtime } : null,
     zones: packZones(pooled),
     quests: plans.map(p => {
       const nx = nextLine(p.q);
@@ -1529,8 +1631,8 @@ function partsHtml(q, have) {
         <span class="qprog">${got}/${cs.length}</span>
         <button class="btn btn--mini qtrk" data-track="${esc(pkey)}">${ptracked ? "Untrack" : "Track"}</button>
       </div>
-      <ul class="qcomps">${cs.map(c => `<li class="qc ${c.have >= c.want ? "is-have" : ""}">
-        <span class="kchk"></span>${itemSpan(c.n)}${c.want > 1 || c.have ? `<span class="qct ${c.have >= c.want ? "is-ok" : ""}">${c.have}/${c.want}</span>` : ""}</li>`).join("")}</ul>
+      <ul class="qcomps">${cs.map(c => `<li class="qc ${c.have >= c.want ? "is-have" : ""} ${heldMark(c.n) ? "is-marked" : ""}">
+        ${holdChk(c)}${itemSpan(c.n)}${c.want > 1 || c.have ? `<span class="qct ${c.have >= c.want ? "is-ok" : ""}">${c.have}/${c.want}</span>` : ""}</li>`).join("")}</ul>
     </li>`;
   }).join("");
   return `<div class="qparts">
@@ -2447,6 +2549,7 @@ async function main() {
   buildIndexes(init.datasets);
   STATE = K.load();
   loadTracked();
+  loadHeld();
   for (const b of document.querySelectorAll("[data-trackview]"))
     b.classList.toggle("is-on", b.dataset.trackview === TRACK_VIEW);
   // Kills an older matching rule filed as unmatched (the site's /kills page
@@ -2500,6 +2603,12 @@ async function main() {
     const w = $("invColsWrap");
     if (w && w.open && !w.contains(e.target)) w.open = false;
   });
+  // "I have this" — every component row, wherever it renders
+  document.addEventListener("click", e => {
+    const h = e.target.closest("[data-hold]");
+    if (h) { e.stopPropagation(); toggleHeld(h.dataset.hold, +h.dataset.want || 1); }
+  });
+  window.companion.onMarkHeld(n => toggleHeld(n, 1));
   $("zoneFilter").addEventListener("input", renderZoneTab);
   $("tiSearch").addEventListener("input", e => { TURNIN.q = e.target.value; renderTurnins(); });
   $("qReadyOnly").addEventListener("change", e => { TURNIN.readyOnly = e.target.checked; renderTurnins(); });

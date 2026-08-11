@@ -451,8 +451,17 @@ const CHARM_WINDOW_S = 12;
 /* The client prints a spell's RANK when you start it ("You begin casting
    Allure VII.") and drops it everywhere else ("Your Allure spell is
    interrupted.", "Your Allure spell has worn off of <N>."). Comparing the two
-   forms literally never matches, so every spell name is compared by its base. */
-const spellBase = s => (s || "").replace(/\s+(?:[IVXLCDM]+|\d+)$/, "");
+   forms literally never matches, so every spell name is compared by its base.
+   A resist line is the one observed exception — "<N> resisted your
+   Mesmerization III!" keeps the rank — but stripping is harmless there.
+   The trailing token must VALIDATE as a Roman numeral, not merely look like
+   one: a blanket [IVXLCDM]+ strip eats a real word, and a \d+ strip has no
+   support at all (zero digit-suffixed cast lines in the 2026-08-11 corpus). */
+const ROMAN_RANK = /^M{0,4}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})$/;
+const spellBase = s => {
+  const m = /^(.*) ([IVXLCDM]+)$/.exec(s || "");
+  return m && ROMAN_RANK.test(m[2]) ? m[1] : (s || "");
+};
 
 /* Which "<N> has been charmed." broadcasts are YOURS, decided before the
    claim loop runs so a charm break early in the log is still narrowed by a
@@ -1109,7 +1118,12 @@ const round2 = x => Math.floor(x * 100 + 0.5) / 100;
 function swingTable(events, side) {
   const by = new Map();
   for (const e of events) {
-    const swing = (e.k === "dmg" && e.cat === "melee") || (e.k === "miss" && e.how !== "protected");
+    // Ranged counts on BOTH sides or neither. Melee-only hits plus all misses
+    // built a bow row out of misses alone — swings undercounted, interval
+    // overstated, and it read like a real measurement. verb already splits
+    // shoot/throw/hurl into their own rows, so a bow cadence is worth having.
+    const swing = (e.k === "dmg" && (e.cat === "melee" || e.cat === "ranged")) ||
+                  (e.k === "miss" && e.how !== "protected");
     if (!swing || !e.src || !e.verb) continue;
     const key = `${e.src}|${e.verb}`;
     let g = by.get(key);

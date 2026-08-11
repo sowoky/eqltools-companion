@@ -149,9 +149,15 @@ const link = (text, url, cls) => {
 function itemLi(it) {
   const done = it.have >= it.want;
   const cl = document.createElement("li");
-  cl.className = done ? "is-have" : "";
+  cl.className = `${done ? "is-have" : ""} ${it.mk ? "is-marked" : ""}`.trim();
+  /* The tick is the "I have this" switch, because the two ways to already
+     own something — bought from a merchant, parked on your pet — reach no
+     log line and no dump, so the app can never see them on its own. */
   const tick = document.createElement("span");
   tick.className = "tqc__tick"; tick.textContent = done ? "✓" : "·";
+  tick.dataset.hold = it.n;
+  tick.title = it.mk ? "Marked as held — click to clear"
+    : "Mark as held (bought it, or it's on your pet)";
   cl.append(tick, link(it.n, it.url, "tqc__n"));
   if (it.want > 1 || it.have) {
     const x = document.createElement("span");
@@ -165,7 +171,8 @@ function itemLi(it) {
     cl.append(t);
   }
   // note AND mobs: 'Isle 6 · Bazzt Zzzt' — the island rides alongside the boss
-  const src = !done && [it.note, it.mobs && it.mobs.join(", ")].filter(Boolean).join(" · ");
+  const src = it.mk ? "marked held"
+    : !done && [it.note, it.mobs && it.mobs.join(", ")].filter(Boolean).join(" · ");
   if (src) {
     const s = document.createElement("span");
     s.className = "tqc__src"; s.textContent = src;
@@ -191,6 +198,22 @@ function zoneLi(g) {
   return li;
 }
 
+/* Held counts are only ever as fresh as the last `/outputfile inventory`.
+   Nothing you buy or hand to your pet shows up until you dump again, so once
+   the dump is old enough to be misleading the list says how old — silence
+   here reads as "you definitely still need this". */
+const INV_STALE_MS = 10 * 60 * 1000;
+function invAge() {
+  const inv = TRACKED.inv;
+  const li = document.createElement("li");
+  li.className = "tq-inv";
+  if (!inv) { li.textContent = "No inventory dump yet — /outputfile inventory"; return li; }
+  if (inv.age < INV_STALE_MS) return null;
+  const m = Math.round(inv.age / 60000);
+  li.textContent = `Inventory is ${m < 60 ? `${m}m` : `${Math.round(m / 60)}h`} old — /outputfile inventory to refresh`;
+  return li;
+}
+
 function renderQuests() {
   questsEl.innerHTML = "";
   const quests = TRACKED.quests || [];
@@ -205,6 +228,8 @@ function renderQuests() {
   // by (older dataset); fall back to the flat list rather than an empty panel
   const grouped = (TRACKED.zones || []).length > 0;
   if (qViewEl) qViewEl.hidden = !grouped || PREFS.view !== "tracked";
+  const stale = invAge();
+  if (stale) questsEl.append(stale);
   if (QVIEW === "zone" && grouped) {
     for (const g of TRACKED.zones) questsEl.append(zoneLi(g));
     return;
@@ -250,7 +275,8 @@ if (qViewEl) qViewEl.addEventListener("click", () => {
 });
 
 // older main windows sent a bare array of quests; keep reading it
-const asTracked = q => Array.isArray(q) ? { zones: [], quests: q } : (q || { zones: [], quests: [] });
+const asTracked = q => Array.isArray(q) ? { zones: [], quests: q, inv: null }
+  : (q || { zones: [], quests: [], inv: null });
 window.companion.onFeedQuests(q => { TRACKED = asTracked(q); renderQuests(); rehotspot(); });
 
 /* Stats view — session numbers for the current zone visit, then two
@@ -425,7 +451,7 @@ document.addEventListener("mousemove", e => {
    gets swallowed by a window that thinks it's still over a link. */
 // everything actionable while pinned — quest links, controls, and the Stats
 // drill-down rows (fights, raid actors, the sub-view switch)
-const HOTSPOT_SEL = "[data-url], #btnPin, #filters, #otabs, [data-enc], [data-ract], [data-osub]";
+const HOTSPOT_SEL = "[data-url], [data-hold], #btnPin, #filters, #otabs, [data-enc], [data-ract], [data-osub]";
 function rehotspot() {
   if (!THROUGH) return;
   const el = document.elementFromPoint(MX, MY);
@@ -454,6 +480,8 @@ document.addEventListener("mouseout", e => {
 });
 
 document.addEventListener("click", e => {
+  const h = e.target.closest("[data-hold]");
+  if (h) { window.companion.markHeld(h.dataset.hold); return; }
   const q = e.target.closest("[data-url]");
   if (q && q.dataset.url) window.companion.openWiki(q.dataset.url);
 });

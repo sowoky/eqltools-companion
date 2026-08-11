@@ -619,6 +619,13 @@ ipcMain.on("feed:quests", (_e, q) => {
   LAST_QUESTS = { zones: p.zones || [], quests: (p.quests || []).slice(0, 20) };
   if (overlayWin) overlayWin.webContents.send("feed:quests", LAST_QUESTS);
 });
+/* Overlay -> main window: "I have this one, you just can't see it" (bought
+   from a merchant, parked on the pet — neither prints a log line, and
+   /outputfile has no pet option). The main renderer owns the tracker state,
+   so the overlay only relays the item name. */
+ipcMain.on("quest:markHeld", (_e, n) => {
+  if (mainWin && typeof n === "string") mainWin.webContents.send("quest:markHeld", n);
+});
 
 /* ── lifecycle ────────────────────────────────────────────────────────────*/
 if (!app.requestSingleInstanceLock()) app.quit();

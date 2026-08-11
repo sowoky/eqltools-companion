@@ -402,3 +402,15 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .cb-raidhead:hover { color: var(--ink); }
 .cb-caret { color: var(--ink-dim); }
 .cbraid { margin-bottom: 14px; }
+
+/* The component checkbox is a switch: click to say you hold something the
+   app can't see (a merchant buy and a pet's bags reach neither the log nor
+   an /outputfile dump). A marked row stays visibly a CLAIM — dashed, not
+   the solid gold of an observed hold. */
+.kchk--hold { cursor: pointer; }
+.kchk--hold:hover { border-color: var(--gold); }
+.qc.is-marked .kchk--hold { border-style: dashed; border-color: var(--gold); background: none; }
+.qc.is-marked .kchk--hold::after {
+  content: ""; position: absolute; left: 4px; top: 1px; width: 3px; height: 7px;
+  border: solid var(--gold); border-width: 0 2px 2px 0; transform: rotate(45deg);
+}

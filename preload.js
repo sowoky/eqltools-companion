@@ -27,6 +27,8 @@ contextBridge.exposeInMainWorld("companion", {
   sendZone: (z) => ipcRenderer.send("feed:zone", z),
   sendQuests: (q) => ipcRenderer.send("feed:quests", q),
   sendStats: (s) => ipcRenderer.send("feed:stats", s),
+  markHeld: (n) => ipcRenderer.send("quest:markHeld", n),
+  onMarkHeld: (fn) => ipcRenderer.on("quest:markHeld", (_e, p) => fn(p)),
   onBootstrap: (fn) => ipcRenderer.on("log:bootstrap", (_e, p) => fn(p)),
   onLines: (fn) => ipcRenderer.on("log:lines", (_e, p) => fn(p)),
   onLogStatus: (fn) => ipcRenderer.on("log:status", (_e, p) => fn(p)),

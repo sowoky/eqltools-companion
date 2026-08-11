@@ -195,3 +195,9 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unpin first 
 .os-t td:not(.os-tn):not(.os-td) { color: #8d84a8; }
 .os-d { color: #8d84a8; }
 .os-foot { margin-top: 3px; }
+
+/* Tick doubles as the "I have this" switch (see overlay.js itemLi) */
+.tqc__tick { cursor: pointer; }
+.tqc li.is-marked .tqc__tick { color: #e7b94e; }
+.tqc li.is-marked .tqc__n { color: #cfc6e6; }
+.tq-inv { color: #8d84a8; padding: 3px 0 5px; font-size: 11px; }
