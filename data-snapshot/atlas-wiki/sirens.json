@@ -414,6 +414,11 @@
   },
   {
    "g": 1,
+   "n": "Runed Sea Shell (Cloud)",
+   "u": "https://eqlwiki.com/index.php/Runed_Sea_Shell_(Cloud)"
+  },
+  {
+   "g": 1,
    "n": "Runed Shell Necklace",
    "u": "https://eqlwiki.com/index.php/Runed_Shell_Necklace"
   },
@@ -426,10 +431,6 @@
    "g": 1,
    "n": "Runed Walrus Hide Cloak",
    "u": "https://eqlwiki.com/index.php/Runed_Walrus_Hide_Cloak"
-  },
-  {
-   "n": "Runed_Sea_Shell_(Cloud)",
-   "u": "https://eqlwiki.com/index.php/Runed_Sea_Shell_(Cloud)"
   },
   {
    "n": "Sapphire",
@@ -663,8 +664,8 @@
    "drops": [
     15,
     65,
-    89,
     90,
+    91,
     93,
     113
    ],
@@ -715,8 +716,8 @@
     75,
     76,
     77,
-    89,
     90,
+    91,
     113
    ],
    "loc": null,
@@ -740,8 +741,8 @@
     53,
     65,
     80,
-    89,
     90,
+    91,
     114
    ],
    "loc": [
@@ -871,7 +872,7 @@
     54,
     59,
     60,
-    91
+    88
    ],
    "loc": null,
    "lvl": "56",
@@ -912,7 +913,7 @@
     86,
     87,
     88,
-    91,
+    89,
     99,
     114,
     116
@@ -956,7 +957,7 @@
     54,
     56,
     59,
-    91
+    88
    ],
    "loc": null,
    "lvl": "56",
@@ -987,7 +988,7 @@
     60,
     80,
     85,
-    91
+    88
    ],
    "loc": [
     -555.0,
@@ -1035,7 +1036,7 @@
     81,
     82,
     83,
-    88,
+    89,
     92,
     99,
     106
@@ -1087,7 +1088,7 @@
     48,
     54,
     59,
-    91,
+    88,
     117
    ],
    "loc": null,
@@ -1302,7 +1303,7 @@
     41,
     48,
     85,
-    91,
+    88,
     101
    ],
    "loc": [

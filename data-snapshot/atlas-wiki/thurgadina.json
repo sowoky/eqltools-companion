@@ -1,12 +1,1690 @@
 {
- "items": [],
+ "items": [
+  {
+   "g": 1,
+   "n": "Ball of Velium",
+   "u": "https://eqlwiki.com/index.php/Ball_of_Velium"
+  },
+  {
+   "n": "Bat Fur",
+   "u": "https://eqlwiki.com/index.php/Bat_Fur"
+  },
+  {
+   "n": "Bat Wing",
+   "u": "https://eqlwiki.com/index.php/Bat_Wing"
+  },
+  {
+   "g": 1,
+   "n": "Braided Beard of the Coldain",
+   "u": "https://eqlwiki.com/index.php/Braided_Beard_of_the_Coldain"
+  },
+  {
+   "g": 1,
+   "n": "Coldain Head",
+   "u": "https://eqlwiki.com/index.php/Coldain_Head"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Silk",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Silk"
+  },
+  {
+   "g": 1,
+   "n": "Crystalline Silk Net",
+   "u": "https://eqlwiki.com/index.php/Crystalline_Silk_Net"
+  },
+  {
+   "g": 1,
+   "n": "Forged Dagger",
+   "u": "https://eqlwiki.com/index.php/Forged_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "High Quality Dire Wolf Fur",
+   "u": "https://eqlwiki.com/index.php/High_Quality_Dire_Wolf_Fur"
+  },
+  {
+   "g": 1,
+   "n": "Low Quality Dire Wolf Fur",
+   "u": "https://eqlwiki.com/index.php/Low_Quality_Dire_Wolf_Fur"
+  },
+  {
+   "g": 1,
+   "n": "Medium Quality Dire Wolf Fur",
+   "u": "https://eqlwiki.com/index.php/Medium_Quality_Dire_Wolf_Fur"
+  },
+  {
+   "g": 1,
+   "n": "Plague Rat Tail",
+   "u": "https://eqlwiki.com/index.php/Plague_Rat_Tail"
+  },
+  {
+   "n": "Scalded Rat Skin",
+   "u": "https://eqlwiki.com/index.php/Scalded_Rat_Skin"
+  },
+  {
+   "g": 1,
+   "n": "Velium Bolt",
+   "u": "https://eqlwiki.com/index.php/Velium_Bolt"
+  },
+  {
+   "g": 1,
+   "n": "Velium Dagger",
+   "u": "https://eqlwiki.com/index.php/Velium_Dagger"
+  },
+  {
+   "g": 1,
+   "n": "Velium Long Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Long_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium Morning Star",
+   "u": "https://eqlwiki.com/index.php/Velium_Morning_Star"
+  },
+  {
+   "g": 1,
+   "n": "Velium Round Shield",
+   "u": "https://eqlwiki.com/index.php/Velium_Round_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Velium Scimitar",
+   "u": "https://eqlwiki.com/index.php/Velium_Scimitar"
+  },
+  {
+   "g": 1,
+   "n": "Velium Short Sword",
+   "u": "https://eqlwiki.com/index.php/Velium_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Velium Spider Leg",
+   "u": "https://eqlwiki.com/index.php/Velium_Spider_Leg"
+  },
+  {
+   "g": 1,
+   "n": "Velium Throwing Knife",
+   "u": "https://eqlwiki.com/index.php/Velium_Throwing_Knife"
+  }
+ ],
  "meta": {
   "license": "CC BY-SA 4.0",
   "source": "eqlwiki.com"
  },
- "mobs": [],
- "updated": null,
- "wikiTitle": null,
- "wikiUrl": null,
+ "mobs": [
+  {
+   "dr": [
+    null,
+    "Common",
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    0,
+    5,
+    6,
+    20
+   ],
+   "loc": [
+    80.0,
+    -120.0,
+    9.0
+   ],
+   "lvl": "27 - 31",
+   "n": "a crystal spider",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Crystal_Spider"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    64.0,
+    -563.0,
+    null
+   ],
+   "lvl": "24",
+   "n": "a direwolf pup",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_direwolf_pup"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    3,
+    4
+   ],
+   "loc": [
+    160.0,
+    -145.0,
+    -11.0
+   ],
+   "lvl": "28",
+   "n": "a lesser tar goo",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_lesser_tar_goo"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common"
+   ],
+   "drops": [
+    1,
+    2
+   ],
+   "loc": [
+    111.0,
+    -93.0,
+    null
+   ],
+   "lvl": "28 - 30",
+   "n": "a scuttle bat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_scuttle_bat"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    11,
+    12
+   ],
+   "loc": [
+    -231.0,
+    -180.0,
+    null
+   ],
+   "lvl": "28 - 32",
+   "n": "a scuttle rat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_scuttle_rat"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    10
+   ],
+   "loc": [
+    -215.0,
+    1.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Alpine",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Alpine"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -299.0,
+    783.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Arikain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Arikain"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Ultra Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    9,
+    10
+   ],
+   "loc": [
+    -494.0,
+    77.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Avalanche",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Avalanche_(NPC)"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -235.0,
+    560.0,
+    null
+   ],
+   "lvl": "43",
+   "n": "Battlepriest Daragor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Battlepriest_Daragor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    110.0,
+    -443.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Belinda",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Belinda"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -339.0,
+    782.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Bintain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bintain"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    34.0,
+    144.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Boris",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Boris"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -664.0,
+    52.0,
+    null
+   ],
+   "lvl": "46",
+   "n": "Captain Njall",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Captain_Njall"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    104.0,
+    -432.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Churn the Axeman",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Churn_the_Axeman"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -66.0,
+    -318.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Clifus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clifus"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -77.0,
+    -308.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Darts O`Gavin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Darts_O%60Gavin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    54.0,
+    -381.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Denise",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Denise"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -307.0,
+    772.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Doriggan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Doriggan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -50.0,
+    -356.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Dorin Amberfeld",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Dorin_Amberfeld"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -333.0,
+    782.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Drundain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Drundain"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -331.0,
+    763.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Duradum",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Duradum"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -295.0,
+    773.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Durfa",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Durfa"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -31.0,
+    -456.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Elder Reevis",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Elder_Reevis"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -369.0,
+    457.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Erdarf Restil",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Erdarf_Restil"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -314.0,
+    783.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Flendun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Flendun"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -23.0,
+    86.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Flonts",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Flonts"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    46.0,
+    -140.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Foreman Felspar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Foreman_Felspar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    42.0,
+    -394.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Fradin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Fradin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -51.0,
+    -117.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Freyja Wintershade",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Freyja_Wintershade"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -75.0,
+    -215.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Frostpaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Frostpaw"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -319.0,
+    168.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Gage",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gage"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -4.0,
+    -380.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Girk Glacierbane",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Girk_Glacierbane"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -308.0,
+    -16.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Gissur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Gissur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -310.0,
+    761.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "Glungin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Glungin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    118.0,
+    -386.0,
+    null
+   ],
+   "lvl": "43",
+   "n": "Grimthor Brewbeard",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grimthor_Brewbeard"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -559.0,
+    -10.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Guard Audun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Audun"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    18
+   ],
+   "loc": [
+    -724.0,
+    -3.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Baldvin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Baldvin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -561.0,
+    -40.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Guard Bergur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Bergur"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    15
+   ],
+   "loc": [
+    -724.0,
+    13.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Guard Dagur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Dagur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -561.0,
+    50.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Eirikur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Eirikur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -638.0,
+    -4.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Guard Eyvindur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Eyvindur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -18.0,
+    179.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Guard Halldor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Halldor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1476.0,
+    -2661.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Guard Iris",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Iris"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -631.0,
+    20.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Guard Jonas",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Jonas"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -600.0,
+    -40.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Guard Karl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Karl"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -216.0,
+    19.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Guard Kilandur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kilandur"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    18
+   ],
+   "loc": [
+    -638.0,
+    13.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Guard Kristrun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Kristrun"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    19
+   ],
+   "loc": [
+    -559.0,
+    21.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Guard Larus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Larus"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -280.0,
+    500.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Guard Leif",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Leif"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -561.0,
+    -65.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Oskar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Oskar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -642.0,
+    72.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Guard Rakel",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Rakel"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -280.0,
+    530.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Guard Royt",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Royt"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -656.0,
+    72.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Sigrun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Sigrun"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -259.0,
+    180.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Guard Suuna",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Suuna"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -630.0,
+    -10.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Guard Teitur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Teitur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -243.0,
+    243.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Guard Thorbin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Thorbin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -387.0,
+    -96.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Guard Tinna",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Guard_Tinna"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    27.0,
+    -383.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Hason Klolp",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hason_Klolp"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -328.0,
+    783.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Heragin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Heragin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -101.0,
+    290.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "Hopkins Coldheart",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hopkins_Coldheart"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -295.0,
+    762.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Horasug",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Horasug"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -47.0,
+    101.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "Huldin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Huldin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -305.0,
+    -31.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Hunter Tarvin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hunter_Tarvin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    15,
+    17
+   ],
+   "loc": [
+    -255.0,
+    488.0,
+    null
+   ],
+   "lvl": "35",
+   "n": "Initiate Corrith",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Initiate_Corrith"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    15,
+    17
+   ],
+   "loc": [
+    -250.0,
+    550.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Initiate Goridam",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Initiate_Goridam"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    15,
+    17
+   ],
+   "loc": [
+    -255.0,
+    479.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Initiate Halagin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Initiate_Halagin"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    15,
+    17
+   ],
+   "loc": [
+    -260.0,
+    550.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "Initiate Kroskain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Initiate_Kroskain"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    15,
+    17
+   ],
+   "loc": [
+    -255.0,
+    479.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Initiate Sircthain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Initiate_Sircthain"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    11.0,
+    -385.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Jinx",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jinx"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    16
+   ],
+   "loc": [
+    -377.0,
+    453.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Jorumin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jorumin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    119.0,
+    -433.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Kargin the Archer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kargin_the_Archer"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -47.0,
+    110.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Katrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Katrin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    107.0,
+    -410.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Kier",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kier"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    110.0,
+    -425.0,
+    null
+   ],
+   "lvl": "55",
+   "n": "Kirvil Snowstring",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kirvil_Snowstring"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -322.0,
+    5.0,
+    null
+   ],
+   "lvl": "33",
+   "n": "Leifur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Leifur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -296.0,
+    144.0,
+    null
+   ],
+   "lvl": "43",
+   "n": "Lieutenant Bythgar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lieutenant_Bythgar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -638.0,
+    49.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Lieutenant Dagur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lieutenant_Dagur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -565.0,
+    77.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Lieutenant Grimur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lieutenant_Grimur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -551.0,
+    4.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Lieutenant Ulfur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lieutenant_Ulfur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -650.0,
+    44.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Lorekeeper Einar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lorekeeper_Einar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -164.0,
+    748.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Lorekeeper Gundlt",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lorekeeper_Gundlt"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -305.0,
+    815.0,
+    null
+   ],
+   "lvl": "60-61",
+   "n": "Loremaster Borannin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Loremaster_Borannin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    82.0,
+    -377.0,
+    null
+   ],
+   "lvl": "43",
+   "n": "Loremaster Kels",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Loremaster_Kels"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -187.0,
+    44.0,
+    null
+   ],
+   "lvl": "44",
+   "n": "Loremaster Sarl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Loremaster_Sarl"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -306.0,
+    784.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Lorran",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lorran"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -124.0,
+    -442.0,
+    null
+   ],
+   "lvl": "34",
+   "n": "Mandla Klolp",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mandla_Klolp"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    7
+   ],
+   "loc": [
+    -319.0,
+    176.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Mort",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Mort"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    31.0,
+    -129.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Nargl Stonecutter",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nargl_Stonecutter"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -116.0,
+    -310.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Normon Stonetooth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Normon_Stonetooth"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    44.0,
+    -564.0,
+    null
+   ],
+   "lvl": "42",
+   "n": "Pearce Icefang",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Pearce_Icefang"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -336.0,
+    772.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Polladun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Polladun"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    81.0,
+    -396.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Pythic Urson",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Pythic_Urson"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -343.0,
+    761.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Ronodun",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ronodun"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    3
+   ],
+   "loc": [
+    -386.0,
+    451.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Rumagur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Rumagur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -372.0,
+    443.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Saramor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Saramor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    56.0,
+    -392.0,
+    null
+   ],
+   "lvl": "41",
+   "n": "Schmit Icepike",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Schmit_Icepike"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -44.0,
+    -82.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Shelton Wintershade",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shelton_Wintershade"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    4,
+    15,
+    17
+   ],
+   "loc": [
+    -245.0,
+    484.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "Templar Franchus",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Templar_Franchus"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    4,
+    15,
+    17
+   ],
+   "loc": [
+    -250.0,
+    529.0,
+    null
+   ],
+   "lvl": "39",
+   "n": "Templar Tingar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Templar_Tingar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -92.0,
+    -392.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Thermin Wandereye",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Thermin_Wandereye"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -253.0,
+    227.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Trademaster Kroven",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trademaster_Kroven"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -327.0,
+    37.0,
+    null
+   ],
+   "lvl": "32",
+   "n": "Travit Conwil",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Travit_Conwil"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -112.0,
+    320.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Trita Coldheart",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trita_Coldheart"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    150.0,
+    -22.0,
+    null
+   ],
+   "lvl": "36",
+   "n": "Ungdin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Ungdin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    42.0,
+    164.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Valdicar Shadowfrost",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Valdicar_Shadowfrost"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -232.0,
+    470.0,
+    null
+   ],
+   "lvl": "42 or 46",
+   "n": "Warpriest Penatain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Warpriest_Penatain"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -493.0,
+    88.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Wolfmaster Berglind",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wolfmaster_Berglind"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -215.0,
+    -2.0,
+    null
+   ],
+   "lvl": "38",
+   "n": "Wolfmaster Finnur",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wolfmaster_Finnur"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -490.0,
+    -135.0,
+    null
+   ],
+   "lvl": "37",
+   "n": "Wolfmaster Gunnar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wolfmaster_Gunnar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    41.0,
+    146.0,
+    null
+   ],
+   "lvl": "31",
+   "n": "Yates the Butler",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Yates_the_Butler"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    13,
+    14,
+    21
+   ],
+   "loc": [
+    104.0,
+    -420.0,
+    null
+   ],
+   "lvl": "45",
+   "n": "Zrelik the Scout",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Zrelik_the_Scout"
+  }
+ ],
+ "updated": "2026-04-13T08:36:14Z",
+ "wikiTitle": "Thurgadin",
+ "wikiUrl": "https://eqlwiki.com/index.php/Thurgadin",
  "zone": "thurgadina"
 }

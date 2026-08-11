@@ -1630,11 +1630,7 @@
     51,
     52
    ],
-   "loc": [
-    1144.0,
-    -284.0,
-    null
-   ],
+   "loc": null,
    "lvl": "2",
    "n": "a froglok slave",
    "named": false,

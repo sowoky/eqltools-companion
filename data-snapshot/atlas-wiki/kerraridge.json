@@ -1,12 +1,1659 @@
 {
- "items": [],
+ "items": [
+  {
+   "n": "Bloodstone",
+   "u": "https://eqlwiki.com/index.php/Bloodstone"
+  },
+  {
+   "g": 1,
+   "n": "Bloodstone Ring",
+   "u": "https://eqlwiki.com/index.php/Bloodstone_Ring"
+  },
+  {
+   "n": "Bottle of Milk",
+   "u": "https://eqlwiki.com/index.php/Bottle_of_Milk"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Spider Totem",
+   "u": "https://eqlwiki.com/index.php/Bronze_Spider_Totem"
+  },
+  {
+   "n": "Carnelian",
+   "u": "https://eqlwiki.com/index.php/Carnelian"
+  },
+  {
+   "g": 1,
+   "n": "Cat o' Nine Tails",
+   "u": "https://eqlwiki.com/index.php/Cat_o'_Nine_Tails"
+  },
+  {
+   "n": "Catman Skin",
+   "u": "https://eqlwiki.com/index.php/Catman_Skin"
+  },
+  {
+   "n": "Chunk of Meat",
+   "u": "https://eqlwiki.com/index.php/Chunk_of_Meat"
+  },
+  {
+   "n": "Collector's Kerran Doll",
+   "u": "https://eqlwiki.com/index.php/Collector's_Kerran_Doll"
+  },
+  {
+   "g": 1,
+   "n": "Copper Ring (Ring of Opolla)",
+   "u": "https://eqlwiki.com/index.php/Copper_Ring_(Ring_of_Opolla)"
+  },
+  {
+   "g": 1,
+   "n": "Fishbone Necklace",
+   "u": "https://eqlwiki.com/index.php/Fishbone_Necklace"
+  },
+  {
+   "n": "Fishy Cat Tail",
+   "u": "https://eqlwiki.com/index.php/Fishy_Cat_Tail"
+  },
+  {
+   "n": "Fresh Fish",
+   "u": "https://eqlwiki.com/index.php/Fresh_Fish"
+  },
+  {
+   "g": 1,
+   "n": "Gold Ring",
+   "u": "https://eqlwiki.com/index.php/Gold_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Gold Ring (Ring of Opolla)",
+   "u": "https://eqlwiki.com/index.php/Gold_Ring_(Ring_of_Opolla)"
+  },
+  {
+   "g": 1,
+   "n": "Golden Earring",
+   "u": "https://eqlwiki.com/index.php/Golden_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Gorilla Hide Leggings",
+   "u": "https://eqlwiki.com/index.php/Gorilla_Hide_Leggings"
+  },
+  {
+   "g": 1,
+   "n": "Gorilla Hide Mask",
+   "u": "https://eqlwiki.com/index.php/Gorilla_Hide_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Hamed's Ring of Tears",
+   "u": "https://eqlwiki.com/index.php/Hamed's_Ring_of_Tears"
+  },
+  {
+   "g": 1,
+   "n": "Hexed Kerran Doll",
+   "u": "https://eqlwiki.com/index.php/Hexed_Kerran_Doll"
+  },
+  {
+   "n": "High Quality Cat Pelt",
+   "u": "https://eqlwiki.com/index.php/High_Quality_Cat_Pelt"
+  },
+  {
+   "n": "ice of Velious",
+   "u": "https://eqlwiki.com/index.php/ice_of_Velious"
+  },
+  {
+   "g": 1,
+   "n": "Icon of the Penitent",
+   "u": "https://eqlwiki.com/index.php/Icon_of_the_Penitent"
+  },
+  {
+   "n": "Jade Shard",
+   "u": "https://eqlwiki.com/index.php/Jade_Shard"
+  },
+  {
+   "n": "Jasper",
+   "u": "https://eqlwiki.com/index.php/Jasper"
+  },
+  {
+   "n": "Kerran Doll",
+   "u": "https://eqlwiki.com/index.php/Kerran_Doll"
+  },
+  {
+   "g": 1,
+   "n": "Kerran Tribal Headband",
+   "u": "https://eqlwiki.com/index.php/Kerran_Tribal_Headband"
+  },
+  {
+   "g": 1,
+   "n": "Kerran War Spear",
+   "u": "https://eqlwiki.com/index.php/Kerran_War_Spear"
+  },
+  {
+   "n": "Kobold Hide",
+   "u": "https://eqlwiki.com/index.php/Kobold_Hide"
+  },
+  {
+   "g": 1,
+   "n": "Leather Skullcap",
+   "u": "https://eqlwiki.com/index.php/Leather_Skullcap"
+  },
+  {
+   "n": "Lion Meat",
+   "u": "https://eqlwiki.com/index.php/Lion_Meat"
+  },
+  {
+   "n": "Malachite",
+   "u": "https://eqlwiki.com/index.php/Malachite"
+  },
+  {
+   "g": 1,
+   "n": "Mystical Claws of Jojo",
+   "u": "https://eqlwiki.com/index.php/Mystical_Claws_of_Jojo"
+  },
+  {
+   "n": "Onyx",
+   "u": "https://eqlwiki.com/index.php/Onyx"
+  },
+  {
+   "n": "Opal",
+   "u": "https://eqlwiki.com/index.php/Opal"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 23 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._23_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 24 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._24_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 26 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._26_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 312 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._312_(Left)"
+  },
+  {
+   "n": "Part of Tasarin's Grimoire Pg. 375 (Left)",
+   "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._375_(Left)"
+  },
+  {
+   "n": "Pearl Shard",
+   "u": "https://eqlwiki.com/index.php/Pearl_Shard"
+  },
+  {
+   "n": "Piece of Rat Fur",
+   "u": "https://eqlwiki.com/index.php/Piece_of_Rat_Fur"
+  },
+  {
+   "n": "Rat Meat",
+   "u": "https://eqlwiki.com/index.php/Rat_Meat"
+  },
+  {
+   "n": "Rat Whiskers",
+   "u": "https://eqlwiki.com/index.php/Rat_Whiskers"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Boots",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Boots"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Cloak",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Cloak"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Gloves",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Gloves"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Mask",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Mask"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Skullcap",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Skullcap"
+  },
+  {
+   "g": 1,
+   "n": "Raw-hide Wristbands",
+   "u": "https://eqlwiki.com/index.php/Raw-hide_Wristbands"
+  },
+  {
+   "n": "Razor Tooth",
+   "u": "https://eqlwiki.com/index.php/Razor_Tooth"
+  },
+  {
+   "n": "Ruined Cat Pelt",
+   "u": "https://eqlwiki.com/index.php/Ruined_Cat_Pelt"
+  },
+  {
+   "n": "Rune of Falhalem",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Falhalem"
+  },
+  {
+   "n": "Rune of Nagafen",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Nagafen"
+  },
+  {
+   "n": "Rune of Oppression",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Oppression"
+  },
+  {
+   "n": "Rune of Periphery",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Periphery"
+  },
+  {
+   "n": "Rune of Proximity",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Proximity"
+  },
+  {
+   "n": "Rune of Substance",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Substance"
+  },
+  {
+   "n": "Rune of Velious",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Velious"
+  },
+  {
+   "n": "Sharp Tooth",
+   "u": "https://eqlwiki.com/index.php/Sharp_Tooth"
+  },
+  {
+   "g": 1,
+   "n": "Shazda Turban",
+   "u": "https://eqlwiki.com/index.php/Shazda_Turban"
+  },
+  {
+   "g": 1,
+   "n": "Silver Earring",
+   "u": "https://eqlwiki.com/index.php/Silver_Earring"
+  },
+  {
+   "g": 1,
+   "n": "Silver Ring",
+   "u": "https://eqlwiki.com/index.php/Silver_Ring"
+  },
+  {
+   "g": 1,
+   "n": "Silver Ring (Ring of Opolla)",
+   "u": "https://eqlwiki.com/index.php/Silver_Ring_(Ring_of_Opolla)"
+  },
+  {
+   "n": "Star Rose Quartz",
+   "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
+  },
+  {
+   "g": 1,
+   "n": "Tiger Hide Gloves",
+   "u": "https://eqlwiki.com/index.php/Tiger_Hide_Gloves"
+  },
+  {
+   "n": "Tiger Skin",
+   "u": "https://eqlwiki.com/index.php/Tiger_Skin"
+  },
+  {
+   "n": "Turquoise",
+   "u": "https://eqlwiki.com/index.php/Turquoise"
+  },
+  {
+   "n": "Venomous Spikefish Poison Sac",
+   "u": "https://eqlwiki.com/index.php/Venomous_Spikefish_Poison_Sac"
+  },
+  {
+   "n": "Words of Absorption",
+   "u": "https://eqlwiki.com/index.php/Words_of_Absorption"
+  },
+  {
+   "n": "Words of Anthology",
+   "u": "https://eqlwiki.com/index.php/Words_of_Anthology"
+  },
+  {
+   "n": "Words of Cazic-Thule",
+   "u": "https://eqlwiki.com/index.php/Words_of_Cazic-Thule"
+  },
+  {
+   "n": "Words of Derivation",
+   "u": "https://eqlwiki.com/index.php/Words_of_Derivation"
+  },
+  {
+   "n": "Words of Dissolution",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dissolution"
+  },
+  {
+   "n": "Words of Possession",
+   "u": "https://eqlwiki.com/index.php/Words_of_Possession"
+  },
+  {
+   "n": "Words of Radiance",
+   "u": "https://eqlwiki.com/index.php/Words_of_Radiance"
+  },
+  {
+   "n": "Words of the Element",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Element"
+  },
+  {
+   "n": "Words of the Extinct",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Extinct"
+  },
+  {
+   "n": "Words of the Quickening",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Quickening"
+  },
+  {
+   "n": "Words of the Sentient (Azia)",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Sentient_(Azia)"
+  },
+  {
+   "n": "Words of the Spoken",
+   "u": "https://eqlwiki.com/index.php/Words_of_the_Spoken"
+  },
+  {
+   "n": "Words of Tyranny",
+   "u": "https://eqlwiki.com/index.php/Words_of_Tyranny"
+  }
+ ],
  "meta": {
   "license": "CC BY-SA 4.0",
   "source": "eqlwiki.com"
  },
- "mobs": [],
- "updated": null,
- "wikiTitle": null,
- "wikiUrl": null,
+ "mobs": [
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    8
+   ],
+   "loc": [
+    463.0,
+    487.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "a banished kerran",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_banished_kerran"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    11
+   ],
+   "loc": [
+    670.0,
+    -505.0,
+    null
+   ],
+   "lvl": "2",
+   "n": "a catfisher",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_catfisher"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "17 - 18",
+   "n": "A gorilla guard",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_gorilla_guard"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    23
+   ],
+   "loc": null,
+   "lvl": "17 - 18",
+   "n": "A gorilla protector",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_gorilla_protector"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "10 - 17",
+   "n": "a heretic necromancer",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_heretic_necromancer"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    7,
+    51
+   ],
+   "loc": null,
+   "lvl": "19 - 21",
+   "n": "a kerra lion",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerra_lion"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    7,
+    20,
+    30,
+    51
+   ],
+   "loc": null,
+   "lvl": "15 - 17",
+   "n": "a kerra puma",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerra_puma"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    12,
+    15,
+    25,
+    44,
+    72,
+    79
+   ],
+   "loc": null,
+   "lvl": "20 - 21",
+   "n": "a kerran `amir",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_%60amir"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": null,
+   "lvl": "17 - 18",
+   "n": "a kerran ademzada",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_ademzada"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    4
+   ],
+   "loc": null,
+   "lvl": "17 - 18",
+   "n": "a kerran ademzada shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_ademzada_shaman"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "19 - 21",
+   "n": "a kerran ademzada`amir",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_ademzada%60amir"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    35
+   ],
+   "loc": null,
+   "lvl": "19 - 20",
+   "n": "a kerran ahmad shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_ahmad_shaman"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common",
+    "Common",
+    "Common",
+    "Common",
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    2,
+    12,
+    25,
+    35,
+    40,
+    53,
+    55,
+    58,
+    71
+   ],
+   "loc": null,
+   "lvl": "19 - 21",
+   "n": "a kerran amira guardian",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_amira_guardian"
+  },
+  {
+   "dr": [
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    52
+   ],
+   "loc": [
+    505.0,
+    405.0,
+    null
+   ],
+   "lvl": "23",
+   "n": "a kerran amira priestess",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_amira_priestess"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    2,
+    12,
+    67
+   ],
+   "loc": null,
+   "lvl": "20",
+   "n": "a kerran amira protector",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_amira_protector"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    8,
+    10,
+    25,
+    37,
+    52
+   ],
+   "loc": null,
+   "lvl": "11 - 13",
+   "n": "a kerran awrat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_awrat"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    25
+   ],
+   "loc": null,
+   "lvl": "4 - 6",
+   "n": "a kerran female",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_female"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    12,
+    35,
+    74,
+    77
+   ],
+   "loc": null,
+   "lvl": "17 - 18",
+   "n": "a kerran ghazi",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_ghazi"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    12,
+    25,
+    57,
+    74
+   ],
+   "loc": null,
+   "lvl": "17 - 19",
+   "n": "a kerran ghazi shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_ghazi_shaman"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    71
+   ],
+   "loc": null,
+   "lvl": "19 - 21",
+   "n": "a kerran ghazi`amir",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_ghazi%60amir"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    36,
+    47
+   ],
+   "loc": null,
+   "lvl": "14 - 17",
+   "n": "a kerran ghulam",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_ghulam"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    1,
+    21,
+    24,
+    34,
+    39,
+    61,
+    69,
+    71
+   ],
+   "loc": [
+    917.0,
+    377.0,
+    null
+   ],
+   "lvl": "16 - 18",
+   "n": "A kerran gorilla",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_kerran_gorilla"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    24,
+    39,
+    73,
+    78
+   ],
+   "loc": [
+    917.0,
+    377.0,
+    null
+   ],
+   "lvl": "17 - 18",
+   "n": "A kerran gorilla shaman",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_kerran_gorilla_shaman"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    12,
+    72,
+    79
+   ],
+   "loc": null,
+   "lvl": "9 - 11",
+   "n": "a kerran huntress",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_huntress"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    12,
+    13,
+    25,
+    31,
+    80,
+    81
+   ],
+   "loc": null,
+   "lvl": "14 - 16",
+   "n": "a kerran ispusar",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_ispusar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "?",
+   "n": "a kerran keeper",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_keeper"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": null,
+   "lvl": "4 - 6",
+   "n": "a Kerran male",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_Kerran_male"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    8,
+    12,
+    25,
+    61
+   ],
+   "loc": null,
+   "lvl": "11 - 13",
+   "n": "a kerran mamluk",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_mamluk"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    12,
+    35,
+    38,
+    39,
+    56
+   ],
+   "loc": null,
+   "lvl": "19 - 21",
+   "n": "a kerran mujahed",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_mujahed"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    2,
+    12,
+    15,
+    25,
+    33,
+    49,
+    75
+   ],
+   "loc": null,
+   "lvl": "17 - 19",
+   "n": "a kerran pasdar",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_pasdar"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    33,
+    38,
+    45,
+    46,
+    48,
+    53
+   ],
+   "loc": null,
+   "lvl": "19 - 17",
+   "n": "a kerran pazdar",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_pazdar"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    12,
+    33,
+    36,
+    54,
+    67,
+    70,
+    76
+   ],
+   "loc": null,
+   "lvl": "17 - 19",
+   "n": "a kerran pazdar shaman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_pazdar_shaman"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    25,
+    62
+   ],
+   "loc": null,
+   "lvl": "9 - 10",
+   "n": "a kerran pridesman",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_pridesman"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    38
+   ],
+   "loc": [
+    470.0,
+    440.0,
+    null
+   ],
+   "lvl": "<13",
+   "n": "a kerran priestess",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_priestess"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    8,
+    12
+   ],
+   "loc": [
+    516.0,
+    142.0,
+    null
+   ],
+   "lvl": "16",
+   "n": "a kerran puzhal",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_puzhal"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    903.0,
+    348.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "a kerran sha`rr apprentice",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_kerran_sha%60rr_apprentice"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    28
+   ],
+   "loc": null,
+   "lvl": "3 - 5",
+   "n": "A kobold captive",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_kobold_captive"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    28
+   ],
+   "loc": null,
+   "lvl": "3 - 5",
+   "n": "A kobold prisoner",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/A_kobold_prisoner"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    51
+   ],
+   "loc": null,
+   "lvl": "17",
+   "n": "a patrolling tiger",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_patrolling_tiger"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    66
+   ],
+   "loc": null,
+   "lvl": "17",
+   "n": "a tiger",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_tiger_(Kerra_Island)"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    68
+   ],
+   "loc": [
+    397.0,
+    -569.0,
+    null
+   ],
+   "lvl": "13",
+   "n": "a venomous spikefish",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_venomous_spikefish"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    66
+   ],
+   "loc": null,
+   "lvl": "17",
+   "n": "a wild tiger",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_wild_tiger"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -148.0,
+    273.0,
+    3.0
+   ],
+   "lvl": "13",
+   "n": "Allix",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Allix"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    147.0,
+    53.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "dozing ghulam",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Dozing_ghulam"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Common",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    25,
+    58
+   ],
+   "loc": [
+    83.0,
+    118.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "drunken ghulam",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Drunken_ghulam"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare",
+    "Uncommon"
+   ],
+   "drops": [
+    2,
+    25,
+    38,
+    64
+   ],
+   "loc": [
+    93.0,
+    131.0,
+    null
+   ],
+   "lvl": "?",
+   "n": "Erfer Longclaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Erfer_Longclaw"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -96.0,
+    282.0,
+    5.0
+   ],
+   "lvl": "17",
+   "n": "Errrak Thickshank",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Errrak_Thickshank"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    12
+   ],
+   "loc": [
+    210.0,
+    26.0,
+    null
+   ],
+   "lvl": "17 - 19",
+   "n": "Falthrik Lothoro",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Falthrik_Lothoro"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    "Always"
+   ],
+   "drops": [
+    41,
+    42,
+    59
+   ],
+   "loc": null,
+   "lvl": "15",
+   "n": "Fang Tooth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Fang_tooth"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -737.0,
+    -194.0,
+    3.0
+   ],
+   "lvl": "14",
+   "n": "Feren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Feren"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    108.0,
+    41.0,
+    19.0
+   ],
+   "lvl": "15",
+   "n": "Feskr Drinkmaker",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Feskr_Drinkmaker"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -79.0,
+    278.0,
+    null
+   ],
+   "lvl": "?",
+   "n": "Graalf Sharpclaw",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Graalf_Sharpclaw"
+  },
+  {
+   "dr": [
+    "Common",
+    "Uncommon",
+    "Common",
+    "Very Rare",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    6,
+    12,
+    18,
+    26
+   ],
+   "loc": [
+    561.0,
+    194.0,
+    null
+   ],
+   "lvl": "21",
+   "n": "Hamed Grarr",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hamed_Grarr"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    9,
+    14,
+    63
+   ],
+   "loc": [
+    505.0,
+    405.0,
+    null
+   ],
+   "lvl": "17",
+   "n": "High Priestess Mitty",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/High_Priestess_Mitty"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    2,
+    12
+   ],
+   "loc": [
+    83.0,
+    118.0,
+    null
+   ],
+   "lvl": "?",
+   "n": "Iffrir Soulcaller",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Iffrir_Soulcaller"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    32,
+    65
+   ],
+   "loc": [
+    886.0,
+    247.0,
+    null
+   ],
+   "lvl": "18 - 20",
+   "n": "Jo Jo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jo_Jo"
+  },
+  {
+   "dr": [
+    "Rare"
+   ],
+   "drops": [
+    15
+   ],
+   "loc": null,
+   "lvl": "17",
+   "n": "Kerran chieftain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kerran_chieftain"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    2,
+    12,
+    25
+   ],
+   "loc": null,
+   "lvl": "?",
+   "n": "kerran high guard",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Kerran_high_guard"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Uncommon",
+    "Common",
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    0,
+    2,
+    5,
+    6,
+    12,
+    25,
+    48
+   ],
+   "loc": [
+    -503.0,
+    -150.0,
+    null
+   ],
+   "lvl": "22",
+   "n": "kerran tiger spahi",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Kerran_tiger_spahi"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    240.0,
+    -163.0,
+    11.0
+   ],
+   "lvl": "12",
+   "n": "kerran tseq",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Kerran_tseq"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    508.0,
+    407.0,
+    19.0
+   ],
+   "lvl": "23",
+   "n": "Khonza Mitty of Kerra",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Khonza_Mitty_of_Kerra"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    389.0,
+    -652.0,
+    null
+   ],
+   "lvl": "14 - 16",
+   "n": "Kirran Mirrah",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Kirran_Mirrah"
+  },
+  {
+   "dr": [
+    "Rare",
+    "Rare"
+   ],
+   "drops": [
+    16,
+    17
+   ],
+   "loc": [
+    917.0,
+    377.0,
+    null
+   ],
+   "lvl": "20",
+   "n": "Lord Gongo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Gongo"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    565.0,
+    63.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Marl Kastane",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Marl_Kastane"
+  },
+  {
+   "dr": [
+    null,
+    "Always"
+   ],
+   "drops": [
+    3,
+    22
+   ],
+   "loc": [
+    -470.0,
+    -285.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Maugarim",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Maugarim"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    50
+   ],
+   "loc": [
+    632.0,
+    -533.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Razortooth",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Razortooth_(NPC)"
+  },
+  {
+   "dr": [
+    null,
+    null
+   ],
+   "drops": [
+    29,
+    60
+   ],
+   "loc": [
+    397.0,
+    -277.0,
+    3.0
+   ],
+   "lvl": "23",
+   "n": "Shazda Asad",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shazda_Asad"
+  },
+  {
+   "dr": [
+    null
+   ],
+   "drops": [
+    68
+   ],
+   "loc": [
+    632.0,
+    -533.0,
+    null
+   ],
+   "lvl": "13",
+   "n": "Spikefish",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Spikefish"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Rare"
+   ],
+   "drops": [
+    2,
+    12,
+    35
+   ],
+   "loc": [
+    -174.0,
+    105.0,
+    9.0
+   ],
+   "lvl": "14",
+   "n": "Thalith Mamluk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Thalith_Mamluk"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    4,
+    19,
+    25,
+    27
+   ],
+   "loc": [
+    903.0,
+    348.0,
+    -6.0
+   ],
+   "lvl": "22",
+   "n": "The Kerran Sha`rr",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Kerran_Sha%60rr"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    2,
+    12
+   ],
+   "loc": [
+    309.0,
+    126.0,
+    9.0
+   ],
+   "lvl": "18",
+   "n": "Urkath Greyface",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Urkath_Greyface"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    41,
+    42,
+    43
+   ],
+   "loc": null,
+   "lvl": "11-16",
+   "n": "wharf rat",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/Wharf_rat"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    12
+   ],
+   "loc": [
+    -204.0,
+    -87.0,
+    null
+   ],
+   "lvl": "14 - 15",
+   "n": "Wislen Mamluk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Wislen_Mamluk"
+  }
+ ],
+ "updated": "2026-07-31T15:12:23Z",
+ "wikiTitle": "Kerra Island",
+ "wikiUrl": "https://eqlwiki.com/index.php/Kerra_Island",
  "zone": "kerraridge"
 }

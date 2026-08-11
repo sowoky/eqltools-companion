@@ -2466,32 +2466,6 @@
    "u": "https://eqlwiki.com/index.php/Windscribe_Thaloria"
   },
   {
-   "dr": [],
-   "drops": [],
-   "loc": [
-    -493.0,
-    88.0,
-    null
-   ],
-   "lvl": "38",
-   "n": "Wolfmaster Berglind",
-   "named": true,
-   "u": "https://eqlwiki.com/index.php/Wolfmaster_Berglind"
-  },
-  {
-   "dr": [],
-   "drops": [],
-   "loc": [
-    -490.0,
-    -135.0,
-    null
-   ],
-   "lvl": "37",
-   "n": "Wolfmaster Gunnar",
-   "named": true,
-   "u": "https://eqlwiki.com/index.php/Wolfmaster_Gunnar"
-  },
-  {
    "dr": [
     "Rare",
     "Rare"
@@ -2521,11 +2495,7 @@
     128,
     140
    ],
-   "loc": [
-    104.0,
-    -420.0,
-    null
-   ],
+   "loc": null,
    "lvl": "45",
    "n": "Zrelik the Scout",
    "named": true,

@@ -1,12 +1,459 @@
 {
- "items": [],
+ "items": [
+  {
+   "g": 1,
+   "n": "Bronze Short Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Warhammer",
+   "u": "https://eqlwiki.com/index.php/Bronze_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Targ Shield",
+   "u": "https://eqlwiki.com/index.php/Iksar_Targ_Shield"
+  },
+  {
+   "g": 1,
+   "n": "Leather Skullcap",
+   "u": "https://eqlwiki.com/index.php/Leather_Skullcap"
+  }
+ ],
  "meta": {
   "license": "CC BY-SA 4.0",
   "source": "eqlwiki.com"
  },
- "mobs": [],
- "updated": null,
- "wikiTitle": null,
- "wikiUrl": null,
+ "mobs": [
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -728.0,
+    502.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "an Iksar hermit",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_iksar_hermit"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    1,
+    3
+   ],
+   "loc": [
+    -793.0,
+    569.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Axmo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Axmo"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    2,
+    3
+   ],
+   "loc": [
+    61.0,
+    832.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Ezrogz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Ezrogz"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    1,
+    3
+   ],
+   "loc": [
+    93.0,
+    877.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Mocdi",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Mocdi"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    315.0,
+    778.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Harbinger Glosk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Harbinger_Glosk"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    325.0,
+    790.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Izarod Fristan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Izarod_Fristan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    291.0,
+    783.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Master Kyvix",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Master_Kyvix"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    289.0,
+    786.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Master Rixiz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Master_Rixiz"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    342.0,
+    812.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Master Xydoz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Master_Xydoz"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    4
+   ],
+   "loc": [
+    263.0,
+    801.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Nihilist Yeegarn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nihilist_Yeegarn"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    4
+   ],
+   "loc": [
+    263.0,
+    768.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Nihilist Zeegarn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Nihilist_Zeegarn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -88.0,
+    536.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Sartar the Unrivaled",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sartar_the_Unrivaled"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    -343.0,
+    345.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Dagnav",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Dagnav"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    653.0,
+    1170.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Eglo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Eglo"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    138.0,
+    885.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Egrephit",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Egrephit"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    135.0,
+    681.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Gegren",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Gegren"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    -765.0,
+    612.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Gryfkyz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Gryfkyz"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    137.0,
+    748.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Hylpik",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Hylpik"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    -667.0,
+    457.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Moggoz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Moggoz"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    -810.0,
+    590.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Ogmire",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Ogmire"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    691.0,
+    1148.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Ozlot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Ozlot"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    653.0,
+    1170.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Ryzee",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Ryzee"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    -667.0,
+    418.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Shyzin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Shyzin"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    527.0,
+    956.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Tygar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Tygar"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    -836.0,
+    551.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Xaxxot",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Xaxxot"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    0
+   ],
+   "loc": [
+    -348.0,
+    410.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Yegmesh",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Yegmesh"
+  }
+ ],
+ "updated": "2026-04-13T08:35:42Z",
+ "wikiTitle": "West Cabilis",
+ "wikiUrl": "https://eqlwiki.com/index.php/West_Cabilis",
  "zone": "cabwest"
 }

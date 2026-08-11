@@ -1,12 +1,1066 @@
 {
- "items": [],
+ "items": [
+  {
+   "n": "A Giant Blood Sac",
+   "u": "https://eqlwiki.com/index.php/A_Giant_Blood_Sac"
+  },
+  {
+   "n": "Barracuda Tooth",
+   "u": "https://eqlwiki.com/index.php/Barracuda_Tooth"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Short Sword",
+   "u": "https://eqlwiki.com/index.php/Bronze_Short_Sword"
+  },
+  {
+   "g": 1,
+   "n": "Bronze Warhammer",
+   "u": "https://eqlwiki.com/index.php/Bronze_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Drape of the Seacasters",
+   "u": "https://eqlwiki.com/index.php/Drape_of_the_Seacasters"
+  },
+  {
+   "g": 1,
+   "n": "Fine Steel Warhammer",
+   "u": "https://eqlwiki.com/index.php/Fine_Steel_Warhammer"
+  },
+  {
+   "g": 1,
+   "n": "Finely Crafted Sheer Blade",
+   "u": "https://eqlwiki.com/index.php/Finely_Crafted_Sheer_Blade"
+  },
+  {
+   "g": 1,
+   "n": "Froglok Blood",
+   "u": "https://eqlwiki.com/index.php/Froglok_Blood"
+  },
+  {
+   "n": "Froglok Meat",
+   "u": "https://eqlwiki.com/index.php/Froglok_Meat"
+  },
+  {
+   "n": "Iksar Head",
+   "u": "https://eqlwiki.com/index.php/Iksar_Head"
+  },
+  {
+   "n": "Iksar Skull",
+   "u": "https://eqlwiki.com/index.php/Iksar_Skull"
+  },
+  {
+   "g": 1,
+   "n": "Iksar Targ Shield",
+   "u": "https://eqlwiki.com/index.php/Iksar_Targ_Shield"
+  },
+  {
+   "n": "Leech Husk",
+   "u": "https://eqlwiki.com/index.php/Leech_Husk"
+  },
+  {
+   "n": "Logrin Skull",
+   "u": "https://eqlwiki.com/index.php/Logrin_Skull"
+  },
+  {
+   "n": "Loose Scale",
+   "u": "https://eqlwiki.com/index.php/Loose_Scale"
+  },
+  {
+   "n": "Morgl Skull",
+   "u": "https://eqlwiki.com/index.php/Morgl_Skull"
+  },
+  {
+   "n": "Pearl Shard",
+   "u": "https://eqlwiki.com/index.php/Pearl_Shard"
+  },
+  {
+   "n": "Rune of Oppression",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Oppression"
+  },
+  {
+   "n": "Rune of Velious",
+   "u": "https://eqlwiki.com/index.php/Rune_of_Velious"
+  },
+  {
+   "g": 1,
+   "n": "Tink N' Babble Stein",
+   "u": "https://eqlwiki.com/index.php/Tink_N'_Babble_Stein"
+  },
+  {
+   "n": "Waz Skull",
+   "u": "https://eqlwiki.com/index.php/Waz_Skull"
+  },
+  {
+   "n": "Words of Cazic-Thule",
+   "u": "https://eqlwiki.com/index.php/Words_of_Cazic-Thule"
+  },
+  {
+   "n": "Words of Dissolution",
+   "u": "https://eqlwiki.com/index.php/Words_of_Dissolution"
+  },
+  {
+   "g": 1,
+   "n": "Xolion Rod",
+   "u": "https://eqlwiki.com/index.php/Xolion_Rod"
+  }
+ ],
  "meta": {
   "license": "CC BY-SA 4.0",
   "source": "eqlwiki.com"
  },
- "mobs": [],
- "updated": null,
- "wikiTitle": null,
- "wikiUrl": null,
+ "mobs": [
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    7,
+    8
+   ],
+   "loc": [
+    1144.0,
+    -284.0,
+    null
+   ],
+   "lvl": "2",
+   "n": "a froglok slave",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_froglok_slave"
+  },
+  {
+   "dr": [
+    "Common",
+    "Common"
+   ],
+   "drops": [
+    0,
+    12
+   ],
+   "loc": null,
+   "lvl": "3",
+   "n": "a giant swamp leech",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_giant_swamp_leech"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    1
+   ],
+   "loc": [
+    459.0,
+    -958.0,
+    null
+   ],
+   "lvl": "2",
+   "n": "a pygmy barracuda",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_pygmy_barracuda"
+  },
+  {
+   "dr": [
+    "Common"
+   ],
+   "drops": [
+    14
+   ],
+   "loc": null,
+   "lvl": "1",
+   "n": "a young scaled wolf",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_young_scaled_wolf"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "30",
+   "n": "an Iksar crusader",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_Iksar_crusader"
+  },
+  {
+   "dr": [
+    "Uncommon",
+    "Uncommon",
+    "Uncommon"
+   ],
+   "drops": [
+    13,
+    15,
+    20
+   ],
+   "loc": [
+    567.0,
+    -636.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "an Iksar outcast",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/An_iksar_outcast"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1014.0,
+    -189.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Arch Duke Xog",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Arch_Duke_Xog"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    9
+   ],
+   "loc": [
+    530.0,
+    160.0,
+    null
+   ],
+   "lvl": "3",
+   "n": "Bugrin the Gatherer",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Bugrin_the_Gatherer"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    10,
+    19
+   ],
+   "loc": [
+    875.0,
+    -75.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Clerk Doval",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Clerk_Doval"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    11
+   ],
+   "loc": [
+    1154.0,
+    -419.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Cotat",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Cotat"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    11
+   ],
+   "loc": [
+    176.0,
+    16.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Daehod",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Daehod"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    11
+   ],
+   "loc": [
+    554.0,
+    -412.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Golia",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Golia"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    11
+   ],
+   "loc": [
+    -509.0,
+    -49.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Hitol",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Hitol"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    11
+   ],
+   "loc": [
+    942.0,
+    -97.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Olos",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Olos"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    11
+   ],
+   "loc": [
+    348.0,
+    -239.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Reidak",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Reidak"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    5,
+    11
+   ],
+   "loc": [
+    309.0,
+    -334.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Wonku",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Wonku"
+  },
+  {
+   "dr": [
+    "Always",
+    "Always"
+   ],
+   "drops": [
+    3,
+    11
+   ],
+   "loc": [
+    -437.0,
+    -34.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Crusader Zixo",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Crusader_Zixo"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -248.0,
+    -124.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Drill Master Dal",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Drill_Master_Dal"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -425.0,
+    -317.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Drill Master Kyg",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Drill_Master_Kyg"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -455.0,
+    30.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Drill Master Vygan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Drill_Master_Vygan"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    656.0,
+    -6.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Frizazz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Frizazz"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    4
+   ],
+   "loc": [
+    876.0,
+    -74.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Grype",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grype"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "30",
+   "n": "Haggle Baron Klok",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Haggle_Baron_Klok"
+  },
+  {
+   "dr": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "drops": [
+    16,
+    17,
+    18,
+    21,
+    22
+   ],
+   "loc": [
+    418.0,
+    -239.0,
+    null
+   ],
+   "lvl": "25",
+   "n": "Half Elf Maiden",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Half_Elf_Maiden"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1080.0,
+    -47.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Hierophant Dexl",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hierophant_Dexl"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1052.0,
+    -176.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Hierophant Oxyn",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hierophant_Oxyn"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1055.0,
+    -200.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Hierophant Zand",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Hierophant_Zand"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    19
+   ],
+   "loc": [
+    1039.0,
+    -436.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Himart Kichith",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Himart_Kichith"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    650.0,
+    -23.0,
+    null
+   ],
+   "lvl": "15",
+   "n": "Jozter",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jozter"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    708.0,
+    45.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Klok Margar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Klok_Margar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    707.0,
+    64.0,
+    null
+   ],
+   "lvl": "30",
+   "n": "Klok Rakra",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Klok_Rakra"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1037.0,
+    -206.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Librarian Zimor",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Librarian_Zimor"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1034.0,
+    -165.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Lord Gikzic",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Gikzic"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1062.0,
+    -173.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Lord Korzin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Korzin"
+  },
+  {
+   "dr": [
+    "Uncommon"
+   ],
+   "drops": [
+    6
+   ],
+   "loc": [
+    1005.0,
+    -151.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Lord Qyzar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Lord_Qyzar"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    285.0,
+    -51.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Master Bain",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Master_Bain"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    420.0,
+    -30.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Master Glox",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Grand_Master_Glox"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    458.0,
+    37.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Master Niska",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Master_Niska"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    387.0,
+    122.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Master Raska",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Master_Raska"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    1044.0,
+    -189.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "Prime Hierophant Vek",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Prime_Hierophant_Vek"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    999.0,
+    -274.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Sarth Scarscale",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sarth_Scarscale"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    834.0,
+    -367.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Shezlie Furscale",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Shezlie_Furscale"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    999.0,
+    -274.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Sirtha Scarscale",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Sirtha_Scarscale"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    825.0,
+    -28.0,
+    null
+   ],
+   "lvl": "40",
+   "n": "The Toilmaster",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/The_Toilmaster"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    677.0,
+    36.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Azalin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Azalin"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    1211.0,
+    -427.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Begzei",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Begzei"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    1143.0,
+    -470.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Byzin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Byzin"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    22.0,
+    -289.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Feglesh",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Feglesh"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    -227.0,
+    -88.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Fryp",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Fryp"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    1168.0,
+    -470.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Googin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Googin"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    -647.0,
+    -135.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Iggmin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Iggmin"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    -74.0,
+    -453.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Ishlin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Ishlin"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    -84.0,
+    -445.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Keplar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Keplar"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    -648.0,
+    -115.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Nagraz",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Nagraz"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    -103.0,
+    -480.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Nishnish",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Nishnish"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    -10.0,
+    -290.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Rofylin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Rofylin"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    1213.0,
+    -399.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Shestar",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Shestar"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    2
+   ],
+   "loc": [
+    677.0,
+    74.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Trooper Zishrin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Trooper_Zishrin"
+  },
+  {
+   "dr": [
+    "Always"
+   ],
+   "drops": [
+    23
+   ],
+   "loc": [
+    591.0,
+    -826.0,
+    null
+   ],
+   "lvl": "60",
+   "n": "Vessel Drozlin",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Vessel_Drozlin"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    -658.0,
+    -125.0,
+    null
+   ],
+   "lvl": "61",
+   "n": "War Baron Eator",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/War_Baron_Eator"
+  },
+  {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    826.0,
+    -332.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Zazlan Furscale",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Zazlan_Furscale"
+  }
+ ],
+ "updated": "2026-04-17T22:48:53Z",
+ "wikiTitle": "East Cabilis",
+ "wikiUrl": "https://eqlwiki.com/index.php/East_Cabilis",
  "zone": "cabeast"
 }

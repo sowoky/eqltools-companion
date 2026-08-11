@@ -63,6 +63,10 @@ function buildIndexes(datasets) {
       for (const [name, node] of Object.entries(GEO.nodes))
         for (const k of node.keys || []) KEY2NODE.set(k, name);
     }
+    // a data refresh can swap GEO mid-session; a BFS map cached against the
+    // old graph would keep serving distances for node names that no longer
+    // exist until the player zones
+    DIST = { from: null, map: null };
   }
   const td = datasets["item-tooltips.json"];
   TDATA = td ? td.data : null;
@@ -1061,8 +1065,23 @@ function heldCount(have, name) {
    so a companion that hasn't refreshed still works. */
 function compsFor(q, have) {
   const held = n => heldCount(have, n);
+  /* An item this quest's own steps hand you (give-step `out`) is chain-made,
+     not farmed — and the item's GLOBAL src can be a different item wearing the
+     same name ('Sealed Note' is five distinct notes on one wiki page; the
+     SoulFire one comes from Assistant Kiolna, not The Prophet in Crushbone).
+     The step knows better than the item page: source these rows from the
+     step's NPC. */
+  const madeBy = new Map();
+  for (const st of q.steps || []) {
+    if (st.k !== "give" || !st.npc) continue;
+    for (const [n] of st.out || []) {
+      const z = st.z || (NPCLOC[st.npc] && NPCLOC[st.npc].z) || "";
+      if (!madeBy.has(itemKey(n))) madeBy.set(itemKey(n), { npc: st.npc, z });
+    }
+  }
   const rows = (q.need && q.need.length ? q.need : (q.items || []).map(n => [n, 1]))
-    .map(([n, want]) => ({ n, want, have: held(n), fr: q.from && q.from[n] }));
+    .map(([n, want]) => ({ n, want, have: held(n), fr: q.from && q.from[n],
+                           st: madeBy.get(itemKey(n)) }));
   const got = rows.filter(c => c.have >= c.want).length;
   return { q, comps: rows, got, need: rows.length, done: rows.length > 0 && got === rows.length };
 }
@@ -1080,8 +1099,13 @@ function mergePlans(plans) {
     const rew = (p.q.rewards || []).slice(0, 4).join(", ");
     for (const c of p.comps) {
       const k = itemKey(c.n), cur = merged.get(k);
-      if (cur) { cur.want = Math.max(cur.want, c.want); cur.quests.set(name, rew); }
-      else merged.set(k, { n: c.n, want: c.want, have: c.have,
+      if (cur) {
+        cur.want = Math.max(cur.want, c.want); cur.quests.set(name, rew);
+        // one quest chain-makes it, another farms it: the pooled row can't
+        // claim the chain (same-named items are sometimes different items)
+        if (!cur.st !== !c.st) cur.st = undefined;
+      }
+      else merged.set(k, { n: c.n, want: c.want, have: c.have, st: c.st,
                            quests: new Map([[name, rew]]) });
     }
   }
@@ -1089,6 +1113,7 @@ function mergePlans(plans) {
     const names = [...r.quests.keys()];
     const tt = names.map(n => r.quests.get(n) ? `${n} → ${r.quests.get(n)}` : n).join("\n");
     return { n: r.n, want: r.want, have: r.have,
+             ...(r.st ? { st: r.st } : {}),
              tag: names.length > 1 ? `${names.length} quests` : names[0],
              ...(tt ? { tt } : {}) };
   });
@@ -1293,7 +1318,10 @@ function zoneDists() {
 function zoneBuckets(rows) {
   const by = new Map();
   for (const r of rows) {
-    for (const z of bucketsFor(r.n)) {
+    // chain-made rows live where their hand-in happens, not where the item's
+    // global src points (which can be a same-named different item)
+    const zs = r.st && r.st.z ? [r.st.z] : bucketsFor(r.n);
+    for (const z of zs) {
       if (!by.has(z)) by.set(z, []);
       by.get(z).push(r);
     }
@@ -1326,7 +1354,9 @@ const zoneLink = z => BUCKET_LABEL[z]
 // one item row inside a zone bucket: held/needed, and who drops it here
 function zoneItemRow(r, zone) {
   const done = r.have >= r.want;
-  const src = done ? { mobs: [] } : sourceIn(r.n, zone);
+  const src = done ? { mobs: [] }
+    : r.st ? { mobs: [], note: `turn-in at ${r.st.npc}` }
+    : sourceIn(r.n, zone);
   const count = r.want > 1 || r.have
     ? `<span class="qct ${done ? "is-ok" : ""}">${r.have}/${r.want}</span>` : "";
   const mobsHtml = src.mobs.slice(0, 3).map(m => {
@@ -1392,7 +1422,9 @@ function pushQuests() {
   const plans = TRACKED.map(k => trackedPlan(k, have)).filter(Boolean);
 
   const packRow = (c, zone) => {
-    const s = c.have >= c.want ? { mobs: [] } : sourceIn(c.n, zone);
+    const s = c.have >= c.want ? { mobs: [] }
+      : c.st ? { mobs: [], note: `turn-in at ${c.st.npc}` }
+      : sourceIn(c.n, zone);
     const note = [s.isl, s.note].filter(Boolean).join(" · ");
     return {
       n: c.n, have: c.have, want: c.want, url: itemUrl(c.n),

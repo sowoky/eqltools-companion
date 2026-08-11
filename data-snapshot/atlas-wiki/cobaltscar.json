@@ -456,12 +456,13 @@
   },
   {
    "g": 1,
-   "n": "Runed Shell Necklace",
-   "u": "https://eqlwiki.com/index.php/Runed_Shell_Necklace"
+   "n": "Runed Sea Shell (Cloud)",
+   "u": "https://eqlwiki.com/index.php/Runed_Sea_Shell_(Cloud)"
   },
   {
-   "n": "Runed_Sea_Shell_(Cloud)",
-   "u": "https://eqlwiki.com/index.php/Runed_Sea_Shell_(Cloud)"
+   "g": 1,
+   "n": "Runed Shell Necklace",
+   "u": "https://eqlwiki.com/index.php/Runed_Shell_Necklace"
   },
   {
    "n": "Salil's Writ Pg. 60 (Left)",
@@ -978,7 +979,7 @@
     79,
     91,
     94,
-    101,
+    102,
     114
    ],
    "loc": [
@@ -1066,7 +1067,7 @@
     80,
     82,
     83,
-    101,
+    102,
     107,
     114,
     121
