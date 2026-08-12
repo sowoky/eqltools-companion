@@ -1372,57 +1372,43 @@ function zoneDists() {
    places, but Mistmoore only through here, so do it while you're close).
    Zones with something outstanding still outrank cleared ones, and the two
    catch-all buckets sit at the bottom whatever they hold. */
-/* A zone name's IDENTITY node: the node that IS this zone, because the
-   name's own atlas key sits on the node's key list ('North Freeport' is
-   freportn, a key of node 'Freeport'). Distinct from geo.alias, which also
-   carries distance HINTS ('Commonlands' points NEAR 'East Commonlands' but
-   is not it) — a hint must never merge two buckets into one. */
-function zoneIdentityNode(z) {
-  if (!GEO) return null;
-  if (GEO.nodes[z]) return z;
-  const key = NAME2KEY.get(String(z).toLowerCase());
-  return (key && KEY2NODE.get(key)) || null;
-}
+/* The wiki has city pages ('Freeport', 'Kaladim') that cover two or three
+   CLIENT zones. You cannot stand in Freeport, so it is never a destination:
+   the pipeline resolves those headings to the real zone the mob or merchant
+   states, and the handful it cannot resolve are labelled as unresolved
+   rather than printed as if they were a place (Kyle, 2026-08-11). A geo node
+   carrying more than one atlas key, whose own name is not a zone the log can
+   report you standing in, is one of those umbrellas. */
+const isUmbrella = z => !!(GEO && GEO.nodes[z] && (GEO.nodes[z].keys || []).length > 1
+  && !NAME2KEY.has(String(z).toLowerCase()));
 
 function zoneBuckets(rows) {
-  // One bucket per PLACE: 'Freeport' and 'North Freeport' are the same node
-  // and must not render as two lists (Kyle, 2026-08-11). Entries remember
-  // their own zone name so the source lookup and the shown half stay exact;
-  // an item stated at both granularities keeps only the specific one.
-  const by = new Map(); // bucket key -> Map(itemKey -> {c, z, specific})
+  const by = new Map();
   for (const r of rows) {
     if (r.lk) continue; // chain-locked: not doable yet, the checklist shows why
     // chain-made rows live where their hand-in happens, not where the item's
     // global src points (which can be a same-named different item)
     const zs = r.st && r.st.z ? [r.st.z] : bucketsFor(r.n);
     for (const z of zs) {
-      const node = z in BUCKET_LABEL ? null : zoneIdentityNode(z);
-      const key = node || z;
-      if (!by.has(key)) by.set(key, new Map());
-      const g = by.get(key), ik = itemKey(r.n);
-      const specific = !!node && z !== node;
-      const cur = g.get(ik);
-      if (!cur || (specific && !cur.specific)) g.set(ik, { c: r, z, specific });
+      if (!by.has(z)) by.set(z, []);
+      by.get(z).push(r);
     }
   }
   const dist = zoneDists();
-  const out = [...by.entries()].map(([key, g]) => {
-    const entries = [...g.values()];
-    entries.sort((a, b) => (a.c.have >= a.c.want) - (b.c.have >= b.c.want) ||
-      (a.c.n.toLowerCase() < b.c.n.toLowerCase() ? -1 : 1));
-    // every entry naming one same half: the heading keeps that precision
-    const names = new Set(entries.map(e => e.z));
-    const z = names.size === 1 ? entries[0].z : key;
-    const node = dist ? geoNode(key) : null;
+  const out = [...by.entries()].map(([z, items]) => {
+    items.sort((a, b) => (a.have >= a.want) - (b.have >= b.want) ||
+      (a.n.toLowerCase() < b.n.toLowerCase() ? -1 : 1));
+    const node = dist ? geoNode(z) : null;
     // no graph or no known position: d/deg flat, the old ordering stands
     const d = !dist ? 0 : node && dist.has(node) ? dist.get(node) : 9999;
     const deg = !dist ? 0 : node ? (GEO.nodes[node].adj || []).length : 99;
-    return { z, key, entries, d, deg,
-             left: entries.filter(e => e.c.have < e.c.want).length };
+    return { z, items, d, deg, umb: isUmbrella(z),
+             left: items.filter(r => r.have < r.want).length };
   });
   out.sort((a, b) => {
-    const ca = a.key in BUCKET_LABEL, cb = b.key in BUCKET_LABEL;
-    return (ca - cb) || ((b.left > 0) - (a.left > 0)) ||
+    const ca = a.z in BUCKET_LABEL, cb = b.z in BUCKET_LABEL;
+    // an unresolved city sinks below the zones you can actually walk to
+    return (ca - cb) || (a.umb - b.umb) || ((b.left > 0) - (a.left > 0)) ||
       (a.d - b.d) || (a.deg - b.deg) || (b.left - a.left) ||
       (a.z < b.z ? -1 : 1);
   });
@@ -1432,12 +1418,11 @@ function zoneBuckets(rows) {
 const zoneLink = z => BUCKET_LABEL[z]
   ? `<span class="zg__name is-catch">${esc(BUCKET_LABEL[z])}</span>`
   : (QZONES[z] ? `<a class="wk zg__name" data-wiki="${esc(QZONES[z])}">${esc(z)}</a>`
-    : `<span class="zg__name">${esc(z)}</span>`);
+    : `<span class="zg__name">${esc(z)}</span>`)
+    + (isUmbrella(z) ? `<span class="zg__umb dim">the wiki doesn't say which zone</span>` : "");
 
-// one item row inside a zone bucket: held/needed, and who drops it here.
-// `zone` is the row's OWN zone name (exact src lookups); `bucketZ` the merged
-// heading — when they differ, the row carries the half ("· North Freeport")
-function zoneItemRow(r, zone, bucketZ) {
+// one item row inside a zone bucket: held/needed, and who drops it here
+function zoneItemRow(r, zone) {
   const done = r.have >= r.want;
   const src = done ? { mobs: [] }
     : r.st ? { mobs: [], note: `turn-in at ${r.st.npc}` }
@@ -1448,9 +1433,7 @@ function zoneItemRow(r, zone, bucketZ) {
     const t = mobPath(r.n, m);
     return t ? `<a class="wk" data-wiki="${esc(t)}">${esc(m)}</a>` : esc(m);
   }).join(", ") || esc(src.note || "");
-  const half = !done && bucketZ && zone && zone !== bucketZ ? esc(zone) : "";
-  let who = src.isl ? `${esc(src.isl)}${mobsHtml ? ` · ${mobsHtml}` : ""}` : mobsHtml;
-  if (half) who = who ? `${who} · ${half}` : half;
+  const who = src.isl ? `${esc(src.isl)}${mobsHtml ? ` · ${mobsHtml}` : ""}` : mobsHtml;
   // an item that is another quest's reward is a quest to do, not a mob to farm
   const fr = !done && r.fr && T2Q.get(r.fr)
     ? `<a class="wk qfrom" data-wiki="${esc(r.fr)}">reward of ${esc(T2Q.get(r.fr).n)}</a>` : "";
@@ -1488,15 +1471,14 @@ function zoneGroupsHtml(rows) {
   if (!groups.length) return "";
   // a one-item quest doesn't need a boxed heading over a single row — most of
   // the Turn-ins tab is these, and the chrome outweighs the fact
-  if (groups.length === 1 && groups[0].entries.length === 1) {
-    const e0 = groups[0].entries[0];
-    return `<ul class="qcomps qcomps--bare">${zoneItemRow(e0.c, e0.z, groups[0].z)}
+  if (groups.length === 1 && groups[0].items.length === 1) {
+    return `<ul class="qcomps qcomps--bare">${zoneItemRow(groups[0].items[0], groups[0].z)}
       <li class="qc qc--where dim">${zoneLink(groups[0].z)}</li></ul>`;
   }
   return `<div class="zgs">${groups.map(g => `
     <div class="zg ${g.left ? "" : "is-done"}">
       <div class="zg__head">${zoneLink(g.z)}<span class="zg__n">${g.left ? `${g.left} to get` : "all held"}</span></div>
-      <ul class="qcomps">${g.entries.map(e => zoneItemRow(e.c, e.z, g.z)).join("")}</ul>
+      <ul class="qcomps">${g.items.map(r => zoneItemRow(r, g.z)).join("")}</ul>
     </div>`).join("")}</div>`;
 }
 
@@ -1517,12 +1499,11 @@ function pushQuests() {
   const itemUrl = n => { const t = lookupItem(TIDX, n); return t && base ? base + t.t : ""; };
   const plans = TRACKED.map(k => trackedPlan(k, have)).filter(Boolean);
 
-  const packRow = (c, zone, bucketZ) => {
+  const packRow = (c, zone) => {
     const s = c.have >= c.want ? { mobs: [] }
       : c.st ? { mobs: [], note: `turn-in at ${c.st.npc}` }
       : sourceIn(c.n, zone);
-    const half = c.have < c.want && bucketZ && zone && zone !== bucketZ ? zone : "";
-    const note = [s.isl, s.note, half].filter(Boolean).join(" · ");
+    const note = [s.isl, s.note].filter(Boolean).join(" · ");
     return {
       n: c.n, have: c.have, want: c.want, url: itemUrl(c.n),
       mobs: s.mobs.slice(0, 3), ...(note ? { note } : {}),
@@ -1534,8 +1515,9 @@ function pushQuests() {
   // no source table (a dataset older than this app) means no zone answer at
   // all — send the flat list instead of one bucket claiming the wiki is silent
   const packZones = rows => !hasSrc() ? [] : zoneBuckets(rows).map(g => ({
-    z: BUCKET_LABEL[g.key] || g.z, url: QZONES[g.z] && base ? base + QZONES[g.z] : "",
-    left: g.left, items: g.entries.map(e => packRow(e.c, e.z, g.z)),
+    z: BUCKET_LABEL[g.z] || g.z, url: QZONES[g.z] && base ? base + QZONES[g.z] : "",
+    ...(g.umb ? { umb: true } : {}),
+    left: g.left, items: g.items.map(c => packRow(c, g.z)),
   }));
   const packFlat = rows => rows.map(c => ({
     ...packRow(c, null),

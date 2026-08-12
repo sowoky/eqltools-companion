@@ -201,3 +201,4 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unpin first 
 .tqc li.is-marked .tqc__tick { color: #e7b94e; }
 .tqc li.is-marked .tqc__n { color: #cfc6e6; }
 .tq-inv { color: #8d84a8; padding: 3px 0 5px; font-size: 11px; }
+.tz__umb { margin-left: 6px; color: #8d84a8; font-size: 11px; }

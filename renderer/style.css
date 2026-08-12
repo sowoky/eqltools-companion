@@ -414,3 +414,5 @@ input[type="checkbox"] { accent-color: var(--gold); }
   content: ""; position: absolute; left: 4px; top: 1px; width: 3px; height: 7px;
   border: solid var(--gold); border-width: 0 2px 2px 0; transform: rotate(45deg);
 }
+/* an unresolved wiki city page is not a destination — say so beside it */
+.zg__umb { margin-left: 8px; font-size: 12px; }

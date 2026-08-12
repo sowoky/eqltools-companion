@@ -187,6 +187,13 @@ function zoneLi(g) {
   const h = document.createElement("div");
   h.className = "tz__h";
   h.append(link(g.z, g.url, "tz__n"));
+  // a wiki city page ('Freeport') covers several client zones — it is not
+  // somewhere you can stand, so say the data is vague instead of naming it
+  if (g.umb) {
+    const u = document.createElement("span");
+    u.className = "tz__umb"; u.textContent = "which zone?";
+    h.append(u);
+  }
   const c = document.createElement("span");
   c.className = "tz__c"; c.textContent = g.left ? `${g.left} to get` : "all held";
   h.append(c);
