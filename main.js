@@ -29,6 +29,7 @@ const REMOTE = {
   "quest-items.json": "https://eqltools.com/companion/data/quest-items.json",
   "item-tooltips.json": "https://eqltools.com/companion/data/item-tooltips.json",
   "gear-data.json": "https://eqltools.com/gear/data/gear-data.json",
+  "sky.json": "https://eqltools.com/sky/data/sky.json",
 };
 /* Data the embedded /log-parser page fetches. Cached under its site URL
    paths and served straight to the iframe by the eqlt:// protocol — the
@@ -99,6 +100,17 @@ function createMainWindow() {
           fs.writeFileSync(process.env.EQLC_SHOT, img.toPNG());
           console.log("[shot]", process.env.EQLC_SHOT);
         } catch (e) { console.log("[shot] failed", e.message); }
+        /* The overlay is a second window the agent can't see either, and every
+           bug it has ever had lived in the wire between the two — so it gets
+           its own shot. EQLC_EXEC opens it (companion.toggleOverlay(true)) and
+           picks the view. */
+        if (process.env.EQLC_SHOT_OVERLAY && overlayWin) {
+          try {
+            const oi = await overlayWin.webContents.capturePage();
+            fs.writeFileSync(process.env.EQLC_SHOT_OVERLAY, oi.toPNG());
+            console.log("[shot]", process.env.EQLC_SHOT_OVERLAY);
+          } catch (e) { console.log("[shot overlay] failed", e.message); }
+        } else if (process.env.EQLC_SHOT_OVERLAY) console.log("[shot overlay] no overlay window");
         app.quit();
       }, Number(process.env.EQLC_SHOT_DELAY || 2500));
     }, 3000);
@@ -141,6 +153,7 @@ function sendOverlayInit() {
     zone: LAST_ZONE,
     quests: LAST_QUESTS,
     stats: LAST_STATS,
+    sky: LAST_SKY,
   });
 }
 
@@ -180,6 +193,8 @@ let LAST_ZONE = null;
 let LAST_QUESTS = { zones: [], quests: [] };
 // live combat stats, pre-resolved by the renderer: {session, fights}
 let LAST_STATS = null;
+// Plane of Sky turn-in board, pre-resolved by the renderer: {groups, note}
+let LAST_SKY = null;
 
 /* ── log tail engine ──────────────────────────────────────────────────────
    Poll-stat the log directory (fs.watch is unreliable enough on Windows
@@ -344,7 +359,7 @@ function readJson(p) {
    cannot answer, and could only say so. Below the floor we fall back to the
    bundled snapshot until the next refresh brings the live file up. Raise the
    number here in the same commit that starts depending on the new field. */
-const MIN_SCHEMA = { "quest-items.json": 4, "item-tooltips.json": 1 };
+const MIN_SCHEMA = { "quest-items.json": 4, "item-tooltips.json": 1, "sky.json": 1 };
 
 function loadDatasets() {
   const out = {};
@@ -582,7 +597,9 @@ ipcMain.on("overlay:prefs", (_e, p) => {
   if (p.fontScale !== undefined) o.fontScale = Math.min(1.6, Math.max(0.8, +p.fontScale || 1));
   if (p.showKills !== undefined) o.showKills = !!p.showKills;
   if (p.questOnly !== undefined) o.questOnly = !!p.questOnly;
-  if (p.view === "tracked" || p.view === "loot" || p.view === "stats") o.view = p.view;
+  // every view name has to be listed here or the pref silently fails to
+  // round-trip and the overlay snaps back to its old tab
+  if (["tracked", "loot", "stats", "sky"].includes(p.view)) o.view = p.view;
   saveSettings(); sendOverlayInit(); notifyOverlayState();
 });
 /* Transparent frameless windows have NO native resize borders on Windows —
@@ -612,6 +629,10 @@ ipcMain.on("feed:zone", (_e, z) => {
 ipcMain.on("feed:stats", (_e, s) => {
   LAST_STATS = s && typeof s === "object" ? s : null;
   if (overlayWin) overlayWin.webContents.send("feed:stats", LAST_STATS);
+});
+ipcMain.on("feed:sky", (_e, s) => {
+  LAST_SKY = s && typeof s === "object" ? s : null;
+  if (overlayWin) overlayWin.webContents.send("feed:sky", LAST_SKY);
 });
 ipcMain.on("feed:quests", (_e, q) => {
   const p = Array.isArray(q) ? { zones: [], quests: q }

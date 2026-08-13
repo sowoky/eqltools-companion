@@ -30,20 +30,35 @@ const HEADER = (rel) =>
   `   Edit the original; both the site and this app load the same logic. */\n`;
 
 mkdirSync(join(companion, "vendor"), { recursive: true });
-for (const rel of ["public/kills/shared.js", "public/kills/parse.js", "public/gear/tier.js"]) {
+/* gear-score.js comes along for baseName — the Sky core resolves an upgraded
+   "Efreeti Magi Staff +1" to its base through it, and a second copy of that
+   rule is exactly the fork this script exists to prevent. attributes/data.js
+   is gear-score's own load-time dependency. */
+const VENDOR_JS = {
+  "public/kills/shared.js": "shared.js",
+  "public/kills/parse.js": "parse.js",
+  "public/gear/tier.js": "tier.js",
+  "public/attributes/data.js": "attributes-data.js", // basename would collide
+  "public/_shared/gear-score.js": "gear-score.js",
+  "public/sky/sky-core.js": "sky-core.js",
+};
+for (const [rel, name] of Object.entries(VENDOR_JS)) {
   const src = join(repo, rel);
   if (!existsSync(src)) {
     console.error(`sync-vendor: missing ${rel} — cannot build without it`);
     process.exit(1);
   }
-  const out = join(companion, "vendor", rel.split("/").pop());
+  const out = join(companion, "vendor", name);
   writeFileSync(out, HEADER(rel) + readFileSync(src, "utf8"));
   console.log(`vendor  ${rel}`);
 }
 
 mkdirSync(join(companion, "data-snapshot"), { recursive: true });
 let missing = 0;
-for (const rel of ["public/kills/data/kills-data.json", "public/companion/data/quest-items.json", "public/companion/data/item-tooltips.json", "public/gear/data/gear-data.json"]) {
+/* sky.json is the one dataset here that is COMMITTED rather than wiki-synced
+   (see docs/tools/sky.md) — it is always on disk, and it ships to the site with
+   the deploy rather than through the hourly R2 upload. */
+for (const rel of ["public/kills/data/kills-data.json", "public/companion/data/quest-items.json", "public/companion/data/item-tooltips.json", "public/gear/data/gear-data.json", "public/sky/data/sky.json"]) {
   const src = join(repo, rel);
   const out = join(companion, "data-snapshot", rel.split("/").pop());
   if (existsSync(src)) {

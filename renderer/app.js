@@ -100,6 +100,10 @@ function buildIndexes(datasets) {
   }
   QIDX_L = looseIndex(QIDX); TIDX_L = looseIndex(TIDX); GIDX_L = looseIndex(GIDX);
   QSRC_L = looseObj(QSRC); QDROPS_L = looseObj(QDROPS);
+  const sd = datasets["sky.json"];
+  SOURCES.sky = sd ? sd.source : "none";
+  SKYD = sd ? sd.data : null;
+  buildSkyUses();
 }
 
 /* ── tracker state (same blob shape as the /kills page) ───────────────────*/
@@ -166,7 +170,8 @@ function onBootstrap({ file, text }) {
   }
   if (ZONE.follow && DATA && DATA.zones[stream.zone]) selectZone(stream.zone);
   combatSeed(file, text);
-  renderStatus(); renderTracker(); pushZone();
+  skySeed(file, text);
+  renderStatus(); renderTracker(); pushZone(); renderSky(); pushSky();
 }
 
 let lastStreamZone = "?";
@@ -178,6 +183,7 @@ function onLines({ file, lines }) {
     for (const ev of evs) handleEvent(ev);
   }
   combatFeed(lines);
+  skyFeed(lines);
   if (stream.zone !== lastStreamZone) {
     lastStreamZone = stream.zone;
     pushZone();
@@ -663,12 +669,12 @@ function onInvFile({ file, mtime, text }) {
   INV.file = file; INV.mtime = mtime;
   INV.rows = parseInventory(text);
   LIVE_HAVE = new Map(); // the dump holds everything looted before it
-  renderInv(); renderQuests(); pushQuests();
+  renderInv(); renderQuests(); pushQuests(); renderSky(); pushSky();
 }
 
 function onInvStatus({ problem }) {
   INV.problem = problem;
-  renderInv(); renderQuests();
+  renderInv(); renderQuests(); renderSky();
 }
 
 /* ── enrichment — every column resolves from the datasets per render ────── */
@@ -1064,7 +1070,7 @@ function toggleHeld(name, want) {
   if (HELD.has(k)) HELD.delete(k);
   else HELD.set(k, { n: name, c: Math.max(1, want || 1) });
   saveHeld();
-  renderInv(); renderQuests(); pushQuests();
+  renderInv(); renderQuests(); pushQuests(); renderSky(); pushSky();
 }
 const heldMark = name => HELD.get(itemKey(name)) || null;
 
@@ -1896,6 +1902,453 @@ function renderTrackedTab() {
 
 function renderQuests() { renderTurnins(); renderTrackedTab(); renderQuestBrowser(); }
 
+/* ── Sky tab: what can I hand in, right now ───────────────────────────────
+   Kyle, 2026-08-13: "if im sitting in the quest room with a bag full of stuff,
+   i want to see class/npc, expandable/collapsable, and then a list of quests to
+   turn in, showing the items for the quest."
+
+   So this is not /sky's three views. It is the quest room: sixteen givers, each
+   a fold, each holding the tests you could walk up and complete. The measuring
+   — the log grammar, what a closed trade proves, which tests are done — is
+   vendor/sky-core.js, the same file /sky runs; only the arrangement is new.
+
+   The log and the dump answer different halves and neither is optional:
+   the dump knows WHERE a piece is (bag 2, bank 5 — the thing you need when
+   eight bags are open), and only the log has ever seen a wind rune, which goes
+   to the currency tab that /outputfile can't export. */
+const SKY = window.EQLSky;
+const SKY_CLASS = {
+  BRD: "Bard", BST: "Beastlord", BER: "Berserker", CLR: "Cleric",
+  DRU: "Druid", ENC: "Enchanter", MAG: "Magician", MNK: "Monk",
+  NEC: "Necromancer", PAL: "Paladin", RNG: "Ranger", ROG: "Rogue",
+  SHD: "Shadow Knight", SHM: "Shaman", WAR: "Warrior", WIZ: "Wizard",
+};
+let SKYD = null;          // sky.json
+let SKYL = null;          // {st, led, me} — the running fold over this log
+const SKY_KEY = "eqlt-companion-sky-v1";
+const SKY_DEF = {
+  // open: null = never chosen, so the folds that have something ready open
+  // themselves — the quest room's first question is "what can I hand in".
+  show: "held", hideDone: false, cls: "", open: null,
+  // wid.cls is an explicit list of class codes — [] really means none, so
+  // "show me nothing but my trio" and "show me nothing" stay different answers
+  wid: { show: "ready", hideDone: true, loc: true, say: true, cls: null },
+};
+let SKYP = JSON.parse(JSON.stringify(SKY_DEF));
+function loadSkyPrefs() {
+  try {
+    const o = JSON.parse(localStorage.getItem(SKY_KEY)) || {};
+    SKYP = { ...SKY_DEF, ...o, wid: { ...SKY_DEF.wid, ...(o.wid || {}) } };
+    if (SKYP.open !== null && !Array.isArray(SKYP.open)) SKYP.open = null;
+  } catch { SKYP = JSON.parse(JSON.stringify(SKY_DEF)); }
+  if (!Array.isArray(SKYP.wid.cls)) SKYP.wid.cls = Object.keys(SKY_CLASS);
+}
+const saveSkyPrefs = () => { try { localStorage.setItem(SKY_KEY, JSON.stringify(SKYP)); } catch {} };
+
+/* One fold per log file. The bootstrap tail seeds it and live lines extend it,
+   which is the same deal every other tab gets: turn-ins from before the 40 MB
+   tail are invisible, and the tab says so rather than reading as "not done". */
+function skyReset(file) {
+  const me = (String(file || "").match(/eqlog_([^_]+)_/) || [])[1] || "";
+  SKYL = { st: SKY.stream(me), me, file };
+  SKYL.led = SKYL.st.led;
+}
+function skySeed(file, text) { skyReset(file); SKYL.st.text(text); }
+/* Only a line the Sky grammar actually consumed can move this board, and a
+   busy zone is thousands of lines a minute that don't. */
+function skyFeed(lines) {
+  if (!SKYL) return;
+  const before = SKYL.led.n;
+  SKYL.st.feed(lines);
+  if (SKYL.led.n !== before) renderSkySoon();
+}
+
+const skyRec = name => {
+  const k = SKYD && SKYD.names[String(name).toLowerCase()];
+  return k ? SKYD.items[k] : null;
+};
+
+/* Every component the wiki puts in more than one test. The star is a warning
+   that handing this one over costs another test its piece — which is exactly
+   the decision you're making standing at the giver. Wind runes are excluded on
+   purpose: every rune feeds several tests, so starring them would star the
+   whole column and say nothing (Kyle: "runes can definitely be used for
+   multiple so no astrisk needed on those"). */
+let SKY_USES = new Map();  // itemKey -> [{code, test}]
+function buildSkyUses() {
+  SKY_USES = new Map();
+  if (!SKYD) return;
+  for (const [code, c] of Object.entries(SKYD.classes))
+    for (const t of c.tests)
+      for (const i of t.items) {
+        const k = itemKey(i.n);
+        if (!SKY_USES.has(k)) SKY_USES.set(k, []);
+        SKY_USES.get(k).push({ code, test: t.n });
+      }
+}
+
+/* Deliveries the dump can't know about yet. A dump is a snapshot: everything
+   handed over before it is already missing from it, but a turn-in you did five
+   minutes later still shows in the bags it exported. Only trades AFTER the
+   dump come off the count. */
+let SKY_DEL = { key: "", map: new Map() };
+function deliveredAfter(cut) {
+  const led = SKYL && SKYL.led;
+  if (!led) return new Map();
+  const key = `${led.trades.length}|${cut}`;
+  if (SKY_DEL.key === key) return SKY_DEL.map;
+  const m = new Map();
+  for (const tr of led.trades) {
+    const ts = Date.parse(tr.ts);
+    if (!(ts > cut)) continue;
+    for (const [n, q] of tr.items) m.set(itemKey(n), (m.get(itemKey(n)) || 0) + q);
+  }
+  SKY_DEL = { key, map: m };
+  return m;
+}
+
+/* How many of a piece you hold, and on whose word.
+     inv   — the dump, minus anything handed over since it was written
+     log   — looted minus delivered minus destroyed; the only answer for a wind
+             rune, and the only answer at all before the first dump
+     mark  — you told the app you have it (bought it, it's on the pet)
+
+   `seen` is whether the dump lists it anywhere. A mark is a FLOOR, so an item
+   the dump can see is the dump's answer even when it is also marked — calling
+   that "marked" would dress an observation up as a claim, backwards from the
+   mistake the mark exists to prevent. */
+function skyHave(have, name, seen) {
+  const led = SKYL && SKYL.led;
+  const mark = heldMark(name);
+  if (!led) return { n: mark ? mark.c : 0, src: mark ? "mark" : "inv" };
+  if (!INV.rows || SKY.isRune(name)) {
+    const n = SKY.held(led, null, name).n;
+    return mark ? { n: Math.max(n, mark.c), src: n ? "log" : "mark" } : { n, src: "log" };
+  }
+  const n = heldCount(have, name) - (deliveredAfter(INV.mtime).get(itemKey(name)) || 0);
+  return { n: Math.max(0, n), src: !seen && mark ? "mark" : "inv" };
+}
+
+/* ── where is it ──────────────────────────────────────────────────────────
+   Kyle: "a little bag icon with a number indicating the slot number 1-8, or a
+   coin number showing 1-16. that helps people find that item." So bags and
+   bank get the icon and the number; everywhere else gets a word, because a
+   number means nothing on a worn slot or the depot.
+
+   'General 1-Slot2' is bag one, slot two — the badge prints both, since the
+   bag number alone still leaves you opening it and reading. */
+const SKY_BAG_SVG = `<svg class="skl__i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 5.5h8.8l-.9 7.4a1 1 0 0 1-1 .9H5.5a1 1 0 0 1-1-.9z"/><path d="M6 5.5V4a2 2 0 0 1 4 0v1.5"/></svg>`;
+const SKY_COIN_SVG = `<svg class="skl__i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="5.2"/><circle cx="8" cy="8" r="1.9"/></svg>`;
+const SKY_LOC_WORD = [
+  [/^SharedBank ?(\d+)/, "shared bank"],
+  [/^Personal-Depot ?(\d+)?/, "depot"],
+  [/^Dragon/i, "hoard"],
+  [/^KeyRing/, "key ring"],
+  [/^Cursor/, "cursor"],
+];
+function skyBadge(loc) {
+  let m;
+  if ((m = /^General ?(\d+)(?:-Slot(\d+))?/.exec(loc)))
+    return { kind: "bag", n: +m[1], sub: m[2] ? +m[2] : null,
+             title: `Bag ${m[1]}${m[2] ? `, slot ${m[2]}` : ""}` };
+  if ((m = /^Bank ?(\d+)(?:-Slot(\d+))?/.exec(loc)))
+    return { kind: "bank", n: +m[1], sub: m[2] ? +m[2] : null,
+             title: `Bank slot ${m[1]}${m[2] ? `, slot ${m[2]}` : ""}` };
+  for (const [rx, word] of SKY_LOC_WORD) if (rx.test(loc)) return { kind: "word", word, title: loc };
+  if (WORN_RX.test(loc)) return { kind: "word", word: "worn", title: `Worn — ${loc}` };
+  return { kind: "word", word: loc.toLowerCase(), title: loc };
+}
+/* Dump rows by item, in the order the client wrote them, keyed both raw and
+   decoration-stripped like every other lookup here. Built once per model —
+   asking each of 95 tests' components to re-scan the whole dump was the same
+   work a hundred times over. */
+function skyLocIndex() {
+  const m = new Map();
+  for (const r of INV.rows || []) {
+    const b = { ...skyBadge(r.loc), count: r.count };
+    for (const k of new Set([itemKey(r.name), itemKey(stripDecor(r.name))]))
+      m.set(k, (m.get(k) || []).concat(b));
+  }
+  return m;
+}
+const skyLocs = (idx, name) => idx.get(itemKey(name)) || idx.get(itemKey(stripDecor(name))) || [];
+function skyBadgeHtml(b) {
+  const cnt = b.count > 1 ? ` <b class="skl__c">×${b.count}</b>` : "";
+  if (b.kind === "word")
+    return `<span class="skl skl--word" title="${esc(b.title)}">${esc(b.word)}${cnt}</span>`;
+  return `<span class="skl skl--${b.kind}" title="${esc(b.title)}">` +
+    (b.kind === "bag" ? SKY_BAG_SVG : SKY_COIN_SVG) +
+    `<b>${b.n}</b>${b.sub ? `<span class="skl__s">·${b.sub}</span>` : ""}${cnt}</span>`;
+}
+
+/* ── the model ────────────────────────────────────────────────────────────
+   Built once per render and handed to BOTH surfaces — the tab draws it and the
+   widget gets the same rows pre-resolved, because the overlay holds no data. */
+function skyModel() {
+  if (!SKYD || !SKYL) return null;
+  const have = haveMap();
+  const locIdx = skyLocIndex();
+  const led = SKYL.led;
+  const classes = Object.keys(SKYD.classes).sort((a, b) =>
+    SKY_CLASS[a].localeCompare(SKY_CLASS[b]));
+  const tot = { tests: 0, done: 0, ready: 0, partial: 0, pieces: 0 };
+  const out = [];
+  for (const code of classes) {
+    const c = SKYD.classes[code];
+    const comp = SKY.completions(SKYD, led, code);
+    const tests = c.tests.map(t => {
+      const items = t.items.map(i => {
+        const locs = skyLocs(locIdx, i.n);
+        const h = skyHave(have, i.n, locs.length > 0);
+        const uses = (SKY_USES.get(itemKey(i.n)) || []).filter(u => u.test !== t.n);
+        return {
+          n: i.n, need: 1, have: h.n, src: h.src,
+          isl: i.isl || "", mob: i.mob || "", nodrop: !!i.nodrop,
+          star: uses.length > 0,
+          starWith: uses.map(u => `${SKY_CLASS[u.code]}: ${u.test.replace(SKY_CLASS[u.code] + " ", "")}`),
+          locs,
+        };
+      });
+      const rune = t.rune.map(r => ({
+        n: r, short: r.replace("Wind Rune ", ""), need: 1, have: skyHave(have, r).n,
+      }));
+      const done = comp.byTest[t.n] || 0;
+      const st = SKY.testState(t, done, false, n => skyHave(have, n, locIdx.has(itemKey(n))).n);
+      /* Progress on a test means a COMPONENT of it. Runes are generic — one
+         Wind Rune Dena feeds seven different tests, so counting it as progress
+         listed all seven as started off a single drop. */
+      const held = items.filter(i => i.have >= 1).length;
+      tot.pieces += items.reduce((a, i) => a + i.have, 0);
+      return {
+        code, full: t.n, n: t.n.replace(SKY_CLASS[code] + " ", ""),
+        say: t.say || "", reward: t.reward || "", items, rune,
+        done, ready: st.ready, missing: st.missing.length, held,
+        need: items.length + rune.length,
+      };
+    });
+    const nDone = tests.filter(t => t.done > 0).length;
+    const nReady = tests.filter(t => t.ready).length;
+    const nPartial = tests.filter(t => !t.ready && !t.done && t.held > 0).length;
+    tot.tests += tests.length; tot.done += nDone; tot.ready += nReady; tot.partial += nPartial;
+    out.push({ code, name: SKY_CLASS[code], giver: c.giver || "", tests, nDone, nReady, nPartial, orphan: comp.orphan });
+  }
+  return { classes: out, tot };
+}
+
+// One rule, both surfaces: "ready" is everything in hand, "held" adds the tests
+// you have started, "all" is the other 90 you have not.
+function skyKeep(t, show, hideDone) {
+  if (hideDone && t.done > 0) return false;
+  if (show === "ready") return t.ready || (t.done > 0 && !hideDone && t.missing === 0);
+  if (show === "held") return t.ready || t.held > 0 || t.done > 0;
+  return true;
+}
+function skyMatch(g, t, q) {
+  if (!q) return true;
+  const hay = [g.name, g.giver, t.n, t.say, t.reward,
+    ...t.items.map(i => i.n), ...t.items.map(i => i.mob), ...t.rune.map(r => r.n)]
+    .join(" ").toLowerCase();
+  return hay.includes(q);
+}
+
+const SKY_SRC_NOTE = {
+  inv: "from your inventory dump",
+  log: "from the log — a dump can't see the currency tab",
+  mark: "you marked this one held",
+};
+/* Wiki page and item window for a Sky name. item-tooltips.json is the app's
+   index for both; sky.json carries the same statsblock for the ~400 names this
+   board uses, so a piece the tooltip index misses still gets its window. */
+function skyRef(name) {
+  const ti = lookupExact(TIDX, name);
+  const rec = skyRec(name);
+  const t = (ti && ti.t) || (rec && rec.t) || "";
+  const base = (TDATA && TDATA.base) || (DATA && DATA.base) || "";
+  return { n: name, url: t && base ? base + t : "", sb: (ti && ti.sb) || (rec && rec.sb) || null };
+}
+function skyItemSpan(name) {
+  const r = skyRef(name);
+  return r.url
+    ? `<span class="itn is-link" data-tt="${esc(name)}" data-url="${esc(r.url)}">${esc(name)}</span>`
+    : `<span class="itn" data-tt="${esc(name)}">${esc(name)}</span>`;
+}
+function skyPieceHtml(i) {
+  const has = i.have >= i.need;
+  const star = i.star
+    ? `<span class="sk-star" title="Also wanted by ${esc(i.starWith.join("; "))}">★</span>` : "";
+  const locs = i.locs.length ? ` ${i.locs.map(skyBadgeHtml).join(" ")}` : "";
+  const where = i.isl ? `<span class="sk-src">${esc(skyIsle(i.isl))}${i.mob ? " · " + esc(i.mob) : ""}</span>` : "";
+  return `<li class="skp ${has ? "is-have" : "is-miss"}">` +
+    `<span class="skp__tick" data-hold="${esc(i.n)}" data-want="1" title="${i.src === "mark" ? "Marked as held — click to clear" : has ? "" : "Mark as held (bought it, or it's on your pet)"}">${has ? "✓" : "·"}</span>` +
+    skyItemSpan(i.n) + star +
+    `<span class="skp__ct" title="${esc(SKY_SRC_NOTE[i.src] || "")}">${i.have}/${i.need}</span>` +
+    locs + (has ? "" : where) + `</li>`;
+}
+const skyIsle = n => {
+  const nm = SKYD && SKYD.islands && SKYD.islands[String(n)];
+  return nm ? `${nm} (I${n})` : `Isle ${n}`;
+};
+/* A rune you looted before `/log on` is invisible to both sources — the log
+   never saw it and the dump can't export the currency tab — so the mark is the
+   only way to say you have one. */
+function skyRuneHtml(r) {
+  const has = r.have >= 1;
+  return `<li class="skp skp--rune ${has ? "is-have" : "is-miss"}">` +
+    `<span class="skp__tick" data-hold="${esc(r.n)}" data-want="1" title="${has ? "" : "Mark as held — the log is the only witness for a rune"}">${has ? "✓" : "·"}</span>` +
+    skyItemSpan(r.n) +
+    `<span class="skp__ct" title="${esc(SKY_SRC_NOTE.log)}">${r.have}/1</span></li>`;
+}
+
+function skyStatus(t) {
+  if (t.ready) return `<span class="sk-st sk-st--ready">ready</span>`;
+  if (t.done > 0 && t.missing === 0) return `<span class="sk-st sk-st--ready">can repeat</span>`;
+  if (t.done > 0) return `<span class="sk-st sk-st--done">turned in</span>`;
+  return `<span class="sk-st sk-st--miss">missing ${t.missing}</span>`;
+}
+
+function renderSky(model) {
+  const body = $("skyBody"), empty = $("skyEmpty"), meta = $("skyMeta"), banner = $("skyBanner");
+  const m = model || skyModel();
+  if (!m) {
+    body.innerHTML = ""; meta.textContent = "";
+    banner.hidden = true;
+    empty.hidden = false;
+    empty.innerHTML = SKYD
+      ? `Waiting for log lines. Walk up to a quest giver and this fills in.<br>` +
+        `<span class="dim">Logging must be on in game: <code>/log</code></span>`
+      : `Plane of Sky data hasn't downloaded yet — check the Settings tab.`;
+    return;
+  }
+  empty.hidden = true;
+  const q = ($("skySearch").value || "").trim().toLowerCase();
+  let shown = 0, openCount = 0;
+  const html = m.classes.map(g => {
+    if (SKYP.cls && g.code !== SKYP.cls) return "";
+    const rows = g.tests.filter(t => skyKeep(t, SKYP.show, SKYP.hideDone) && skyMatch(g, t, q));
+    if (!rows.length) return "";
+    shown += rows.length;
+    const open = SKYP.open ? SKYP.open.includes(g.code) : g.nReady > 0;
+    openCount += open ? 1 : 0;
+    // the header's own counts are the class's WHOLE picture, so the fold says
+    // what is in it without being opened; "N shown" beside them was the same
+    // number twice
+    const tally = [
+      g.nReady ? `<b class="sk-n sk-n--ready">${g.nReady}</b> ready` : "",
+      g.nDone ? `<b class="sk-n sk-n--done">${g.nDone}</b> turned in` : "",
+      g.nPartial ? `${g.nPartial} started` : "",
+      `${g.tests.length} tests`,
+    ].filter(Boolean).join(" · ");
+    const orphan = g.orphan
+      ? `<p class="sk-orphan">${g.orphan} completed trade${g.orphan === 1 ? "" : "s"} with ${esc(g.giver)} matched no single test — that is what a turn-in split across two trades looks like.</p>`
+      : "";
+    const tests = rows.map(t => `<div class="skt${t.ready ? " is-ready" : ""}${t.done ? " is-done" : ""}">
+      <div class="skt__h">
+        <span class="skt__n">${esc(t.n)}</span>
+        ${t.say ? `<span class="skt__say" title="Hail ${esc(g.giver)} and say this">say <code>${esc(t.say)}</code></span>` : ""}
+        ${skyStatus(t)}
+        ${t.done ? `<span class="skt__done" title="Your log shows ${t.done} turn-in${t.done === 1 ? "" : "s"} of this test">✓${t.done}</span>` : ""}
+        <span class="skt__rew">→ ${skyItemSpan(t.reward)}</span>
+      </div>
+      <ul class="skt__items">${t.rune.map(skyRuneHtml).join("")}${t.items.map(skyPieceHtml).join("")}</ul>
+    </div>`).join("");
+    return `<section class="skg">
+      <button type="button" class="skg__h" data-skyclass="${g.code}" aria-expanded="${open}">
+        <span class="skg__caret" aria-hidden="true">${open ? "▾" : "▸"}</span>
+        <span class="skg__n">${esc(g.name)}</span>
+        <span class="skg__giver">${esc(g.giver)}</span>
+        <span class="skg__tally">${tally}</span>
+      </button>
+      <div class="skg__b"${open ? "" : " hidden"}>${orphan}${tests}</div>
+    </section>`;
+  }).join("");
+  body.innerHTML = html || `<p class="empty">Nothing matches. Widen <b>show</b>, or clear the search.</p>`;
+  meta.textContent = `${m.tot.ready} ready · ${m.tot.done}/${m.tot.tests} turned in · ${m.tot.partial} started · ${shown} shown`;
+  $("skyExpand").textContent = openCount ? "collapse all" : "expand all";
+  // What this reading can and can't have seen. Both halves are real limits and
+  // neither is recoverable, so they are stated rather than left to be inferred.
+  const bits = [];
+  if (!INV.rows) bits.push("No inventory dump yet — counts come from the log alone. Type <code>/out inventory</code> in game to get bag and bank locations.");
+  else if (INV.mtime) {
+    const age = Date.now() - INV.mtime;
+    if (age > 10 * 60 * 1000) bits.push(`Inventory dump is ${age > 3600e3 ? Math.round(age / 3600e3) + "h" : Math.round(age / 60000) + "m"} old — <code>/out inventory</code> to refresh.`);
+  }
+  if (SKYL.led && !SKYL.led.sawSky) bits.push("No Plane of Sky zone-in in this log — turn-ins from before it aren't counted.");
+  banner.innerHTML = bits.join(" ");
+  banner.hidden = !bits.length;
+  retip();
+}
+
+/* Widget payload — pre-resolved, like every other feed:* relay. Only what the
+   widget options let through, so a 95-row board doesn't land in a 340px
+   window; the tab's own filters stay out of it deliberately (the two are read
+   in different places and for different reasons). */
+let lastSkyJson = "";
+function pushSky(model) {
+  const m = model || skyModel();
+  if (!m) return;
+  const w = SKYP.wid;
+  const groups = [];
+  for (const g of m.classes) {
+    if (!w.cls.includes(g.code)) continue;
+    const tests = g.tests.filter(t => skyKeep(t, w.show, w.hideDone)).map(t => ({
+      n: t.n, say: w.say ? t.say : "", done: t.done, ready: t.ready, missing: t.missing,
+      rew: skyRef(t.reward),
+      items: t.rune.map(r => ({ ...skyRef(r.n), n: "Rune " + r.short, have: r.have, need: 1, rune: true, locs: [] }))
+        .concat(t.items.map(i => ({
+          ...skyRef(i.n), have: i.have, need: i.need, star: i.star,
+          isl: i.have >= i.need ? "" : (i.isl ? skyIsle(i.isl) + (i.mob ? " · " + i.mob : "") : ""),
+          locs: w.loc ? i.locs.map(b => ({ k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title })) : [],
+        }))),
+    }));
+    if (tests.length) groups.push({ code: g.code, name: g.name, giver: g.giver,
+                                    ready: tests.filter(t => t.ready).length, tests });
+  }
+  const p = { groups, ready: m.tot.ready, tests: m.tot.tests, done: m.tot.done,
+              inv: INV.rows ? { age: INV.mtime ? Date.now() - INV.mtime : 0 } : null };
+  const j = JSON.stringify(p);
+  if (j !== lastSkyJson) { lastSkyJson = j; window.companion.sendSky(p); }
+}
+
+let skyTimer = null;
+function renderSkySoon() {   // loot bursts land in batches; coalesce like the feed
+  if (skyTimer) return;
+  skyTimer = setTimeout(() => {
+    skyTimer = null;
+    const m = skyModel();      // one derivation feeds both surfaces
+    renderSky(m); pushSky(m);
+  }, 300);
+}
+
+/* The widget options block: what the overlay's Sky tab shows. Kept out of
+   SETTINGS.overlay on purpose — the payload is built here, so the choice that
+   shapes it belongs here too. */
+function renderSkyWidget() {
+  const w = SKYP.wid;
+  const chip = code => `<label class="skw__c"><input type="checkbox" data-skywcls="${code}"${w.cls.includes(code) ? " checked" : ""}> ${esc(SKY_CLASS[code])}</label>`;
+  $("skyWidBody").innerHTML =
+    `<label class="skw__r">Show <select data-skyw="show">
+       <option value="ready"${w.show === "ready" ? " selected" : ""}>ready to turn in</option>
+       <option value="held"${w.show === "held" ? " selected" : ""}>anything I hold a piece of</option>
+       <option value="all"${w.show === "all" ? " selected" : ""}>every test</option>
+     </select></label>` +
+    `<label class="skw__r"><input type="checkbox" data-skyw="hideDone"${w.hideDone ? " checked" : ""}> hide tests I've turned in</label>` +
+    `<label class="skw__r"><input type="checkbox" data-skyw="loc"${w.loc ? " checked" : ""}> show where each piece is</label>` +
+    `<label class="skw__r"><input type="checkbox" data-skyw="say"${w.say ? " checked" : ""}> show the hail phrase</label>` +
+    `<div class="skw__h">Classes <button type="button" class="lnk" data-skywall="1">all</button> ·
+       <button type="button" class="lnk" data-skywall="0">none</button></div>` +
+    `<div class="skw__cls">${Object.keys(SKY_CLASS).sort((a, b) => SKY_CLASS[a].localeCompare(SKY_CLASS[b])).map(chip).join("")}</div>`;
+}
+
+function populateSkyFilters() {
+  const sel = $("skyClass");
+  sel.innerHTML = `<option value="">all classes</option>` +
+    Object.keys(SKY_CLASS).sort((a, b) => SKY_CLASS[a].localeCompare(SKY_CLASS[b]))
+      .map(c => `<option value="${c}"${SKYP.cls === c ? " selected" : ""}>${esc(SKY_CLASS[c])}</option>`).join("");
+  $("skyShow").value = SKYP.show;
+  $("skyHideDone").checked = SKYP.hideDone;
+  renderSkyWidget();
+}
+
 /* ── parser tab: the site's /log-parser page, embedded whole ──────────────
    The iframe loads the vendored page over eqlt:// on first open; we post the
    active log's tail into its embed intake and re-post while the tab stays
@@ -2429,13 +2882,16 @@ function renderData() {
   const rows = [];
   const one = (label, d, src) => {
     if (!d) return rows.push(`<p>${label}: <b>missing</b> — refresh below once the site ships it.</p>`);
-    const upd = d.meta && (d.meta.updated || d.meta.generated) || "?";
-    rows.push(`<p>${label}: ${src} · updated ${esc(String(upd))}</p>`);
+    // sky.json states its wiki page rather than a build date — print what the
+    // file actually carries instead of a bare "?"
+    const upd = d.meta && (d.meta.updated || d.meta.generated);
+    rows.push(`<p>${label}: ${src}${upd ? ` · updated ${esc(String(upd))}` : ""}</p>`);
   };
   one(`Mob roster (${DATA ? Object.keys(DATA.zones).length + " zones" : "—"})`, DATA, SOURCES.kills);
   one(`Quest items (${QDATA ? QDATA.quests.length + " quests, " + Object.keys(QDATA.items).length + " items" : "—"})`, QDATA, SOURCES.quests);
   one(`Item tooltips (${TDATA ? Object.keys(TDATA.items).length + " items" : "—"})`, TDATA, SOURCES.tooltips);
   one(`Gear (${GDATA ? Object.keys(GDATA.items).length + " items" : "—"})`, GDATA, SOURCES.gear);
+  one(`Plane of Sky (${SKYD ? Object.keys(SKYD.classes).length + " classes" : "—"})`, SKYD, SOURCES.sky);
   $("dataStatus").innerHTML = rows.join("");
 }
 
@@ -2532,6 +2988,7 @@ async function main() {
   STATE = K.load();
   loadTracked();
   loadHeld();
+  loadSkyPrefs();
   for (const b of document.querySelectorAll("[data-trackview]"))
     b.classList.toggle("is-on", b.dataset.trackview === TRACK_VIEW);
   // Kills an older matching rule filed as unmatched (the site's /kills page
@@ -2547,19 +3004,21 @@ async function main() {
   $("setWitnessed").checked = s.witnessed;
 
   renderStatus(); renderTracker(); renderFeed(); renderData();
-  populateZoneSel(); renderZoneTab(); populateQuestFilters(); populateInvFilters(); renderQuests(); initTip();
+  populateZoneSel(); renderZoneTab(); populateQuestFilters(); populateInvFilters(); renderQuests();
+  populateSkyFilters(); renderSky(); initTip();
 
   window.companion.onBootstrap(onBootstrap);
   window.companion.onLines(onLines);
   window.companion.onLogStatus(st => { LOGSTATUS = st; renderStatus(); });
   window.companion.onInvFile(onInvFile);
   window.companion.onInvStatus(onInvStatus);
-  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); populateInvFilters(); renderInv(); populateQuestFilters(); renderQuests(); pushZone(); pushQuests(); });
+  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); populateInvFilters(); renderInv(); populateQuestFilters(); renderQuests(); populateSkyFilters(); renderSky(); pushZone(); pushQuests(); pushSky(); });
   window.companion.onOverlayState(renderOverlayState);
   window.companion.onUpdate(renderUpdate);
   renderUpdate(await window.companion.getUpdate());
   window.companion.ready(); // listeners live — main may start tailing now
   pushQuests(); // a fresh overlay shouldn't wait for the next loot to learn the tracked list
+  pushSky();
 
   document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === b));
@@ -2591,6 +3050,34 @@ async function main() {
     if (h) { e.stopPropagation(); toggleHeld(h.dataset.hold, +h.dataset.want || 1); }
   });
   window.companion.onMarkHeld(n => toggleHeld(n, 1));
+  $("skySearch").addEventListener("input", renderSky);
+  $("skyShow").addEventListener("change", e => { SKYP.show = e.target.value; saveSkyPrefs(); renderSky(); });
+  $("skyClass").addEventListener("change", e => { SKYP.cls = e.target.value; saveSkyPrefs(); renderSky(); });
+  $("skyHideDone").addEventListener("change", e => { SKYP.hideDone = e.target.checked; saveSkyPrefs(); renderSky(); });
+  $("skyExpand").addEventListener("click", () => {
+    const all = Object.keys(SKY_CLASS);
+    const anyOpen = !!document.querySelector(".skg__h[aria-expanded=true]");
+    SKYP.open = anyOpen ? [] : all.slice();
+    saveSkyPrefs(); renderSky();
+  });
+  // widget options — every one of them reshapes the payload, so each writes
+  // through and re-pushes
+  $("skyWidBody").addEventListener("change", e => {
+    const k = e.target.dataset.skyw, c = e.target.dataset.skywcls;
+    if (k) SKYP.wid[k] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    else if (c) {
+      const on = new Set(SKYP.wid.cls);
+      e.target.checked ? on.add(c) : on.delete(c);
+      SKYP.wid.cls = [...on];
+    } else return;
+    saveSkyPrefs(); renderSkyWidget(); pushSky();
+  });
+  $("skyWidBody").addEventListener("click", e => {
+    const b = e.target.closest("[data-skywall]");
+    if (!b) return;
+    SKYP.wid.cls = b.dataset.skywall === "1" ? Object.keys(SKY_CLASS) : [];
+    saveSkyPrefs(); renderSkyWidget(); pushSky();
+  });
   $("zoneFilter").addEventListener("input", renderZoneTab);
   $("tiSearch").addEventListener("input", e => { TURNIN.q = e.target.value; renderTurnins(); });
   $("qReadyOnly").addEventListener("change", e => { TURNIN.readyOnly = e.target.checked; renderTurnins(); });
@@ -2711,6 +3198,15 @@ async function main() {
       const t = qr.dataset.qx;
       QEXPANDED.has(t) ? QEXPANDED.delete(t) : QEXPANDED.add(t);
       renderQuestBrowser(); return;
+    }
+    const sg = e.target.closest("[data-skyclass]");
+    if (sg) {
+      const c = sg.dataset.skyclass;
+      // first click freezes whatever the auto-open rule was showing, so one
+      // fold closing doesn't reshuffle the other fifteen
+      if (!SKYP.open) SKYP.open = [...document.querySelectorAll(".skg__h[aria-expanded=true]")].map(b => b.dataset.skyclass);
+      SKYP.open = SKYP.open.includes(c) ? SKYP.open.filter(x => x !== c) : SKYP.open.concat(c);
+      saveSkyPrefs(); renderSky(); return;
     }
     const zh = e.target.closest("[data-zone]");
     if (zh) { const k = zh.dataset.zone; EXPANDED.has(k) ? EXPANDED.delete(k) : EXPANDED.add(k); renderTracker(); }

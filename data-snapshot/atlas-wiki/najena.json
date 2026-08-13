@@ -35,11 +35,6 @@
   },
   {
    "g": 1,
-   "n": "Bead Necklace",
-   "u": "https://eqlwiki.com/index.php/Bead_Necklace"
-  },
-  {
-   "g": 1,
    "n": "Binding Bracelets",
    "u": "https://eqlwiki.com/index.php/Binding_Bracelets"
   },
@@ -134,11 +129,6 @@
    "g": 1,
    "n": "Clawed Knuckle-Ring",
    "u": "https://eqlwiki.com/index.php/Clawed_Knuckle-Ring"
-  },
-  {
-   "g": 1,
-   "n": "Copper Band",
-   "u": "https://eqlwiki.com/index.php/Copper_Band"
   },
   {
    "g": 1,
@@ -314,10 +304,6 @@
    "u": "https://eqlwiki.com/index.php/Hollowed_Bone_Bracers"
   },
   {
-   "n": "Iron Oxide",
-   "u": "https://eqlwiki.com/index.php/Iron_Oxide"
-  },
-  {
    "g": 1,
    "n": "Journeyman's Boots",
    "u": "https://eqlwiki.com/index.php/Journeyman's_Boots"
@@ -332,9 +318,8 @@
    "u": "https://eqlwiki.com/index.php/Large_Ball_of_Clay"
   },
   {
-   "g": 1,
-   "n": "Leather Wristbands",
-   "u": "https://eqlwiki.com/index.php/Leather_Wristbands"
+   "n": "Leatherfoot_Raider_Skullcap_(drop)",
+   "u": "https://eqlwiki.com/index.php/Leatherfoot_Raider_Skullcap_(drop)"
   },
   {
    "g": 1,
@@ -452,11 +437,6 @@
    "g": 1,
    "n": "Signet Ring of the Lost Crusader",
    "u": "https://eqlwiki.com/index.php/Signet_Ring_of_the_Lost_Crusader"
-  },
-  {
-   "g": 1,
-   "n": "Silver Stud",
-   "u": "https://eqlwiki.com/index.php/Silver_Stud"
   },
   {
    "g": 1,
@@ -626,18 +606,6 @@
   {
    "n": "Widowmistress Hair",
    "u": "https://eqlwiki.com/index.php/Widowmistress_Hair"
-  },
-  {
-   "n": "Words of Absorption",
-   "u": "https://eqlwiki.com/index.php/Words_of_Absorption"
-  },
-  {
-   "n": "Words of Radiance",
-   "u": "https://eqlwiki.com/index.php/Words_of_Radiance"
-  },
-  {
-   "n": "Words of Reviviscence",
-   "u": "https://eqlwiki.com/index.php/Words_of_Reviviscence"
   }
  ],
  "meta": {
@@ -647,12 +615,25 @@
  "mobs": [
   {
    "dr": [
+    null
+   ],
+   "drops": [
+    11
+   ],
+   "loc": null,
+   "lvl": "23-25",
+   "n": "a dread skeleton",
+   "named": false,
+   "u": "https://eqlwiki.com/index.php/A_dread_skeleton"
+  },
+  {
+   "dr": [
     "Common",
     "Common"
    ],
    "drops": [
-    57,
-    58
+    55,
+    56
    ],
    "loc": [
     245.0,
@@ -670,14 +651,10 @@
     null
    ],
    "drops": [
-    100,
-    101
+    96,
+    97
    ],
-   "loc": [
-    460.0,
-    -160.0,
-    null
-   ],
+   "loc": null,
    "lvl": "18-22",
    "n": "a giant black widow",
    "named": false,
@@ -696,13 +673,13 @@
    ],
    "drops": [
     0,
-    92,
-    105,
-    107,
-    118,
-    119,
-    120,
-    121
+    89,
+    101,
+    103,
+    114,
+    115,
+    116,
+    117
    ],
    "loc": [
     423.0,
@@ -731,7 +708,10 @@
     null
    ],
    "drops": [
-    54,
+    52,
+    71,
+    72,
+    73,
     74,
     75,
     76,
@@ -740,10 +720,7 @@
     79,
     80,
     81,
-    82,
-    83,
-    84,
-    85
+    82
    ],
    "loc": [
     271.0,
@@ -764,11 +741,11 @@
     "Uncommon"
    ],
    "drops": [
-    12,
-    35,
-    80,
-    84,
-    85
+    11,
+    33,
+    77,
+    81,
+    82
    ],
    "loc": null,
    "lvl": "7-20 / 11-13 (Befallen / Najena)",
@@ -778,13 +755,13 @@
   },
   {
    "dr": [
-    "Always"
+    null
    ],
    "drops": [
-    12
+    11
    ],
    "loc": null,
-   "lvl": "8-10",
+   "lvl": "8-10, 15 ([[Najena]])",
    "n": "a large skeleton",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_large_skeleton"
@@ -809,19 +786,19 @@
     0,
     1,
     2,
-    23,
-    42,
-    86,
-    98,
-    105,
-    118,
-    119,
-    120,
-    121,
-    127
+    22,
+    40,
+    83,
+    94,
+    101,
+    114,
+    115,
+    116,
+    117,
+    123
    ],
    "loc": null,
-   "lvl": "9-23",
+   "lvl": "17 (Entrance), 24 (Interior), 29 ([[Najena]]'s disciples)",
    "n": "a magician",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_Magician"
@@ -831,7 +808,7 @@
     "Uncommon"
    ],
    "drops": [
-    71
+    68
    ],
    "loc": null,
    "lvl": "29",
@@ -844,7 +821,7 @@
     null
    ],
    "drops": [
-    108
+    104
    ],
    "loc": null,
    "lvl": "9-16",
@@ -864,12 +841,12 @@
    ],
    "drops": [
     3,
-    31,
-    42,
-    96,
-    99,
-    116,
-    126
+    29,
+    40,
+    92,
+    95,
+    112,
+    122
    ],
    "loc": [
     271.0,
@@ -886,7 +863,7 @@
     null
    ],
    "drops": [
-    63
+    61
    ],
    "loc": [
     40.0,
@@ -914,6 +891,8 @@
     null
    ],
    "drops": [
+    41,
+    42,
     43,
     44,
     45,
@@ -923,9 +902,7 @@
     49,
     50,
     51,
-    52,
-    53,
-    124
+    120
    ],
    "loc": [
     -493.0,
@@ -952,28 +929,24 @@
   },
   {
    "dr": [
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare"
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "drops": [
+    24,
     25,
-    26,
-    38,
-    61,
+    36,
+    59,
     65,
-    68,
-    88,
-    97,
-    104,
-    133
+    85,
+    93,
+    100
    ],
    "loc": null,
    "lvl": "9-17",
@@ -983,22 +956,14 @@
   },
   {
    "dr": [
-    "Rare",
     null,
-    "Uncommon",
-    "Uncommon"
-   ],
-   "drops": [
-    1,
-    89,
-    118,
-    120
-   ],
-   "loc": [
-    -50.0,
-    -75.0,
     null
    ],
+   "drops": [
+    66,
+    86
+   ],
+   "loc": null,
    "lvl": "20",
    "n": "an injured halfling",
    "named": false,
@@ -1011,9 +976,9 @@
     "Uncommon"
    ],
    "drops": [
-    60,
-    87,
-    129
+    58,
+    84,
+    125
    ],
    "loc": [
     60.0,
@@ -1027,37 +992,35 @@
   },
   {
    "dr": [
-    "Common",
-    "Always",
-    "Rare"
+    null,
+    null
    ],
    "drops": [
-    60,
-    129,
-    132
+    58,
+    125
    ],
    "loc": null,
-   "lvl": "10-20",
+   "lvl": "16",
    "n": "an ogre guard",
    "named": false,
    "u": "https://eqlwiki.com/index.php/An_Ogre_Guard"
   },
   {
    "dr": [
-    "Rare",
-    "Rare",
-    "Common",
-    "Rare",
-    "Uncommon",
-    "Rare"
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "drops": [
     5,
     6,
-    39,
-    70,
-    125,
-    128
+    37,
+    67,
+    121,
+    124
    ],
    "loc": [
     -262.0,
@@ -1083,14 +1046,14 @@
    ],
    "drops": [
     0,
-    35,
-    91,
-    105,
-    117,
-    118,
-    119,
-    120,
-    121
+    33,
+    88,
+    101,
+    113,
+    114,
+    115,
+    116,
+    117
    ],
    "loc": [
     134.0,
@@ -1114,12 +1077,12 @@
    ],
    "drops": [
     4,
-    11,
-    41,
-    59,
-    66,
-    106,
-    110
+    10,
+    39,
+    57,
+    63,
+    102,
+    106
    ],
    "loc": [
     -35.0,
@@ -1133,32 +1096,32 @@
   },
   {
    "dr": [
-    "Rare",
-    "Always",
-    "Rare",
-    "No Longer Drops",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare"
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "drops": [
     0,
-    10,
-    30,
-    63,
-    69,
+    1,
+    2,
+    9,
+    28,
+    101,
+    111,
+    114,
     115,
-    119,
-    121,
-    131
+    116,
+    117
    ],
-   "loc": [
-    -681.0,
-    -49.0,
-    null
-   ],
+   "loc": null,
    "lvl": "26",
    "n": "Ekeros",
    "named": true,
@@ -1176,10 +1139,10 @@
    "drops": [
     0,
     1,
-    42,
-    62,
-    105,
-    119
+    40,
+    60,
+    101,
+    115
    ],
    "loc": null,
    "lvl": "25",
@@ -1189,18 +1152,14 @@
   },
   {
    "dr": [
-    "Uncommon",
-    "Uncommon"
-   ],
-   "drops": [
-    60,
-    129
-   ],
-   "loc": [
-    -6.0,
-    -92.0,
+    null,
     null
    ],
+   "drops": [
+    58,
+    125
+   ],
+   "loc": null,
    "lvl": "18",
    "n": "Moosh",
    "named": true,
@@ -1213,9 +1172,9 @@
     null
    ],
    "drops": [
-    9,
-    27,
-    56
+    8,
+    26,
+    54
    ],
    "loc": [
     353.0,
@@ -1245,6 +1204,7 @@
     null
    ],
    "drops": [
+    12,
     13,
     14,
     15,
@@ -1253,12 +1213,11 @@
     18,
     19,
     20,
-    21,
-    24,
-    40,
-    51,
-    72,
-    103
+    23,
+    38,
+    49,
+    69,
+    99
    ],
    "loc": [
     -385.0,
@@ -1272,20 +1231,22 @@
   },
   {
    "dr": [
-    "Common",
     null,
-    "Uncommon",
     null,
-    "Common",
-    "Common"
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "drops": [
-    11,
+    10,
+    27,
     29,
-    31,
-    95,
-    122,
-    123
+    37,
+    91,
+    118,
+    119
    ],
    "loc": [
     -670.0,
@@ -1300,15 +1261,25 @@
   {
    "dr": [
     null,
-    "Uncommon",
-    "Rare",
-    "Rare"
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "drops": [
+    0,
     1,
-    64,
-    118,
-    121
+    2,
+    62,
+    101,
+    114,
+    115,
+    116,
+    117
    ],
    "loc": [
     -154.0,
@@ -1322,26 +1293,16 @@
   },
   {
    "dr": [
-    "Common",
-    "Common",
-    "Common",
-    "Ultra Rare",
-    "Common",
-    "Rare"
-   ],
-   "drops": [
-    7,
-    28,
-    94,
-    110,
-    111,
-    127
-   ],
-   "loc": [
-    10.0,
-    190.0,
+    null,
+    null,
     null
    ],
+   "drops": [
+    106,
+    107,
+    123
+   ],
+   "loc": null,
    "lvl": "20-22",
    "n": "Tentacle Terror",
    "named": true,
@@ -1353,8 +1314,8 @@
     null
    ],
    "drops": [
-    112,
-    113
+    108,
+    109
    ],
    "loc": [
     187.0,
@@ -1375,11 +1336,11 @@
     "Always"
    ],
    "drops": [
-    33,
-    34,
-    73,
-    90,
-    129
+    31,
+    32,
+    70,
+    87,
+    125
    ],
    "loc": [
     52.0,
@@ -1397,8 +1358,8 @@
     null
    ],
    "drops": [
-    93,
-    109
+    90,
+    105
    ],
    "loc": [
     135.0,
@@ -1416,8 +1377,8 @@
     null
    ],
    "drops": [
-    67,
-    114
+    64,
+    110
    ],
    "loc": [
     131.0,
@@ -1440,13 +1401,13 @@
     null
    ],
    "drops": [
-    36,
+    34,
+    42,
     44,
     46,
-    48,
-    49,
-    102,
-    130
+    47,
+    98,
+    126
    ],
    "loc": [
     460.0,
@@ -1466,10 +1427,10 @@
     null
    ],
    "drops": [
-    8,
-    22,
-    31,
-    32
+    7,
+    21,
+    29,
+    30
    ],
    "loc": [
     -225.0,
@@ -1487,8 +1448,8 @@
     null
    ],
    "drops": [
-    37,
-    55
+    35,
+    53
    ],
    "loc": [
     -26.0,
@@ -1501,7 +1462,7 @@
    "u": "https://eqlwiki.com/index.php/Unbound_Flame"
   }
  ],
- "updated": "2026-08-10T00:30:55Z",
+ "updated": "2026-08-10T17:24:44Z",
  "wikiTitle": "Najena",
  "wikiUrl": "https://eqlwiki.com/index.php/Najena",
  "zone": "najena"

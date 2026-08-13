@@ -1071,13 +1071,13 @@
   },
   {
    "dr": [
-    "Always"
+    null
    ],
    "drops": [
     12
    ],
    "loc": null,
-   "lvl": "8-10",
+   "lvl": "8-10, 15 ([[Najena]])",
    "n": "a large skeleton",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_large_skeleton"
@@ -1639,7 +1639,7 @@
    "u": "https://eqlwiki.com/index.php/Zombie_of_an_Unrest_Noble"
   }
  ],
- "updated": "2026-07-21T02:03:53Z",
+ "updated": "2026-08-10T14:33:29Z",
  "wikiTitle": "The Estate of Unrest",
  "wikiUrl": "https://eqlwiki.com/index.php/The_Estate_of_Unrest",
  "zone": "unrest"

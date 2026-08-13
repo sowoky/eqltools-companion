@@ -22,18 +22,22 @@ let THROUGH = false;
 let PREFS = { fontScale: 1, showKills: true, questOnly: false, view: "loot" };
 const FEED_CAP = 50; // matches main's relay ring; the window scrolls, not truncates
 
-/* Three views, tab-switched: Tracked (quest working lists), Loot (the feed),
-   Stats (session + last fights). The choice persists through main's prefs
-   like every other overlay pref. */
+/* Four views, tab-switched: Tracked (quest working lists), Loot (the feed),
+   Stats (session + last fights), Sky (the Plane of Sky quest room — what you
+   can hand in and where each piece is). The choice persists through main's
+   prefs like every other overlay pref, which means main.js's overlay:prefs
+   allowlist has to name every one of them. */
 const filtersEl = document.getElementById("filters");
 const statsEl = document.getElementById("ostats");
-const VIEWS = { tracked: "otTracked", loot: "otLoot", stats: "otStats" };
+const skyEl = document.getElementById("osky");
+const VIEWS = { tracked: "otTracked", loot: "otLoot", stats: "otStats", sky: "otSky" };
 function applyView() {
   const v = VIEWS[PREFS.view] ? PREFS.view : "loot";
   questsEl.hidden = v !== "tracked";
   feedEl.hidden = v !== "loot";
   filtersEl.hidden = v !== "loot";
   statsEl.hidden = v !== "stats";
+  skyEl.hidden = v !== "sky";
   for (const [name, id] of Object.entries(VIEWS))
     document.getElementById(id).classList.toggle("on", name === v);
   // the grouping toggle belongs to Tracked; renderQuests also hides it when
@@ -409,7 +413,7 @@ function setMode(clickThrough, opacity) {
     : "Click-through: the game gets the mouse. This button and quest links stay clickable.";
 }
 
-window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests, stats }) => {
+window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests, stats, sky }) => {
   if (prefs) PREFS = { ...PREFS, ...prefs };
   panelEl.style.zoom = PREFS.fontScale;
   setMode(clickThrough, opacity);
@@ -423,6 +427,8 @@ window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, ques
   renderQuests();
   if (stats) STATS = stats;
   renderOStats();
+  if (sky) SKYP = sky;
+  renderSky();
   applyView();
 });
 window.companion.onOverlayMode(({ clickThrough, opacity }) => setMode(clickThrough, opacity));
@@ -437,6 +443,126 @@ pinEl.addEventListener("click", () => window.companion.setClickThrough(!THROUGH)
 
 /* Mini EQ item tooltip — the sb lines ride on the hovered element. Works
    pinned too (forward:true keeps mousemove flowing). */
+/* Sky view — the quest room, on top of the game. Everything arrives resolved
+   from the main window (this window holds no datasets): which tests the widget
+   options let through, what you hold, and where each piece is sitting. What it
+   shows is chosen on the app's Sky tab, not here — the overlay is 340px wide
+   and a filter row for sixteen classes would eat it. */
+let SKYP = null;
+const SKY_CLOSED = new Set();   // folds the player collapsed, this session
+const SKY_BAG = `<svg class="oskl__i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3.6 5.5h8.8l-.9 7.4a1 1 0 0 1-1 .9H5.5a1 1 0 0 1-1-.9z"/><path d="M6 5.5V4a2 2 0 0 1 4 0v1.5"/></svg>`;
+const SKY_COIN = `<svg class="oskl__i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="5.2"/><circle cx="8" cy="8" r="1.9"/></svg>`;
+function skyLocEl(b) {
+  const s = document.createElement("span");
+  s.className = "oskl oskl--" + b.k;
+  s.title = b.t || "";
+  if (b.k === "word") { s.textContent = b.w; return s; }
+  s.innerHTML = (b.k === "bag" ? SKY_BAG : SKY_COIN) + `<b>${b.n}</b>` +
+    (b.sub ? `<span class="oskl__s">·${b.sub}</span>` : "");
+  return s;
+}
+function skyItemLi(it) {
+  const done = it.have >= it.need;
+  const li = document.createElement("li");
+  li.className = `oski ${done ? "is-have" : ""} ${it.rune ? "is-rune" : ""}`.trim();
+  const tick = document.createElement("span");
+  tick.className = "oski__t"; tick.textContent = done ? "✓" : "·";
+  tick.dataset.hold = it.n;
+  tick.title = done ? "" : "Mark as held (bought it, or it's on your pet)";
+  li.append(tick, itemSpan(it.n, it.url, it.sb, "oski__n"));
+  if (it.star) {
+    const s = document.createElement("span");
+    s.className = "oski__star"; s.textContent = "★";
+    s.title = "Another Sky test wants this one too";
+    li.append(s);
+  }
+  const c = document.createElement("span");
+  c.className = "oski__c"; c.textContent = `${it.have}/${it.need}`;
+  li.append(c);
+  for (const b of it.locs || []) li.append(skyLocEl(b));
+  if (it.isl) {
+    const s = document.createElement("span");
+    s.className = "oski__src"; s.textContent = it.isl;
+    li.append(s);
+  }
+  return li;
+}
+function renderSky() {
+  skyEl.innerHTML = "";
+  if (!SKYP || !SKYP.groups) {
+    skyEl.innerHTML = `<div class="osk-none">Waiting for the app to read your log.</div>`;
+    return;
+  }
+  const head = document.createElement("div");
+  head.className = "osk-head";
+  head.textContent = `${SKYP.ready} ready · ${SKYP.done}/${SKYP.tests} turned in`;
+  skyEl.append(head);
+  if (!SKYP.inv) {
+    const w = document.createElement("div");
+    w.className = "osk-note"; w.textContent = "No inventory dump — /out inventory to see where each piece is";
+    skyEl.append(w);
+  } else if (SKYP.inv.age > 10 * 60 * 1000) {
+    const m = Math.round(SKYP.inv.age / 60000);
+    const w = document.createElement("div");
+    w.className = "osk-note";
+    w.textContent = `Inventory is ${m < 60 ? `${m}m` : `${Math.round(m / 60)}h`} old — /out inventory to refresh`;
+    skyEl.append(w);
+  }
+  if (!SKYP.groups.length) {
+    const d = document.createElement("div");
+    d.className = "osk-none";
+    d.textContent = "Nothing to hand in. Widen the widget options on the app's Sky tab.";
+    skyEl.append(d);
+    return;
+  }
+  for (const g of SKYP.groups) {
+    const sec = document.createElement("div");
+    sec.className = "osg";
+    const h = document.createElement("div");
+    h.className = "osg__h"; h.dataset.osky = g.code;
+    const open = !SKY_CLOSED.has(g.code);
+    h.title = `${g.tests.length} test${g.tests.length === 1 ? "" : "s"} shown for ${g.name}`;
+    h.innerHTML = `<span class="osg__k">${open ? "▾" : "▸"}</span>` +
+      `<span class="osg__n">${esc(g.name)}</span><span class="osg__g">${esc(g.giver)}</span>` +
+      `<span class="osg__c">${g.ready ? `${g.ready} ready` : `${g.tests.length} test${g.tests.length === 1 ? "" : "s"}`}</span>`;
+    sec.append(h);
+    if (open) {
+      for (const t of g.tests) {
+        const d = document.createElement("div");
+        d.className = "ost" + (t.ready ? " is-ready" : "") + (t.done ? " is-done" : "");
+        const th = document.createElement("div");
+        th.className = "ost__h";
+        th.innerHTML = `<span class="ost__n">${esc(t.n)}</span>` +
+          (t.say ? `<span class="ost__say">say <b>${esc(t.say)}</b></span>` : "") +
+          (t.ready ? `<span class="ost__st">ready</span>`
+            : t.done ? `<span class="ost__st is-done">✓${t.done}</span>`
+            : `<span class="ost__st is-miss">${t.missing} left</span>`);
+        d.append(th);
+        const ul = document.createElement("ul");
+        ul.className = "oskl-list";
+        for (const it of t.items) ul.append(skyItemLi(it));
+        d.append(ul);
+        if (t.rew && t.rew.n) {
+          const r = document.createElement("div");
+          r.className = "ost__rew"; r.append("→ ");
+          r.append(itemSpan(t.rew.n, t.rew.url, t.rew.sb, "ri"));
+          d.append(r);
+        }
+        sec.append(d);
+      }
+    }
+    skyEl.append(sec);
+  }
+}
+skyEl.addEventListener("click", e => {
+  const h = e.target.closest("[data-osky]");
+  if (!h) return;
+  const c = h.dataset.osky;
+  SKY_CLOSED.has(c) ? SKY_CLOSED.delete(c) : SKY_CLOSED.add(c);
+  renderSky(); rehotspot();
+});
+window.companion.onFeedSky(s => { SKYP = s; renderSky(); rehotspot(); });
+
 const tipEl = document.createElement("div");
 tipEl.id = "otip"; tipEl.hidden = true;
 document.body.appendChild(tipEl);
@@ -458,7 +584,7 @@ document.addEventListener("mousemove", e => {
    gets swallowed by a window that thinks it's still over a link. */
 // everything actionable while pinned — quest links, controls, and the Stats
 // drill-down rows (fights, raid actors, the sub-view switch)
-const HOTSPOT_SEL = "[data-url], [data-hold], #btnPin, #filters, #otabs, [data-enc], [data-ract], [data-osub]";
+const HOTSPOT_SEL = "[data-url], [data-hold], #btnPin, #filters, #otabs, [data-enc], [data-ract], [data-osub], [data-osky]";
 function rehotspot() {
   if (!THROUGH) return;
   const el = document.elementFromPoint(MX, MY);

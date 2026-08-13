@@ -983,6 +983,13 @@
     {
      "lv": 70.0,
      "lvl": "70",
+     "n": "Jarah Reskan",
+     "named": true,
+     "t": "Jarah_Reskan"
+    },
+    {
+     "lv": 70.0,
+     "lvl": "70",
      "n": "Juline Urncaller",
      "named": true,
      "t": "Juline_Urncaller"
@@ -1225,8 +1232,8 @@
      "t": "A_plague_rat"
     },
     {
-     "lv": 9.0,
-     "lvl": "8-10",
+     "lv": 12.0,
+     "lvl": "8-10, 15 ([[Najena]])",
      "n": "a large skeleton",
      "named": false,
      "t": "A_large_skeleton"
@@ -4407,8 +4414,8 @@
      "t": "Illithi_Nollith"
     },
     {
-     "lv": 61.0,
-     "lvl": "61",
+     "lv": 70.0,
+     "lvl": "70",
      "n": "Jras Solsier",
      "named": true,
      "t": "Jras_Solsier"
@@ -4435,8 +4442,8 @@
      "t": "Leraena_Shelyrak"
     },
     {
-     "lv": 61.0,
-     "lvl": "61",
+     "lv": 70.0,
+     "lvl": "70",
      "n": "Lumi Stergnon",
      "named": true,
      "t": "Lumi_Stergnon"
@@ -15253,6 +15260,13 @@
    "city": false,
    "mobs": [
     {
+     "lv": 24.0,
+     "lvl": "23-25",
+     "n": "a dread skeleton",
+     "named": false,
+     "t": "A_dread_skeleton"
+    },
+    {
      "lv": 20.0,
      "lvl": "20",
      "n": "a froglok ghoul",
@@ -15288,15 +15302,15 @@
      "t": "A_Greater_Skeleton"
     },
     {
-     "lv": 9.0,
-     "lvl": "8-10",
+     "lv": 12.0,
+     "lvl": "8-10, 15 ([[Najena]])",
      "n": "a large skeleton",
      "named": false,
      "t": "A_large_skeleton"
     },
     {
-     "lv": 16.0,
-     "lvl": "9-23",
+     "lv": 23.3,
+     "lvl": "17 (Entrance), 24 (Interior), 29 ([[Najena]]'s disciples)",
      "n": "a magician",
      "named": false,
      "t": "A_Magician"
@@ -15365,8 +15379,8 @@
      "t": "A_guard_officer"
     },
     {
-     "lv": 15.0,
-     "lvl": "10-20",
+     "lv": 16.0,
+     "lvl": "16",
      "n": "an ogre guard",
      "named": false,
      "t": "An_Ogre_Guard"
@@ -26773,11 +26787,11 @@
      "t": "Elial_Brook"
     },
     {
-     "lv": 7.0,
-     "lvl": "~7",
-     "n": "Ilanics skeleton",
+     "lv": 6.5,
+     "lvl": "6-7",
+     "n": "Ilanic`s skeleton",
      "named": true,
-     "t": "Ilanics_Skeleton"
+     "t": "Ilanic%60s_skeleton"
     },
     {
      "lv": 40.0,
@@ -27010,8 +27024,8 @@
      "t": "A_jack_o_lantern"
     },
     {
-     "lv": 9.0,
-     "lvl": "8-10",
+     "lv": 12.0,
+     "lvl": "8-10, 15 ([[Najena]])",
      "n": "a large skeleton",
      "named": false,
      "t": "A_large_skeleton"

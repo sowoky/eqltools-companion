@@ -3,12 +3,12 @@
    (Spellmaster, Combat & Stats, Log Parser) under public/.
 
    Plain HTML/CSS/JS apps, no React/Tailwind/next-font build. This file holds
-   the whole design system: the dark violet-gold tokens, the grain/vignette
-   background, the ornament primitives, the self-hosted fonts, and the shared
-   header/footer chrome. The palette is inherited from the Library of Erudin
-   lore site (the sibling project these tools were split out of); the
-   typography here is EQL Tools' own — serif for big/reading (Eczar, Lora),
-   sans for technical (IBM Plex Sans).
+   the whole design system: the parchment tokens, the vellum page ground, the
+   ornament primitives, the self-hosted fonts, and the shared header/footer
+   chrome. The palette is the Library of Erudin lore site's `parchment` theme
+   (the sibling project these tools were split out of) — sepia ink and bronze
+   on aged vellum; the typography here is EQL Tools' own — serif for
+   big/reading (Eczar, Lora), sans for technical (IBM Plex Sans).
 
    Consuming pages: <link rel="stylesheet" href="/_shared/theme.css">
    then inline /_shared/header.html at the top of <body>.
@@ -97,31 +97,80 @@
   src: url("/_shared/fonts/ibm-plex-sans-600.woff2") format("woff2");
 }
 
-/* ── Design tokens — copied verbatim from web/src/app/globals.css :root ──── */
+/* ── Design tokens — two themes, DARK by default ───────────────────────────
+   Two palettes, selected by `data-theme` on <html>: the Erudin dark set (the
+   default, and what you get with no attribute at all) and `parchment`, the
+   Library of Erudin lore site's cream-and-bronze theme ported wholesale, its
+   measured contrast ramp included. /_shared/theme.js applies the reader's
+   stored choice before first paint and the header carries the toggle.
+
+   ONE RULE MAKES BOTH SETS WORK: the gold ramp is ordered by EMPHASIS, never
+   by luminance. --gold-bright is a `color` 201 times across these pages and a
+   fill 12 times, so on dark it climbs toward light and on cream it climbs
+   toward dark — the same token, the same job, opposite directions:
+
+     --gold        the workhorse: links, rules, hairlines, borders
+     --gold-bright emphasis text — current nav item, key numbers, card titles
+     --gold-pale   the strongest end — code spans, the one number that matters
+     --gold-deep   the decorative end: fills and rims only, NEVER text
+
+   A gold that is also a *material* (the letterpress face, a cast button, the
+   two client seals) does NOT compose itself from those four, because a metal
+   gradient is ordered by light and text is ordered by contrast, and one ramp
+   cannot do both. Materials carry their own stops in --btn-gilt-* / --gilt-face
+   / --seal-*. Conflating the two is what made the first parchment pass render
+   every emphasis colour as the faintest one.
+
+   RULE: nothing outside these blocks may hardcode a surface, scrim, shadow,
+   glow or texture. Anything that differs between the two themes is a token
+   here — a raw rgba(0,0,0,…) is a shadow on stone and a smudge on paper, and a
+   rule that spells one can only ever be right in one theme. Use the tokens. */
+
+/* Theme-invariant: type and measure. */
 :root {
-  /* Erudin — the high scholar-city: purple-blue stone, gold inlay. */
+  --maxw: 1200px;
+
+  /* Typography split (Kyle's rule): serif for big/reading, sans for technical. */
+  --font-display: "Eczar", Georgia, serif;                                     /* wordmark, H1/H2/H3, card & stat NAMES */
+  --font-body: "Lora", Georgia, serif;                                          /* reading prose: ledes, intros, notes, method paragraphs */
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; /* technical: numbers, tables, chips, labels, nav, controls */
+  --font-accent: var(--font-sans);                                              /* kickers, small labels, nav */
+  --font-fine: "Lora", Georgia, serif;                                          /* a few italic uses */
+
+  /* The section-index rail takes ~13rem out of the content column. On a wide
+     desktop that should come out of the margins, not the reading width. */
+}
+
+/* ═══ DARK — Erudin, the high scholar-city: purple-blue stone, gold inlay ═══
+   The default theme: `:root` with no data-theme, and what data-theme="dark"
+   resolves to. */
+:root {
+  color-scheme: dark;
+
   --bg-deep: #0b0913;
   --bg-deep-2: #100c1d;
+  --bg-deep-3: #08060f;   /* the tail of the page gradient */
   --bg-panel: #171227;
   --bg-panel-2: #1e1836;
+
   --ink: #ece8f7;
   --ink-soft: #ccc4de;
-  --ink-dim: #9086ad;
-  /* --ink-faint (#625976) measures 2.79:1 on --bg-panel — FAILS WCAG AA (needs
-     4.5:1 for normal text, 3:1 for large text/UI). Inherited from the sibling
-     lore site's palette. Reserve it for decorative/non-text use (hairlines,
-     disabled states) and deliberately de-emphasized links that recover on
-     hover/focus (the header's .eq-nav__lore "way out" link goes gold on hover).
-     For any small readable body text use --ink-dim, which measures 5.38:1 on
-     --bg-panel (passes AA). */
+  --ink-dim: #9086ad;     /* 5.38:1 on --bg-panel — the floor for readable text */
+  /* --ink-faint measures 2.79:1 on --bg-panel and FAILS AA. On dark it is
+     decorative only: hairlines, disabled states, and de-emphasized links that
+     recover on hover. (On parchment the same token carries subtitles and counts
+     and therefore sits ON the AA floor — see that block.) */
   --ink-faint: #625976;
   --line: #2c2545;
   --line-soft: #231d38;
 
+  /* Cast gold on stone: emphasis climbs toward light. */
   --gold: #c9952a;
   --gold-bright: #e7b94e;
   --gold-pale: #f6dfa0;   /* the lit top edge of cast gold */
   --gold-deep: #8a5f14;   /* the shadowed underside */
+  --on-gold: #120d06;     /* text laid ON a gold fill — near-black, never light */
+
   --ember: #e0713a;
   --arcane: #7c6fe0;
   /* Wiki green — the one colour reserved for community-wiki-sourced data, so a
@@ -134,33 +183,349 @@
   --sapphire: #2f63b4;
   --sapphire-lit: #77aaea;
   --sapphire-deep: #0a1a3a;
+  --sapphire-face: #8dbaf0;  /* the lit corner of a cut lozenge */
   /* The dark leather the gilt sits on. */
   --leather: #17100a;
 
-  --maxw: 1200px;
+  /* ── Status colours — up, down, a value, an invocation ─────────────────
+     One set, defined once, for the nine pages that each used to spell their
+     own literals. These are the literals those pages carried. */
+  --good: #3fae5a;
+  --bad: #e08b7c;
+  --warn: #e7c07a;
+  --info: #9db4d6;
+  --invoke: #b9a7ef;
+  --oe: #e08b7c;          /* out-of-era: a thing that is not in the game yet */
+  --good-bg: rgba(63,174,90,.12);
+  --bad-bg: rgba(178,60,60,.12);
+  --warn-bg: rgba(224,168,58,.1);
+  --info-bg: rgba(123,167,204,.1);
+  --invoke-bg: rgba(124,111,224,.12);
 
-  /* ── The two SVG ornaments, as data URIs so the markup stays clean ──────
-     Seven pages inline the header; an inline <svg> mark would be seven copies
-     to keep in sync. These live here instead, so the mark is one span and the
-     frame corner is one class.
+  /* ── Surfaces, scrims and shadows ──────────────────────────────────────
+     A recess in the dark is black at low alpha; a lift is a white veil. */
+  --field-bg: rgba(0, 0, 0, 0.24);
+  --field-bg-soft: rgba(0, 0, 0, 0.2);
+  --field-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+  --surface-soft: rgba(255, 255, 255, 0.04);
+  --surface-softer: rgba(255, 255, 255, 0.02);
+  --recess: rgba(0, 0, 0, 0.18);
+  --recess-deep: rgba(0, 0, 0, 0.35);
+  --btn-quiet-bg: rgba(255, 255, 255, 0.04);
+  --header-bg: linear-gradient(180deg, #0e0b18 0%, rgba(11, 9, 19, 0.82) 100%);
+  --header-border: #5c3f0e;
+  --header-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.45), 0 1px 0 rgba(231, 185, 78, 0.22), 0 9px 24px rgba(0, 0, 0, 0.55);
+  --menu-bg: var(--bg-panel);
+  --panel-vignette: rgba(0, 0, 0, 0.24);
+  --selection-bg: rgba(201, 149, 42, 0.28);
+  --scrollbar-thumb: #2c2016;
+  --scrollbar-thumb-hover: #3a2a1a;
 
-     --sigil  the brand mark: a gilt lozenge boss, four-point star, sapphire
-              cabochon. Legible down to 28px, which a crossed-swords glyph was
-              not — it read as a close button.
-     --cnr    one top-left frame corner: four acanthus lobes off a gem at the
-              elbow, plus the two edge rules. The other three corners are this
-              one flipped (see .frame-gilt__cnr), so they can't drift apart.
-              Drawn on a 52-unit viewBox and rendered 1:1 at 52px, offset -3px,
-              so its 3.5-unit rules land dead on the frame's 1px border. */
+  /* The ink every shadow, recess and scrim is mixed from, as bare components
+     so a page can spell its own alpha: rgb(var(--scrim-rgb) / .18). Black in a
+     dark room; a warm sepia on paper, where black is a smudge. */
+  --scrim-rgb: 0 0 0;
+  /* The lit top edge of a raised panel — the one hairline that says "this sits
+     above the page". A white veil in the dark; the paper itself on parchment. */
+  --sheen-top: rgba(255, 255, 255, 0.03);
+  /* A panel laid over ARBITRARY content (the Atlas HUD over a map tile), so it
+     has to carry its own ground rather than borrow the page's. */
+  --panel-scrim: rgba(8, 6, 15, 0.72);
+  --panel-scrim-strong: rgba(8, 6, 15, 0.82);
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 22px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 2px 6px rgba(0, 0, 0, 0.35), 0 14px 32px rgba(0, 0, 0, 0.55);
+  --shadow-menu: 0 18px 40px rgba(0, 0, 0, 0.5);
+  --shadow-panel: 0 24px 64px rgba(0, 0, 0, 0.5);
+  --focus-glow: 0 0 0 3px rgba(201, 149, 42, 0.28);
+  --cab-glow: 0 0 10px color-mix(in srgb, var(--sapphire) 45%, transparent);
+
+  /* ── Metal — the literal stops, ordered by LIGHT ──────────────────────── */
+  /* The two ends of the metal ramp, for a fill that has to be ordered by LIGHT
+     where a CSS gradient won't reach — an SVG <stop>, a canvas fill. Never use
+     --gold-pale for this: that end of the ramp is ordered by EMPHASIS and flips
+     between the themes, which lights the bars from underneath on one of them. */
+  --metal-lit: #e7b94e;
+  --metal-shade: #9a6d1a;
+
+  --btn-gilt-bg: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 55%, #a2731d 100%);
+  --btn-gilt-border: color-mix(in srgb, var(--gold-bright) 55%, transparent);
+  --btn-gilt-shadow: inset 0 1px 0 rgba(255, 240, 200, 0.5), 0 2px 10px rgba(201, 149, 42, 0.16);
+  --btn-gilt-shadow-hover: inset 0 1px 0 rgba(255, 240, 200, 0.55), 0 4px 16px rgba(201, 149, 42, 0.28);
+  /* The letterpress face: a top-lit cast-gold gradient, struck with a dark edge
+     so the letters stand off the leather. */
+  --gilt-face: linear-gradient(180deg,
+    #fdf3d2 0%, var(--gold-pale) 15%, #eec95f 33%,
+    #d3a03a 51%, #9c6c17 65%, #e5ba52 83%, #f5dc95 100%);
+  --gilt-outline: #17100a;
+  --gilt-filter:
+    drop-shadow(0 0 1px var(--gilt-outline))
+    drop-shadow(0 0 1px var(--gilt-outline))
+    drop-shadow(0 0 1px var(--gilt-outline))
+    drop-shadow(0 2px 0 rgba(0, 0, 0, 0.5))
+    drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 28px rgba(201, 149, 42, 0.18));
+
+  /* A gem in its setting: three concentric rings around every cabochon. */
+  --setting-in: var(--gold-deep);
+  --setting-mid: var(--gold-bright);
+  --setting-out: #5c3f0e;
+
+  /* The gilt frame, and the spell socket that holds a 40px client icon. */
+  --frame-border: #6d4a10;
+  --frame-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.022), var(--panel-vignette));
+  --frame-inner: rgba(231, 185, 78, 0.07);
+  --frame-shadow: inset 0 3px 34px rgba(0, 0, 0, 0.55), var(--shadow-panel);
+  --socket-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.65), 0 1px 0 rgba(255, 240, 200, 0.07), 0 5px 12px rgba(0, 0, 0, 0.5);
+  --socket-slot: radial-gradient(120% 120% at 40% 25%, #1b1630, #0a0812 85%);
+  --socket-slot-shadow: inset 0 0 14px rgba(0, 0, 0, 0.7);
+
+  /* Brand marks. The sigil and frame corner are data URIs (seven pages inline
+     the header; an inline <svg> would be seven copies to keep in sync) and the
+     wordmark is a file. All three are cut in the theme's own metal. */
+  --sigil-shadow: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.55));
+  --wordmark: url("/_shared/wordmark.svg");
+  --wordmark-shadow: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   --sigil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E %3ClinearGradient id='a' x1='.1' y1='0' x2='.9' y2='1'%3E%3Cstop offset='0' stop-color='%23fbeec2'/%3E%3Cstop offset='.22' stop-color='%23e7b94e'/%3E%3Cstop offset='.5' stop-color='%2396690f'/%3E%3Cstop offset='.72' stop-color='%23eec25b'/%3E%3Cstop offset='1' stop-color='%236d4a10'/%3E%3C/linearGradient%3E %3CradialGradient id='s' cx='.36' cy='.28' r='.85'%3E%3Cstop offset='0' stop-color='%23dbe9ff'/%3E%3Cstop offset='.15' stop-color='%2377aaea'/%3E%3Cstop offset='.45' stop-color='%232f63b4'/%3E%3Cstop offset='.78' stop-color='%23132c60'/%3E%3Cstop offset='1' stop-color='%23081530'/%3E%3C/radialGradient%3E %3CradialGradient id='p' cx='.38' cy='.26' r='.95'%3E%3Cstop offset='0' stop-color='%232a2148'/%3E%3Cstop offset='1' stop-color='%230b0814'/%3E%3C/radialGradient%3E %3Crect x='7' y='7' width='50' height='50' rx='8' transform='rotate%2845 32 32%29' fill='url%28%23p%29' stroke='url%28%23a%29' stroke-width='2.2'/%3E %3Crect x='11.8' y='11.8' width='40.4' height='40.4' rx='5' transform='rotate%2845 32 32%29' fill='none' stroke='%236d4a10' stroke-width='.9'/%3E %3Cg fill='url%28%23a%29'%3E%3Cpath d='M32 4l2.6 18-2.6 2.6-2.6-2.6z'/%3E%3Cpath d='M60 32l-18 2.6-2.6-2.6 2.6-2.6z'/%3E%3Cpath d='M32 60l-2.6-18 2.6-2.6 2.6 2.6z'/%3E%3Cpath d='M4 32l18-2.6 2.6 2.6-2.6 2.6z'/%3E%3C/g%3E %3Ccircle cx='32' cy='32' r='12' fill='%233a2708'/%3E%3Ccircle cx='32' cy='32' r='10.8' fill='url%28%23a%29'/%3E%3Ccircle cx='32' cy='32' r='8.2' fill='url%28%23s%29'/%3E %3Cellipse cx='29' cy='28.7' rx='2.5' ry='1.7' fill='%23fff' opacity='.72' transform='rotate%28-35 29 28.7%29'/%3E%3C/svg%3E");
   --cnr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52' width='52' height='52'%3E %3ClinearGradient id='a' x1='.08' y1='0' x2='.92' y2='1'%3E%3Cstop offset='0' stop-color='%23fbeec2'/%3E%3Cstop offset='.2' stop-color='%23e7b94e'/%3E%3Cstop offset='.5' stop-color='%238f6410'/%3E%3Cstop offset='.74' stop-color='%23eec25b'/%3E%3Cstop offset='1' stop-color='%236d4a10'/%3E%3C/linearGradient%3E %3ClinearGradient id='b' x1='0' y1='0' x2='.75' y2='1'%3E%3Cstop offset='0' stop-color='%23f8e6b0'/%3E%3Cstop offset='.42' stop-color='%23cf9c2e'/%3E%3Cstop offset='.78' stop-color='%238a5f14'/%3E%3Cstop offset='1' stop-color='%23c9952a'/%3E%3C/linearGradient%3E %3CradialGradient id='s' cx='.36' cy='.28' r='.85'%3E%3Cstop offset='0' stop-color='%23dbe9ff'/%3E%3Cstop offset='.15' stop-color='%2377aaea'/%3E%3Cstop offset='.45' stop-color='%232f63b4'/%3E%3Cstop offset='.78' stop-color='%23132c60'/%3E%3Cstop offset='1' stop-color='%23081530'/%3E%3C/radialGradient%3E %3ClinearGradient id='h' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23e7b94e'/%3E%3Cstop offset='.45' stop-color='%23b88620' stop-opacity='.65'/%3E%3Cstop offset='1' stop-color='%23a2731d' stop-opacity='0'/%3E%3C/linearGradient%3E %3ClinearGradient id='v' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23e7b94e'/%3E%3Cstop offset='.45' stop-color='%23b88620' stop-opacity='.65'/%3E%3Cstop offset='1' stop-color='%23a2731d' stop-opacity='0'/%3E%3C/linearGradient%3E %3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M3.5 3.5H52' stroke='url%28%23h%29' stroke-width='1.2'/%3E%3Cpath d='M3.5 3.5V52' stroke='url%28%23v%29' stroke-width='1.2'/%3E%3Cpath d='M8.8 40V13.4Q8.8 8.8 13.4 8.8H40' stroke='%23a2731d' stroke-width='.65' opacity='.45'/%3E%3C/g%3E %3Cpath d='M12 12C23.44 22.23 34.73 16.26 45 7.6C34.99 8.13 20.23 8.22 12 12Z' fill='url%28%23b%29'/%3E%3Cpath d='M12 12C15.61 22.31 25.14 23.42 35 22.6C28.39 18.8 18.93 12.69 12 12Z' fill='url%28%23a%29'/%3E%3Cpath d='M12 12C22.31 15.61 23.42 25.14 22.6 35C18.8 28.39 12.69 18.93 12 12Z' fill='url%28%23b%29'/%3E%3Cpath d='M12 12C22.23 23.44 16.26 34.73 7.6 45C8.13 34.99 8.22 20.23 12 12Z' fill='url%28%23a%29'/%3E %3Cpath d='M18.09 12.36Q29.49 12.19 41.16 9.05' fill='none' stroke='%235c3f0e' stroke-width='.45' opacity='.5'/%3E%3Cpath d='M15.77 14.71Q23.16 19.24 31.94 21.97' fill='none' stroke='%235c3f0e' stroke-width='.45' opacity='.5'/%3E%3Cpath d='M13.1 16.51Q15.79 24.76 20.68 32.54' fill='none' stroke='%235c3f0e' stroke-width='.45' opacity='.5'/%3E%3Cpath d='M10.05 17.79Q7.24 28.83 7.2 40.92' fill='none' stroke='%235c3f0e' stroke-width='.45' opacity='.5'/%3E %3Cpath d='M45 7.6C49.88 9.24 48.37 13.4 45.69 10.85' fill='none' stroke='url%28%23a%29' stroke-width='1.15' stroke-linecap='round'/%3E %3Cpath d='M7.6 45C9.24 49.88 13.4 48.37 10.85 45.69' fill='none' stroke='url%28%23a%29' stroke-width='1.15' stroke-linecap='round'/%3E %3Ccircle cx='11' cy='11' r='5.4' fill='%233a2708'/%3E%3Ccircle cx='11' cy='11' r='4.7' fill='url%28%23a%29'/%3E%3Ccircle cx='11' cy='11' r='3.4' fill='url%28%23s%29'/%3E %3Cellipse cx='9.9' cy='9.8' rx='1' ry='.7' fill='%23fff' opacity='.8'/%3E%3C/svg%3E");
 
-  /* Typography split (Kyle's rule): serif for big/reading, sans for technical. */
-  --font-display: "Eczar", Georgia, serif;                                     /* wordmark, H1/H2/H3, card & stat NAMES */
-  --font-body: "Lora", Georgia, serif;                                          /* reading prose: ledes, intros, notes, method paragraphs */
-  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; /* NEW — technical: numbers, tables, chips, labels, nav, controls */
-  --font-accent: var(--font-sans);                                              /* now sans: kickers, small labels, nav (was a serif accent face) */
-  --font-fine: "Lora", Georgia, serif;                                          /* now Lora; a few italic uses (was a serif italic face) */
+  /* A canon pill is its colour as text on a 9% tint of itself. */
+  --canon-eq1: #c08a3a;
+  --canon-eq2: #6f7da0;
+  --canon-rpg: #8a6fa0;
+  --canon-disputed: #b0473f;
+  --canon-meta: #5b6480;
+
+  /* The two client seals are cast plates, not the token ramp. */
+  --seal-observed-bg: linear-gradient(180deg, var(--gold-pale), var(--gold-bright));
+  --seal-observed-shadow: inset 0 0 0 1px var(--gold-deep);
+  --seal-mined-bg: linear-gradient(180deg, var(--gold-bright), var(--gold));
+  --seal-model-ink: #9db4d6;
+
+  /* ── The ground ────────────────────────────────────────────────────────
+     A layered, warm darkness with a far ember and cold edges. Texture is TWO
+     scales: a coarse ~620px mottle blended soft-light (tooled leather seen in
+     the dark — the register EQL's own site works in), and a fine grain that
+     only has to kill gradient banding. A vignette rides above the colour so
+     the corners fall away and the middle of the page carries the light. */
+  --tex-page:
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='620'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='.85'/%3E%3C/svg%3E"),
+    radial-gradient(120% 90% at 12% -8%, rgba(124, 111, 224, 0.17), transparent 55%),
+    radial-gradient(90% 70% at 100% 0%, rgba(49, 132, 196, 0.12), transparent 60%),
+    radial-gradient(115% 85% at 50% 128%, rgba(201, 149, 42, 0.10), transparent 64%),
+    radial-gradient(135% 105% at 50% 40%, transparent 42%, rgba(0, 0, 0, 0.5) 100%),
+    linear-gradient(180deg, var(--bg-deep-2), var(--bg-deep) 40%, #08060f 74%, #0d0906 100%);
+  --tex-page-size: 620px 620px, auto, auto, auto, auto, auto;
+  --tex-page-blend: soft-light, normal, normal, normal, normal, normal;
+  --tex-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --tex-grain-opacity: 0.05;
+}
+
+/* ═══ PARCHMENT — sepia ink and bronze on aged vellum ══════════════════════
+   The Library of Erudin's `parchment` theme, where the contrast ratios quoted
+   below were measured. */
+:root[data-theme="parchment"] {
+  color-scheme: light;
+
+  /* Aged vellum. --bg-deep is the page ground, --bg-panel the sheet laid on it. */
+  --bg-deep: #e9dfc6;
+  --bg-deep-2: #f0e7d2;
+  --bg-deep-3: #ddd0b0;   /* the tail of the page gradient */
+  --bg-panel: #f6efdc;
+  --bg-panel-2: #fbf6e8;
+
+  /* Contrast ramp on the #e9dfc6 ground (measured, not guessed). --ink-faint is
+     NOT decorative here the way it is on dark — it carries subtitles, counts
+     and rail labels — so it sits ON the AA floor and cannot go lighter. That
+     pins the bottom: soft and dim step DOWN toward it rather than it stepping
+     up, which is what keeps the four tiers telling apart. */
+  --ink: #2b2118;         /* sepia iron-gall ink, never black — 11.88:1 */
+  --ink-soft: #41321f;    /* 9.31:1 */
+  --ink-dim: #544530;     /* 6.97:1 */
+  --ink-faint: #6f5f44;   /* 4.66:1 — the AA floor; do not lighten */
+  --line: #cbb894;
+  --line-soft: #ddcfae;
+
+  /* Bronze. Leaf gold reads as bronze on cream; #8a5f14 measured 4.25:1, under
+     AA for the inline links and epithets --gold owns, so the ramp steps down. */
+  --gold: #7f560f;        /* 4.85:1 — links, rules, borders */
+  --gold-bright: #61400b; /* 7.35:1 — emphasis text */
+  --gold-pale: #452d06;   /* 10.9:1 — the strongest bronze; code, key figures */
+  --gold-deep: #a5761b;   /* the LIGHT end — decorative fills, rims, tints */
+  --on-gold: #fdf7e6;     /* text laid ON a bronze fill — cream, never dark */
+
+  --ember: #a34413;       /* 4.6:1 — the ↗ marks, warnings, the dev seal */
+  --arcane: #514396;
+  /* Darkened to 5.9:1; the old #9ccc9c was a glow, and a glow does not exist
+     on paper. */
+  --wiki: #2e6b3c;
+  --wiki-line: rgba(46,107,60,.45);
+  --wiki-bg: rgba(46,107,60,.09);
+  /* The sapphire stays a STONE in a bronze setting: a dark, saturated gem on
+     cream reads as something set into the page, which is the point. Its glow is
+     the only thing that goes, because paper does not glow. */
+  --sapphire: #2f63b4;
+  --sapphire-lit: #2b5fa8; /* was the light specular; as a chart stroke on cream it has to carry ink */
+  --sapphire-deep: #0a1a3a;
+  --sapphire-face: #5f92cf;
+  /* Retained only for genuinely dark objects (the spell socket's slot); it is
+     NOT the colour of text on gold — that is --on-gold. */
+  --leather: #17100a;
+
+  /* ── Status colours ────────────────────────────────────────────────────
+     On cream a bright one is a highlighter stain, so these are measured on
+     --bg-panel (and still clear AA on the darker --bg-deep page ground):
+
+       --good   5.57:1   an upgrade, a completed test, a zone cleared
+       --bad    6.22:1   an error, a downgrade, a death
+       --warn   5.39:1   a rare drop, a caution — same ink as --ember
+       --info   5.62:1   a computed value you can hover for the derivation
+       --invoke 7.06:1   an invocation lane — same ink as --arcane
+       --oe     6.71:1   out-of-era: a thing that is not in the game yet */
+  --good: #2e6b3c;
+  --bad: #9c342d;
+  --warn: #a34413;
+  --info: #43617f;
+  --invoke: #514396;
+  --oe: #8a3a2e;
+  --good-bg: rgba(46,107,60,.11);
+  --bad-bg: rgba(156,52,45,.1);
+  --warn-bg: rgba(163,68,19,.1);
+  --info-bg: rgba(67,97,127,.1);
+  --invoke-bg: rgba(81,67,150,.1);
+
+  /* ── Surfaces, scrims and shadows ──────────────────────────────────────
+     A recess on paper is a WARM shadow at low alpha, and a lift is a cleaner,
+     lighter patch — not a white veil. */
+  --field-bg: rgba(255, 252, 242, 0.72);
+  --field-bg-soft: rgba(255, 252, 242, 0.55);
+  --field-shadow: inset 0 1px 2px rgba(74, 56, 26, 0.1);
+  --surface-soft: rgba(139, 107, 58, 0.1);
+  --surface-softer: rgba(139, 107, 58, 0.055);
+  --recess: rgba(122, 96, 52, 0.1);
+  --recess-deep: rgba(112, 88, 48, 0.16);
+  --btn-quiet-bg: rgba(255, 252, 242, 0.6);
+  --header-bg: linear-gradient(180deg, rgba(240, 231, 210, 0.95), rgba(240, 231, 210, 0.78));
+  --header-border: #8a5f14;
+  --header-shadow: inset 0 -2px 0 rgba(122, 96, 52, 0.14), 0 1px 0 rgba(255, 250, 235, 0.75), 0 6px 18px rgba(74, 56, 26, 0.13);
+  --menu-bg: rgba(250, 245, 232, 0.98);
+  --panel-vignette: rgba(150, 120, 70, 0.16);
+  --selection-bg: rgba(165, 118, 27, 0.3);
+  --scrollbar-thumb: #c3ae86;
+  --scrollbar-thumb-hover: #b09a71;
+
+  --scrim-rgb: 74 56 26;
+  --sheen-top: rgba(255, 250, 235, 0.75);
+  --panel-scrim: rgba(250, 245, 232, 0.88);
+  --panel-scrim-strong: rgba(250, 245, 232, 0.93);
+
+  --shadow-card: 0 1px 2px rgba(74, 56, 26, 0.06), 0 8px 22px rgba(74, 56, 26, 0.1);
+  --shadow-card-hover: 0 2px 6px rgba(74, 56, 26, 0.1), 0 14px 32px rgba(74, 56, 26, 0.16);
+  --shadow-menu: 0 12px 30px rgba(74, 56, 26, 0.18);
+  --shadow-panel: 0 10px 30px rgba(74, 56, 26, 0.14);
+  --focus-glow: 0 0 0 3px rgba(165, 118, 27, 0.22);
+  /* Light that only existed in a dark room. A blurred halo on cream reads as a
+     coffee stain, so the gem keeps a rim and loses its glow. */
+  --cab-glow: 0 0 0 0 transparent;
+
+  /* ── Metal — the literal stops, ordered by LIGHT ──────────────────────── */
+  --metal-lit: #7f560f;
+  --metal-shade: #4e330a;
+
+  --btn-gilt-bg: linear-gradient(180deg, #a5761b 0%, #8a5f14 55%, #6e4a0e 100%);
+  --btn-gilt-border: #6e4a0e;
+  --btn-gilt-shadow: inset 0 1px 0 rgba(255, 235, 180, 0.28), 0 2px 8px rgba(74, 56, 26, 0.22);
+  --btn-gilt-shadow-hover: inset 0 1px 0 rgba(255, 235, 180, 0.34), 0 4px 14px rgba(74, 56, 26, 0.3);
+  /* The letterpress face. On stone this is a bright cast-gold gradient with a
+     black struck edge; on vellum it is a struck bronze plate — the light stops
+     stay only as the top-lit rim, and the body of every glyph carries ink. */
+  --gilt-face: linear-gradient(180deg,
+    #b8892a 0%, #a5761b 14%, #8a5f14 34%,
+    #6b4710 54%, #4e330a 68%, #8a5f14 86%, #a5761b 100%);
+  /* The outline INVERTS: a cream halo, so the bronze reads as struck INTO the
+     sheet with the paper showing at the bite. A dark outline here just draws a
+     second, blurrier set of letters, and a blurred drop-shadow under type on
+     cream is a photocopier artifact. */
+  --gilt-outline: rgba(255, 250, 235, 0.85);
+  --gilt-filter:
+    drop-shadow(0 0 1px var(--gilt-outline))
+    drop-shadow(0 0 1px var(--gilt-outline))
+    drop-shadow(0 1px 0 rgba(255, 250, 235, 0.9))
+    drop-shadow(0 1px 1px rgba(74, 56, 26, 0.18));
+
+  --setting-in: #6b4710;
+  --setting-mid: var(--gold-deep);
+  --setting-out: #4e330a;
+
+  --frame-border: #8a5f14;
+  --frame-sheen: linear-gradient(180deg, rgba(255, 252, 242, 0.55), var(--panel-vignette));
+  --frame-inner: rgba(255, 250, 235, 0.5);
+  --frame-shadow: var(--shadow-card);
+  /* The socket stays a dark metal OBJECT on the page — the same reasoning the
+     lore site applies to its wax seal. Lightening it to match the vellum would
+     dissolve the setting and leave the 40px art floating in cream. */
+  --socket-shadow: inset 0 0 0 1px rgba(30, 20, 6, 0.65), 0 1px 0 rgba(255, 250, 235, 0.5), 0 3px 9px rgba(74, 56, 26, 0.3);
+  --socket-slot: radial-gradient(120% 120% at 40% 25%, #2a2013, #120c05 85%);
+  --socket-slot-shadow: inset 0 0 14px rgba(10, 6, 2, 0.7);
+
+  --sigil-shadow: drop-shadow(0 1px 3px rgba(74, 56, 26, 0.35));
+  --wordmark: url("/_shared/wordmark-parchment.svg");
+  --wordmark-shadow: drop-shadow(0 1px 0 rgba(255, 250, 235, 0.8));
+  --sigil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E %3ClinearGradient id='a' x1='.1' y1='0' x2='.9' y2='1'%3E%3Cstop offset='0' stop-color='%23e8cf95'/%3E%3Cstop offset='.22' stop-color='%23c0912f'/%3E%3Cstop offset='.5' stop-color='%235e3f0b'/%3E%3Cstop offset='.72' stop-color='%23c99a35'/%3E%3Cstop offset='1' stop-color='%233d2806'/%3E%3C/linearGradient%3E %3CradialGradient id='s' cx='.36' cy='.28' r='.85'%3E%3Cstop offset='0' stop-color='%23dbe9ff'/%3E%3Cstop offset='.15' stop-color='%2377aaea'/%3E%3Cstop offset='.45' stop-color='%232f63b4'/%3E%3Cstop offset='.78' stop-color='%23132c60'/%3E%3Cstop offset='1' stop-color='%23081530'/%3E%3C/radialGradient%3E %3CradialGradient id='p' cx='.38' cy='.26' r='.95'%3E%3Cstop offset='0' stop-color='%2333240f'/%3E%3Cstop offset='1' stop-color='%23140d05'/%3E%3C/radialGradient%3E %3Crect x='7' y='7' width='50' height='50' rx='8' transform='rotate%2845 32 32%29' fill='url%28%23p%29' stroke='url%28%23a%29' stroke-width='2.2'/%3E %3Crect x='11.8' y='11.8' width='40.4' height='40.4' rx='5' transform='rotate%2845 32 32%29' fill='none' stroke='%233d2806' stroke-width='.9'/%3E %3Cg fill='url%28%23a%29'%3E%3Cpath d='M32 4l2.6 18-2.6 2.6-2.6-2.6z'/%3E%3Cpath d='M60 32l-18 2.6-2.6-2.6 2.6-2.6z'/%3E%3Cpath d='M32 60l-2.6-18 2.6-2.6 2.6 2.6z'/%3E%3Cpath d='M4 32l18-2.6 2.6 2.6-2.6 2.6z'/%3E%3C/g%3E %3Ccircle cx='32' cy='32' r='12' fill='%23241705'/%3E%3Ccircle cx='32' cy='32' r='10.8' fill='url%28%23a%29'/%3E%3Ccircle cx='32' cy='32' r='8.2' fill='url%28%23s%29'/%3E %3Cellipse cx='29' cy='28.7' rx='2.5' ry='1.7' fill='%23fff' opacity='.72' transform='rotate%28-35 29 28.7%29'/%3E%3C/svg%3E");
+  --cnr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52' width='52' height='52'%3E %3ClinearGradient id='a' x1='.08' y1='0' x2='.92' y2='1'%3E%3Cstop offset='0' stop-color='%23e8cf95'/%3E%3Cstop offset='.2' stop-color='%23c0912f'/%3E%3Cstop offset='.5' stop-color='%2359390a'/%3E%3Cstop offset='.74' stop-color='%23c99a35'/%3E%3Cstop offset='1' stop-color='%233d2806'/%3E%3C/linearGradient%3E %3ClinearGradient id='b' x1='0' y1='0' x2='.75' y2='1'%3E%3Cstop offset='0' stop-color='%23dcc088'/%3E%3Cstop offset='.42' stop-color='%23a1741a'/%3E%3Cstop offset='.78' stop-color='%2356390b'/%3E%3Cstop offset='1' stop-color='%238a5f14'/%3E%3C/linearGradient%3E %3CradialGradient id='s' cx='.36' cy='.28' r='.85'%3E%3Cstop offset='0' stop-color='%23dbe9ff'/%3E%3Cstop offset='.15' stop-color='%2377aaea'/%3E%3Cstop offset='.45' stop-color='%232f63b4'/%3E%3Cstop offset='.78' stop-color='%23132c60'/%3E%3Cstop offset='1' stop-color='%23081530'/%3E%3C/radialGradient%3E %3ClinearGradient id='h' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23c0912f'/%3E%3Cstop offset='.45' stop-color='%238a5f14' stop-opacity='.65'/%3E%3Cstop offset='1' stop-color='%2372500f' stop-opacity='0'/%3E%3C/linearGradient%3E %3ClinearGradient id='v' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23c0912f'/%3E%3Cstop offset='.45' stop-color='%238a5f14' stop-opacity='.65'/%3E%3Cstop offset='1' stop-color='%2372500f' stop-opacity='0'/%3E%3C/linearGradient%3E %3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M3.5 3.5H52' stroke='url%28%23h%29' stroke-width='1.2'/%3E%3Cpath d='M3.5 3.5V52' stroke='url%28%23v%29' stroke-width='1.2'/%3E%3Cpath d='M8.8 40V13.4Q8.8 8.8 13.4 8.8H40' stroke='%2372500f' stroke-width='.65' opacity='.45'/%3E%3C/g%3E %3Cpath d='M12 12C23.44 22.23 34.73 16.26 45 7.6C34.99 8.13 20.23 8.22 12 12Z' fill='url%28%23b%29'/%3E%3Cpath d='M12 12C15.61 22.31 25.14 23.42 35 22.6C28.39 18.8 18.93 12.69 12 12Z' fill='url%28%23a%29'/%3E%3Cpath d='M12 12C22.31 15.61 23.42 25.14 22.6 35C18.8 28.39 12.69 18.93 12 12Z' fill='url%28%23b%29'/%3E%3Cpath d='M12 12C22.23 23.44 16.26 34.73 7.6 45C8.13 34.99 8.22 20.23 12 12Z' fill='url%28%23a%29'/%3E %3Cpath d='M18.09 12.36Q29.49 12.19 41.16 9.05' fill='none' stroke='%233d2806' stroke-width='.45' opacity='.5'/%3E%3Cpath d='M15.77 14.71Q23.16 19.24 31.94 21.97' fill='none' stroke='%233d2806' stroke-width='.45' opacity='.5'/%3E%3Cpath d='M13.1 16.51Q15.79 24.76 20.68 32.54' fill='none' stroke='%233d2806' stroke-width='.45' opacity='.5'/%3E%3Cpath d='M10.05 17.79Q7.24 28.83 7.2 40.92' fill='none' stroke='%233d2806' stroke-width='.45' opacity='.5'/%3E %3Cpath d='M45 7.6C49.88 9.24 48.37 13.4 45.69 10.85' fill='none' stroke='url%28%23a%29' stroke-width='1.15' stroke-linecap='round'/%3E %3Cpath d='M7.6 45C9.24 49.88 13.4 48.37 10.85 45.69' fill='none' stroke='url%28%23a%29' stroke-width='1.15' stroke-linecap='round'/%3E %3Ccircle cx='11' cy='11' r='5.4' fill='%23241705'/%3E%3Ccircle cx='11' cy='11' r='4.7' fill='url%28%23a%29'/%3E%3Ccircle cx='11' cy='11' r='3.4' fill='url%28%23s%29'/%3E %3Cellipse cx='9.9' cy='9.8' rx='1' ry='.7' fill='%23fff' opacity='.8'/%3E%3C/svg%3E");
+
+  /* Colour on colour costs contrast twice over, so each of these is a step
+     darker than the dark theme's (the lore site measured eq1 at 3.49:1 at
+     10.5px/600 against the blended fill before dropping it). */
+  --canon-eq1: #744f0f;
+  --canon-eq2: #3e496e;
+  --canon-rpg: #5e3778;
+  --canon-disputed: #9c342d;
+  --canon-meta: #4b5266;
+
+  /* Struck bronze plates with cream lettering, NOT the token ramp: --gold-pale
+     and --gold-bright are ordered by emphasis, so composing a plate from them
+     would print a near-black chip. Observed is the brighter strike and mined
+     the duller one, which is the whole distinction. */
+  --seal-observed-bg: linear-gradient(180deg, #ab7d20, #8a5f14);
+  --seal-observed-shadow: inset 0 1px 0 rgba(255, 235, 180, 0.4), inset 0 0 0 1px #6e4a0e;
+  --seal-mined-bg: linear-gradient(180deg, #7d5712, #5e3f0b);
+  --seal-model-ink: #43617f;
+
+  /* ── The vellum sheet, layer by layer ───────────────────────────────────
+     Deliberately NOT the dark theme's coarse mottle-blended-soft-light: that is
+     tooled leather in the dark, and soft-light is a no-op against a near-black
+     backdrop and a grey smear against cream. Three layers, each carrying its
+     own alpha and compositing `normal`:
+
+       1. FOXING — a slow cloud of sepia stain. feComponentTransfer clamps
+          `slope=8, intercept=-2.15`, so alpha (= 1−R) is zero across ~90% of
+          the sheet and only the darkest patches take any ink at all;
+       2. FIBRE — the fine tooth of the paper, which also kills gradient
+          banding (this is what the dark theme's separate grain layer does);
+       3. SIZING — a broad warm/cream mottle, the uneven absorption you get
+          from a hide that was stretched unevenly.
+
+     Restraint is the whole point. A flat sheet lands at alpha 0 — anything you
+     can read as a *field* rather than a *surface* is too much. `x/y/width/
+     height` are pinned on every filter: the default −10%/120% region breaks
+     stitchTiles and lays a visible seam grid across the page. */
+  --tex-page:
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='340'%3E%3Cfilter id='f' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='8' intercept='-2.15'/%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.49 0 0 0 0 0.357 0 0 0 0 0.173 -1 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.13'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='v' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.35 0 0 0 0 0.27 0 0 0 0 0.16 -0.45 0 0 0 0.225'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23v)' opacity='0.5'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='620'%3E%3Cfilter id='d' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.008' numOctaves='4' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.42 0 0 0 0 0.325 0 0 0 0 0.188 -1 0 0 0 0.5'/%3E%3C/filter%3E%3Cfilter id='b' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.008' numOctaves='4' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 0.973 0 0 0 0 0.91 1 0 0 0 -0.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)' opacity='0.17'/%3E%3Crect width='100%25' height='100%25' filter='url(%23b)' opacity='0.16'/%3E%3C/svg%3E"),
+    /* Foxing at the head, a shadowed gutter at the foot — the ageing a bound
+       sheet actually shows. No braziers: paper has no light source of its own. */
+    radial-gradient(120% 90% at 12% -8%, rgba(180, 150, 90, 0.13), transparent 55%),
+    radial-gradient(90% 70% at 100% 0%, rgba(150, 120, 70, 0.1), transparent 60%),
+    radial-gradient(120% 120% at 50% 122%, rgba(140, 100, 50, 0.15), transparent 60%),
+    linear-gradient(180deg, var(--bg-deep-2), var(--bg-deep) 42%, var(--bg-deep-3) 100%);
+  --tex-page-size: auto;
+  --tex-page-blend: normal;
+  /* The fibre layer above carries the anti-banding grain; a second full-page
+     overlay on cream only greys it. */
+  --tex-grain: none;
+  --tex-grain-opacity: 0;
 }
 
 /* ── Technical elements → sans, WITHOUT per-page edits everywhere.
@@ -191,50 +556,42 @@ body {
   margin: 0;
 }
 
-/* The world beneath — a layered, warm darkness with a far ember and cold edges.
-   Texture is TWO scales, not one. The old single 220px grain at 4.5% was
-   invisible past arm's length and the page read as flat charcoal:
-
-     1. a coarse ~620px mottle, blended soft-light so it both lifts and sinks
-        the gradients underneath — tooled leather seen in the dark, which is
-        the register EverQuest Legends' own site works in;
-     2. the fine grain (body::after), which only has to kill banding.
-
-   A vignette rides above the colour so the corners fall away and the middle
-   of the page carries the light. */
+/* ── The ground ───────────────────────────────────────────────────────────
+   Both themes lay a full-page image stack behind everything: --tex-page, with
+   its own --tex-page-size and --tex-page-blend (the dark set blends its coarse
+   leather mottle soft-light; the parchment set composites every layer normal).
+   The two stacks have different layer COUNTS, which is why size and blend are
+   tokens too — a fixed `620px 620px, auto, …` here would misalign one of
+   them. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -2;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='620'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='.85'/%3E%3C/svg%3E"),
-    radial-gradient(120% 90% at 12% -8%, rgba(124, 111, 224, 0.17), transparent 55%),
-    radial-gradient(90% 70% at 100% 0%, rgba(49, 132, 196, 0.12), transparent 60%),
-    radial-gradient(115% 85% at 50% 128%, rgba(201, 149, 42, 0.10), transparent 64%),
-    radial-gradient(135% 105% at 50% 40%, transparent 42%, rgba(0, 0, 0, 0.5) 100%),
-    linear-gradient(180deg, var(--bg-deep-2), var(--bg-deep) 40%, #08060f 74%, #0d0906 100%);
-  background-size: 620px 620px, auto, auto, auto, auto, auto;
-  background-blend-mode: soft-light, normal, normal, normal, normal, normal;
+  background-image: var(--tex-page);
+  background-size: var(--tex-page-size);
+  background-blend-mode: var(--tex-page-blend);
 }
 
-/* Stone grain — kills banding in the gradients above. */
+/* The second, finer overlay. The dark theme needs it to kill gradient banding;
+   parchment's fibre layer already does that job, so there --tex-grain is `none`
+   at opacity 0 and this element paints nothing. */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: var(--tex-grain-opacity);
+  background-image: var(--tex-grain);
 }
 
-::selection { background: rgba(201, 149, 42, 0.28); color: var(--ink); }
+::selection { background: var(--selection-bg); color: var(--ink); }
 
 ::-webkit-scrollbar { width: 11px; height: 11px; }
 ::-webkit-scrollbar-track { background: var(--bg-deep); }
-::-webkit-scrollbar-thumb { background: #2c2016; border-radius: 8px; border: 2px solid var(--bg-deep); }
-::-webkit-scrollbar-thumb:hover { background: #3a2a1a; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 8px; border: 2px solid var(--bg-deep); }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
 
 a { color: inherit; text-decoration: none; }
 
@@ -293,11 +650,11 @@ a { color: inherit; text-decoration: none; }
   height: 7px;
   border-radius: 1.5px;
   transform: translateY(-50%) rotate(45deg);
-  background: linear-gradient(135deg, #8dbaf0 0%, var(--sapphire) 42%, #12295a 100%);
+  background: linear-gradient(135deg, var(--sapphire-face) 0%, var(--sapphire) 42%, #12295a 100%);
   box-shadow:
-    0 0 0 1.4px var(--gold-bright),
-    0 0 0 2.1px #5c3f0e,
-    0 0 9px color-mix(in srgb, var(--sapphire) 45%, transparent);
+    0 0 0 1.4px var(--setting-mid),
+    0 0 0 2.1px var(--setting-out),
+    var(--cab-glow);
 }
 
 /* Symmetric variant — a centered lozenge, lines falling away to both sides. */
@@ -323,11 +680,11 @@ a { color: inherit; text-decoration: none; }
   height: 7px;
   border-radius: 1.5px;
   transform: translate(-50%, -50%) rotate(45deg);
-  background: linear-gradient(135deg, #8dbaf0 0%, var(--sapphire) 42%, #12295a 100%);
+  background: linear-gradient(135deg, var(--sapphire-face) 0%, var(--sapphire) 42%, #12295a 100%);
   box-shadow:
-    0 0 0 1.4px var(--gold-bright),
-    0 0 0 2.1px #5c3f0e,
-    0 0 9px color-mix(in srgb, var(--sapphire) 45%, transparent);
+    0 0 0 1.4px var(--setting-mid),
+    0 0 0 2.1px var(--setting-out),
+    var(--cab-glow);
 }
 
 /* ── Gilt frame — a panel with the four acanthus corners fitted to it ──────
@@ -339,15 +696,12 @@ a { color: inherit; text-decoration: none; }
    Sized 1:1 (52px, no scaling) — that is what keeps the two rules aligned. */
 .frame-gilt {
   position: relative;
-  border: 1px solid #6d4a10;
+  border: 1px solid var(--frame-border);
   border-radius: 3px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.022), rgba(0, 0, 0, 0.24)),
-    var(--bg-panel);
+  background: var(--frame-sheen), var(--bg-panel);
   box-shadow:
-    inset 0 0 0 1px rgba(231, 185, 78, 0.07),
-    inset 0 3px 34px rgba(0, 0, 0, 0.55),
-    0 24px 64px rgba(0, 0, 0, 0.5);
+    inset 0 0 0 1px var(--frame-inner),
+    var(--frame-shadow);
 }
 .frame-gilt__cnr {
   position: absolute;
@@ -365,15 +719,15 @@ a { color: inherit; text-decoration: none; }
    The icons are hand-painted 40px art. Rendered at exactly 2× with
    image-rendering:pixelated they stay crisp and read as the client's own; any
    fractional scale, or smoothing, turns them to mush. */
+/* The socket stays a dark metal OBJECT on the page — the same reasoning the
+   lore site applies to its wax seal. Lightening it to match the vellum would
+   dissolve the setting and leave the 40px art floating in cream. */
 .spell-socket {
   display: block;
   padding: 3px;
   border-radius: 4px;
   background: linear-gradient(158deg, #6b5220 0%, #2a2013 46%, #4a3818 100%);
-  box-shadow:
-    inset 0 0 0 1px rgba(0, 0, 0, 0.65),
-    0 1px 0 rgba(255, 240, 200, 0.07),
-    0 5px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--socket-shadow);
 }
 /* The dark slot behind the art. Spell icons are opaque 40px squares and cover it;
    dragitem icons have an alpha channel, and this is the ground they sit on — the
@@ -385,8 +739,8 @@ a { color: inherit; text-decoration: none; }
   aspect-ratio: 1;
   border-radius: 2px;
   image-rendering: pixelated;
-  background: radial-gradient(120% 120% at 40% 25%, #1b1630, #0a0812 85%);
-  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.7);
+  background: var(--socket-slot);
+  box-shadow: var(--socket-slot-shadow);
 }
 
 /* Gilt corner brackets — the fittings on a bound tome. For panels that
@@ -422,17 +776,17 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.74rem;
   color: var(--ink-dim);
   border: 1px solid var(--line);
-  background: rgba(0,0,0,0.2);
+  background: var(--field-bg-soft);
   padding: 0.16rem 0.55rem; border-radius: 999px;
   cursor: pointer;
   transition: all 0.15s;
 }
 .chip:hover { color: var(--ink); border-color: color-mix(in srgb, var(--gold) 40%, var(--line)); }
 .chip-active {
-  color: var(--bg-deep); background: var(--gold);
+  color: var(--on-gold); background: var(--gold);
   border-color: var(--gold); font-weight: 600;
 }
-.chip-active:hover { color: var(--bg-deep); }
+.chip-active:hover { color: var(--on-gold); }
 
 .canon-pill {
   font-family: var(--font-accent), serif;
@@ -445,12 +799,16 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid;
   white-space: nowrap;
 }
-.canon-pill[data-canon="eq1"]         { color: #c08a3a; border-color: color-mix(in srgb, #c08a3a 45%, transparent); background: color-mix(in srgb, #c08a3a 9%, transparent); }
-.canon-pill[data-canon="eq2"]         { color: #6f7da0; border-color: color-mix(in srgb, #6f7da0 45%, transparent); background: color-mix(in srgb, #6f7da0 9%, transparent); }
-.canon-pill[data-canon="eq-rpg"]      { color: #8a6fa0; border-color: color-mix(in srgb, #8a6fa0 45%, transparent); background: color-mix(in srgb, #8a6fa0 9%, transparent); }
+/* A canon pill is its colour as text on a 9% tint of itself — colour on colour,
+   which on cream costs contrast twice over. Each of these is a step darker than
+   the dark theme's for that reason (the lore site measured eq1 at 3.49:1 at
+   10.5px/600 against the blended fill before dropping it). */
+.canon-pill[data-canon="eq1"]         { color: var(--canon-eq1); border-color: color-mix(in srgb, var(--canon-eq1) 45%, transparent); background: color-mix(in srgb, var(--canon-eq1) 9%, transparent); }
+.canon-pill[data-canon="eq2"]         { color: var(--canon-eq2); border-color: color-mix(in srgb, var(--canon-eq2) 45%, transparent); background: color-mix(in srgb, var(--canon-eq2) 9%, transparent); }
+.canon-pill[data-canon="eq-rpg"]      { color: var(--canon-rpg); border-color: color-mix(in srgb, var(--canon-rpg) 45%, transparent); background: color-mix(in srgb, var(--canon-rpg) 9%, transparent); }
 .canon-pill[data-canon="cross-canon"] { color: var(--gold); border-color: color-mix(in srgb, var(--gold) 40%, transparent); background: color-mix(in srgb, var(--gold) 8%, transparent); }
-.canon-pill[data-canon="disputed"]    { color: #b0473f; border-color: color-mix(in srgb, #b0473f 45%, transparent); }
-.canon-pill[data-canon="meta"]        { color: #5b6480; border-color: color-mix(in srgb, #5b6480 45%, transparent); }
+.canon-pill[data-canon="disputed"]    { color: var(--canon-disputed); border-color: color-mix(in srgb, var(--canon-disputed) 45%, transparent); }
+.canon-pill[data-canon="meta"]        { color: var(--canon-meta); border-color: color-mix(in srgb, var(--canon-meta) 45%, transparent); }
 
 /* ── Gilt letterpress — cast-gold type with a struck dark edge ─────────────
    The move EQL's own site makes on every display line: a top-lit gold gradient
@@ -468,28 +826,22 @@ a { color: inherit; text-decoration: none; }
    Eczar 800 it bites through the thin serif joints — the headline came out
    visibly cracked along the top of every glyph. */
 .gilt {
-  --gilt-outline: #17100a;
   /* One full gradient cycle PER LINE. Sized to the element's line-height —
      otherwise a headline that wraps gets the lit top edge on line one and the
-     shadowed underside on line two, and stops looking like cast metal. */
+     shadowed underside on line two, and stops looking like struck metal. */
   --gilt-line: 1.06em;
   color: transparent;
-  background-image: linear-gradient(
-    180deg,
-    #fdf3d2 0%, var(--gold-pale) 15%, #eec95f 33%,
-    #d3a03a 51%, #9c6c17 65%, #e5ba52 83%, #f5dc95 100%
-  );
+  background-image: var(--gilt-face);
   background-size: 100% var(--gilt-line);
   background-repeat: repeat;
   -webkit-background-clip: text;
   background-clip: text;
-  filter:
-    drop-shadow(0 0 1px var(--gilt-outline))
-    drop-shadow(0 0 1px var(--gilt-outline))
-    drop-shadow(0 0 1px var(--gilt-outline))
-    drop-shadow(0 2px 0 rgba(0, 0, 0, 0.5))
-    drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45))
-    drop-shadow(0 0 28px rgba(201, 149, 42, 0.18));
+  /* On stone the outline was black and pushed the letters forward off the
+     leather. On vellum it INVERTS: a cream halo, so the bronze reads as struck
+     INTO the sheet with the paper showing at the bite. A dark outline here just
+     draws a second, blurrier set of letters. The long dark drop-shadows go
+     entirely — a blurred shadow under type on cream is a photocopier artifact. */
+  filter: var(--gilt-filter);
 }
 
 /* ── Sapphire cabochon — the gem in a gold setting ────────────────────────
@@ -512,13 +864,15 @@ a { color: inherit; text-decoration: none; }
 }
 .cabochon {
   border-radius: 50%;
+  /* The specular stays literal, not var(--sapphire-lit): that token had to
+     darken to carry chart strokes on cream, and a dark highlight is not one. */
   background: radial-gradient(circle at 34% 28%,
-    #dbe9ff 0%, var(--sapphire-lit) 17%, var(--sapphire) 46%, #132c60 78%, var(--sapphire-deep) 100%);
+    #dbe9ff 0%, #77aaea 17%, var(--sapphire) 46%, #132c60 78%, var(--sapphire-deep) 100%);
   box-shadow:
-    0 0 0 1px var(--gold-deep),
-    0 0 0 2px var(--gold-bright),
-    0 0 0 2.6px #5c3f0e,
-    0 0 10px color-mix(in srgb, var(--sapphire) 45%, transparent);
+    0 0 0 1px var(--setting-in),
+    0 0 0 2px var(--setting-mid),
+    0 0 0 2.6px var(--setting-out),
+    var(--cab-glow);
 }
 .cabochon::after {
   content: "";
@@ -531,27 +885,30 @@ a { color: inherit; text-decoration: none; }
 .cabochon-lozenge {
   transform: rotate(45deg);
   border-radius: 1.5px;
-  background: linear-gradient(135deg, #8dbaf0 0%, var(--sapphire) 42%, #12295a 100%);
+  background: linear-gradient(135deg, var(--sapphire-face) 0%, var(--sapphire) 42%, #12295a 100%);
   box-shadow:
-    0 0 0 1.4px var(--gold-bright),
-    0 0 0 2.2px #5c3f0e,
-    0 0 9px color-mix(in srgb, var(--sapphire) 42%, transparent);
+    0 0 0 1.4px var(--setting-mid),
+    0 0 0 2.2px var(--setting-out),
+    var(--cab-glow);
 }
 
-/* Gilded button — cast gold, lit from above. The primary CTA register. */
+/* Gilded button — a struck bronze plate with cream lettering. The primary CTA
+   register. On cream a BRIGHT gold fill vanishes into the page and leaves what
+   looks like a borderless button, so the plate goes dark and the type goes
+   light: the same inversion the lore site makes for its parchment CTA. */
 .btn-gilt {
-  background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 55%, #a2731d 100%);
-  color: var(--bg-deep);
+  background: var(--btn-gilt-bg);
+  color: var(--on-gold);
   font-weight: 600;
   letter-spacing: 0.02em;
-  border: 1px solid color-mix(in srgb, var(--gold-bright) 55%, transparent);
-  box-shadow: inset 0 1px 0 rgba(255, 240, 200, 0.5), 0 2px 10px rgba(201, 149, 42, 0.16);
+  border: 1px solid var(--btn-gilt-border);
+  box-shadow: var(--btn-gilt-shadow);
   transition: filter 0.15s ease, box-shadow 0.2s ease;
   cursor: pointer;
 }
 .btn-gilt:hover {
-  filter: brightness(1.08);
-  box-shadow: inset 0 1px 0 rgba(255, 240, 200, 0.55), 0 4px 16px rgba(201, 149, 42, 0.28);
+  filter: brightness(1.1);
+  box-shadow: var(--btn-gilt-shadow-hover);
 }
 
 /* ── Shared site header (header.html) ─────────────────────────────────────
@@ -564,18 +921,15 @@ a { color: inherit; text-decoration: none; }
    the brand header scrolls away and the page's controls own the top edge — the
    footer + nav still provide the way back. */
 /* The header is a solid slab over a textured ground, and with a single --line
-   hairline the two just blurred together. It now closes with an engraved edge:
-   a dark bronze rule, a gilt hairline under it, and a cast shadow onto the page
-   so the slab reads as sitting ON the leather rather than painted into it. */
+   hairline the two just blurred together. It closes with an engraved edge: a
+   bronze rule, a lit hairline under it, and a soft cast onto the page so the
+   slab reads as a strip laid ON the sheet rather than printed into it. */
 .eq-header {
   position: relative;
   z-index: 40;
-  background: linear-gradient(180deg, #0e0b18 0%, rgba(11,9,19,0.82) 100%);
-  border-bottom: 1px solid #5c3f0e;
-  box-shadow:
-    inset 0 -2px 0 rgba(0, 0, 0, 0.45),
-    0 1px 0 rgba(231, 185, 78, 0.22),
-    0 9px 24px rgba(0, 0, 0, 0.55);
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  box-shadow: var(--header-shadow);
 }
 .eq-header__inner {
   display: flex;
@@ -601,14 +955,19 @@ a { color: inherit; text-decoration: none; }
   height: 2.6rem;
   width: 2.6rem;
   background: var(--sigil) center / contain no-repeat;
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.55));
+  filter: var(--sigil-shadow);
 }
 
-/* The wordmark is a drawn logotype, not a font: public/_shared/wordmark.svg,
-   "EQL" over a gilt rule over "TOOLS", cut from Uncial Antiqua outlines and given
-   EverQuest's own material — a seven-step extrusion, a dark outline, a top-lit
-   gold face, a bright rim and a shadowed underside. The outlines are dilated
-   ~0.9% em so the uncial holds its weight at 34px.
+/* The wordmark is a drawn logotype, not a font: "EQL" over a gilt rule over
+   "TOOLS", cut from Uncial Antiqua outlines and given EverQuest's own material —
+   a seven-step extrusion, a dark outline, a top-lit gold face, a bright rim and a
+   shadowed underside. The outlines are dilated ~0.9% em so the uncial holds its
+   weight at 34px.
+
+   TWO cuts, one per theme, selected by --wordmark: wordmark.svg is cast gold on
+   stone and wordmark-parchment.svg is struck bronze on vellum. It has to be two
+   files rather than one that reads the tokens, because it is a background image
+   and a background image gets no CSS custom properties. Edit one, edit both.
 
    Live text in a display font could never carry the bevel, and Eczar was not an
    EQ letterform. The <span> is empty; the real text is the .sr-only sibling. */
@@ -617,8 +976,8 @@ a { color: inherit; text-decoration: none; }
   flex: none;
   height: 2.9rem;
   width: calc(2.9rem * 1.1881);   /* wordmark.svg viewBox aspect */
-  background: url("/_shared/wordmark.svg") center / contain no-repeat;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  background: var(--wordmark) center / contain no-repeat;
+  filter: var(--wordmark-shadow);
 }
 
 /* Tool nav — sans, right-aligned, wraps to its own row on phones. */
@@ -636,20 +995,146 @@ a { color: inherit; text-decoration: none; }
 .eq-nav a, .eq-nav a:hover { color: var(--ink-dim); text-decoration: none; transition: color 0.15s ease; }
 .eq-nav a:hover { color: var(--gold); }
 .eq-nav .is-current { color: var(--gold-bright); font-weight: 600; }
-/* The way out to the sibling lore site. It isn't a tool, so it sits behind a
-   divider rather than pretending to be a fourth nav item. Reads "Library
-   (lore)": the name first, what it is in parentheses. */
-.eq-nav__lore {
+/* The two menus sit with the wordmark rather than at the far right, because
+   the destinations now occupy the middle of the row and the toggle keeps the
+   right end. */
+.eq-header__inner > .eq-nav { margin-left: 1.9rem; flex: 0 0 auto; order: 2; }
+.eq-header__inner > .eq-shelf { order: 3; }
+.eq-header .theme-btn { order: 4; margin-left: auto; }
+
+/* ── The destinations ─────────────────────────────────────────────────────
+   Four things that are not pages of this site's sections: a 3D world, a Mac
+   client, a lore site, a desktop app. They were five different link styles
+   strung along the nav, which read as a pile rather than a set. They are a
+   set, so all four take the same shape: one glyph, what you do in --ink, and
+   whose name it is under it in --ink-faint.
+
+   They ride the brand row. A wordmark and two menu pills leave most of a
+   desktop header empty, and that emptiness is what made the old nav read as
+   a hodgepodge — a few links adrift in a wide bar.
+
+   The four of them measure ~610px laid out end to end. The flex-basis below is
+   40rem, a little over that, so they never squeeze. The flex wrap and the
+   query that styles the wrapped line have to agree, or there is a band of
+   widths that wraps unstyled: the row runs out of 40rem at about 1172px
+   (80 wrap padding + 108 brand + 167 menus + 30 toggle + 72 of the header's
+   own gaps + 75 of margins + 640), so the query sits just above it. Change
+   the basis and this number moves.
+
+   Only the app plate is drawn in gold: within a set of equals, the download is
+   the one thing we want taken away. */
+.eq-shelf {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-inline: 1.6rem 1.2rem;
+  font-family: var(--font-sans);
+}
+.eq-plate {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.3rem 0.15rem;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+/* :hover in the selector for the same reason the nav has it — a page-global
+   a:hover{underline} must not reach in here. */
+.eq-plate, .eq-plate:hover { text-decoration: none; }
+.eq-plate:hover { background: color-mix(in srgb, var(--gold) 9%, transparent); }
+.eq-plate__glyph { flex: none; width: 1.15rem; height: 1.15rem; color: var(--gold); opacity: 0.85; }
+.eq-plate:hover .eq-plate__glyph { opacity: 1; }
+.eq-plate__txt { min-width: 0; }
+.eq-plate b {
+  display: block;
+  font-size: 0.81rem; font-weight: 600; line-height: 1.25;
+  color: var(--ink); white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.eq-plate i {
+  display: block;
+  font-style: normal; font-size: 0.7rem; line-height: 1.3;
+  color: var(--ink-faint); white-space: nowrap;
+}
+.eq-plate__sm { display: none; }
+.eq-plate:hover b { color: var(--gold-bright); }
+.eq-plate.is-current b { color: var(--gold-bright); }
+.eq-plate--app b { color: var(--gold); }
+.eq-plate--app .eq-plate__glyph { opacity: 1; }
+
+/* ── Giving ground, in order ──────────────────────────────────────────────
+   Nothing here shrinks type or squeezes the plates: the labels are nowrap, so
+   the row's minimum IS its content, and flex moves it to a line of its own the
+   moment it doesn't fit. Each query below is set just above the width where
+   that would happen, so the row gives up a word before it gives up the line.
+
+   Laid end to end the four measure 612px; with both long labels shortened,
+   473px; without the Mac plate, 360px. The rest of the row (wordmark, menus,
+   toggle, gaps, wrap padding) is a fixed 532px, which is where each number
+   below comes from. Re-measure all three if the labels or the type change. */
+@media (max-width: 1160px) {          /* 612 + 532 = 1144 */
+  .eq-plate__lg { display: none; }
+  .eq-plate__sm { display: inline; }
+}
+@media (max-width: 1020px) {          /* 473 + 532 = 1005 */
+  /* osxEQL goes first: it is the one destination that only matters to readers
+     on a Mac, and it is still in the footer and on every page it links from. */
+  .eq-plate--optional { display: none; }
+}
+/* Out of room even then — the destinations take the line under the brand row,
+   where there is space enough to say everything again. */
+@media (max-width: 900px) {           /* 360 + 532 = 892 */
+  .eq-header .theme-btn { order: 3; }
+  .eq-header__inner > .eq-shelf { order: 4; }
+  .eq-shelf {
+    flex-basis: 100%;
+    margin: 0.45rem 0 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .eq-plate--optional { display: flex; }
+  .eq-plate__lg { display: inline; }
+  .eq-plate__sm { display: none; }
+}
+/* Narrower than four abreast: two by two, which keeps every label on one line
+   far longer than shrinking the type would. */
+@media (max-width: 780px) {
+  .eq-shelf { display: grid; grid-template-columns: 1fr 1fr; gap: 0.15rem 1rem; }
+  .eq-plate { min-height: 44px; }
+}
+@media (max-width: 430px) {
+  .eq-shelf { gap: 0.15rem 0.5rem; }
+  .eq-plate { gap: 0.45rem; }
+  .eq-plate b { font-size: 0.78rem; white-space: normal; }
+  .eq-plate i { white-space: normal; }
+}
+
+/* The theme toggle. Icon-only: it sits at the end of a nav whose other items
+   are words, and a fifth word competes with them for the same glance. The icon
+   shows the theme you are IN and the label says what pressing it will DO —
+   /_shared/theme.js swaps both. It is drawn empty here and filled in by that
+   script, so a reader with JS off gets no button rather than a dead one. */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0;
   color: var(--ink-dim);
-  padding-left: 1.2rem;
-  border-left: 1px solid var(--line);
+  background: var(--btn-quiet-bg);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
-.eq-nav__lore:hover { color: var(--gold); }
-.eq-nav__lore .note { color: var(--ink-faint); }
-.eq-nav__lore:hover .note { color: color-mix(in srgb, var(--gold) 70%, transparent); }
-@media (max-width: 640px) {
-  .eq-nav__lore { padding-left: 0; border-left: 0; }
-}
+.theme-btn:empty { display: none; }
+.theme-btn svg { width: 1.05rem; height: 1.05rem; }
+.theme-btn:hover { color: var(--gold); border-color: color-mix(in srgb, var(--gold) 45%, var(--line)); }
+.theme-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 /* ── Nav dropdowns (Tools, Learn) ────────────────────────────────────────
    One nav entry over many pages; the dropdown shows the breadth. Pure CSS:
@@ -697,11 +1182,11 @@ a { color: inherit; text-decoration: none; }
   z-index: 60;
   min-width: 13.5rem;
   padding: 0.5rem 0;
-  background: var(--bg-panel);
+  background: var(--menu-bg);
   border: 1px solid var(--line);
   border-top: 2px solid color-mix(in srgb, var(--gold) 55%, var(--line));
   border-radius: 0 0 10px 10px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-menu);
 }
 /* invisible bridge across the gap between the link and the panel, so the
    pointer can travel down without the :hover chain breaking */
@@ -720,8 +1205,20 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 640px) {
-  /* nav drops to its own full-width row beneath the wordmark */
-  .eq-nav { flex-basis: 100%; margin-left: 0; }
+  /* nav drops to its own full-width row beneath the wordmark. Specificity has
+     to match the desktop `.eq-header__inner > .eq-nav` rule that pins the menus
+     beside the wordmark, or the toggle's absolute slot lands on top of them. */
+  .eq-header__inner > .eq-nav { flex: 1 1 100%; margin-left: 0; }
+  /* …and the toggle rides the wordmark's row instead of wrapping onto a third
+     one of its own. Left in the nav in the MARKUP (that is where it belongs in
+     the tab order); only its position moves. */
+  .eq-header__inner { position: relative; }
+  .eq-header .theme-btn {
+    position: absolute;
+    top: 0.65rem;
+    right: clamp(1.1rem, 4vw, 2.5rem);   /* .wrap's own inline padding */
+    width: 44px; height: 44px;           /* the tap-target floor the nav links use */
+  }
 }
 /* Touch/narrow: give the header + footer nav links a 44px tap target (the links
    are otherwise ~22px). Fires on a coarse pointer OR narrow width, so phones,
@@ -737,10 +1234,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ── Shared site footer (footer.html) ─────────────────────────────────────
-   A thin site-nav strip: EQL Tools wordmark, the three tools + a link out to
-   the Library of Erudin lore site, and a fine-print line (fan-project
-   disclaimer + "nothing about your character is uploaded"). Sits below each
-   tool's own page-specific colophon. */
+   A thin strip: the wordmark, the few links the header does not carry at every
+   width (see FOOTER in sync_chrome.mjs), and the fan-project disclaimer. Sits
+   below each tool's own page-specific colophon. */
 .eq-footer {
   border-top: 1px solid var(--line);
   margin-top: 1.4rem;
@@ -759,7 +1255,7 @@ a { color: inherit; text-decoration: none; }
   flex: none;
   height: 2.1rem;
   width: calc(2.1rem * 1.1881);
-  background: url("/_shared/wordmark.svg") center / contain no-repeat;
+  background: var(--wordmark) center / contain no-repeat;
   opacity: 0.85;
 }
 .eq-footer__nav {
@@ -787,7 +1283,7 @@ a { color: inherit; text-decoration: none; }
      client-observed > client-mined > dev > model > chat
 
    The two client tiers are siblings — both come from the game, and both are
-   gold. They differ in WHERE the game handed the number over. `client-observed`
+   bronze. They differ in WHERE the game handed the number over. `client-observed`
    is what the running server actually sent and the interface actually drew;
    `client-mined` is what the shipped files say, and those files are a live-EQ
    superset that lies about level caps and carries thousands of spells EQL never
@@ -816,11 +1312,15 @@ a.src:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
    identity, and must survive any page-local link rule (e.g. /sources' `.cite
    .attr a { color: gold }`, specificity 0,2,1) that would otherwise repaint an
    inline `<a class="src …">` and give gold-on-gold. */
-.src.client-observed { color: #120d06 !important; background: linear-gradient(180deg, var(--gold-pale), var(--gold-bright)); box-shadow: inset 0 0 0 1px var(--gold-deep); }
-.src.client-mined    { color: #120d06 !important; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); }
-.src.dev             { color: var(--ember) !important; border: 1px solid rgba(224,113,58,.55); background: rgba(224,113,58,.08); }
-.src.model           { color: #9db4d6 !important; border: 1px solid rgba(123,167,204,.4); background: rgba(123,167,204,.07); }
-.src.chat            { color: var(--ink-dim) !important; border: 1px solid var(--line); background: rgba(255,255,255,.02); }
+/* The two client tiers are struck bronze plates with cream lettering, NOT the
+   token ramp: --gold-pale and --gold-bright are ordered by emphasis now, so
+   composing a plate from them would print a near-black chip. Observed is the
+   brighter strike and mined the duller one, which is the whole distinction. */
+.src.client-observed { color: var(--on-gold) !important; background: var(--seal-observed-bg); box-shadow: var(--seal-observed-shadow); }
+.src.client-mined    { color: var(--on-gold) !important; background: var(--seal-mined-bg); }
+.src.dev             { color: var(--ember) !important; border: 1px solid color-mix(in srgb, var(--ember) 50%, transparent); background: color-mix(in srgb, var(--ember) 10%, transparent); }
+.src.model           { color: var(--seal-model-ink) !important; border: 1px solid color-mix(in srgb, var(--seal-model-ink) 45%, transparent); background: color-mix(in srgb, var(--seal-model-ink) 9%, transparent); }
+.src.chat            { color: var(--ink-dim) !important; border: 1px solid var(--line); background: var(--surface-softer); }
 .src.wiki            { color: var(--wiki) !important; border: 1px solid var(--wiki-line); background: var(--wiki-bg); }
 
 /* ── Rich tooltips ────────────────────────────────────────────────────────
@@ -832,14 +1332,14 @@ a.src:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .tip {
   position: fixed; z-index: 120; max-width: 400px;
   max-height: calc(100vh - 16px); overflow-y: auto;
-  background: linear-gradient(180deg, #241c28, #1b141d);
-  border: 1px solid rgba(201,149,42,.45); border-radius: 10px;
-  padding: .75rem .9rem; box-shadow: 0 16px 44px rgba(0,0,0,.6);
+  background: linear-gradient(180deg, var(--bg-panel-2), var(--bg-panel));
+  border: 1px solid color-mix(in srgb, var(--gold) 50%, transparent); border-radius: 10px;
+  padding: .75rem .9rem; box-shadow: var(--shadow-menu);
   font-family: var(--font-sans); font-size: .84rem; color: var(--ink-soft); line-height: 1.5;
 }
 .tip h5 { margin: 0 0 .35rem; font-family: var(--font-display); font-size: 1.02rem; color: var(--gold-bright); font-weight: 600; }
 .tip h5 small { font-family: var(--font-sans); font-size: .62rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-dim); margin-left: .5em; }
-.tip .you { margin: 0 0 .5rem; padding: .3rem .5rem; border-radius: 6px; background: rgba(201,149,42,.1); border: 1px solid rgba(201,149,42,.3); color: var(--ink); font-size: .82rem; }
+.tip .you { margin: 0 0 .5rem; padding: .3rem .5rem; border-radius: 6px; background: color-mix(in srgb, var(--gold) 10%, transparent); border: 1px solid color-mix(in srgb, var(--gold) 33%, transparent); color: var(--ink); font-size: .82rem; }
 .tip .you b { color: var(--gold-bright); }
 .tip p { margin: .4rem 0 0; color: var(--ink-dim); }
 .tip p a { color: var(--gold); }
@@ -870,7 +1370,7 @@ a.src:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .attr-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .8rem; }
 .attr-cards .attr-card {
   border: 1px solid var(--line); border-radius: 11px; padding: 1rem 1.1rem;
-  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.15));
+  background: linear-gradient(180deg, var(--bg-panel-2), var(--bg-panel));
 }
 .attr-cards .attr-card h3 { font-family: var(--font-display); font-size: 1.6rem; margin: 0; color: var(--gold-bright); font-weight: 600; letter-spacing: 0; }
 .attr-cards .attr-card .verdict { font-family: var(--font-sans); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-dim); margin: .05rem 0 .5rem; }
@@ -879,3 +1379,117 @@ a.src:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .attr-cards .attr-card li::before { content: none; }
 .attr-cards .attr-card li::marker { color: var(--gold); }
 .attr-cards .attr-card .no { color: var(--ink-dim); }
+
+/* ── Data tables — the one table component ─────────────────────────────────
+   Every data table on the site is `.sc-table`, and /_shared/sortable.js binds
+   click-to-sort to every column of every one of them. These base rules lived
+   as five near-identical copies in five page stylesheets and had already
+   drifted apart (different hover colours, one page's headers wrapped and the
+   rest didn't); they live here now. A page stylesheet adds MODIFIERS only —
+   column tints, widths, per-table alignment — never a second copy of the base.
+
+   theme.css loads before each page's own stylesheet, so a page rule of equal
+   specificity still wins. Wrap a wide table in .tbl-wrap: the table scrolls
+   inside its own box and the page body never scrolls sideways. */
+.sc-table { width: 100%; border-collapse: collapse; font-size: .94rem; margin-top: .6rem; font-family: var(--font-sans); }
+.sc-table th { font-family: var(--font-sans); text-transform: uppercase; font-size: .66rem; letter-spacing: .16em;
+  color: var(--ink-dim); text-align: left; padding: .35rem .5rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.sc-table td { padding: .4rem .5rem; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); vertical-align: top; }
+.sc-table td:first-child { color: var(--ink); }
+.sc-table td.num { font-variant-numeric: tabular-nums; color: var(--gold-bright); text-align: right; white-space: nowrap; }
+.sc-table td.dim { color: var(--ink-dim); }
+.sc-table tfoot td { border-top: 1px solid var(--line); border-bottom: none; color: var(--ink-dim); font-size: .86rem; }
+.sc-table a { color: var(--gold-bright); text-decoration: none; }
+.sc-table a:hover { text-decoration: underline; }
+.sc-table tbody tr:hover td { background: color-mix(in srgb, var(--gold) 5%, transparent); }
+.sc-table.narrow { max-width: 34rem; }
+
+/* Sortable headers. Not scoped to .sc-table: sortable.js also binds tables
+   marked [data-sortable], and a sortable header with no affordance is a
+   feature nobody finds. */
+th.sortable { cursor: pointer; user-select: none; }
+th.sortable:hover { color: var(--gold-bright); }
+th.sort-asc::after { content: " ▲"; color: var(--gold); font-size: .6rem; }
+th.sort-desc::after { content: " ▼"; color: var(--gold); font-size: .6rem; }
+
+.tbl-wrap, .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+/* .scroll-x was used on /learn/motes and /learn/experience but only DEFINED in
+   /learn/experience's own stylesheet, so the motes tables pushed the whole page
+   sideways at 414px. A class used by more than one page belongs here. */
+
+/* ── Section index — a sticky left rail on desktop ─────────────────────────
+   The "On this page" list used to be a horizontal strip above the content on
+   13 pages, which cost a band of vertical space at the top of every one and
+   then scrolled away. On desktop it becomes a rail in a left column instead:
+   the reader keeps the map of the page the whole way down, and the space it
+   used to occupy goes back to the content.
+
+   No page HTML changes for this. .page-body becomes a two-column grid ONLY on
+   pages that have a .section-index; the head spans both columns, everything
+   else lands in the content column, and the rail is placed in column 1 and
+   spans the rest of the page. Below 1100px it is the old horizontal strip.
+
+   These rules lived as three copies (learn, combat, pets). */
+.section-index {
+  display: flex; gap: .5rem 1.4rem; flex-wrap: wrap; align-items: baseline;
+  margin: 0 0 1.4rem; padding: .9rem 1.1rem;
+  border: 1px solid var(--line); border-radius: 12px;
+  background: linear-gradient(180deg, var(--bg-panel-2), var(--bg-panel));
+}
+.si-label { font-size: .66rem; text-transform: uppercase; letter-spacing: .22em; color: var(--gold); font-weight: 600; flex: none; }
+.si-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem 1.3rem; align-items: baseline; }
+.si-list > li { display: flex; flex-direction: column; gap: .1rem; }
+.si-list > li > a { font-family: var(--font-display); color: var(--gold-bright); font-size: 1.02rem; letter-spacing: .01em; }
+.si-list > li > a:hover { text-decoration: underline; }
+.si-sub { font-size: .8rem; color: var(--ink-dim); }
+.si-sub a { color: var(--ink-dim); }
+
+@media (min-width: 1100px) {
+  .page-body:has(> .section-index) {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    column-gap: 2rem;
+    align-items: start;
+  }
+  .page-body:has(> .section-index) > * { grid-column: 2; min-width: 0; }
+  /* the page head and any banner above it run the full width */
+  .page-body:has(> .section-index) > .site-head,
+  .page-body:has(> .section-index) > .draft-warn,
+  .page-body:has(> .section-index) > .kicker { grid-column: 1 / -1; }
+  .page-body:has(> .section-index) > .section-index {
+    grid-column: 1;
+    grid-row: auto / span 200;   /* every remaining implicit row */
+    position: sticky; top: 4.5rem; align-self: start;
+    display: block; margin: 0; padding: .85rem .95rem;
+    max-height: calc(100vh - 6rem); overflow-y: auto;
+  }
+  .section-index .si-label { display: block; margin-bottom: .5rem; }
+  .section-index .si-list { display: block; }
+  .section-index .si-list > li { display: block; margin: 0 0 .35rem; }
+  .section-index .si-list > li > a { font-size: .95rem; line-height: 1.25; display: block; }
+  /* the sub-section run-on line is a middot-joined sentence in the horizontal
+     strip; in a rail it becomes indented child links, one per line. Hiding it
+     was wrong — those anchors are the only way to reach those subsections. */
+  .section-index .si-sub { display: block; font-size: .8rem; line-height: 1.35;
+    margin: .1rem 0 .3rem; padding-left: .55rem; border-left: 1px solid var(--line-soft); }
+  .section-index .si-sub a { display: block; margin: .08rem 0; }
+  /* the middots that separated them inline are noise once they stack */
+  .section-index .si-sub { font-size: 0; }
+  .section-index .si-sub a { font-size: .8rem; }
+  /* current section, set by /_shared/section-index.js */
+  .section-index .si-list > li > a.is-here { color: var(--ink); }
+  .section-index .si-list > li > a.is-here::before {
+    content: ""; position: absolute; left: -.7rem; width: 2px; height: 1.05em;
+    background: var(--gold); border-radius: 1px;
+  }
+  .section-index .si-list > li { position: relative; }
+}
+
+/* Any in-page anchor target must clear the sticky site header when it is jumped
+   to; without this the heading lands behind the bar and the reader sees the
+   paragraph after it. */
+:where(h1, h2, h3, h4, section, [id]) { scroll-margin-top: 5.25rem; }
+
+/* The section-index rail takes ~13rem out of the content column. On a wide
+   desktop that should come out of the margins, not out of the reading width. */
+@media (min-width: 1500px) { :root { --maxw: 1380px; } }

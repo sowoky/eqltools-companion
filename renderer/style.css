@@ -416,3 +416,77 @@ input[type="checkbox"] { accent-color: var(--gold); }
 }
 /* an unresolved wiki city page is not a destination — say so beside it */
 .zg__umb { margin-left: 8px; font-size: 12px; }
+
+/* ── Sky: the quest room ──────────────────────────────────────────────────
+   Sixteen givers, each a fold. Ready is the loud state — you are standing at
+   the NPC deciding what to hand over, so the row that says "you can do this
+   one now" has to win the page. */
+#tab-sky .feedhead { flex-wrap: wrap; }
+#tab-sky .chk, #skyMeta { white-space: nowrap; }
+#skySearch { min-width: 230px; }
+
+.skg { border: 1px solid var(--line); border-radius: 6px; background: var(--bg-panel); margin-bottom: 6px; }
+.skg__h {
+  display: flex; align-items: baseline; gap: 10px; width: 100%; text-align: left;
+  padding: 7px 10px; background: none; border: 0; color: inherit; cursor: pointer;
+  font: inherit;
+}
+.skg__h:hover { background: var(--bg-panel-2); }
+.skg__caret { color: var(--ink-dim); width: 10px; }
+.skg__n { font-weight: 600; color: var(--gold-bright); }
+.skg__giver { color: var(--wiki); font-size: 13px; }
+.skg__tally { font-size: 12px; color: var(--ink-soft); margin-left: auto; }
+.sk-n { font-weight: 700; }
+.sk-n--ready { color: var(--gold-bright); }
+.sk-n--done { color: var(--wiki); }
+.skg__b { padding: 2px 10px 8px; border-top: 1px solid var(--line-soft); }
+.sk-orphan { font-size: 12px; color: var(--ink-dim); margin: 6px 0; max-width: 78ch; }
+
+.skt { padding: 7px 0 8px; border-bottom: 1px solid var(--line-soft); }
+.skt:last-child { border-bottom: 0; }
+.skt.is-ready { border-left: 2px solid var(--gold); padding-left: 8px; margin-left: -10px; }
+.skt.is-done .skt__n { color: var(--ink-soft); }
+.skt__h { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.skt__n { font-weight: 600; }
+.skt__say { font-size: 12px; color: var(--ink-dim); }
+.skt__say code { color: var(--gold-pale); font-family: var(--mono); }
+.skt__rew { margin-left: auto; font-size: 12px; color: var(--ink-dim); }
+.skt__done { font: 12px var(--mono); color: var(--wiki); font-weight: 700; }
+.sk-st { font-size: 11px; padding: 0 6px; border-radius: 3px; border: 1px solid var(--line); color: var(--ink-dim); }
+.sk-st--ready { background: var(--gold); border-color: var(--gold); color: var(--bg-deep); font-weight: 700; }
+.sk-st--done { color: var(--wiki); border-color: var(--wiki-line); }
+
+.skt__items { list-style: none; padding: 0; margin: 4px 0 0 2px; }
+.skp { display: flex; align-items: baseline; gap: 6px; padding: 2px 0; font-size: 13px; flex-wrap: wrap; }
+.skp__tick { color: var(--ink-dim); width: 11px; cursor: pointer; }
+.skp.is-have .skp__tick { color: var(--gold); }
+.skp.is-miss .itn { color: var(--ink-dim); }
+.skp__ct { font: 12px var(--mono); color: var(--ink-dim); }
+.skp.is-have .skp__ct { color: var(--ink-soft); }
+.sk-src { font-size: 11px; color: var(--ink-dim); }
+/* the one warning on the row: hand this over and another test loses its piece */
+.sk-star { color: var(--ember); font-size: 12px; cursor: help; }
+
+/* where it is. A number is only meaningful for a bag or a bank slot, so those
+   two get the icon and everything else gets a word. */
+.skl {
+  display: inline-flex; align-items: center; gap: 2px;
+  font: 11px var(--mono); color: var(--gold-pale);
+  border: 1px solid var(--line); border-radius: 3px; padding: 0 4px; background: var(--bg-panel-2);
+}
+.skl__i { width: 11px; height: 11px; opacity: .85; }
+.skl__s { color: var(--ink-dim); }
+.skl__c { color: var(--ink-soft); font-weight: 400; }
+.skl--bank { color: var(--arcane); }
+.skl--word { color: var(--ink-dim); }
+
+/* widget options */
+.skw { min-width: 260px; }
+.skw__r { display: block; font-size: 12px; padding: 2px 0; }
+.skw__r select { background: var(--bg-deep); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 1px 4px; }
+.skw__h { font-size: 12px; color: var(--ink-dim); margin-top: 7px; border-top: 1px solid var(--line-soft); padding-top: 5px; }
+.skw__cls { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8px; }
+.skw__c { font-size: 12px; white-space: nowrap; }
+.lnk { background: none; border: 0; color: var(--gold); cursor: pointer; font: inherit; padding: 0; }
+.lnk:hover { color: var(--gold-pale); }
+.btn--sm { padding: 2px 8px; font-size: 12px; }

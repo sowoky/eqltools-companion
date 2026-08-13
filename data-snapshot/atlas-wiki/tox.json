@@ -1036,7 +1036,7 @@
   },
   {
    "dr": [
-    "Always"
+    null
    ],
    "drops": [
     5
@@ -1046,10 +1046,10 @@
     -930.0,
     null
    ],
-   "lvl": "~7",
-   "n": "Ilanics skeleton",
+   "lvl": "6-7",
+   "n": "Ilanic`s skeleton",
    "named": true,
-   "u": "https://eqlwiki.com/index.php/Ilanics_Skeleton"
+   "u": "https://eqlwiki.com/index.php/Ilanic%60s_skeleton"
   },
   {
    "dr": [],
@@ -1343,7 +1343,7 @@
    "u": "https://eqlwiki.com/index.php/Veisha_Fathomwalker"
   }
  ],
- "updated": "2026-08-08T03:26:20Z",
+ "updated": "2026-08-11T23:42:23Z",
  "wikiTitle": "Toxxulia Forest",
  "wikiUrl": "https://eqlwiki.com/index.php/Toxxulia_Forest",
  "zone": "tox"

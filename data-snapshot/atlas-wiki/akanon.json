@@ -1777,6 +1777,15 @@
   {
    "dr": [],
    "drops": [],
+   "loc": null,
+   "lvl": "70",
+   "n": "Jarah Reskan",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Jarah_Reskan"
+  },
+  {
+   "dr": [],
+   "drops": [],
    "loc": [
     1096.0,
     -978.0,
@@ -2191,7 +2200,7 @@
    "u": "https://eqlwiki.com/index.php/Zapho_the_Ancient"
   }
  ],
- "updated": "2026-06-30T00:12:50Z",
+ "updated": "2026-08-11T20:25:49Z",
  "wikiTitle": "Ak'Anon",
  "wikiUrl": "https://eqlwiki.com/index.php/Ak'Anon",
  "zone": "akanon"

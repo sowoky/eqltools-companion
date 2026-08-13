@@ -20,6 +20,7 @@
   <button class="tab" data-tab="combat">Combat</button>
   <button class="tab" data-tab="inv">Inventory</button>
   <button class="tab" data-tab="turnins">Turn-ins</button>
+  <button class="tab" data-tab="sky">Sky</button>
   <button class="tab" data-tab="tracked">Tracked</button>
   <button class="tab" data-tab="quests">Quests</button>
   <button class="tab" data-tab="parser">Parser</button>
@@ -85,6 +86,29 @@
     </div>
     <div id="turninsBody"></div>
     <p id="turninsEmpty" class="empty">Type <code>/out inventory</code> in game — quests you hold items for show up here, sorted by how close to done they are.</p>
+  </section>
+
+  <section id="tab-sky" class="pane pane--wide">
+    <div id="skyBanner" class="banner" hidden></div>
+    <div class="feedhead qbhead">
+      <input id="skySearch" type="search" placeholder="search test, piece, NPC, reward">
+      <select id="skyShow">
+        <option value="ready">ready to turn in</option>
+        <option value="held">anything I hold a piece of</option>
+        <option value="all">every test</option>
+      </select>
+      <select id="skyClass"></select>
+      <label class="chk"><input type="checkbox" id="skyHideDone"> hide completed</label>
+      <button id="skyExpand" class="btn btn--sm">expand all</button>
+      <details id="skyWidWrap" class="invcols">
+        <summary>widget</summary>
+        <div id="skyWidBody" class="invcols__body skw"></div>
+      </details>
+      <span id="skyMeta" class="dim"></span>
+    </div>
+    <div id="skyBody"></div>
+    <p id="skyEmpty" class="empty">Waiting for log lines. Walk up to a quest giver and this fills in.<br>
+    <span class="dim">Logging must be on in game: <code>/log</code></span></p>
   </section>
 
   <section id="tab-tracked" class="pane">
@@ -185,6 +209,9 @@
 <script src="../vendor/shared.js"></script>
 <script src="../vendor/parse.js"></script>
 <script src="../vendor/tier.js"></script>
+<script src="../vendor/attributes-data.js"></script>
+<script src="../vendor/gear-score.js"></script>
+<script src="../vendor/sky-core.js"></script>
 <script src="../vendor/site/log-parser/engine.js"></script>
 <script src="app.js"></script>
 </body>

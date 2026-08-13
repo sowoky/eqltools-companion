@@ -202,3 +202,50 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unpin first 
 .tqc li.is-marked .tqc__n { color: #cfc6e6; }
 .tq-inv { color: #8d84a8; padding: 3px 0 5px; font-size: 11px; }
 .tz__umb { margin-left: 6px; color: #8d84a8; font-size: 11px; }
+
+/* ── Sky: the quest room, over the game ───────────────────────────────────
+   One fold per giver. Ready is the only loud state — everything else is here
+   so you can see how far off it is. */
+#osky { overflow-y: auto; flex: 1; padding: 3px 7px 6px; }
+#osky::-webkit-scrollbar { width: 5px; }
+#osky::-webkit-scrollbar-thumb { background: rgba(201, 149, 42, .35); border-radius: 3px; }
+#osky::-webkit-scrollbar-thumb:hover { background: rgba(231, 185, 78, .6); }
+.osk-head { color: #e7b94e; padding: 2px 0 3px; border-bottom: 1px solid rgba(201,149,42,.25); }
+.osk-note { color: #8d84a8; font-size: 10.5px; padding: 2px 0; }
+.osk-none { color: #8d84a8; padding: 4px 0; }
+.osg { border-bottom: 1px solid rgba(255,255,255,.07); padding-bottom: 3px; margin-bottom: 3px; }
+.osg__h { display: flex; gap: 5px; align-items: baseline; cursor: pointer; padding: 2px 0; }
+.osg__h:hover { color: #f6dfa0; }
+.osg__k { color: #8d84a8; width: 7px; }
+.osg__n { color: #e7b94e; font-weight: 600; }
+.osg__g { color: #9ccc9c; }
+.osg__c { margin-left: auto; color: #8d84a8; }
+.ost { padding: 1px 0 3px 7px; }
+.ost.is-ready { border-left: 2px solid #c9952a; padding-left: 5px; }
+.ost.is-done .ost__n { color: #b6aecb; font-weight: 400; }
+.ost__h { display: flex; gap: 5px; align-items: baseline; }
+.ost__n { font-weight: 600; }
+.ost__say { color: #8d84a8; }
+.ost__say b { color: #f6dfa0; font-weight: 600; }
+.ost__st { margin-left: auto; color: #e7b94e; font-weight: 700; }
+.ost__st.is-done { color: #9ccc9c; font-weight: 400; }
+.ost__st.is-miss { color: #8d84a8; font-weight: 400; }
+.ost__rew { color: #8d84a8; padding-left: 13px; }
+.ost__rew .ri { color: #b6aecb; }
+.oskl-list { list-style: none; padding: 0 0 0 2px; margin: 0; }
+.oski { display: flex; gap: 4px; align-items: baseline; flex-wrap: wrap; }
+.oski__t { color: #8d84a8; width: 8px; cursor: pointer; }
+.oski.is-have .oski__t { color: #e7b94e; }
+.oski:not(.is-have) .oski__n { color: #8d84a8; }
+.oski__c { color: #b6aecb; font-size: 10.5px; }
+.oski__star { color: #e0713a; cursor: help; }
+.oski__src { color: #8d84a8; font-size: 10.5px; }
+/* where it is: a number only means something for a bag or a bank slot */
+.oskl {
+  display: inline-flex; align-items: center; gap: 1px; font-size: 10.5px;
+  color: #f6dfa0; border: 1px solid rgba(201,149,42,.3); border-radius: 3px; padding: 0 3px;
+}
+.oskl__i { width: 9px; height: 9px; }
+.oskl__s { color: #8d84a8; }
+.oskl--bank { color: #9d92ea; border-color: rgba(157,146,234,.35); }
+.oskl--word { color: #8d84a8; border-color: rgba(255,255,255,.12); }

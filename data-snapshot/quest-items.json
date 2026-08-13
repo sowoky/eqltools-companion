@@ -249,12 +249,6 @@
   ],
   "a broom": [
    [
-    "a magician",
-    "A_Magician",
-    "Najena",
-    "Najena"
-   ],
-   [
     "dark-boned skeleton",
     "Dark-boned_skeleton",
     "Najena",
@@ -263,6 +257,12 @@
    [
     "a goblin magician",
     "A_Goblin_Magician",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "a magician",
+    "A_Magician",
     "Najena",
     "Najena"
    ],
@@ -743,14 +743,14 @@
     "Najena"
    ],
    [
-    "an injured halfling",
-    "An_Injured_Halfling",
+    "Linara Parlone",
+    "Linara_Parlone",
     "Najena",
     "Najena"
    ],
    [
-    "Linara Parlone",
-    "Linara_Parlone",
+    "Ekeros",
+    "Ekeros",
     "Najena",
     "Najena"
    ]
@@ -889,10 +889,10 @@
     "Najena"
    ],
    [
-    "an alligator",
-    "An_alligator",
-    "Temple of Cazic-Thule",
-    "Cazic_Thule"
+    "Ekeros",
+    "Ekeros",
+    "Najena",
+    "Najena"
    ]
   ],
   "a tump stump": [
@@ -1063,14 +1063,6 @@
     "A_reanimated_hand_(Lower_Guk)",
     "The Ruins of Old Guk",
     "Lower_Guk"
-   ]
-  ],
-  "adamantium earring": [
-   [
-    "Bazzt Zzzt",
-    "Bazzt_Zzzt",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "aglthins fishing pole": [
@@ -2725,20 +2717,6 @@
     "Kithicor_Forest"
    ]
   ],
-  "bixie sword blade": [
-   [
-    "Bzzazzt",
-    "Bzzazzt",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "Bazzt Zzzt",
-    "Bazzt_Zzzt",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "black dire pelt": [
    [
     "Black Dire",
@@ -3749,20 +3727,6 @@
     "Crushbone"
    ]
   ],
-  "brass knuckles": [
-   [
-    "Overseer of Air",
-    "Overseer_of_Air",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "the Hand of Veeshan",
-    "The_Hand_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "breath of gwan": [
    [
     "Gwan",
@@ -4589,14 +4553,6 @@
     "A_mimic",
     "The Ruins of Old Paineel",
     "The_Hole"
-   ]
-  ],
-  "ceramic mask": [
-   [
-    "Keeper of Souls",
-    "Keeper_of_Souls",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "ceremonial belt": [
@@ -5689,22 +5645,6 @@
     "Butcherblock_Mountains"
    ]
   ],
-  "cracked glass key": [
-   [
-    "an undead knight of Unrest",
-    "An_undead_knight_of_Unrest",
-    "The Estate of Unrest",
-    "The_Estate_of_Unrest"
-   ]
-  ],
-  "cracked leather eyepatch": [
-   [
-    "Keeper of Souls",
-    "Keeper_of_Souls",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "crate full of ore": [
    [
     "erudite traveler",
@@ -6787,36 +6727,12 @@
     "Qeynos_Hills"
    ]
   ],
-  "divine honeycomb": [
-   [
-    "Bazzt Zzzt",
-    "Bazzt_Zzzt",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "diviners bowl": [
    [
     "Krode the Diviner",
     "Krode_the_Diviner",
     "The Warrens",
     "The_Warrens"
-   ]
-  ],
-  "djinni aura": [
-   [
-    "Sister of the Spire",
-    "Sister_of_the_Spire",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "djinni stave": [
-   [
-    "Sister of the Spire",
-    "Sister_of_the_Spire",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "djinni war blade": [
@@ -6833,14 +6749,6 @@
     "Doldigun_Steinwielder",
     "Kael Drakkel",
     "Kael_Drakkel"
-   ]
-  ],
-  "dove slippers": [
-   [
-    "The Spiroc Lord",
-    "The_Spiroc_Lord",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "dragon blood": [
@@ -7271,83 +7179,7 @@
     "Plane_of_Sky"
    ]
   ],
-  "efreeti great staff": [
-   [
-    "Noble Dojorn",
-    "Noble_Dojorn",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "Eye of Veeshan",
-    "Eye_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "efreeti long sword": [
-   [
-    "Noble Dojorn",
-    "Noble_Dojorn",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "efreeti mace": [
-   [
-    "Noble Dojorn",
-    "Noble_Dojorn",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "Overseer of Air",
-    "Overseer_of_Air",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "the Hand of Veeshan",
-    "The_Hand_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "efreeti magi staff": [
-   [
-    "Noble Dojorn",
-    "Noble_Dojorn",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "Overseer of Air",
-    "Overseer_of_Air",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "the Hand of Veeshan",
-    "The_Hand_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "efreeti scimitar": [
-   [
-    "Noble Dojorn",
-    "Noble_Dojorn",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "Overseer of Air",
-    "Overseer_of_Air",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "efreeti standard": [
    [
     "Noble Dojorn",
     "Noble_Dojorn",
@@ -7455,34 +7287,6 @@
    [
     "the Hand of Veeshan",
     "The_Hand_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "efreeti wind staff": [
-   [
-    "Noble Dojorn",
-    "Noble_Dojorn",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "the Hand of Veeshan",
-    "The_Hand_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "efreeti zweihander": [
-   [
-    "Noble Dojorn",
-    "Noble_Dojorn",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "Overseer of Air",
-    "Overseer_of_Air",
     "The Plane of Sky",
     "Plane_of_Sky"
    ]
@@ -7881,14 +7685,6 @@
     "Plane_of_Sky"
    ]
   ],
-  "ethereal ruby": [
-   [
-    "Sister of the Spire",
-    "Sister_of_the_Spire",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "evergreen ivy ringband": [
    [
     "a forest giant greenwood",
@@ -8175,14 +7971,6 @@
     "Siren's_Grotto"
    ]
   ],
-  "feathered cape": [
-   [
-    "Gorgalosk",
-    "Gorgalosk",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "festering cloak": [
    [
     "a festering hag",
@@ -8197,14 +7985,6 @@
     "Solusek_Champion",
     "Solusek's Eye",
     "Solusek's_Eye"
-   ]
-  ],
-  "fine cloth raiment": [
-   [
-    "The Spiroc Lord",
-    "The_Spiroc_Lord",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "fine steel dagger": [
@@ -8313,14 +8093,6 @@
    [
     "The Spiroc Lord",
     "The_Spiroc_Lord",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "finely woven cloth cord": [
-   [
-    "Gorgalosk",
-    "Gorgalosk",
     "The Plane of Sky",
     "Plane_of_Sky"
    ]
@@ -9941,14 +9713,6 @@
     "Upper_Guk"
    ]
   ],
-  "glowing necklace": [
-   [
-    "Sister of the Spire",
-    "Sister_of_the_Spire",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "glowing sword hilt": [
    [
     "Xicotl",
@@ -10259,36 +10023,12 @@
     "Befallen"
    ]
   ],
-  "golden coffer": [
-   [
-    "The Spiroc Lord",
-    "The_Spiroc_Lord",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "golden ear stud": [
    [
     "a gnoll embalmer",
     "A_Gnoll_Embalmer",
     "Lake Rathetear",
     "Lake_Rathetear"
-   ]
-  ],
-  "golden efreeti ring": [
-   [
-    "Sister of the Spire",
-    "Sister_of_the_Spire",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "golden hilt": [
-   [
-    "a heartsbane drake",
-    "A_heartsbane_drake",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "golden locket": [
@@ -10329,14 +10069,6 @@
     "Smoldering_goo",
     "The Crypt of Dalnir",
     "Crypt_of_Dalnir"
-   ]
-  ],
-  "gorgon head": [
-   [
-    "Gorgalosk",
-    "Gorgalosk",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "gossamer robe": [
@@ -10615,14 +10347,6 @@
     "Plane_of_Sky"
    ]
   ],
-  "griffons beak": [
-   [
-    "Gorgalosk",
-    "Gorgalosk",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "grimy lance": [
    [
     "A Lizard Ritualist",
@@ -10867,14 +10591,6 @@
     "Ratraz",
     "Neriak - Third Gate",
     "Neriak_Third_Gate"
-   ]
-  ],
-  "hazy opal": [
-   [
-    "Eye of Veeshan",
-    "Eye_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "head housekeepers log": [
@@ -11353,12 +11069,6 @@
    [
     "a skeleton",
     "A_Skeleton_(Najena)",
-    "Najena",
-    "Najena"
-   ],
-   [
-    "Ekeros",
-    "Ekeros",
     "Najena",
     "Najena"
    ]
@@ -12165,14 +11875,6 @@
     "East_Commonlands"
    ]
   ],
-  "ivory sky diamond": [
-   [
-    "The Spiroc Lord",
-    "The_Spiroc_Lord",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "jacinth": [
    [
     "The Sporali Moldmaster",
@@ -12973,20 +12675,6 @@
     "The_Feerrott"
    ]
   ],
-  "large diamond": [
-   [
-    "Bzzazzt",
-    "Bzzazzt",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "Bazzt Zzzt",
-    "Bazzt_Zzzt",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "large empty crate": [
    [
     "Smithy Rrarrgin",
@@ -13029,14 +12717,6 @@
     "Ocean_of_Tears"
    ]
   ],
-  "large opal": [
-   [
-    "Eye of Veeshan",
-    "Eye_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "large ruby (eye of toque)": [
    [
     "Lynuga",
@@ -13059,22 +12739,6 @@
     "A_large_scorpion",
     "The Field of Bone",
     "Field_of_Bone"
-   ]
-  ],
-  "large sky diamond": [
-   [
-    "Eye of Veeshan",
-    "Eye_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "large sky sapphire (enchanter)": [
-   [
-    "Eye of Veeshan",
-    "Eye_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "large splinted bronze cloak": [
@@ -13321,14 +12985,6 @@
     "Regis_the_Reverent",
     "The Northern Plains of Karana",
     "Northern_Karana"
-   ]
-  ],
-  "light cloth mantle": [
-   [
-    "Keeper of Souls",
-    "Keeper_of_Souls",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "light damask mantle": [
@@ -13879,14 +13535,6 @@
     "Eastern_Wastes"
    ]
   ],
-  "mantle of woven grass": [
-   [
-    "Keeper of Souls",
-    "Keeper_of_Souls",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "mantrap root": [
    [
     "Weeping Mantrap",
@@ -14435,14 +14083,6 @@
     "Mistmoore_Castle"
    ]
   ],
-  "mithril bands": [
-   [
-    "Eye of Veeshan",
-    "Eye_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "mithril plated girth": [
    [
     "Grazhak the Berzerker",
@@ -14583,14 +14223,6 @@
     "Neb",
     "Dragon Necropolis",
     "Dragon_Necropolis"
-   ]
-  ],
-  "nebulous sapphire": [
-   [
-    "Sister of the Spire",
-    "Sister_of_the_Spire",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "necromancer blood": [
@@ -15981,14 +15613,6 @@
     "Northern_Desert_of_Ro"
    ]
   ],
-  "pulsating ruby": [
-   [
-    "Bazzt Zzzt",
-    "Bazzt_Zzzt",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "pulsing green stone": [
    [
     "Venril Sathir",
@@ -16643,14 +16267,6 @@
     "An_ancient_cyclops_(Ocean_of_Tears)",
     "The Ocean of Tears",
     "Ocean_of_Tears"
-   ]
-  ],
-  "ring of veeshan": [
-   [
-    "Sister of the Spire",
-    "Sister_of_the_Spire",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "ringmail cape": [
@@ -19051,14 +18667,6 @@
     "Emerald_Jungle"
    ]
   ],
-  "shiny pauldrons": [
-   [
-    "The Spiroc Lord",
-    "The_Spiroc_Lord",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "short beer": [
    [
     "a gnoll pup",
@@ -19193,36 +18801,6 @@
     "Tower_of_Frozen_Shadow"
    ]
   ],
-  "silken mask": [
-   [
-    "The Spiroc Lord",
-    "The_Spiroc_Lord",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "silken strands": [
-   [
-    "Gorgalosk",
-    "Gorgalosk",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "silken wrap": [
-   [
-    "Bzzazzt",
-    "Bzzazzt",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ],
-   [
-    "Bazzt Zzzt",
-    "Bazzt_Zzzt",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "silver bar": [
    [
     "a muddite recordkeeper",
@@ -19343,14 +18921,6 @@
     "Field_of_Bone"
    ]
   ],
-  "silver hoop": [
-   [
-    "Gorgalosk",
-    "Gorgalosk",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "silver mask of the slayer": [
    [
     "Dozekar the Cursed",
@@ -19461,14 +19031,6 @@
     "A_silvered_guard",
     "Temple of Cazic-Thule",
     "Cazic_Thule"
-   ]
-  ],
-  "silvered spiroc necklace": [
-   [
-    "Bazzt Zzzt",
-    "Bazzt_Zzzt",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "silvery mask": [
@@ -19993,14 +19555,6 @@
     "Mistmoore_Castle"
    ]
   ],
-  "small shield": [
-   [
-    "Keeper of Souls",
-    "Keeper_of_Souls",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "small tattered dress": [
    [
     "Cuburt",
@@ -20223,14 +19777,6 @@
     "The_Estate_of_Unrest"
    ]
   ],
-  "sphinx claw": [
-   [
-    "Sister of the Spire",
-    "Sister_of_the_Spire",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "sphinxian circlet": [
    [
     "Sister of the Spire",
@@ -20281,6 +19827,12 @@
     "Nektulos_Forest"
    ],
    [
+    "a jungle spider",
+    "A_jungle_spiderling",
+    "The Feerrott",
+    "The_Feerrott"
+   ],
+   [
     "a rock spider",
     "A_rock_spider",
     "Ak'Anon",
@@ -20291,12 +19843,6 @@
     "A_Rock_Spiderling",
     "Butcherblock Mountains",
     "Butcherblock_Mountains"
-   ],
-   [
-    "a widow hatchling",
-    "A_Widow_Hatchling_(Greater_Faydark)",
-    "The Greater Faydark",
-    "Greater_Faydark"
    ]
   ],
   "spirit wracked urn": [
@@ -20323,23 +19869,7 @@
     "Plane_of_Sky"
    ]
   ],
-  "spiroc battle staff": [
-   [
-    "The Spiroc Lord",
-    "The_Spiroc_Lord",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
   "spiroc earth totem": [
-   [
-    "The Spiroc Lord",
-    "The_Spiroc_Lord",
-    "The Plane of Sky",
-    "Plane_of_Sky"
-   ]
-  ],
-  "spiroc elders totem": [
    [
     "The Spiroc Lord",
     "The_Spiroc_Lord",
@@ -20639,12 +20169,6 @@
   ],
   "stein (of water)": [
    [
-    "a magician",
-    "A_Magician",
-    "Najena",
-    "Najena"
-   ],
-   [
     "dark-boned skeleton",
     "Dark-boned_skeleton",
     "Najena",
@@ -20653,6 +20177,12 @@
    [
     "a goblin magician",
     "A_Goblin_Magician",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "a magician",
+    "A_Magician",
     "Najena",
     "Najena"
    ],
@@ -20733,14 +20263,6 @@
     "Sergeant_Leryal",
     "Kael Drakkel",
     "Kael_Drakkel"
-   ]
-  ],
-  "storm sky opal": [
-   [
-    "Eye of Veeshan",
-    "Eye_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "straevens head": [
@@ -21291,14 +20813,6 @@
     "Gkrean_Prophet_of_Tallon",
     "Kael Drakkel",
     "Kael_Drakkel"
-   ]
-  ],
-  "tear of quellious": [
-   [
-    "Eye of Veeshan",
-    "Eye_of_Veeshan",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "tears of erollisi": [
@@ -21885,12 +21399,6 @@
   ],
   "torn page of mastery earth": [
    [
-    "a magician",
-    "A_Magician",
-    "Najena",
-    "Najena"
-   ],
-   [
     "dark-boned skeleton",
     "Dark-boned_skeleton",
     "Najena",
@@ -21903,20 +21411,20 @@
     "Najena"
    ],
    [
-    "an injured halfling",
-    "An_Injured_Halfling",
+    "a magician",
+    "A_Magician",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "Ekeros",
+    "Ekeros",
     "Najena",
     "Najena"
    ]
   ],
   "torn page of mastery fire": [
    [
-    "a magician",
-    "A_Magician",
-    "Najena",
-    "Najena"
-   ],
-   [
     "dark-boned skeleton",
     "Dark-boned_skeleton",
     "Najena",
@@ -21925,6 +21433,12 @@
    [
     "a goblin magician",
     "A_Goblin_Magician",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "a magician",
+    "A_Magician",
     "Najena",
     "Najena"
    ],
@@ -21937,12 +21451,6 @@
   ],
   "torn page of mastery water": [
    [
-    "a magician",
-    "A_Magician",
-    "Najena",
-    "Najena"
-   ],
-   [
     "dark-boned skeleton",
     "Dark-boned_skeleton",
     "Najena",
@@ -21955,20 +21463,20 @@
     "Najena"
    ],
    [
-    "an injured halfling",
-    "An_Injured_Halfling",
+    "a magician",
+    "A_Magician",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "Ekeros",
+    "Ekeros",
     "Najena",
     "Najena"
    ]
   ],
   "torn page of mastery wind": [
    [
-    "a magician",
-    "A_Magician",
-    "Najena",
-    "Najena"
-   ],
-   [
     "dark-boned skeleton",
     "Dark-boned_skeleton",
     "Najena",
@@ -21977,6 +21485,12 @@
    [
     "a goblin magician",
     "A_Goblin_Magician",
+    "Najena",
+    "Najena"
+   ],
+   [
+    "a magician",
+    "A_Magician",
     "Najena",
     "Najena"
    ],
@@ -23101,14 +22615,14 @@
   ],
   "wand": [
    [
-    "a magician",
-    "A_Magician",
+    "Tentacle Terror",
+    "Tentacle_Terror",
     "Najena",
     "Najena"
    ],
    [
-    "Tentacle Terror",
-    "Tentacle_Terror",
+    "a magician",
+    "A_Magician",
     "Najena",
     "Najena"
    ],
@@ -23973,14 +23487,6 @@
     "A_lizard_man_scout",
     "The Feerrott",
     "The_Feerrott"
-   ]
-  ],
-  "worn leather mask": [
-   [
-    "Gorgalosk",
-    "Gorgalosk",
-    "The Plane of Sky",
-    "Plane_of_Sky"
    ]
   ],
   "woven frost giant beard": [
@@ -25564,16 +25070,6 @@
     "c"
    ]
   ],
-  "a box of bones": [
-   [
-    152,
-    "c"
-   ],
-   [
-    692,
-    "c"
-   ]
-  ],
   "a box of cat bones": [
    [
     824,
@@ -26458,12 +25954,6 @@
     "r"
    ]
   ],
-  "adamantium earring": [
-   [
-    203,
-    "c"
-   ]
-  ],
   "aegis of life": [
    [
     3,
@@ -26471,12 +25961,6 @@
    ],
    [
     579,
-    "c"
-   ]
-  ],
-  "aegis of the wind": [
-   [
-    119,
     "c"
    ]
   ],
@@ -26559,12 +26043,6 @@
   "albino rattlesnake eggs": [
    [
     97,
-    "c"
-   ]
-  ],
-  "aldryn, blade of the ocean": [
-   [
-    558,
     "c"
    ]
   ],
@@ -27512,12 +26990,6 @@
     "c"
    ]
   ],
-  "back straps of mastery": [
-   [
-    500,
-    "c"
-   ]
-  ],
   "backpack": [
    [
     227,
@@ -27719,12 +27191,6 @@
    ],
    [
     579,
-    "c"
-   ]
-  ],
-  "band of wailing winds": [
-   [
-    518,
     "c"
    ]
   ],
@@ -28396,12 +27862,6 @@
     "c"
    ]
   ],
-  "bixie sword blade": [
-   [
-    558,
-    "c"
-   ]
-  ],
   "black and green tunic*": [
    [
     324,
@@ -28571,10 +28031,6 @@
   "black silk cape": [
    [
     516,
-    "c"
-   ],
-   [
-    518,
     "c"
    ]
   ],
@@ -29282,12 +28738,6 @@
     "c"
    ]
   ],
-  "bloodsoaked raiment": [
-   [
-    518,
-    "c"
-   ]
-  ],
   "bloodstone": [
    [
     51,
@@ -29327,12 +28777,6 @@
   "bloody cougar bone": [
    [
     791,
-    "c"
-   ]
-  ],
-  "bloody griffon-hide wrist guard": [
-   [
-    518,
     "c"
    ]
   ],
@@ -29910,6 +29354,16 @@
     "c"
    ]
   ],
+  "box of bones": [
+   [
+    152,
+    "c"
+   ],
+   [
+    692,
+    "c"
+   ]
+  ],
   "box of remains": [
    [
     412,
@@ -29956,12 +29410,6 @@
    [
     86,
     "r"
-   ]
-  ],
-  "bracelet of clarification": [
-   [
-    466,
-    "c"
    ]
   ],
   "bracelet of sacrifice": [
@@ -30095,12 +29543,6 @@
   "brass key": [
    [
     583,
-    "c"
-   ]
-  ],
-  "brass knuckles": [
-   [
-    500,
     "c"
    ]
   ],
@@ -30598,6 +30040,12 @@
     "c"
    ]
   ],
+  "burning soul of the virtuous": [
+   [
+    822,
+    "c"
+   ]
+  ],
   "burnished wooden stave": [
    [
     91,
@@ -30879,12 +30327,6 @@
   "ceramic lining sketch": [
    [
     131,
-    "c"
-   ]
-  ],
-  "ceramic mask": [
-   [
-    466,
     "c"
    ]
   ],
@@ -31444,10 +30886,6 @@
    [
     516,
     "c"
-   ],
-   [
-    518,
-    "c"
    ]
   ],
   "cloak of the fire storm": [
@@ -31920,6 +31358,12 @@
     "c"
    ]
   ],
+  "corroded buckler": [
+   [
+    104,
+    "r"
+   ]
+  ],
   "corroded chain boots": [
    [
     600,
@@ -32266,18 +31710,6 @@
     "c"
    ]
   ],
-  "cracked glass key": [
-   [
-    849,
-    "c"
-   ]
-  ],
-  "cracked leather eyepatch": [
-   [
-    500,
-    "c"
-   ]
-  ],
   "cracked mirror of self-loathing": [
    [
     151,
@@ -32495,10 +31927,6 @@
   "crown of elemental mastery": [
    [
     464,
-    "c"
-   ],
-   [
-    466,
     "c"
    ]
   ],
@@ -34678,12 +34106,6 @@
     "r"
    ]
   ],
-  "divine honeycomb": [
-   [
-    191,
-    "c"
-   ]
-  ],
   "divine might": [
    [
     743,
@@ -34706,18 +34128,6 @@
     "c"
    ]
   ],
-  "djinni aura": [
-   [
-    119,
-    "c"
-   ]
-  ],
-  "djinni stave": [
-   [
-    466,
-    "c"
-   ]
-  ],
   "djinni war blade": [
    [
     881,
@@ -34733,12 +34143,6 @@
   "doogles signature souvenir mug": [
    [
     704,
-    "c"
-   ]
-  ],
-  "dove slippers": [
-   [
-    500,
     "c"
    ]
   ],
@@ -34813,18 +34217,6 @@
   "drake spine": [
    [
     663,
-    "c"
-   ]
-  ],
-  "drake-hide amice": [
-   [
-    466,
-    "c"
-   ]
-  ],
-  "drake-hide mask": [
-   [
-    191,
     "c"
    ]
   ],
@@ -34996,12 +34388,6 @@
    [
     796,
     "r"
-   ]
-  ],
-  "duennan shielding ring": [
-   [
-    466,
-    "c"
    ]
   ],
   "dufrenite": [
@@ -35228,12 +34614,6 @@
     "r"
    ]
   ],
-  "earring of displacement": [
-   [
-    203,
-    "c"
-   ]
-  ],
   "earring of fire reflection": [
    [
     531,
@@ -35356,47 +34736,13 @@
     "c"
    ]
   ],
-  "efreeti great staff": [
-   [
-    518,
-    "c"
-   ]
-  ],
   "efreeti long sword": [
    [
     598,
     "c"
    ]
   ],
-  "efreeti mace": [
-   [
-    119,
-    "c"
-   ]
-  ],
-  "efreeti magi staff": [
-   [
-    466,
-    "c"
-   ]
-  ],
-  "efreeti scimitar": [
-   [
-    191,
-    "c"
-   ]
-  ],
-  "efreeti standard": [
-   [
-    119,
-    "c"
-   ]
-  ],
   "efreeti statuette": [
-   [
-    191,
-    "c"
-   ],
    [
     899,
     "c"
@@ -35438,47 +34784,7 @@
     "c"
    ]
   ],
-  "efreeti wind staff": [
-   [
-    203,
-    "c"
-   ]
-  ],
-  "efreeti zweihander": [
-   [
-    558,
-    "c"
-   ]
-  ],
   "efreetis key": [
-   [
-    119,
-    "c"
-   ],
-   [
-    191,
-    "c"
-   ],
-   [
-    203,
-    "c"
-   ],
-   [
-    466,
-    "c"
-   ],
-   [
-    500,
-    "c"
-   ],
-   [
-    518,
-    "c"
-   ],
-   [
-    558,
-    "c"
-   ],
    [
     598,
     "c"
@@ -36144,12 +35450,6 @@
     "r"
    ]
   ],
-  "espri": [
-   [
-    191,
-    "c"
-   ]
-  ],
   "essence blade": [
    [
     214,
@@ -36217,12 +35517,6 @@
   "ethereal emerald": [
    [
     881,
-    "c"
-   ]
-  ],
-  "ethereal ruby": [
-   [
-    191,
     "c"
    ]
   ],
@@ -36670,12 +35964,6 @@
     "r"
    ]
   ],
-  "feathered cape": [
-   [
-    466,
-    "c"
-   ]
-  ],
   "featherweight pouch": [
    [
     231,
@@ -36784,12 +36072,6 @@
     "c"
    ]
   ],
-  "fine cloth raiment": [
-   [
-    518,
-    "c"
-   ]
-  ],
   "fine gold chain": [
    [
     100,
@@ -36859,12 +36141,6 @@
   "finely woven cloth belt": [
    [
     664,
-    "c"
-   ]
-  ],
-  "finely woven cloth cord": [
-   [
-    203,
     "c"
    ]
   ],
@@ -38920,12 +38196,6 @@
     "c"
    ]
   ],
-  "girdle of faith": [
-   [
-    558,
-    "c"
-   ]
-  ],
   "girdle of reflection": [
    [
     620,
@@ -39149,12 +38419,6 @@
    ],
    [
     407,
-    "c"
-   ]
-  ],
-  "glowing necklace": [
-   [
-    203,
     "c"
    ]
   ],
@@ -39422,21 +38686,9 @@
     "c"
    ]
   ],
-  "gold white pendant": [
-   [
-    466,
-    "c"
-   ]
-  ],
   "golden broken key": [
    [
     100,
-    "c"
-   ]
-  ],
-  "golden coffer": [
-   [
-    466,
     "c"
    ]
   ],
@@ -39448,18 +38700,6 @@
    [
     779,
     "r"
-   ]
-  ],
-  "golden efreeti ring": [
-   [
-    466,
-    "c"
-   ]
-  ],
-  "golden hilt": [
-   [
-    558,
-    "c"
    ]
   ],
   "golden leaf boots": [
@@ -39522,12 +38762,6 @@
     "c"
    ]
   ],
-  "golden sash of tranquility": [
-   [
-    500,
-    "c"
-   ]
-  ],
   "golden star arm wraps": [
    [
     499,
@@ -39585,18 +38819,6 @@
   "gooey adhesive": [
    [
     648,
-    "c"
-   ]
-  ],
-  "gorgon head": [
-   [
-    518,
-    "c"
-   ]
-  ],
-  "gorgon head staff": [
-   [
-    518,
     "c"
    ]
   ],
@@ -39980,12 +39202,6 @@
     "c"
    ]
   ],
-  "griffons beak": [
-   [
-    518,
-    "c"
-   ]
-  ],
   "grilled rat ears": [
    [
     603,
@@ -40284,12 +39500,6 @@
     "c"
    ]
   ],
-  "harmonic spear": [
-   [
-    579,
-    "c"
-   ]
-  ],
   "harness of control": [
    [
     130,
@@ -40307,12 +39517,6 @@
    ],
    [
     579,
-    "c"
-   ]
-  ],
-  "hazy opal": [
-   [
-    466,
     "c"
    ]
   ],
@@ -40955,12 +40159,6 @@
    ],
    [
     759,
-    "c"
-   ]
-  ],
-  "honeycomb belt": [
-   [
-    191,
     "c"
    ]
   ],
@@ -41968,18 +41166,6 @@
     "c"
    ]
   ],
-  "ivory mask": [
-   [
-    203,
-    "c"
-   ]
-  ],
-  "ivory sky diamond": [
-   [
-    558,
-    "c"
-   ]
-  ],
   "ivy etched boots": [
    [
     413,
@@ -42038,32 +41224,8 @@
   ],
   "jade": [
    [
-    119,
-    "c"
-   ],
-   [
-    191,
-    "c"
-   ],
-   [
-    203,
-    "c"
-   ],
-   [
-    466,
-    "c"
-   ],
-   [
     491,
     "r"
-   ],
-   [
-    500,
-    "c"
-   ],
-   [
-    518,
-    "c"
    ],
    [
     523,
@@ -42071,10 +41233,6 @@
    ],
    [
     525,
-    "c"
-   ],
-   [
-    558,
     "c"
    ],
    [
@@ -43026,12 +42184,6 @@
     "r"
    ]
   ],
-  "large diamond": [
-   [
-    466,
-    "c"
-   ]
-  ],
   "large empty crate": [
    [
     128,
@@ -43063,12 +42215,6 @@
   "large note": [
    [
     875,
-    "c"
-   ]
-  ],
-  "large opal": [
-   [
-    466,
     "c"
    ]
   ],
@@ -43152,18 +42298,6 @@
    [
     665,
     "r"
-   ]
-  ],
-  "large sky diamond": [
-   [
-    558,
-    "c"
-   ]
-  ],
-  "large sky sapphire (enchanter)": [
-   [
-    203,
-    "c"
    ]
   ],
   "large splinted bronze cloak": [
@@ -43526,12 +42660,6 @@
    [
     611,
     "r"
-   ]
-  ],
-  "light cloth mantle": [
-   [
-    203,
-    "c"
    ]
   ],
   "light damask mantle": [
@@ -44158,12 +43286,6 @@
     "c"
    ]
   ],
-  "mantle of woven grass": [
-   [
-    191,
-    "c"
-   ]
-  ],
   "mantrap root": [
    [
     362,
@@ -44235,12 +43357,6 @@
   "mask of deception": [
    [
     216,
-    "c"
-   ]
-  ],
-  "mask of empowerment": [
-   [
-    466,
     "c"
    ]
   ],
@@ -44546,6 +43662,10 @@
    [
     488,
     "c"
+   ],
+   [
+    719,
+    "c"
    ]
   ],
   "metal disk": [
@@ -44767,12 +43887,6 @@
    ],
    [
     239,
-    "c"
-   ]
-  ],
-  "mithril bands": [
-   [
-    119,
     "c"
    ]
   ],
@@ -45140,12 +44254,6 @@
     "r"
    ]
   ],
-  "nature walkers mantle": [
-   [
-    191,
-    "c"
-   ]
-  ],
   "nature walkers scimitar": [
    [
     189,
@@ -45182,24 +44290,6 @@
    [
     425,
     "r"
-   ]
-  ],
-  "nebulous sapphire": [
-   [
-    500,
-    "c"
-   ]
-  ],
-  "necklace of resolution": [
-   [
-    119,
-    "c"
-   ]
-  ],
-  "necklace of whispering winds": [
-   [
-    203,
-    "c"
    ]
   ],
   "necromancer": [
@@ -46160,12 +45250,6 @@
    [
     568,
     "r"
-   ]
-  ],
-  "pauldrons of piety": [
-   [
-    119,
-    "c"
    ]
   ],
   "pauldrons of the blue sky": [
@@ -47286,12 +46370,6 @@
     "r"
    ]
   ],
-  "pulsating ruby": [
-   [
-    518,
-    "c"
-   ]
-  ],
   "pulsing green stone": [
    [
     189,
@@ -48404,12 +47482,6 @@
     "c"
    ]
   ],
-  "ring of veeshan": [
-   [
-    518,
-    "c"
-   ]
-  ],
   "ringmail armor set": [
    [
     431,
@@ -48638,18 +47710,6 @@
    [
     629,
     "r"
-   ]
-  ],
-  "rod of the protecting winds": [
-   [
-    203,
-    "c"
-   ]
-  ],
-  "rod of warding winds": [
-   [
-    203,
-    "c"
    ]
   ],
   "rod segment i": [
@@ -49853,12 +48913,6 @@
    ],
    [
     583,
-    "c"
-   ]
-  ],
-  "sandals of alacrity": [
-   [
-    500,
     "c"
    ]
   ],
@@ -51134,12 +50188,6 @@
     "r"
    ]
   ],
-  "shillelagh": [
-   [
-    191,
-    "c"
-   ]
-  ],
   "shimmering pearl": [
    [
     117,
@@ -51271,12 +50319,6 @@
   "shiny hunk of metal": [
    [
     686,
-    "c"
-   ]
-  ],
-  "shiny pauldrons": [
-   [
-    119,
     "c"
    ]
   ],
@@ -51458,24 +50500,6 @@
     "r"
    ]
   ],
-  "silken mask": [
-   [
-    203,
-    "c"
-   ]
-  ],
-  "silken strands": [
-   [
-    500,
-    "c"
-   ]
-  ],
-  "silken wrap": [
-   [
-    500,
-    "c"
-   ]
-  ],
   "silver amber ring": [
    [
     722,
@@ -51558,12 +50582,6 @@
     "r"
    ]
   ],
-  "silver hoop": [
-   [
-    119,
-    "c"
-   ]
-  ],
   "silver mask of the slayer": [
    [
     579,
@@ -51644,12 +50662,6 @@
    [
     173,
     "r"
-   ]
-  ],
-  "silvered spiroc necklace": [
-   [
-    119,
-    "c"
    ]
   ],
   "silvermesh leggings": [
@@ -52196,12 +51208,6 @@
     "c"
    ]
   ],
-  "small shield": [
-   [
-    119,
-    "c"
-   ]
-  ],
   "small tattered armor set": [
    [
     642,
@@ -52720,6 +51726,12 @@
     "r"
    ]
   ],
+  "spear of harmony": [
+   [
+    579,
+    "c"
+   ]
+  ],
   "speckled molded mushroom": [
    [
     189,
@@ -52825,24 +51837,6 @@
    ],
    [
     525,
-    "c"
-   ]
-  ],
-  "sphinx claw": [
-   [
-    558,
-    "c"
-   ]
-  ],
-  "sphinx hair cord": [
-   [
-    203,
-    "c"
-   ]
-  ],
-  "sphinx heart amulet": [
-   [
-    518,
     "c"
    ]
   ],
@@ -53040,27 +52034,9 @@
     "c"
    ]
   ],
-  "spiroc banisher focus": [
-   [
-    191,
-    "c"
-   ]
-  ],
-  "spiroc battle staff": [
-   [
-    191,
-    "c"
-   ]
-  ],
   "spiroc earth totem": [
    [
     598,
-    "c"
-   ]
-  ],
-  "spiroc elders totem": [
-   [
-    191,
     "c"
    ]
   ],
@@ -53154,12 +52130,6 @@
     "r"
    ]
   ],
-  "staff of elemental mastery: air": [
-   [
-    466,
-    "c"
-   ]
-  ],
   "staff of elemental mastery: earth": [
    [
     464,
@@ -53202,12 +52172,6 @@
    [
     897,
     "r"
-   ]
-  ],
-  "staff of the magister": [
-   [
-    466,
-    "c"
    ]
   ],
   "staff of the moribund spirits": [
@@ -53527,12 +52491,6 @@
   "storm giant toes": [
    [
     716,
-    "c"
-   ]
-  ],
-  "storm sky opal": [
-   [
-    191,
     "c"
    ]
   ],
@@ -54298,12 +53256,6 @@
     "c"
    ]
   ],
-  "tear of quellious": [
-   [
-    500,
-    "c"
-   ]
-  ],
   "tearons bracer": [
    [
     583,
@@ -54626,21 +53578,9 @@
     "r"
    ]
   ],
-  "thelvorn, blade of light": [
-   [
-    558,
-    "c"
-   ]
-  ],
   "theodores confession": [
    [
     586,
-    "c"
-   ]
-  ],
-  "theurgists star": [
-   [
-    119,
     "c"
    ]
   ],
@@ -54981,18 +53921,6 @@
   "tome of the wheel": [
    [
     721,
-    "c"
-   ]
-  ],
-  "ton pos eye patch": [
-   [
-    500,
-    "c"
-   ]
-  ],
-  "ton pos shoulder wraps": [
-   [
-    500,
     "c"
    ]
   ],
@@ -55752,27 +54680,9 @@
     "r"
    ]
   ],
-  "truewind earring": [
-   [
-    119,
-    "c"
-   ]
-  ],
   "trunts head": [
    [
     497,
-    "c"
-   ]
-  ],
-  "truvinan": [
-   [
-    558,
-    "c"
-   ]
-  ],
-  "truwian baton": [
-   [
-    119,
     "c"
    ]
   ],
@@ -57096,6 +56006,10 @@
     "r"
    ],
    [
+    719,
+    "c"
+   ],
+   [
     809,
     "c"
    ],
@@ -57440,18 +56354,6 @@
   ],
   "wind rune azia": [
    [
-    191,
-    "c"
-   ],
-   [
-    466,
-    "c"
-   ],
-   [
-    518,
-    "c"
-   ],
-   [
     598,
     "c"
    ],
@@ -57461,14 +56363,6 @@
    ]
   ],
   "wind rune beza": [
-   [
-    203,
-    "c"
-   ],
-   [
-    500,
-    "c"
-   ],
    [
     664,
     "c"
@@ -57484,35 +56378,11 @@
   ],
   "wind rune caza": [
    [
-    119,
-    "c"
-   ],
-   [
-    203,
-    "c"
-   ],
-   [
-    500,
-    "c"
-   ],
-   [
-    518,
-    "c"
-   ],
-   [
     899,
     "c"
    ]
   ],
   "wind rune dena": [
-   [
-    191,
-    "c"
-   ],
-   [
-    466,
-    "c"
-   ],
    [
     634,
     "c"
@@ -57532,18 +56402,6 @@
   ],
   "wind rune ena": [
    [
-    119,
-    "c"
-   ],
-   [
-    191,
-    "c"
-   ],
-   [
-    466,
-    "c"
-   ],
-   [
     598,
     "c"
    ],
@@ -57557,14 +56415,6 @@
    ]
   ],
   "wind rune fana": [
-   [
-    203,
-    "c"
-   ],
-   [
-    518,
-    "c"
-   ],
    [
     664,
     "c"
@@ -57580,14 +56430,6 @@
   ],
   "wind rune geza": [
    [
-    500,
-    "c"
-   ],
-   [
-    558,
-    "c"
-   ],
-   [
     634,
     "c"
    ],
@@ -57601,10 +56443,6 @@
    ]
   ],
   "wind rune heda": [
-   [
-    466,
-    "c"
-   ],
    [
     598,
     "c"
@@ -57620,18 +56458,6 @@
   ],
   "wind rune izah": [
    [
-    191,
-    "c"
-   ],
-   [
-    203,
-    "c"
-   ],
-   [
-    558,
-    "c"
-   ],
-   [
     634,
     "c"
    ],
@@ -57645,14 +56471,6 @@
    ]
   ],
   "wind rune jaka": [
-   [
-    466,
-    "c"
-   ],
-   [
-    500,
-    "c"
-   ],
    [
     634,
     "c"
@@ -57668,14 +56486,6 @@
   ],
   "wind rune kala": [
    [
-    119,
-    "c"
-   ],
-   [
-    191,
-    "c"
-   ],
-   [
     598,
     "c"
    ],
@@ -57688,41 +56498,7 @@
     "c"
    ]
   ],
-  "wind rune lena": [
-   [
-    119,
-    "c"
-   ],
-   [
-    466,
-    "c"
-   ],
-   [
-    500,
-    "c"
-   ],
-   [
-    518,
-    "c"
-   ],
-   [
-    558,
-    "c"
-   ]
-  ],
   "wind rune meda": [
-   [
-    119,
-    "c"
-   ],
-   [
-    191,
-    "c"
-   ],
-   [
-    203,
-    "c"
-   ],
    [
     598,
     "c"
@@ -57734,22 +56510,6 @@
   ],
   "wind rune neza": [
    [
-    119,
-    "c"
-   ],
-   [
-    466,
-    "c"
-   ],
-   [
-    500,
-    "c"
-   ],
-   [
-    518,
-    "c"
-   ],
-   [
     598,
     "c"
    ],
@@ -57759,18 +56519,6 @@
    ]
   ],
   "wind rune ozah": [
-   [
-    203,
-    "c"
-   ],
-   [
-    518,
-    "c"
-   ],
-   [
-    558,
-    "c"
-   ],
    [
     634,
     "c"
@@ -57783,12 +56531,6 @@
   "wind tablet": [
    [
     881,
-    "c"
-   ]
-  ],
-  "wind walkers mantle": [
-   [
-    203,
     "c"
    ]
   ],
@@ -58196,12 +56938,6 @@
     "r"
    ]
   ],
-  "worn leather mask": [
-   [
-    191,
-    "c"
-   ]
-  ],
   "worn leather shoulderpads": [
    [
     694,
@@ -58351,12 +57087,6 @@
    ],
    [
     579,
-    "c"
-   ]
-  ],
-  "wus fist of mastery": [
-   [
-    500,
     "c"
    ]
   ],
@@ -71988,14 +70718,14 @@
   },
   {
    "classes": [
-    "?"
+    "All"
    ],
    "era": null,
    "giver": "Vynon Estaliun",
    "items": [
     "Fishy Cat Tail"
    ],
-   "lvl": 7,
+   "lvl": 1,
    "n": "Catfish Tail",
    "need": [
     [
@@ -72019,11 +70749,13 @@
     "a catfisher"
    ],
    "relatedZones": [
-    "Toxxulia Forest"
+    "Toxxulia Forest",
+    "Kerra Island"
    ],
    "rewards": [
     "Brass Ring",
-    "Torch"
+    "Torch",
+    "Corroded Buckler"
    ],
    "t": "Catfish_Tail",
    "zone": "Erudin"
@@ -73140,11 +71872,11 @@
     {
      "c": [
       [
-       "Orb of Clear Water",
+       "Orb of Frozen Water",
        1
       ],
       [
-       "Orb of Frozen Water",
+       "Orb of Clear Water",
        1
       ]
      ],
@@ -73567,11 +72299,11 @@
      "i": 19,
      "in": [
       [
-       "Orb of Clear Water",
+       "Orb of Frozen Water",
        1
       ],
       [
-       "Orb of Frozen Water",
+       "Orb of Clear Water",
        1
       ]
      ],
@@ -73913,355 +72645,16 @@
   },
   {
    "classes": [],
-   "era": null,
+   "era": "Classic Era",
    "giver": null,
-   "items": [
-    "Efreeti's Key",
-    "Jade",
-    "Truewind Earring",
-    "Wind Rune Lena",
-    "Silver Hoop",
-    "Aegis of the Wind",
-    "Wind Rune Meda",
-    "Small Shield",
-    "Pauldrons of Piety",
-    "Wind Rune Caza",
-    "Shiny Pauldrons",
-    "Necklace of Resolution",
-    "Wind Rune Neza",
-    "Silvered Spiroc Necklace",
-    "Theurgist's Star",
-    "Wind Rune Kala",
-    "Djinni Aura",
-    "Efreeti Mace",
-    "Truwian Baton",
-    "Wind Rune Ena",
-    "Mithril Bands",
-    "Efreeti Standard"
-   ],
+   "items": [],
    "lvl": null,
    "n": "Cleric Plane of Sky Tests",
-   "need": [
-    [
-     "Djinni Aura",
-     1
-    ],
-    [
-     "Efreeti Mace",
-     1
-    ],
-    [
-     "Efreeti Standard",
-     1
-    ],
-    [
-     "Efreeti's Key",
-     1
-    ],
-    [
-     "Jade",
-     1
-    ],
-    [
-     "Mithril Bands",
-     1
-    ],
-    [
-     "Shiny Pauldrons",
-     1
-    ],
-    [
-     "Silver Hoop",
-     1
-    ],
-    [
-     "Silvered Spiroc Necklace",
-     1
-    ],
-    [
-     "Small Shield",
-     1
-    ],
-    [
-     "Wind Rune Caza",
-     1
-    ],
-    [
-     "Wind Rune Ena",
-     1
-    ],
-    [
-     "Wind Rune Kala",
-     1
-    ],
-    [
-     "Wind Rune Lena",
-     1
-    ],
-    [
-     "Wind Rune Meda",
-     1
-    ],
-    [
-     "Wind Rune Neza",
-     1
-    ]
-   ],
-   "parts": [
-    {
-     "c": [
-      [
-       "Wind Rune Lena",
-       1
-      ],
-      [
-       "Silver Hoop",
-       1
-      ]
-     ],
-     "n": "Cleric Test of Courage",
-     "r": [
-      "Truewind Earring"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Meda",
-       1
-      ],
-      [
-       "Small Shield",
-       1
-      ]
-     ],
-     "n": "Cleric Test of Skill",
-     "r": [
-      "Aegis of the Wind"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Caza",
-       1
-      ],
-      [
-       "Shiny Pauldrons",
-       1
-      ]
-     ],
-     "n": "Cleric Test of Protection",
-     "r": [
-      "Pauldrons of Piety"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Neza",
-       1
-      ],
-      [
-       "Silvered Spiroc Necklace",
-       1
-      ]
-     ],
-     "n": "Cleric Test of Resolution",
-     "r": [
-      "Necklace of Resolution"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Kala",
-       1
-      ],
-      [
-       "Djinni Aura",
-       1
-      ],
-      [
-       "Efreeti Mace",
-       1
-      ]
-     ],
-     "n": "Cleric Test of Theurgy",
-     "r": [
-      "Theurgist's Star"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Ena",
-       1
-      ],
-      [
-       "Mithril Bands",
-       1
-      ],
-      [
-       "Efreeti Standard",
-       1
-      ]
-     ],
-     "n": "Cleric Test of The Weak",
-     "r": [
-      "Truwian Baton"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Efreeti's Key",
-       1
-      ],
-      [
-       "Jade",
-       1
-      ]
-     ],
-     "n": ""
-    }
-   ],
+   "need": [],
+   "parts": [],
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
-   "split": true,
-   "steps": [
-    {
-     "i": 1,
-     "k": "other",
-     "txt": "Test of Courage"
-    },
-    {
-     "i": 2,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 3,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 4,
-     "k": "other",
-     "txt": "Island 3 - (Gorgalosk)"
-    },
-    {
-     "i": 5,
-     "k": "other",
-     "txt": "Test of Skill"
-    },
-    {
-     "i": 6,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 7,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 8,
-     "k": "other",
-     "txt": "Island 4 - (Keeper of Souls)"
-    },
-    {
-     "i": 9,
-     "k": "other",
-     "txt": "Test of Protection"
-    },
-    {
-     "i": 10,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 11,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 12,
-     "k": "other",
-     "txt": "Island 5 - (The Spiroc Lord)"
-    },
-    {
-     "i": 13,
-     "k": "other",
-     "txt": "Test of Resolution"
-    },
-    {
-     "i": 14,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 15,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 16,
-     "k": "other",
-     "txt": "Island 6 - (Bazzt Zzzt)"
-    },
-    {
-     "i": 17,
-     "k": "other",
-     "txt": "Test of Theurgy"
-    },
-    {
-     "i": 18,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 19,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 20,
-     "k": "other",
-     "txt": "Island 7 - (Sister of the Spire)"
-    },
-    {
-     "i": 21,
-     "k": "other",
-     "txt": "Islands 1.5, 4, 8 - (Noble Dojorn, Overseer of Air, the Hand of Veeshan)"
-    },
-    {
-     "i": 22,
-     "k": "other",
-     "txt": "Test of The Weak"
-    },
-    {
-     "i": 23,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 24,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 25,
-     "k": "other",
-     "txt": "Island 8 - (Eye of Veeshan)"
-    },
-    {
-     "i": 26,
-     "k": "other",
-     "txt": "Islands 1.5, 4, 8 - (Noble Dojorn, Overseer of Air, the Hand of Veeshan)"
-    }
-   ],
    "t": "Cleric_Plane_of_Sky_Tests",
    "zone": null
   },
@@ -80495,11 +78888,11 @@
        1
       ],
       [
-       "Full Pack of Sarnak Heads",
+       "Notes from the Greenmist Tome",
        1
       ],
       [
-       "Notes from the Greenmist Tome",
+       "Full Pack of Sarnak Heads",
        1
       ]
      ],
@@ -81439,21 +79832,21 @@
    "items": [
     "Box For Bones",
     "Bone Chips",
-    "A Box of Bones"
+    "Box of Bones"
    ],
    "lvl": 1,
    "n": "Crush the Undead",
    "need": [
-    [
-     "A Box of Bones",
-     1
-    ],
     [
      "Bone Chips",
      6
     ],
     [
      "Box For Bones",
+     1
+    ],
+    [
+     "Box of Bones",
      1
     ]
    ],
@@ -81469,7 +79862,7 @@
        6
       ],
       [
-       "A Box of Bones",
+       "Box of Bones",
        1
       ]
      ],
@@ -86423,369 +84816,16 @@
   },
   {
    "classes": [],
-   "era": null,
+   "era": "Classic Era",
    "giver": null,
-   "items": [
-    "Efreeti's Key",
-    "Jade",
-    "Drake-Hide Mask",
-    "Wind Rune Meda",
-    "Worn Leather Mask",
-    "Nature Walker's Mantle",
-    "Wind Rune Kala",
-    "Mantle of Woven Grass",
-    "Shillelagh",
-    "Wind Rune Azia",
-    "Efreeti Statuette",
-    "Spiroc Battle Staff",
-    "Spiroc Banisher Focus",
-    "Wind Rune Ena",
-    "Spiroc Elder's Totem",
-    "Ethereal Ruby",
-    "Honeycomb Belt",
-    "Wind Rune Dena",
-    "Divine Honeycomb",
-    "Espri",
-    "Wind Rune Izah",
-    "Storm Sky Opal",
-    "Efreeti Scimitar"
-   ],
+   "items": [],
    "lvl": null,
    "n": "Druid Plane of Sky Tests",
-   "need": [
-    [
-     "Divine Honeycomb",
-     1
-    ],
-    [
-     "Efreeti Scimitar",
-     1
-    ],
-    [
-     "Efreeti Statuette",
-     1
-    ],
-    [
-     "Efreeti's Key",
-     1
-    ],
-    [
-     "Ethereal Ruby",
-     1
-    ],
-    [
-     "Jade",
-     1
-    ],
-    [
-     "Mantle of Woven Grass",
-     1
-    ],
-    [
-     "Spiroc Battle Staff",
-     1
-    ],
-    [
-     "Spiroc Elder's Totem",
-     1
-    ],
-    [
-     "Storm Sky Opal",
-     1
-    ],
-    [
-     "Wind Rune Azia",
-     1
-    ],
-    [
-     "Wind Rune Dena",
-     1
-    ],
-    [
-     "Wind Rune Ena",
-     1
-    ],
-    [
-     "Wind Rune Izah",
-     1
-    ],
-    [
-     "Wind Rune Kala",
-     1
-    ],
-    [
-     "Wind Rune Meda",
-     1
-    ],
-    [
-     "Worn Leather Mask",
-     1
-    ]
-   ],
-   "parts": [
-    {
-     "c": [
-      [
-       "Wind Rune Meda",
-       1
-      ],
-      [
-       "Worn Leather Mask",
-       1
-      ]
-     ],
-     "n": "Druid Test of Wolf",
-     "r": [
-      "Drake-Hide Mask"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Kala",
-       1
-      ],
-      [
-       "Mantle of Woven Grass",
-       1
-      ]
-     ],
-     "n": "Druid Test of Bear",
-     "r": [
-      "Nature Walker's Mantle"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Azia",
-       1
-      ],
-      [
-       "Efreeti Statuette",
-       1
-      ],
-      [
-       "Spiroc Battle Staff",
-       1
-      ]
-     ],
-     "n": "Druid Test of Tree",
-     "r": [
-      "Shillelagh"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Ena",
-       1
-      ],
-      [
-       "Spiroc Elder's Totem",
-       1
-      ],
-      [
-       "Ethereal Ruby",
-       1
-      ]
-     ],
-     "n": "Druid Test of Eagle",
-     "r": [
-      "Spiroc Banisher Focus"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Dena",
-       1
-      ],
-      [
-       "Divine Honeycomb",
-       1
-      ]
-     ],
-     "n": "Druid Test of The Bee",
-     "r": [
-      "Honeycomb Belt"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Izah",
-       1
-      ],
-      [
-       "Storm Sky Opal",
-       1
-      ],
-      [
-       "Efreeti Scimitar",
-       1
-      ]
-     ],
-     "n": "Druid Test of Nature",
-     "r": [
-      "Espri"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Efreeti's Key",
-       1
-      ],
-      [
-       "Jade",
-       1
-      ]
-     ],
-     "n": ""
-    }
-   ],
+   "need": [],
+   "parts": [],
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
-   "split": true,
-   "steps": [
-    {
-     "i": 1,
-     "k": "other",
-     "txt": "Test of Wolf"
-    },
-    {
-     "i": 2,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 3,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 4,
-     "k": "other",
-     "txt": "3 - (Gorgalosk)"
-    },
-    {
-     "i": 5,
-     "k": "other",
-     "txt": "Test of Bear"
-    },
-    {
-     "i": 6,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 7,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 8,
-     "k": "other",
-     "txt": "4 - (Keeper of Souls)"
-    },
-    {
-     "i": 9,
-     "k": "other",
-     "txt": "Test of Tree"
-    },
-    {
-     "i": 10,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 11,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 12,
-     "k": "other",
-     "txt": "1.5, 4, 8 - (Noble Dojorn, Overseer of Air, the Hand of Veeshan)"
-    },
-    {
-     "i": 13,
-     "k": "other",
-     "txt": "5 - (The Spiroc Lord)"
-    },
-    {
-     "i": 14,
-     "k": "other",
-     "txt": "Test of Eagle"
-    },
-    {
-     "i": 15,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 16,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 17,
-     "k": "other",
-     "txt": "5 - (The Spiroc Lord)"
-    },
-    {
-     "i": 18,
-     "k": "other",
-     "txt": "7 - (Sister of the Spire)"
-    },
-    {
-     "i": 19,
-     "k": "other",
-     "txt": "Test of The Bee"
-    },
-    {
-     "i": 20,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 21,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 22,
-     "k": "other",
-     "txt": "6 - (Bazzt Zzzt)"
-    },
-    {
-     "i": 23,
-     "k": "other",
-     "txt": "Test of Nature"
-    },
-    {
-     "i": 24,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 25,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 26,
-     "k": "other",
-     "txt": "8 - (Eye of Veeshan)"
-    },
-    {
-     "i": 27,
-     "k": "other",
-     "txt": "1.5, 4, 8 - (Noble Dojorn, Overseer of Air, the Hand of Veeshan)"
-    }
-   ],
    "t": "Druid_Plane_of_Sky_Tests",
    "zone": null
   },
@@ -89387,350 +87427,16 @@
   },
   {
    "classes": [],
-   "era": null,
+   "era": "Classic Era",
    "giver": null,
-   "items": [
-    "Efreeti's Key",
-    "Jade",
-    "Sphinx Hair Cord",
-    "Wind Rune Meda",
-    "Finely Woven Cloth Cord",
-    "Earring of Displacement",
-    "Wind Rune Caza",
-    "Adamantium Earring",
-    "Wind Walker's Mantle",
-    "Wind Rune Ozah",
-    "Light Cloth Mantle",
-    "Ivory Mask",
-    "Wind Rune Beza",
-    "Silken Mask",
-    "Necklace of Whispering Winds",
-    "Wind Rune Fana",
-    "Glowing Necklace",
-    "Rod of the Protecting Winds",
-    "Wind Rune Izah",
-    "Large Sky Sapphire (Enchanter)",
-    "Efreeti Wind Staff",
-    "Rod of Warding Winds"
-   ],
+   "items": [],
    "lvl": null,
    "n": "Enchanter Plane of Sky Tests",
-   "need": [
-    [
-     "Adamantium Earring",
-     1
-    ],
-    [
-     "Efreeti Wind Staff",
-     1
-    ],
-    [
-     "Efreeti's Key",
-     1
-    ],
-    [
-     "Finely Woven Cloth Cord",
-     1
-    ],
-    [
-     "Glowing Necklace",
-     1
-    ],
-    [
-     "Jade",
-     1
-    ],
-    [
-     "Large Sky Sapphire (Enchanter)",
-     1
-    ],
-    [
-     "Light Cloth Mantle",
-     1
-    ],
-    [
-     "Rod of Warding Winds",
-     1
-    ],
-    [
-     "Silken Mask",
-     1
-    ],
-    [
-     "Wind Rune Beza",
-     1
-    ],
-    [
-     "Wind Rune Caza",
-     1
-    ],
-    [
-     "Wind Rune Fana",
-     1
-    ],
-    [
-     "Wind Rune Izah",
-     1
-    ],
-    [
-     "Wind Rune Meda",
-     1
-    ],
-    [
-     "Wind Rune Ozah",
-     1
-    ]
-   ],
-   "parts": [
-    {
-     "c": [
-      [
-       "Wind Rune Meda",
-       1
-      ],
-      [
-       "Finely Woven Cloth Cord",
-       1
-      ]
-     ],
-     "n": "Enchanter Test of Illusion",
-     "r": [
-      "Sphinx Hair Cord"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Caza",
-       1
-      ],
-      [
-       "Adamantium Earring",
-       1
-      ]
-     ],
-     "n": "Enchanter Test of Dislocation",
-     "r": [
-      "Earring of Displacement"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Ozah",
-       1
-      ],
-      [
-       "Light Cloth Mantle",
-       1
-      ]
-     ],
-     "n": "Enchanter Test of Metamorphism",
-     "r": [
-      "Wind Walker's Mantle"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Beza",
-       1
-      ],
-      [
-       "Silken Mask",
-       1
-      ]
-     ],
-     "n": "Enchanter Test of Deception",
-     "r": [
-      "Ivory Mask"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Fana",
-       1
-      ],
-      [
-       "Glowing Necklace",
-       1
-      ]
-     ],
-     "n": "Enchanter Test of Memorization",
-     "r": [
-      "Necklace of Whispering Winds"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Izah",
-       1
-      ],
-      [
-       "Large Sky Sapphire (Enchanter)",
-       1
-      ],
-      [
-       "Efreeti Wind Staff",
-       1
-      ]
-     ],
-     "n": "Enchanter Test of Incapacitation",
-     "r": [
-      "Rod of the Protecting Winds"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Efreeti's Key",
-       1
-      ],
-      [
-       "Jade",
-       1
-      ],
-      [
-       "Rod of Warding Winds",
-       1
-      ]
-     ],
-     "n": ""
-    }
-   ],
+   "need": [],
+   "parts": [],
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
-   "split": true,
-   "steps": [
-    {
-     "i": 1,
-     "k": "other",
-     "txt": "Test of Illusion"
-    },
-    {
-     "i": 2,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 3,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 4,
-     "k": "other",
-     "txt": "3 - (Gorgalosk)"
-    },
-    {
-     "i": 5,
-     "k": "other",
-     "txt": "Test of Dislocation"
-    },
-    {
-     "i": 6,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 7,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 8,
-     "k": "other",
-     "txt": "6 - (Bazzt Zzzt)"
-    },
-    {
-     "i": 9,
-     "k": "other",
-     "txt": "Test of Metamorphism"
-    },
-    {
-     "i": 10,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 11,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 12,
-     "k": "other",
-     "txt": "4 - (Keeper of Souls)"
-    },
-    {
-     "i": 13,
-     "k": "other",
-     "txt": "Test of Deception"
-    },
-    {
-     "i": 14,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 15,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 16,
-     "k": "other",
-     "txt": "5 - (The Spiroc Lord)"
-    },
-    {
-     "i": 17,
-     "k": "other",
-     "txt": "Test of Memorization"
-    },
-    {
-     "i": 18,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 19,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 20,
-     "k": "other",
-     "txt": "7 - (Sister of the Spire)"
-    },
-    {
-     "i": 21,
-     "k": "other",
-     "txt": "Test of Incapacitation"
-    },
-    {
-     "i": 22,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 23,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 24,
-     "k": "other",
-     "txt": "8 - (Eye of Veeshan)"
-    },
-    {
-     "i": 25,
-     "k": "other",
-     "txt": "1.5, 4, 8 - (Noble Dojorn, Overseer of Air, the Hand of Veeshan)"
-    }
-   ],
    "t": "Enchanter_Plane_of_Sky_Tests",
    "zone": null
   },
@@ -106068,416 +103774,16 @@
   },
   {
    "classes": [],
-   "era": null,
+   "era": "Classic Era",
    "giver": null,
-   "items": [
-    "Efreeti's Key",
-    "Jade",
-    "Bracelet of Clarification",
-    "Wind Rune Lena",
-    "Feathered Cape",
-    "Duennan Shielding Ring",
-    "Wind Rune Ena",
-    "Golden Efreeti Ring",
-    "Staff of The Magister",
-    "Wind Rune Jaka",
-    "Efreeti Magi Staff",
-    "Hazy Opal",
-    "Mask of Empowerment",
-    "Wind Rune Neza",
-    "Ceramic Mask",
-    "Gold White Pendant",
-    "Wind Rune Azia",
-    "Golden Coffer",
-    "Drake-Hide Amice",
-    "Wind Rune Dena",
-    "Large Diamond",
-    "Staff of Elemental Mastery: Air",
-    "Wind Rune Heda",
-    "Djinni Stave",
-    "Crown of Elemental Mastery",
-    "Large Opal"
-   ],
+   "items": [],
    "lvl": null,
    "n": "Magician Plane of Sky Tests",
-   "need": [
-    [
-     "Ceramic Mask",
-     1
-    ],
-    [
-     "Crown of Elemental Mastery",
-     1
-    ],
-    [
-     "Djinni Stave",
-     1
-    ],
-    [
-     "Efreeti Magi Staff",
-     1
-    ],
-    [
-     "Efreeti's Key",
-     1
-    ],
-    [
-     "Feathered Cape",
-     1
-    ],
-    [
-     "Golden Coffer",
-     1
-    ],
-    [
-     "Golden Efreeti Ring",
-     1
-    ],
-    [
-     "Hazy Opal",
-     1
-    ],
-    [
-     "Jade",
-     1
-    ],
-    [
-     "Large Diamond",
-     1
-    ],
-    [
-     "Large Opal",
-     1
-    ],
-    [
-     "Wind Rune Azia",
-     1
-    ],
-    [
-     "Wind Rune Dena",
-     1
-    ],
-    [
-     "Wind Rune Ena",
-     1
-    ],
-    [
-     "Wind Rune Heda",
-     1
-    ],
-    [
-     "Wind Rune Jaka",
-     1
-    ],
-    [
-     "Wind Rune Lena",
-     1
-    ],
-    [
-     "Wind Rune Neza",
-     1
-    ]
-   ],
-   "parts": [
-    {
-     "c": [
-      [
-       "Wind Rune Lena",
-       1
-      ],
-      [
-       "Feathered Cape",
-       1
-      ]
-     ],
-     "n": "Magician Test of Clarification",
-     "r": [
-      "Bracelet of Clarification"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Ena",
-       1
-      ],
-      [
-       "Golden Efreeti Ring",
-       1
-      ]
-     ],
-     "n": "Magician Test of Interpretation",
-     "r": [
-      "Duennan Shielding Ring"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Jaka",
-       1
-      ],
-      [
-       "Hazy Opal",
-       1
-      ],
-      [
-       "Efreeti Magi Staff",
-       1
-      ]
-     ],
-     "n": "Magician Test of Gesticulation",
-     "r": [
-      "Staff of The Magister"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Neza",
-       1
-      ],
-      [
-       "Ceramic Mask",
-       1
-      ]
-     ],
-     "n": "Magician Test of Empowerment",
-     "r": [
-      "Mask of Empowerment"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Azia",
-       1
-      ],
-      [
-       "Golden Coffer",
-       1
-      ]
-     ],
-     "n": "Magician Test of Shielding",
-     "r": [
-      "Gold White Pendant"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Dena",
-       1
-      ],
-      [
-       "Large Diamond",
-       1
-      ]
-     ],
-     "n": "Magician Test of Summoning",
-     "r": [
-      "Drake-Hide Amice"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Heda",
-       1
-      ],
-      [
-       "Djinni Stave",
-       1
-      ],
-      [
-       "Crown of Elemental Mastery",
-       1
-      ],
-      [
-       "Large Opal",
-       1
-      ]
-     ],
-     "n": "Magician Test of Displacement",
-     "r": [
-      "Staff of Elemental Mastery: Air"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Efreeti's Key",
-       1
-      ],
-      [
-       "Jade",
-       1
-      ]
-     ],
-     "n": ""
-    }
-   ],
+   "need": [],
+   "parts": [],
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
-   "split": true,
-   "steps": [
-    {
-     "i": 1,
-     "k": "other",
-     "txt": "Test of Clarification"
-    },
-    {
-     "i": 2,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 3,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 4,
-     "k": "other",
-     "txt": "3 - (Gorgalosk)"
-    },
-    {
-     "i": 5,
-     "k": "other",
-     "txt": "Test of Interpretation"
-    },
-    {
-     "i": 6,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 7,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 8,
-     "k": "other",
-     "txt": "7 - (Sister of the Spire)"
-    },
-    {
-     "i": 9,
-     "k": "other",
-     "txt": "Test of Gesticulation"
-    },
-    {
-     "i": 10,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 11,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 12,
-     "k": "other",
-     "txt": "1.5, 4, 8 - (Noble Dojorn, Overseer of Air, the Hand of Veeshan)"
-    },
-    {
-     "i": 13,
-     "k": "other",
-     "txt": "8 - (Eye of Veeshan)"
-    },
-    {
-     "i": 14,
-     "k": "other",
-     "txt": "Test of Empowerment"
-    },
-    {
-     "i": 15,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 16,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 17,
-     "k": "other",
-     "txt": "4 - (Keeper of Souls)"
-    },
-    {
-     "i": 18,
-     "k": "other",
-     "txt": "Test of Shielding"
-    },
-    {
-     "i": 19,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 20,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 21,
-     "k": "other",
-     "txt": "5 - (The Spiroc Lord)"
-    },
-    {
-     "i": 22,
-     "k": "other",
-     "txt": "Test of Summoning"
-    },
-    {
-     "i": 23,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 24,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 25,
-     "k": "other",
-     "txt": "6 - (Bazzt Zzzt)"
-    },
-    {
-     "i": 26,
-     "k": "other",
-     "txt": "Test of Displacement"
-    },
-    {
-     "i": 27,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 28,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 29,
-     "k": "other",
-     "txt": "7 - (Sister of the Spire)"
-    },
-    {
-     "i": 30,
-     "k": "other",
-     "txt": "7 - (a fatestealer drake, heartsbane drake, a windrider drake, a greater sphinx, undine spirit)"
-    },
-    {
-     "i": 31,
-     "k": "other",
-     "txt": "8 - (Eye of Veeshan)"
-    }
-   ],
    "t": "Magician_Plane_of_Sky_Tests",
    "zone": null
   },
@@ -109810,341 +107116,16 @@
   },
   {
    "classes": [],
-   "era": null,
+   "era": "Classic Era",
    "giver": null,
-   "items": [
-    "Efreeti's Key",
-    "Jade",
-    "Back Straps of Mastery",
-    "Wind Rune Caza",
-    "Silken Strands",
-    "Ton Po's Eye Patch",
-    "Wind Rune Geza",
-    "Cracked Leather Eyepatch",
-    "Sandals of Alacrity",
-    "Wind Rune Jaka",
-    "Dove Slippers",
-    "Ton Po's Shoulder Wraps",
-    "Wind Rune Beza",
-    "Silken Wrap",
-    "Wu's Fist of Mastery",
-    "Wind Rune Neza",
-    "Brass Knuckles",
-    "Nebulous Sapphire",
-    "Golden Sash of Tranquility",
-    "Wind Rune Lena",
-    "Tear of Quellious"
-   ],
+   "items": [],
    "lvl": null,
    "n": "Monk Plane of Sky Tests",
-   "need": [
-    [
-     "Brass Knuckles",
-     1
-    ],
-    [
-     "Cracked Leather Eyepatch",
-     1
-    ],
-    [
-     "Dove Slippers",
-     1
-    ],
-    [
-     "Efreeti's Key",
-     1
-    ],
-    [
-     "Jade",
-     1
-    ],
-    [
-     "Nebulous Sapphire",
-     1
-    ],
-    [
-     "Silken Strands",
-     1
-    ],
-    [
-     "Silken Wrap",
-     1
-    ],
-    [
-     "Tear of Quellious",
-     1
-    ],
-    [
-     "Wind Rune Beza",
-     1
-    ],
-    [
-     "Wind Rune Caza",
-     1
-    ],
-    [
-     "Wind Rune Geza",
-     1
-    ],
-    [
-     "Wind Rune Jaka",
-     1
-    ],
-    [
-     "Wind Rune Lena",
-     1
-    ],
-    [
-     "Wind Rune Neza",
-     1
-    ]
-   ],
-   "parts": [
-    {
-     "c": [
-      [
-       "Wind Rune Caza",
-       1
-      ],
-      [
-       "Silken Strands",
-       1
-      ]
-     ],
-     "n": "Monk Test of Strength",
-     "r": [
-      "Back Straps of Mastery"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Geza",
-       1
-      ],
-      [
-       "Cracked Leather Eyepatch",
-       1
-      ]
-     ],
-     "n": "Monk Test of Sight",
-     "r": [
-      "Ton Po's Eye Patch"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Jaka",
-       1
-      ],
-      [
-       "Dove Slippers",
-       1
-      ]
-     ],
-     "n": "Monk Test of Speed",
-     "r": [
-      "Sandals of Alacrity"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Beza",
-       1
-      ],
-      [
-       "Silken Wrap",
-       1
-      ]
-     ],
-     "n": "Monk Test of Tears",
-     "r": [
-      "Ton Po's Shoulder Wraps"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Neza",
-       1
-      ],
-      [
-       "Brass Knuckles",
-       1
-      ],
-      [
-       "Nebulous Sapphire",
-       1
-      ]
-     ],
-     "n": "Monk Test of Fists",
-     "r": [
-      "Wu's Fist of Mastery"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Lena",
-       1
-      ],
-      [
-       "Tear of Quellious",
-       1
-      ]
-     ],
-     "n": "Monk Test of Tranquility",
-     "r": [
-      "Golden Sash of Tranquility"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Efreeti's Key",
-       1
-      ],
-      [
-       "Jade",
-       1
-      ]
-     ],
-     "n": ""
-    }
-   ],
+   "need": [],
+   "parts": [],
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
-   "split": true,
-   "steps": [
-    {
-     "i": 1,
-     "k": "other",
-     "txt": "Test of Strength"
-    },
-    {
-     "i": 2,
-     "k": "other",
-     "txt": "Reward"
-    },
-    {
-     "i": 3,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 4,
-     "k": "other",
-     "txt": "Island 3 - (Gorgalosk)"
-    },
-    {
-     "i": 5,
-     "k": "other",
-     "txt": "Test of Sight"
-    },
-    {
-     "i": 6,
-     "k": "other",
-     "txt": "Reward"
-    },
-    {
-     "i": 7,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 8,
-     "k": "other",
-     "txt": "Island 4 - (Keeper of Souls)"
-    },
-    {
-     "i": 9,
-     "k": "other",
-     "txt": "Test of Speed"
-    },
-    {
-     "i": 10,
-     "k": "other",
-     "txt": "Reward"
-    },
-    {
-     "i": 11,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 12,
-     "k": "other",
-     "txt": "Island 5 - (The Spiroc Lord)"
-    },
-    {
-     "i": 13,
-     "k": "other",
-     "txt": "Test of Tears"
-    },
-    {
-     "i": 14,
-     "k": "other",
-     "txt": "Reward"
-    },
-    {
-     "i": 15,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 16,
-     "k": "other",
-     "txt": "Island 6 - (Bazzt Zzzt)"
-    },
-    {
-     "i": 17,
-     "k": "other",
-     "txt": "Test of Fists"
-    },
-    {
-     "i": 18,
-     "k": "other",
-     "txt": "Reward"
-    },
-    {
-     "i": 19,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 20,
-     "k": "other",
-     "txt": "Islands 1.5, 4 and 8 - (Noble Dojorn, Overseer of Air, the Hand of Veeshan)"
-    },
-    {
-     "i": 21,
-     "k": "other",
-     "txt": "Island 7 - (Sister of the Spire)"
-    },
-    {
-     "i": 22,
-     "k": "other",
-     "txt": "Test of Tranquility"
-    },
-    {
-     "i": 23,
-     "k": "other",
-     "txt": "Reward"
-    },
-    {
-     "i": 24,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 25,
-     "k": "other",
-     "txt": "Island 8 - (Eye of Veeshan)"
-    }
-   ],
    "t": "Monk_Plane_of_Sky_Tests",
    "zone": null
   },
@@ -111269,11 +108250,11 @@
      "i": 56,
      "in": [
       [
-       "Shackle of Copper",
+       "Shackle of Bronze",
        1
       ],
       [
-       "Shackle of Bronze",
+       "Shackle of Copper",
        1
       ]
      ],
@@ -112122,11 +109103,11 @@
      "i": 8,
      "in": [
       [
-       "The Idol",
+       "Red Sash of Order",
        1
       ],
       [
-       "Red Sash of Order",
+       "The Idol",
        1
       ]
      ],
@@ -113046,11 +110027,11 @@
     {
      "c": [
       [
-       "Head of Sir Edwin Motte",
+       "Apprentice Ring",
        1
       ],
       [
-       "Apprentice Ring",
+       "Head of Sir Edwin Motte",
        1
       ]
      ],
@@ -113060,11 +110041,11 @@
     {
      "c": [
       [
-       "Twisted Bone Earring",
+       "Apprentice Ring",
        1
       ],
       [
-       "Apprentice Ring",
+       "Twisted Bone Earring",
        1
       ]
      ],
@@ -113092,15 +110073,15 @@
        1
       ],
       [
+       "Apprentice Ring",
+       1
+      ],
+      [
        "Twisted Bone Earring",
        1
       ],
       [
        "Head of Sir Edwin Motte",
-       1
-      ],
-      [
-       "Apprentice Ring",
        1
       ]
      ],
@@ -113301,11 +110282,11 @@
      "i": 4,
      "in": [
       [
-       "Head of Sir Edwin Motte",
+       "Apprentice Ring",
        1
       ],
       [
-       "Apprentice Ring",
+       "Head of Sir Edwin Motte",
        1
       ]
      ],
@@ -113321,11 +110302,11 @@
      "i": 5,
      "in": [
       [
-       "Twisted Bone Earring",
+       "Apprentice Ring",
        1
       ],
       [
-       "Apprentice Ring",
+       "Twisted Bone Earring",
        1
       ]
      ],
@@ -113374,15 +110355,15 @@
        1
       ],
       [
+       "Apprentice Ring",
+       1
+      ],
+      [
        "Twisted Bone Earring",
        1
       ],
       [
        "Head of Sir Edwin Motte",
-       1
-      ],
-      [
-       "Apprentice Ring",
        1
       ]
      ],
@@ -113979,341 +110960,16 @@
   },
   {
    "classes": [],
-   "era": null,
+   "era": "Classic Era",
    "giver": null,
-   "items": [
-    "Efreeti's Key",
-    "Jade",
-    "Bloody Griffon-Hide Wrist Guard",
-    "Wind Rune Lena",
-    "Griffon's Beak",
-    "Cloak of Spiroc Feathers",
-    "Wind Rune Neza",
-    "Black Silk Cape",
-    "Bloodsoaked Raiment",
-    "Wind Rune Ozah",
-    "Fine Cloth Raiment",
-    "Sphinx Heart Amulet",
-    "Wind Rune Azia",
-    "Pulsating Ruby",
-    "Gorgon Head Staff",
-    "Wind Rune Fana",
-    "Gorgon Head",
-    "Efreeti Great Staff",
-    "Band of Wailing Winds",
-    "Wind Rune Caza",
-    "Ring of Veeshan"
-   ],
+   "items": [],
    "lvl": null,
    "n": "Necromancer Plane of Sky Tests",
-   "need": [
-    [
-     "Black Silk Cape",
-     1
-    ],
-    [
-     "Efreeti Great Staff",
-     1
-    ],
-    [
-     "Efreeti's Key",
-     1
-    ],
-    [
-     "Fine Cloth Raiment",
-     1
-    ],
-    [
-     "Gorgon Head",
-     1
-    ],
-    [
-     "Griffon's Beak",
-     1
-    ],
-    [
-     "Jade",
-     1
-    ],
-    [
-     "Pulsating Ruby",
-     1
-    ],
-    [
-     "Ring of Veeshan",
-     1
-    ],
-    [
-     "Wind Rune Azia",
-     1
-    ],
-    [
-     "Wind Rune Caza",
-     1
-    ],
-    [
-     "Wind Rune Fana",
-     1
-    ],
-    [
-     "Wind Rune Lena",
-     1
-    ],
-    [
-     "Wind Rune Neza",
-     1
-    ],
-    [
-     "Wind Rune Ozah",
-     1
-    ]
-   ],
-   "parts": [
-    {
-     "c": [
-      [
-       "Wind Rune Lena",
-       1
-      ],
-      [
-       "Griffon's Beak",
-       1
-      ]
-     ],
-     "n": "Necromancer Test of Flight",
-     "r": [
-      "Bloody Griffon-Hide Wrist Guard"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Neza",
-       1
-      ],
-      [
-       "Black Silk Cape",
-       1
-      ]
-     ],
-     "n": "Necromancer Test of Power",
-     "r": [
-      "Cloak of Spiroc Feathers"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Ozah",
-       1
-      ],
-      [
-       "Fine Cloth Raiment",
-       1
-      ]
-     ],
-     "n": "Necromancer Test of Mind",
-     "r": [
-      "Bloodsoaked Raiment"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Azia",
-       1
-      ],
-      [
-       "Pulsating Ruby",
-       1
-      ]
-     ],
-     "n": "Necromancer Test of Heart",
-     "r": [
-      "Sphinx Heart Amulet"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Fana",
-       1
-      ],
-      [
-       "Gorgon Head",
-       1
-      ],
-      [
-       "Efreeti Great Staff",
-       1
-      ]
-     ],
-     "n": "Necromancer Test of Hands",
-     "r": [
-      "Gorgon Head Staff"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Caza",
-       1
-      ],
-      [
-       "Ring of Veeshan",
-       1
-      ]
-     ],
-     "n": "Necromancer Test of Finger",
-     "r": [
-      "Band of Wailing Winds"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Efreeti's Key",
-       1
-      ],
-      [
-       "Jade",
-       1
-      ]
-     ],
-     "n": ""
-    }
-   ],
+   "need": [],
+   "parts": [],
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
-   "split": true,
-   "steps": [
-    {
-     "i": 1,
-     "k": "other",
-     "txt": "Test of Flight"
-    },
-    {
-     "i": 2,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 3,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 4,
-     "k": "other",
-     "txt": "3 - (Gorgalosk)"
-    },
-    {
-     "i": 5,
-     "k": "other",
-     "txt": "Test of Power"
-    },
-    {
-     "i": 6,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 7,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 8,
-     "k": "other",
-     "txt": "4 - (Keeper of Souls)"
-    },
-    {
-     "i": 9,
-     "k": "other",
-     "txt": "Test of Mind"
-    },
-    {
-     "i": 10,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 11,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 12,
-     "k": "other",
-     "txt": "5 - (The Spiroc Lord)"
-    },
-    {
-     "i": 13,
-     "k": "other",
-     "txt": "Test of Heart"
-    },
-    {
-     "i": 14,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 15,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 16,
-     "k": "other",
-     "txt": "6 - (Bazzt Zzzt)"
-    },
-    {
-     "i": 17,
-     "k": "other",
-     "txt": "Test of Hands"
-    },
-    {
-     "i": 18,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 19,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 20,
-     "k": "other",
-     "txt": "3 - (Gorgalosk)"
-    },
-    {
-     "i": 21,
-     "k": "other",
-     "txt": "1.5, 4, 8 - (Noble Dojorn, Overseer of Air, the Hand of Veeshan)"
-    },
-    {
-     "i": 22,
-     "k": "other",
-     "txt": "Test of Finger"
-    },
-    {
-     "i": 23,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 24,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 25,
-     "k": "other",
-     "txt": "7 - (Sister of the Spire)"
-    }
-   ],
    "t": "Necromancer_Plane_of_Sky_Tests",
    "zone": null
   },
@@ -118155,261 +114811,16 @@
   },
   {
    "classes": [],
-   "era": null,
+   "era": "Classic Era",
    "giver": null,
-   "items": [
-    "Efreeti's Key",
-    "Jade",
-    "Truvinan",
-    "Wind Rune Izah",
-    "Efreeti Zweihander",
-    "Large Sky Diamond",
-    "Aldryn, Blade of the Ocean",
-    "Wind Rune Ozah",
-    "Bixie Sword Blade",
-    "Thelvorn, Blade of Light",
-    "Wind Rune Geza",
-    "Golden Hilt",
-    "Sphinx Claw",
-    "Girdle of Faith",
-    "Wind Rune Lena",
-    "Ivory Sky Diamond"
-   ],
+   "items": [],
    "lvl": null,
    "n": "Paladin Plane of Sky Tests",
-   "need": [
-    [
-     "Bixie Sword Blade",
-     1
-    ],
-    [
-     "Efreeti Zweihander",
-     1
-    ],
-    [
-     "Efreeti's Key",
-     1
-    ],
-    [
-     "Golden Hilt",
-     1
-    ],
-    [
-     "Ivory Sky Diamond",
-     1
-    ],
-    [
-     "Jade",
-     1
-    ],
-    [
-     "Large Sky Diamond",
-     1
-    ],
-    [
-     "Sphinx Claw",
-     1
-    ],
-    [
-     "Wind Rune Geza",
-     1
-    ],
-    [
-     "Wind Rune Izah",
-     1
-    ],
-    [
-     "Wind Rune Lena",
-     1
-    ],
-    [
-     "Wind Rune Ozah",
-     1
-    ]
-   ],
-   "parts": [
-    {
-     "c": [
-      [
-       "Wind Rune Izah",
-       1
-      ],
-      [
-       "Large Sky Diamond",
-       1
-      ],
-      [
-       "Efreeti Zweihander",
-       1
-      ]
-     ],
-     "n": "Paladin Test of Compassion",
-     "r": [
-      "Truvinan"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Ozah",
-       1
-      ],
-      [
-       "Bixie Sword Blade",
-       1
-      ]
-     ],
-     "n": "Paladin Test of Sacrifice",
-     "r": [
-      "Aldryn, Blade of the Ocean"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Geza",
-       1
-      ],
-      [
-       "Golden Hilt",
-       1
-      ],
-      [
-       "Sphinx Claw",
-       1
-      ]
-     ],
-     "n": "Paladin Test of Love",
-     "r": [
-      "Thelvorn, Blade of Light"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Wind Rune Lena",
-       1
-      ],
-      [
-       "Ivory Sky Diamond",
-       1
-      ]
-     ],
-     "n": "Paladin Test of Spirit",
-     "r": [
-      "Girdle of Faith"
-     ]
-    },
-    {
-     "c": [
-      [
-       "Efreeti's Key",
-       1
-      ],
-      [
-       "Jade",
-       1
-      ]
-     ],
-     "n": ""
-    }
-   ],
+   "need": [],
+   "parts": [],
    "relatedNpcs": [],
    "relatedZones": [],
    "rewards": [],
-   "split": true,
-   "steps": [
-    {
-     "i": 1,
-     "k": "other",
-     "txt": "Test of Compassion"
-    },
-    {
-     "i": 2,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 3,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 4,
-     "k": "other",
-     "txt": "1.5, 4, 8 - (Noble Dojorn, Overseer of Air, the Hand of Veeshan)"
-    },
-    {
-     "i": 5,
-     "k": "other",
-     "txt": "8 - (Eye of Veeshan)"
-    },
-    {
-     "i": 6,
-     "k": "other",
-     "txt": "Test of Sacrifice"
-    },
-    {
-     "i": 7,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 8,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 9,
-     "k": "other",
-     "txt": "6 - (Bazzt Zzzt)"
-    },
-    {
-     "i": 10,
-     "k": "other",
-     "txt": "Test of Love"
-    },
-    {
-     "i": 11,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 12,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 13,
-     "k": "other",
-     "txt": "7 - (a fatestealer drake, heartsbane drake, a windrider drake, a greater sphinx, undine spirit)"
-    },
-    {
-     "i": 14,
-     "k": "other",
-     "txt": "7 - (Sister of the Spire)"
-    },
-    {
-     "i": 15,
-     "k": "other",
-     "txt": "Test of Spirit"
-    },
-    {
-     "i": 16,
-     "k": "other",
-     "txt": ""
-    },
-    {
-     "i": 17,
-     "k": "other",
-     "txt": "(Plane of Sky Trash Mobs)"
-    },
-    {
-     "i": 18,
-     "k": "other",
-     "txt": "5 - (The Spiroc Lord)"
-    }
-   ],
    "t": "Paladin_Plane_of_Sky_Tests",
    "zone": null
   },
@@ -120767,7 +117178,7 @@
     "Mask of the Songbird",
     "Denon's Horn of Disaster",
     "Fae Amulet",
-    "Harmonic Spear",
+    "Spear of Harmony",
     "Troubadour's Helm",
     "Troubadour's Vambraces",
     "Troubadour's Breastplate",
@@ -121531,10 +117942,6 @@
      1
     ],
     [
-     "Harmonic Spear",
-     1
-    ],
-    [
      "Harvester",
      1
     ],
@@ -122131,6 +118538,10 @@
      1
     ],
     [
+     "Spear of Harmony",
+     1
+    ],
+    [
      "Spirit Caller's Boots",
      1
     ],
@@ -122688,7 +119099,7 @@
        1
       ],
       [
-       "Harmonic Spear",
+       "Spear of Harmony",
        1
       ],
       [
@@ -124010,11 +120421,11 @@
        1
       ],
       [
-       "Dragon Blood",
+       "Dragonbane Herb",
        1
       ],
       [
-       "Dragonbane Herb",
+       "Dragon Blood",
        1
       ]
      ],
@@ -124595,11 +121006,11 @@
     {
      "c": [
       [
-       "Seal of Vegalys",
+       "Qeynos Badge of Honor",
        1
       ],
       [
-       "Qeynos Badge of Honor",
+       "Seal of Vegalys",
        1
       ]
      ],
@@ -125100,11 +121511,11 @@
      "i": 31,
      "in": [
       [
-       "Seal of Vegalys",
+       "Qeynos Badge of Honor",
        1
       ],
       [
-       "Qeynos Badge of Honor",
+       "Seal of Vegalys",
        1
       ]
      ],
@@ -128737,7 +125148,7 @@
     {
      "i": 2,
      "k": "other",
-     "txt": "Vial of Swirling Smoke (vendor)"
+     "txt": "Vial of Swirling Smoke (vendor - see item page notes for tips to acquire)"
     },
     {
      "gold": 10000,
@@ -128984,11 +125395,11 @@
     {
      "c": [
       [
-       "Di'Zok Signet of Service",
+       "Head of Skargus",
        1
       ],
       [
-       "Head of Skargus",
+       "Di'Zok Signet of Service",
        1
       ]
      ],
@@ -129132,11 +125543,11 @@
      "i": 11,
      "in": [
       [
-       "Di'Zok Signet of Service",
+       "Head of Skargus",
        1
       ],
       [
-       "Head of Skargus",
+       "Di'Zok Signet of Service",
        1
       ]
      ],
@@ -140753,26 +137164,26 @@
    "classes": [
     "Cleric"
    ],
-   "era": null,
+   "era": "Classic Era",
    "giver": "Lumi Stergnon",
    "items": [
     "Box For Bones",
     "Bone Chips",
-    "A Box of Bones"
+    "Box of Bones"
    ],
    "lvl": 1,
    "n": "Skeleton Killing",
    "need": [
     [
-     "A Box of Bones",
-     1
-    ],
-    [
      "Bone Chips",
-     1
+     6
     ],
     [
      "Box For Bones",
+     1
+    ],
+    [
+     "Box of Bones",
      1
     ]
    ],
@@ -140785,10 +137196,10 @@
       ],
       [
        "Bone Chips",
-       1
+       6
       ],
       [
-       "A Box of Bones",
+       "Box of Bones",
        1
       ]
      ],
@@ -142892,6 +139303,8 @@
    "era": "Classic Era",
    "giver": "Crusader Iktra",
    "items": [
+    "Metal Bits",
+    "Water Flask",
     "Small Piece of High Quality Ore",
     "Small Brick of High Quality Ore"
    ],
@@ -142905,11 +139318,23 @@
     [
      "Small Piece of High Quality Ore",
      1
+    ],
+    [
+     "Small Piece of Ore",
+     8
+    ],
+    [
+     "Water Flask",
+     4
     ]
    ],
    "parts": [
     {
      "c": [
+      [
+       "Metal Bits",
+       4
+      ],
       [
        "Small Piece of High Quality Ore",
        1
@@ -147784,12 +144209,12 @@
        4
       ],
       [
-       "Third part of an Iceclad Map",
-       4
-      ],
-      [
        "Pieces of the Iceclad Map",
        1
+      ],
+      [
+       "Third part of an Iceclad Map",
+       4
       ]
      ],
      "g": "Bloodmaw",
@@ -147905,12 +144330,12 @@
        4
       ],
       [
-       "Third part of an Iceclad Map",
-       4
-      ],
-      [
        "Pieces of the Iceclad Map",
        1
+      ],
+      [
+       "Third part of an Iceclad Map",
+       4
       ]
      ],
      "k": "give",
@@ -150955,7 +147380,7 @@
    "classes": [
     "Paladin"
    ],
-   "era": "EpicQuests Era",
+   "era": "Classic Era",
    "giver": "Ryshon Hunsti",
    "items": [
     "Note to Kanthuk",
@@ -151003,7 +147428,6 @@
      1
     ]
    ],
-   "oe": true,
    "parts": [
     {
      "c": [
@@ -151163,15 +147587,15 @@
      "i": 12,
      "in": [
       [
-       "Blade of Nobility",
-       1
-      ],
-      [
        "Hilt of the Nobleman",
        1
       ],
       [
        "Amstaf's Scroll",
+       1
+      ],
+      [
+       "Blade of Nobility",
        1
       ],
       [
@@ -151459,7 +147883,8 @@
     "A Dark Reaver",
     "Burning Soul of the Pious",
     "Pestilence Scythe",
-    "Burning Soul of the Pestilent"
+    "Burning Soul of the Pestilent",
+    "Burning Soul of the Virtuous"
    ],
    "lvl": 46,
    "n": "The Torrid Corruptor",
@@ -151474,6 +147899,10 @@
     ],
     [
      "Burning Soul of the Pious",
+     1
+    ],
+    [
+     "Burning Soul of the Virtuous",
      1
     ],
     [
@@ -151523,6 +147952,15 @@
      ],
      "g": "Luxio Nulsis",
      "n": "Give Luxio Nulsis in East Freeport the three souls and Soulfire. Requires Dismal"
+    },
+    {
+     "c": [
+      [
+       "Burning Soul of the Virtuous",
+       1
+      ]
+     ],
+     "n": ""
     }
    ],
    "relatedNpcs": [
@@ -151542,6 +147980,7 @@
     "A Dark Reaver": "base",
     "Burning Soul of the Pestilent": "base",
     "Burning Soul of the Pious": "base",
+    "Burning Soul of the Virtuous": "base",
     "Pestilence Scythe": "base",
     "SoulFire": "base"
    },
@@ -151644,6 +148083,12 @@
      "i": 13,
      "k": "kill",
      "mob": "Inte Akera",
+     "out": [
+      [
+       "Burning Soul of the Virtuous",
+       1
+      ]
+     ],
      "txt": "Kill Inte Akera and loot the Burning Soul of the Virtuous. Note: If you are in a group, the the soul is linked to who turns in the 500 platinum to spawn Inte."
     },
     {
@@ -154279,7 +150724,6 @@
     "Driftwood Pipe",
     "Basalt Drake Scales",
     "Fishbone Earring",
-    "Cracked Glass Key",
     "Barbed Bone Chips"
    ],
    "lvl": null,
@@ -154323,10 +150767,6 @@
     ],
     [
      "Cloak Sectional Mold",
-     1
-    ],
-    [
-     "Cracked Glass Key",
      1
     ],
     [
@@ -154720,14 +151160,6 @@
        1
       ],
       [
-       "Terror Spines",
-       1
-      ],
-      [
-       "Cracked Glass Key",
-       1
-      ],
-      [
        "Barbed Bone Chips",
        1
       ]
@@ -154758,6 +151190,16 @@
      ],
      "g": "Vrynn",
      "n": "Cazic-Thule"
+    },
+    {
+     "c": [
+      [
+       "Terror Spines",
+       1
+      ]
+     ],
+     "g": "Vrynn",
+     "n": "Najena"
     },
     {
      "c": [
@@ -164112,11 +160554,11 @@
     {
      "c": [
       [
-       "Bunker Cell No 1",
+       "Bog Juice",
        1
       ],
       [
-       "Bog Juice",
+       "Bunker Cell No 1",
        1
       ]
      ],
@@ -164350,11 +160792,11 @@
      "i": 5,
      "in": [
       [
-       "Bunker Cell No 1",
+       "Bog Juice",
        1
       ],
       [
-       "Bog Juice",
+       "Bunker Cell No 1",
        1
       ]
      ],
@@ -164780,10 +161222,6 @@
     "The Temple of Droga"
    ]
   },
-  "a box of bones": {
-   "k": [],
-   "z": []
-  },
   "a box of cat bones": {
    "k": [],
    "z": []
@@ -164804,13 +161242,9 @@
   "a broom": {
    "k": [
     "drop",
-    "drop",
     "drop"
    ],
    "m": {
-    "Lake Rathetear": [
-     "an alligator"
-    ],
     "Najena": [
      "a goblin magician",
      "a magician",
@@ -164823,7 +161257,6 @@
    },
    "z": [
     "Temple of Cazic-Thule",
-    "Lake Rathetear",
     "Najena"
    ]
   },
@@ -165751,20 +162184,6 @@
   "adamantium coldain insignia ring": {
    "k": [],
    "z": []
-  },
-  "adamantium earring": {
-   "isl": "6",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Bazzt Zzzt"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
   },
   "aegis of life": {
    "k": [],
@@ -169878,20 +166297,6 @@
     "Misty Thicket"
    ]
   },
-  "bixie sword blade": {
-   "isl": "6",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Bazzt Zzzt"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "black burrow stout": {
    "k": [
     "vendor"
@@ -170081,7 +166486,6 @@
    "z": []
   },
   "black silk cape": {
-   "isl": "4",
    "k": [
     "drop"
    ],
@@ -172867,6 +169271,10 @@
    "k": [],
    "z": []
   },
+  "box of bones": {
+   "k": [],
+   "z": []
+  },
   "box of remains": {
    "k": [],
    "z": []
@@ -173345,10 +169753,6 @@
    "k": [],
    "z": []
   },
-  "brass knuckles": {
-   "k": [],
-   "z": []
-  },
   "brazen brass kilij": {
    "k": [],
    "z": []
@@ -173771,6 +170175,19 @@
    },
    "z": [
     "The Lair of the Splitpaw"
+   ]
+  },
+  "burning soul of the virtuous": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "The Plane of Sky": [
+     "Inte Akera"
+    ]
+   },
+   "z": [
+    "The Plane of Sky"
    ]
   },
   "burnished wooden stave": {
@@ -175723,20 +172140,6 @@
     "The Southern Desert of Ro"
    ]
   },
-  "ceramic mask": {
-   "isl": "4",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Keeper of Souls"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "ceremonial belt": {
    "isl": "5",
    "k": [
@@ -177295,32 +173698,6 @@
     "The Northern Desert of Ro"
    ]
   },
-  "cracked glass key": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Estate of Unrest": [
-     "an undead knight of Unrest"
-    ]
-   },
-   "z": [
-    "The Estate of Unrest"
-   ]
-  },
-  "cracked leather eyepatch": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Keeper of Souls"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "cracked mirror of self-loathing": {
    "k": [],
    "z": []
@@ -177424,7 +173801,6 @@
    "z": []
   },
   "crown of elemental mastery": {
-   "isl": "7",
    "k": [
     "drop"
    ],
@@ -179765,20 +176141,6 @@
    },
    "z": []
   },
-  "divine honeycomb": {
-   "isl": "6",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Bazzt Zzzt"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "diviners bowl": {
    "k": [
     "drop"
@@ -179803,34 +176165,6 @@
    },
    "z": [
     "Chardok"
-   ]
-  },
-  "djinni aura": {
-   "isl": "7",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Sister of the Spire"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "djinni stave": {
-   "isl": "7",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Sister of the Spire"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
    ]
   },
   "djinni war blade": {
@@ -179861,10 +176195,6 @@
    ]
   },
   "doogles signature souvenir mug": {
-   "k": [],
-   "z": []
-  },
-  "dove slippers": {
    "k": [],
    "z": []
   },
@@ -180707,81 +177037,7 @@
     "The Plane of Sky"
    ]
   },
-  "efreeti great staff": {
-   "isl": "1.5, 4, 8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Eye of Veeshan",
-     "Noble Dojorn"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "efreeti long sword": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Noble Dojorn"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "efreeti mace": {
-   "isl": "1.5, 4, 8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Noble Dojorn",
-     "Overseer of Air"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "efreeti magi staff": {
-   "isl": "1.5, 4, 8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Noble Dojorn",
-     "Overseer of Air"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "efreeti scimitar": {
-   "isl": "1.5, 4, 8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Noble Dojorn",
-     "Overseer of Air"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "efreeti standard": {
-   "isl": "1.5, 4, 8",
    "k": [
     "drop"
    ],
@@ -180892,36 +177148,6 @@
    "m": {
     "The Plane of Sky": [
      "The Hand of Veeshan",
-     "Noble Dojorn",
-     "Overseer of Air"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "efreeti wind staff": {
-   "isl": "1.5, 4, 8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Noble Dojorn",
-     "The Hand of Veeshan"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "efreeti zweihander": {
-   "isl": "1.5, 4, 8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
      "Noble Dojorn",
      "Overseer of Air"
     ]
@@ -181962,20 +178188,6 @@
     "The Plane of Sky"
    ]
   },
-  "ethereal ruby": {
-   "isl": "7",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Sister of the Spire"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "ethereal suspension": {
    "k": [
     "vendor",
@@ -182407,20 +178619,6 @@
    "k": [],
    "z": []
   },
-  "feathered cape": {
-   "isl": "3",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Gorgalosk"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "fell blade guild note": {
    "k": [],
    "z": []
@@ -182601,20 +178799,6 @@
    "k": [],
    "z": []
   },
-  "fine cloth raiment": {
-   "isl": "5",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "The Spiroc Lord"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "fine coral mesh": {
    "k": [
     "vendor",
@@ -182761,11 +178945,6 @@
    "z": [
     "The Plane of Sky"
    ]
-  },
-  "finely woven cloth cord": {
-   "isl": "3",
-   "k": [],
-   "z": []
   },
   "finished tsuba": {
    "k": [],
@@ -187227,20 +183406,6 @@
     "The City of Guk"
    ]
   },
-  "glowing necklace": {
-   "isl": "7",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Sister of the Spire"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "glowing silver wand": {
    "k": [],
    "z": []
@@ -188012,50 +184177,6 @@
    "k": [],
    "z": []
   },
-  "golden coffer": {
-   "isl": "5",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "The Spiroc Lord"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "golden efreeti ring": {
-   "isl": "7",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Sister of the Spire"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "golden hilt": {
-   "isl": "7",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "a greater sphinx",
-     "a heartsbane drake",
-     "an undine spirit"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "golden locket": {
    "k": [
     "drop"
@@ -188124,20 +184245,6 @@
    },
    "z": [
     "The Crypt of Dalnir"
-   ]
-  },
-  "gorgon head": {
-   "isl": "3",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Gorgalosk"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
    ]
   },
   "grachnists head": {
@@ -188517,11 +184624,6 @@
    "z": [
     "The Plane of Sky"
    ]
-  },
-  "griffons beak": {
-   "isl": "3",
-   "k": [],
-   "z": []
   },
   "grilled rat ears": {
    "k": [
@@ -188976,10 +185078,6 @@
    },
    "z": []
   },
-  "harmonic spear": {
-   "k": [],
-   "z": []
-  },
   "harness of control": {
    "k": [],
    "z": []
@@ -188987,20 +185085,6 @@
   "harvester": {
    "k": [],
    "z": []
-  },
-  "hazy opal": {
-   "isl": "8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Eye of Veeshan"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
   },
   "head housekeepers log": {
    "k": [
@@ -190119,8 +186203,7 @@
    ],
    "m": {
     "Najena": [
-     "A Skeleton (Najena)",
-     "Ekeros"
+     "A Skeleton (Najena)"
     ]
    },
    "z": [
@@ -192044,20 +188127,6 @@
   "ivandyrs hoop": {
    "k": [],
    "z": []
-  },
-  "ivory sky diamond": {
-   "isl": "5",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "The Spiroc Lord"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
   },
   "jacinth": {
    "k": [
@@ -194425,20 +190494,6 @@
     "Halas"
    ]
   },
-  "large diamond": {
-   "isl": "6",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Bazzt Zzzt"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "large empty crate": {
    "k": [],
    "z": []
@@ -194472,20 +190527,6 @@
   "large note": {
    "k": [],
    "z": []
-  },
-  "large opal": {
-   "isl": "8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Eye of Veeshan"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
   },
   "large patchwork boots": {
    "k": [],
@@ -194675,25 +190716,6 @@
     "The Western Plains of Karana",
     "The Steamfont Mountains"
    ]
-  },
-  "large sky diamond": {
-   "isl": "8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Eye of Veeshan"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "large sky sapphire (enchanter)": {
-   "isl": "8",
-   "k": [],
-   "z": []
   },
   "large tattered belt": {
    "k": [],
@@ -195425,20 +191447,6 @@
   "library of erudin": {
    "k": [],
    "z": []
-  },
-  "light cloth mantle": {
-   "isl": "4",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Keeper of Souls"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
   },
   "light damask mantle": {
    "isl": "5",
@@ -197163,20 +193171,6 @@
    "k": [],
    "z": []
   },
-  "mantle of woven grass": {
-   "isl": "4",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Keeper of Souls"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "mantrap root": {
    "k": [
     "drop",
@@ -198093,20 +194087,6 @@
    ],
    "z": [
     "Misty Thicket"
-   ]
-  },
-  "mithril bands": {
-   "isl": "8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Eye of Veeshan"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
    ]
   },
   "mithril coldain insignia ring": {
@@ -199180,19 +195160,6 @@
    },
    "z": [
     "Dragon Necropolis"
-   ]
-  },
-  "nebulous sapphire": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Sister of the Spire"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
    ]
   },
   "necromancer blood": {
@@ -202949,6 +198916,10 @@
      [
       "Amber (NPC)",
       "(-184, 202)"
+     ],
+     [
+      "Amber",
+      "(-182.6, 203.66)"
      ]
     ],
     "North Kaladim": [
@@ -203931,20 +199902,6 @@
   "pulsating hyacinth telesm": {
    "k": [],
    "z": []
-  },
-  "pulsating ruby": {
-   "isl": "6",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Bazzt Zzzt"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
   },
   "pulsing green stone": {
    "k": [
@@ -206129,20 +202086,6 @@
     "The Southern Desert of Ro"
    ]
   },
-  "ring of veeshan": {
-   "isl": "7",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Sister of the Spire"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "ripened heartfruit": {
    "k": [
     "forage"
@@ -206300,10 +202243,6 @@
    ]
   },
   "rod of insidious glamour": {
-   "k": [],
-   "z": []
-  },
-  "rod of warding winds": {
    "k": [],
    "z": []
   },
@@ -209895,11 +205834,6 @@
    "k": [],
    "z": []
   },
-  "shiny pauldrons": {
-   "isl": "5",
-   "k": [],
-   "z": []
-  },
   "shiny robe of the underfoot": {
    "k": [],
    "z": []
@@ -210532,46 +206466,6 @@
    },
    "z": []
   },
-  "silken mask": {
-   "isl": "5",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "The Spiroc Lord"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "silken strands": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Gorgalosk"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "silken wrap": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Bazzt Zzzt"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "silver bar": {
    "k": [
     "drop",
@@ -210722,20 +206616,6 @@
    "m": {
     "The Plane of Sky": [
      "an azarack"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "silver hoop": {
-   "isl": "3",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Gorgalosk"
     ]
    },
    "z": [
@@ -211027,20 +206907,6 @@
    },
    "z": [
     "Temple of Cazic-Thule"
-   ]
-  },
-  "silvered spiroc necklace": {
-   "isl": "6",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Bazzt Zzzt"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
    ]
   },
   "silvermesh leggings": {
@@ -212806,20 +208672,6 @@
    "k": [],
    "z": []
   },
-  "small shield": {
-   "isl": "4",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Keeper of Souls"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "small tattered dress": {
    "k": [
     "drop"
@@ -213586,6 +209438,10 @@
    "k": [],
    "z": []
   },
+  "spear of harmony": {
+   "k": [],
+   "z": []
+  },
   "speckled molded mushroom": {
    "k": [
     "forage"
@@ -213845,20 +209701,6 @@
    },
    "z": [
     "The Estate of Unrest"
-   ]
-  },
-  "sphinx claw": {
-   "isl": "7",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Sister of the Spire"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
    ]
   },
   "sphinxian circlet": {
@@ -214221,35 +210063,7 @@
     "The Plane of Sky"
    ]
   },
-  "spiroc battle staff": {
-   "isl": "5",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "The Spiroc Lord"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "spiroc earth totem": {
-   "isl": "5",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "The Spiroc Lord"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
-  "spiroc elders totem": {
    "isl": "5",
    "k": [
     "drop"
@@ -215325,20 +211139,6 @@
     "Kael Drakkel"
    ]
   },
-  "storm sky opal": {
-   "isl": "8",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Eye of Veeshan"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "straevens head": {
    "k": [
     "drop"
@@ -215985,19 +211785,6 @@
    },
    "z": []
   },
-  "tear of quellious": {
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Eye of Veeshan"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "tearons bracer": {
    "k": [],
    "z": []
@@ -216094,19 +211881,14 @@
   },
   "terror spines": {
    "k": [
-    "drop",
     "drop"
    ],
    "m": {
     "Najena": [
      "A_tentacle_terror_(Najena)"
-    ],
-    "The Estate of Unrest": [
-     "A_tentacle_terror_(Unrest)"
     ]
    },
    "z": [
-    "The Estate of Unrest",
     "Najena"
    ]
   },
@@ -216967,25 +212749,15 @@
   },
   "torn, burnt book": {
    "k": [
-    "drop",
-    "drop",
     "drop"
    ],
    "m": {
     "Nagafen's Lair": [
      "Lord Nagafen"
-    ],
-    "The Emerald Jungle": [
-     "Severilous"
-    ],
-    "The Skyfire Mountains": [
-     "Talendor"
     ]
    },
    "z": [
-    "The Emerald Jungle",
-    "Nagafen's Lair",
-    "The Skyfire Mountains"
+    "Nagafen's Lair"
    ]
   },
   "torn, frost covered book": {
@@ -218211,6 +213983,7 @@
     "vendor",
     "vendor",
     "vendor",
+    "vendor",
     "vendor"
    ],
    "many": true,
@@ -218243,6 +214016,12 @@
      [
       "Murtog MacYee",
       "(124, -355)"
+     ]
+    ],
+    "Neriak - Commons": [
+     [
+      "Marza T`Kix",
+      "(20, -875)"
      ]
     ],
     "Neriak - Foreign Quarter": [
@@ -218289,6 +214068,7 @@
     "Firiona Vie",
     "West Freeport",
     "South Kaladim",
+    "Neriak - Commons",
     "Neriak - Foreign Quarter",
     "South Qeynos"
    ]
@@ -219923,14 +215703,6 @@
     "The Plane of Sky"
    ]
   },
-  "wind rune lena": {
-   "k": [
-    "drop"
-   ],
-   "z": [
-    "The Plane of Sky"
-   ]
-  },
   "wind rune meda": {
    "k": [
     "drop"
@@ -220675,20 +216447,6 @@
     "The Southern Desert of Ro",
     "East Commonlands",
     "North Freeport"
-   ]
-  },
-  "worn leather mask": {
-   "isl": "3",
-   "k": [
-    "drop"
-   ],
-   "m": {
-    "The Plane of Sky": [
-     "Gorgalosk"
-    ]
-   },
-   "z": [
-    "The Plane of Sky"
    ]
   },
   "worn note": {

@@ -19,10 +19,19 @@ function gemFor(s) {
   if (s.cat === "melee") return `<span class="gem gem-melee" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5.5 20 19.5"/><path d="M26 5.5 12 19.5"/><path d="M20 19.5 25.5 25M12 19.5 6.5 25"/></svg></span>`;
   if (s.cat === "ranged") return `<span class="gem gem-melee" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 A 21 21 0 0 1 7 28"/><path d="M7 4 7 28"/><path d="M7 16 27 16"/><path d="M27 16l-5.5-3.5M27 16l-5.5 3.5"/></svg></span>`;
   const ic = spellIcon((s.name || "").toLowerCase());
-  if (ic != null) return `<img class="gem" src="/spellmaster/icons/${ic}.png" alt="" loading="lazy" onerror="this.replaceWith(mkDot(${JSON.stringify(s.elem)}))">`;
+  // The element rides in a data attribute, not an inline onerror: JSON.stringify
+  // emits double quotes, which closed the attribute and made every fallback a
+  // SyntaxError — so a missing icon left a broken-image box instead of a dot.
+  if (ic != null) return `<img class="gem" data-elem="${esc(s.elem || "")}" src="/spellmaster/icons/${ic}.png" alt="" loading="lazy">`;
   return `<span class="gem gem-dot" style="--h:${ELEM_HUE[s.elem] || 'var(--ink-dim)'}" aria-hidden="true"></span>`;
 }
-window.mkDot = elem => { const s = document.createElement("span"); s.className = "gem gem-dot"; s.style.setProperty("--h", ELEM_HUE[elem] || "var(--ink-dim)"); return s; };
+const mkDot = elem => { const s = document.createElement("span"); s.className = "gem gem-dot"; s.style.setProperty("--h", ELEM_HUE[elem] || "var(--ink-dim)"); return s; };
+// error does not bubble, but it does capture — one listener covers every icon
+// this page will ever insert, including the ones added by a later re-render.
+document.addEventListener("error", (e) => {
+  const t = e.target;
+  if (t instanceof HTMLImageElement && t.classList.contains("gem")) t.replaceWith(mkDot(t.dataset.elem));
+}, true);
 
 /* ─── render helpers ──────────────────────────────────────────────────────*/
 const $ = id => document.getElementById(id);
@@ -503,6 +512,8 @@ function render() {
   }
 
   if (window.EQLTip) EQLTip.decorate();
+  // every panel above rebuilt its table, which throws away the bound headers
+  if (window.EQLSortable) window.EQLSortable.bindAll();
 }
 
 /* ─── wiki item links ──────────────────────────────────────────────────────
@@ -628,6 +639,7 @@ function renderMobs(selDay, selSess, selLevels, selFight) {
       $("fightSel").value = selFight === fid ? "*" : fid;
       render();
     }));
+    detail.setAttribute("data-detail", "");   // travels with its mob row when the table is sorted
     tb.append(detail);
   });
   mt.append(tb);
@@ -845,7 +857,7 @@ async function handleFile(file, opts = {}) {
     STATE = { P, claims, side: mkSide(P, claims) };
     STATE.seg = buildSegments(P, STATE.side);
     buildControls(opts.keepSelections);
-    $("intake").hidden = true; $("report").hidden = false;
+    $("intake").hidden = true; $("report").hidden = false; $("reportIndex").hidden = false;
     const tn = $("truncNote");
     if (truncated) { tn.hidden = false; tn.textContent = `Large file — read the last 40 MB (from ${dt(P.events[0].ts)}). Earlier history isn't shown.`; } else tn.hidden = true;
     render();
@@ -860,6 +872,9 @@ async function startWatch() {
   stopWatch();
   try {
     const [handle] = await window.showOpenFilePicker({
+      // shared id: the dialog reopens in the last directory a log was picked
+      // from, on this page or any other tool here (_shared/pick-file.js)
+      id: "eqlog",
       types: [{ description: "EQ Legends log", accept: { "text/plain": [".txt"] } }],
     });
     const file = await handle.getFile();
@@ -894,7 +909,7 @@ $("daySel").addEventListener("change", () => { syncSliceControls(false); render(
 $("sessSel").addEventListener("change", () => { syncSliceControls(true); render(); });
 $("mobMore").addEventListener("click", () => { SHOW_ALL_MOBS = !SHOW_ALL_MOBS; render(); });
 $("lootMore").addEventListener("click", () => { SHOW_ALL_LOOT = !SHOW_ALL_LOOT; render(); });
-$("btnReset").addEventListener("click", () => { stopWatch(); STATE = null; $("report").hidden = true; $("intake").hidden = false; fi.value = ""; window.scrollTo({ top: 0, behavior: "smooth" }); });
+$("btnReset").addEventListener("click", () => { stopWatch(); STATE = null; $("report").hidden = true; $("reportIndex").hidden = true; $("intake").hidden = false; fi.value = ""; window.scrollTo({ top: 0, behavior: "smooth" }); });
 $("btnCopy").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(buildSummary()); const b = $("btnCopy"); b.textContent = "Copied"; setTimeout(() => { b.textContent = "Copy summary"; }, 1500); }
   catch { showErr("Couldn't reach the clipboard — your browser may be blocking it."); }

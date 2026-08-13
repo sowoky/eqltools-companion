@@ -1120,11 +1120,13 @@
    "dr": [
     "Uncommon",
     "Common",
+    "Common",
     "Uncommon",
     "Uncommon"
    ],
    "drops": [
     55,
+    77,
     90,
     96,
     112
@@ -1367,7 +1369,7 @@
    "u": "https://eqlwiki.com/index.php/Zordakalicus_Ragefire"
   }
  ],
- "updated": "2026-08-03T18:35:09Z",
+ "updated": "2026-08-11T22:27:09Z",
  "wikiTitle": "Nagafen's Lair",
  "wikiUrl": "https://eqlwiki.com/index.php/Nagafen's_Lair",
  "zone": "soldungb"

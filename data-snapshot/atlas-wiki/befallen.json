@@ -586,13 +586,13 @@
   },
   {
    "dr": [
-    "Always"
+    null
    ],
    "drops": [
     7
    ],
    "loc": null,
-   "lvl": "8-10",
+   "lvl": "8-10, 15 ([[Najena]])",
    "n": "a large skeleton",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_large_skeleton"
@@ -1280,7 +1280,7 @@
    "u": "https://eqlwiki.com/index.php/Zeek"
   }
  ],
- "updated": "2026-08-09T00:38:13Z",
+ "updated": "2026-08-10T14:33:29Z",
  "wikiTitle": "Befallen",
  "wikiUrl": "https://eqlwiki.com/index.php/Befallen",
  "zone": "befallen"

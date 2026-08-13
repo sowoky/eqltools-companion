@@ -1107,17 +1107,6 @@
    ],
    "t": "A_Bowyers_Guide"
   },
-  "a box of bones": {
-   "ic": 836,
-   "n": "Box of Bones",
-   "sb": [
-    "LORE ITEM NO DROP QUEST ITEM",
-    "WT: 1.0 Size: SMALL",
-    "Class: ALL",
-    "Race: ALL"
-   ],
-   "t": "A_Box_of_Bones"
-  },
   "a box of cat bones": {
    "ic": 836,
    "n": "A Box of Cat Bones",
@@ -10203,6 +10192,17 @@
    ],
    "t": "Black_Sky_Diamond"
   },
+  "black spider silk": {
+   "ic": 782,
+   "n": "Black Spider Silk",
+   "sb": [
+    "Quest",
+    "WT: 0.1 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "Black_Spider_Silk"
+  },
   "black steel wrap": {
    "ic": 719,
    "n": "Black Steel Wrap",
@@ -12127,7 +12127,7 @@
    "ic": 1138,
    "n": "Block of Permafrost",
    "sb": [
-    "MAGIC ITEM LORE ITEM",
+    "Quest",
     "WT: 15.0 Size: MEDIUM",
     "Class: ALL",
     "Race: ALL"
@@ -15136,8 +15136,8 @@
    "ic": 608,
    "n": "Box For Bones",
    "sb": [
-    "LORE ITEM",
-    "WT: 0.4 Weight Reduction: 0%",
+    "Size: MEDIUM WT: 0.4",
+    "Weight Reduction: 0%",
     "Capacity: 6 Size Capacity: SMALL"
    ],
    "t": "Box_For_Bones"
@@ -15182,6 +15182,17 @@
     "Race: ALL"
    ],
    "t": "Box_of_Beetle_Eyes"
+  },
+  "box of bones": {
+   "ic": 836,
+   "n": "Box of Bones",
+   "sb": [
+    "NO DROP QUEST ITEM",
+    "WT: 1.0 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "Box_of_Bones"
   },
   "box of lute strings": {
    "ic": 609,
@@ -18154,6 +18165,17 @@
     "Race: None"
    ],
    "t": "Burning_Soul_of_the_Pious"
+  },
+  "burning soul of the virtuous": {
+   "ic": null,
+   "n": "Burning Soul of the Virtuous",
+   "sb": [
+    "No Trade, Quest",
+    "Size: TINY",
+    "Class: None",
+    "Race: None"
+   ],
+   "t": "Burning_Soul_of_the_Virtuous"
   },
   "burnished wooden stave": {
    "ic": 602,
@@ -25271,6 +25293,19 @@
    ],
    "t": "Corroded_Breastplate"
   },
+  "corroded buckler": {
+   "ic": 759,
+   "n": "Corroded Buckler",
+   "sb": [
+    "Attunable, Placeable, Quest",
+    "Slot: SECONDARY",
+    "AC: 2",
+    "WT: 3.0 Size: SMALL",
+    "Class: BRD, BST, CLR, DRU, MNK, PAL, RNG, ROG, SHM, SHD, WAR",
+    "Race: ALL"
+   ],
+   "t": "Corroded_Buckler"
+  },
   "corroded chain boots": {
    "ic": 844,
    "n": "Corroded Chain Boots",
@@ -27087,7 +27122,8 @@
     "AC: 1",
     "WT: 1.9 Size: SMALL",
     "Class: ALL except NEC WIZ MAG ENC",
-    "Race: ALL"
+    "Race: ALL",
+    "Value: 1 gold 4 silver 3 copper"
    ],
    "t": "Crushbone_Shoulderpads"
   },
@@ -29487,6 +29523,7 @@
    "ic": 859,
    "n": "Cyclops Eye",
    "sb": [
+    "Quest",
     "WT: 5.0 Size: LARGE",
     "Class: ALL",
     "Race: ALL"
@@ -29507,6 +29544,7 @@
    "ic": 1094,
    "n": "Cyclops Toes",
    "sb": [
+    "Quest",
     "WT: 1.5 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -36278,7 +36316,7 @@
     "STR: +6 DEX: -5 STA: +6",
     "Effect: Earthquake (Combat, Casting Time: Instant) at Level 45",
     "WT: 16.0 Size: GIANT",
-    "Class: WAR PAL RNG SHD",
+    "Class: WAR PAL RNG SHD BER",
     "Race: ALL"
    ],
    "t": "Earthshaker"
@@ -42538,6 +42576,17 @@
    ],
    "t": "Falgiron_Staff"
   },
+  "familiar ring": {
+   "ic": 674,
+   "n": "Familiar Ring",
+   "sb": [
+    "Quest",
+    "WT: 0.1 Size: SMALL",
+    "Class: None",
+    "Race: None"
+   ],
+   "t": "Familiar_Ring"
+  },
   "fancy velvet mantle": {
    "ic": 668,
    "n": "Fancy Velvet Mantle",
@@ -44254,6 +44303,7 @@
    "ic": 859,
    "n": "Fire Beetle Eye",
    "sb": [
+    "Quest, Placeable",
     "Slot: PRIMARY SECONDARY",
     "WT: 0.2 Size: TINY",
     "Class: ALL",
@@ -54059,7 +54109,7 @@
    "ic": 985,
    "n": "Gorgon Head",
    "sb": [
-    "LORE ITEM",
+    "LORE ITEM NO DROP",
     "WT: 12.0 Size: LARGE",
     "Class: ALL",
     "Race: ALL"
@@ -57109,22 +57159,6 @@
    ],
    "t": "Harmonic_Dagger"
   },
-  "harmonic spear": {
-   "ic": 776,
-   "n": "Harmonic Spear",
-   "sb": [
-    "MAGIC ITEM LORE ITEM NO DROP",
-    "Slot: PRIMARY",
-    "Skill: Piercing Atk Delay: 21",
-    "DMG: 10",
-    "STR: +5 DEX: +5 CHA: +5",
-    "Effect: Chant of Battle (Combat, Casting Time: Instant) at Level 45",
-    "WT: 3.5 Size: MEDIUM",
-    "Class: BRD",
-    "Race: ALL"
-   ],
-   "t": "Harmonic_Spear"
-  },
   "harness of control": {
    "ic": 719,
    "n": "Harness of Control",
@@ -59245,10 +59279,10 @@
    "ic": 1075,
    "n": "Holy Dirt of Brell",
    "sb": [
-    "MAGIC ITEM NO TRADE",
+    "No Trade",
     "WT: 0.1 Size: TINY",
-    "Class: NONE",
-    "Race: NONE"
+    "Class: None",
+    "Race: None"
    ],
    "t": "Holy_Dirt_of_Brell"
   },
@@ -60046,6 +60080,7 @@
    "ic": 1094,
    "n": "Ice Giant Toes",
    "sb": [
+    "Quest",
     "WT: 1.5 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -76433,10 +76468,9 @@
    "ic": 1003,
    "n": "Living Heart of a Brell Minion",
    "sb": [
-    "MAGIC ITEM LORE ITEM",
     "WT: 0.1 Size: TINY",
-    "Class: NONE",
-    "Race: NONE"
+    "Class: None",
+    "Race: None"
    ],
    "t": "Living_Heart_of_a_Brell_Minion"
   },
@@ -92458,6 +92492,18 @@
    ],
    "t": "Potion_of_Light_Healing"
   },
+  "potion of mystical aptitude": {
+   "ic": 2850,
+   "n": "Potion of Mystical Aptitude",
+   "sb": [
+    "EXPENDABLE Charges: 1",
+    "Effect: Mystical Aptitude (Any Slot, Casting Time: 15.0)",
+    "WT: 0.4 Size: SMALL",
+    "Class: ALL",
+    "Race: ALL"
+   ],
+   "t": "Potion_of_Mystical_Aptitude"
+  },
   "potion of negation": {
    "ic": 707,
    "n": "Potion of Negation",
@@ -93434,10 +93480,10 @@
    "t": "Priceless_Velium_Warsword"
   },
   "prickly pear": {
-   "ic": 570,
+   "ic": 6330,
    "n": "Prickly Pear",
    "sb": [
-    "This is a snack!",
+    "QUEST",
     "WT: 0.6 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -99586,6 +99632,7 @@
     "Slot: FACE",
     "AC: 5 HP: +5 MANA: +5 END: +5",
     "STA: +2",
+    "SV. Void: 1",
     "WT: 2.0 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -108505,11 +108552,11 @@
    "ic": 777,
    "n": "Shadowed Book",
    "sb": [
-    "MAGIC ITEM LORE ITEM TEMPORARY",
-    "Slot: PRIMARY SECONDARY",
+    "Lore Equipped, Temporary, Quest, Placeable",
+    "Slot: Primary Secondary",
     "AC: 5",
     "WT: 1.5 Size: MEDIUM",
-    "Class: NONE",
+    "Class: None",
     "Race: ALL"
    ],
    "t": "Shadowed_Book"
@@ -117815,6 +117862,142 @@
    ],
    "t": "Soldier_Head_Plans"
   },
+  "soldiers brooch of the arcane": {
+   "ic": 753,
+   "n": "Soldier's Brooch of the Arcane",
+   "sb": [
+    "LORE EQUIPPED, NO TRADE",
+    "Slot: RANGE",
+    "Req Level: 30",
+    "AC: 3",
+    "HP: +15 Mana: +25",
+    "DEX: +1 STA: +4 INT: +4",
+    "SV Magic: +1 SV Fire: +1 SV Cold: +1",
+    "WT: 0.5 Size: SMALL",
+    "Class: WIZ",
+    "Race: ALL"
+   ],
+   "t": "Soldier's_Brooch_of_the_Arcane"
+  },
+  "soldiers brooch of the corrupt": {
+   "ic": 753,
+   "n": "Soldier's Brooch of the Corrupt",
+   "sb": [
+    "LORE EQUIPPED, NO TRADE",
+    "Slot: RANGE",
+    "Req Level: 30",
+    "AC: 3",
+    "HP: +15 Mana: +25",
+    "STA: +4 CHA: +1 INT: +4",
+    "SV Poison: +1 SV Fire: +1 SV Cold: +1",
+    "WT: 0.1 Size: SMALL",
+    "Class: SHD",
+    "Race: ALL"
+   ],
+   "t": "Soldier's_Brooch_of_the_Corrupt"
+  },
+  "soldiers brooch of the darkened": {
+   "ic": 753,
+   "n": "Soldier's Brooch of the Darkened",
+   "sb": [
+    "LORE EQUIPPED, NO TRADE",
+    "Slot: RANGE",
+    "Req Level: 30",
+    "AC: 6",
+    "HP: +15 Mana: +25",
+    "DEX: +1 STA: +4 INT: +4",
+    "SV Magic: +1 SV Fire: +1 SV Cold: +1",
+    "WT: 0.1 Size: SMALL",
+    "Class: NEC",
+    "Race: ALL"
+   ],
+   "t": "Soldier's_Brooch_of_the_Darkened"
+  },
+  "soldiers brooch of the robust": {
+   "ic": 753,
+   "n": "Soldier's Brooch of the Robust",
+   "sb": [
+    "LORE EQUIPPED, NO TRADE",
+    "Slot: RANGE",
+    "Req Level: 30",
+    "AC: 5",
+    "HP: +15 Mana: +25",
+    "STR: +1 STA: +4 WIS: +4",
+    "SV Magic: +1 SV Fire: +1 SV Cold: +1",
+    "WT: 0.5 Size: SMALL",
+    "Class: CLR",
+    "Race: ALL"
+   ],
+   "t": "Soldier's_Brooch_of_the_Robust"
+  },
+  "soldiers brooch of the spirited": {
+   "ic": 753,
+   "n": "Soldier's Brooch of the Spirited",
+   "sb": [
+    "LORE EQUIPPED, NO TRADE",
+    "Slot: RANGE",
+    "Req Level: 30",
+    "AC: 4",
+    "HP: +15 Mana: +25",
+    "STA: +1 CHA: +4 WIS: +4",
+    "SV Magic: +1 SV Disease: +1 SV Poison: +1",
+    "WT: 0.5 Size: SMALL",
+    "Class: SHM",
+    "Race: ALL"
+   ],
+   "t": "Soldier's_Brooch_of_the_Spirited"
+  },
+  "soldiers brooch of the stalwart": {
+   "ic": 753,
+   "n": "Soldier's Brooch of the Stalwart",
+   "sb": [
+    "LORE EQUIPPED, NO TRADE",
+    "Slot: RANGE",
+    "Req Level: 30",
+    "AC: 7",
+    "HP: +30",
+    "STR: +4 DEX: +1 STA: +4",
+    "SV Magic: +1 SV Fire: +1 SV Cold: +1",
+    "WT: 0.5 Size: SMALL",
+    "Class: WAR",
+    "Race: ALL"
+   ],
+   "t": "Soldier's_Brooch_of_the_Stalwart"
+  },
+  "soldiers brooch of the stealthy": {
+   "ic": 566,
+   "n": "Soldier's Brooch of the Stealthy",
+   "sb": [
+    "LORE EQUIPPED, NO TRADE",
+    "Slot: RANGE",
+    "Req Level: 30",
+    "AC: 4",
+    "HP: +25",
+    "DEX: +4 STA: +1 AGI: +4",
+    "SV Magic: +1 SV Fire: +1 SV Cold: +1",
+    "WT: 0.1 Size: SMALL",
+    "Class: MNK ROG",
+    "Race: ALL"
+   ],
+   "t": "Soldier's_Brooch_of_the_Stealthy"
+  },
+  "soldiers brooch of the virtuous": {
+   "ic": 753,
+   "n": "Soldier's Brooch of the Virtuous",
+   "sb": [
+    "LORE EQUIPPED, NO TRADE",
+    "Slot: RANGE",
+    "Req Level: 30",
+    "AC: 6",
+    "HP: +15 Mana: +25",
+    "STR: +4 STA: +1 WIS: +4",
+    "SV Magic: +1 SV Fire: +1 SV Cold: +1",
+    "WT: 0.5 Size: SMALL",
+    "Class: PAL",
+    "Race: ALL"
+   ],
+   "t": "Soldier's_Brooch_of_the_Virtuous"
+  },
   "soldiers pike": {
    "ic": 736,
    "n": "Soldier's Pike",
@@ -118552,6 +118735,22 @@
     "Race: ALL"
    ],
    "t": "Spear_of_Fate"
+  },
+  "spear of harmony": {
+   "ic": 776,
+   "n": "Spear of Harmony",
+   "sb": [
+    "MAGIC ITEM LORE ITEM NO DROP",
+    "Slot: PRIMARY",
+    "Skill: Piercing Atk Delay: 21",
+    "DMG: 12",
+    "STR: +5 DEX: +5 CHA: +5",
+    "Effect: Chant of Battle (Combat, Casting Time: Instant) at Level 45",
+    "WT: 3.5 Size: MEDIUM",
+    "Class: BRD",
+    "Race: ALL"
+   ],
+   "t": "Spear_of_Harmony"
   },
   "spear of mortification": {
    "ic": 1187,
@@ -119434,7 +119633,7 @@
    "ic": 885,
    "n": "Spiderling Eye",
    "sb": [
-    "QUEST ITEM",
+    "Quest",
     "WT: 0.1 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -119445,7 +119644,7 @@
    "ic": 1089,
    "n": "Spiderling Legs",
    "sb": [
-    "QUEST ITEM",
+    "Quest",
     "WT: 0.1 Size: SMALL",
     "Class: ALL",
     "Race: ALL"
@@ -128432,6 +128631,24 @@
    ],
    "t": "Ticket_Stub"
   },
+  "tierdal arcane insignia": {
+   "ic": 935,
+   "n": "Tier'Dal Arcane Insignia",
+   "sb": [
+    "NO TRADE QUEST ITEM",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "Tier'Dal_Arcane_Insignia"
+  },
+  "tierdal priest insignia": {
+   "ic": 937,
+   "n": "Tier'Dal Priest Insignia",
+   "sb": [
+    "NO TRADE QUEST ITEM",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "Tier'Dal_Priest_Insignia"
+  },
   "tiger fang": {
    "ic": 1137,
    "n": "Tiger Fang",
@@ -130844,6 +131061,15 @@
    ],
    "t": "Trog_Brew"
   },
+  "troll basher insignia": {
+   "ic": 936,
+   "n": "Troll Basher Insignia",
+   "sb": [
+    "NO TRADE QUEST ITEM",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "Troll_Basher_Insignia"
+  },
   "troll cookie mold": {
    "ic": 1151,
    "n": "Troll Cookie Mold",
@@ -130853,6 +131079,15 @@
     "Race: ALL"
    ],
    "t": "Troll_Cookie_Mold"
+  },
+  "troll greenblood insignia": {
+   "ic": 939,
+   "n": "Troll Greenblood Insignia",
+   "sb": [
+    "NO TRADE QUEST ITEM",
+    "WT: 0.1 Size: TINY"
+   ],
+   "t": "Troll_Greenblood_Insignia"
   },
   "troll head": {
    "ic": 996,
