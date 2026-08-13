@@ -2964,6 +2964,19 @@ function renderUpdate(u) {
   sAct.onclick = doAct;
 }
 
+/* Which tabs the overlay carries. Kyle, 2026-08-13: "what tabs/features a
+   person wants/doesn't want. the widget could be small and having too many tabs
+   may be clutter." The last ticked box is disabled — an overlay with no tabs
+   can show nothing, and unticking it would look like the app broke. */
+const OV_VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Stats", sky: "Sky" };
+function renderOverlayViews(prefs) {
+  const all = prefs.all || Object.keys(OV_VIEW_LABEL);
+  const on = prefs.views || all;
+  $("setOvViews").innerHTML = `<span class="dim">Tabs</span> ` + all.map(v =>
+    `<label class="chk"><input type="checkbox" data-ovview="${v}"${on.includes(v) ? " checked" : ""}` +
+    `${on.length === 1 && on.includes(v) ? " disabled" : ""}> ${esc(OV_VIEW_LABEL[v] || v)}</label>`).join(" ");
+}
+
 function renderOverlayState(o) {
   // the stats drill-down is computed only while the overlay can see it; a
   // fresh open re-pushes so the window never seeds from a detail-less payload
@@ -2978,6 +2991,7 @@ function renderOverlayState(o) {
     $("setOvScale").value = o.prefs.fontScale;
     $("setOvKills").checked = o.prefs.showKills;
     $("setOvQuestOnly").checked = o.prefs.questOnly;
+    renderOverlayViews(o.prefs);
   }
 }
 
@@ -3114,6 +3128,12 @@ async function main() {
   $("setOvScale").addEventListener("input", e => window.companion.setOverlayPrefs({ fontScale: +e.target.value }));
   $("setOvKills").addEventListener("change", e => window.companion.setOverlayPrefs({ showKills: e.target.checked }));
   $("setOvQuestOnly").addEventListener("change", e => window.companion.setOverlayPrefs({ questOnly: e.target.checked }));
+  $("setOvViews").addEventListener("change", e => {
+    if (!e.target.dataset.ovview) return;
+    const views = [...document.querySelectorAll("[data-ovview]")]
+      .filter(b => b.checked).map(b => b.dataset.ovview);
+    window.companion.setOverlayPrefs({ views });   // main echoes the accepted list back
+  });
   $("btnPickDir").addEventListener("click", async () => { LOGSTATUS.logDir = await window.companion.pickLogDir(); renderStatus(); });
   $("btnRefresh").addEventListener("click", async () => {
     $("btnRefresh").disabled = true;

@@ -33,6 +33,21 @@ body {
   padding: 0 5px; line-height: 15px;
 }
 #btnPin:hover { border-color: #e7b94e; color: #e7b94e; }
+/* roll-up: same chrome as pin, one glyph wide */
+#btnRoll {
+  -webkit-app-region: no-drag;
+  background: none; border: 1px solid rgba(201,149,42,.35); border-radius: 3px;
+  color: #c9952a; cursor: pointer; font: 12px "Segoe UI", system-ui, sans-serif;
+  padding: 0 6px; line-height: 15px;
+}
+#btnRoll:hover { border-color: #e7b94e; color: #e7b94e; }
+/* rolled up, the window IS the bar — everything under it would draw past the
+   1px border and over the game */
+body.rolled #otabs, body.rolled #filters, body.rolled #quests, body.rolled #feed,
+body.rolled #ostats, body.rolled #osky, body.rolled #grip { display: none !important; }
+body.rolled #bar { border-bottom: 0; }
+/* one tab left is a label, not a choice */
+#otabs.is-single button[data-oview] { pointer-events: none; }
 body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
 
 /* view tabs — Tracked | Loot */

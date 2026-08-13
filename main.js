@@ -46,6 +46,11 @@ const TAIL_POLL_MS = 1000;
 const BOOTSTRAP_CAP = 40 * 1024 * 1024; // same tail cap as the /kills page
 
 /* ── settings ─────────────────────────────────────────────────────────────*/
+/* Every overlay view, in tab order. The list is the allowlist for the `view`
+   pref AND the menu the main window offers — a view missing from here silently
+   fails to round-trip, which is how the Sky tab first refused to stick. */
+const OVERLAY_VIEWS = ["tracked", "loot", "stats", "sky"];
+const OVERLAY_BAR_H = 26;   // the title bar alone, in DIPs — collapsed height
 const settingsPath = () => path.join(app.getPath("userData"), "settings.json");
 let SETTINGS = null;
 function loadSettings() {
@@ -55,8 +60,17 @@ function loadSettings() {
     opacity: 0.92, clickThrough: false, shown: false, bounds: null,
     // display prefs, all renderer-facing (Kyle, 2026-07-31: "resizable/customizable")
     fontScale: 1, showKills: true, questOnly: false, view: "loot",
+    /* Which tabs the overlay carries at all (Kyle, 2026-08-13: "the widget
+       could be small and having too many tabs may be clutter"), and whether it
+       is rolled up to its title bar — the alternative was dragging it off the
+       bottom of the screen to get it out of the way. `height` is what to
+       restore on expand, since the collapsed bounds overwrite the saved ones. */
+    views: ["tracked", "loot", "stats", "sky"], collapsed: false, height: null,
     ...SETTINGS.overlay,
   };
+  // a stored list from an older build predates any view added since
+  if (!Array.isArray(SETTINGS.overlay.views) || !SETTINGS.overlay.views.length)
+    SETTINGS.overlay.views = OVERLAY_VIEWS.slice();
   if (!SETTINGS.logDir && fs.existsSync(DEFAULT_LOG_DIR))
     SETTINGS.logDir = DEFAULT_LOG_DIR;
 }
@@ -120,9 +134,10 @@ function createMainWindow() {
 
 function createOverlayWindow() {
   if (overlayWin) return;
-  const b = SETTINGS.overlay.bounds;
+  const o = SETTINGS.overlay, b = o.bounds;
   overlayWin = new BrowserWindow({
-    width: b ? b.width : 340, height: b ? b.height : 240,
+    width: b ? b.width : 340,
+    height: o.collapsed ? OVERLAY_BAR_H : (b ? b.height : 240),
     x: b ? b.x : undefined, y: b ? b.y : undefined,
     transparent: true, frame: false, resizable: true, hasShadow: false,
     skipTaskbar: true, minimizable: false, maximizable: false, fullscreenable: false,
@@ -135,11 +150,28 @@ function createOverlayWindow() {
   overlayWin.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
   overlayWin.loadFile(path.join(__dirname, "overlay", "overlay.html"));
   overlayWin.webContents.on("did-finish-load", () => { sendOverlayInit(); applyClickThrough(); });
-  const saveBounds = () => { if (overlayWin) { SETTINGS.overlay.bounds = overlayWin.getBounds(); saveSettings(); } };
+  /* Collapsed bounds must not become the remembered size — expanding would
+     restore the title bar. The height to come back to lives in `height`, and
+     only an uncollapsed resize updates it. */
+  const saveBounds = () => {
+    if (!overlayWin) return;
+    const g = overlayWin.getBounds();
+    SETTINGS.overlay.bounds = g;
+    if (!SETTINGS.overlay.collapsed) SETTINGS.overlay.height = g.height;
+    saveSettings();
+  };
   overlayWin.on("moved", saveBounds);
   overlayWin.on("resized", saveBounds);
   overlayWin.on("closed", () => { overlayWin = null; SETTINGS.overlay.shown = false; saveSettings(); notifyOverlayState(); });
 }
+
+/* One prefs shape, sent to both windows. The overlay draws from it; the main
+   window's Settings pane edits it. */
+const overlayPrefs = () => {
+  const o = SETTINGS.overlay;
+  return { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly,
+           view: o.view, views: o.views, all: OVERLAY_VIEWS, collapsed: o.collapsed };
+};
 
 /* Full overlay redraw: mode + prefs + the feed ring, so a prefs change (or a
    fresh window) rebuilds the list under the new filters. */
@@ -148,7 +180,7 @@ function sendOverlayInit() {
   const o = SETTINGS.overlay;
   overlayWin.webContents.send("overlay:init", {
     opacity: o.opacity, clickThrough: o.clickThrough,
-    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, view: o.view },
+    prefs: overlayPrefs(),
     feed: FEED_RING.slice(-50),
     zone: LAST_ZONE,
     quests: LAST_QUESTS,
@@ -178,7 +210,7 @@ function notifyOverlayState() {
   if (mainWin) mainWin.webContents.send("overlay:state", {
     shown: !!(overlayWin && overlayWin.isVisible()),
     clickThrough: o.clickThrough, opacity: o.opacity,
-    prefs: { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly, view: o.view },
+    prefs: overlayPrefs(),
   });
 }
 
@@ -536,7 +568,7 @@ ipcMain.handle("app:init", () => {
     settings: { logDir: SETTINGS.logDir || null },
     overlay: {
       shown: !!(overlayWin && overlayWin.isVisible()), clickThrough: SETTINGS.overlay.clickThrough, opacity: SETTINGS.overlay.opacity,
-      prefs: { fontScale: SETTINGS.overlay.fontScale, showKills: SETTINGS.overlay.showKills, questOnly: SETTINGS.overlay.questOnly, view: SETTINGS.overlay.view },
+      prefs: overlayPrefs(),
     },
     datasets: loadDatasets(),
   };
@@ -599,9 +631,32 @@ ipcMain.on("overlay:prefs", (_e, p) => {
   if (p.questOnly !== undefined) o.questOnly = !!p.questOnly;
   // every view name has to be listed here or the pref silently fails to
   // round-trip and the overlay snaps back to its old tab
-  if (["tracked", "loot", "stats", "sky"].includes(p.view)) o.view = p.view;
+  if (OVERLAY_VIEWS.includes(p.view)) o.view = p.view;
+  if (Array.isArray(p.views)) {
+    const keep = OVERLAY_VIEWS.filter(v => p.views.includes(v));
+    // an overlay with no tabs is a window that can show nothing; the last one
+    // stays whatever the checkbox says
+    if (keep.length) o.views = keep;
+  }
+  // the shown tab must be one that still exists
+  if (!o.views.includes(o.view)) o.view = o.views[0];
+  if (p.collapsed !== undefined) setCollapsed(!!p.collapsed);
   saveSettings(); sendOverlayInit(); notifyOverlayState();
 });
+
+/* Rolled up to the title bar and back (Kyle, 2026-08-13: "right now i have to
+   drag it to the bottom to hide it"). The window itself shrinks — leaving it
+   full-size with a transparent body would keep eating clicks over the game. */
+function setCollapsed(on) {
+  const o = SETTINGS.overlay;
+  if (o.collapsed === on) return;
+  if (on && overlayWin) o.height = overlayWin.getBounds().height;
+  o.collapsed = on;
+  if (!overlayWin) return;
+  const b = overlayWin.getBounds();
+  overlayWin.setBounds({ x: b.x, y: b.y, width: b.width,
+                         height: on ? OVERLAY_BAR_H : Math.max(70, o.height || 240) });
+}
 /* Transparent frameless windows have NO native resize borders on Windows —
    the overlay's corner grip drives resizing through here instead. */
 ipcMain.on("overlay:resize", (_e, w, h) => {

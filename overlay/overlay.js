@@ -19,7 +19,8 @@ const pinEl = document.getElementById("btnPin");
 const gripEl = document.getElementById("grip");
 const panelEl = document.getElementById("panel");
 let THROUGH = false;
-let PREFS = { fontScale: 1, showKills: true, questOnly: false, view: "loot" };
+let PREFS = { fontScale: 1, showKills: true, questOnly: false, view: "loot",
+              views: ["tracked", "loot", "stats", "sky"], collapsed: false };
 const FEED_CAP = 50; // matches main's relay ring; the window scrolls, not truncates
 
 /* Four views, tab-switched: Tracked (quest working lists), Loot (the feed),
@@ -31,15 +32,28 @@ const filtersEl = document.getElementById("filters");
 const statsEl = document.getElementById("ostats");
 const skyEl = document.getElementById("osky");
 const VIEWS = { tracked: "otTracked", loot: "otLoot", stats: "otStats", sky: "otSky" };
+/* Which tabs this window carries at all — chosen in the app's Settings, not
+   here: four tabs is a lot of chrome in a 340px window, and the ones a player
+   never opens are pure clutter (Kyle, 2026-08-13). */
+const shownViews = () => {
+  const on = (PREFS.views || []).filter(v => VIEWS[v]);
+  return on.length ? on : Object.keys(VIEWS);
+};
 function applyView() {
-  const v = VIEWS[PREFS.view] ? PREFS.view : "loot";
+  const on = shownViews();
+  const v = on.includes(PREFS.view) ? PREFS.view : on[0];
   questsEl.hidden = v !== "tracked";
   feedEl.hidden = v !== "loot";
   filtersEl.hidden = v !== "loot";
   statsEl.hidden = v !== "stats";
   skyEl.hidden = v !== "sky";
-  for (const [name, id] of Object.entries(VIEWS))
-    document.getElementById(id).classList.toggle("on", name === v);
+  for (const [name, id] of Object.entries(VIEWS)) {
+    const b = document.getElementById(id);
+    b.hidden = !on.includes(name);
+    b.classList.toggle("on", name === v);
+  }
+  // one tab is not a choice — the row is just a label then, so drop it
+  document.getElementById("otabs").classList.toggle("is-single", on.length < 2);
   // the grouping toggle belongs to Tracked; renderQuests also hides it when
   // the payload carries no zones to group by
   const qv = document.getElementById("qView");
@@ -51,6 +65,20 @@ document.getElementById("otabs").addEventListener("click", e => {
   PREFS.view = b.dataset.oview;
   window.companion.setOverlayPrefs({ view: PREFS.view });
   applyView();
+});
+
+/* Rolled up: the window shrinks to this bar, which main does — the body is
+   hidden here so the collapsed strip draws nothing behind the button. */
+const rollEl = document.getElementById("btnRoll");
+function applyRoll() {
+  document.body.classList.toggle("rolled", !!PREFS.collapsed);
+  rollEl.textContent = PREFS.collapsed ? "+" : "–";
+  rollEl.title = PREFS.collapsed ? "Open it back up" : "Roll up to this bar";
+}
+rollEl.addEventListener("click", () => {
+  PREFS.collapsed = !PREFS.collapsed;
+  applyRoll();
+  window.companion.setOverlayPrefs({ collapsed: PREFS.collapsed });
 });
 
 function wanted(ev) {
@@ -429,7 +457,7 @@ window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, ques
   renderOStats();
   if (sky) SKYP = sky;
   renderSky();
-  applyView();
+  applyView(); applyRoll();
 });
 window.companion.onOverlayMode(({ clickThrough, opacity }) => setMode(clickThrough, opacity));
 window.companion.onFeedEvent(addEvent);
@@ -584,7 +612,7 @@ document.addEventListener("mousemove", e => {
    gets swallowed by a window that thinks it's still over a link. */
 // everything actionable while pinned — quest links, controls, and the Stats
 // drill-down rows (fights, raid actors, the sub-view switch)
-const HOTSPOT_SEL = "[data-url], [data-hold], #btnPin, #filters, #otabs, [data-enc], [data-ract], [data-osub], [data-osky]";
+const HOTSPOT_SEL = "[data-url], [data-hold], #btnPin, #btnRoll, #filters, #otabs, [data-enc], [data-ract], [data-osub], [data-osky]";
 function rehotspot() {
   if (!THROUGH) return;
   const el = document.elementFromPoint(MX, MY);
