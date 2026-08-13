@@ -15,7 +15,7 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;"
 const feedEl = document.getElementById("feed");
 const questsEl = document.getElementById("quests");
 const zoneEl = document.getElementById("zoneLine");
-const pinEl = document.getElementById("btnPin");
+const lockEl = document.getElementById("lockTag");
 const gripEl = document.getElementById("grip");
 const panelEl = document.getElementById("panel");
 let THROUGH = false;
@@ -431,14 +431,15 @@ statsEl.addEventListener("click", e => {
 });
 window.companion.onFeedStats(s => { STATS = s; renderOStats(); rehotspot(); });
 
+/* Locked = the game gets the mouse. There is no button for it any more (Kyle,
+   2026-08-13: "i don't think pin is useful. there's no value in locking it
+   down") — it lives in the bar's right-click menu and on Ctrl+Shift+L. The word
+   in the bar is the only thing that says which state you're in, so it stays. */
 function setMode(clickThrough, opacity) {
   THROUGH = !!clickThrough;
   if (opacity !== undefined) document.body.style.opacity = opacity;
   document.body.classList.toggle("through", THROUGH);
-  pinEl.textContent = THROUGH ? "unpin" : "pin";
-  pinEl.title = THROUGH
-    ? "Give the mouse back to this panel (or Ctrl+Shift+L)"
-    : "Click-through: the game gets the mouse. This button and quest links stay clickable.";
+  lockEl.hidden = !THROUGH;
 }
 
 window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests, stats, sky }) => {
@@ -467,7 +468,31 @@ function setZone(z) {
   zoneEl.textContent = z ? `${z.name} ${z.done}/${z.total}` : "EQL Tools Companion";
 }
 
-pinEl.addEventListener("click", () => window.companion.setClickThrough(!THROUGH));
+/* The bar's own menu — every overlay setting, drawn by the OS so it can paint
+   outside a 26px-tall window. */
+const barEl = document.getElementById("bar");
+barEl.addEventListener("contextmenu", e => {
+  e.preventDefault();
+  window.companion.overlayMenu();
+});
+
+/* …and the bar moves the window itself, because it is no longer an app-region
+   (a Windows caption hit-test would eat the right-click above). Same pointer-
+   capture shape as the resize grip; deltas go to main, which does the setBounds. */
+barEl.addEventListener("pointerdown", e => {
+  if (e.button !== 0 || e.target.closest("button")) return;
+  e.preventDefault();
+  barEl.setPointerCapture(e.pointerId);
+  let lx = e.screenX, ly = e.screenY;
+  const move = ev => {
+    window.companion.moveOverlay(ev.screenX - lx, ev.screenY - ly);
+    lx = ev.screenX; ly = ev.screenY;
+  };
+  const up = () => barEl.removeEventListener("pointermove", move);
+  barEl.addEventListener("pointermove", move);
+  barEl.addEventListener("pointerup", up, { once: true });
+  barEl.addEventListener("pointercancel", up, { once: true });
+});
 
 /* Mini EQ item tooltip — the sb lines ride on the hovered element. Works
    pinned too (forward:true keeps mousemove flowing). */
@@ -612,7 +637,11 @@ document.addEventListener("mousemove", e => {
    gets swallowed by a window that thinks it's still over a link. */
 // everything actionable while pinned — quest links, controls, and the Stats
 // drill-down rows (fights, raid actors, the sub-view switch)
-const HOTSPOT_SEL = "[data-url], [data-hold], #btnPin, #btnRoll, #filters, #otabs, [data-enc], [data-ract], [data-osub], [data-osky]";
+/* While locked, the whole title bar is a hotspot, not just its buttons: the
+   right-click menu is the way back out, so the bar has to be able to hear a
+   click. The cost is that dragging the pointer across that one thin strip takes
+   the mouse from the game for as long as it is over it. */
+const HOTSPOT_SEL = "#bar, [data-url], [data-hold], #btnRoll, #filters, #otabs, [data-enc], [data-ract], [data-osub], [data-osky]";
 function rehotspot() {
   if (!THROUGH) return;
   const el = document.elementFromPoint(MX, MY);

@@ -5,7 +5,7 @@
    runs in the renderer via the vendored site modules (vendor/shared.js,
    vendor/parse.js), so the app can never disagree with eqltools.com. */
 "use strict";
-const { app, BrowserWindow, ipcMain, dialog, shell, globalShortcut, protocol } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog, shell, globalShortcut, protocol } = require("electron");
 const fs = require("fs");
 const path = require("path");
 
@@ -96,7 +96,11 @@ function createMainWindow() {
   // Dev: EQLC_TAB=zone|tracker|settings opens the app on that tab, and
   // EQLC_EXEC=<file.js> runs a script in the page — the agent-side
   // screenshot loop can't click or hover, so these drive the UI for it.
-  if (isDev && (process.env.EQLC_TAB || process.env.EQLC_EXEC)) mainWin.webContents.on("did-finish-load", () => {
+  /* Driven off renderer:ready, NOT a timer. main() binds the tab handler after
+     awaiting ~20 MB of datasets over IPC, so a fixed delay raced it: the click
+     landed on a page with no listeners and the shot came back on whatever tab
+     was open, intermittently and only on the slow runs. */
+  if (isDev && (process.env.EQLC_TAB || process.env.EQLC_EXEC)) harnessRun = () => {
     setTimeout(() => {
       if (!mainWin) return;
       if (process.env.EQLC_TAB) mainWin.webContents.executeJavaScript(
@@ -127,8 +131,15 @@ function createMainWindow() {
         } else if (process.env.EQLC_SHOT_OVERLAY) console.log("[shot overlay] no overlay window");
         app.quit();
       }, Number(process.env.EQLC_SHOT_DELAY || 2500));
-    }, 3000);
-  });
+    }, 400);   // one paint after the renderer says it is wired
+  };
+  /* …but a renderer that threw before ready() must still get photographed —
+     a hung harness says less than a screenshot of the broken window. */
+  if (harnessRun) setTimeout(() => {
+    if (!harnessRun) return;
+    console.log("[harness] renderer never signalled ready — running anyway");
+    const f = harnessRun; harnessRun = null; f();
+  }, 15000);
   mainWin.on("closed", () => { mainWin = null; app.quit(); });
 }
 
@@ -150,19 +161,24 @@ function createOverlayWindow() {
   overlayWin.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
   overlayWin.loadFile(path.join(__dirname, "overlay", "overlay.html"));
   overlayWin.webContents.on("did-finish-load", () => { sendOverlayInit(); applyClickThrough(); });
-  /* Collapsed bounds must not become the remembered size — expanding would
-     restore the title bar. The height to come back to lives in `height`, and
-     only an uncollapsed resize updates it. */
-  const saveBounds = () => {
-    if (!overlayWin) return;
-    const g = overlayWin.getBounds();
-    SETTINGS.overlay.bounds = g;
-    if (!SETTINGS.overlay.collapsed) SETTINGS.overlay.height = g.height;
-    saveSettings();
-  };
-  overlayWin.on("moved", saveBounds);
-  overlayWin.on("resized", saveBounds);
+  overlayWin.on("moved", saveOverlayBounds);
+  overlayWin.on("resized", saveOverlayBounds);
   overlayWin.on("closed", () => { overlayWin = null; SETTINGS.overlay.shown = false; saveSettings(); notifyOverlayState(); });
+}
+
+/* Collapsed bounds must not become the remembered size — expanding would
+   restore the title bar. The height to come back to lives in `height`, and only
+   an uncollapsed resize updates it. Debounced because the title-bar drag moves
+   the window per pointer event, and each one would otherwise rewrite
+   settings.json. */
+let boundsTimer = null;
+function saveOverlayBounds() {
+  if (!overlayWin) return;
+  const g = overlayWin.getBounds();
+  SETTINGS.overlay.bounds = g;
+  if (!SETTINGS.overlay.collapsed) SETTINGS.overlay.height = g.height;
+  clearTimeout(boundsTimer);
+  boundsTimer = setTimeout(saveSettings, 400);
 }
 
 /* One prefs shape, sent to both windows. The overlay draws from it; the main
@@ -241,6 +257,7 @@ let tailTimer = null;
 const tails = new Map(); // file path -> {offset, remainder}
 let activeFile = null;
 let rendererReady = false;
+let harnessRun = null;   // dev screenshot/probe harness, fired on renderer:ready
 
 function startTail() {
   stopTail();
@@ -581,6 +598,7 @@ ipcMain.on("renderer:ready", () => {
   startTail();
   startInvWatch();
   refreshDatasets(false);
+  if (harnessRun) { const f = harnessRun; harnessRun = null; f(); }
 });
 ipcMain.handle("data:refresh", async () => { await refreshDatasets(true); return loadDatasets(); });
 /* The Parser tab re-reads the active log's tail on demand — the renderer
@@ -612,9 +630,7 @@ ipcMain.on("wiki:open", (_e, url) => {
   if (typeof url === "string" && /^https:\/\//.test(url)) shell.openExternal(url);
 });
 ipcMain.on("overlay:toggle", (_e, force) => toggleOverlay(force));
-ipcMain.on("overlay:clickThrough", (_e, on) => {
-  SETTINGS.overlay.clickThrough = !!on; saveSettings(); applyClickThrough(); notifyOverlayState();
-});
+ipcMain.on("overlay:clickThrough", (_e, on) => applyOverlayPrefs({ clickThrough: !!on }));
 /* The unpin hotspot: forward:true keeps mousemove flowing while ignoring
    clicks, so the overlay can tell us the cursor is over the pin button and
    we flip the window interactive just for it — otherwise a pinned overlay
@@ -624,7 +640,9 @@ ipcMain.on("overlay:hotspot", (_e, on) => {
   if (overlayWin && SETTINGS.overlay.clickThrough)
     overlayWin.setIgnoreMouseEvents(!on, { forward: true });
 });
-ipcMain.on("overlay:prefs", (_e, p) => {
+/* ONE path for every overlay preference, whichever surface set it: the app's
+   Settings pane, the overlay's own controls, or its right-click menu. */
+function applyOverlayPrefs(p) {
   const o = SETTINGS.overlay;
   if (p.fontScale !== undefined) o.fontScale = Math.min(1.6, Math.max(0.8, +p.fontScale || 1));
   if (p.showKills !== undefined) o.showKills = !!p.showKills;
@@ -641,7 +659,59 @@ ipcMain.on("overlay:prefs", (_e, p) => {
   // the shown tab must be one that still exists
   if (!o.views.includes(o.view)) o.view = o.views[0];
   if (p.collapsed !== undefined) setCollapsed(!!p.collapsed);
-  saveSettings(); sendOverlayInit(); notifyOverlayState();
+  let mode = false;
+  if (p.opacity !== undefined) { o.opacity = Math.min(1, Math.max(0.2, +p.opacity || 0.92)); mode = true; }
+  if (p.clickThrough !== undefined) { o.clickThrough = !!p.clickThrough; mode = true; }
+  saveSettings();
+  if (mode) applyClickThrough();   // carries opacity to the overlay too
+  sendOverlayInit(); notifyOverlayState();
+}
+ipcMain.on("overlay:prefs", (_e, p) => applyOverlayPrefs(p || {}));
+
+/* Right-click the overlay's title bar. A NATIVE menu, not an HTML one: the
+   overlay window is 340px wide and 26px tall when rolled up, and an in-page
+   menu cannot paint outside its own window. Kyle, 2026-08-13: "i don't think
+   pin is useful… what if we right click the header bar of the widget? you could
+   put the lock/unlock there. you could also allow people to adjust tabs from
+   there and other settings. opacity, etc." */
+const VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Stats", sky: "Sky" };
+const OPACITY_STEPS = [1, 0.92, 0.85, 0.75, 0.6, 0.45];
+const SCALE_STEPS = [0.8, 0.9, 1, 1.15, 1.3, 1.6];
+ipcMain.on("overlay:menu", () => {
+  if (!overlayWin) return;
+  if (isDev) console.log("[overlay] settings menu");
+  const o = SETTINGS.overlay;
+  const set = (patch) => applyOverlayPrefs(patch);
+  const menu = Menu.buildFromTemplate([
+    { label: o.collapsed ? "Open it back up" : "Roll up to the title bar",
+      click: () => set({ collapsed: !o.collapsed }) },
+    { label: "Locked — the game gets the mouse", type: "checkbox", checked: o.clickThrough,
+      toolTip: "Ctrl+Shift+L", click: () => set({ clickThrough: !o.clickThrough }) },
+    { type: "separator" },
+    { label: "Tabs", submenu: OVERLAY_VIEWS.map(v => ({
+        label: VIEW_LABEL[v] || v, type: "checkbox", checked: o.views.includes(v),
+        // the last one can't come off — a window with no tabs shows nothing
+        enabled: !(o.views.length === 1 && o.views[0] === v),
+        click: () => set({ views: o.views.includes(v) ? o.views.filter(x => x !== v) : o.views.concat(v) }),
+      })) },
+    { label: "Opacity", submenu: OPACITY_STEPS.map(v => ({
+        label: `${Math.round(v * 100)}%`, type: "radio", checked: Math.abs(o.opacity - v) < 0.02,
+        click: () => set({ opacity: v }),
+      })) },
+    { label: "Text size", submenu: SCALE_STEPS.map(v => ({
+        label: `${Math.round(v * 100)}%`, type: "radio", checked: Math.abs(o.fontScale - v) < 0.02,
+        click: () => set({ fontScale: v }),
+      })) },
+    { type: "separator" },
+    { label: "Show kills in the Loot feed", type: "checkbox", checked: o.showKills,
+      click: () => set({ showKills: !o.showKills }) },
+    { label: "Loot feed: quest items only", type: "checkbox", checked: o.questOnly,
+      click: () => set({ questOnly: !o.questOnly }) },
+    { type: "separator" },
+    { label: "Open the app window", click: () => { if (mainWin) { mainWin.show(); mainWin.focus(); } } },
+    { label: "Hide the overlay", toolTip: "Ctrl+Shift+O", click: () => toggleOverlay(false) },
+  ]);
+  menu.popup({ window: overlayWin });
 });
 
 /* Rolled up to the title bar and back (Kyle, 2026-08-13: "right now i have to
@@ -659,15 +729,23 @@ function setCollapsed(on) {
 }
 /* Transparent frameless windows have NO native resize borders on Windows —
    the overlay's corner grip drives resizing through here instead. */
+/* The title bar drags the window from JS rather than being an app-region: on
+   Windows a drag region is a caption hit-test, and a right-click on it never
+   reaches the page — which is where the settings menu now lives. Deltas, not
+   absolute coordinates, so the pointer and the window can't drift apart. */
+ipcMain.on("overlay:move", (_e, dx, dy) => {
+  if (!overlayWin) return;
+  const b = overlayWin.getBounds();
+  overlayWin.setBounds({ ...b, x: Math.round(b.x + (+dx || 0)), y: Math.round(b.y + (+dy || 0)) });
+  saveOverlayBounds();
+});
 ipcMain.on("overlay:resize", (_e, w, h) => {
   if (!overlayWin) return;
   const b = overlayWin.getBounds();
   overlayWin.setBounds({ x: b.x, y: b.y,
     width: Math.min(900, Math.max(180, ~~w)), height: Math.min(900, Math.max(70, ~~h)) });
 });
-ipcMain.on("overlay:opacity", (_e, v) => {
-  SETTINGS.overlay.opacity = Math.min(1, Math.max(0.2, +v || 0.92)); saveSettings(); applyClickThrough();
-});
+ipcMain.on("overlay:opacity", (_e, v) => applyOverlayPrefs({ opacity: v }));
 ipcMain.on("feed:event", (_e, ev) => {
   FEED_RING.push(ev); if (FEED_RING.length > 50) FEED_RING.shift();
   if (overlayWin) overlayWin.webContents.send("feed:event", ev);

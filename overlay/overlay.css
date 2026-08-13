@@ -21,21 +21,20 @@ body {
   padding: 2px 4px 2px 7px;
   background: rgba(23, 18, 39, .9);
   border-bottom: 1px solid rgba(201, 149, 42, .3);
-  -webkit-app-region: drag;            /* the whole bar drags the window */
+  cursor: move;                        /* the bar drags the window — see overlay.js */
   font-weight: 600; color: #e7b94e; font-size: 11px;
   white-space: nowrap; overflow: hidden;
 }
 #bar span { flex: 1; overflow: hidden; text-overflow: ellipsis; }
-#btnPin {
-  -webkit-app-region: no-drag;
-  background: none; border: 1px solid rgba(201,149,42,.35); border-radius: 3px;
-  color: #c9952a; cursor: pointer; font: 10px "Segoe UI", system-ui, sans-serif;
+/* the one word that says the game currently has the mouse */
+#bar #lockTag {
+  flex: 0 0 auto; font: 10px "Segoe UI", system-ui, sans-serif; font-weight: 400;
+  color: #e0713a; border: 1px solid rgba(224,113,58,.45); border-radius: 3px;
   padding: 0 5px; line-height: 15px;
 }
-#btnPin:hover { border-color: #e7b94e; color: #e7b94e; }
 /* roll-up: same chrome as pin, one glyph wide */
 #btnRoll {
-  -webkit-app-region: no-drag;
+  cursor: pointer;
   background: none; border: 1px solid rgba(201,149,42,.35); border-radius: 3px;
   color: #c9952a; cursor: pointer; font: 12px "Segoe UI", system-ui, sans-serif;
   padding: 0 6px; line-height: 15px;
@@ -48,7 +47,7 @@ body.rolled #ostats, body.rolled #osky, body.rolled #grip { display: none !impor
 body.rolled #bar { border-bottom: 0; }
 /* one tab left is a label, not a choice */
 #otabs.is-single button[data-oview] { pointer-events: none; }
-body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
+
 
 /* view tabs — Tracked | Loot */
 #otabs {
@@ -164,7 +163,7 @@ body.through #btnPin { color: #e7b94e; border-color: rgba(231,185,78,.6); }
   border-bottom-right-radius: 4px;
 }
 #grip:hover { background: linear-gradient(135deg, transparent 50%, rgba(231,185,78,.85) 50%); }
-body.through #grip { display: none; }  /* resizing needs the mouse; unpin first */
+body.through #grip { display: none; }  /* resizing needs the mouse; unlock first */
 
 /* Stats view — session line, then the last fights */
 #ostats { overflow-y: auto; flex: 1; }

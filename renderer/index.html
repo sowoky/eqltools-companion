@@ -179,7 +179,7 @@
     <h2>Overlay</h2>
     <p class="row">
       <button id="btnOverlay2" class="btn">Show overlay</button>
-      <label class="chk"><input type="checkbox" id="setClickThrough"> click-through (game gets the mouse)</label>
+      <label class="chk"><input type="checkbox" id="setClickThrough"> locked (the game gets the mouse)</label>
     </p>
     <p class="row"><label class="dim" for="setOpacity">Opacity</label> <input type="range" id="setOpacity" min="0.2" max="1" step="0.05">
       <label class="dim" for="setOvScale">Text size</label> <input type="range" id="setOvScale" min="0.8" max="1.6" step="0.05"></p>
@@ -187,8 +187,9 @@
       <label class="chk"><input type="checkbox" id="setOvQuestOnly"> quest items only</label></p>
     <p class="row" id="setOvViews"><span class="dim">Tabs</span></p>
     <p class="dim">Untick the tabs you don't use and they leave the overlay.
-    Its title bar has a <b>–</b> button that rolls it up to just that bar, and a <b>+</b> to bring it back.</p>
-    <p class="dim">Hotkeys anywhere, even with the game focused: <code>Ctrl+Shift+O</code> show/hide · <code>Ctrl+Shift+L</code> click-through.<br>
+    Its title bar has a <b>–</b> button that rolls it up to just that bar, and a <b>+</b> to bring it back.<br>
+    <b>Right-click that bar</b> for the same settings without leaving the game: lock, tabs, opacity, text size.</p>
+    <p class="dim">Hotkeys anywhere, even with the game focused: <code>Ctrl+Shift+O</code> show/hide · <code>Ctrl+Shift+L</code> lock/unlock.<br>
     The overlay can only sit over the game in <b>windowed or borderless</b> display mode — exclusive fullscreen draws past every other window.</p>
 
     <h2>Kill tracker</h2>
