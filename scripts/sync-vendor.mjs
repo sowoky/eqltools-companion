@@ -41,6 +41,7 @@ const VENDOR_JS = {
   "public/attributes/data.js": "attributes-data.js", // basename would collide
   "public/_shared/gear-score.js": "gear-score.js",
   "public/sky/sky-core.js": "sky-core.js",
+  "public/_shared/achievements.js": "achievements.js",
 };
 for (const [rel, name] of Object.entries(VENDOR_JS)) {
   const src = join(repo, rel);

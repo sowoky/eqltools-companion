@@ -98,7 +98,49 @@ if (process.argv.includes("--sky")) {
   for (const [loc, name] of bags) inv.push(`${loc}\t${name}\t${id++}\t1\t0`);
   const invOut = join(outDir, "Testchar_oggok-Inventory.txt");
   writeFileSync(invOut, inv.join("\n") + "\n");
+
+  /* 5. the achievements dump — the record of what this character did BEFORE
+        this log. Built out of sky.json so every reward name is the real one,
+        and shaped to exercise the trust rule that matters: RNG is an open
+        unlock whose first two rewards really were obtained (those must
+        backfill), while ENC is token-completed and MNK creation-granted with
+        EVERY criterion marked C (neither may contribute a thing). */
+  const A = [];
+  const flag = (b) => (b ? "C" : "I");
+  A.push("Untapped Potential: Classes");
+  for (const [code, name] of Object.entries({
+    BRD: "Bard", BST: "Beastlord", BER: "Berserker", CLR: "Cleric", DRU: "Druid",
+    ENC: "Enchanter", MAG: "Magician", MNK: "Monk", NEC: "Necromancer", PAL: "Paladin",
+    RNG: "Ranger", ROG: "Rogue", SHD: "Shadowknight", SHM: "Shaman", WAR: "Warrior",
+    WIZ: "Wizard",
+  })) {
+    const byToken = code === "ENC", byBirth = code === "MNK";
+    const unlocked = byToken || byBirth;
+    A.push(`${flag(unlocked)}\tPrimary Class Unlock - ${name}`);
+    sky.classes[code].tests.forEach((t, i) => {
+      // A force-marked unlock marks everything; an open one marks the truth.
+      A.push(`${flag(unlocked || (code === "RNG" && i < 2))}\t\tObtain ${t.reward}.`);
+    });
+    A.push(`${flag(byBirth)}\t\tThis achievement will autocomplete if you chose to confirm your Primary Class as a ${name}.`);
+    A.push(`${flag(byToken)}\t\tThis achievement can be bypassed using a Primary Class Unlock Token.`);
+  }
+  A.push("Untapped Potential: Races");
+  A.push("I\tRace Unlock - Dark Elf");
+  for (const f of ["Dark Bargainers", "Dreadguard Outer", "Dreadguard Inner"])
+    A.push(`${flag(f === "Dark Bargainers")}\t\tGet maximum faction with ${f}.`);
+  A.push("I\t\tThis achievement will autocomplete if your character was created as a Dark Elf.");
+  A.push("I\t\tThis achievement can be bypassed using a Race Unlock Token.");
+  A.push("Untapped Potential: Deity");
+  A.push("I\tDeity Unlock - Veeshan");
+  A.push("I\t\tFuture Placeholder for Veeshan Requirements.");
+  A.push("I\t\tThis achievement will autocomplete if you chose to confirm your Deity as Veeshan.");
+  A.push("I\t\tThis achievement can be bypassed using a Deity Unlock Token.");
+  const achOut = join(outDir, "Testchar_oggok-Achievements.txt");
+  writeFileSync(achOut, A.join("\n") + "\n");
+
   console.log(`sky scenario -> ${out} (${L.length} lines) and ${invOut} (${bags.length} pieces)`);
+  console.log(`  achievements -> ${achOut}`);
+  console.log(`  backfill:  RNG 2 tests (open unlock) · ENC/MNK unlocked but force-marked, must import 0`);
   console.log(`  turned in: BER ${done.n}`);
   console.log(`  ready:     ${readyTests.join(" / ")}`);
   console.log(`  autosold:  ${eaten.items[0].n} (wanted by SHM ${eaten.n})`);

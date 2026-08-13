@@ -21,6 +21,7 @@
   <button class="tab" data-tab="inv">Inventory</button>
   <button class="tab" data-tab="turnins">Turn-ins</button>
   <button class="tab" data-tab="sky">Sky</button>
+  <button class="tab" data-tab="unlocks">Unlocks</button>
   <button class="tab" data-tab="tracked">Tracked</button>
   <button class="tab" data-tab="quests">Quests</button>
   <button class="tab" data-tab="parser">Parser</button>
@@ -111,6 +112,24 @@
     <span class="dim">Logging must be on in game: <code>/log</code></span></p>
   </section>
 
+  <section id="tab-unlocks" class="pane pane--wide">
+    <div id="unlBanner" class="banner" hidden></div>
+    <div class="feedhead qbhead">
+      <span class="seg">
+        <button class="seg__b is-on" data-unlview="class">Classes</button>
+        <button class="seg__b" data-unlview="race">Races</button>
+        <button class="seg__b" data-unlview="deity">Deities</button>
+      </span>
+      <input id="unlSearch" type="search" placeholder="search unlock, faction, item">
+      <label class="chk"><input type="checkbox" id="unlHideDone"> hide unlocked</label>
+      <button id="unlPick" class="btn btn--sm">import dump…</button>
+      <span id="unlMeta" class="dim"></span>
+    </div>
+    <div id="unlBody"></div>
+    <p id="unlEmpty" class="empty">Type <code>/outputfile achievements</code> in game — this reads the file it writes.<br>
+    <span class="dim">It backfills the Sky tests you finished before you installed this.</span></p>
+  </section>
+
   <section id="tab-tracked" class="pane">
     <div id="trackedBanner" class="banner" hidden></div>
     <div id="trackedHead" class="feedhead" hidden>
@@ -176,6 +195,13 @@
     <p class="row"><code id="setLogDir">—</code> <button id="btnPickDir" class="btn">Change…</button></p>
     <p class="dim" id="setLogStatus"></p>
 
+    <h2>Game logging</h2>
+    <p class="row"><span id="setIniState" class="dim">checking…</span> <button id="btnEnableLog" class="btn" hidden>Turn logging on</button></p>
+    <p class="dim">This app reads the game's log file, and the game only writes one when logging is on.
+    Turning it on here sets <code>Log=1</code> in <code>eqclient.ini</code> — what <code>/log on</code>
+    does, but permanently and for every character.<br>
+    Set it with the game <b>closed</b>: EverQuest rewrites that file when it exits and would undo the change.</p>
+
     <h2>Overlay</h2>
     <p class="row">
       <button id="btnOverlay2" class="btn">Show overlay</button>
@@ -216,6 +242,7 @@
 <script src="../vendor/attributes-data.js"></script>
 <script src="../vendor/gear-score.js"></script>
 <script src="../vendor/sky-core.js"></script>
+<script src="../vendor/achievements.js"></script>
 <script src="../vendor/site/log-parser/engine.js"></script>
 <script src="app.js"></script>
 </body>

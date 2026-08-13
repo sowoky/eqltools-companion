@@ -2113,7 +2113,14 @@ function skyModel() {
         n: r, short: r.replace("Wind Rune ", ""), need: 1, have: skyHave(have, r).n,
       }));
       const done = comp.byTest[t.n] || 0;
-      const st = SKY.testState(t, done, false, n => skyHave(have, n, locIdx.has(itemKey(n))).n);
+      /* The second witness. `done` is what this log saw you hand over; `ach`
+         is the client's own achievement record saying you hold the reward —
+         the only evidence that survives from before the app was installed.
+         Both are measurements, neither is a player's mark, and they are kept
+         apart so a row can say which one it is standing on. Either one means
+         the test is behind you, so both suppress "ready". */
+      const ach = !!(ACH_SKY[code] && ACH_SKY[code].byTest[t.n]);
+      const st = SKY.testState(t, done + (ach ? 1 : 0), false, n => skyHave(have, n, locIdx.has(itemKey(n))).n);
       /* Progress on a test means a COMPONENT of it. Runes are generic — one
          Wind Rune Dena feeds seven different tests, so counting it as progress
          listed all seven as started off a single drop. */
@@ -2122,11 +2129,11 @@ function skyModel() {
       return {
         code, full: t.n, n: t.n.replace(SKY_CLASS[code] + " ", ""),
         say: t.say || "", reward: t.reward || "", items, rune,
-        done, ready: st.ready, missing: st.missing.length, held,
+        done, ach, ready: st.ready, missing: st.missing.length, held,
         need: items.length + rune.length,
       };
     });
-    const nDone = tests.filter(t => t.done > 0).length;
+    const nDone = tests.filter(t => t.done > 0 || t.ach).length;
     const nReady = tests.filter(t => t.ready).length;
     const nPartial = tests.filter(t => !t.ready && !t.done && t.held > 0).length;
     tot.tests += tests.length; tot.done += nDone; tot.ready += nReady; tot.partial += nPartial;
@@ -2138,9 +2145,10 @@ function skyModel() {
 // One rule, both surfaces: "ready" is everything in hand, "held" adds the tests
 // you have started, "all" is the other 90 you have not.
 function skyKeep(t, show, hideDone) {
-  if (hideDone && t.done > 0) return false;
-  if (show === "ready") return t.ready || (t.done > 0 && !hideDone && t.missing === 0);
-  if (show === "held") return t.ready || t.held > 0 || t.done > 0;
+  const fin = t.done > 0 || t.ach;   // either witness closes a test
+  if (hideDone && fin) return false;
+  if (show === "ready") return t.ready || (fin && !hideDone && t.missing === 0);
+  if (show === "held") return t.ready || t.held > 0 || fin;
   return true;
 }
 function skyMatch(g, t, q) {
@@ -2201,8 +2209,12 @@ function skyRuneHtml(r) {
 
 function skyStatus(t) {
   if (t.ready) return `<span class="sk-st sk-st--ready">ready</span>`;
-  if (t.done > 0 && t.missing === 0) return `<span class="sk-st sk-st--ready">can repeat</span>`;
+  const fin = t.done > 0 || t.ach;
+  if (fin && t.missing === 0) return `<span class="sk-st sk-st--ready">can repeat</span>`;
+  // "done" when only the achievement witnessed it: the turn-in happened before
+  // this log, so calling it "turned in" would imply a trade we never saw.
   if (t.done > 0) return `<span class="sk-st sk-st--done">turned in</span>`;
+  if (t.ach) return `<span class="sk-st sk-st--done">done</span>`;
   return `<span class="sk-st sk-st--miss">missing ${t.missing}</span>`;
 }
 
@@ -2234,19 +2246,22 @@ function renderSky(model) {
     // number twice
     const tally = [
       g.nReady ? `<b class="sk-n sk-n--ready">${g.nReady}</b> ready` : "",
-      g.nDone ? `<b class="sk-n sk-n--done">${g.nDone}</b> turned in` : "",
+      // "done", not "turned in": this count now folds in tests only the
+      // achievement record witnessed, which this log never saw handed over.
+      g.nDone ? `<b class="sk-n sk-n--done">${g.nDone}</b> done` : "",
       g.nPartial ? `${g.nPartial} started` : "",
       `${g.tests.length} tests`,
     ].filter(Boolean).join(" · ");
     const orphan = g.orphan
       ? `<p class="sk-orphan">${g.orphan} completed trade${g.orphan === 1 ? "" : "s"} with ${esc(g.giver)} matched no single test — that is what a turn-in split across two trades looks like.</p>`
       : "";
-    const tests = rows.map(t => `<div class="skt${t.ready ? " is-ready" : ""}${t.done ? " is-done" : ""}">
+    const tests = rows.map(t => `<div class="skt${t.ready ? " is-ready" : ""}${t.done || t.ach ? " is-done" : ""}">
       <div class="skt__h">
         <span class="skt__n">${esc(t.n)}</span>
         ${t.say ? `<span class="skt__say" title="Hail ${esc(g.giver)} and say this">say <code>${esc(t.say)}</code></span>` : ""}
         ${skyStatus(t)}
         ${t.done ? `<span class="skt__done" title="Your log shows ${t.done} turn-in${t.done === 1 ? "" : "s"} of this test">✓${t.done}</span>` : ""}
+        ${t.ach && !t.done ? `<span class="skt__done skt__done--ach" title="Your achievement record says you obtained ${esc(t.reward)}; the turn-in happened before this log">✓ recorded</span>` : ""}
         <span class="skt__rew">→ ${skyItemSpan(t.reward)}</span>
       </div>
       <ul class="skt__items">${t.rune.map(skyRuneHtml).join("")}${t.items.map(skyPieceHtml).join("")}</ul>
@@ -2262,7 +2277,7 @@ function renderSky(model) {
     </section>`;
   }).join("");
   body.innerHTML = html || `<p class="empty">Nothing matches. Widen <b>show</b>, or clear the search.</p>`;
-  meta.textContent = `${m.tot.ready} ready · ${m.tot.done}/${m.tot.tests} turned in · ${m.tot.partial} started · ${shown} shown`;
+  meta.textContent = `${m.tot.ready} ready · ${m.tot.done}/${m.tot.tests} done · ${m.tot.partial} started · ${shown} shown`;
   $("skyExpand").textContent = openCount ? "collapse all" : "expand all";
   // What this reading can and can't have seen. Both halves are real limits and
   // neither is recoverable, so they are stated rather than left to be inferred.
@@ -2291,7 +2306,9 @@ function pushSky(model) {
   for (const g of m.classes) {
     if (!w.cls.includes(g.code)) continue;
     const tests = g.tests.filter(t => skyKeep(t, w.show, w.hideDone)).map(t => ({
-      n: t.n, say: w.say ? t.say : "", done: t.done, ready: t.ready, missing: t.missing,
+      // `ach` rides along so the overlay marks a pre-log completion the same
+      // way the tab does; an older overlay build just ignores the extra key.
+      n: t.n, say: w.say ? t.say : "", done: t.done, ach: t.ach, ready: t.ready, missing: t.missing,
       rew: skyRef(t.reward),
       items: t.rune.map(r => ({ ...skyRef(r.n), n: "Rune " + r.short, have: r.have, need: 1, rune: true, locs: [] }))
         .concat(t.items.map(i => ({
@@ -2331,7 +2348,7 @@ function renderSkyWidget() {
        <option value="held"${w.show === "held" ? " selected" : ""}>anything I hold a piece of</option>
        <option value="all"${w.show === "all" ? " selected" : ""}>every test</option>
      </select></label>` +
-    `<label class="skw__r"><input type="checkbox" data-skyw="hideDone"${w.hideDone ? " checked" : ""}> hide tests I've turned in</label>` +
+    `<label class="skw__r"><input type="checkbox" data-skyw="hideDone"${w.hideDone ? " checked" : ""}> hide tests I've finished</label>` +
     `<label class="skw__r"><input type="checkbox" data-skyw="loc"${w.loc ? " checked" : ""}> show where each piece is</label>` +
     `<label class="skw__r"><input type="checkbox" data-skyw="say"${w.say ? " checked" : ""}> show the hail phrase</label>` +
     `<div class="skw__h">Classes <button type="button" class="lnk" data-skywall="1">all</button> ·
@@ -2347,6 +2364,115 @@ function populateSkyFilters() {
   $("skyShow").value = SKYP.show;
   $("skyHideDone").checked = SKYP.hideDone;
   renderSkyWidget();
+}
+
+/* ── achievements: what you did before anything was watching ──────────────
+   `/outputfile achievements` is the client's own record of a character's
+   history, and it is the ONLY source for the thing every tracker gets wrong
+   on day one: a player who installs this after weeks of play. The log starts
+   the day the log starts; this file does not.
+
+   What it can actually prove is narrow, and the tab says so. `Obtain X`
+   criteria exist ONLY under the sixteen Primary Class Unlocks, where they are
+   that class's Plane of Sky test rewards one-for-one. There is no general
+   "you completed quest X" row anywhere in the file, so Sky is the whole quest
+   backfill; the rest is unlock progress, which is worth its own tab.
+
+   The trust rule lives in the shared module (EQLAch.trust) because it is a
+   fact about the file, not about this app: a completed unlock force-marks
+   every criterion, so only an INCOMPLETE one — or a complete one that took
+   neither escape hatch — can be read. */
+const ACH = { file: null, mtime: 0, parsed: null, problem: null, char: "" };
+const UNL = { view: "class", q: "", hideDone: false };
+const UNL_KEY = "eqlt-companion-unlocks-v1";
+let ACH_SKY = {};   // class code -> {byTest, trusted, …}; rebuilt on load
+
+function onAchFile({ file, mtime, text }) {
+  ACH.file = file; ACH.mtime = mtime;
+  ACH.char = window.EQLAch.whose(file).char;
+  ACH.parsed = window.EQLAch.parse(text);
+  rebuildAchSky();
+  renderUnlocks(); renderSky(); pushSky();
+}
+function onAchStatus({ problem }) { ACH.problem = problem; renderUnlocks(); }
+
+/* Whose dump is this? The app follows whatever character the log is on, and
+   applying one character's achievements to another's Sky tab would be silent
+   fiction — Averaj's finished tests are not Ravlin's. Mismatch keeps the
+   Unlocks tab (it is still a real record, and says whose) but contributes
+   nothing to Sky. */
+function achMine() {
+  if (!ACH.parsed) return false;
+  const me = SKYL && SKYL.me;
+  if (!me || !ACH.char) return true;   // can't tell yet — don't withhold
+  return ACH.char.toLowerCase() === me.toLowerCase();
+}
+function rebuildAchSky() {
+  ACH_SKY = ACH.parsed && SKYD && achMine()
+    ? window.EQLAch.skyTests(SKYD, ACH.parsed, SKY_CLASS) : {};
+}
+
+/* ── the Unlocks tab ──────────────────────────────────────────────────────
+   Three lists off one file. A locked unlock shows its real requirements with
+   the ones already done ticked; an unlocked one says HOW, because "unlocked"
+   and "earned" are different facts and only one of them means the work is
+   behind you. Deity rows mostly read "Future Placeholder for X Requirements"
+   — the client's own words for unimplemented — and are never drawn as a
+   checklist a player could work on. */
+const UNL_TITLE = {
+  class: "Primary class unlocks are the Plane of Sky class tests — the Sky tab has the pieces and where they drop.",
+  race: "Race unlocks come from faction. Max the factions listed and the race opens.",
+  deity: "The client ships these as placeholders — the requirements are not implemented yet.",
+};
+function unlockRowHtml(u) {
+  const pct = u.need ? Math.round((u.have / u.need) * 100) : 0;
+  const state = u.unlocked
+    ? `<span class="unl__st unl__st--on" title="${esc(u.whyText)}">unlocked</span>`
+    : u.placeholder ? `<span class="unl__st unl__st--na">not implemented</span>`
+    : `<span class="unl__st">${u.have}/${u.need}</span>`;
+  /* An unlocked-by-token/creation row has nothing to show under it: every
+     criterion reads complete whether or not it happened, so the honest move is
+     to say that instead of printing six ticks that mean nothing. */
+  const steps = !u.trusted
+    ? `<div class="unl__note dim">${esc(u.whyNote)}</div>`
+    : u.placeholder
+    ? `<div class="unl__note dim">${esc(u.steps.map(s => s.t).join(" "))}</div>`
+    : `<ul class="unl__steps">${u.steps.map(s =>
+        `<li class="${s.done ? "is-done" : ""}"><span class="unl__tick">${s.done ? "✓" : "·"}</span> ${esc(s.t)}</li>`).join("")}</ul>`;
+  return `<details class="unl${u.unlocked ? " is-on" : ""}"${!u.unlocked && u.have > 0 ? " open" : ""}>
+    <summary><span class="unl__n">${esc(u.name)}</span> ${state}
+      ${u.unlocked && u.whyText ? `<span class="dim">${esc(u.whyText)}</span>` : ""}
+      ${!u.unlocked && u.need && u.have ? `<span class="unl__bar"><i style="width:${pct}%"></i></span>` : ""}
+    </summary>${steps}</details>`;
+}
+function renderUnlocks() {
+  const body = $("unlBody"), empty = $("unlEmpty"), banner = $("unlBanner");
+  const meta = $("unlMeta");
+  if (!ACH.parsed) {
+    body.innerHTML = ""; meta.textContent = "";
+    empty.hidden = false;
+    banner.hidden = !ACH.problem;
+    if (ACH.problem) banner.textContent = ACH.problem;
+    return;
+  }
+  empty.hidden = true;
+  const u = window.EQLAch.unlocks(ACH.parsed);
+  const list = { class: u.classes, race: u.races, deity: u.deities }[UNL.view] || [];
+  const q = UNL.q.trim().toLowerCase();
+  const rows = list.filter(r => {
+    if (UNL.hideDone && r.unlocked) return false;
+    if (!q) return true;
+    return r.name.toLowerCase().includes(q) || r.steps.some(s => s.t.toLowerCase().includes(q));
+  });
+  const mine = achMine();
+  banner.hidden = mine;
+  if (!mine) banner.textContent =
+    `This dump is ${ACH.char}'s and the log is ${SKYL && SKYL.me}'s — shown, but not applied to the Sky tab.`;
+  const on = list.filter(r => r.unlocked).length;
+  meta.textContent = `${on}/${list.length} unlocked · ${rows.length} shown · ${ACH.char || "dump"}`;
+  body.innerHTML =
+    `<p class="unl__hint dim">${esc(UNL_TITLE[UNL.view])}</p>` +
+    (rows.length ? rows.map(unlockRowHtml).join("") : `<p class="empty">Nothing matches.</p>`);
 }
 
 /* ── parser tab: the site's /log-parser page, embedded whole ──────────────
@@ -2878,6 +3004,33 @@ function renderStatus() {
   $("setLogStatus").textContent = currentFile ? `Following ${currentFile}` : (LOGSTATUS.problem || "");
 }
 
+/* eqclient.ini's Log key. Reports what the FILE says, never what we asked it
+   to say: the game rewrites this file on exit, so a write made while it is
+   running is discarded, and a button that claimed success anyway would be
+   worse than no button. `running` is null off Windows — an unknown, and the
+   copy says so rather than picking an answer. */
+async function renderEqConfig(state) {
+  const st = state || await window.companion.getEqConfig();
+  const label = $("setIniState"), btn = $("btnEnableLog");
+  if (st.error) { label.textContent = st.error; btn.hidden = false; return; }
+  if (!st.ini) {
+    label.textContent = LOGSTATUS.logDir
+      ? "No eqclient.ini beside the Logs folder — set the log folder to the game's own Logs directory."
+      : "Set the log folder first.";
+    btn.hidden = true;
+    return;
+  }
+  const on = st.log === "1";
+  btn.hidden = on;
+  btn.textContent = "Turn logging on";
+  // The paragraph below this line already explains the closed-game rule, so
+  // only the DETECTED case adds anything here.
+  label.innerHTML = on
+    ? `Logging is <b>on</b> (<code>Log=1</code>).`
+    : `Logging is <b>off</b> — the game is writing no log.` +
+      (st.running === true ? ` <b>Close the game first</b>: it rewrites this file on exit.` : "");
+}
+
 function renderData() {
   const rows = [];
   const one = (label, d, src) => {
@@ -3026,6 +3179,8 @@ async function main() {
   window.companion.onLogStatus(st => { LOGSTATUS = st; renderStatus(); });
   window.companion.onInvFile(onInvFile);
   window.companion.onInvStatus(onInvStatus);
+  window.companion.onAchFile(onAchFile);
+  window.companion.onAchStatus(onAchStatus);
   window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); populateInvFilters(); renderInv(); populateQuestFilters(); renderQuests(); populateSkyFilters(); renderSky(); pushZone(); pushQuests(); pushSky(); });
   window.companion.onOverlayState(renderOverlayState);
   window.companion.onUpdate(renderUpdate);
@@ -3064,6 +3219,27 @@ async function main() {
     if (h) { e.stopPropagation(); toggleHeld(h.dataset.hold, +h.dataset.want || 1); }
   });
   window.companion.onMarkHeld(n => toggleHeld(n, 1));
+  /* Unlocks tab */
+  try { Object.assign(UNL, JSON.parse(localStorage.getItem(UNL_KEY)) || {}); } catch { /* defaults */ }
+  const saveUnl = () => { try { localStorage.setItem(UNL_KEY, JSON.stringify(UNL)); } catch { /* full */ } };
+  document.querySelectorAll("[data-unlview]").forEach(b => b.addEventListener("click", () => {
+    UNL.view = b.dataset.unlview; saveUnl();
+    document.querySelectorAll("[data-unlview]").forEach(x => x.classList.toggle("is-on", x === b));
+    renderUnlocks();
+  }));
+  $("unlSearch").addEventListener("input", e => { UNL.q = e.target.value; renderUnlocks(); });
+  $("unlHideDone").addEventListener("change", e => { UNL.hideDone = e.target.checked; saveUnl(); renderUnlocks(); });
+  $("unlPick").addEventListener("click", async () => {
+    const r = await window.companion.pickAchFile();
+    if (!r) return;
+    if (r.error) { const b = $("unlBanner"); b.hidden = false; b.textContent = r.error; return; }
+    onAchFile(r);
+  });
+  document.querySelectorAll("[data-unlview]").forEach(x => x.classList.toggle("is-on", x.dataset.unlview === UNL.view));
+  $("unlSearch").value = UNL.q || "";
+  $("unlHideDone").checked = !!UNL.hideDone;
+  renderUnlocks();
+
   $("skySearch").addEventListener("input", renderSky);
   $("skyShow").addEventListener("change", e => { SKYP.show = e.target.value; saveSkyPrefs(); renderSky(); });
   $("skyClass").addEventListener("change", e => { SKYP.cls = e.target.value; saveSkyPrefs(); renderSky(); });
@@ -3134,7 +3310,9 @@ async function main() {
       .filter(b => b.checked).map(b => b.dataset.ovview);
     window.companion.setOverlayPrefs({ views });   // main echoes the accepted list back
   });
-  $("btnPickDir").addEventListener("click", async () => { LOGSTATUS.logDir = await window.companion.pickLogDir(); renderStatus(); });
+  $("btnPickDir").addEventListener("click", async () => { LOGSTATUS.logDir = await window.companion.pickLogDir(); renderStatus(); renderEqConfig(); });
+  $("btnEnableLog").addEventListener("click", async () => renderEqConfig(await window.companion.enableGameLog()));
+  renderEqConfig();
   $("btnRefresh").addEventListener("click", async () => {
     $("btnRefresh").disabled = true;
     buildIndexes(await window.companion.refreshData());

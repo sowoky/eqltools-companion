@@ -16,6 +16,9 @@ contextBridge.exposeInMainWorld("companion", {
   getZoneFile: (key) => ipcRenderer.invoke("data:zoneFile", key),
   getLogTail: () => ipcRenderer.invoke("log:tail"),
   pickLogDir: () => ipcRenderer.invoke("log:pickDir"),
+  pickAchFile: () => ipcRenderer.invoke("ach:pick"),
+  getEqConfig: () => ipcRenderer.invoke("eqconfig:get"),
+  enableGameLog: () => ipcRenderer.invoke("eqconfig:enableLog"),
   openWiki: (url) => ipcRenderer.send("wiki:open", url),
   toggleOverlay: (force) => ipcRenderer.send("overlay:toggle", force),
   setClickThrough: (on) => ipcRenderer.send("overlay:clickThrough", on),
@@ -37,6 +40,8 @@ contextBridge.exposeInMainWorld("companion", {
   onLogStatus: (fn) => ipcRenderer.on("log:status", (_e, p) => fn(p)),
   onInvFile: (fn) => ipcRenderer.on("inv:file", (_e, p) => fn(p)),
   onInvStatus: (fn) => ipcRenderer.on("inv:status", (_e, p) => fn(p)),
+  onAchFile: (fn) => ipcRenderer.on("ach:file", (_e, p) => fn(p)),
+  onAchStatus: (fn) => ipcRenderer.on("ach:status", (_e, p) => fn(p)),
   onDataUpdated: (fn) => ipcRenderer.on("data:updated", (_e, p) => fn(p)),
   onOverlayState: (fn) => ipcRenderer.on("overlay:state", (_e, p) => fn(p)),
 

@@ -346,34 +346,47 @@ function sendStatus(problem) {
   });
 }
 
-/* ── inventory dumps ──────────────────────────────────────────────────────
-   /out inventory writes <Char>_<server>-Inventory.txt into the EQ install
-   dir — the PARENT of the Logs folder we tail. Poll that dir and the log dir
-   itself (dev points logDir at a scratch dir with no install layout) for the
-   newest dump and ship the whole file whenever path or mtime changes; a dump
-   is a few KB. Parsing is the renderer's job, same as log lines. */
-const INV_POLL_MS = 3000;
-let invTimer = null;
-let invSent = null;    // "path:mtime" of the last file shipped
-let invProblem = "-";  // last problem sent; "-" forces the first send
+/* ── /outputfile dumps ────────────────────────────────────────────────────
+   /out <thing> writes <Char>_<server>-<Thing>.txt into the EQ install dir —
+   the PARENT of the Logs folder we tail. Poll that dir and the log dir itself
+   (dev points logDir at a scratch dir with no install layout) for the newest
+   dump of each kind and ship the whole file whenever path or mtime changes;
+   a dump is a few KB. Parsing is the renderer's job, same as log lines.
+
+   Two kinds ride this: `inventory` (what you are carrying, 3 s — it changes
+   as you play) and `achievements` (what you have ever done, 30 s — it only
+   changes when the player types the command, and it is the slower, bigger
+   file). The achievements FILENAME is inferred from /outputfile's own
+   convention and has not yet been seen on disk here, so the Unlocks tab also
+   offers a manual pick: a wrong guess must degrade to "browse for it", never
+   to a tab that stays silently empty. */
+const DUMPS = {
+  inv: { rx: /-Inventory\.txt$/i, ms: 3000, chan: "inv" },
+  ach: { rx: /-Achievements\.txt$/i, ms: 30000, chan: "ach" },
+};
+const dumpState = {};   // kind -> {timer, sent, problem}
 function startInvWatch() {
   stopInvWatch();
   if (!SETTINGS.logDir) return;
-  invTimer = setInterval(pollInv, INV_POLL_MS);
-  pollInv();
+  for (const kind of Object.keys(DUMPS)) {
+    dumpState[kind] = { timer: setInterval(() => pollDump(kind), DUMPS[kind].ms), sent: null, problem: "-" };
+    pollDump(kind);
+  }
 }
 function stopInvWatch() {
-  if (invTimer) { clearInterval(invTimer); invTimer = null; }
-  invSent = null; invProblem = "-";
+  for (const s of Object.values(dumpState)) if (s.timer) clearInterval(s.timer);
+  for (const kind of Object.keys(DUMPS)) dumpState[kind] = { timer: null, sent: null, problem: "-" };
 }
-function pollInv() {
+function pollDump(kind) {
   if (!rendererReady || !mainWin) return;
+  const spec = DUMPS[kind], st8 = dumpState[kind];
+  if (!spec || !st8) return;
   let best = null, readable = false;
   for (const dir of [path.dirname(SETTINGS.logDir), SETTINGS.logDir]) {
     let entries; try { entries = fs.readdirSync(dir); } catch { continue; }
     readable = true;
     for (const name of entries) {
-      if (!/-Inventory\.txt$/i.test(name)) continue;
+      if (!spec.rx.test(name)) continue;
       const p = path.join(dir, name);
       let st; try { st = fs.statSync(p); } catch { continue; }
       if (!best || st.mtimeMs > best.mtimeMs) best = { p, mtimeMs: st.mtimeMs };
@@ -383,13 +396,13 @@ function pollInv() {
   // nameable by the tab, or misconfiguration is indistinguishable from
   // "you haven't dumped yet" (same rule as the tail engine's sendStatus).
   const problem = readable ? null : "Game folder is unreadable.";
-  if (problem !== invProblem) { invProblem = problem; mainWin.webContents.send("inv:status", { problem }); }
+  if (problem !== st8.problem) { st8.problem = problem; mainWin.webContents.send(spec.chan + ":status", { problem }); }
   if (!best) return;
   const sig = best.p + ":" + best.mtimeMs;
-  if (sig === invSent) return;
+  if (sig === st8.sent) return;
   let text; try { text = fs.readFileSync(best.p, "utf8"); } catch { return; }
-  invSent = sig;
-  mainWin.webContents.send("inv:file", { file: path.basename(best.p), mtime: best.mtimeMs, text });
+  st8.sent = sig;
+  mainWin.webContents.send(spec.chan + ":file", { file: path.basename(best.p), mtime: best.mtimeMs, text });
 }
 
 /* ── datasets ─────────────────────────────────────────────────────────────
@@ -626,6 +639,89 @@ ipcMain.handle("log:pickDir", async () => {
   startInvWatch();
   return SETTINGS.logDir;
 });
+/* The achievements dump, picked by hand. The poller's filename guess is an
+   inference from /outputfile's convention, so this is the escape hatch that
+   keeps a wrong guess from reading as "you have never run the command". A
+   hand-picked file wins until the next newer one appears on disk. */
+ipcMain.handle("ach:pick", async () => {
+  const r = await dialog.showOpenDialog(mainWin, {
+    title: "Pick your /outputfile achievements dump",
+    defaultPath: SETTINGS.logDir ? path.dirname(SETTINGS.logDir) : undefined,
+    filters: [{ name: "Achievements dump", extensions: ["txt"] }],
+    properties: ["openFile"],
+  });
+  if (r.canceled || !r.filePaths.length) return null;
+  const p = r.filePaths[0];
+  let text, st;
+  try { text = fs.readFileSync(p, "utf8"); st = fs.statSync(p); }
+  catch { return { error: "That file could not be read." }; }
+  if (dumpState.ach) dumpState.ach.sent = p + ":" + st.mtimeMs;
+  return { file: path.basename(p), mtime: st.mtimeMs, text };
+});
+
+/* ── eqclient.ini ─────────────────────────────────────────────────────────
+   The app sees nothing at all until the game is writing a log, and the game
+   only writes one with Log=1 in eqclient.ini's [Defaults]. Every player who
+   installs this has to be told to type /log; setting the ini is the same
+   thing done once, correctly, without them learning a command.
+
+   Section-aware on purpose: a `Log=` key under some other section is a
+   different setting and is left alone. And the game REWRITES this file when it
+   exits, so a write while it is running is silently discarded — hence the
+   running check, and hence reporting the state rather than assuming the write
+   stuck. Only ever writes this one key; the file is the player's. */
+function clientIniPath() {
+  if (!SETTINGS.logDir) return null;
+  const p = path.join(path.dirname(SETTINGS.logDir), "eqclient.ini");
+  return fs.existsSync(p) ? p : null;
+}
+function gameRunning() {
+  // Windows is the platform this matters on (the Mac build runs under a
+  // wineprefix where the process name is not ours to rely on). Anywhere else
+  // the answer is "can't tell", and the UI says so rather than inventing one.
+  if (process.platform !== "win32") return null;
+  try {
+    const out = require("node:child_process")
+      .execFileSync("tasklist", ["/FI", "IMAGENAME eq eqgame.exe", "/NH"], { encoding: "utf8", timeout: 4000 });
+    return /eqgame\.exe/i.test(out);
+  } catch { return null; }
+}
+function readLogFlag(ini) {
+  let lines; try { lines = fs.readFileSync(ini, "utf8").split(/\r?\n/); } catch { return null; }
+  let inDefaults = false;
+  for (const raw of lines) {
+    const t = raw.trim();
+    if (/^\[.*\]$/.test(t)) { inDefaults = /^\[Defaults\]$/i.test(t); continue; }
+    if (inDefaults && /^Log\s*=/i.test(t)) return t.split("=")[1].trim();
+  }
+  return null;   // no key at all — the game treats that as off
+}
+function eqConfigState() {
+  const ini = clientIniPath();
+  return { ini, log: ini ? readLogFlag(ini) : null, running: gameRunning() };
+}
+ipcMain.handle("eqconfig:get", () => eqConfigState());
+ipcMain.handle("eqconfig:enableLog", () => {
+  const ini = clientIniPath();
+  if (!ini) return { ...eqConfigState(), error: "No eqclient.ini beside the Logs folder." };
+  let lines;
+  try { lines = fs.readFileSync(ini, "utf8").split(/\r?\n/); }
+  catch { return { ...eqConfigState(), error: "eqclient.ini could not be read." }; }
+  let header = -1, at = -1, inDefaults = false;
+  for (let i = 0; i < lines.length; i++) {
+    const t = lines[i].trim();
+    if (/^\[.*\]$/.test(t)) { inDefaults = /^\[Defaults\]$/i.test(t); if (inDefaults) header = i; continue; }
+    if (inDefaults && /^Log\s*=/i.test(t)) { at = i; break; }
+  }
+  if (at >= 0) lines[at] = "Log=1";
+  else if (header >= 0) lines.splice(header + 1, 0, "Log=1");
+  else lines.unshift("[Defaults]", "Log=1");
+  try { fs.writeFileSync(ini, lines.join("\n")); }
+  catch { return { ...eqConfigState(), error: "eqclient.ini is read-only." }; }
+  // Report what the file says NOW, not what we meant to write.
+  return eqConfigState();
+});
+
 ipcMain.on("wiki:open", (_e, url) => {
   if (typeof url === "string" && /^https:\/\//.test(url)) shell.openExternal(url);
 });

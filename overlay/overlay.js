@@ -548,7 +548,7 @@ function renderSky() {
   }
   const head = document.createElement("div");
   head.className = "osk-head";
-  head.textContent = `${SKYP.ready} ready · ${SKYP.done}/${SKYP.tests} turned in`;
+  head.textContent = `${SKYP.ready} ready · ${SKYP.done}/${SKYP.tests} done`;
   skyEl.append(head);
   if (!SKYP.inv) {
     const w = document.createElement("div");
@@ -582,13 +582,16 @@ function renderSky() {
     if (open) {
       for (const t of g.tests) {
         const d = document.createElement("div");
-        d.className = "ost" + (t.ready ? " is-ready" : "") + (t.done ? " is-done" : "");
+        d.className = "ost" + (t.ready ? " is-ready" : "") + (t.done || t.ach ? " is-done" : "");
         const th = document.createElement("div");
         th.className = "ost__h";
         th.innerHTML = `<span class="ost__n">${esc(t.n)}</span>` +
           (t.say ? `<span class="ost__say">say <b>${esc(t.say)}</b></span>` : "") +
           (t.ready ? `<span class="ost__st">ready</span>`
             : t.done ? `<span class="ost__st is-done">✓${t.done}</span>`
+            // The achievement record witnessed it, this log didn't — no count
+            // to print, so the tick stands alone.
+            : t.ach ? `<span class="ost__st is-done">✓</span>`
             : `<span class="ost__st is-miss">${t.missing} left</span>`);
         d.append(th);
         const ul = document.createElement("ul");

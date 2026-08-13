@@ -490,3 +490,41 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .lnk { background: none; border: 0; color: var(--gold); cursor: pointer; font: inherit; padding: 0; }
 .lnk:hover { color: var(--gold-pale); }
 .btn--sm { padding: 2px 8px; font-size: 12px; }
+
+/* ── Unlocks tab ─────────────────────────────────────────────────────────
+   One row per unlock, folded. Locked rows with progress open themselves —
+   those are the ones with something to read; the other forty are a list. */
+#unlSearch { min-width: 210px; }
+#tab-unlocks .chk, #unlMeta { white-space: nowrap; }
+.unl__hint { margin: 0 0 8px; max-width: 82ch; font-size: 12px; }
+.unl {
+  border: 1px solid var(--line); border-radius: 6px; background: var(--bg-panel);
+  margin-bottom: 4px;
+}
+.unl > summary {
+  display: flex; align-items: baseline; gap: 10px; padding: 6px 10px;
+  cursor: pointer; list-style: none;
+}
+.unl > summary::-webkit-details-marker { display: none; }
+.unl > summary:hover { background: var(--bg-panel-2); }
+.unl__n { font-weight: 600; }
+.unl.is-on .unl__n { color: var(--ink-soft); }
+.unl__st {
+  font: 12px var(--mono); padding: 0 6px; border-radius: 3px;
+  border: 1px solid var(--line); color: var(--ink-dim);
+}
+.unl__st--on { color: var(--wiki); border-color: var(--wiki-line); }
+.unl__st--na { color: var(--ink-dim); font-family: inherit; font-size: 11px; }
+.unl__bar {
+  margin-left: auto; width: 90px; height: 4px; border-radius: 2px;
+  background: var(--line); overflow: hidden;
+}
+.unl__bar i { display: block; height: 100%; background: var(--gold); }
+.unl__steps { list-style: none; margin: 0; padding: 2px 10px 8px 10px; }
+.unl__steps li { display: flex; gap: 6px; padding: 2px 0; font-size: 13px; color: var(--ink-dim); }
+.unl__steps li.is-done { color: var(--ink-soft); }
+.unl__tick { color: var(--ink-dim); width: 11px; }
+.unl__steps li.is-done .unl__tick { color: var(--gold); }
+.unl__note { padding: 2px 10px 8px; font-size: 12px; max-width: 78ch; }
+/* the achievement record's own tick — a different witness from the log's */
+.skt__done--ach { color: var(--ink-soft); font-weight: 600; }
