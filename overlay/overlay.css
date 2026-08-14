@@ -279,6 +279,20 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unlock first
 .oskl__s { color: #8d84a8; }
 .oskl--bank { color: #9d92ea; border-color: rgba(157,146,234,.35); }
 .oskl--word { color: #8d84a8; border-color: rgba(255,255,255,.12); }
+/* what is spare: one row per item, and the disposal is the thing the eye lands
+   on — "sell" and "destroy" are not variations of one action */
+.oskd { border-bottom: 1px solid rgba(255,255,255,.05); padding: 1px 0 2px; }
+.oskd:last-child { border-bottom: 0; }
+.oskd__h { display: flex; gap: 5px; align-items: baseline; }
+.oskd__c { color: #e7b94e; font-variant-numeric: tabular-nums; min-width: 18px; }
+.oskd__n { flex: 1; }
+.oskd__how { font-size: 10px; text-transform: uppercase; letter-spacing: .05em;
+  border: 1px solid; border-radius: 999px; padding: 0 4px; }
+.oskd__how.is-give { color: #e7b94e; border-color: rgba(201,149,42,.55); }
+.oskd__how.is-nd { color: #8d84a8; border-color: rgba(255,255,255,.14); }
+.oskd__how.is-unk { color: #8d84a8; border-color: rgba(255,255,255,.14); }
+.oskd__w { display: flex; flex-wrap: wrap; gap: 4px; align-items: center;
+  color: #8d84a8; font-size: 10.5px; padding-left: 23px; }
 
 /* ── Valet: the fetch list ────────────────────────────────────────────────
    One fold per place you walk to. Reuses the Sky location chip (.oskl) so a

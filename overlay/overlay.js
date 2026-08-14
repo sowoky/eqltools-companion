@@ -700,8 +700,11 @@ function renderSky() {
   }
   const head = document.createElement("div");
   head.className = "osk-head";
+  const dr = SKYP.drop || { n: 0, give: 0 };
   head.textContent = SKYP.view === "boss"
     ? `${SKYP.loot || 0} pieces to loot · ${SKYP.done}/${SKYP.tests} done`
+    : SKYP.view === "drop"
+    ? `${dr.n} spare${dr.give ? ` · ${dr.give} sellable` : ""} · ${SKYP.done}/${SKYP.tests} done`
     : `${SKYP.ready} ready · ${SKYP.done}/${SKYP.tests} done`;
   skyEl.append(head);
   if (!SKYP.inv) {
@@ -716,6 +719,7 @@ function renderSky() {
     skyEl.append(w);
   }
   if (SKYP.view === "boss") { renderSkyBoss(); return; }
+  if (SKYP.view === "drop") { renderSkyDrops(); return; }
   if (!SKYP.groups.length) {
     const d = document.createElement("div");
     d.className = "osk-none";
@@ -765,6 +769,51 @@ function renderSky() {
     skyEl.append(sec);
   }
 }
+/* What is spare — the view you want standing at the bank with eight bags open.
+   Every row is one Sky item nothing is waiting on any more: how many are spare,
+   where they are, why, and which of the two disposals it is. A row that says
+   "sell to a player" is not NO DROP, and a merchant is the wrong place for it.
+
+   The app decides all of it; this window only draws. */
+function renderSkyDrops() {
+  const d = SKYP.drop || { rows: [], n: 0, total: 0 };
+  if (!d.rows.length) {
+    const n = document.createElement("div");
+    n.className = "osk-none";
+    n.textContent = "Nothing you are holding is spare.";
+    skyEl.append(n);
+    return;
+  }
+  for (const r of d.rows) {
+    const row = document.createElement("div");
+    row.className = "oskd";
+    const top = document.createElement("div");
+    top.className = "oskd__h";
+    const c = document.createElement("span");
+    c.className = "oskd__c"; c.textContent = "×" + r.spare;
+    top.append(c, itemSpan(r.n + (r.tier ? " +" + r.tier : ""), r.url, r.sb, "oskd__n"));
+    const how = document.createElement("span");
+    how.className = "oskd__how " + (r.give === true ? "is-give" : r.give === false ? "is-nd" : "is-unk");
+    how.textContent = r.give === true ? "sell" : r.give === false ? "destroy" : "?";
+    how.title = r.give === true ? "Not NO DROP — another player can take it"
+      : r.give === false ? "NO DROP — destroying it is what frees the slot"
+      : "No item page on the wiki, so nothing here knows whether it is NO DROP";
+    top.append(how);
+    row.append(top);
+    const why = document.createElement("div");
+    why.className = "oskd__w"; why.textContent = r.why;
+    for (const b of r.locs || []) why.append(skyLocEl(b));
+    row.append(why);
+    skyEl.append(row);
+  }
+  if (d.total > d.rows.length) {
+    const m = document.createElement("div");
+    m.className = "osk-note";
+    m.textContent = `${d.total - d.rows.length} more on the app's Sky tab`;
+    skyEl.append(m);
+  }
+}
+
 /* The same board arranged by what drops it — the view you want with a corpse on
    the floor. Only mobs that still owe you something are sent, so an empty board
    here means the islands have nothing left for you.

@@ -648,3 +648,33 @@ input[type="checkbox"] { accent-color: var(--gold); }
 @media (max-width: 620px)  { .vl-cards { grid-template-columns: 1fr; } }
 .vl-cmp { border-left: 2px solid var(--gold); padding-left: 8px; margin: 4px 0 0; color: var(--ink-soft); }
 .vl-cmp b { color: var(--gold-bright); }
+
+/* ── Sky: get rid of it ─────────────────────────────────────────────────────
+   Two tables: what in your bank is spare, and which open test pays a reward
+   that is not worth the islands. The chips carry WHY, and a test you finished
+   and a test you ticked free the same piece without being the same fact. */
+.skd__ctl { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; margin: 0 0 8px; }
+.skd__ctl select { background: var(--bg-deep); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 4px; padding: 1px 4px; font: inherit; }
+.skd__h3 { font-size: 13px; color: var(--gold-bright); margin: 14px 0 4px; font-weight: 600; }
+.skd__sum { font-size: 12px; color: var(--ink-soft); margin: 0 0 6px;
+  border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; background: var(--bg-panel); }
+.skd__sum b { color: var(--gold-bright); }
+.skd__t2 td { vertical-align: top; }
+.skd__n { color: var(--gold-bright); font-weight: 600; }
+.skd__t { color: var(--gold-bright); font-size: 11px; }
+.skd__w { display: inline-block; font-size: 11px; padding: 0 5px; margin: 0 2px 2px 0;
+  border: 1px solid var(--line); border-radius: 999px; color: var(--ink-dim); white-space: nowrap; }
+.skd__w i { font-style: normal; color: var(--ink-faint); }
+.skd__w--done { color: var(--wiki); border-color: var(--wiki-line, var(--line)); }
+.skd__w--skip { border-style: dashed; }
+.skd__w--rank { color: var(--gold-bright); border-color: var(--gold-line, var(--line)); }
+.skd__w--keep { color: var(--wiki); }
+.skd__w--clash { color: var(--ember); border-color: currentColor; }
+/* destroying it and handing it to another player are not one action */
+.skd__h { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em;
+  padding: 0 5px; border: 1px solid; border-radius: 999px; white-space: nowrap; }
+.skd__h--give { color: var(--gold-bright); border-color: var(--gold-line, var(--line)); }
+.skd__h--nd { color: var(--ink-dim); border-color: var(--line); }
+.skd__t2 tr.is-skip td { opacity: .55; }
+.skd__t2 tr.is-skip td:last-child { opacity: 1; }

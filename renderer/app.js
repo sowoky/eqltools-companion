@@ -639,6 +639,12 @@ function parseInventory(text) {
       loc, name, itemId: +f[2] || 0, count: +f[3] || 1, id: ++FEED_ID,
       idx: rows.length, sec: invSection(loc),
       tier: tm ? Math.min(10, +tm[1]) : 0,
+      /* An exaltation stone is named after the item it was rendered FROM, so
+         the row is not one of that item — the Inventory tab lists it (it is
+         really in your bags), but nothing that answers "how many do I have"
+         may count it. Same rule as gear-score's parseRows, which /gear, /sky
+         and /valet already read the dump through. */
+      exalt: /\(Exaltation\)\*?$/.test(name),
       parentLoc: pm ? pm[1] : null, parent: null, kids: null,
     });
     // EVERY row is a potential parent — a socketed item sitting in a bag slot
@@ -1078,6 +1084,8 @@ const heldMark = name => HELD.get(itemKey(name)) || null;
 function haveMap() {
   const m = new Map();
   for (const r of INV.rows || []) {
+    // an exaltation stone carries the name of an item you no longer own
+    if (r.exalt) continue;
     for (const k of new Set([itemKey(r.name), itemKey(stripDecor(r.name))]))
       m.set(k, (m.get(k) || 0) + r.count);
   }
@@ -2125,6 +2133,7 @@ const skyBadge = window.EQLGearScore.locBadge;
 function skyLocIndex() {
   const m = new Map();
   for (const r of INV.rows || []) {
+    if (r.exalt) continue;   // the stone is not the piece — see haveMap
     const b = { ...skyBadge(r.loc), count: r.count };
     for (const k of new Set([itemKey(r.name), itemKey(stripDecor(r.name))]))
       m.set(k, (m.get(k) || []).concat(b));
@@ -2488,12 +2497,13 @@ function skyOpenMenu(li, x, y) {
 function paintSkyView() {
   for (const b of document.querySelectorAll("[data-skyview]"))
     b.classList.toggle("is-on", b.dataset.skyview === SKYP.view);
-  const boss = SKYP.view === "boss";
+  const boss = SKYP.view === "boss", drop = SKYP.view === "drop";
   // the giver-view filters mean nothing on a drop table, and vice versa
-  $("skyShow").hidden = boss;
-  $("skyClass").hidden = boss;
-  $("skyHideDone").closest("label").hidden = boss;
+  $("skyShow").hidden = boss || drop;
+  $("skyClass").hidden = boss || drop;
+  $("skyHideDone").closest("label").hidden = boss || drop;
   $("skyNeedWrap").hidden = !boss;
+  $("skyExpand").hidden = drop;   // nothing folds in a table
 }
 
 function renderSky(model) {
@@ -2564,6 +2574,9 @@ function renderSky(model) {
   if (SKYP.view === "boss") {
     const b = skyBossHtml(m, q);
     html = b.html; shown = b.shown; openCount = b.openCount;
+  } else if (SKYP.view === "drop") {
+    const d = skyDropHtml(m, q);
+    html = d.html; shown = d.shown;
   } else {
     html = classHtml();
   }
@@ -2572,6 +2585,8 @@ function renderSky(model) {
     SKYP.view === "boss" ? "Clear the search, or untick <b>only what I need</b>." : "Widen <b>show</b>, or clear the search."}</p>`;
   meta.textContent = SKYP.view === "boss"
     ? `${skyTotalNeed(m)} pieces to loot · ${m.tot.done}/${m.tot.tests} tests done · ${shown} shown`
+    : SKYP.view === "drop"
+    ? `${m.tot.done}/${m.tot.tests} tests done · ${shown} rows`
     : `${m.tot.ready} ready · ${m.tot.done}/${m.tot.tests} done · ${m.tot.partial} started · ${shown} shown`;
   $("skyExpand").textContent = openCount ? "collapse all" : "expand all";
   // What this reading can and can't have seen. Both halves are real limits and
@@ -2616,6 +2631,38 @@ function pushSkyBosses(m, w) {
   return out;
 }
 
+/* The widget's drop list. The overlay holds no datasets, so every row arrives
+   resolved: what is spare, where it is, and which of the two disposals it is.
+   Capped, and the cap is sent with it — a silent truncation reads as "this is
+   everything". */
+const SKY_WID_DROPS = 40;
+function pushSkyDrops(m, w) {
+  const d = skyDropModel();
+  if (!d) return { rows: [], n: 0, give: 0 };
+  const spare = d.items.filter(r => r.spare > 0);
+  return {
+    n: spare.reduce((a, r) => a + r.spare, 0),
+    give: spare.filter(r => r.give).length,
+    total: spare.length,
+    rows: spare.slice(0, SKY_WID_DROPS).map(r => ({
+      ...skyRef(r.n), spare: r.spare, tier: r.tier, give: r.give,
+      why: skdWhyText(r),
+      locs: w.loc ? r.where.map(b => ({ k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title })) : [],
+    })),
+  };
+}
+// the same reasons the tab prints as chips, as one line of text
+function skdWhyText(r) {
+  const bits = [];
+  if (r.worn) bits.push(`${r.worn} worn`);
+  for (const w of r.why) {
+    if (w.k === "rank") bits.push(`${w.p.rk.rank} of ${w.p.rk.of} in ${w.p.rk.slot}`);
+    else if (w.k === "extra") bits.push(`${w.n} more than any test wants`);
+    else bits.push(`${w.u.code} ${w.k === "done" ? "done" : "skipped"}`);
+  }
+  return bits.join(" · ");
+}
+
 function pushSky(model) {
   const m = model || skyModel();
   if (!m) return;
@@ -2641,8 +2688,10 @@ function pushSky(model) {
     if (tests.length) groups.push({ code: g.code, name: g.name, giver: g.giver,
                                     ready: tests.filter(t => t.ready).length, tests });
   }
-  const p = { groups, view: w.view === "boss" ? "boss" : "class",
+  const drop = w.view === "drop" ? pushSkyDrops(m, w) : null;
+  const p = { groups, view: w.view === "boss" ? "boss" : w.view === "drop" ? "drop" : "class",
               bosses: w.view === "boss" ? pushSkyBosses(m, w) : [],
+              drop,
               ready: m.tot.ready, tests: m.tot.tests, done: m.tot.done,
               loot: skyTotalNeed(m),
               inv: INV.rows ? { age: INV.mtime ? Date.now() - INV.mtime : 0 } : null };
@@ -2666,13 +2715,14 @@ function renderSkySoon() {   // loot bursts land in batches; coalesce like the f
 function renderSkyWidget() {
   const w = SKYP.wid;
   const chip = code => `<label class="skw__c"><input type="checkbox" data-skywcls="${code}"${w.cls.includes(code) ? " checked" : ""}> ${esc(SKY_CLASS[code])}</label>`;
-  const boss = w.view === "boss";
+  const boss = w.view === "boss", drop = w.view === "drop";
   $("skyWidBody").innerHTML =
     `<label class="skw__r">Group by <select data-skyw="view">
-       <option value="class"${!boss ? " selected" : ""}>quest giver</option>
+       <option value="class"${!boss && !drop ? " selected" : ""}>quest giver</option>
        <option value="boss"${boss ? " selected" : ""}>boss</option>
+       <option value="drop"${drop ? " selected" : ""}>what to get rid of</option>
      </select></label>` +
-    (boss ? "" :
+    (boss || drop ? "" :
     `<label class="skw__r">Show <select data-skyw="show">
        <option value="ready"${w.show === "ready" ? " selected" : ""}>ready to turn in</option>
        <option value="held"${w.show === "held" ? " selected" : ""}>anything I hold a piece of</option>
@@ -2682,11 +2732,271 @@ function renderSkyWidget() {
     `<label class="skw__r"><input type="checkbox" data-skyw="loc"${w.loc ? " checked" : ""}> show where each piece is</label>` +
     (boss
       ? `<label class="skw__r"><input type="checkbox" data-skyw="trackedFirst"${w.trackedFirst ? " checked" : ""}> keep tracked pieces on the board</label>`
+      : drop ? ""
       : `<label class="skw__r"><input type="checkbox" data-skyw="say"${w.say ? " checked" : ""}> show the hail phrase</label>`) +
-    (boss ? `<p class="skw__note">The boss board lists the mobs that still owe you a piece. Tracked pieces come first and keep their star.</p>` :
+    (drop ? `<p class="skw__note">The drop list is what this tab found spare, most spare first, and whether another player can take it. The top-${SKD.top} bar and the filters are set above.</p>` :
+     boss ? `<p class="skw__note">The boss board lists the mobs that still owe you a piece. Tracked pieces come first and keep their star.</p>` :
     `<div class="skw__h">Classes <button type="button" class="lnk" data-skywall="1">all</button> ·
        <button type="button" class="lnk" data-skywall="0">none</button></div>` +
     `<div class="skw__cls">${Object.keys(SKY_CLASS).sort((a, b) => SKY_CLASS[a].localeCompare(SKY_CLASS[b])).map(chip).join("")}</div>`);
+}
+
+/* ── Sky: get rid of it ────────────────────────────────────────────────────
+   Kyle, 2026-08-14: "recommended items to get rid of, which is quests you've
+   already completed, and the reward is not in the top 3 items for that class
+   (but you have to show the user so they can verify)" and "recommend quests to
+   skip AND show me what items i have that are skipped for all uses".
+
+   The measuring is ../vendor/sky-core.js — `dropRows` and `skipRows`, the same
+   two functions /sky's own "Get rid of" tab runs. What is injected is what
+   differs between the surfaces:
+
+     have  — this tab's held count (the dump, the log, your own held mark), plus
+             the worn count and the upgrade tier off the dump's rows
+     rank  — a scorer per class. The site has a trio picker and a Compare-against
+             switch; this tab has neither, so it runs that switch's `class`
+             position: the reward against everything its own class can wear.
+             That is the conservative read, and the one the ask names.
+
+   Rewards are ranked at the tier your dump says your copy is. A worn copy is
+   never spare — nineteen of the components are equippable weapons. */
+const SKD = { top: 3, spareOnly: true, skipOnly: false, sort: "spare", dir: -1,
+              tsort: "rank", tdir: -1 };
+const SKD_KEY = "eqlt-companion-skydrop-v1";
+function loadSkyDropPrefs() {
+  try { Object.assign(SKD, JSON.parse(localStorage.getItem(SKD_KEY)) || {}); } catch {}
+}
+const saveSkyDropPrefs = () => { try { localStorage.setItem(SKD_KEY, JSON.stringify(SKD)); } catch {} };
+
+let SKY_SCORERS = new Map();
+function skyScorer(code) {
+  const key = code + "|" + VL.level;
+  if (!SKY_SCORERS.has(key)) {
+    SKY_SCORERS.set(key, window.EQLGearScore.make({
+      classes: [code], level: VL.level, race: null, equipped: null, D: null }));
+  }
+  return SKY_SCORERS.get(key);
+}
+/* Where a reward stands in its own slot, at `tier`. Cached: the alternatives
+   pool in sky.json is 2,900 items and every render asks about 95 rewards. */
+const SKY_RANKS = new Map();
+function skyRankOf(name, code, tier) {
+  if (!SKYD || !name) return null;
+  const t = tier || 0;
+  const key = `${code}|${VL.level}|${t}|${name}`;
+  if (SKY_RANKS.has(key)) return SKY_RANKS.get(key);
+  let out = null;
+  const rec = skyRec(name);
+  const slot = rec && (rec.sl || [])[0];
+  const sc = skyScorer(code);
+  if (rec && slot && (rec.st || rec.sv || rec.haste || rec.dmg)) {
+    const s = sc.score(rec, t, 0, slot);
+    const skip = SKYD.names[name.toLowerCase()];
+    const all = (SKYD.alts[slot] || [])
+      .filter(k => k !== skip && sc.legal(SKYD.items[k]))
+      .map(k => ({ rec: SKYD.items[k], s: sc.score(SKYD.items[k], 0, 0, slot) }))
+      .sort((a, b) => b.s - a.s);
+    const better = all.filter(a => a.s > s);
+    out = { rank: better.length + 1, of: all.length + 1, score: s, slot, tier: t,
+            better: better.slice(0, 3).map(a => a.rec.n) };
+  }
+  SKY_RANKS.set(key, out);
+  return out;
+}
+
+/* The dump's rows, per item: how many are in a worn slot, and the best upgrade
+   tier you hold. sky-core takes both off `have()`. */
+function skyWornIndex() {
+  const m = new Map();
+  const GS = window.EQLGearScore;
+  for (const r of INV.rows || []) {
+    if (r.exalt) continue;
+    // a -SlotN row is an aug inside the worn item, not the item
+    const worn = !/-Slot\d+$/.test(r.loc) && GS.WORN_RX.test(GS.rootLoc(r.loc));
+    for (const k of new Set([itemKey(r.name), itemKey(stripDecor(r.name))])) {
+      const e = m.get(k) || { worn: 0, tier: 0 };
+      if (worn) e.worn += r.count;
+      e.tier = Math.max(e.tier, r.tier || 0);
+      m.set(k, e);
+    }
+  }
+  return m;
+}
+
+function skyDropModel() {
+  if (!SKYD || !SKYL) return null;
+  const have = haveMap();
+  const locIdx = skyLocIndex();
+  const wornIdx = skyWornIndex();
+  const seen = n => locIdx.has(itemKey(n));
+  const hav = (n) => {
+    const h = skyHave(have, n, seen(n));
+    const w = wornIdx.get(itemKey(n)) || wornIdx.get(itemKey(stripDecor(n))) || { worn: 0, tier: 0 };
+    return { n: h.n, src: h.src, worn: w.worn, tier: w.tier, where: skyLocs(locIdx, n) };
+  };
+  /* Completions per class, memoised for this build only — sky-core asks one
+     test's state a few hundred times, and walking every closed trade in the log
+     for each of them is the same work over and over. Nothing survives the
+     build: the ledger grows with every line the tail reads. */
+  const comp = new Map();
+  const state = (code, test) => {
+    if (!comp.has(code)) comp.set(code, SKY.completions(SKYD, SKYL.led, code));
+    const done = comp.get(code).byTest[test.n] || 0;
+    const ach = !!(ACH_SKY[code] && ACH_SKY[code].byTest[test.n]);
+    return { done: done + (ach ? 1 : 0), logDone: done, ach, skip: skySkipped(code, test.n) };
+  };
+  const o = { top: SKD.top, have: hav, rec: skyRec, rank: skyRankOf, state };
+  return { items: SKY.dropRows(SKYD, o), tests: SKY.skipRows(SKYD, o) };
+}
+
+const SKD_COLS = [
+  { k: "item", h: "Item", d0: 1, key: r => r.n.toLowerCase(),
+    cell: r => `<td class="iv-item">${skyItemSpan(r.n)}${r.tier ? ` <b class="skd__t" title="your copy is upgraded, and it is scored and ranked at that tier">+${r.tier}</b>` : ""}</td>` },
+  { k: "kind", h: "What it is", d0: 1, key: r => r.kind,
+    cell: r => `<td class="dim">${r.kind === "reward" ? "reward" : "quest piece"}</td>` },
+  { k: "have", h: "Have", d0: -1, key: r => r.have, cell: r => `<td class="iv-n">${r.have}</td>` },
+  { k: "spare", h: "Spare", d0: -1, key: r => r.spare,
+    cell: r => `<td class="iv-n${r.spare ? " skd__n" : ""}">${r.spare || ""}</td>` },
+  { k: "where", h: "Held in", d0: 1, key: r => (r.where[0] && r.where[0].title) || null,
+    cell: r => `<td>${r.where.map(skyBadgeHtml).join(" ")}</td>` },
+  { k: "wt", h: "Weight", d0: -1, key: r => r.wt * (r.spare || r.have) || null,
+    cell: r => { const w = r.wt * (r.spare || r.have); return `<td class="iv-n dim">${w ? w.toFixed(1) : ""}</td>`; } },
+  { k: "why", h: "Why", d0: 1, key: r => (r.why[0] && r.why[0].k) || "z",
+    cell: r => `<td>${skdWhy(r)}</td>` },
+  { k: "how", h: "Get rid of it by", d0: 1, key: r => (r.spare ? (r.give ? "a" : "b") : "z"),
+    cell: r => `<td>${skdHow(r)}</td>` },
+  { k: "uses", h: "Tests using it", d0: -1, key: r => r.wantedBy || null,
+    cell: r => `<td class="iv-n dim" title="how many of the 95 tests consume this piece, across all sixteen classes">${r.wantedBy || ""}</td>` },
+];
+
+const skdShort = (code, n) => n.replace((SKY_CLASS[code] || "") + " ", "");
+function skdWhy(r) {
+  const out = [];
+  if (r.worn) out.push(`<span class="skd__w skd__w--hold" title="your dump has ${r.worn} of these in a worn slot">${r.worn > 1 ? r.worn + " " : ""}worn</span>`);
+  for (const w of r.why) {
+    if (w.k === "rank") {
+      out.push(`<span class="skd__w skd__w--rank" title="scored for ${esc(w.p.code)} against every in-era item it can wear in ${esc(w.p.rk.slot)}">${w.p.rk.rank} of ${w.p.rk.of} in ${esc(w.p.rk.slot)}</span>`);
+    } else if (w.k === "extra") {
+      out.push(`<span class="skd__w skd__w--rank" title="you hold ${r.have}; the tests that still want it need ${r.open}">${w.n} more than any test wants</span>`);
+    } else {
+      const u = w.u;
+      out.push(`<span class="skd__w skd__w--${w.k}" title="${esc(SKY_CLASS[u.code] || u.code)} — ${esc(u.test.n)}${
+        w.k === "done" ? (u.st.logDone ? ", turned in in your log" : ", recorded in your achievements") : ", you skipped it"}">${
+        esc(u.code)} ${esc(skdShort(u.code, u.test.n))} <i>${w.k === "done" ? "done" : "skipped"}</i></span>`);
+    }
+  }
+  if (r.why.length) return out.join(" ");
+  for (const h of r.hold) {
+    if (h.k === "open") {
+      out.push(`<span class="skd__w skd__w--hold">${esc(h.u.code)} ${esc(skdShort(h.u.code, h.u.test.n))} <i>wants it</i></span>`);
+    } else if (h.k === "best") {
+      out.push(`<span class="skd__w skd__w--keep" title="scored for ${esc(h.p.code)} in ${esc(h.p.rk.slot)}">top ${h.p.rk.rank} in ${esc(h.p.rk.slot)}</span>`);
+    } else if (h.k === "unscored") {
+      out.push(`<span class="skd__w">no stats on the wiki to rank it</span>`);
+    } else if (h.k === "unwitnessed") {
+      out.push(`<span class="skd__w" title="a player could have handed you this one, so holding it is not proof you did the test">no turn-in on record</span>`);
+    }
+  }
+  return out.join(" ");
+}
+function skdHow(r) {
+  if (!r.spare) return "";
+  const fl = (r.rec && r.rec.fl) || [];
+  const flag = fl.includes("no_drop") ? "NO DROP" : fl.includes("no_trade") ? "No Trade" : "";
+  const clash = r.clash ? ` <span class="skd__w skd__w--clash" title="the item window and the wiki's Plane of Sky table disagree about this one; the window is what the game shows you">wiki disagrees</span>` : "";
+  if (r.give === null) return `<span class="dim" title="no item page on the wiki, so nothing here knows whether it is NO DROP">not known</span>`;
+  if (r.give) return `<span class="skd__h skd__h--give" title="not NO DROP, so another player can take it${r.wantedBy ? `. ${r.wantedBy} class test${r.wantedBy === 1 ? "" : "s"} use it` : ""}">sell to a player</span>${clash}`;
+  return `<span class="skd__h skd__h--nd" title="${esc(flag || "NO DROP")} — nobody else can take it, so destroying it is what frees the slot">destroy</span>${clash}`;
+}
+
+const SKD_TCOLS = [
+  { k: "cls", h: "Class", d0: 1, key: k => SKY_CLASS[k.code], cell: k => `<td>${esc(SKY_CLASS[k.code])}</td>` },
+  { k: "test", h: "Test", d0: 1, key: k => k.test.n, cell: k => `<td>${esc(skdShort(k.code, k.test.n))}</td>` },
+  { k: "rew", h: "Reward", d0: 1, key: k => k.reward, cell: k => `<td class="iv-item">${skyItemSpan(k.reward)}</td>` },
+  { k: "slot", h: "Slot", d0: 1, key: k => k.rk.slot, cell: k => `<td class="dim">${esc(k.rk.slot)}</td>` },
+  { k: "score", h: "Score", d0: -1, key: k => k.rk.score, cell: k => `<td class="iv-n">${Math.round(k.rk.score)}</td>` },
+  { k: "rank", h: "Rank", d0: -1, key: k => k.rk.rank,
+    cell: k => `<td class="iv-n skd__n" title="against every in-era item ${esc(k.code)} can wear in ${esc(k.rk.slot)}">${k.rk.rank} of ${k.rk.of}</td>` },
+  { k: "beat", h: "Beaten by", d0: 1, key: k => k.rk.better[0] || null,
+    cell: k => `<td>${k.rk.better.map(n => skyItemSpan(n)).join(" · ")}</td>` },
+  { k: "hold", h: "You hold", d0: -1, key: k => k.held.length || null,
+    cell: k => `<td class="iv-n" title="${esc(k.held.join(", ")) || "none"}">${k.held.length || ""}</td>` },
+  { k: "frees", h: "Frees", d0: -1, key: k => k.frees.length || null,
+    cell: k => `<td class="iv-n${k.frees.length ? " skd__n" : ""}" title="${k.frees.length
+      ? esc(k.frees.join(", ")) : "nothing you hold would become spare — another open test wants the same pieces"}">${k.frees.length || ""}</td>` },
+];
+
+function skyDropHtml(m, q) {
+  const d = skyDropModel();
+  if (!d) return { html: "", shown: 0 };
+  const hit = (s) => !q || String(s).toLowerCase().includes(q);
+  /* "uses" opens the SAME per-test skip menu the boss board's right-click does,
+     so the map it reads is filled here too — only one of the three views is on
+     screen at a time, and one menu implementation is the point. */
+  SKY_DROPS = new Map();
+  for (const r of d.items) {
+    if (!r.uses.length) continue;
+    SKY_DROPS.set(r.n, r.uses.map(u => ({
+      code: u.code, cls: SKY_CLASS[u.code], test: u.test.n,
+      short: skdShort(u.code, u.test.n), reward: u.reward,
+      fin: !!u.st.done, skip: !!u.st.skip,
+    })));
+  }
+  let rows = d.items.filter(r => hit(r.n));
+  if (SKD.spareOnly) rows = rows.filter(r => r.spare > 0);
+  // Kyle: "show me what items i have that are skipped for all uses" — a piece
+  // whose every test you ticked, as opposed to one the game finished for you.
+  if (SKD.skipOnly) rows = rows.filter(r => r.kind === "piece" && r.uses.length
+    && r.uses.every(u => u.st.skip));
+  const col = SKD_COLS.find(c => c.k === SKD.sort) || SKD_COLS[3];
+  rows = rows.slice().sort((a, b) => cmpNullLast(col.key(a), col.key(b), SKD.dir)
+    || a.n.localeCompare(b.n));
+
+  const spare = d.items.filter(r => r.spare > 0);
+  const give = spare.filter(r => r.give);
+  const nSpare = spare.reduce((a, r) => a + r.spare, 0);
+  const wt = spare.reduce((a, r) => a + r.wt * r.spare, 0);
+  const arrow = (k, s, dir) => s === k ? (dir > 0 ? " ▲" : " ▼") : "";
+  const head = (cols, attr, s, dir) => `<thead><tr>${cols.map(c =>
+    `<th class="is-sort" data-${attr}="${c.k}">${esc(c.h)}${arrow(c.k, s, dir)}</th>`).join("")}<th></th></tr></thead>`;
+
+  const tests = d.tests.filter(k => hit(k.test.n) || hit(k.reward));
+  const openK = tests.filter(k => !k.st.skip);
+  const frees = new Set(openK.flatMap(k => k.frees)).size;
+  const tcol = SKD_TCOLS.find(c => c.k === SKD.tsort) || SKD_TCOLS[5];
+  const trows = tests.slice().sort((a, b) => (a.st.skip - b.st.skip)
+    || cmpNullLast(tcol.key(a), tcol.key(b), SKD.tdir) || a.test.n.localeCompare(b.test.n));
+
+  const html = `<div class="skd">
+    <div class="skd__ctl">
+      <label class="chk">a reward is worth keeping if it is in the top
+        <select data-skd="top">${[1, 3, 5, 10].map(n =>
+          `<option value="${n}"${SKD.top === n ? " selected" : ""}>${n}</option>`).join("")}</select>
+        of its own slot</label>
+      <label class="chk"><input type="checkbox" data-skd="spareOnly"${SKD.spareOnly ? " checked" : ""}> only what I hold spare</label>
+      <label class="chk"><input type="checkbox" data-skd="skipOnly"${SKD.skipOnly ? " checked" : ""}> only pieces I skipped every use of</label>
+    </div>
+    <h3 class="skd__h3">Items you can get rid of</h3>
+    <p class="skd__sum">${spare.length
+      ? `<b>${nSpare}</b> spare item${nSpare === 1 ? "" : "s"} across <b>${spare.length}</b> of the Sky things in your bank${
+          wt ? `, ${wt.toFixed(1)} weight` : ""}.`
+        + (give.length ? ` <b>${give.length}</b> of them ${give.length === 1 ? "is" : "are"} not NO DROP: sell those to a player rather than a merchant.` : "")
+      : `Nothing you are holding is spare. Skip a test you will never do and its pieces arrive here.`}</p>
+    ${rows.length ? `<table class="qtab ivt skd__t2">${head(SKD_COLS, "skdsort", SKD.sort, SKD.dir)}<tbody>${
+      rows.map(r => `<tr>${SKD_COLS.map(c => c.cell(r)).join("")}<td>${r.kind === "piece"
+        ? `<button type="button" class="lnk skd__u" data-drop="${esc(r.n)}">uses</button>` : ""}</td></tr>`).join("")
+    }</tbody></table>` : `<p class="empty">Nothing matches those filters.</p>`}
+    <h3 class="skd__h3">Tests worth skipping</h3>
+    <p class="skd__sum">${openK.length
+      ? `<b>${openK.length}</b> open test${openK.length === 1 ? "" : "s"} pay a reward outside the top ${SKD.top} of its slot.`
+        + (frees ? ` Skipping them frees <b>${frees}</b> piece${frees === 1 ? "" : "s"} you are holding.` : "")
+      : `No open test pays a reward outside the top ${SKD.top} of its slot.`}</p>
+    ${trows.length ? `<table class="qtab ivt skd__t2">${head(SKD_TCOLS, "skdtsort", SKD.tsort, SKD.tdir)}<tbody>${
+      trows.map(k => `<tr class="${k.st.skip ? "is-skip" : ""}">${SKD_TCOLS.map(c => c.cell(k)).join("")}<td><button type="button" class="lnk"
+        data-skyskip="${esc(k.code)}" data-test="${esc(k.test.n)}">${k.st.skip ? "un-skip" : "skip"}</button></td></tr>`).join("")
+    }</tbody></table>` : ""}
+  </div>`;
+  return { html, shown: rows.length + trows.length };
 }
 
 function populateSkyFilters() {
@@ -4064,6 +4374,32 @@ async function main() {
     if (!b || b.dataset.skyview === SKYP.view) return;
     SKYP.view = b.dataset.skyview;
     saveSkyPrefs(); paintSkyView(); renderSky();
+  });
+  /* Get rid of it: the two controls, the two sortable tables, and "uses". Every
+     one of them only reshapes this view, so none of them re-push the widget. */
+  loadSkyDropPrefs();
+  $("skyBody").addEventListener("change", e => {
+    const k = e.target.dataset.skd;
+    if (!k) return;
+    SKD[k] = k === "top" ? (parseInt(e.target.value, 10) || 3) : e.target.checked;
+    saveSkyDropPrefs(); renderSky();
+  });
+  $("skyBody").addEventListener("click", e => {
+    const s = e.target.closest("[data-skdsort]");
+    if (s) {
+      const k = s.dataset.skdsort, c = SKD_COLS.find(x => x.k === k);
+      SKD.dir = SKD.sort === k ? -SKD.dir : (c ? c.d0 : -1);
+      SKD.sort = k; saveSkyDropPrefs(); renderSky(); return;
+    }
+    const t = e.target.closest("[data-skdtsort]");
+    if (t) {
+      const k = t.dataset.skdtsort, c = SKD_TCOLS.find(x => x.k === k);
+      SKD.tdir = SKD.tsort === k ? -SKD.tdir : (c ? c.d0 : -1);
+      SKD.tsort = k; saveSkyDropPrefs(); renderSky(); return;
+    }
+    // the same per-test skip menu the boss board's right-click opens
+    const d = e.target.closest("button.skd__u");
+    if (d) { e.stopPropagation(); skyOpenMenu(d, e.clientX, e.clientY); }
   });
   $("skyExpand").addEventListener("click", () => {
     const anyOpen = !!document.querySelector(".skg__h[aria-expanded=true]");
