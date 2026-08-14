@@ -429,10 +429,21 @@
       // the upgrade-tier marker, with no combat effect yet
       for (const k in rec.sv || {}) if (k !== "v") sum += w.sv * rec.sv[k];
       if (rec.haste) sum += w.haste * rec.haste;
-      // A weapon's ratio only counts where it can swing. Two-handers deal
-      // double damage and double ratio in EQL (dannuic, chat — combat-stats.md
-      // "EQL-specific"), so the ratio term doubles for them; without that a 2H
-      // read as a strictly worse 1H and could never win a weapon comparison.
+      /* A weapon's ratio only counts where it can swing — the two melee hands.
+         Two-handers deal double damage and double ratio in EQL (dannuic, chat —
+         combat-stats.md "EQL-specific"), so the ratio term doubles for them;
+         without that a 2H read as a strictly worse 1H and could never win a
+         weapon comparison.
+
+         RANGE USES THE SAME RATIO TERM, AND THAT IS AN OPEN QUESTION. A bow's
+         damage comes from the bow and the arrow together, a thrown weapon is
+         its own ammunition, and combat-stats.md files archery damage as
+         unresolved — so melee ratio in the Range slot is a stand-in, not a
+         model. It shows: for a melee trio a Throwing Boulder +6 ranks first in
+         Range at 244, ahead of every stat item. Removing it was drafted and
+         backed out — zeroing the slot is no better supported than the stand-in,
+         and Kyle reported ranged reading correctly (2026-08-14). Settle it with
+         an archery measurement, not a preference. */
       if (rec.dmg && rec.dly && (placement === "Primary" || placement === "Secondary" || placement === "Range")) {
         sum += w.ratio * 10 * statAt(rec.dmg, tier) / rec.dly * (TWO_H(rec) ? 2 : 1);
       }

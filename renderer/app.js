@@ -2786,8 +2786,14 @@ function renderValetRun() {
   const step = VWALK.step(), all = VWALK.options(), opts = all.slice(0, 4);
   $("vlSlot").textContent = step.label;
   $("vlCount").textContent = `${VWALK.i + 1} of ${VWALK.steps.length}`;
-  $("vlPool").textContent = all.length + (step.kind === "weapons" ? " loadouts you own" : " you own fit here")
+  $("vlPool").textContent = all.length + " you own fit here"
     + (all.length > 4 ? " · the four best are below" : "");
+  /* The two-hander question, on the step where the choice is made. */
+  const wc = VWALK.weaponCompare();
+  const a = wc && wc.best2H ? `<b>${Math.round(wc.best2H.score)}</b> two-handed — ${esc(wc.best2H.items[0].row.name)}` : "";
+  const b = wc && wc.bestPair ? `<b>${Math.round(wc.bestPair.total)}</b> main + off — ${esc(wc.bestPair.main.name)} + ${esc(wc.bestPair.off.name)}` : "";
+  $("vlCmp").innerHTML = a || b ? [a, b].filter(Boolean).join(" · ") : "";
+  $("vlCmp").hidden = !(a || b);
   const now = VWALK.wearingAt(step);
   $("vlNow").innerHTML = now.length
     ? "On you now: " + now.map(e => e.rec ? `<b>${esc(e.name)}</b>`
@@ -2808,6 +2814,7 @@ function renderValetRun() {
   if (k.mem.length) bits.push(`<b>${k.mem.length}</b> remembered (<button type="button" class="linkish" id="vlClearMem">ask me again</button>)`);
   if (k.only.length) bits.push(`<b>${k.only.length}</b> had one candidate`);
   if (k.flat.length) bits.push(`<b title="${esc(k.flat.join(", "))}">${k.flat.length}</b> nothing the scorer reads — kept what you have on`);
+  if (k.twoh && k.twoh.length) bits.push("off hand held by your two-hander");
   if (k.skip.length) bits.push(`<b>${k.skip.length}</b> left empty`);
   if (k.none.length) bits.push(`<b>${k.none.length}</b> had nothing that fits`);
   $("vlAuto").innerHTML = bits.join(" · ");

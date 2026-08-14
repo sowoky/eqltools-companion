@@ -48,7 +48,16 @@
       steps.push({ key: `${slot}#${seen[slot]}`, kind: "slot", slot,
                    label: seen[slot] > 1 ? `${slot} (${seen[slot]})` : slot });
     }
-    steps.push({ key: "hands", kind: "weapons", slot: "Primary", label: "Weapons" });
+    /* Two hands, two steps. They were ONE step showing whole loadouts, which is
+       the right arithmetic and the wrong interface: a card holding two items
+       reads as one recommendation, so picking a main hand never felt like it
+       asked about the off hand (Kyle, 2026-08-14: "did not prompt me to choose
+       offhand after i chose a mainhand"). The trade is still shown — the
+       Primary step carries `weaponCompare()`, best two-hander against best
+       main+off pair — and choosing a two-hander skips the off hand, because it
+       is already holding it. */
+    steps.push({ key: "Primary#1", kind: "primary", slot: "Primary", label: "Main hand" });
+    steps.push({ key: "Secondary#1", kind: "secondary", slot: "Secondary", label: "Off hand" });
     steps.push({ key: `${ANY}#1`, kind: "any", slot: ANY, label: "Any Slot (1)" });
     steps.push({ key: `${ANY}#2`, kind: "any", slot: ANY, label: "Any Slot (2)" });
     return steps;
@@ -104,7 +113,7 @@
     const mem = opts.mem || { get: () => null, set: () => {}, del: () => {} };
 
     const steps = buildSteps();
-    const W = { steps, i: 0, picks: {}, opts: {}, auto: {}, skipped: new Set() };
+    const W = { steps, i: 0, picks: {}, opts: {}, auto: {}, ctx: {}, skipped: new Set() };
 
     /* Two copies of the same item at the same tier are the same offer; keep one.
 
@@ -134,7 +143,17 @@
        is fixed and written down rather than chosen per run. */
     function optionsFor(step, taken, loreTaken, baseAC) {
       const dw = sc.dualWieldCap() > 0;
-      const usable = (r) => r.rec && !taken.has(r.i) && !(r.key && loreTaken.has(r.key)) && sc.legal(r.rec);
+      /* An item ON YOUR BODY is legal for you, whatever the wiki says. The class
+         lists in gear-data are wrong often enough to matter: on the reference
+         character SEVEN worn pieces are illegal for his own trio, including both
+         Any Slot shields (Shield of the Stalwart Seas reads Paladin-only), and
+         NO trio makes the whole set legal — so this is the wiki, not the trio.
+         Filtering them out meant the walk refused to put back gear he is wearing
+         right now, and left the off hand with no candidates at all (Kyle,
+         2026-08-14: "it didn't want to put shield of stalward seas on my any
+         slot. why not"). The game let him equip it; that outranks a wiki table. */
+      const usable = (r) => r.rec && !taken.has(r.i) && !(r.key && loreTaken.has(r.key))
+        && (sc.legal(r.rec) || r.sec === "worn");
       const mk = (items) => {
         let ac = baseAC, score = 0;
         for (const it of items) {
@@ -144,41 +163,18 @@
         return { id: items.map((it) => itemId(it.row)).sort().join(" | "), items, score };
       };
 
-      if (step.kind === "weapons") {
-        /* One decision, not two: a two-hander takes both hands, so "best
-           Primary" and "best Secondary" chosen separately cannot see the trade.
-           The options are whole loadouts — a 2H alone, or a main hand with an
-           off hand — ranked against each other. An off hand that deals damage
-           needs Dual Wield; a shield or any no-damage item can always go there. */
-        const prim = rows.filter((r) => usable(r) && r.rec.sl.includes("Primary"));
-        const secs = rows.filter((r) => usable(r) && r.rec.sl.includes("Secondary")
-          && !GS.TWO_H(r.rec) && (dw || !r.rec.dmg));
-        const out = [];
-        for (const p of prim) {
-          if (GS.TWO_H(p.rec)) { out.push(mk([{ row: p, slot: "Primary" }])); continue; }
-          let paired = false;
-          for (const s of secs) {
-            if (s.i === p.i) continue;
-            if (p.key && s.key === p.key && (p.rec.fl || []).includes("lore")) continue;
-            out.push(mk([{ row: p, slot: "Primary" }, { row: s, slot: "Secondary" }]));
-            paired = true;
-          }
-          if (!paired) out.push(mk([{ row: p, slot: "Primary" }]));
-        }
-        return dedupe(out);
+      if (step.kind === "primary" || step.kind === "secondary") {
+        const pool = step.kind === "primary"
+          ? rows.filter((r) => usable(r) && r.rec.sl.includes("Primary"))
+          : rows.filter((r) => usable(r) && r.rec.sl.includes("Secondary")
+              && !GS.TWO_H(r.rec) && (dw || !r.rec.dmg));
+        return dedupe(pool.map((r) => mk([{ row: r, slot: step.slot }])));
       }
 
       /* Any Slot takes anything the trio can equip — the only gate is class, so
-         the pool is every wearable thing still unassigned.
-
-         It is scored AS Any Slot, not as the slot the item normally goes in, and
-         that matters for weapons: a sword parked there is not in a hand and does
-         not swing, so its damage-over-delay must not be credited. Kyle's own
-         description of the slot is stats — "high stat items, shields, extra
-         chest pieces" — and the one class exception he named is a Rogue's
-         piercer ENABLING backstab, which is the game reading the item's type,
-         not swinging it. Everything else on the item (AC, HP, haste, resists)
-         counts normally, because a worn item's stats are worn. */
+         the pool is every wearable thing still unassigned. It is scored AS Any
+         Slot, so a weapon parked there gets no ratio: it is not in a hand and
+         does not swing. */
       const pool = step.kind === "any"
         ? rows.filter((r) => usable(r) && r.rec.sl && r.rec.sl.length)
         : rows.filter((r) => usable(r) && r.rec.sl.includes(step.slot));
@@ -207,14 +203,35 @@
     }
 
     /* Whichever occupants of this step's slot the dump reports. The step key
-       carries the position ("Wrist#2"), so a paired slot asks about one wrist at
-       a time and shows that wrist. */
+       carries the position ("Wrist#2"), so a paired slot asks about one wrist
+       at a time and shows that wrist. */
     function wearingAt(step) {
       if (!equipped) return [];
-      if (step.kind === "weapons") return (equipped.Primary || []).concat(equipped.Secondary || []);
       const n = +(step.key.split("#")[1] || 1);
       const e = (equipped[step.slot] || [])[n - 1];
       return e ? [e] : [];
+    }
+
+    /* The two-hander question, answered once so the Main hand step can state
+       it: the best 2H on its own against the best main+off pair. Both are
+       priced by the same scorer at the same AC base, which is the only way the
+       two numbers mean anything next to each other. */
+    function weaponCompare(taken, lore, baseAC) {
+      const prim = optionsFor({ kind: "primary", slot: "Primary", key: "Primary#1" }, taken, lore, baseAC);
+      const best2H = prim.find((o) => GS.TWO_H(o.items[0].row.rec)) || null;
+      let bestPair = null;
+      for (const p of prim) {
+        if (GS.TWO_H(p.items[0].row.rec)) continue;
+        const after = new Set(taken); after.add(p.items[0].row.i);
+        const secs = optionsFor({ kind: "secondary", slot: "Secondary", key: "Secondary#1" },
+                                after, lore, baseAC + acOf(p.items[0].row.rec, p.items[0].row.tier));
+        if (!secs.length) continue;
+        const total = p.score + secs[0].score;
+        if (!bestPair || total > bestPair.total)
+          bestPair = { total, main: p.items[0].row, off: secs[0].items[0].row };
+        break;   // prim is score-sorted; the best main hand fixes the best pair
+      }
+      return { best2H, bestPair };
     }
 
     /* Recompute every step from the first, because a pick changes what is left
@@ -223,14 +240,24 @@
     function advance(from) {
       const taken = new Set(), lore = new Set();
       let baseAC = 0;
-      W.opts = {}; W.auto = {};
+      W.opts = {}; W.auto = {}; W.ctx = {};
       for (let i = 0; i < steps.length; i++) {
         const st = steps[i];
         const list = optionsFor(st, taken, lore, baseAC);
         W.opts[st.key] = list;
 
+        W.ctx[st.key] = { taken: new Set(taken), lore: new Set(lore), baseAC };
+
         let chosen = i < from ? W.picks[st.key] : null;
         if (chosen && !list.some((o) => o.id === chosen.id)) chosen = null;
+        /* A two-hander occupies both hands, so the off-hand step is not a
+           question — and it must not read as one the walk forgot. */
+        const mainPick = W.picks["Primary#1"];
+        if (st.kind === "secondary" && mainPick && GS.TWO_H(mainPick.items[0].row.rec)) {
+          W.auto[st.key] = "twoh";
+          W.picks[st.key] = null;
+          continue;
+        }
         if (!chosen) {
           if (!list.length) W.auto[st.key] = "none";
           /* Nothing the scorer reads: every candidate comes out at zero, so the
@@ -315,6 +342,14 @@
 
     return {
       steps, wearingAt, planLoadout, currentLoadout,
+      /* The 2H-vs-pair line for the Main hand step, priced in that step's own
+         context. Null anywhere else. */
+      weaponCompare(key) {
+        const k = key || (steps[W.i] || {}).key;
+        const c = W.ctx[k];
+        if (k !== "Primary#1" || !c) return null;
+        return weaponCompare(c.taken, c.lore, c.baseAC);
+      },
       get i() { return W.i; },
       get picks() { return W.picks; },
       get auto() { return W.auto; },
@@ -353,11 +388,46 @@
       // What the walk settled without asking, so a slot it never showed you
       // does not read as a slot it forgot.
       autoSummary() {
-        const kinds = { none: [], only: [], mem: [], skip: [], flat: [] };
+        const kinds = { none: [], only: [], mem: [], skip: [], flat: [], twoh: [] };
         for (const s of steps) if (W.auto[s.key]) kinds[W.auto[s.key]].push(s.label);
         return kinds;
       },
     };
+  }
+
+  /* Why a number is that number. The single score on a card is a ranking, and a
+     ranking you cannot interrogate is a ranking you have to take on faith —
+     "135 for midnight clad armbands but 41 for lustrous russet vambraces … ac
+     doesn't count for much??" (Kyle, 2026-08-14). It does count; INT counts
+     eight times more for a two-caster trio, because each point buys 22.5 mana
+     across two counted pools. That is the model's opinion, and it is now
+     readable per item and adjustable in the priorities panel. */
+  function breakdown(rec, tier, baseAC, slot, sc) {
+    const st = statsAt(rec, tier), out = [];
+    let total = 0;
+    for (const k in st) {
+      if (k === "ac") continue;
+      const v = (sc.w[k] || 0) * st[k];
+      if (v) { out.push({ k: k.toUpperCase(), n: st[k], w: sc.w[k], v }); total += v; }
+      else if (st[k]) out.push({ k: k.toUpperCase(), n: st[k], w: 0, v: 0 });
+    }
+    if (st.ac) {
+      const eff = (raw) => (raw <= sc.sc.v ? raw : sc.sc.v + (raw - sc.sc.v) * sc.sc.mult);
+      const v = sc.w.ac * (eff(baseAC + st.ac) - eff(baseAC));
+      out.push({ k: "AC", n: st.ac, w: sc.w.ac, v, cap: baseAC + st.ac > sc.sc.v });
+      total += v;
+    }
+    for (const k in rec.sv || {}) if (k !== "v") {
+      const v = sc.w.sv * rec.sv[k];
+      out.push({ k: "SV" + k.toUpperCase(), n: rec.sv[k], w: sc.w.sv, v }); total += v;
+    }
+    if (rec.haste) { const v = sc.w.haste * rec.haste; out.push({ k: "haste", n: rec.haste, w: sc.w.haste, v }); total += v; }
+    if (rec.dmg && rec.dly && (slot === "Primary" || slot === "Secondary" || slot === "Range")) {
+      const v = sc.w.ratio * 10 * statAt(rec.dmg, tier) / rec.dly * (GS.TWO_H(rec) ? 2 : 1);
+      out.push({ k: "DMG/DLY", n: +(statAt(rec.dmg, tier) / rec.dly).toFixed(2), w: sc.w.ratio, v }); total += v;
+    }
+    out.sort((a, b) => b.v - a.v);
+    return { parts: out, total };
   }
 
   /* One container at a time: everything in bank slot 12 comes out in one reach,
@@ -373,6 +443,6 @@
 
   window.EQLValet = {
     ORDER, SEC_ORDER, ANY,
-    buildSteps, readInventory, itemId, acOf, makeWalk, fetchOrder, secRank,
+    buildSteps, readInventory, itemId, acOf, makeWalk, fetchOrder, secRank, breakdown,
   };
 })();
