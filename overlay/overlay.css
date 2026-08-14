@@ -196,6 +196,11 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unlock first
 }
 .os-sub button:hover { color: #ece8f7; }
 .os-sub button.on { color: #e7b94e; border-bottom-color: #c9952a; }
+/* reset sits apart from the scopes — it isn't one of them, it moves where
+   they all start counting */
+.os-sub button.os-rs { margin-left: auto; color: #7d7496; }
+.os-sub button.os-rs:hover { color: #e08f8f; }
+.os-sub button.os-rs + button.os-rs { margin-left: 0; }
 .os-rline { padding: 2px 7px 1px; }
 .os-xrow { display: block !important; padding: 0 !important; cursor: default; }
 .os-x { padding: 2px 7px 4px 14px; background: rgba(23, 18, 39, .55); font-size: 10.5px; }

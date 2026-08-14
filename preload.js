@@ -40,6 +40,12 @@ contextBridge.exposeInMainWorld("companion", {
   sendValet: (v) => ipcRenderer.send("feed:valet", v),
   markHeld: (n) => ipcRenderer.send("quest:markHeld", n),
   onMarkHeld: (fn) => ipcRenderer.on("quest:markHeld", (_e, p) => fn(p)),
+  /* The Parser meter's reset stamp. Same shape as markHeld: the overlay asks,
+     main forwards, the main renderer (which holds the engine and the only log
+     clock) decides what instant that is. Not an overlay pref — a timestamp
+     from a previous run names a moment no window still holds. */
+  statsReset: (on) => ipcRenderer.send("stats:reset", !!on),
+  onStatsReset: (fn) => ipcRenderer.on("stats:reset", (_e, p) => fn(p)),
   onBootstrap: (fn) => ipcRenderer.on("log:bootstrap", (_e, p) => fn(p)),
   onLines: (fn) => ipcRenderer.on("log:lines", (_e, p) => fn(p)),
   onLogStatus: (fn) => ipcRenderer.on("log:status", (_e, p) => fn(p)),

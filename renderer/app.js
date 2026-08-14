@@ -3109,6 +3109,10 @@ const CB = {
   raidOpen: false,     // Everyone's-damage table shown
   raidSel: null,       // expanded raid actor
   trunc: false,        // the visit outran the window; `all` is a tail, not all
+  raidZero: null,      // reset stamp: a LOG timestamp, and nothing before it
+                       // counts. Session-lifetime and never persisted — a zero
+                       // from yesterday's play names a moment that isn't in
+                       // today's window. Dropped when the visit rolls.
   raidWin: 0,          // meter window in minutes, 0 = the whole visit. Lives in
                        // SETTINGS.overlay.statsWindow so this tab and the widget
                        // can never label one window and show another's numbers.
@@ -3152,7 +3156,7 @@ function combatSeed(file, text) {
   CB.owner = (file.match(/eqlog_([^_]+)_/) || [])[1] || null;
   CB.hist = []; CB.histKeys = new Set(); CB.encHist = []; CB.encKeys = new Set();
   CB.live = []; CB.run = null; CB.session = null; CB.sel = null; CB.raidSel = null;
-  CB.encCache = new Map(); CB.trunc = false;
+  CB.encCache = new Map(); CB.trunc = false; CB.raidZero = null;
   // the bootstrap tail can be 40 MB; slice and parse off the handler's stack
   setTimeout(() => {
     let lines = text.split(/\r?\n/).filter(l => l.length);
@@ -3191,7 +3195,9 @@ function combatRollVisit(zoneLine) {
   if (r) combatFreeze(r);
   CB.live = [zoneLine];
   CB.zoneLine = zoneLine;
-  CB.run = null; CB.session = null; CB.trunc = false;
+  // a new zone is already a fresh start; carrying the stamp across would hide
+  // the new visit behind an instant that belongs to the old one
+  CB.run = null; CB.session = null; CB.trunc = false; CB.raidZero = null;
 }
 
 function combatParse(lines) {
@@ -3343,9 +3349,15 @@ function encCached(row, g, r) {
 function raidMeter(r, t0, t1) {
   const actors = new Map();
   const times = [];
+  /* e.ts is a DATE, not a number — every arithmetic use below coerces, but a
+     comparison against a non-number silently passes everything, so the bounds
+     are numbers and the event's stamp is coerced once, here. (That exact slip
+     shipped a reset button that zeroed the session line and left the meter
+     reading the whole visit.) */
   for (const e of r.P.events) {
     if (e.k !== "dmg" || !e.src || !e.tgt) continue;
-    if (t0 != null && (e.ts < t0 || e.ts > t1)) continue;
+    const ts = +e.ts;
+    if (t0 != null && (ts < t0 || ts > t1)) continue;
     if (!r.P.mobSet.has(e.tgt) || e.tgt === e.src) continue;
     // a claimed target is YOUR charm wearing a mob's name — damage to it is
     // damage taken, not raid damage (another player's charm can't be told
@@ -3368,11 +3380,19 @@ function raidMeter(r, t0, t1) {
     const sr = a.srcs.get(nm) || { name: nm, hits: 0, dmg: 0, max: 0, crit: 0 };
     sr.hits++; sr.dmg += e.amt; if (e.crit) sr.crit++; if (e.amt > sr.max) sr.max = e.amt;
     a.srcs.set(nm, sr);
-    times.push(e.ts);
+    times.push(ts);
   }
   if (!actors.size) return null;
-  // raid-wide combat seconds: the same 30s-gap rule as the engine's team
-  // denominator, over every counted event — one shared clock for all rows
+  /* raid-wide combat seconds: the same 30s-gap rule as the engine's team
+     denominator, over every counted event — one shared clock for all rows.
+
+     SORT FIRST. The event stream is NOT monotonic: measured on a live Plane of
+     Hate window, 22 of 14,858 counted events step backwards, the worst by 345
+     seconds. Walking that in file order makes the gap rule bill a negative
+     stretch for every inversion — the same window measured -5,979 s unsorted
+     and 1,538 s sorted — and a denominator ≤ 0 hits the Math.max(1, …) floor
+     below, which is what printed a raid's total damage as its DPS. */
+  times.sort((a, b) => a - b);
   let secs = 0, s0 = null, last = null;
   for (const t of times) { if (last && (t - last) / 1000 > 30) { secs += (last - s0) / 1000 + 1; s0 = t; } if (!s0) s0 = t; last = t; }
   if (s0) secs += (last - s0) / 1000 + 1;
@@ -3382,7 +3402,10 @@ function raidMeter(r, t0, t1) {
     sources: [...a.srcs.values()].sort((x, y) => y.dmg - x.dmg).slice(0, 8),
   }));
   const total = [...actors.values()].reduce((n, a) => n + a.dmg, 0);
-  return { secs: Math.round(secs), total, actors: rows, from: times[0], to: last };
+  // from/to are the sorted ends, so the rolling windows anchor on the newest
+  // stamp the log really states rather than on whichever line happened to land
+  // last (which the same inversions can make an older one)
+  return { secs: Math.max(1, Math.round(secs)), total, actors: rows, from: times[0], to: times[times.length - 1] };
 }
 
 /* ── meter scope ──────────────────────────────────────────────────────────
@@ -3403,17 +3426,44 @@ function raidMeter(r, t0, t1) {
    the live parse window starts at the zone-entry line. Bounded by
    CB_LIVE_LINES, so a marathon visit's `all` is as far back as we still hold. */
 const RAID_WINS = [5, 10, 15];       // rolling windows, minutes
-function raidTable(r) {              // the whole visit — the `all` scope
+function raidTable(r) {              // the whole visit, or everything since a reset
   if (!r) return null;
-  if (r._raid === undefined) r._raid = raidMeter(r);
+  if (r._raid === undefined) r._raid = raidMeter(r, CB.raidZero, CB.raidZero ? Infinity : null);
   return r._raid;
 }
 function raidWindowTable(r, mins) {
   const full = raidTable(r);
   if (!mins || !full) return full;
   if (!r._raidW) r._raidW = new Map();
-  if (!r._raidW.has(mins)) r._raidW.set(mins, raidMeter(r, full.to - mins * 60000, full.to));
+  // a reset floors every window: "the last 10 minutes" can't reach past it
+  if (!r._raidW.has(mins))
+    r._raidW.set(mins, raidMeter(r, Math.max(full.to - mins * 60000, CB.raidZero || 0), full.to));
   return r._raidW.get(mins);
+}
+
+/* Reset — Kyle, 2026-08-14: "give me a button to reset which captures a
+   timestamp and the windows only go from that timestamp." The stamp is a LOG
+   timestamp, like every other instant this tab measures, taken from the newest
+   event the log states rather than from the clock. Everything on the tab obeys
+   it — the meter, the rungs, the encounter list and the session line — because
+   a top line still counting the whole visit next to a meter that isn't would
+   just be two answers to one question. */
+function setRaidZero(ts) {
+  CB.raidZero = ts;
+  if (CB.run) { CB.run._raid = undefined; CB.run._raidW = null; }
+  CB.encCache = new Map();   // memoized per-visit tables predate the stamp
+  if (CB.run) combatRun(); else { renderCombat(); lastStatsJson = ""; pushStats(); }
+}
+function raidResetNow() {
+  const r = CB.run, evs = r && r.P.events;
+  if (!evs || !evs.length) return;
+  // the newest stamp the log states, which is the same instant the rolling
+  // windows anchor on. Scanned rather than read off the tail: the event array
+  // is close to sorted but not guaranteed to be, and one late line would put
+  // the reset in the past. +1 so it starts strictly after what's written.
+  let max = 0;
+  for (const e of evs) { const t = +e.ts; if (t > max) max = t; }
+  setRaidZero(max + 1);
 }
 /* Which rungs are worth offering. A window longer than the combat we hold is
    `all` under a second name, and two buttons for one number teach the reader
@@ -3431,15 +3481,25 @@ const effRaidWin = r => raidRungs(r).includes(CB.raidWin) ? CB.raidWin : 0;
    exactly the misreading the rungs exist to prevent — so it gets labeled with
    the span it actually covers and reads as one more window. */
 function raidAllLabel(r) {
+  if (CB.raidZero) return "since reset";
   const full = raidTable(r);
   if (!CB.trunc || !full) return "all";
   return `${Math.max(1, Math.round((full.to - full.from) / 60000))}m`;
 }
 const raidWinLabel = (m, allLabel) => m ? `${m}m` : (allLabel || "all");
 
+/* Refresh cadence, measured rather than guessed (2026-08-14, on a live Plane
+   of Hate group): the engine phases cost parse 84 ms + claims 31 + segments 68
+   + analyze 34 = ~217 ms over a 40k-line window, so the old `runMs × 10` —
+   "spend at most a tenth of a core" — put a live damage meter on a 2.2-second
+   refresh, and 8.5 s whenever a tick ran slow. Streaming a real raid log
+   through it measured gaps of median 2.0 s, p90 4.0 s, max 17.2 s, which is
+   not a live meter. `× 3` is a quarter of one core while you are actually
+   fighting, with a 750 ms floor so a cheap window doesn't spin. The adaptive
+   part stays: it is what keeps a marathon visit from pinning a core. */
 function combatSoon() {
   if (CB.timer) return;
-  CB.timer = setTimeout(() => { CB.timer = null; combatRun(); }, Math.max(1000, CB.runMs * 10));
+  CB.timer = setTimeout(() => { CB.timer = null; combatRun(); }, Math.max(750, CB.runMs * 3));
 }
 function combatRun() {
   CB.dirty = false;
@@ -3447,8 +3507,10 @@ function combatRun() {
   CB.run = combatParse(CB.live);
   if (CB.run) {
     const oc = CB.run.P.who ? CB.run.P.who.classes.split("/") : null;
-    const a = E.analyze(CB.run.P, CB.run.P.events, CB.run.side, oc);
-    const kills = CB.run.seg.fights.filter(f => teamKill(f, CB.run)).length;
+    const z = CB.raidZero;
+    const evs = z ? CB.run.P.events.filter(e => +e.ts >= z) : CB.run.P.events;
+    const a = E.analyze(CB.run.P, evs, CB.run.side, oc);
+    const kills = CB.run.seg.fights.filter(f => teamKill(f, CB.run) && (!z || +f.end >= z)).length;
     CB.session = { a, kills };
   } else CB.session = null;
   CB.runMs = performance.now() - t0;
@@ -3611,21 +3673,33 @@ function setRaidWin(m) {
   lastStatsJson = ""; pushStats();
 }
 function raidWinChips(rungs, sel, allLabel) {
-  if (!rungs.length) return "";        // only `all` fits the log we hold
-  return `<span class="cb-wins">` + rungs.concat([0]).map(m =>
-    `<button class="cb-win${m === sel ? " on" : ""}" data-raidwin="${m}">${raidWinLabel(m, allLabel)}</button>`).join("") + `</span>`;
+  // `all` alone is not a choice, but reset is always offered
+  const wins = rungs.length ? rungs.concat([0]).map(m =>
+    `<button class="cb-win${m === sel ? " on" : ""}" data-raidwin="${m}">${raidWinLabel(m, allLabel)}</button>`).join("") : "";
+  return `<span class="cb-wins">${wins}` +
+    `<button class="cb-win cb-reset" data-raidreset="1" title="Count from now">reset</button>` +
+    (CB.raidZero ? `<button class="cb-win cb-reset" data-raidreset="0" title="Count from the start of the visit again">✕</button>` : "") +
+    `</span>`;
 }
 function raidHtml() {
   if (!CB.run) return "";
   const rungs = raidRungs(CB.run);
   const win = effRaidWin(CB.run);
   const rt = raidWindowTable(CB.run, win);
-  if (!rt || rt.actors.length < 2) return ""; // solo: the fight list already says it all
-  const secs = Math.max(1, rt.secs);
-  let h = `<div class="cb-raidline"><span class="cb-raidhead" data-raidtoggle><span class="cb-caret">${CB.raidOpen ? "▾" : "▸"}</span> ` +
-    `Everyone's damage</span> <span class="dim">· ${rt.actors.length} actors · ${fmtN(rt.total)} dmg · ` +
-    `${fmtN(rt.total / secs)} dps · ${fmtDur(secs)} of combat</span>${raidWinChips(rungs, win, raidAllLabel(CB.run))}</div>`;
-  if (!CB.raidOpen) return h;
+  // solo: the fight list already says it all, so no meter — but reset governs
+  // the session line too, so its button is never hidden behind having a group
+  const many = rt && rt.actors.length > 1;
+  const secs = rt ? Math.max(1, rt.secs) : 1;
+  let h = `<div class="cb-raidline">`;
+  if (many) {
+    h += `<span class="cb-raidhead" data-raidtoggle><span class="cb-caret">${CB.raidOpen ? "▾" : "▸"}</span> ` +
+      `Everyone's damage</span> <span class="dim">· ${rt.actors.length} actors · ${fmtN(rt.total)} dmg · ` +
+      `${fmtN(rt.total / secs)} dps · ${fmtDur(secs)} of combat</span>`;
+  } else if (CB.raidZero) {
+    h += `<span class="dim">Counting from the reset.</span>`;
+  }
+  h += raidWinChips(many ? rungs : [], win, raidAllLabel(CB.run)) + `</div>`;
+  if (!many || !CB.raidOpen) return h;
   const col = RAID_COLS.find(c => c.k === CB.raidSort) || RAID_COLS[2];
   const rows = rt.actors.slice().sort((a, b) => {
     const ka = col.v(a), kb = col.v(b);
@@ -3660,7 +3734,10 @@ function encounterRows() {
     row.live = g; // live rows keep their group so detail computes on demand
     rows.push(row);
   }
-  return rows.sort((a, b) => b.ts - a.ts);
+  // a reset means start over, so pulls that ended before the stamp are gone
+  // from the list too — not just out of the meter
+  const z = CB.raidZero;
+  return rows.filter(r => !z || +r.ts + r.secs * 1000 >= z).sort((a, b) => b.ts - a.ts);
 }
 let lastStatsJson = "";
 function pushStats() {
@@ -3680,6 +3757,7 @@ function pushStats() {
     raid: OVERLAY_SHOWN ? raidWindowTable(CB.run, effRaidWin(CB.run)) : null,
     wins: OVERLAY_SHOWN ? raidRungs(CB.run) : [],
     allLabel: OVERLAY_SHOWN ? raidAllLabel(CB.run) : "all",
+    zero: !!CB.raidZero,
     session: {
       zone: visit ? visit.name : null,
       mins: Math.round(a.activeSecs / 60),
@@ -3939,6 +4017,7 @@ async function main() {
     if (h) { e.stopPropagation(); toggleHeld(h.dataset.hold, +h.dataset.want || 1); }
   });
   window.companion.onMarkHeld(n => toggleHeld(n, 1));
+  window.companion.onStatsReset(on => on ? raidResetNow() : setRaidZero(null));
   /* Unlocks tab */
   try { Object.assign(UNL, JSON.parse(localStorage.getItem(UNL_KEY)) || {}); } catch { /* defaults */ }
   const saveUnl = () => { try { localStorage.setItem(UNL_KEY, JSON.stringify(UNL)); } catch { /* full */ } };
@@ -4082,6 +4161,8 @@ async function main() {
     }
     // window chips and sort headers sit in/under the meter's own header line,
     // so both have to win before the toggle collapses the table under them
+    const rr = e.target.closest("[data-raidreset]");
+    if (rr) { rr.dataset.raidreset === "1" ? raidResetNow() : setRaidZero(null); return; }
     const rw = e.target.closest("[data-raidwin]");
     if (rw) { setRaidWin(+rw.dataset.raidwin); return; }
     const rs = e.target.closest("[data-raidsort]");

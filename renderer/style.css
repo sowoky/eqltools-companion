@@ -412,6 +412,10 @@ input[type="checkbox"] { accent-color: var(--gold); }
 }
 .cb-win:hover { color: var(--ink); border-color: var(--gold); }
 .cb-win.on { color: var(--bg-deep); background: var(--gold); border-color: var(--gold); }
+/* reset isn't a scope — it moves where every scope starts counting */
+.cb-win.cb-reset { margin-left: 6px; }
+.cb-win.cb-reset:hover { color: var(--ink); border-color: var(--ember); }
+.cb-win.cb-reset + .cb-win.cb-reset { margin-left: 2px; }
 .cbt th.is-sort { cursor: pointer; user-select: none; }
 .cbt th.is-sort:hover { color: var(--gold-pale); }
 

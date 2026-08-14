@@ -425,17 +425,23 @@ function renderOStats() {
     bits.map(b => `<span class="os-c">${b}</span>`).join("") + `</div>`;
   const raid = STATS.raid && STATS.raid.actors && STATS.raid.actors.length > 1 ? STATS.raid : null;
   const view = raid && PREFS.statsScope === "meter" ? "meter" : "fights";
-  if (raid) {
+  {
     // the same clamp the main renderer applies before it computes, so the lit
     // button and the numbers under it can't disagree while the pref round-trips
     const wins = (STATS.wins || []).concat([0]);
     const win = wins.includes(+PREFS.statsWindow) ? +PREFS.statsWindow : 0;
     h += `<div class="os-sub">` +
       `<button data-osub="fights" class="${view === "fights" ? "on" : ""}">fights</button>` +
-      wins.map(m => `<button data-osub="meter" data-owin="${m}" ` +
-        `class="${view === "meter" && win === m ? "on" : ""}">${m ? m + "m" : (STATS.allLabel || "all")}</button>`).join("") +
+      (raid ? wins.map(m => `<button data-osub="meter" data-owin="${m}" ` +
+        `class="${view === "meter" && win === m ? "on" : ""}">${m ? m + "m" : (STATS.allLabel || "all")}</button>`).join("") : "") +
+      // reset is offered whether or not you're in a group — it governs the
+      // session line too — and the ✕ is the way back out of one
+      `<button data-oreset="1" class="os-rs" title="Count from now">reset</button>` +
+      (STATS.zero ? `<button data-oreset="0" class="os-rs" title="Count from the start of the visit again">✕</button>` : "") +
       `</div>`;
   }
+  if (STATS.zero && !raid && !(STATS.fights && STATS.fights.length))
+    h += `<div class="os-none">Nothing since the reset.</div>`;
   if (view === "meter") {
     const secs = Math.max(1, raid.secs);
     h += `<div class="os-d os-rline">${n(raid.total)} dmg · ${n(raid.total / secs)} dps · ${fmtMins(secs)} of combat</div>` +
@@ -463,6 +469,8 @@ function renderOStats() {
   statsEl.innerHTML = h;
 }
 statsEl.addEventListener("click", e => {
+  const rs = e.target.closest("[data-oreset]");
+  if (rs) { window.companion.statsReset(rs.dataset.oreset === "1"); return; }
   const sb = e.target.closest("[data-osub]");
   if (sb) {
     PREFS.statsScope = sb.dataset.osub;

@@ -17,7 +17,7 @@
 
 <nav class="tabs">
   <button class="tab on" data-tab="live">Live</button>
-  <button class="tab" data-tab="combat">Combat</button>
+  <button class="tab" data-tab="combat">Parser</button>
   <button class="tab" data-tab="inv">Inventory</button>
   <button class="tab" data-tab="turnins">Turn-ins</button>
   <button class="tab" data-tab="sky">Sky</button>
@@ -25,7 +25,7 @@
   <button class="tab" data-tab="unlocks">Unlocks</button>
   <button class="tab" data-tab="tracked">Tracked</button>
   <button class="tab" data-tab="quests">Quests</button>
-  <button class="tab" data-tab="parser">Parser</button>
+  <button class="tab" data-tab="parser">Whole log</button>
   <button class="tab" data-tab="zone">Zone</button>
   <button class="tab" data-tab="tracker">Kill tracker</button>
   <button class="tab" data-tab="settings">Settings</button>
@@ -213,8 +213,9 @@
   <section id="tab-parser" class="pane">
     <!-- the site's /log-parser page, vendored whole and served over eqlt://;
          app.js feeds it the tailed log and re-feeds while the tab is open -->
-    <iframe id="lpFrame" title="Combat log parser" hidden></iframe>
-    <p id="lpEmpty" class="empty">Waiting for a log — the parser fills in once log lines arrive.</p>
+    <iframe id="lpFrame" title="Whole-log report" hidden></iframe>
+    <p id="lpEmpty" class="empty">Waiting for a log — this fills in once log lines arrive. The Parser tab reads
+      where you're standing right now; this one reads the whole file.</p>
   </section>
 
   <section id="tab-zone" class="pane">
