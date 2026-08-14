@@ -1,7 +1,7 @@
 {
   "name": "eqltools-companion",
   "productName": "EQL Tools Companion",
-  "version": "0.17.5",
+  "version": "0.17.6",
   "description": "EQL Tools companion — live log reader, kill tracker, quest-item loot alerts, optional in-game overlay.",
   "main": "main.js",
   "author": "eqltools.com",

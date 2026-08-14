@@ -283,20 +283,40 @@
       return total;
     }
 
-    // best-2-of-3 mana pools. EQL players report the per-point rate is the SAME
-    // for hybrids and full casters, so pool size tracks the STAT — rank by the
-    // character's own totals when known, else majority stat, with full-caster
-    // status only as the final tiebreak (classic lore says hybrids run smaller
-    // pools; EQL's one direct claim says they don't — unresolved).
+    /* best-2-of-3 mana pools — the character gets the SUM of the two biggest
+       (trio-system.md, strong corpus consensus, with the "multi-class pets get
+       doubled health" patch note as the official analog).
+
+       Which two is a question about the CLASSES, not about the gear. It used to
+       rank on the character's own current stat totals, with the majority stat
+       next and full-caster status as the last tiebreak, and that was wrong twice
+       over:
+
+         - it was CIRCULAR. Your gear decided which pools counted, and the
+           counted pools decided which gear scored well. A point of WIS could
+           flip INT's weight from 24.8 to 0.
+         - two hybrids sharing a stat outranked one full caster (+5 for the
+           shared stat against +1 for being a caster at all). On RNG/PAL/ENC
+           that dropped the ENCHANTER and counted the Ranger and the Paladin —
+           so the trio holding the only real caster in it was priced as having
+           almost no casting (w.mana fell to the both-hybrids rate of 0.15) and
+           INT was worth literally nothing. Kyle, 2026-08-14: "in my trio,
+           ranger/pal/enc … int was actually providing 0 value! sometimes mana
+           comes from wis AND int."
+
+       A full caster's pool is structurally the big one, so full-caster status
+       leads and the shared-stat count is only a tiebreak between equals. The
+       result is stable, does not move when you change a ring, and gives the
+       mixed case what Kyle described: one INT pool and one WIS pool, both
+       counted. An all-hybrid trio (RNG/BST/BRD) still resolves to its WIS pair,
+       which is the documented behaviour. */
     function poolSelection(cur) {
       const pools = classes
         .filter((c) => MANA_STAT[c])
         .map((c) => ({ c, stat: MANA_STAT[c], full: FULL_CASTER.includes(c) }));
       const statCount = {};
       pools.forEach((p) => { statCount[p.stat] = (statCount[p.stat] || 0) + 1; });
-      const rank = (p) => (cur ? (cur[p.stat] || 0) : 0) * 10
-        + (statCount[p.stat] > 1 ? 5 : 0)
-        + (p.full ? 1 : 0);
+      const rank = (p) => (p.full ? 100 : 0) + (statCount[p.stat] > 1 ? 1 : 0);
       pools.sort((a, b) => rank(b) - rank(a));
       return { pools, counted: pools.slice(0, 2) };
     }
@@ -363,15 +383,15 @@
           : sv > 200 ? "in the 201+ band (diminished: 1.25 converted/pt)"
           : sv > 100 ? "in the 101–200 band (best: 2.5 converted/pt)"
           : "under 100 (1 converted/pt)";
-        why[stat] = `<h5>${stat.toUpperCase()} → mana</h5><p>${pos(stat)}Counted pools: <b>${sel.counted.map((p) => `${p.c}·${p.stat.toUpperCase()}`).join(" + ") || "none"}</b>${cur ? "" : " — set your race and ties break on your own totals"}.</p><p>${mine.length
-          ? `${stat.toUpperCase()} feeds ${mine.map((p) => p.c).join(" and ")}: you're ${band}, × the measured level-50 scaler 4.5 ≈ <b>${perPool} mana per point per pool</b>${mine.length > 1 ? ` × ${mine.length} pools` : ""} × the Mana weight. The band formula is player-derived and checked against a real character's exact total; hybrids reportedly gain the same per-point rate as full casters.`
+        why[stat] = `<h5>${stat.toUpperCase()} → mana</h5><p>${pos(stat)}Counted pools: <b>${sel.counted.map((p) => `${p.c}·${p.stat.toUpperCase()}`).join(" + ") || "none"}</b> — the two biggest of the three, and a full caster's pool is always bigger than a hybrid's, so the pick is about your CLASSES and never moves when you change a ring.</p><p>${mine.length
+          ? `${stat.toUpperCase()} feeds ${mine.map((p) => p.c).join(" and ")}: you're ${band}, × the measured level-50 scaler 4.5 ≈ <b>${perPool} mana per point per pool</b>${mine.length > 1 ? ` × <b>${mine.length} counted pools that both run on ${stat.toUpperCase()}</b>` : ""} × the Mana weight — <b>${w[stat]} HP-equivalents per point</b>. The band formula is player-derived and checked against a real character's exact total; hybrids reportedly gain the same per-point rate as full casters. ${mine.length > 1 ? `Two pools on one stat is what makes this number large: the trio sums the best two, so a point of ${stat.toUpperCase()} is bought twice. ` : ""}<b>If that looks out of proportion to AC, the AC rate is the softer of the two numbers</b> — the mana chain is measured, 1 AC ≈ 3 HP is a guess (see the AC note).`
           : dropped.length
             ? `${dropped.map((p) => p.c).join("+")} draws from ${stat.toUpperCase()}, but ${dropped.length === 1 ? "its pool is the dropped third" : "those pools are dropped"} — the stat adds nothing here.`
             : `Nothing here draws mana from ${stat.toUpperCase()}.`}</p>${noRace}`;
       }
 
       w.ac = tank ? 3 : melee ? 2 : 1.2;
-      why.ac = `<h5>AC</h5><p>Worn AC feeds Mitigation, softcapped: the cap is <b>${sc.v}</b> at ${level} (client table${t.length > 1 ? ", best of your three" : ""}), then ×${sc.mult} past it — the scorer already credits candidate AC that lands past the cap at that rate${equipped ? `, from your current ≈<b>${wornAc}</b> worn AC` : ""}. The weight itself is the judgment call: ${tank ? `a tank ${grp} lives on mitigation — 3 HP-equivalents per AC` : melee ? `a melee ${grp} takes hits but isn't the wall — 2 per AC` : `the lowest softcap band and Channeler stance mitigation make AC the weakest defensive buy here — 1.2 per AC`} ${seals("(model; players have no agreed AC:HP rate — one unsourced corpus post says 1 AC ≈ 10 HP)")}</p>`;
+      why.ac = `<h5>AC</h5><p>Worn AC feeds Mitigation, softcapped: the cap is <b>${sc.v}</b> at ${level} (client table${t.length > 1 ? ", best of your three" : ""}), then ×${sc.mult} past it — the scorer already credits candidate AC that lands past the cap at that rate${equipped ? `, from your current ≈<b>${wornAc}</b> worn AC` : ""}. The weight itself is the judgment call: ${tank ? `a tank ${grp} lives on mitigation — 3 HP-equivalents per AC` : melee ? `a melee ${grp} takes hits but isn't the wall — 2 per AC` : `the lowest softcap band and Channeler stance mitigation make AC the weakest defensive buy here — 1.2 per AC`}. <b>This is the least-supported number in the model</b>, and it is what sets the ratio you notice against INT/WIS: at ${w.ac} per AC${w.int ? ` and ${w.int} per INT` : ""}, one INT reads as ${w.int ? Math.round(w.int / w.ac * 10) / 10 : "—"} AC. The one figure in the corpus says 1 AC ≈ 10 HP, which would cut that ratio by three. Nothing settles it, so it is a slider, not a fact. ${seals("(model; players have no agreed AC:HP rate — one unsourced corpus post says 1 AC ≈ 10 HP)")}</p>`;
 
       w.atk = melee ? 3 : tank ? 2 : 0.3;
       why.atk = `<h5>Attack</h5><p>Worn ATK is a flat add to Offense, which pushes every swing's damage roll toward max. ${melee ? `For something that kills with melee, throughput IS the build — 3 HP-equivalents per point` : tank ? `Real value, but this ${grp}'s job is holding, not racing — 2 per point` : `This ${grp} barely swings — 0.3 per point`} ${seals("(the offense mechanics are the /combat model; the HP-per-offense exchange rate is the judgment call)")}</p>`;
