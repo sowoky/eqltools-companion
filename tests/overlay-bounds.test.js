@@ -60,3 +60,36 @@ test("sanitizeBounds leaves a sane bounds unchanged", () => {
   const good = { x: 100, y: 100, width: 340, height: 240 };
   assert.deepEqual(sanitizeBounds(good, WA), good);
 });
+
+/* settings.json is user-editable and survives crashes mid-write: fields can
+   come back as strings, null, or missing. One NaN reaching BrowserWindow
+   throws, so every field must coerce to a finite number. */
+test("sanitizeBounds survives type-corrupted saved bounds without NaN", () => {
+  const cases = [
+    { x: "abc", y: null, width: "1384", height: undefined },
+    { x: NaN, y: -144, width: NaN, height: 1424 },
+    {},                                        // all fields missing
+    { x: "248", y: "-144", width: "340", height: "240" }, // numeric strings OK
+  ];
+  for (const c of cases) {
+    const s = sanitizeBounds(c, WA);
+    for (const k of ["x", "y", "width", "height"])
+      assert.ok(Number.isFinite(s[k]), `${k} must be finite for ${JSON.stringify(c)}, got ${s[k]}`);
+    assert.ok(s.width >= MIN_W && s.height >= MIN_H, "size floor holds");
+    assert.ok(s.x >= WA.x && s.y >= WA.y, "position pulled on-screen");
+  }
+  // numeric strings should coerce to their values, not fall back
+  const s = sanitizeBounds({ x: "248", y: "-144", width: "340", height: "240" }, WA);
+  assert.deepEqual(s, { x: 248, y: 0, width: 340, height: 240 });
+});
+
+test("sanitizeBounds handles negative and zero sizes", () => {
+  const s = sanitizeBounds({ x: 10, y: 10, width: -50, height: 0 }, WA);
+  assert.equal(s.width, MIN_W);
+  assert.equal(s.height, MIN_H);
+});
+
+test("clampToDisplay coerces junk x/y to the work-area origin", () => {
+  const r = clampToDisplay(undefined, "junk", 340, 240, WA);
+  assert.deepEqual(r, { x: WA.x, y: WA.y });
+});
