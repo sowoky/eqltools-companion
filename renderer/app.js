@@ -607,7 +607,7 @@ function renderZoneTab() {
    subtabs, parent/child nesting, and every enrichment column are display,
    resolved at render time from the live datasets so a data refresh re-answers
    the same dump. */
-const INV = { file: null, mtime: 0, rows: null, problem: null };
+const INV = { file: null, mtime: 0, rows: null, text: null, problem: null };
 const IV = { tab: "all", trade: "", cls: "", sort: "where", dir: 1 };
 const IV_OPEN = new Set(); // expanded rows, keyed by row id
 /* The location vocabulary is /_shared/gear-score.js (vendored) — the site's
@@ -658,9 +658,13 @@ function parseInventory(text) {
 
 function onInvFile({ file, mtime, text }) {
   INV.file = file; INV.mtime = mtime;
+  // the raw dump is kept because the Valet walk reads it through the shared
+  // valet-core, which takes the file rather than this tab's parsed rows
+  INV.text = text;
   INV.rows = parseInventory(text);
   LIVE_HAVE = new Map(); // the dump holds everything looted before it
   renderInv(); renderQuests(); pushQuests(); renderSky(); pushSky();
+  valetReload(); renderValet(); pushValet();
 }
 
 function onInvStatus({ problem }) {
@@ -2697,6 +2701,244 @@ function populateSkyFilters() {
   renderSkyWidget();
 }
 
+
+/* ── Valet tab: get dressed out of what you already own ────────────────────
+   The site's /valet page and this tab run ONE implementation of the walk —
+   ../vendor/valet-core.js, vendored from public/valet/valet-core.js. What
+   differs is injected: the scorer (this tab has its own trio picker, the site
+   reads the shared EQLChar store) and the memory (a decision can't be shared —
+   the app and the site are different origins, same wall Sky's skip marks hit).
+
+   The overlay gets the RESULT only. Picking twenty-three slots through a 340px
+   panel is not something anyone does with a corpse on the floor; reading "bank
+   3 · Ethereal Mist Helm +2" while standing at the banker is the whole point. */
+const VL_KEY = "eqlt-companion-valet-v1";
+const VL = { classes: ["WAR", "CLR", "WIZ"], level: 50, mem: {}, sort: "where", dir: 1 };
+let VWALK = null;
+function loadValetPrefs() {
+  try {
+    const o = JSON.parse(localStorage.getItem(VL_KEY)) || {};
+    if (Array.isArray(o.classes) && o.classes.length === 3) VL.classes = o.classes;
+    if (o.level) VL.level = Math.min(50, Math.max(1, o.level | 0));
+    if (o.mem && typeof o.mem === "object") VL.mem = o.mem;
+  } catch (e) {}
+}
+const saveValetPrefs = () => {
+  try { localStorage.setItem(VL_KEY, JSON.stringify({ classes: VL.classes, level: VL.level, mem: VL.mem })); } catch (e) {}
+};
+const vlTrioKey = () => VL.classes.slice().sort().join("/");
+const VL_MEM = {
+  get: k => (VL.mem[vlTrioKey()] || {})[k] || null,
+  set: (k, rec) => { (VL.mem[vlTrioKey()] || (VL.mem[vlTrioKey()] = {}))[k] = rec; saveValetPrefs(); },
+  del: k => { const m = VL.mem[vlTrioKey()]; if (m) { delete m[k]; saveValetPrefs(); } },
+};
+
+let VINV = null;   // { rows, equipped, unmatched, wornUnknown }
+function valetReload() {
+  /* No race here on purpose: gear-score derives its weights from the
+     character's own totals only when it has one, and this tab has no race
+     picker. Without it the weights fall back to the class/level model, exactly
+     as the site does before you choose a race. */
+  VINV = (INV.text && GDATA) ? window.EQLValet.readInventory(INV.text, GDATA) : null;
+  valetRestart();
+}
+function valetScorer() {
+  return window.EQLGearScore.make({ classes: VL.classes, level: VL.level, race: null,
+                                    equipped: VINV && VINV.equipped, D: null });
+}
+function valetRestart() {
+  VWALK = VINV ? window.EQLValet.makeWalk({ rows: VINV.rows, equipped: VINV.equipped,
+                                            scorer: valetScorer(), mem: VL_MEM }) : null;
+}
+
+const vlStat = (rec, tier) => {
+  const s = window.EQLTier.statsAt(rec, tier), out = [];
+  for (const k of ["ac", "hp", "mana", "end", "atk", "str", "sta", "agi", "dex", "wis", "int", "cha"])
+    if (s[k]) out.push(`<b>${s[k]}</b> ${k.toUpperCase()}`);
+  for (const k in rec.sv || {}) if (k !== "v") out.push(`<b>${rec.sv[k]}</b> SV${k.toUpperCase()}`);
+  if (rec.haste) out.push(`<b>${rec.haste}%</b> haste`);
+  if (rec.dmg && rec.dly) out.push(`<b>${window.EQLTier.statAt(rec.dmg, tier)}</b>/<b>${rec.dly}</b> = <b>${(window.EQLTier.statAt(rec.dmg, tier) / rec.dly).toFixed(2)}</b>${window.EQLGearScore.TWO_H(rec) ? " 2H" : ""}`);
+  return out.join(" · ") || `<span class="dim">no stats on the wiki</span>`;
+};
+function vlBadge(loc) {
+  const b = window.EQLGearScore.locBadge(loc);
+  return b.kind === "word"
+    ? `<span class="skl skl--word" title="${esc(b.title)}">${esc(b.word)}</span>`
+    : `<span class="skl skl--${b.kind}" title="${esc(b.title)}">${esc(b.kind)} <b>${b.n}</b>${b.sub ? `<span class="skl__s">·${b.sub}</span>` : ""}</span>`;
+}
+
+function renderValet() {
+  const run = $("vlRun"), done = $("vlDone"), empty = $("vlEmpty"), meta = $("vlMeta");
+  drawValetTrio();
+  if (!VWALK) {
+    run.hidden = true; done.hidden = true; empty.hidden = false;
+    if (INV.problem) empty.textContent = INV.problem;
+    meta.textContent = "";
+    return;
+  }
+  empty.hidden = true;
+  meta.textContent = `${INV.file} · ${VINV.rows.length} items · ${VL.classes.join("/")} at ${VL.level}`;
+  if (VWALK.done()) { run.hidden = true; done.hidden = false; renderValetDone(); }
+  else { done.hidden = true; run.hidden = false; renderValetRun(); }
+}
+
+function renderValetRun() {
+  const step = VWALK.step(), all = VWALK.options(), opts = all.slice(0, 4);
+  $("vlSlot").textContent = step.label;
+  $("vlCount").textContent = `${VWALK.i + 1} of ${VWALK.steps.length}`;
+  $("vlPool").textContent = all.length + (step.kind === "weapons" ? " loadouts you own" : " you own fit here")
+    + (all.length > 4 ? " · the four best are below" : "");
+  const now = VWALK.wearingAt(step);
+  $("vlNow").innerHTML = now.length
+    ? "On you now: " + now.map(e => e.rec ? `<b>${esc(e.name)}</b>`
+        : `<b>${esc(e.name)}</b> <span class="warn">no wiki page — nothing here can be compared against it</span>`).join(" + ")
+    : "nothing in this slot";
+  $("vlCards").innerHTML = opts.map((o, n) => `
+    <div class="vlc" role="button" tabindex="0" data-vlopt="${n}">
+      <div class="vlc__s" title="HP-equivalents for this trio">${Math.round(o.score)}</div>
+      ${o.items.map(it => `<div class="vlc__i">
+        <div class="vlc__n">${itemSpan(it.row.name, true)}</div>
+        <div class="vlc__st">${vlStat(it.row.rec, it.row.tier)}</div>
+        <div class="vlc__w">${vlBadge(it.row.loc)}${o.items.length > 1 ? ` <span class="dim">${esc(it.slot)}</span>` : ""}</div>
+      </div>`).join("")}
+    </div>`).join("") || `<p class="dim">Nothing you own fits here.</p>`;
+  $("vlRemember").checked = !!VL_MEM.get(step.key);
+  $("vlBack").disabled = VWALK.i === 0;
+  const k = VWALK.autoSummary(), bits = [];
+  if (k.mem.length) bits.push(`<b>${k.mem.length}</b> remembered (<button type="button" class="linkish" id="vlClearMem">ask me again</button>)`);
+  if (k.only.length) bits.push(`<b>${k.only.length}</b> had one candidate`);
+  if (k.flat.length) bits.push(`<b title="${esc(k.flat.join(", "))}">${k.flat.length}</b> nothing the scorer reads — kept what you have on`);
+  if (k.skip.length) bits.push(`<b>${k.skip.length}</b> left empty`);
+  if (k.none.length) bits.push(`<b>${k.none.length}</b> had nothing that fits`);
+  $("vlAuto").innerHTML = bits.join(" · ");
+}
+
+/* The fetch list. Every column sorts, same rule as every other table here. */
+const VL_COLS = [
+  { k: "where", h: "Where it is", d0: 1, v: it => window.EQLValet.secRank(it.row.sec) * 1000 + (window.EQLGearScore.locBadge(it.row.loc).n || 0) },
+  { k: "slot", h: "Slot", d0: 1, v: it => it.step.label },
+  { k: "item", h: "Item", d0: 1, v: it => it.row.name.toLowerCase() },
+  { k: "tier", h: "Tier", d0: -1, v: it => it.row.tier, num: 1 },
+  { k: "stats", h: "Stats", d0: 1, v: it => it.row.name.toLowerCase() },
+  { k: "do", h: "Do", d0: 1, v: it => (it.row.sec === "worn" ? 0 : 1) },
+];
+function renderValetDone() {
+  const plan = VWALK.planLoadout(), cur = VWALK.currentLoadout();
+  const ds = plan.score - cur.score;
+  $("vlNow2").textContent = Math.round(cur.score);
+  $("vlNew").textContent = Math.round(plan.score);
+  $("vlDelta").textContent = (ds > 0 ? "+" : "") + Math.round(ds);
+  $("vlDelta").className = ds > 0 ? "up" : ds < 0 ? "down" : "";
+
+  const k = VWALK.autoSummary(), notes = [];
+  if (k.none.length) notes.push(`Nothing you own fits: ${esc(k.none.join(", "))}.`);
+  if (k.flat.length) notes.push(`Kept what you have on, because nothing the scorer reads separates the candidates: ${esc(k.flat.join(", "))}.`);
+  if (VINV.unmatched.length) notes.push(`${VINV.unmatched.length} items in your dump have no wiki page, so they were not considered`
+    + (VINV.wornUnknown.length ? ` — including what you are wearing on ${VINV.wornUnknown.map(e => `${esc(e.slot)} (${esc(e.name)})`).join(", ")}. Check those swaps yourself.` : "."));
+  $("vlNotes").innerHTML = notes.join(" ");
+
+  const col = VL_COLS.find(c => c.k === VL.sort) || VL_COLS[0];
+  const items = window.EQLValet.fetchOrder(plan.items).sort((a, b) => {
+    const av = col.v(a), bv = col.v(b);
+    return (typeof av === "number" ? av - bv : String(av).localeCompare(String(bv))) * VL.dir;
+  });
+  const arrow = k2 => VL.sort === k2 ? (VL.dir > 0 ? " ▲" : " ▼") : "";
+  $("vlFetch").innerHTML = `<table class="qtab ivt"><thead><tr>${
+    VL_COLS.map(c => `<th data-vlsort="${c.k}">${esc(c.h)}${arrow(c.k)}</th>`).join("")
+  }</tr></thead><tbody>${items.map(it => {
+    const worn = it.row.sec === "worn";
+    return `<tr class="${worn ? "is-dim" : ""}">
+      <td>${vlBadge(it.row.loc)}</td>
+      <td>${esc(it.step.label)}</td>
+      <td class="iv-item">${itemSpan(it.row.name, true)}</td>
+      <td>${it.row.tier ? "+" + it.row.tier : ""}</td>
+      <td>${vlStat(it.row.rec, it.row.tier)}</td>
+      <td>${worn ? `<span class="dim">already on</span>` : "<b>fetch</b>"}</td>
+    </tr>`;
+  }).join("") + plan.kept.map(k => `<tr class="is-dim">
+      <td>${vlBadge(k.slot)}</td>
+      <td>${esc(k.step.label)}</td>
+      <td class="iv-item">${esc(k.e.name)}</td>
+      <td></td>
+      <td><span class="dim">${k.e.rec ? "not scored here" : "no wiki page — can't be scored"}</span></td>
+      <td><span class="dim">keep</span></td>
+    </tr>`).join("")}</tbody></table>`;
+}
+
+/* What crosses to the overlay: the pull list, and nothing you are already
+   wearing. Same shape discipline as pushSky — build it here, send only on
+   change, and keep it small enough to redraw a 340px panel. */
+let lastValetJson = "";
+function pushValet() {
+  if (!VWALK) { if (lastValetJson !== "null") { lastValetJson = "null"; window.companion.sendValet(null); } return; }
+  const plan = VWALK.planLoadout(), cur = VWALK.currentLoadout();
+  const all = window.EQLValet.fetchOrder(plan.items);
+  const p = {
+    trio: `${VL.classes.join("/")} at ${VL.level}`,
+    gain: Math.round(plan.score - cur.score),
+    worn: all.filter(it => it.row.sec === "worn").length,
+    ready: VWALK.done(),
+    fetch: all.filter(it => it.row.sec !== "worn").map(it => {
+      const b = window.EQLGearScore.locBadge(it.row.loc);
+      const ref = skyRef(it.row.name);
+      return { slot: it.step.label, n: it.row.name, url: ref.url, sb: ref.sb,
+               loc: { k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title } };
+    }),
+  };
+  const j = JSON.stringify(p);
+  if (j !== lastValetJson) { lastValetJson = j; window.companion.sendValet(p); }
+}
+
+function drawValetTrio() {
+  const C = window.EQLChar;
+  ["vlC1", "vlC2", "vlC3"].forEach((id, i) => {
+    const sel = $(id);
+    if (!sel.options.length)
+      sel.innerHTML = C.CLASSES.map((c, j) => `<option value="${c}">${esc(C.NAMES[j])}</option>`).join("");
+    sel.value = VL.classes[i];
+  });
+  $("vlLvl").value = VL.level;
+}
+function wireValet() {
+  loadValetPrefs();
+  ["vlC1", "vlC2", "vlC3"].forEach((id, i) => $(id).addEventListener("change", () => {
+    const v = $(id).value, j = VL.classes.indexOf(v);
+    if (j !== -1 && j !== i) VL.classes[j] = VL.classes[i];   // a trio is 3 distinct
+    VL.classes[i] = v;
+    saveValetPrefs(); valetRestart(); renderValet(); pushValet();
+  }));
+  $("vlLvl").addEventListener("change", () => {
+    VL.level = Math.min(50, Math.max(1, $("vlLvl").value | 0 || 50));
+    saveValetPrefs(); valetRestart(); renderValet(); pushValet();
+  });
+  $("vlRestart").addEventListener("click", () => { valetRestart(); renderValet(); pushValet(); });
+  $("vlSkip").addEventListener("click", () => { VWALK.skip(); renderValet(); pushValet(); });
+  $("vlBack").addEventListener("click", () => { if (VWALK.back()) { renderValet(); pushValet(); } });
+  $("vlAuto").addEventListener("click", (e) => {
+    if (!e.target.closest("#vlClearMem")) return;
+    delete VL.mem[vlTrioKey()]; saveValetPrefs(); valetRestart(); renderValet(); pushValet();
+  });
+  const take = (e) => {
+    if (e.target.closest("a")) return;
+    const b = e.target.closest("[data-vlopt]");
+    if (!b || !VWALK) return;
+    VWALK.pick(VWALK.step().key, VWALK.options()[+b.dataset.vlopt], $("vlRemember").checked);
+    renderValet(); pushValet();
+  };
+  $("vlCards").addEventListener("click", take);
+  $("vlCards").addEventListener("keydown", (e) => {
+    if ((e.key !== "Enter" && e.key !== " ") || !e.target.closest(".vlc")) return;
+    e.preventDefault(); take(e);
+  });
+  $("vlFetch").addEventListener("click", (e) => {
+    const th = e.target.closest("[data-vlsort]");
+    if (!th) return;
+    const k = th.dataset.vlsort, c = VL_COLS.find(x => x.k === k);
+    if (VL.sort === k) VL.dir = -VL.dir; else { VL.sort = k; VL.dir = (c && c.d0) || 1; }
+    renderValetDone();
+  });
+}
+
 /* ── achievements: what you did before anything was watching ──────────────
    `/outputfile achievements` is the client's own record of a character's
    history, and it is the ONLY source for the thing every tracker gets wrong
@@ -2866,10 +3108,23 @@ const CB = {
   sel: null,           // expanded fight key
   raidOpen: false,     // Everyone's-damage table shown
   raidSel: null,       // expanded raid actor
-  encCache: new Map(), // encounter key -> {sig, detail} drill-down memo
+  trunc: false,        // the visit outran the window; `all` is a tail, not all
+  raidWin: 0,          // meter window in minutes, 0 = the whole visit. Lives in
+                       // SETTINGS.overlay.statsWindow so this tab and the widget
+                       // can never label one window and show another's numbers.
+  raidSort: "dmg", raidDir: 1,
+  encCache: new Map(), // encounter key -> {sig, detail, raid} drill-down memo
 };
 let OVERLAY_SHOWN = false;
-const CB_SEED_LINES = 60000; // bootstrap window (whole visits within it)
+/* The bootstrap has to reach back far enough to find the CURRENT visit's
+   zone-entry line, and a big group writes a lot of lines: measured on a real
+   Plane of Hate 4 farm group, 2026-08-14, the visit was 97,804 lines and 73
+   minutes, so the old 60,000 missed its own entry line and fell through to the
+   10,000-line branch below — 7.5 minutes of window, no zone name, and no
+   claims cut. Only the backward regex scan runs over the whole seed; the
+   history parse is what the number really costs, ~700ms once at this size,
+   already on a timeout. */
+const CB_SEED_LINES = 150000;
 const CB_LIVE_LINES = 40000; // cap on one visit's window — past it the window
                              // truncates, the same semantics as the site's 40 MB cap
 const CB_HIST_CAP = 40;      // frozen fights kept
@@ -2880,9 +3135,15 @@ const CB_ZONE_RX = /^\[.{24}\] You have entered (?!an area|an Arena|the Drunken 
    claims-cut-at-window-start property. Keep the zone line pinned at the
    head: the window becomes "the zone entry plus the freshest N lines" —
    the same attribution contract, with a gap the engine's rate math already
-   handles (found live: an 18-minute Plane of Hate raid visit). */
+   handles (found live: an 18-minute Plane of Hate raid visit).
+
+   CB.trunc records that this happened, because it is the difference between
+   the meter's widest scope being the whole visit and it being a tail — and
+   the widest button is labeled from it rather than always saying "all".
+   40,000 lines is 35 minutes of that same PoH group, at a 150ms parse. */
 function capLive() {
   if (CB.live.length <= CB_LIVE_LINES) return;
+  CB.trunc = true;
   CB.live = CB.live.slice(-CB_LIVE_LINES);
   if (CB.zoneLine && CB.live[0] !== CB.zoneLine) CB.live.unshift(CB.zoneLine);
 }
@@ -2891,15 +3152,16 @@ function combatSeed(file, text) {
   CB.owner = (file.match(/eqlog_([^_]+)_/) || [])[1] || null;
   CB.hist = []; CB.histKeys = new Set(); CB.encHist = []; CB.encKeys = new Set();
   CB.live = []; CB.run = null; CB.session = null; CB.sel = null; CB.raidSel = null;
-  CB.encCache = new Map();
+  CB.encCache = new Map(); CB.trunc = false;
   // the bootstrap tail can be 40 MB; slice and parse off the handler's stack
   setTimeout(() => {
     let lines = text.split(/\r?\n/).filter(l => l.length);
     if (lines.length > CB_SEED_LINES) lines = lines.slice(-CB_SEED_LINES);
     let cut = -1;
     for (let i = lines.length - 1; i >= 0; i--) if (CB_ZONE_RX.test(lines[i])) { cut = i; break; }
-    // no zone line in the whole tail: keep a bounded live window and no history
-    if (cut < 0 && lines.length > 10000) lines = lines.slice(-10000);
+    // no zone line in the whole tail: keep a window, and the same one a long
+    // visit gets — the old 10,000 here was a third of that for no stated reason
+    if (cut < 0 && lines.length > CB_LIVE_LINES) { lines = lines.slice(-CB_LIVE_LINES); CB.trunc = true; }
     CB.live = lines.slice(Math.max(0, cut));
     CB.zoneLine = cut >= 0 ? lines[cut] : null;
     capLive();
@@ -2929,7 +3191,7 @@ function combatRollVisit(zoneLine) {
   if (r) combatFreeze(r);
   CB.live = [zoneLine];
   CB.zoneLine = zoneLine;
-  CB.run = null; CB.session = null;
+  CB.run = null; CB.session = null; CB.trunc = false;
 }
 
 function combatParse(lines) {
@@ -2963,7 +3225,8 @@ function combatFreeze(r) {
   for (const g of groups) {
     const row = encRow(g, r);
     if (CB.encKeys.has(row.key)) continue;
-    row.detail = encDetailCached(row, g, r);
+    const c = encCached(row, g, r);
+    row.detail = c.detail; row.raid = c.raid;
     CB.encHist.push(row); CB.encKeys.add(row.key);
   }
   if (CB.encHist.length > CB_HIST_CAP) {
@@ -2973,13 +3236,23 @@ function combatFreeze(r) {
   CB.encCache = new Map(); // per-visit memo; frozen rows carry their detail
 }
 
+/* "Your kill" the way a player means it: your own blow landed it, something on
+   your side landed it, or the server credited you — an xp or coin burst on the
+   death line is credit, and in a raid the killing blow is usually someone
+   else's while the kill is still yours. This is ONE rule because the three
+   places that ask were drifting: the encounter rows had the credit clause and
+   the session counter didn't, so a real Plane of Hate farm group read 6 kills
+   in 35 minutes with the ✓ marks below it disagreeing (measured 2026-08-14). */
+const teamKill = (f, r) => !!f.killed &&
+  (f.killer === r.P.owner || !!r.side.claims.at(f.killer, f.end) || f.xp > 0 || f.coin > 0);
+
 function combatRow(f, r) {
   return {
     key: E.fkey(f), ts: f.start, mob: f.mob, zone: f.zone,
     secs: Math.max(1, Math.round((f.end - f.start) / 1000)),
     total: f.total, you: f.dmg.you, pet: f.dmg.pet, charm: f.dmg.charm,
     taken: f.taken, xp: f.xp, coin: f.coin, killed: f.killed,
-    team: f.killed && (f.killer === r.P.owner || r.side.claims.at(f.killer, f.end)),
+    team: teamKill(f, r),
     detail: null,
   };
 }
@@ -3022,12 +3295,8 @@ function encounterize(fights) {
 // same identity rule as fkey: (start second, first mob) survives re-parses
 function encRow(g, r) {
   const sum = k => g.fights.reduce((a, f) => a + f[k], 0);
-  // "team" = the kill was OURS in the way a player means it: our blow landed
-  // it, or the server credited us (xp/coin burst) — in a raid the killing
-  // blow is usually someone else's while the kill is still yours
   const mobs = g.fights.map(f => ({
-    mob: f.mob, killed: f.killed,
-    team: f.killed && (f.killer === r.P.owner || r.side.claims.at(f.killer, f.end) || f.xp > 0 || f.coin > 0),
+    mob: f.mob, killed: f.killed, team: teamKill(f, r),
     dmg: f.total, taken: f.taken, xp: Math.round(f.xp * 10) / 10, coin: f.coin,
   }));
   return {
@@ -3037,38 +3306,46 @@ function encRow(g, r) {
     xp: Math.round(sum("xp") * 10) / 10, coin: sum("coin"),
     kills: mobs.filter(m => m.killed).length,
     team: mobs.some(m => m.team),
-    detail: null,
+    detail: null, raid: null,
   };
 }
 const encDetail = (g, r) => combatSliceDetail(new Set(g.fights.map(f => f.mob)), g.start, g.end, r);
 /* Drill-down memo: an analyze() pass per encounter per tick is waste when the
    encounter hasn't changed. The signature covers every encRow number — any
    new damage/kill/xp moves one of them; a heals-only second can serve one
-   stale healTot and self-corrects on the next swing. Cleared per visit. */
+   stale healTot and self-corrects on the next swing. Cleared per visit.
+
+   The per-pull meter rides the same memo. Expanding one pull is where a raid
+   asks "who did what on THAT", and until now a pull expanded to your own
+   sources only — the actors were visible for the visit and nowhere per fight. */
 const encSig = row => `${row.secs}|${row.total}|${row.taken}|${row.xp}|${row.coin}|${row.kills}|${row.mobs.length}`;
-function encDetailCached(row, g, r) {
+function encCached(row, g, r) {
   const hit = CB.encCache.get(row.key);
   const sig = encSig(row);
-  if (hit && hit.sig === sig) return hit.detail;
-  const detail = encDetail(g, r);
-  CB.encCache.set(row.key, { sig, detail });
-  return detail;
+  if (hit && hit.sig === sig) return hit;
+  const rec = { sig, detail: encDetail(g, r), raid: raidMeter(r, +g.start, +g.end) };
+  if (rec.raid && rec.raid.actors.length < 2) rec.raid = null; // solo: the row already says it
+  CB.encCache.set(row.key, rec);
+  return rec;
 }
 
-/* Raid meter: EVERYONE the log shows damaging a mob this visit — you, your
-   pet/charm, other players, their pets — one row per actor name, expandable
-   to that actor's per-source split. Engine-consumer code, not engine code:
-   the meter reads P.events/side()/mobSet, so it can never disagree with the
-   engine about attribution. A text log can't tell another player's summoned
-   pet from a player (both are bare capitalized names) and can't tie either
-   to an owner, so rows stay per-name; only YOUR side is labeled. */
-function raidTable(r) {
-  if (!r) return null;
-  if (r._raid !== undefined) return r._raid; // computed once per engine run
+/* Raid meter: EVERYONE the log shows damaging a mob — you, your pet/charm,
+   other players, their pets — one row per actor name, expandable to that
+   actor's per-source split. Engine-consumer code, not engine code: the meter
+   reads P.events/side()/mobSet, so it can never disagree with the engine
+   about attribution. A text log can't tell another player's summoned pet from
+   a player (both are bare capitalized names) and can't tie either to an owner,
+   so rows stay per-name; only YOUR side is labeled.
+
+   [t0, t1] narrows it, and every scope the app offers is this one function
+   over a different slice: the whole visit unbounded, a rolling window ending
+   at the newest swing, one pull bounded by its own encounter. */
+function raidMeter(r, t0, t1) {
   const actors = new Map();
   const times = [];
   for (const e of r.P.events) {
     if (e.k !== "dmg" || !e.src || !e.tgt) continue;
+    if (t0 != null && (e.ts < t0 || e.ts > t1)) continue;
     if (!r.P.mobSet.has(e.tgt) || e.tgt === e.src) continue;
     // a claimed target is YOUR charm wearing a mob's name — damage to it is
     // damage taken, not raid damage (another player's charm can't be told
@@ -3078,8 +3355,14 @@ function raidTable(r) {
     // a mob damaging a mob with no claim is unattributable — someone's charm
     // or a brawl; it still swung for our side, so it stays, labeled by name
     let a = actors.get(e.src);
-    if (!a) { a = { name: e.src, who: s === "othermob" ? "mob" : s, dmg: 0, hits: 0, max: 0, crit: 0, srcs: new Map() }; actors.set(e.src, a); }
+    if (!a) { a = { name: e.src, dmg: 0, hits: 0, max: 0, crit: 0, srcs: new Map(), sides: new Map() }; actors.set(e.src, a); }
     a.dmg += e.amt; a.hits++; if (e.crit) a.crit++; if (e.amt > a.max) a.max = e.amt;
+    /* An actor's side can change inside one window — you charm a mob, it
+       breaks — so the row is labeled by where most of its damage came from
+       rather than by whichever event happened to land first. Reading the
+       first event made the same name say "your charm" under one window
+       button and something else under the next. */
+    a.sides.set(s, (a.sides.get(s) || 0) + e.amt);
     const phys = e.cat === "melee" || e.cat === "ranged";
     const nm = phys ? (e.cat === "ranged" ? "ranged" : (e.verb === "hit" ? "auto-attack" : e.verb)) : e.spell || "unknown";
     const sr = a.srcs.get(nm) || { name: nm, hits: 0, dmg: 0, max: 0, crit: 0 };
@@ -3087,19 +3370,72 @@ function raidTable(r) {
     a.srcs.set(nm, sr);
     times.push(e.ts);
   }
-  if (!actors.size) return (r._raid = null);
+  if (!actors.size) return null;
   // raid-wide combat seconds: the same 30s-gap rule as the engine's team
   // denominator, over every counted event — one shared clock for all rows
   let secs = 0, s0 = null, last = null;
   for (const t of times) { if (last && (t - last) / 1000 > 30) { secs += (last - s0) / 1000 + 1; s0 = t; } if (!s0) s0 = t; last = t; }
   if (s0) secs += (last - s0) / 1000 + 1;
   const rows = [...actors.values()].sort((a, b) => b.dmg - a.dmg).slice(0, 16).map(a => ({
-    name: a.name, who: a.who, dmg: a.dmg, hits: a.hits, max: a.max, crit: a.crit,
+    name: a.name, who: [...a.sides].sort((x, y) => y[1] - x[1])[0][0],
+    dmg: a.dmg, hits: a.hits, max: a.max, crit: a.crit,
     sources: [...a.srcs.values()].sort((x, y) => y.dmg - x.dmg).slice(0, 8),
   }));
   const total = [...actors.values()].reduce((n, a) => n + a.dmg, 0);
-  return (r._raid = { secs: Math.round(secs), total, actors: rows });
+  return { secs: Math.round(secs), total, actors: rows, from: times[0], to: last };
 }
+
+/* ── meter scope ──────────────────────────────────────────────────────────
+   Kyle, 2026-08-14: "good to have a single fight/pull, and maybe whole
+   raid/instance but also good to have a rolling window… ok we're farming hate
+   and the group keeps rolling. not fair to compare whole instance for new
+   people." So the meter carries a window, and comparing people over the last
+   N minutes is a different question from comparing them over the whole visit.
+
+   THE WINDOW ENDS AT THE NEWEST SWING, NOT AT THE WALL CLOCK. Every other
+   number on this tab is measured off log timestamps, and a clock-anchored
+   window drains to nothing during a med break — exactly when someone is
+   reading it. So "the last 10 minutes" means the ten minutes ending on the
+   last damage event the log states, and the row of numbers holds still
+   between pulls instead of decaying.
+
+   `all` is the current zone VISIT, which is the instance when you are in one:
+   the live parse window starts at the zone-entry line. Bounded by
+   CB_LIVE_LINES, so a marathon visit's `all` is as far back as we still hold. */
+const RAID_WINS = [5, 10, 15];       // rolling windows, minutes
+function raidTable(r) {              // the whole visit — the `all` scope
+  if (!r) return null;
+  if (r._raid === undefined) r._raid = raidMeter(r);
+  return r._raid;
+}
+function raidWindowTable(r, mins) {
+  const full = raidTable(r);
+  if (!mins || !full) return full;
+  if (!r._raidW) r._raidW = new Map();
+  if (!r._raidW.has(mins)) r._raidW.set(mins, raidMeter(r, full.to - mins * 60000, full.to));
+  return r._raidW.get(mins);
+}
+/* Which rungs are worth offering. A window longer than the combat we hold is
+   `all` under a second name, and two buttons for one number teach the reader
+   something false. */
+function raidRungs(r) {
+  const full = raidTable(r);
+  if (!full || full.actors.length < 2) return [];
+  return RAID_WINS.filter(m => full.to - full.from > m * 60000);
+}
+// a rung that stopped being offered (you zoned, the new visit is 2 minutes
+// old) falls back to `all` rather than quietly showing `all` under a 15m label
+const effRaidWin = r => raidRungs(r).includes(CB.raidWin) ? CB.raidWin : 0;
+/* The widest button says "all" only when the window still holds the start of
+   the visit. Past CB_LIVE_LINES it is a tail, and a tail called "all" is
+   exactly the misreading the rungs exist to prevent — so it gets labeled with
+   the span it actually covers and reads as one more window. */
+function raidAllLabel(r) {
+  const full = raidTable(r);
+  if (!CB.trunc || !full) return "all";
+  return `${Math.max(1, Math.round((full.to - full.from) / 60000))}m`;
+}
+const raidWinLabel = (m, allLabel) => m ? `${m}m` : (allLabel || "all");
 
 function combatSoon() {
   if (CB.timer) return;
@@ -3112,8 +3448,7 @@ function combatRun() {
   if (CB.run) {
     const oc = CB.run.P.who ? CB.run.P.who.classes.split("/") : null;
     const a = E.analyze(CB.run.P, CB.run.P.events, CB.run.side, oc);
-    const killed = CB.run.seg.fights.filter(f => f.killed);
-    const kills = killed.filter(f => f.killer === CB.run.P.owner || CB.run.side.claims.at(f.killer, f.end)).length;
+    const kills = CB.run.seg.fights.filter(f => teamKill(f, CB.run)).length;
     CB.session = { a, kills };
   } else CB.session = null;
   CB.runMs = performance.now() - t0;
@@ -3245,21 +3580,62 @@ function swingHtml(rows) {
     `overlapping ranges mean no measurable change.</p>`;
 }
 
-/* Everyone's damage this visit — the raid meter, on the Combat tab too.
-   Collapsed to its header row until clicked; each actor row expands to that
-   actor's source split. */
+/* Everyone's damage — the raid meter, on the Combat tab too. Collapsed to its
+   header row until clicked; each actor row expands to that actor's source
+   split, and the window chips pick the stretch of play it covers (the same
+   SETTINGS.overlay.statsWindow the widget writes). */
+const RAID_COLS = [
+  { k: "name", h: "Actor", v: a => a.name.toLowerCase() },
+  { k: "pct", h: "%", v: a => a.dmg },
+  { k: "dmg", h: "Damage", v: a => a.dmg },
+  { k: "dps", h: "DPS", v: a => a.dmg },   // one shared denominator: ranks as damage does
+  { k: "hits", h: "Hits", v: a => a.hits },
+  { k: "max", h: "Max", v: a => a.max },
+  { k: "crit", h: "Crits", v: a => a.crit },
+];
+/* Only the sides a surefire claim established get a tag. There is deliberately
+   no "(mob)": a player who was damaged lands in the engine's mobSet, so that
+   tag read "(mob)" beside real raiders' names — and where it was right, the
+   name already said so ("a Champion of Innoruuk"). An untagged row is an actor
+   the log shows swinging, which is all the log actually states. */
+const RAID_TAG = { you: " (you)", pet: " (your pet)", charm: " (your charm)" };
+/* ONE window value for the tab and the widget, whichever surface set it: it
+   writes the overlay pref, main persists and broadcasts, renderOverlayState
+   applies it back here. The local write is so the tab redraws without waiting
+   on the round-trip. */
+function setRaidWin(m) {
+  if (CB.raidWin === m) return;
+  CB.raidWin = m;
+  window.companion.setOverlayPrefs({ statsWindow: m });
+  renderCombat();
+  lastStatsJson = ""; pushStats();
+}
+function raidWinChips(rungs, sel, allLabel) {
+  if (!rungs.length) return "";        // only `all` fits the log we hold
+  return `<span class="cb-wins">` + rungs.concat([0]).map(m =>
+    `<button class="cb-win${m === sel ? " on" : ""}" data-raidwin="${m}">${raidWinLabel(m, allLabel)}</button>`).join("") + `</span>`;
+}
 function raidHtml() {
   if (!CB.run) return "";
-  const rt = raidTable(CB.run);
+  const rungs = raidRungs(CB.run);
+  const win = effRaidWin(CB.run);
+  const rt = raidWindowTable(CB.run, win);
   if (!rt || rt.actors.length < 2) return ""; // solo: the fight list already says it all
   const secs = Math.max(1, rt.secs);
-  let h = `<div class="cb-raidhead" data-raidtoggle><span class="cb-caret">${CB.raidOpen ? "▾" : "▸"}</span> ` +
-    `Everyone's damage <span class="dim">· ${rt.actors.length} actors · ${fmtN(rt.total)} dmg · ${fmtN(rt.total / secs)} dps</span></div>`;
+  let h = `<div class="cb-raidline"><span class="cb-raidhead" data-raidtoggle><span class="cb-caret">${CB.raidOpen ? "▾" : "▸"}</span> ` +
+    `Everyone's damage</span> <span class="dim">· ${rt.actors.length} actors · ${fmtN(rt.total)} dmg · ` +
+    `${fmtN(rt.total / secs)} dps · ${fmtDur(secs)} of combat</span>${raidWinChips(rungs, win, raidAllLabel(CB.run))}</div>`;
   if (!CB.raidOpen) return h;
-  h += `<table class="qtab cbt cbraid"><thead><tr><th>Actor</th><th>%</th><th>Damage</th><th>DPS</th><th>Hits</th><th>Max</th><th>Crits</th></tr></thead><tbody>`;
-  for (const a of rt.actors) {
-    const tag = a.who === "you" ? " (you)" : a.who === "pet" ? " (your pet)" : a.who === "charm" ? " (your charm)" : a.who === "mob" ? " (mob)" : "";
-    h += `<tr class="cbr" data-raidactor="${esc(a.name)}"><td class="cb-mob">${esc(a.name)}<span class="dim">${tag}</span></td>` +
+  const col = RAID_COLS.find(c => c.k === CB.raidSort) || RAID_COLS[2];
+  const rows = rt.actors.slice().sort((a, b) => {
+    const ka = col.v(a), kb = col.v(b);
+    return ((ka < kb ? -1 : ka > kb ? 1 : 0) * -CB.raidDir) || (b.dmg - a.dmg);
+  });
+  h += `<table class="qtab cbt cbraid"><thead><tr>` + RAID_COLS.map(c =>
+    `<th class="is-sort" data-raidsort="${c.k}">${c.h}${CB.raidSort === c.k ? (CB.raidDir > 0 ? " ▼" : " ▲") : ""}</th>`).join("") +
+    `</tr></thead><tbody>`;
+  for (const a of rows) {
+    h += `<tr class="cbr" data-raidactor="${esc(a.name)}"><td class="cb-mob">${esc(a.name)}<span class="dim">${RAID_TAG[a.who] || ""}</span></td>` +
       `<td>${(a.dmg / rt.total * 100).toFixed(0)}%</td><td class="cb-dmg">${fmtN(a.dmg)}</td>` +
       `<td>${fmtN(a.dmg / secs)}</td><td>${a.hits}</td><td>${fmtN(a.max)}</td><td>${a.crit || "—"}</td></tr>`;
     if (CB.raidSel === a.name) {
@@ -3296,9 +3672,14 @@ function pushStats() {
   // overlay costs one cheap summary per tick instead of analyze() passes
   const encs = encounterRows().slice(0, CB_OVERLAY_ENCS);
   if (OVERLAY_SHOWN)
-    for (const row of encs) if (!row.detail && row.live) row.detail = encDetailCached(row, row.live, CB.run);
+    for (const row of encs) if (!row.detail && row.live) {
+      const c = encCached(row, row.live, CB.run);
+      row.detail = c.detail; row.raid = c.raid;
+    }
   const p = {
-    raid: OVERLAY_SHOWN ? raidTable(CB.run) : null,
+    raid: OVERLAY_SHOWN ? raidWindowTable(CB.run, effRaidWin(CB.run)) : null,
+    wins: OVERLAY_SHOWN ? raidRungs(CB.run) : [],
+    allLabel: OVERLAY_SHOWN ? raidAllLabel(CB.run) : "all",
     session: {
       zone: visit ? visit.name : null,
       mins: Math.round(a.activeSecs / 60),
@@ -3313,7 +3694,8 @@ function pushStats() {
     fights: encs.map(r => ({
       key: r.key, mobs: r.mobs, secs: r.secs, dmg: r.total,
       dps: Math.round(r.total / r.secs), taken: r.taken,
-      xp: r.xp, coin: r.coin, kills: r.kills, team: r.team, detail: r.detail,
+      xp: r.xp, coin: r.coin, kills: r.kills, team: r.team,
+      detail: r.detail, raid: r.raid,
     })),
   };
   const j = JSON.stringify(p);
@@ -3452,7 +3834,7 @@ function renderUpdate(u) {
    person wants/doesn't want. the widget could be small and having too many tabs
    may be clutter." The last ticked box is disabled — an overlay with no tabs
    can show nothing, and unticking it would look like the app broke. */
-const OV_VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Stats", sky: "Sky" };
+const OV_VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Parser", sky: "Sky", valet: "Valet" };
 function renderOverlayViews(prefs) {
   const all = prefs.all || Object.keys(OV_VIEW_LABEL);
   const on = prefs.views || all;
@@ -3476,6 +3858,12 @@ function renderOverlayState(o) {
     $("setOvKills").checked = o.prefs.showKills;
     $("setOvQuestOnly").checked = o.prefs.questOnly;
     renderOverlayViews(o.prefs);
+    // the meter's window is the widget's to set too, and this renderer is what
+    // computes it, so it comes back through here. (The widget's sub-view is not
+    // here on purpose: both sub-views ride one payload, so switching costs no
+    // round-trip and main only has to persist it.)
+    const win = +o.prefs.statsWindow || 0;
+    if (win !== CB.raidWin) { CB.raidWin = win; renderCombat(); lastStatsJson = ""; pushStats(); }
   }
 }
 
@@ -3504,6 +3892,7 @@ async function main() {
   renderStatus(); renderTracker(); renderFeed(); renderData();
   populateZoneSel(); renderZoneTab(); populateQuestFilters(); populateInvFilters(); renderQuests();
   populateSkyFilters(); renderSky(); initTip();
+  wireValet(); valetReload(); renderValet(); pushValet();
 
   window.companion.onBootstrap(onBootstrap);
   window.companion.onLines(onLines);
@@ -3512,7 +3901,7 @@ async function main() {
   window.companion.onInvStatus(onInvStatus);
   window.companion.onAchFile(onAchFile);
   window.companion.onAchStatus(onAchStatus);
-  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); populateInvFilters(); renderInv(); populateQuestFilters(); renderQuests(); populateSkyFilters(); renderSky(); pushZone(); pushQuests(); pushSky(); });
+  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); populateInvFilters(); renderInv(); populateQuestFilters(); renderQuests(); populateSkyFilters(); renderSky(); pushZone(); pushQuests(); pushSky(); valetReload(); renderValet(); pushValet(); });
   window.companion.onOverlayState(renderOverlayState);
   window.companion.onUpdate(renderUpdate);
   renderUpdate(await window.companion.getUpdate());
@@ -3689,6 +4078,16 @@ async function main() {
     if (sw) {
       const k = sw.dataset.swsort;
       if (SW.sort === k) SW.dir = -SW.dir; else { SW.sort = k; SW.dir = k === "actor" || k === "verb" ? -1 : 1; }
+      renderCombat(); return;
+    }
+    // window chips and sort headers sit in/under the meter's own header line,
+    // so both have to win before the toggle collapses the table under them
+    const rw = e.target.closest("[data-raidwin]");
+    if (rw) { setRaidWin(+rw.dataset.raidwin); return; }
+    const rs = e.target.closest("[data-raidsort]");
+    if (rs) {
+      const k = rs.dataset.raidsort;
+      if (CB.raidSort === k) CB.raidDir = -CB.raidDir; else { CB.raidSort = k; CB.raidDir = k === "name" ? -1 : 1; }
       renderCombat(); return;
     }
     const rt = e.target.closest("[data-raidtoggle]");

@@ -20,18 +20,22 @@ const gripEl = document.getElementById("grip");
 const panelEl = document.getElementById("panel");
 let THROUGH = false;
 let PREFS = { fontScale: 1, showKills: true, questOnly: false, view: "loot",
-              views: ["tracked", "loot", "stats", "sky"], collapsed: false };
+              views: ["tracked", "loot", "stats", "sky", "valet"], collapsed: false,
+              statsScope: "fights", statsWindow: 0 };
 const FEED_CAP = 50; // matches main's relay ring; the window scrolls, not truncates
 
-/* Four views, tab-switched: Tracked (quest working lists), Loot (the feed),
-   Stats (session + last fights), Sky (the Plane of Sky quest room — what you
-   can hand in and where each piece is). The choice persists through main's
+/* Five views, tab-switched: Tracked (quest working lists), Loot (the feed),
+   Parser (session + fights + the meter; the pref key is still `stats`),
+   Sky (the Plane of Sky quest room — what you
+   can hand in and where each piece is), Valet (the fetch list for the loadout
+   you picked in the app: what to pull, and out of which bag or bank slot). The choice persists through main's
    prefs like every other overlay pref, which means main.js's overlay:prefs
    allowlist has to name every one of them. */
 const filtersEl = document.getElementById("filters");
 const statsEl = document.getElementById("ostats");
 const skyEl = document.getElementById("osky");
-const VIEWS = { tracked: "otTracked", loot: "otLoot", stats: "otStats", sky: "otSky" };
+const valetEl = document.getElementById("ovalet");
+const VIEWS = { tracked: "otTracked", loot: "otLoot", stats: "otStats", sky: "otSky", valet: "otValet" };
 /* Which tabs this window carries at all — chosen in the app's Settings, not
    here: four tabs is a lot of chrome in a 340px window, and the ones a player
    never opens are pure clutter (Kyle, 2026-08-13). */
@@ -47,6 +51,7 @@ function applyView() {
   filtersEl.hidden = v !== "loot";
   statsEl.hidden = v !== "stats";
   skyEl.hidden = v !== "sky";
+  valetEl.hidden = v !== "valet";
   for (const [name, id] of Object.entries(VIEWS)) {
     const b = document.getElementById(id);
     b.hidden = !on.includes(name);
@@ -318,26 +323,50 @@ const asTracked = q => Array.isArray(q) ? { zones: [], quests: q, inv: null }
   : (q || { zones: [], quests: [], inv: null });
 window.companion.onFeedQuests(q => { TRACKED = asTracked(q); renderQuests(); rehotspot(); });
 
-/* Stats view — session numbers for the current zone visit, then two
-   sub-views: FIGHTS (encounters — the pull plus its adds — each expandable
-   to the full drill-down) and RAID (everyone's damage the log shows, sorted,
-   each actor expandable to their source split). All numbers arrive
-   pre-resolved from the main renderer's engine run; this window only draws
-   and remembers which rows are open. */
-let STATS = null, OVIEW = "fights", OSEL = null, ORSEL = null;
+/* Parser view — session numbers for the current zone visit, then the SCOPE
+   row, which is one question asked over five stretches of play:
+
+     fights          the encounters — the pull plus its adds — each expandable
+                     to the full drill-down, including who else swung at it
+     5m · 10m · 15m  everyone's damage over the last N minutes
+     all             everyone's damage for the whole visit, which is the whole
+                     instance when you are in one
+
+   The rolling windows exist because a whole-instance meter is the wrong
+   comparison for anyone who joined late (Kyle, 2026-08-14: "not fair to
+   compare whole instance for new people"). A window shorter than the combat
+   we hold is the only kind offered — the main renderer sends the list.
+
+   All numbers arrive pre-resolved from the main renderer's engine run; this
+   window only draws and remembers which rows are open. */
+let STATS = null, OSEL = null, ORSEL = null;
 const n = v => Math.round(v).toLocaleString();
+// a 5-minute window can hold 40 seconds of fighting, and "1m" for that is a lie
+const fmtMins = s => s < 90 ? `${Math.round(s)}s` : `${Math.round(s / 60)}m`;
 const fmtCu = cu => {
   cu = Math.round(cu);
   const p = Math.floor(cu / 1000), g = Math.floor(cu % 1000 / 100), s = Math.floor(cu % 100 / 10);
   return p ? `${n(p)}p ${g}g` : g ? `${g}g ${s}s` : `${s}s ${cu % 10}c`;
 };
 const SIDE_LBL = { you: "you", pet: "your pet", charm: "charm" };
-const RAID_LBL = { you: "you", pet: "your pet", charm: "your charm", mob: "mob" };
+// no "mob" tag: see RAID_TAG in the main renderer — a raider who took a hit is
+// in the engine's mobSet, so that label was false on real players' rows
+const RAID_LBL = { you: "you", pet: "your pet", charm: "your charm" };
 
 function osrcRows(rows) {
   return rows.map(s =>
     `<tr><td class="os-tn">${esc(s.name)}</td><td>${s.hits}×</td>` +
     `<td class="os-td">${n(s.dmg)}</td><td>${n(s.max)} max</td><td>${s.crit ? s.crit + " crit" : ""}</td></tr>`).join("");
+}
+
+/* Everyone's damage over one stretch — the meter's rows, shared by the pull
+   drill-down and the windowed views. */
+function ometerRows(rt) {
+  const secs = Math.max(1, rt.secs);
+  return rt.actors.map(a =>
+    `<tr><td class="os-tn">${esc(a.name)}${RAID_LBL[a.who] ? ` <span class="os-d">${RAID_LBL[a.who]}</span>` : ""}</td>` +
+    `<td>${(a.dmg / rt.total * 100).toFixed(0)}%</td><td class="os-td">${n(a.dmg)}</td>` +
+    `<td>${n(a.dmg / secs)} dps</td></tr>`).join("");
 }
 
 function encDetailHtml(f) {
@@ -348,6 +377,12 @@ function encDetailHtml(f) {
       `<tr><td class="os-tn">${m.killed ? (m.team ? "✓ " : "✕ ") : ""}${esc(m.mob)}</td>` +
       `<td class="os-td">${n(m.dmg)}</td><td>${m.taken ? n(m.taken) + " to you" : ""}</td>` +
       `<td>${m.xp ? m.xp + "% xp" : ""}</td></tr>`).join("") + `</table>`;
+  }
+  // who else was on this pull — the meter, bounded by this encounter. Absent
+  // when you fought it alone, where the row above already said it.
+  if (f.raid && f.raid.actors.length > 1) {
+    h += `<div class="os-h os-rd">everyone · ${n(f.raid.total)}</div>` +
+      `<table class="os-t">${ometerRows(f.raid)}</table>`;
   }
   if (d) {
     for (const side of ["you", "pet", "charm"]) {
@@ -389,15 +424,21 @@ function renderOStats() {
   let h = `<div class="os-sess">${s.zone ? `<span class="os-zone">${esc(s.zone)}</span>` : ""}` +
     bits.map(b => `<span class="os-c">${b}</span>`).join("") + `</div>`;
   const raid = STATS.raid && STATS.raid.actors && STATS.raid.actors.length > 1 ? STATS.raid : null;
-  const view = raid && OVIEW === "raid" ? "raid" : "fights";
+  const view = raid && PREFS.statsScope === "meter" ? "meter" : "fights";
   if (raid) {
+    // the same clamp the main renderer applies before it computes, so the lit
+    // button and the numbers under it can't disagree while the pref round-trips
+    const wins = (STATS.wins || []).concat([0]);
+    const win = wins.includes(+PREFS.statsWindow) ? +PREFS.statsWindow : 0;
     h += `<div class="os-sub">` +
       `<button data-osub="fights" class="${view === "fights" ? "on" : ""}">fights</button>` +
-      `<button data-osub="raid" class="${view === "raid" ? "on" : ""}">raid</button></div>`;
+      wins.map(m => `<button data-osub="meter" data-owin="${m}" ` +
+        `class="${view === "meter" && win === m ? "on" : ""}">${m ? m + "m" : (STATS.allLabel || "all")}</button>`).join("") +
+      `</div>`;
   }
-  if (view === "raid") {
+  if (view === "meter") {
     const secs = Math.max(1, raid.secs);
-    h += `<div class="os-d os-rline">${n(raid.total)} dmg · ${n(raid.total / secs)} dps · ${Math.round(secs / 60)}m of combat</div>` +
+    h += `<div class="os-d os-rline">${n(raid.total)} dmg · ${n(raid.total / secs)} dps · ${fmtMins(secs)} of combat</div>` +
       `<ul class="os-fights">` + raid.actors.map(a => {
         const tag = RAID_LBL[a.who] ? ` <span class="os-d">${RAID_LBL[a.who]}</span>` : "";
         let li = `<li data-ract="${esc(a.name)}"><span class="os-mob">${esc(a.name)}${tag}</span>` +
@@ -423,7 +464,15 @@ function renderOStats() {
 }
 statsEl.addEventListener("click", e => {
   const sb = e.target.closest("[data-osub]");
-  if (sb) { OVIEW = sb.dataset.osub; renderOStats(); rehotspot(); return; }
+  if (sb) {
+    PREFS.statsScope = sb.dataset.osub;
+    const patch = { statsScope: PREFS.statsScope };
+    if (sb.dataset.owin !== undefined) patch.statsWindow = PREFS.statsWindow = +sb.dataset.owin;
+    // main persists it and hands the window to the renderer, which is what
+    // computes the meter — the app's Combat tab reads the same value
+    window.companion.setOverlayPrefs(patch);
+    renderOStats(); rehotspot(); return;
+  }
   const en = e.target.closest("[data-enc]");
   if (en) { OSEL = OSEL === en.dataset.enc ? null : en.dataset.enc; renderOStats(); rehotspot(); return; }
   const ra = e.target.closest("[data-ract]");
@@ -442,7 +491,84 @@ function setMode(clickThrough, opacity) {
   lockEl.hidden = !THROUGH;
 }
 
-window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests, stats, sky }) => {
+/* ── Valet ───────────────────────────────────────────────────────────────
+   The RESULT of the app's Valet walk and nothing else: what to pull, and out of
+   which bag or bank slot. Picking twenty-three slots through a 340px panel is
+   not a thing anyone would do with a corpse on the floor — that happens in the
+   app window, and this is what you read standing at the banker.
+
+   Rows already on your body are not listed. They are the rows with nothing to
+   do, and the header states how many there are so their absence is a fact
+   rather than a gap. */
+let VALET = null;
+const VAL_CLOSED = new Set();
+function renderValet() {
+  valetEl.innerHTML = "";
+  if (!VALET) {
+    valetEl.innerHTML = `<div class="osk-none">Open the app's Valet tab and pick a loadout.</div>`;
+    return;
+  }
+  const head = document.createElement("div");
+  head.className = "osk-head";
+  head.textContent = VALET.fetch.length
+    ? `${VALET.fetch.length} to pull · ${VALET.worn} already on` + (VALET.gain ? ` · ${VALET.gain > 0 ? "+" : ""}${VALET.gain}` : "")
+    : `nothing to pull · ${VALET.worn} already on`;
+  if (VALET.trio) head.title = VALET.trio;
+  valetEl.append(head);
+  if (!VALET.ready) {
+    const w = document.createElement("div");
+    w.className = "osk-warn";
+    w.textContent = "Walk isn't finished — this is what you've picked so far.";
+    valetEl.append(w);
+  }
+  // one fold per place, in the order the app already sorted them
+  const groups = [];
+  for (const r of VALET.fetch) {
+    const key = r.loc.k === "word" ? r.loc.w : `${r.loc.k} ${r.loc.n}`;
+    let g = groups.length && groups[groups.length - 1].key === key ? groups[groups.length - 1] : null;
+    if (!g) groups.push(g = { key, loc: r.loc, rows: [] });
+    g.rows.push(r);
+  }
+  for (const g of groups) {
+    const sec = document.createElement("section");
+    sec.className = "ovg";
+    const h = document.createElement("button");
+    h.type = "button"; h.className = "ovg__h"; h.dataset.ovalet = g.key;
+    h.append(skyLocEl(g.loc));
+    const c = document.createElement("span");
+    c.className = "ovg__c"; c.textContent = g.rows.length;
+    h.append(c);
+    sec.append(h);
+    if (!VAL_CLOSED.has(g.key)) {
+      const ul = document.createElement("ul");
+      ul.className = "ovl";
+      for (const r of g.rows) {
+        const li = document.createElement("li");
+        li.className = "ovi";
+        const sl = document.createElement("span");
+        sl.className = "ovi__s"; sl.textContent = r.slot;
+        li.append(sl, itemSpan(r.n, r.url, r.sb, "ovi__n"));
+        if (r.loc.sub) {
+          const sub = document.createElement("span");
+          sub.className = "ovi__sub"; sub.textContent = "slot " + r.loc.sub;
+          li.append(sub);
+        }
+        ul.append(li);
+      }
+      sec.append(ul);
+    }
+    valetEl.append(sec);
+  }
+}
+valetEl.addEventListener("click", (e) => {
+  const h = e.target.closest("[data-ovalet]");
+  if (!h) return;
+  const k = h.dataset.ovalet;
+  VAL_CLOSED.has(k) ? VAL_CLOSED.delete(k) : VAL_CLOSED.add(k);
+  renderValet();
+});
+
+window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests, stats, sky, valet }) => {
   if (prefs) PREFS = { ...PREFS, ...prefs };
   panelEl.style.zoom = PREFS.fontScale;
   setMode(clickThrough, opacity);
@@ -458,6 +584,8 @@ window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, ques
   renderOStats();
   if (sky) SKYP = sky;
   renderSky();
+  if (valet) VALET = valet;
+  renderValet();
   applyView(); applyRoll();
 });
 window.companion.onOverlayMode(({ clickThrough, opacity }) => setMode(clickThrough, opacity));
@@ -700,6 +828,7 @@ skyEl.addEventListener("click", e => {
   renderSky(); rehotspot();
 });
 window.companion.onFeedSky(s => { SKYP = s; renderSky(); rehotspot(); });
+window.companion.onFeedValet(v => { VALET = v; renderValet(); rehotspot(); });
 
 const tipEl = document.createElement("div");
 tipEl.id = "otip"; tipEl.hidden = true;

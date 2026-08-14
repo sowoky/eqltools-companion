@@ -37,6 +37,7 @@ contextBridge.exposeInMainWorld("companion", {
   sendQuests: (q) => ipcRenderer.send("feed:quests", q),
   sendStats: (s) => ipcRenderer.send("feed:stats", s),
   sendSky: (s) => ipcRenderer.send("feed:sky", s),
+  sendValet: (v) => ipcRenderer.send("feed:valet", v),
   markHeld: (n) => ipcRenderer.send("quest:markHeld", n),
   onMarkHeld: (fn) => ipcRenderer.on("quest:markHeld", (_e, p) => fn(p)),
   onBootstrap: (fn) => ipcRenderer.on("log:bootstrap", (_e, p) => fn(p)),
@@ -57,4 +58,5 @@ contextBridge.exposeInMainWorld("companion", {
   onFeedQuests: (fn) => ipcRenderer.on("feed:quests", (_e, p) => fn(p)),
   onFeedStats: (fn) => ipcRenderer.on("feed:stats", (_e, p) => fn(p)),
   onFeedSky: (fn) => ipcRenderer.on("feed:sky", (_e, p) => fn(p)),
+  onFeedValet: (fn) => ipcRenderer.on("feed:valet", (_e, p) => fn(p)),
 });

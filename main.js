@@ -49,7 +49,11 @@ const BOOTSTRAP_CAP = 40 * 1024 * 1024; // same tail cap as the /kills page
 /* Every overlay view, in tab order. The list is the allowlist for the `view`
    pref AND the menu the main window offers — a view missing from here silently
    fails to round-trip, which is how the Sky tab first refused to stick. */
-const OVERLAY_VIEWS = ["tracked", "loot", "stats", "sky"];
+const OVERLAY_VIEWS = ["tracked", "loot", "stats", "sky", "valet"];
+/* The Parser meter's window, minutes; 0 is the whole zone visit. Same
+   allowlist job as OVERLAY_VIEWS — an unlisted value is silently dropped
+   rather than persisted. */
+const OVERLAY_STATS_WINS = [0, 5, 10, 15];
 const OVERLAY_BAR_H = 26;   // the title bar alone, in DIPs — collapsed height
 const OVERLAY_DEF_W = 340, OVERLAY_DEF_H = 240;      // first-run and reset size
 const OVERLAY_MIN_W = 180, OVERLAY_MIN_H = 70, OVERLAY_MAX = 900;
@@ -81,17 +85,39 @@ function loadSettings() {
     opacity: 0.92, clickThrough: false, shown: false, bounds: null,
     // display prefs, all renderer-facing (Kyle, 2026-07-31: "resizable/customizable")
     fontScale: 1, showKills: true, questOnly: false, view: "loot",
+    /* Parser tab: which sub-view, and the meter's window in minutes (0 = the
+       whole zone visit). The window is shared with the app's Combat tab —
+       one value, so the two surfaces can never label one stretch of play and
+       show another's numbers. */
+    statsScope: "fights", statsWindow: 0,
     /* Which tabs the overlay carries at all (Kyle, 2026-08-13: "the widget
        could be small and having too many tabs may be clutter"), and whether it
        is rolled up to its title bar — the alternative was dragging it off the
        bottom of the screen to get it out of the way. `height` is what to
        restore on expand, since the collapsed bounds overwrite the saved ones. */
-    views: ["tracked", "loot", "stats", "sky"], collapsed: false, height: null,
+    /* viewsKnown defaults to EMPTY, not to the current list: it is the record
+       of what the user has already been offered, and an install that has never
+       written one has been offered nothing. Seeding it with OVERLAY_VIEWS made
+       every new view look already-known, so the migration below computed "no
+       new views" and the Valet tab silently never appeared. */
+    views: OVERLAY_VIEWS.slice(), viewsKnown: [], collapsed: false, height: null,
     ...SETTINGS.overlay,
   };
   // a stored list from an older build predates any view added since
   if (!Array.isArray(SETTINGS.overlay.views) || !SETTINGS.overlay.views.length)
     SETTINGS.overlay.views = OVERLAY_VIEWS.slice();
+  /* A view added AFTER the user's list was written is not a view they turned
+     off — they have never seen it. `viewsKnown` is the snapshot of what existed
+     when they last chose, so anything new gets switched on once and only once,
+     and a view they really did untick stays off. (Without this the Sky tab
+     would have needed a manual tick on every existing install, and so would
+     this one.) */
+  {
+    const known = Array.isArray(SETTINGS.overlay.viewsKnown) ? SETTINGS.overlay.viewsKnown : [];
+    const fresh = OVERLAY_VIEWS.filter(v => !known.includes(v) && !SETTINGS.overlay.views.includes(v));
+    if (fresh.length) SETTINGS.overlay.views = SETTINGS.overlay.views.concat(fresh);
+    SETTINGS.overlay.viewsKnown = OVERLAY_VIEWS.slice();
+  }
   if (!SETTINGS.logDir && fs.existsSync(DEFAULT_LOG_DIR))
     SETTINGS.logDir = DEFAULT_LOG_DIR;
 }
@@ -216,7 +242,8 @@ function saveOverlayBounds() {
 const overlayPrefs = () => {
   const o = SETTINGS.overlay;
   return { fontScale: o.fontScale, showKills: o.showKills, questOnly: o.questOnly,
-           view: o.view, views: o.views, all: OVERLAY_VIEWS, collapsed: o.collapsed };
+           view: o.view, views: o.views, all: OVERLAY_VIEWS, collapsed: o.collapsed,
+           statsScope: o.statsScope, statsWindow: o.statsWindow };
 };
 
 /* Full overlay redraw: mode + prefs + the feed ring, so a prefs change (or a
@@ -232,6 +259,7 @@ function sendOverlayInit() {
     quests: LAST_QUESTS,
     stats: LAST_STATS,
     sky: LAST_SKY,
+    valet: LAST_VALET,
   });
 }
 
@@ -273,6 +301,10 @@ let LAST_QUESTS = { zones: [], quests: [] };
 let LAST_STATS = null;
 // Plane of Sky turn-in board, pre-resolved by the renderer: {groups, note}
 let LAST_SKY = null;
+/* The Valet fetch list, pushed by the app tab. The overlay only ever shows the
+   RESULT — picking twenty-three slots through a 300px panel is not a thing
+   anyone would do with a corpse on the floor. */
+let LAST_VALET = null;
 
 /* ── log tail engine ──────────────────────────────────────────────────────
    Poll-stat the log directory (fs.watch is unreliable enough on Windows
@@ -776,6 +808,8 @@ function applyOverlayPrefs(p) {
   // every view name has to be listed here or the pref silently fails to
   // round-trip and the overlay snaps back to its old tab
   if (OVERLAY_VIEWS.includes(p.view)) o.view = p.view;
+  if (p.statsScope === "fights" || p.statsScope === "meter") o.statsScope = p.statsScope;
+  if (p.statsWindow !== undefined) o.statsWindow = OVERLAY_STATS_WINS.includes(+p.statsWindow) ? +p.statsWindow : 0;
   if (Array.isArray(p.views)) {
     const keep = OVERLAY_VIEWS.filter(v => p.views.includes(v));
     // an overlay with no tabs is a window that can show nothing; the last one
@@ -800,7 +834,9 @@ ipcMain.on("overlay:prefs", (_e, p) => applyOverlayPrefs(p || {}));
    pin is useful… what if we right click the header bar of the widget? you could
    put the lock/unlock there. you could also allow people to adjust tabs from
    there and other settings. opacity, etc." */
-const VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Stats", sky: "Sky" };
+// the `stats` key is the stored pref and stays; only the word on screen moved
+// (Kyle, 2026-08-14: "rename stats to parser in the widget")
+const VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Parser", sky: "Sky", valet: "Valet" };
 const OPACITY_STEPS = [1, 0.92, 0.85, 0.75, 0.6, 0.45];
 const SCALE_STEPS = [0.8, 0.9, 1, 1.15, 1.3, 1.6];
 ipcMain.on("overlay:menu", () => {
@@ -934,6 +970,10 @@ ipcMain.on("feed:stats", (_e, s) => {
 ipcMain.on("feed:sky", (_e, s) => {
   LAST_SKY = s && typeof s === "object" ? s : null;
   if (overlayWin) overlayWin.webContents.send("feed:sky", LAST_SKY);
+});
+ipcMain.on("feed:valet", (_e, v) => {
+  LAST_VALET = v && typeof v === "object" ? v : null;
+  if (overlayWin) overlayWin.webContents.send("feed:valet", LAST_VALET);
 });
 ipcMain.on("feed:quests", (_e, q) => {
   const p = Array.isArray(q) ? { zones: [], quests: q }

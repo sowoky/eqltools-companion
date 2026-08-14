@@ -21,6 +21,7 @@
   <button class="tab" data-tab="inv">Inventory</button>
   <button class="tab" data-tab="turnins">Turn-ins</button>
   <button class="tab" data-tab="sky">Sky</button>
+  <button class="tab" data-tab="valet">Valet</button>
   <button class="tab" data-tab="unlocks">Unlocks</button>
   <button class="tab" data-tab="tracked">Tracked</button>
   <button class="tab" data-tab="quests">Quests</button>
@@ -115,6 +116,48 @@
     <div id="skyBody"></div>
     <p id="skyEmpty" class="empty">Waiting for log lines. Walk up to a quest giver and this fills in.<br>
     <span class="dim">Logging must be on in game: <code>/log</code></span></p>
+  </section>
+
+
+  <section id="tab-valet" class="pane pane--wide">
+    <div class="feedhead qbhead">
+      <span class="dim">Trio</span>
+      <select id="vlC1" aria-label="Class 1"></select>
+      <select id="vlC2" aria-label="Class 2"></select>
+      <select id="vlC3" aria-label="Class 3"></select>
+      <label class="chk">Level <input id="vlLvl" type="number" min="1" max="50" value="50" style="width:4.2em"></label>
+      <button id="vlRestart" class="btn btn--sm">start over</button>
+      <span id="vlMeta" class="dim"></span>
+    </div>
+
+    <div id="vlRun" hidden>
+      <div class="vl-head">
+        <h3 id="vlSlot"></h3>
+        <span id="vlCount" class="dim"></span>
+      </div>
+      <p id="vlPool" class="dim"></p>
+      <p id="vlNow" class="dim"></p>
+      <div id="vlCards" class="vl-cards"></div>
+      <div class="vl-foot">
+        <label class="chk" title="Stop asking about this slot. It re-opens when something you own scores above the fourth card, or when you no longer have the one you picked."><input type="checkbox" id="vlRemember"> Remember &mdash; this beats the others</label>
+        <button id="vlBack" class="btn btn--sm">Back</button>
+        <button id="vlSkip" class="btn btn--sm">Leave empty</button>
+      </div>
+      <p id="vlAuto" class="dim"></p>
+    </div>
+
+    <div id="vlDone" hidden>
+      <div class="vl-scores">
+        <span><span class="dim">wearing now</span> <b id="vlNow2">0</b></span>
+        <span><span class="dim">this loadout</span> <b id="vlNew">0</b></span>
+        <span><span class="dim">difference</span> <b id="vlDelta">0</b></span>
+      </div>
+      <p id="vlNotes" class="dim"></p>
+      <div id="vlFetch" class="invwrap"></div>
+    </div>
+
+    <p id="vlEmpty" class="empty">No inventory dump found beside the log folder yet.<br>
+    <span class="dim">Type <code>/out inventory</code> in game &mdash; the dump loads here within a few seconds.</span></p>
   </section>
 
   <section id="tab-unlocks" class="pane pane--wide">
@@ -247,8 +290,10 @@
 <script src="../vendor/parse.js"></script>
 <script src="../vendor/tier.js"></script>
 <script src="../vendor/attributes-data.js"></script>
+<script src="../vendor/char-state.js"></script>
 <script src="../vendor/gear-score.js"></script>
 <script src="../vendor/sky-core.js"></script>
+<script src="../vendor/valet-core.js"></script>
 <script src="../vendor/achievements.js"></script>
 <script src="../vendor/site/log-parser/engine.js"></script>
 <script src="app.js"></script>

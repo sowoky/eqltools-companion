@@ -40,7 +40,9 @@ const VENDOR_JS = {
   "public/gear/tier.js": "tier.js",
   "public/attributes/data.js": "attributes-data.js", // basename would collide
   "public/_shared/gear-score.js": "gear-score.js",
+  "public/_shared/char-state.js": "char-state.js",   // gear-score's nakedStats() calls EQLChar.name
   "public/sky/sky-core.js": "sky-core.js",
+  "public/valet/valet-core.js": "valet-core.js",
   "public/_shared/achievements.js": "achievements.js",
 };
 for (const [rel, name] of Object.entries(VENDOR_JS)) {
