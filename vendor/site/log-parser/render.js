@@ -1,15 +1,44 @@
 "use strict";
-/* EQ Legends Combat Log Parser — the PAGE. Reads an eqlog_<char>_<server>.txt
-   in the browser. No upload, no LLM. All parsing/attribution lives in
-   engine.js, loaded first by index.html; classic scripts share the global
-   scope, so its declarations (parse, buildClaims, analyze, dayKey, …) are
-   used here directly — no aliasing, which would collide with them. This file
-   is the controls, rendering, tooltips, intake, live watch, and the
-   Companion embed. Player-facing honesty notes live in index.html's footer. */
+/* EQ Legends Combat Log Parser — the VIEW. analyze() output → the report's
+   panels, and nothing else: no intake, no file picker, no controls, no live
+   watch. Those are the HOST's (public/log-parser/app.js on the site, the
+   Parser tab in the companion app), which is the whole point of the split —
+   the companion renders the same report natively instead of iframing the
+   website, so a panel can never look or count differently in the two places.
 
+   Loaded after engine.js; classic scripts share global scope, so parse/
+   analyze/buildMobStats/fkey/dayKey/inCopper/combatSecondsOf/spellIcon are
+   used directly. The shared render helpers ($, esc, el, fmt, pct, dt…) are
+   declared HERE and used by the host too — this file loads first.
+
+   The host contract, all of it:
+     EQLLogView.config({dataBase, onRerender, onFocusFight})
+     EQLLogView.render(state, sel)      state = {P, seg, side}
+     EQLLogView.summary(state, sel)     sel   = {day, sess, levels, combo,
+     EQLLogView.tipProvider                     fight, labels}
+     EQLLogView.reset()
+   The host owns WHICH slice; this file owns what the slice looks like. Panels
+   are addressed by element id, so a host supplies the same ids index.html
+   does — a missing panel is skipped, never a crash. */
+
+/* Everything below is CLOSED OVER, not global. render.js and its host share a
+   process with whatever else the host loads — the companion window already had
+   its own `esc`, and two classic scripts declaring the same const is a hard
+   SyntaxError that kills the whole renderer. The host reaches the few helpers
+   it needs through EQLLogView.util. */
+(function () {
+"use strict";
+/* Host wiring. onRerender lets a click inside a panel (expand a source row,
+   focus a fight) redraw through the host's own path, so the host's controls
+   and the panels can't disagree about the current slice. */
+const VIEWHOST = { dataBase: "/log-parser/data/", onRerender: null, onFocusFight: null };
+let LASTDRAW = null;
+const redraw = () => {
+  if (VIEWHOST.onRerender) VIEWHOST.onRerender();
+  else if (LASTDRAW) renderReport(LASTDRAW.state, LASTDRAW.sel);
+};
 const MIN_RATE_SEC = 5; // below this, a window is too short to quote a DPS for
 const rateDps = (dmg, sec) => sec >= MIN_RATE_SEC ? fmt(dmg / sec) : "—";
-
 /* ─── icons / colors ──────────────────────────────────────────────────────*/
 const ELEM_HUE = { fire: "var(--ember)", physical: "var(--gold)", magic: "var(--arcane)", cold: "#5aa9d6", poison: "#7fae4b", disease: "#8a9a4b", unresistable: "#cfc8b6" };
 function gemFor(s) {
@@ -65,9 +94,6 @@ let SHOW_ALL_MOBS = false, SHOW_ALL_LOOT = false;
 const EXPANDED = new Set(); // mob rows the player has opened
 const EXPANDED_SRC = new Set(); // grouped source rows (pet/charm) opened to their per-verb split
 function bar(frac, color) { const w = Math.max(0, Math.min(100, frac * 100)); return `<span class="mtrack"><span class="mfill" style="width:${w}%;background:${color}"></span></span>`; }
-
-let STATE = null;
-
 // A band chip narrower than ~4 characters drops its label (color + hover only)
 // — a 1-2 character fragment reads as a glitch, not truncation. Measured after
 // every render and again on resize, since chip widths are percentages.
@@ -173,7 +199,6 @@ function dpsChart(P, events, side, stanceTl, invokeTl) {
   </svg>` + lane(invokeTl, "lane-invoke", "i") +
     `<p class="sub">Peak ${fmt(peak)} DPS over a ${B}-second window · ${Math.round(span / 60)}m of combat${gaps ? " — idle time between fights cut out" : ""}</p>`;
 }
-
 /* ─── tooltips: the raw numbers behind every rounded value ─────────────────
    /_shared/tip.js provides the engine; this provider serves "lp:*" specs.
    Content is rebuilt from TIPCTX on every render, so a tip always shows the
@@ -241,10 +266,11 @@ function tipProvider(arg) {
   }
   return null;
 }
-
-function render() {
-  const { P, seg, side } = STATE;
-  const selDay = currentDay(), selSess = currentSession(), selLevels = currentLevels(), selCombo = $("comboSel").value, selFight = $("fightSel").value;
+function renderReport(state, sel) {
+  LASTDRAW = { state, sel };
+  const { P, seg, side } = state;
+  const selDay = sel.day ?? null, selSess = sel.sess ?? null, selLevels = sel.levels ?? null;
+  const selCombo = sel.combo || "*", selFight = sel.fight || "*";
   let events = P.events;
   const focus = selFight === "*" ? null : seg.fights.find(f => fkey(f) === selFight) || null;
   if (focus) {
@@ -346,7 +372,7 @@ function render() {
     if (expandable) tr.addEventListener("click", ev => {
       if (ev.target.closest("[data-tip]")) return; // the tip owns that click
       if (EXPANDED_SRC.has(srcKey)) EXPANDED_SRC.delete(srcKey); else EXPANDED_SRC.add(srcKey);
-      render();
+      redraw();
     });
     tb.append(tr);
     if (isOpen) for (const sub of [...s.sub.values()].sort((x, y) => y.dmg - x.dmg)) {
@@ -482,7 +508,7 @@ function render() {
   ctab.append(ctb);
   if (comboRows.length <= 1) ctab.append(el("tbody", null, `<tr><td colspan="7" class="empty">Only one stance/invocation combo in this slice — switch them in game and the comparison fills in.</td></tr>`));
 
-  renderMobs(selDay, selSess, selLevels, selFight);
+  renderMobs(state, selDay, selSess, selLevels, selFight);
   renderProgress(a);
   renderLoot(a);
 
@@ -515,7 +541,6 @@ function render() {
   // every panel above rebuilt its table, which throws away the bound headers
   if (window.EQLSortable) window.EQLSortable.bindAll();
 }
-
 /* ─── wiki item links ──────────────────────────────────────────────────────
    Lazy: the ~10.7k-title index only fetches the first time a drops or loot
    table is actually about to render, and only once (the promise is memoized).
@@ -525,11 +550,11 @@ function render() {
 let wikiItemsPromise = null, WIKI_ITEMS = null;
 function loadWikiItems() {
   if (wikiItemsPromise) return wikiItemsPromise;
-  wikiItemsPromise = fetch("/log-parser/data/wiki-items.json")
+  wikiItemsPromise = fetch(VIEWHOST.dataBase + "wiki-items.json")
     .then(r => r.ok ? r.json() : null)
     .then(d => {
       WIKI_ITEMS = d && d.titles ? { base: d.base, set: new Set(d.titles) } : null;
-      if (STATE) render();
+      if (LASTDRAW) redraw();
     })
     .catch(() => { WIKI_ITEMS = null; });
   return wikiItemsPromise;
@@ -545,11 +570,11 @@ function itemCell(name) {
 let wikiMobsPromise = null, WIKI_MOBS = null;
 function loadWikiMobs() {
   if (wikiMobsPromise) return wikiMobsPromise;
-  wikiMobsPromise = fetch("/log-parser/data/wiki-mobs.json")
+  wikiMobsPromise = fetch(VIEWHOST.dataBase + "wiki-mobs.json")
     .then(r => r.ok ? r.json() : null)
     .then(d => {
       WIKI_MOBS = d && d.titles ? { base: d.base, map: new Map(d.titles.map(t => [t.toLowerCase(), t])) } : null;
-      if (STATE) render();
+      if (LASTDRAW) redraw();
     })
     .catch(() => { WIKI_MOBS = null; });
   return wikiMobsPromise;
@@ -561,8 +586,8 @@ function mobCell(name) {
 }
 
 /* ─── mobs & fights: one table, per-mob rows that open into encounters ─────*/
-function renderMobs(selDay, selSess, selLevels, selFight) {
-  const { P, seg } = STATE;
+function renderMobs(state, selDay, selSess, selLevels, selFight) {
+  const { P, seg } = state;
   let fights = seg.fights.filter(f => f.total > 0 || f.taken > 0);
   if (selDay) fights = fights.filter(f => dayKey(f.start) === selDay);
   if (selSess != null) fights = fights.filter(f => f.zv === selSess);
@@ -609,7 +634,7 @@ function renderMobs(selDay, selSess, selLevels, selFight) {
     tr.addEventListener("click", ev => {
       if (ev.target.closest("[data-tip], a")) return; // tips and wiki links own their clicks
       if (EXPANDED.has(g.mob)) EXPANDED.delete(g.mob); else EXPANDED.add(g.mob);
-      render();
+      redraw();
     });
     tb.append(tr);
     if (!isOpen) return;
@@ -636,8 +661,9 @@ function renderMobs(selDay, selSess, selLevels, selFight) {
     detail.querySelectorAll(".enc-row").forEach((rr, ri) => rr.addEventListener("click", ev2 => {
       ev2.stopPropagation();
       const fid = fkey(encShown[ri]);
-      $("fightSel").value = selFight === fid ? "*" : fid;
-      render();
+      // the HOST owns the selection — it re-renders with the new fight, so its
+      // own controls (a <select> on the site, a chip in the app) stay in step
+      if (VIEWHOST.onFocusFight) VIEWHOST.onFocusFight(selFight === fid ? "*" : fid);
     }));
     detail.setAttribute("data-detail", "");   // travels with its mob row when the table is sorted
     tb.append(detail);
@@ -710,95 +736,10 @@ function renderProgress(a) {
     ft.append(ftb);
   }
 }
-
-function currentLevels() {
-  const v = $("levelSel").value;
-  if (v === "*") return null;
-  // "?" = the unknown-level bucket: events between a detected loadout swap
-  // and the next ding or /who. A null level is NOT a wildcard — it only
-  // shows under "All levels" and here.
-  if (v === "?") return { has: l => l == null };
-  const lv = +v;
-  return { has: l => l === lv };
-}
-/* Day + zone-session slice. A zone session runs from one "You have entered"
-   line to the next — the boundary that matters, because a loadout swap (which
-   silently changes the level) can only happen in cities and lowbie zones, i.e.
-   between the sessions worth parsing, never inside one. Session options carry
-   the session's entry-second key, not its index — indices renumber when the
-   40 MB live-watch window slides; a stale key resolves to -1 and matches
-   nothing. */
-function currentDay() { const v = $("daySel").value; return v === "*" ? null : v; }
-function currentSession() {
-  const v = $("sessSel").value;
-  if (v === "*") return null;
-  const vv = STATE.seg.visits.find(x => String(x.ts.getTime()) === v);
-  return vv ? vv.id : -1;
-}
-// session and level options cascade from the day: the session list shows only
-// that day's zone entries, the level list only levels that exist in the slice —
-// so two loadouts' level ranges stop appearing where they didn't happen
-function syncSliceControls(keep) {
-  const { P, seg } = STATE;
-  const selDay = $("daySel").value;
-  const ss = $("sessSel"), prevS = keep ? ss.value : "*";
-  const vlist = seg.visits.filter(v => selDay === "*" || v.days.has(selDay));
-  ss.innerHTML = ""; ss.append(new Option("All zone sessions", "*"));
-  for (const v of [...vlist].reverse())
-    ss.append(new Option(`${v.name} · D${v.tier}${v.raid ? ` · ${v.raid} raid` : ""} · ${selDay === "*" ? dtShort(v.ts) : tShort(v.ts)}`, String(v.ts.getTime())));
-  $("sessCtl").hidden = vlist.length === 0;
-  if ([...ss.options].some(o => o.value === prevS)) ss.value = prevS;
-  const selSess = currentSession();
-  const evs = P.events.filter(e => (selDay === "*" || e.day === selDay) && (selSess == null || e.zv === selSess));
-  const levels = [...new Set(evs.map(e => e.lvl).filter(l => l != null))].sort((a, b) => a - b);
-  const ls = $("levelSel"), prevL = keep ? ls.value : "*";
-  ls.innerHTML = ""; ls.append(new Option("All levels", "*"));
-  for (const lv of [...levels].reverse()) ls.append(new Option(`Level ${lv}`, String(lv)));
-  if (evs.some(e => e.lvl == null) && levels.length) ls.append(new Option("Level unknown", "?"));
-  if ([...ls.options].some(o => o.value === prevL)) ls.value = prevL;
-}
-function buildControls(keepSelections) {
-  const { P, seg, side } = STATE;
-  const w = P.who;
-  const prevCombo = keepSelections ? $("comboSel").value : null;
-  const pets = [...new Set(side.claims.names.filter(c => c.kind === "pet").map(c => c.name))];
-  const charms = [...new Set(side.claims.names.filter(c => c.kind === "charm").map(c => c.name))];
-  $("whoLine").innerHTML = `<span class="who-name">${P.owner}</span>` +
-    (w ? `<span class="who-meta">${w.race} · ${w.classes} · ${w.zone}</span>` : "") +
-    (pets.length ? `<span class="who-pet tipv" data-tip="lp:pets">pets: ${pets.slice(0, 4).join(", ")}${pets.length > 4 ? "…" : ""}</span>` : `<span class="who-pet dim tipv" data-tip="lp:pets">no pet detected</span>`) +
-    (charms.length ? `<span class="who-pet tipv" data-tip="lp:pets">charm: ${charms.slice(0, 3).join(", ")}${charms.length > 3 ? "…" : ""}</span>` : "") +
-    (seg.levels.length ? `<span class="who-lvl">levels ${seg.levels[0]}–${seg.levels[seg.levels.length - 1]}</span>` : "") +
-    (seg.swapAt ? `<span class="who-swap tipv" data-tip="lp:swap">loadout swap? ${dtShort(seg.swapAt)}</span>` : "");
-  const prevDay = keepSelections ? $("daySel").value : null;
-  const ds = $("daySel"); ds.innerHTML = "";
-  const days = [...new Set(P.events.map(e => e.day))];
-  ds.append(new Option("All days", "*"));
-  for (const k of [...days].reverse()) ds.append(new Option(dayLabel(k), k));
-  // default: today when the log has it, else the newest day it does have.
-  // On a keep re-parse a day that slid out of the 40 MB window falls back to
-  // All days, never to a different day — same stale-key rule as every other
-  // control (remapping would silently swap the data mid-review)
-  const today = dayKey(new Date());
-  ds.value = prevDay ? ([...ds.options].some(o => o.value === prevDay) ? prevDay : "*")
-    : days.includes(today) ? today
-    : days.length ? days[days.length - 1] : "*";
-  syncSliceControls(keepSelections);
-  const combos = [...new Set(P.events.filter(e => e.k === "dmg").map(e => e.combo))];
-  const cs = $("comboSel"); cs.innerHTML = ""; cs.append(new Option("All combos", "*")); for (const c of combos) cs.append(new Option(c, c));
-  if (prevCombo && [...cs.options].some(o => o.value === prevCombo)) cs.value = prevCombo;
-  // the select lists the SAME fights as the mob-table encounters (every
-  // clickable row must have an option, or setting the value silently lands
-  // on fight 0)
-  const prevFight = keepSelections ? $("fightSel").value : null;
-  const fs = $("fightSel"); fs.innerHTML = ""; fs.append(new Option("All fights", "*"));
-  for (const f of seg.fights.filter(f => f.total > 0 || f.taken > 0).sort((x, y) => y.start - x.start)) fs.append(new Option(`${f.mob} · ${dtShort(f.start)} · ${fmt(f.total)} dmg`, fkey(f)));
-  if (prevFight && [...fs.options].some(o => o.value === prevFight)) fs.value = prevFight;
-}
-
 /* ─── copy summary (for Discord / guild chat) ─────────────────────────────*/
-function buildSummary() {
-  const { P, seg, side } = STATE;
-  const selLevels = currentLevels(), selFight = $("fightSel").value;
+function buildSummary(state, sel) {
+  const { P, seg, side } = state;
+  const selLevels = sel.levels ?? null, selFight = sel.fight || "*";
   const focus = selFight === "*" ? null : seg.fights.find(f => fkey(f) === selFight) || null;
   if (focus) {
     const dur = Math.max((focus.end - focus.start) / 1000, 1);
@@ -808,11 +749,11 @@ function buildSummary() {
       `\nparsed in the browser at eqltools.com/log-parser`;
   }
   let events = P.events;
-  const selDay = currentDay(), selSess = currentSession();
+  const selDay = sel.day ?? null, selSess = sel.sess ?? null;
   if (selDay) events = events.filter(e => e.day === selDay);
   if (selSess != null) events = events.filter(e => e.zv === selSess);
   if (selLevels) events = events.filter(e => selLevels.has(e.lvl));
-  const selCombo = $("comboSel").value;
+  const selCombo = sel.combo || "*";
   if (selCombo !== "*") events = events.filter(e => e.combo === selCombo);
   const oc = P.who ? P.who.classes.split("/") : null;
   const a = analyze(P, events, side, oc);
@@ -826,10 +767,13 @@ function buildSummary() {
   const share = [["you", a.tot.you], ["pets", a.tot.pet], ["charm", a.tot.charm]].filter(([, v]) => v)
     .map(([k, v]) => `${k} ${pct(v, a.total)}`).join(" · ");
   const top = a.sources.slice(0, 3).map(s => `${s.name} ${fmt(s.dmg)}`).join(" · ");
+  // the host names its own slice — the site reads its <select> labels, the app
+  // its chips; neither spelling belongs in here
+  const lab = sel.labels || {};
   const slice = [
-    selDay ? $("daySel").selectedOptions[0].textContent : "whole log",
-    selSess != null ? $("sessSel").selectedOptions[0].textContent : null,
-    selLevels ? $("levelSel").selectedOptions[0].textContent : null,
+    selDay ? (lab.day || selDay) : "whole log",
+    selSess != null ? (lab.sess || null) : null,
+    selLevels ? (lab.levels || null) : null,
   ].filter(Boolean).join(" · ");
   const activeH = a.activeSecs / 3600;
   const paceTxt = activeH >= 1 / 6 && a.xp > 0 ? `\n${(a.xp / activeH).toFixed(1)}% xp/hr over ${activeH.toFixed(1)}h active` : "";
@@ -840,98 +784,20 @@ function buildSummary() {
     `\n${share}\ntop: ${top}${paceTxt}\nparsed in the browser at eqltools.com/log-parser`;
 }
 
-/* ─── intake ──────────────────────────────────────────────────────────────*/
-const CAP = 40 * 1024 * 1024;
-async function handleFile(file, opts = {}) {
-  $("err").hidden = true;
-  try {
-    await Promise.all([loadSpellData(), loadConBands()]);
-    const truncated = file.size > CAP;
-    const blob = truncated ? file.slice(file.size - CAP) : file;
-    let text = await blob.text();
-    if (truncated) text = text.slice(text.indexOf("\n") + 1);
-    const ownerFromName = (file.name.match(/eqlog_([^_]+)_/) || [])[1];
-    const P = parse(text, ownerFromName);
-    if (!P.events.some(e => e.k === "dmg")) { showErr("No combat found — is this an EQ Legends log with logging on (/log on)?"); return; }
-    const claims = buildClaims(P);
-    STATE = { P, claims, side: mkSide(P, claims) };
-    STATE.seg = buildSegments(P, STATE.side);
-    buildControls(opts.keepSelections);
-    $("intake").hidden = true; $("report").hidden = false; $("reportIndex").hidden = false;
-    const tn = $("truncNote");
-    if (truncated) { tn.hidden = false; tn.textContent = `Large file — read the last 40 MB (from ${dt(P.events[0].ts)}). Earlier history isn't shown.`; } else tn.hidden = true;
-    render();
-    if (!opts.keepSelections) $("report").scrollIntoView({ behavior: "smooth", block: "start" });
-  } catch (e) { showErr("Couldn't read that file: " + e.message); console.error(e); }
-}
-function showErr(msg) { const e = $("err"); e.hidden = false; e.textContent = msg; }
-
-/* ─── live watch (Chromium: File System Access API re-reads the handle) ───*/
-let WATCH = null; // { handle, size, timer }
-async function startWatch() {
-  stopWatch();
-  try {
-    const [handle] = await window.showOpenFilePicker({
-      // shared id: the dialog reopens in the last directory a log was picked
-      // from, on this page or any other tool here (_shared/pick-file.js)
-      id: "eqlog",
-      types: [{ description: "EQ Legends log", accept: { "text/plain": [".txt"] } }],
-    });
-    const file = await handle.getFile();
-    await handleFile(file);
-    WATCH = { handle, size: file.size, timer: setInterval(pollWatch, 5000) };
-    $("watchNote").hidden = false;
-  } catch (e) { if (e.name !== "AbortError") showErr("Couldn't watch that file: " + e.message); }
-}
-async function pollWatch() {
-  if (!WATCH) return;
-  try {
-    const file = await WATCH.handle.getFile();
-    if (file.size === WATCH.size) return;
-    WATCH.size = file.size;
-    await handleFile(file, { keepSelections: true });
-    $("watchNote").hidden = false;
-  } catch { stopWatch(); }
-}
-function stopWatch() {
-  if (WATCH) { clearInterval(WATCH.timer); WATCH = null; }
-  $("watchNote").hidden = true;
-}
-
-const dz = $("dropZone"), fi = $("logFile");
-dz.addEventListener("click", () => fi.click());
-fi.addEventListener("change", e => { const f = e.target.files[0]; if (f) { stopWatch(); handleFile(f); } });
-["dragenter", "dragover"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add("over"); }));
-["dragleave", "drop"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove("over"); }));
-dz.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if (f) { stopWatch(); handleFile(f); } });
-["levelSel", "comboSel", "fightSel"].forEach(id => $(id).addEventListener("change", render));
-$("daySel").addEventListener("change", () => { syncSliceControls(false); render(); });
-$("sessSel").addEventListener("change", () => { syncSliceControls(true); render(); });
-$("mobMore").addEventListener("click", () => { SHOW_ALL_MOBS = !SHOW_ALL_MOBS; render(); });
-$("lootMore").addEventListener("click", () => { SHOW_ALL_LOOT = !SHOW_ALL_LOOT; render(); });
-$("btnReset").addEventListener("click", () => { stopWatch(); STATE = null; $("report").hidden = true; $("reportIndex").hidden = true; $("intake").hidden = false; fi.value = ""; window.scrollTo({ top: 0, behavior: "smooth" }); });
-$("btnCopy").addEventListener("click", async () => {
-  try { await navigator.clipboard.writeText(buildSummary()); const b = $("btnCopy"); b.textContent = "Copied"; setTimeout(() => { b.textContent = "Copy summary"; }, 1500); }
-  catch { showErr("Couldn't reach the clipboard — your browser may be blocking it."); }
-});
-if (window.showOpenFilePicker) {
-  $("btnWatch").hidden = false;
-  $("btnWatch").addEventListener("click", startWatch);
-}
-if (window.EQLTip) { EQLTip.provider("lp", tipProvider); EQLTip.init(); }
-
-/* ─── embedded intake (EQL Tools Companion iframe) ────────────────────────
-   ?embed=1 drops the site chrome and the file intake; the embedder tails the
-   log itself and posts {type:"eqlt-log", text, name, keep}. A File keeps
-   handleFile's single intake path, and parsing stays local either way. Not
-   an attribution/grammar change — logparse_ref.py intentionally untouched.
-   typeof-guarded: the verification harness runs this file without a DOM. */
-if (typeof location !== "undefined" && new URLSearchParams(location.search).has("embed")) {
-  document.body.classList.add("embed");
-  window.addEventListener("message", (e) => {
-    const d = e.data;
-    if (d && d.type === "eqlt-log" && typeof d.text === "string")
-      handleFile(new File([d.text], String(d.name || "eqlog.txt")), { keepSelections: !!d.keep });
-  });
-}
-
+/* ─── the host contract ───────────────────────────────────────────────────*/
+window.EQLLogView = {
+  config(o) { Object.assign(VIEWHOST, o || {}); },
+  // the formatting a host needs to label its own controls in the same voice
+  util: { $, esc, el, fmt, pct, dt, tShort, dtShort, dayLabel, fmtCopper, rateDps, MIN_RATE_SEC },
+  render: renderReport,
+  summary: buildSummary,
+  tipProvider,
+  fitLanes,
+  /* A new log is a new report: the expanded-row sets key on mob and source
+     NAME, so carrying them across files silently opens rows in a log the
+     player never expanded. */
+  reset() { EXPANDED.clear(); EXPANDED_SRC.clear(); SHOW_ALL_MOBS = false; SHOW_ALL_LOOT = false; LASTDRAW = null; },
+  toggleAllMobs() { SHOW_ALL_MOBS = !SHOW_ALL_MOBS; redraw(); },
+  toggleAllLoot() { SHOW_ALL_LOOT = !SHOW_ALL_LOOT; redraw(); },
+};
+})();

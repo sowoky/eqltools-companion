@@ -352,19 +352,10 @@
     });
   }
 
-  /* ── what you can get rid of ─────────────────────────────────────────────
-     Every other view asks what you still need. This one asks the opposite: of
-     the Sky items in your bank right now, which of them is nothing waiting on?
-
-     Two kinds of item, two different questions:
-
-       a component — how many do the tests that still want it need? Anything
-                     past that is spare, whether because the tests are turned
-                     in, because you skipped them, or because you looted four
-                     of a piece one test asks one of.
-       a reward    — the test that pays it is behind you, so the only question
-                     left is whether the item is worth wearing: it is spare
-                     when it does not make the top `top` of its own slot.
+  /* ── what to skip, and what to clear out ─────────────────────────────────
+     Two questions, one after the other: which tests are not worth running
+     again, and — once you have ticked those — what is left in your bags that
+     nothing wants.
 
      `skyIndex` is one pass over all 95 tests: per item name, every test that
      consumes it, every test that pays it, where it drops, and the wiki table's
@@ -415,150 +406,157 @@
     return { give: !nd, src: "item", clash: mark != null && mark !== nd };
   }
 
-  /* One row per Sky item you are holding, spare or not.
+  /* ── which tests to skip ──────────────────────────────────────────────────
+     **Doing a test the first time is not optional.** A class's Primary Class
+     Unlock is exactly its Sky tests — one "Obtain <reward>" criterion each, all
+     sixteen classes — so the first run of every test buys the class, whatever
+     the reward is worth. Recommending a skip on a test you have never done
+     costs you the unlock, which is what most players are up there for.
 
-     The host owns every measurement, because /sky and the app count differently
-     and neither answer belongs in here:
+     Kyle, 2026-08-14: *"most people want to finish all quests for each class
+     once to unlock that class … you're recommending things that i have already
+     done once that are not strong items."*
 
-       have(name)              -> { n, where, worn, tier }
-       state(code, test)       -> { done, skip }
-       rec(name)               -> the item record  for flags and weight
+     So the recommendation is about the SECOND run and after. A finished test is
+     a repeatable source of a duplicate reward, and a duplicate merges into the
+     one you hold to raise its upgrade tier — the alternative being motes, which
+     are worth keeping (docs/tools/companion-roadmap.md §7). Repeating is worth
+     the islands when the reward is; it is not when the reward is the 38th best
+     thing that class can wear in the slot.
+
+       unlockFirst  true  — only tests you have already done are candidates
+                    false — rank alone decides, for a class you will never roll
+
+     The host owns every measurement:
+       have(name)              -> { n, worn, tier, where: [{loc, sec, count}] }
+       state(code, test)       -> { done, skip }   done = TIMES, every witness
        rank(name, code, tier)  -> { rank, of, better } | null
 
-     `state().done` is "is this test BEHIND you" — every witness the host has,
-     not only the log's own turn-in count. /sky keeps those apart for display
-     (its Turned in column must not claim a turn-in nobody saw) and folds them
-     back together here; passing the log count alone silently threw away every
-     test the achievement dump was the only witness for.
-
-     `top` is the bar a reward has to clear to be worth keeping — 3 is "the top
-     3 items that class can wear in the slot". Rows that cleared it come back
-     too, with `spare: 0`, so a surface can say what it is NOT recommending.
-
-     **What you are wearing is never spare.** It is not crowding your bank, and
-     several components are equippable weapons — the nineteen Efreeti pieces
-     among them. A worn copy comes off the count before anything else is
-     decided, and the row says so. */
-  function dropRows(data, o) {
-    const top = Math.max(1, o.top || 3);
-    const rank = o.rank || (() => null);
-    const rec = o.rec || (() => null);
-    const out = [];
-    for (const e of skyIndex(data).values()) {
-      // A wind rune lives in the currency tab, so it is never what is crowding
-      // a bank, and no dump can see one to count it.
-      if (isRune(e.n)) continue;
-      const h = o.have(e.n) || { n: 0 };
-      if (!h.n) continue;
-      const r = rec(e.n);
-      const worn = Math.min(h.n, h.worn || 0);
-      const uses = e.uses.map((u) => Object.assign({}, u, { st: o.state(u.code, u.test) }));
-      /* The copy in your bank is ranked at the tier your dump says it is. The
-         alternatives stay at +0, because they are items you would have to go and
-         get, and one arrives unupgraded. */
-      const pays = e.pays.map((p) => Object.assign({}, p, {
-        st: o.state(p.code, p.test), rk: rank(e.n, p.code, h.tier || 0),
-      }));
-      const open = uses.filter((u) => !u.st.done && !u.st.skip);
-      const d = disposal(r, e.mark);
-      const row = {
-        n: e.n, kind: e.pays.length ? "reward" : "piece",
-        have: h.n, worn, tier: h.tier || 0,
-        where: h.where || [], wt: (r && r.wt) || 0, rec: r,
-        isl: e.isl, mob: e.mob, uses, pays, open: open.length,
-        // How many tests across all sixteen classes consume it — the reason
-        // another player wants one, and it does not move when you skip a test.
-        wantedBy: e.uses.length,
-        give: d.give, giveSrc: d.src, clash: d.clash,
-        spare: 0, why: [], hold: [],
-      };
-
-      const loose = h.n - worn;   // copies that are not on your character
-      if (worn) row.hold.push({ k: "worn", n: worn });
-
-      if (row.kind === "reward") {
-        /* Holding a reward is itself the turn-in: 91 of the 95 are NO DROP or
-           No Trade, so no trade, no merchant and no other quest can put one in
-           your bag. For the four a player could hand you, a witness is needed —
-           the log, or the achievement record. */
-        const witness = pays.some((p) => p.st.done);
-        const earned = witness || d.give === false;
-        const best = pays.filter((p) => p.rk && p.rk.rank <= top);
-        if (!loose) {
-          // nothing to decide: the only copy is on your character
-        } else if (!earned) {
-          pays.forEach((p) => row.hold.push({ k: "unwitnessed", p }));
-        } else if (best.length) {
-          best.forEach((p) => row.hold.push({ k: "best", p }));
-        } else if (pays.some((p) => p.rk)) {
-          row.spare = loose;
-          pays.forEach((p) => { if (p.rk) row.why.push({ k: "rank", p }); });
-        } else {
-          // No score, no rank, no recommendation — the item is on the page with
-          // its stats missing, and a bar it cannot be measured against is not a
-          // reason to destroy it.
-          pays.forEach((p) => row.hold.push({ k: "unscored", p }));
-        }
-      } else {
-        row.spare = Math.max(0, loose - open.length);
-        open.forEach((u) => row.hold.push({ k: "open", u }));
-        uses.filter((u) => u.st.done).forEach((u) => row.why.push({ k: "done", u }));
-        uses.filter((u) => u.st.skip && !u.st.done).forEach((u) => row.why.push({ k: "skip", u }));
-        if (row.spare && !row.why.length) row.why.push({ k: "extra", n: row.spare });
-      }
-      out.push(row);
-    }
-    return out.sort((a, b) => (b.spare - a.spare) || a.n.localeCompare(b.n));
-  }
-
-  /* Tests whose reward does not make the top `top` of its own slot.
-
-     One number decides it, so the row carries that number and what beat it —
-     the mark itself stays the reader's. Finished tests are left out; there is
-     nothing left to decide about one.
+     `done` is a count, not a flag, and it counts every witness the host has —
+     the log's turn-ins and the achievement record both. /sky keeps those apart
+     for display (its Turned in column must not claim a turn-in nobody watched)
+     and folds them back together here; passing the log count alone silently
+     threw away every test the achievement dump was the only witness for.
 
      A test you have ALREADY skipped stays in the list, ticked. Dropping it the
      moment the box is ticked takes the box away with it, and an accidental tick
-     would then only be undoable from another tab.
-
-     `frees` is what skipping would release from your bank: the components you
-     are holding that NO other open test wants. That is the number the drop list
-     grows by, and it is why the two halves of this view are one view. */
+     would then only be undoable from another tab. `held` back is reported too:
+     a list that silently drops the tests it will not talk about reads as "there
+     is nothing else". */
   function skipRows(data, o) {
     const top = Math.max(1, o.top || 3);
+    const unlockFirst = o.unlockFirst !== false;
     const idx = skyIndex(data);
     const out = [];
+    let unlock = 0, unranked = 0;
     for (const code of Object.keys((data && data.classes) || {})) {
       for (const t of data.classes[code].tests) {
         const st = o.state(code, t);
-        if (st.done) continue;
-        const rk = o.rank(t.reward, code);
-        if (!rk || rk.rank <= top) continue;
+        const rk = o.rank(t.reward, code, 0);
+        if (!rk) { if (!st.skip) unranked++; continue; }
+        if (rk.rank <= top && !st.skip) continue;
+        // never sell the unlock for a reward's ranking
+        if (unlockFirst && !st.done && !st.skip) { unlock++; continue; }
+
+        /* What ticking this frees: the pieces you are holding that no OTHER
+           live test wants. A test you have done is still live — it can be run
+           again — so only a skip takes one out. */
         const held = t.items.filter((i) => (o.have(i.n) || { n: 0 }).n > 0);
         const frees = held.filter((i) => {
           const e = idx.get(i.n);
           return !e || !e.uses.some((u) => {
             if (u.code === code && u.test === t) return false;
-            const s = o.state(u.code, u.test);
-            return !s.done && !s.skip;
+            return !o.state(u.code, u.test).skip;
           });
         });
+        const rew = o.have(t.reward) || { n: 0, tier: 0 };
         out.push({
-          code, test: t, reward: t.reward, rk, st,
+          code, test: t, reward: t.reward, rk, st, done: st.done,
+          // what running it again pays: the merge that takes your copy up a
+          // tier, which is the whole reason a finished test is not a closed row
+          tier: rew.n ? rew.tier : null,
           held: held.map((i) => i.n), frees: frees.map((i) => i.n),
-          missing: needsOf(t).filter((n) => (o.have(n) || { n: 0 }).n < 1).length,
         });
       }
     }
-    return out.sort((a, b) => (a.st.skip - b.st.skip)
-      || (b.rk.rank - a.rk.rank) || a.test.n.localeCompare(b.test.n));
+    /* What skipping frees comes first — those are the rows that put something in
+       the cleanout list — then the worst reward. */
+    out.sort((a, b) => (a.st.skip - b.st.skip) || (b.frees.length - a.frees.length)
+      || (b.held.length - a.held.length) || (b.rk.rank - a.rk.rank)
+      || a.test.n.localeCompare(b.test.n));
+    out.unlock = unlock;
+    out.unranked = unranked;
+    return out;
   }
 
+  /* ── the cleanout list ────────────────────────────────────────────────────
+     Kyle, 2026-08-14: *"showing me what i have that i have marked skip, sorted
+     by location (bank, inventory, storage, etc) so i can clean it out."*
+
+     So this keys on the skip mark and nothing else. An item is on the list when
+     you are holding it and EVERY test that consumes it is one you ticked.
+
+     A piece a skipped test wants that some other test does too is held back and
+     counted, not listed: a cleanout list you have to re-check before acting on
+     is not a cleanout list. So is anything worn — several components are
+     equippable weapons, the nineteen Efreeti pieces among them.
+
+     Rewards are never on it. A reward is the thing you did the test FOR: the
+     unlock's "Obtain X" criterion, and usually the item you have on.
+
+     **One row per PLACE.** Three Bixie Essences in three different bank slots
+     are three things to find, and the whole point of the list is walking to
+     them. `have(name).where` is where they are; `sec` is which section of the
+     dump (bags / storage / bank / …), and `secIdx` is that section's own order,
+     so a surface can sort by place without knowing the vocabulary. */
+  const SEC_ORDER = {};
+  (GS.LOC_SECTIONS || []).forEach(([k], i) => { SEC_ORDER[k] = i; });
+  function cleanoutRows(data, o) {
+    const rec = o.rec || (() => null);
+    const out = [];
+    let mixed = 0, worn = 0;
+    for (const e of skyIndex(data).values()) {
+      if (isRune(e.n)) continue;        // the currency tab; never in a bag
+      if (e.pays.length) continue;      // a reward, not a component
+      if (!e.uses.length) continue;
+      const h = o.have(e.n) || { n: 0 };
+      if (!h.n) continue;
+      const uses = e.uses.map((u) => Object.assign({}, u, { st: o.state(u.code, u.test) }));
+      const skipped = uses.filter((u) => u.st.skip);
+      if (!skipped.length) continue;
+      if (skipped.length < uses.length) { mixed++; continue; }
+      const r = rec(e.n);
+      const d = disposal(r, e.mark);
+      const base = {
+        n: e.n, rec: r, uses, wt: (r && r.wt) || 0, wantedBy: e.uses.length,
+        give: d.give, giveSrc: d.src, clash: d.clash, isl: e.isl, mob: e.mob,
+        have: h.n, tier: h.tier || 0,
+      };
+      const places = (h.where || []).filter((w) => w.sec !== "worn");
+      if (places.length < (h.where || []).length) worn++;
+      if (!places.length) {
+        // held on the log's word alone: no dump, or every copy is worn
+        if (!h.where && h.n > (h.worn || 0)) {
+          out.push(Object.assign({ loc: "", sec: "", secIdx: 99, count: h.n - (h.worn || 0) }, base));
+        }
+        continue;
+      }
+      for (const w of places) {
+        out.push(Object.assign({ loc: w.loc, sec: w.sec, secIdx: SEC_ORDER[w.sec] == null ? 99 : SEC_ORDER[w.sec],
+                                 count: w.count }, base));
+      }
+    }
+    out.sort((a, b) => (a.secIdx - b.secIdx) || a.loc.localeCompare(b.loc, undefined, { numeric: true })
+      || a.n.localeCompare(b.n));
+    out.mixed = mixed;
+    out.worn = worn;
+    return out;
+  }
   window.EQLSky = {
     RX, keptIt, wasSold, qty, baseOf, isRune,
     stream, parseLog, parseInv, invCount, invWhere,
     soldCount, vendorCount, goneCount, held, logHeld, reconcile,
     completions, needsOf, testState, bossBoard,
-    skyIndex, disposal, dropRows, skipRows,
+    skyIndex, disposal, skipRows, cleanoutRows,
   };
 })();

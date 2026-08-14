@@ -704,7 +704,7 @@ function renderSky() {
   head.textContent = SKYP.view === "boss"
     ? `${SKYP.loot || 0} pieces to loot · ${SKYP.done}/${SKYP.tests} done`
     : SKYP.view === "drop"
-    ? `${dr.n} spare${dr.give ? ` · ${dr.give} sellable` : ""} · ${SKYP.done}/${SKYP.tests} done`
+    ? `${dr.n} to clear out${dr.give ? ` · ${dr.give} sellable` : ""} · ${SKYP.done}/${SKYP.tests} done`
     : `${SKYP.ready} ready · ${SKYP.done}/${SKYP.tests} done`;
   skyEl.append(head);
   if (!SKYP.inv) {
@@ -769,18 +769,21 @@ function renderSky() {
     skyEl.append(sec);
   }
 }
-/* What is spare — the view you want standing at the bank with eight bags open.
-   Every row is one Sky item nothing is waiting on any more: how many are spare,
-   where they are, why, and which of the two disposals it is. A row that says
-   "sell to a player" is not NO DROP, and a merchant is the wrong place for it.
+/* The cleanout list — the view you want standing at the bank with eight bags
+   open. Every row is one Sky item you ticked skip on and are still carrying:
+   how many, where, which tests you skipped, and which of the two disposals it
+   is. A row that says "sell" is not NO DROP, and a merchant is the wrong place
+   for it.
 
    The app decides all of it; this window only draws. */
 function renderSkyDrops() {
-  const d = SKYP.drop || { rows: [], n: 0, total: 0 };
+  const d = SKYP.drop || { rows: [], n: 0, total: 0, skips: 0 };
   if (!d.rows.length) {
     const n = document.createElement("div");
     n.className = "osk-none";
-    n.textContent = "Nothing you are holding is spare.";
+    n.textContent = d.skips
+      ? `Nothing skipped is in your bags. ${d.skips} test${d.skips === 1 ? "" : "s"} worth skipping on the app's Sky tab.`
+      : "Nothing in your bags belongs to a test you've skipped.";
     skyEl.append(n);
     return;
   }
@@ -790,7 +793,7 @@ function renderSkyDrops() {
     const top = document.createElement("div");
     top.className = "oskd__h";
     const c = document.createElement("span");
-    c.className = "oskd__c"; c.textContent = "×" + r.spare;
+    c.className = "oskd__c"; c.textContent = "×" + r.count;
     top.append(c, itemSpan(r.n + (r.tier ? " +" + r.tier : ""), r.url, r.sb, "oskd__n"));
     const how = document.createElement("span");
     how.className = "oskd__how " + (r.give === true ? "is-give" : r.give === false ? "is-nd" : "is-unk");
@@ -801,8 +804,9 @@ function renderSkyDrops() {
     top.append(how);
     row.append(top);
     const why = document.createElement("div");
-    why.className = "oskd__w"; why.textContent = r.why;
+    why.className = "oskd__w";
     for (const b of r.locs || []) why.append(skyLocEl(b));
+    why.append(r.why);
     row.append(why);
     skyEl.append(row);
   }

@@ -521,14 +521,15 @@ async function refreshDatasets(force) {
   if (any && mainWin) mainWin.webContents.send("data:updated", loadDatasets());
 }
 
-/* ── eqlt:// — the embedded log-parser page ───────────────────────────────
-   The site's /log-parser is vendored whole (vendor/site/, sync-vendor.mjs)
-   and served under a scheme of its own so the page's absolute URLs
-   (/log-parser/app.js, /_shared/theme.css, /log-parser/data/…) work
-   untouched. Static files come from the vendor mirror; data files resolve
-   cache → bundled snapshot, same order as the datasets. Anything else 404s. */
+/* ── eqlt:// — the log-parser's DATA ──────────────────────────────────────
+   The Parser tab renders the site's report natively (renderer/index.html +
+   vendor/site/log-parser/render.js, both loaded over file:// like the rest of
+   the window), so the page itself is no longer served here. What's left is the
+   data those panels fetch by URL — spell icons, con bands, the wiki title
+   indexes — resolved cache → bundled snapshot, the same order as the datasets.
+   Anything else 404s. */
 const PAGE_DATA_RX = /^\/(log-parser\/data\/(?:con-bands|wiki-items|wiki-mobs)\.json|spellmaster\/data\/spells\.json)$/;
-const PAGE_FILE_RX = /^\/(log-parser\/(?:index\.html|style\.css|engine\.js|app\.js)|_shared\/(?:theme\.css|tip\.js|fonts\/[A-Za-z0-9.-]+\.woff2))$/;
+const PAGE_FILE_RX = /^\/(log-parser\/style\.css|_shared\/(?:theme\.css|tip\.js|fonts\/[A-Za-z0-9.-]+\.woff2))$/;
 const vendorSiteDir = () => path.join(__dirname, "vendor", "site");
 protocol.registerSchemesAsPrivileged([
   { scheme: "eqlt", privileges: { standard: true, secure: true, supportFetchAPI: true } },

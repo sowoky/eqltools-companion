@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src eqlt:">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' eqlt:">
 <title>EQL Tools Companion</title>
+<!-- the site's log-parser panel styles, vendored: the Parser tab renders the
+     same report natively, so it wears the same panels. Loaded BEFORE the app's
+     own sheet so companion rules win wherever the two name the same element. -->
+<link rel="stylesheet" href="../vendor/site/log-parser/style.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,18 +20,13 @@
 <div id="stats" class="stats" hidden></div>
 
 <nav class="tabs">
-  <button class="tab on" data-tab="live">Live</button>
-  <button class="tab" data-tab="combat">Parser</button>
+  <button class="tab on" data-tab="parser">Parser</button>
   <button class="tab" data-tab="inv">Inventory</button>
-  <button class="tab" data-tab="turnins">Turn-ins</button>
+  <button class="tab" data-tab="quests">Quests</button>
   <button class="tab" data-tab="sky">Sky</button>
   <button class="tab" data-tab="valet">Valet</button>
   <button class="tab" data-tab="unlocks">Unlocks</button>
-  <button class="tab" data-tab="tracked">Tracked</button>
-  <button class="tab" data-tab="quests">Quests</button>
-  <button class="tab" data-tab="parser">Whole log</button>
   <button class="tab" data-tab="zone">Zone</button>
-  <button class="tab" data-tab="tracker">Kill tracker</button>
   <button class="tab" data-tab="settings">Settings</button>
 </nav>
 
@@ -35,59 +34,233 @@
   <div id="updBanner" class="banner banner--upd" hidden>
     <span id="updText"></span> <button id="updAct" class="btn"></button>
   </div>
-  <section id="tab-live" class="pane on">
-    <div id="liveBanner" class="banner" hidden></div>
-    <div class="feedhead">
-      <input id="feedFilter" type="search" placeholder="filter item, mob, quest">
-      <label class="chk"><input type="checkbox" id="onlyQuest"> quest items only</label>
-      <span id="feedCount" class="dim"></span>
-    </div>
-    <ul id="feed" class="feed"></ul>
-    <p id="feedEmpty" class="empty">Waiting for log lines. Loot something in game — quest items light up here.<br>
-    <span class="dim">Logging must be on in game: <code>/log</code></span></p>
-  </section>
 
-  <section id="tab-combat" class="pane">
-    <div id="cbSession" class="stats cbstats" hidden></div>
-    <div id="cbBody"></div>
+  <!-- ── Parser ────────────────────────────────────────────────────────────
+       The site's /log-parser report, rendered natively by the SAME
+       vendor/site/log-parser/render.js the website runs — not an iframe of
+       the page, and no file to drop: the log is the one Settings points at,
+       which drives every other tab too. Fights is the default view because
+       that is what you want with the game running. -->
+  <section id="tab-parser" class="pane pane--full on">
+    <div id="cbBanner" class="banner" hidden></div>
+    <div class="lp-top">
+      <div class="who-line" id="whoLine"></div>
+      <div class="lp-ctl">
+        <select id="cbScope" aria-label="What the report covers"></select>
+        <select id="cbFight" aria-label="Focus one fight"></select>
+        <button id="cbCopy" class="btn btn--sm" title="Copies a text summary of this view for Discord or guild chat.">Copy summary</button>
+      </div>
+    </div>
+    <p id="cbTrunc" class="truncnote" hidden></p>
+
+    <section class="plaques" id="plaques"></section>
+    <p class="pace-line" id="paceLine" hidden></p>
+
+    <div class="seg lp-views" id="cbViews" role="group" aria-label="Which part of the report">
+      <button type="button" class="seg__b is-on" data-lpview="fights">Fights</button>
+      <button type="button" class="seg__b" data-lpview="damage">Damage</button>
+      <button type="button" class="seg__b" data-lpview="taken">Taken &amp; healing</button>
+      <button type="button" class="seg__b" data-lpview="loot">Loot &amp; progress</button>
+    </div>
+
+    <div id="lpReport">
+      <div class="lpview" data-lpview="fights">
+        <section class="bighits" id="bigHits"></section>
+        <section class="panel" id="mobPanel" hidden>
+          <h2>Mobs &amp; fights</h2>
+          <p class="panel-note">One row per mob name. Click it for each fight and what the corpses paid: drop
+          rates, coin, XP. A fight ends at the mob's death line, or after 45 quiet seconds if none appeared;
+          click a fight to focus the whole report on it. Mob levels come from your own /con lines.</p>
+          <div class="tblwrap"><table id="mobTable" data-sortable></table></div>
+          <button id="mobMore" class="ghost small" type="button" hidden></button>
+        </section>
+      </div>
+
+      <div class="lpview" data-lpview="damage" hidden>
+        <!-- everyone's damage — a companion panel, not one of the site's: the
+             site report is your own side only, and this is the group meter -->
+        <div id="prRaid"></div>
+        <section class="panel" id="dpsPanel">
+          <h2>Damage over time <span class="h2sub">stances above, invocations below — hover a band for its window</span></h2>
+          <div id="dpsChart"></div>
+        </section>
+        <section class="panel" id="sourcePanel">
+          <h2>Damage by source</h2>
+          <p class="panel-note">Your side only. <span class="tag-you">you</span> <span class="tag-pet">pet</span> <span class="tag-charm">charm</span> —
+          a pet is anything that answered you with ", Master."; a charmed mob counts from the moment your own
+          charm cast landed on it. Hover a pet row for who's inside; click it to split by verb.</p>
+          <div class="tblwrap"><table id="sourceTable" data-sortable></table></div>
+        </section>
+        <div class="two-up">
+          <section class="panel" id="compPanel">
+            <h2>What it&rsquo;s made of</h2>
+            <div id="composition"></div>
+            <div id="byClass"></div>
+          </section>
+          <section class="panel" id="ratesPanel">
+            <h2>Your melee, ranged &amp; casting</h2>
+            <div id="rates"></div>
+          </section>
+        </div>
+        <section class="panel" id="swingPanel" hidden>
+          <h2>Swing intervals</h2>
+          <p class="panel-note">Measured seconds between swings, per attacker and attack type. Not the weapon's
+          delay stat: double attacks and haste are folded in, and the log never separates them. If two fights'
+          95% ranges overlap, the swing rate did not measurably change.</p>
+          <div class="tblwrap"><table id="swingTable" class="sc-table"></table></div>
+        </section>
+        <section class="panel" id="comboPanel">
+          <h2>Stance &amp; invocation</h2>
+          <p class="panel-note">Each combo you fought under, its share of combat time, and how your damage looked while it was up.</p>
+          <div class="tblwrap"><table id="comboTable" data-sortable></table></div>
+        </section>
+      </div>
+
+      <div class="lpview" data-lpview="taken" hidden>
+        <section class="panel" id="takenPanel" hidden>
+          <h2>What hit you</h2>
+          <p class="panel-note">One row per mob ability: melee by verb, spells and DoTs by name.
+          Resisted counts full resists; a partially resisted hit still lands and shows as damage.</p>
+          <div class="tblwrap"><table id="takenTable" data-sortable></table></div>
+        </section>
+        <section class="panel" id="healPanel" hidden>
+          <h2>Healing</h2>
+          <div class="detail-grid even">
+            <div class="d-block" id="healOutBlock"><h4>You healed</h4><div class="tblwrap"><table id="healTable" data-sortable></table></div></div>
+            <div class="d-block" id="healInBlock" hidden><h4>You were healed</h4><div class="tblwrap"><table id="healRecvTable" data-sortable></table></div></div>
+          </div>
+        </section>
+        <section class="panel" id="deathPanel" hidden>
+          <h2>What killed you</h2>
+          <div id="deaths"></div>
+        </section>
+      </div>
+
+      <div class="lpview" data-lpview="loot" hidden>
+        <section class="panel" id="lootPanel" hidden>
+          <h2>Loot</h2>
+          <p class="panel-note">From the auto-loot lines. Coin gained counts corpse coin plus what auto-sell paid.</p>
+          <div class="tblwrap"><table id="lootTable" data-sortable></table></div>
+          <button id="lootMore" class="ghost small" type="button" hidden></button>
+        </section>
+        <section class="panel" id="progressPanel" hidden>
+          <h2>Skill-ups, faction &amp; merges</h2>
+          <div class="detail-grid even">
+            <div class="d-block" id="skillBlock"><h4>Skill-ups</h4><div class="tblwrap"><table id="skillTable" data-sortable></table></div></div>
+            <div class="d-block" id="factionBlock"><h4>Faction</h4><div class="tblwrap"><table id="factionTable" data-sortable></table></div></div>
+            <div class="d-block" id="mergeBlock" hidden><h4>Item merges</h4><div class="tblwrap"><table id="mergeTable" data-sortable></table></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <p class="fine" id="unparsed"></p>
+
     <p id="cbEmpty" class="empty">Fights show up here as they happen — who hit what, DPS, damage taken, XP per kill.<br>
     <span class="dim">Logging must be on in game: <code>/log</code></span></p>
   </section>
 
+  <!-- ── Inventory ─────────────────────────────────────────────────────────
+       Bags is the dump; Recent loot is the live feed off the log. Same tab
+       because they answer the same question a beat apart — what do I have,
+       and what did I just get. -->
   <section id="tab-inv" class="pane pane--full">
     <div id="invBanner" class="banner" hidden></div>
-    <div class="feedhead qbhead">
-      <input id="invSearch" type="search" placeholder="search name, slot, effect, source, quest">
-      <select id="invTrade">
-        <option value="">any trade</option>
-        <option value="yes">tradeable</option>
-        <option value="att">attunable</option>
-        <option value="no">no drop / no trade</option>
-      </select>
-      <select id="invClass"></select>
-      <label class="chk"><input type="checkbox" id="invQuestOnly"> quest items only</label>
-      <details id="invColsWrap" class="invcols">
-        <summary>columns</summary>
-        <div id="invColsBody" class="invcols__body"></div>
-      </details>
-      <span id="invMeta" class="dim"></span>
+    <div class="seg" id="invViews" role="group" aria-label="Inventory view">
+      <button type="button" class="seg__b is-on" data-invview="bags">Bags</button>
+      <button type="button" class="seg__b" data-invview="recent">Recent loot</button>
     </div>
-    <div id="invTabs" class="invtabs" hidden></div>
-    <div id="invBody" class="invwrap"></div>
-    <p id="invEmpty" class="empty">No inventory dump found beside the log folder yet.<br>
-    <span class="dim">Type <code>/out inventory</code> in game — the dump loads here within a few seconds.<br>
-    The dump only includes the Dragon's Hoard and the depot while their windows are open.</span></p>
+
+    <div class="invview" data-invview="bags">
+      <div class="feedhead qbhead">
+        <input id="invSearch" type="search" placeholder="search name, slot, effect, source, quest">
+        <select id="invTrade">
+          <option value="">any trade</option>
+          <option value="yes">tradeable</option>
+          <option value="att">attunable</option>
+          <option value="no">no drop / no trade</option>
+        </select>
+        <select id="invClass"></select>
+        <label class="chk"><input type="checkbox" id="invQuestOnly"> quest items only</label>
+        <details id="invColsWrap" class="invcols">
+          <summary>columns</summary>
+          <div id="invColsBody" class="invcols__body"></div>
+        </details>
+        <span id="invMeta" class="dim"></span>
+      </div>
+      <div id="invTabs" class="invtabs" hidden></div>
+      <div id="invBody" class="invwrap"></div>
+      <p id="invEmpty" class="empty">No inventory dump found beside the log folder yet.<br>
+      <span class="dim">Type <code>/out inventory</code> in game — the dump loads here within a few seconds.<br>
+      The dump only includes the Dragon's Hoard and the depot while their windows are open.</span></p>
+    </div>
+
+    <div class="invview" data-invview="recent" hidden>
+      <div id="liveBanner" class="banner" hidden></div>
+      <div class="feedhead">
+        <input id="feedFilter" type="search" placeholder="filter item, mob, quest">
+        <label class="chk"><input type="checkbox" id="onlyQuest"> quest items only</label>
+        <span id="feedCount" class="dim"></span>
+      </div>
+      <ul id="feed" class="feed"></ul>
+      <p id="feedEmpty" class="empty">Waiting for log lines. Loot something in game — quest items light up here.<br>
+      <span class="dim">Logging must be on in game: <code>/log</code></span></p>
+    </div>
   </section>
 
-  <section id="tab-turnins" class="pane">
-    <div id="turninsBanner" class="banner" hidden></div>
-    <div class="feedhead">
-      <input id="tiSearch" type="search" placeholder="filter these quests">
-      <label class="chk"><input type="checkbox" id="qReadyOnly"> ready only</label>
-      <span id="tiMeta" class="dim"></span>
+  <!-- ── Quests ────────────────────────────────────────────────────────────
+       One dataset, three moments. Turn-ins is the auto-derived list (quests
+       you already hold a piece of, closest first); Tracked is the ones you
+       picked, and the set the overlay carries; All quests is the searchable
+       table. These were three tabs, and the difference was a filter. -->
+  <section id="tab-quests" class="pane pane--wide">
+    <div id="questsBanner" class="banner" hidden></div>
+    <div class="seg" id="qViews" role="group" aria-label="Quests view">
+      <button type="button" class="seg__b is-on" data-qview="turnins">Turn-ins</button>
+      <button type="button" class="seg__b" data-qview="tracked">Tracked</button>
+      <button type="button" class="seg__b" data-qview="all">All quests</button>
     </div>
-    <div id="turninsBody"></div>
-    <p id="turninsEmpty" class="empty">Type <code>/out inventory</code> in game — quests you hold items for show up here, sorted by how close to done they are.</p>
+
+    <div class="qview" data-qview="turnins">
+      <div id="turninsBanner" class="banner" hidden></div>
+      <div class="feedhead">
+        <input id="tiSearch" type="search" placeholder="filter these quests">
+        <label class="chk"><input type="checkbox" id="qReadyOnly"> ready only</label>
+        <span id="tiMeta" class="dim"></span>
+      </div>
+      <div id="turninsBody"></div>
+      <p id="turninsEmpty" class="empty">Type <code>/out inventory</code> in game — quests you hold items for show up here, sorted by how close to done they are.</p>
+    </div>
+
+    <div class="qview" data-qview="tracked" hidden>
+      <div id="trackedBanner" class="banner" hidden></div>
+      <div id="trackedHead" class="feedhead" hidden>
+        <span class="seg" id="trackViews">
+          <button class="seg__b is-on" data-trackview="quest">By quest</button>
+          <button class="seg__b" data-trackview="zone">By zone</button>
+        </span>
+        <span id="trackedMeta" class="dim"></span>
+      </div>
+      <div id="trackedBody"></div>
+      <p id="trackedEmpty" class="empty">Nothing tracked yet. Find a quest under All quests and hit Track —
+      its items, your counts, and which mobs drop the missing pieces collect here and on the overlay.</p>
+    </div>
+
+    <div class="qview" data-qview="all" hidden>
+      <div class="feedhead qbhead">
+        <input id="qSearch" type="search" placeholder="search name, NPC, zone, item, reward">
+        <select id="qbClass"></select>
+        <select id="qbZone"></select>
+        <select id="qbEra">
+          <option value="">any era</option>
+          <option value="in">in era</option>
+          <option value="out">out of era</option>
+        </select>
+        <input id="qbLvlMin" type="number" min="1" max="60" placeholder="lvl ≥">
+        <input id="qbLvlMax" type="number" min="1" max="60" placeholder="lvl ≤">
+        <span id="qbMeta" class="dim"></span>
+      </div>
+      <div id="qbBody"></div>
+    </div>
   </section>
 
   <section id="tab-sky" class="pane pane--wide">
@@ -118,7 +291,6 @@
     <p id="skyEmpty" class="empty">Waiting for log lines. Walk up to a quest giver and this fills in.<br>
     <span class="dim">Logging must be on in game: <code>/log</code></span></p>
   </section>
-
 
   <section id="tab-valet" class="pane pane--wide">
     <div class="feedhead qbhead">
@@ -165,7 +337,7 @@
   <section id="tab-unlocks" class="pane pane--wide">
     <div id="unlBanner" class="banner" hidden></div>
     <div class="feedhead qbhead">
-      <span class="seg">
+      <span class="seg" id="unlViews">
         <button class="seg__b is-on" data-unlview="class">Classes</button>
         <button class="seg__b" data-unlview="race">Races</button>
         <button class="seg__b" data-unlview="deity">Deities</button>
@@ -180,64 +352,22 @@
     <span class="dim">It backfills the Sky tests you finished before you installed this.</span></p>
   </section>
 
-  <section id="tab-tracked" class="pane">
-    <div id="trackedBanner" class="banner" hidden></div>
-    <div id="trackedHead" class="feedhead" hidden>
-      <span class="seg">
-        <button class="seg__b is-on" data-trackview="quest">By quest</button>
-        <button class="seg__b" data-trackview="zone">By zone</button>
-      </span>
-      <span id="trackedMeta" class="dim"></span>
-    </div>
-    <div id="trackedBody"></div>
-    <p id="trackedEmpty" class="empty">Nothing tracked yet. Find a quest on the Quests tab and hit Track —
-    its items, your counts, and which mobs drop the missing pieces collect here and on the overlay.</p>
-  </section>
-
-  <section id="tab-quests" class="pane pane--wide">
-    <div id="questsBanner" class="banner" hidden></div>
-    <div class="feedhead qbhead">
-      <input id="qSearch" type="search" placeholder="search name, NPC, zone, item, reward">
-      <select id="qbClass"></select>
-      <select id="qbZone"></select>
-      <select id="qbEra">
-        <option value="">any era</option>
-        <option value="in">in era</option>
-        <option value="out">out of era</option>
-      </select>
-      <input id="qbLvlMin" type="number" min="1" max="60" placeholder="lvl ≥">
-      <input id="qbLvlMax" type="number" min="1" max="60" placeholder="lvl ≤">
-      <span id="qbMeta" class="dim"></span>
-    </div>
-    <div id="qbBody"></div>
-  </section>
-
-  <section id="tab-parser" class="pane">
-    <!-- the site's /log-parser page, vendored whole and served over eqlt://;
-         app.js feeds it the tailed log and re-feeds while the tab is open -->
-    <iframe id="lpFrame" title="Whole-log report" hidden></iframe>
-    <p id="lpEmpty" class="empty">Waiting for a log — this fills in once log lines arrive. The Parser tab reads
-      where you're standing right now; this one reads the whole file.</p>
-  </section>
-
+  <!-- ── Zone ──────────────────────────────────────────────────────────────
+       "All zones" IS the kill tracker: every zone's completion, expandable to
+       its roster. Pick one zone (or let it follow your character) and that same
+       roster gains the drops column and the items-to-droppers direction. One
+       place answering "what lives here, and have I killed it". -->
   <section id="tab-zone" class="pane">
     <div class="feedhead">
       <select id="zoneSel"></select>
       <input id="zoneFilter" type="search" placeholder="filter mob or item">
       <label class="chk"><input type="checkbox" id="zoneFollow" checked> follow my character</label>
+      <a id="trkAtlas" class="wk">see mobs on atlas</a>
       <span id="zoneMeta" class="dim"></span>
     </div>
     <div id="zoneBanner" class="banner" hidden></div>
+    <div id="trackerHead" class="thead" hidden></div>
     <div id="zoneBody" class="zonegrid"></div>
-  </section>
-
-  <section id="tab-tracker" class="pane">
-    <div id="trackerBanner" class="banner" hidden></div>
-    <div class="feedhead">
-      <input id="trkSearch" type="search" placeholder="search zones">
-      <a id="trkAtlas" class="wk">see mobs on atlas</a>
-    </div>
-    <div id="trackerHead" class="thead"></div>
     <div id="zones"></div>
   </section>
 
@@ -245,6 +375,7 @@
     <h2>Log folder</h2>
     <p class="row"><code id="setLogDir">—</code> <button id="btnPickDir" class="btn">Change…</button></p>
     <p class="dim" id="setLogStatus"></p>
+    <p class="dim">One log drives every tab — the Parser, the loot feed, Sky and the kill tracker all read it.</p>
 
     <h2>Game logging</h2>
     <p class="row"><span id="setIniState" class="dim">checking…</span> <button id="btnEnableLog" class="btn" hidden>Turn logging on</button></p>
@@ -299,6 +430,7 @@
 <script src="../vendor/valet-core.js"></script>
 <script src="../vendor/achievements.js"></script>
 <script src="../vendor/site/log-parser/engine.js"></script>
+<script src="../vendor/site/log-parser/render.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

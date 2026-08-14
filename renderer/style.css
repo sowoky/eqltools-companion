@@ -10,6 +10,21 @@
   --wiki: #9ccc9c; --wiki-line: rgba(126,190,126,.4); --wiki-bg: rgba(126,190,126,.07);
   --sans: "Segoe UI", system-ui, -apple-system, sans-serif;
   --mono: Consolas, "SF Mono", ui-monospace, monospace;
+
+  /* Tokens the vendored /log-parser panels reference. The site gets them from
+     _shared/theme.css, which also pulls four webfonts; the app doesn't vendor
+     those, so every font token resolves to the same system stack the rest of
+     this window uses. Colors match the site's dark theme. */
+  --font-sans: var(--sans); --font-accent: var(--sans);
+  --font-display: var(--sans); --font-body: var(--sans);
+  --invoke: #b9a7ef;
+  --warn: #e7c07a;
+  --bad: #e08b7c;
+  --line-hot: #5c4630;
+  --ember-hot: #ff8a3d;
+  --gilt-face: linear-gradient(180deg,
+    #fdf3d2 0%, var(--gold-pale) 15%, #eec95f 33%,
+    #d3a03a 51%, #9c6c17 65%, #e5ba52 83%, #f5dc95 100%);
 }
 * { box-sizing: border-box; margin: 0; }
 html, body { height: 100%; }
@@ -678,3 +693,56 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .skd__h--nd { color: var(--ink-dim); border-color: var(--line); }
 .skd__t2 tr.is-skip td { opacity: .55; }
 .skd__t2 tr.is-skip td:last-child { opacity: 1; }
+
+/* ── Parser tab ───────────────────────────────────────────────────────────
+   The panels come from vendor/site/log-parser/style.css. What's here is the
+   app's own chrome around them, plus the handful of page-level rules that
+   sheet carries (it styles a whole web page; this is one pane of a window). */
+.pane .panel { padding: 1rem 1.1rem; margin-bottom: .9rem; border-radius: 10px; }
+.pane .panel h2 { font: 600 14px/1.3 var(--sans); color: var(--gold-bright); letter-spacing: .02em; margin: 0 0 .2rem; }
+.pane .panel h2 .h2sub { font-weight: 400; font-size: 12px; color: var(--ink-dim); letter-spacing: 0; }
+.pane .panel .panel-note { font-size: 12px; line-height: 1.45; margin: 0 0 .7rem; }
+.pane .plaques { grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: .5rem; margin-bottom: .7rem; }
+.pane .plaque { padding: .5rem .6rem; border-radius: 8px; }
+.pane .plaque .pn { font-size: 1.25rem; }
+.pane .plaque .pl { font-size: .62rem; letter-spacing: .09em; }
+.pane .plaque.hero .pn { font-size: 1.7rem; }
+.pane .bighits { grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: .5rem; margin-bottom: .9rem; }
+.pane .bigtile { padding: .5rem .7rem; border-radius: 8px; }
+.pane .bigtile .bt-n { font-size: 1.2rem; }
+.pane .bigtile .bt-src { font-size: .82rem; }
+.pane .spark { height: 96px; }
+.pane .pace-line { margin: 0 0 .8rem; font-size: 12px; }
+.pane .two-up { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+@media (max-width: 900px) { .pane .two-up { grid-template-columns: 1fr; } }
+.pane .detail-grid { display: grid; gap: .9rem; }
+.pane .detail-grid.even { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.pane .d-block h4 { font: 600 12px/1.3 var(--sans); color: var(--ink-soft); margin: 0 0 .35rem; letter-spacing: .04em; text-transform: uppercase; }
+.pane .fine { color: var(--ink-dim); font-size: 12px; margin: .4rem 0 0; }
+.pane .truncnote { color: var(--ink-dim); font-size: 12px; font-style: italic; margin: 0 0 .5rem; }
+/* the vendored sheet sizes these for a page column; in a pane they read small */
+.pane .mini-h { font: 600 12px/1.3 var(--sans); color: var(--ink-soft); margin: .6rem 0 .2rem; }
+
+/* header: who you are, and what the report is looking at */
+.lp-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem 1rem; margin-bottom: .7rem; }
+.lp-top .who-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .7rem; }
+.lp-top .who-name { font-size: 1.15rem; font-weight: 700; color: var(--gold-bright); letter-spacing: .01em; }
+.lp-top .who-meta, .lp-top .who-pet, .lp-top .who-lvl { font-size: 12px; color: var(--ink-dim); }
+.lp-ctl { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; }
+.lp-ctl select { max-width: 17rem; }
+/* the window had no base select style — every tab that grew one inherited the
+   OS widget, which is white-on-white in this palette */
+select, input[type="search"], input[type="number"] {
+  background: var(--bg-panel-2); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 6px; padding: 4px 8px; font: 13px var(--sans);
+}
+select:hover, input[type="search"]:hover, input[type="number"]:hover { border-color: var(--gold); }
+select:focus, input:focus { outline: 1px solid var(--gold); outline-offset: -1px; }
+select { cursor: pointer; max-width: 100%; text-overflow: ellipsis; }
+
+/* view strips — Parser, Inventory, Quests all use the same control */
+.seg.lp-views { margin-bottom: .8rem; }
+.lpview > :first-child { margin-top: 0; }
+
+/* the vendored sheet is written for a page: keep its page furniture out */
+.pane .site-head, .pane .site-foot, .pane .intake { display: none; }

@@ -475,18 +475,19 @@ function renderFeed() {
 }
 
 const EXPANDED = new Set();
-let TRACKER_Q = "";
 function renderTracker() {
-  const banner = $("trackerBanner");
+  // shares the Zone tab's chrome: one banner, one filter box, two modes
+  const banner = $("zoneBanner");
   if (!DATA) { banner.hidden = false; banner.textContent = "Mob roster not loaded yet — refresh from eqltools.com in Settings."; $("trackerHead").innerHTML = ""; $("zones").innerHTML = ""; return; }
   banner.hidden = true;
+  $("zoneMeta").textContent = "";
   const s = STATE || K.blank();
   const sum = K.summarize(s, DATA.zones);
   const pct = sum.total ? Math.round(100 * sum.done / sum.total) : 0;
   $("trackerHead").innerHTML = `<span class="big">${pct}%</span> ${sum.done} of ${sum.total} mobs ·
     ${sum.zonesDone}/${sum.zonesTotal} zones cleared
     <span class="kbar"><span class="kbar__fill" style="width:${sum.total ? (100 * sum.done / sum.total).toFixed(1) : 0}%"></span></span>`;
-  const q = TRACKER_Q.trim().toLowerCase();
+  const q = ($("zoneFilter").value || "").trim().toLowerCase();
   const entries = Object.entries(DATA.zones).filter(([, z]) => z.mobs.length)
     .filter(([k]) => !sum.zones[k].ignored)
     .filter(([, z]) => !q || z.name.toLowerCase().includes(q))
@@ -517,13 +518,20 @@ function renderTracker() {
 /* ── zone tab: the atlas mobs & drops widget, log-aware ───────────────────*/
 const ZONE = { sel: null, follow: true, file: null };
 
+/* "All zones" IS the kill tracker: every zone's completion, expandable to its
+   roster. It was a tab of its own, showing the same DATA.zones roster with the
+   same K.credited() ticks as this one — the difference was the drops column
+   and which zone you were looking at, which is a <select>, not a tab. */
+const ZONE_ALL = "*";
+
 function populateZoneSel() {
   if (!DATA) return;
   const opts = Object.entries(DATA.zones)
     .sort((a, b) => a[1].name < b[1].name ? -1 : 1)
     .map(([k, z]) => `<option value="${k}">${esc(z.name)}</option>`);
-  $("zoneSel").innerHTML = `<option value="">— pick a zone —</option>` + opts.join("");
-  if (ZONE.sel) $("zoneSel").value = ZONE.sel;
+  $("zoneSel").innerHTML =
+    `<option value="${ZONE_ALL}">All zones — kill tracker</option>` + opts.join("");
+  $("zoneSel").value = ZONE.sel || ZONE_ALL;
 }
 
 async function selectZone(key) {
@@ -531,6 +539,7 @@ async function selectZone(key) {
   ZONE.sel = key; ZONE.file = null;
   $("zoneSel").value = key;
   renderZoneTab(); // spinner-ish empty state while loading
+  if (key === ZONE_ALL) return;
   const f = await window.companion.getZoneFile(key);
   if (ZONE.sel !== key) return; // player zoned again mid-fetch
   ZONE.file = f;
@@ -539,8 +548,14 @@ async function selectZone(key) {
 
 function renderZoneTab() {
   const banner = $("zoneBanner"), body = $("zoneBody");
+  const allWrap = $("zones"), allHead = $("trackerHead");
+  const isAll = !ZONE.sel || ZONE.sel === ZONE_ALL;
+  // the two modes never draw at once — one roster, one question at a time
+  allWrap.hidden = !isAll; allHead.hidden = !isAll;
+  body.hidden = isAll;
+  $("trkAtlas").hidden = isAll;
+  if (isAll) { body.innerHTML = ""; renderTracker(); return; }
   if (!DATA) { banner.hidden = false; banner.textContent = "Zone data needs the mob roster — refresh from eqltools.com in Settings."; body.innerHTML = ""; return; }
-  if (!ZONE.sel) { banner.hidden = false; banner.textContent = "Pick a zone, or zone in-game with “follow my character” on."; body.innerHTML = ""; $("zoneMeta").textContent = ""; return; }
   const f = ZONE.file;
   if (!f) { banner.hidden = false; banner.textContent = "Loading zone data…"; body.innerHTML = ""; return; }
   banner.hidden = true;
@@ -1842,7 +1857,12 @@ function renderQuestBrowser() {
     return ((ka < kb ? -1 : ka > kb ? 1 : 0) * QB.dir) ||
       (a.q.n.toLowerCase() < b.q.n.toLowerCase() ? -1 : 1);
   });
-  $("qbMeta").textContent = `${rows.length} of ${QDATA.quests.length} quests`;
+  // rows ≠ quests: a split page contributes a row per named turn-in as well as
+  // its own, so counting rows against the quest total printed "1797 of 923"
+  const pages = new Set(rows.map(p => p.q.t)).size;
+  $("qbMeta").textContent = pages === rows.length
+    ? `${rows.length} of ${QDATA.quests.length} quests`
+    : `${rows.length} turn-ins across ${pages} of ${QDATA.quests.length} quests`;
 
   const arrow = k => QB.sort === k ? (QB.dir > 0 ? " ▲" : " ▼") : "";
   const th = (k, label) => k
@@ -1866,7 +1886,8 @@ function renderQuestBrowser() {
    items still group by zone for the same reason. */
 function renderTrackedTab() {
   const banner = $("trackedBanner"), body = $("trackedBody"), empty = $("trackedEmpty");
-  const tab = document.querySelector('[data-tab="tracked"]');
+  // the count rides the sub-tab chip now, not a top-level tab
+  const tab = document.querySelector('[data-qview="tracked"]');
   const head = $("trackedHead");
   if (tab) tab.textContent = TRACKED.length ? `Tracked (${TRACKED.length})` : "Tracked";
   banner.hidden = !!QDATA;
@@ -1882,8 +1903,10 @@ function renderTrackedTab() {
   empty.hidden = plans.length > 0;
   if (head) head.hidden = plans.length < 1;
   // the by-zone view needs the source table; offering the toggle without it
-  // would switch to an empty answer
-  const seg = document.querySelector(".seg");
+  // would switch to an empty answer. Scoped by id: document.querySelector(".seg")
+  // returned the FIRST .seg in the document — the Sky tab's grouping toggle —
+  // so missing quest-source data used to hide a control on another tab.
+  const seg = $("trackViews");
   if (seg) seg.hidden = !hasSrc();
   banner.hidden = hasSrc();
   if (!hasSrc()) banner.textContent = STALE_DATA_NOTE;
@@ -1907,6 +1930,38 @@ function renderTrackedTab() {
 }
 
 function renderQuests() { renderTurnins(); renderTrackedTab(); renderQuestBrowser(); }
+
+/* ── the two sub-tab strips ───────────────────────────────────────────────
+   Quests was three top-level tabs (Turn-ins, Tracked, Quests) over one
+   dataset, separated in the tab bar by Sky, Valet and Unlocks; Inventory and
+   the loot feed were two. Both are now one tab with a strip, and the choice
+   sticks — you come back to the view you were using. */
+const QVIEW_KEY = "eqlt-companion-qview-v1";
+const IVIEW_KEY = "eqlt-companion-invview-v1";
+let QUEST_VIEW = "turnins", INV_VIEW = "bags";
+const paintStrip = (stripId, wrapSel, attr, val) => {
+  for (const b of document.querySelectorAll(`#${stripId} [data-${attr}]`)) b.classList.toggle("is-on", b.dataset[attr] === val);
+  for (const p of document.querySelectorAll(wrapSel)) p.hidden = p.dataset[attr] !== val;
+};
+function setQuestView(v) {
+  QUEST_VIEW = v;
+  try { localStorage.setItem(QVIEW_KEY, v); } catch {}
+  paintStrip("qViews", "#tab-quests .qview", "qview", v);
+}
+function setInvView(v) {
+  INV_VIEW = v;
+  try { localStorage.setItem(IVIEW_KEY, v); } catch {}
+  paintStrip("invViews", "#tab-inv .invview", "invview", v);
+}
+function loadViews() {
+  try {
+    const q = localStorage.getItem(QVIEW_KEY);
+    if (q === "turnins" || q === "tracked" || q === "all") QUEST_VIEW = q;
+    const i = localStorage.getItem(IVIEW_KEY);
+    if (i === "bags" || i === "recent") INV_VIEW = i;
+  } catch {}
+  setQuestView(QUEST_VIEW); setInvView(INV_VIEW);
+}
 
 /* ── Sky tab: what can I hand in, right now ───────────────────────────────
    Kyle, 2026-08-13: "if im sitting in the quest room with a bag full of stuff,
@@ -2631,36 +2686,27 @@ function pushSkyBosses(m, w) {
   return out;
 }
 
-/* The widget's drop list. The overlay holds no datasets, so every row arrives
-   resolved: what is spare, where it is, and which of the two disposals it is.
-   Capped, and the cap is sent with it — a silent truncation reads as "this is
-   everything". */
+/* The widget's cleanout list. The overlay holds no datasets, so every row
+   arrives resolved: what you skipped, where it is, and which of the two
+   disposals it is. Capped, and the cap is sent with it — a silent truncation
+   reads as "this is everything". */
 const SKY_WID_DROPS = 40;
 function pushSkyDrops(m, w) {
   const d = skyDropModel();
-  if (!d) return { rows: [], n: 0, give: 0 };
-  const spare = d.items.filter(r => r.spare > 0);
+  if (!d) return { rows: [], n: 0, give: 0, total: 0, skips: 0 };
+  const items = d.items;
   return {
-    n: spare.reduce((a, r) => a + r.spare, 0),
-    give: spare.filter(r => r.give).length,
-    total: spare.length,
-    rows: spare.slice(0, SKY_WID_DROPS).map(r => ({
-      ...skyRef(r.n), spare: r.spare, tier: r.tier, give: r.give,
-      why: skdWhyText(r),
-      locs: w.loc ? r.where.map(b => ({ k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title })) : [],
+    n: items.reduce((a, r) => a + r.count, 0),
+    give: items.filter(r => r.give).length,
+    total: items.length,
+    // what the other half of the tab is recommending, as one number
+    skips: d.tests.filter(k => !k.st.skip).length,
+    rows: items.slice(0, SKY_WID_DROPS).map(r => ({
+      ...skyRef(r.n), count: r.count, tier: r.tier, give: r.give,
+      why: r.uses.map(u => `${u.code} ${skdShort(u.code, u.test.n)}`).join(" · "),
+      locs: w.loc && r.loc ? [(b => ({ k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title }))(skyBadge(r.loc))] : [],
     })),
   };
-}
-// the same reasons the tab prints as chips, as one line of text
-function skdWhyText(r) {
-  const bits = [];
-  if (r.worn) bits.push(`${r.worn} worn`);
-  for (const w of r.why) {
-    if (w.k === "rank") bits.push(`${w.p.rk.rank} of ${w.p.rk.of} in ${w.p.rk.slot}`);
-    else if (w.k === "extra") bits.push(`${w.n} more than any test wants`);
-    else bits.push(`${w.u.code} ${w.k === "done" ? "done" : "skipped"}`);
-  }
-  return bits.join(" · ");
 }
 
 function pushSky(model) {
@@ -2734,7 +2780,7 @@ function renderSkyWidget() {
       ? `<label class="skw__r"><input type="checkbox" data-skyw="trackedFirst"${w.trackedFirst ? " checked" : ""}> keep tracked pieces on the board</label>`
       : drop ? ""
       : `<label class="skw__r"><input type="checkbox" data-skyw="say"${w.say ? " checked" : ""}> show the hail phrase</label>`) +
-    (drop ? `<p class="skw__note">The drop list is what this tab found spare, most spare first, and whether another player can take it. The top-${SKD.top} bar and the filters are set above.</p>` :
+    (drop ? `<p class="skw__note">The list is what you have ticked skip on and are still carrying, by place, and whether another player can take it. Which tests to tick is the table above.</p>` :
      boss ? `<p class="skw__note">The boss board lists the mobs that still owe you a piece. Tracked pieces come first and keep their star.</p>` :
     `<div class="skw__h">Classes <button type="button" class="lnk" data-skywall="1">all</button> ·
        <button type="button" class="lnk" data-skywall="0">none</button></div>` +
@@ -2742,26 +2788,28 @@ function renderSkyWidget() {
 }
 
 /* ── Sky: get rid of it ────────────────────────────────────────────────────
-   Kyle, 2026-08-14: "recommended items to get rid of, which is quests you've
-   already completed, and the reward is not in the top 3 items for that class
-   (but you have to show the user so they can verify)" and "recommend quests to
-   skip AND show me what items i have that are skipped for all uses".
+   Kyle, 2026-08-14: *"most people want to finish all quests for each class once
+   to unlock that class … you're recommending things that i have already done
+   once that are not strong items"* and *"showing me what i have that i have
+   marked skip, sorted by location (bank, inventory, storage, etc) so i can
+   clean it out"*.
 
-   The measuring is ../vendor/sky-core.js — `dropRows` and `skipRows`, the same
-   two functions /sky's own "Get rid of" tab runs. What is injected is what
-   differs between the surfaces:
+   Two tables in the order you ask them. The first run of a test is the class
+   unlock and is never recommended away; the second and after only buy an
+   upgrade tier on the reward you already hold, which is worth the islands only
+   if the reward is. Tick the ones that aren't, and their pieces show up in the
+   second table by place.
+
+   The measuring is ../vendor/sky-core.js — `skipRows` and `cleanoutRows`, the
+   same two functions /sky's own tab runs. What is injected is what differs
+   between the surfaces:
 
      have  — this tab's held count (the dump, the log, your own held mark), plus
-             the worn count and the upgrade tier off the dump's rows
+             the worn count, the upgrade tier and every place the dump found it
      rank  — a scorer per class. The site has a trio picker and a Compare-against
              switch; this tab has neither, so it runs that switch's `class`
-             position: the reward against everything its own class can wear.
-             That is the conservative read, and the one the ask names.
-
-   Rewards are ranked at the tier your dump says your copy is. A worn copy is
-   never spare — nineteen of the components are equippable weapons. */
-const SKD = { top: 3, spareOnly: true, skipOnly: false, sort: "spare", dir: -1,
-              tsort: "rank", tdir: -1 };
+             position: the reward against everything its own class can wear. */
+const SKD = { top: 3, unlockFirst: true, sort: "frees", dir: -1, csort: "where", cdir: 1 };
 const SKD_KEY = "eqlt-companion-skydrop-v1";
 function loadSkyDropPrefs() {
   try { Object.assign(SKD, JSON.parse(localStorage.getItem(SKD_KEY)) || {}); } catch {}
@@ -2777,8 +2825,8 @@ function skyScorer(code) {
   }
   return SKY_SCORERS.get(key);
 }
-/* Where a reward stands in its own slot, at `tier`. Cached: the alternatives
-   pool in sky.json is 2,900 items and every render asks about 95 rewards. */
+/* Where a reward stands in its own slot. Cached: the alternatives pool in
+   sky.json is 2,900 items and every render asks about 95 rewards. */
 const SKY_RANKS = new Map();
 function skyRankOf(name, code, tier) {
   if (!SKYD || !name) return null;
@@ -2804,19 +2852,19 @@ function skyRankOf(name, code, tier) {
   return out;
 }
 
-/* The dump's rows, per item: how many are in a worn slot, and the best upgrade
-   tier you hold. sky-core takes both off `have()`. */
-function skyWornIndex() {
+/* Every place the dump found each item, plus how many are worn and the best
+   upgrade tier you hold. sky-core takes all three off `have()`. */
+function skyPlaceIndex() {
   const m = new Map();
   const GS = window.EQLGearScore;
   for (const r of INV.rows || []) {
-    if (r.exalt) continue;
-    // a -SlotN row is an aug inside the worn item, not the item
+    if (r.exalt) continue;   // the stone is not the item — see haveMap
     const worn = !/-Slot\d+$/.test(r.loc) && GS.WORN_RX.test(GS.rootLoc(r.loc));
     for (const k of new Set([itemKey(r.name), itemKey(stripDecor(r.name))])) {
-      const e = m.get(k) || { worn: 0, tier: 0 };
+      const e = m.get(k) || { worn: 0, tier: 0, where: [] };
       if (worn) e.worn += r.count;
       e.tier = Math.max(e.tier, r.tier || 0);
+      e.where.push({ loc: r.loc, sec: r.sec, count: r.count });
       m.set(k, e);
     }
   }
@@ -2827,12 +2875,13 @@ function skyDropModel() {
   if (!SKYD || !SKYL) return null;
   const have = haveMap();
   const locIdx = skyLocIndex();
-  const wornIdx = skyWornIndex();
+  const placeIdx = skyPlaceIndex();
   const seen = n => locIdx.has(itemKey(n));
   const hav = (n) => {
     const h = skyHave(have, n, seen(n));
-    const w = wornIdx.get(itemKey(n)) || wornIdx.get(itemKey(stripDecor(n))) || { worn: 0, tier: 0 };
-    return { n: h.n, src: h.src, worn: w.worn, tier: w.tier, where: skyLocs(locIdx, n) };
+    const p = placeIdx.get(itemKey(n)) || placeIdx.get(itemKey(stripDecor(n)))
+      || { worn: 0, tier: 0, where: [] };
+    return { n: h.n, src: h.src, worn: p.worn, tier: p.tier, where: p.where };
   };
   /* Completions per class, memoised for this build only — sky-core asks one
      test's state a few hundred times, and walking every closed trade in the log
@@ -2843,78 +2892,31 @@ function skyDropModel() {
     if (!comp.has(code)) comp.set(code, SKY.completions(SKYD, SKYL.led, code));
     const done = comp.get(code).byTest[test.n] || 0;
     const ach = !!(ACH_SKY[code] && ACH_SKY[code].byTest[test.n]);
-    return { done: done + (ach ? 1 : 0), logDone: done, ach, skip: skySkipped(code, test.n) };
+    // times done, every witness — the achievement record proves one, the log
+    // may have watched more
+    return { done: Math.max(done, ach ? 1 : 0), logDone: done, ach,
+             skip: skySkipped(code, test.n) };
   };
-  const o = { top: SKD.top, have: hav, rec: skyRec, rank: skyRankOf, state };
-  return { items: SKY.dropRows(SKYD, o), tests: SKY.skipRows(SKYD, o) };
+  const o = { top: SKD.top, unlockFirst: SKD.unlockFirst, have: hav,
+              rec: skyRec, rank: skyRankOf, state };
+  return { tests: SKY.skipRows(SKYD, o), items: SKY.cleanoutRows(SKYD, o) };
 }
-
-const SKD_COLS = [
-  { k: "item", h: "Item", d0: 1, key: r => r.n.toLowerCase(),
-    cell: r => `<td class="iv-item">${skyItemSpan(r.n)}${r.tier ? ` <b class="skd__t" title="your copy is upgraded, and it is scored and ranked at that tier">+${r.tier}</b>` : ""}</td>` },
-  { k: "kind", h: "What it is", d0: 1, key: r => r.kind,
-    cell: r => `<td class="dim">${r.kind === "reward" ? "reward" : "quest piece"}</td>` },
-  { k: "have", h: "Have", d0: -1, key: r => r.have, cell: r => `<td class="iv-n">${r.have}</td>` },
-  { k: "spare", h: "Spare", d0: -1, key: r => r.spare,
-    cell: r => `<td class="iv-n${r.spare ? " skd__n" : ""}">${r.spare || ""}</td>` },
-  { k: "where", h: "Held in", d0: 1, key: r => (r.where[0] && r.where[0].title) || null,
-    cell: r => `<td>${r.where.map(skyBadgeHtml).join(" ")}</td>` },
-  { k: "wt", h: "Weight", d0: -1, key: r => r.wt * (r.spare || r.have) || null,
-    cell: r => { const w = r.wt * (r.spare || r.have); return `<td class="iv-n dim">${w ? w.toFixed(1) : ""}</td>`; } },
-  { k: "why", h: "Why", d0: 1, key: r => (r.why[0] && r.why[0].k) || "z",
-    cell: r => `<td>${skdWhy(r)}</td>` },
-  { k: "how", h: "Get rid of it by", d0: 1, key: r => (r.spare ? (r.give ? "a" : "b") : "z"),
-    cell: r => `<td>${skdHow(r)}</td>` },
-  { k: "uses", h: "Tests using it", d0: -1, key: r => r.wantedBy || null,
-    cell: r => `<td class="iv-n dim" title="how many of the 95 tests consume this piece, across all sixteen classes">${r.wantedBy || ""}</td>` },
-];
 
 const skdShort = (code, n) => n.replace((SKY_CLASS[code] || "") + " ", "");
-function skdWhy(r) {
-  const out = [];
-  if (r.worn) out.push(`<span class="skd__w skd__w--hold" title="your dump has ${r.worn} of these in a worn slot">${r.worn > 1 ? r.worn + " " : ""}worn</span>`);
-  for (const w of r.why) {
-    if (w.k === "rank") {
-      out.push(`<span class="skd__w skd__w--rank" title="scored for ${esc(w.p.code)} against every in-era item it can wear in ${esc(w.p.rk.slot)}">${w.p.rk.rank} of ${w.p.rk.of} in ${esc(w.p.rk.slot)}</span>`);
-    } else if (w.k === "extra") {
-      out.push(`<span class="skd__w skd__w--rank" title="you hold ${r.have}; the tests that still want it need ${r.open}">${w.n} more than any test wants</span>`);
-    } else {
-      const u = w.u;
-      out.push(`<span class="skd__w skd__w--${w.k}" title="${esc(SKY_CLASS[u.code] || u.code)} — ${esc(u.test.n)}${
-        w.k === "done" ? (u.st.logDone ? ", turned in in your log" : ", recorded in your achievements") : ", you skipped it"}">${
-        esc(u.code)} ${esc(skdShort(u.code, u.test.n))} <i>${w.k === "done" ? "done" : "skipped"}</i></span>`);
-    }
-  }
-  if (r.why.length) return out.join(" ");
-  for (const h of r.hold) {
-    if (h.k === "open") {
-      out.push(`<span class="skd__w skd__w--hold">${esc(h.u.code)} ${esc(skdShort(h.u.code, h.u.test.n))} <i>wants it</i></span>`);
-    } else if (h.k === "best") {
-      out.push(`<span class="skd__w skd__w--keep" title="scored for ${esc(h.p.code)} in ${esc(h.p.rk.slot)}">top ${h.p.rk.rank} in ${esc(h.p.rk.slot)}</span>`);
-    } else if (h.k === "unscored") {
-      out.push(`<span class="skd__w">no stats on the wiki to rank it</span>`);
-    } else if (h.k === "unwitnessed") {
-      out.push(`<span class="skd__w" title="a player could have handed you this one, so holding it is not proof you did the test">no turn-in on record</span>`);
-    }
-  }
-  return out.join(" ");
-}
-function skdHow(r) {
-  if (!r.spare) return "";
-  const fl = (r.rec && r.rec.fl) || [];
-  const flag = fl.includes("no_drop") ? "NO DROP" : fl.includes("no_trade") ? "No Trade" : "";
-  const clash = r.clash ? ` <span class="skd__w skd__w--clash" title="the item window and the wiki's Plane of Sky table disagree about this one; the window is what the game shows you">wiki disagrees</span>` : "";
-  if (r.give === null) return `<span class="dim" title="no item page on the wiki, so nothing here knows whether it is NO DROP">not known</span>`;
-  if (r.give) return `<span class="skd__h skd__h--give" title="not NO DROP, so another player can take it${r.wantedBy ? `. ${r.wantedBy} class test${r.wantedBy === 1 ? "" : "s"} use it` : ""}">sell to a player</span>${clash}`;
-  return `<span class="skd__h skd__h--nd" title="${esc(flag || "NO DROP")} — nobody else can take it, so destroying it is what frees the slot">destroy</span>${clash}`;
-}
 
 const SKD_TCOLS = [
   { k: "cls", h: "Class", d0: 1, key: k => SKY_CLASS[k.code], cell: k => `<td>${esc(SKY_CLASS[k.code])}</td>` },
   { k: "test", h: "Test", d0: 1, key: k => k.test.n, cell: k => `<td>${esc(skdShort(k.code, k.test.n))}</td>` },
+  { k: "done", h: "Done", d0: -1, key: k => k.done, cell: k => `<td class="iv-n">${k.done
+      ? `<b class="sk-n sk-n--done">${k.done}×</b>`
+      : (SKD.unlockFirst && k.st.skip)
+      ? `<span class="skd__w skd__w--clash" title="you have skipped a test you have never run; the ${esc(SKY_CLASS[k.code])} unlock needs this one, along with every other test in its class">never run</span>`
+      : `<span class="dim">—</span>`}</td>` },
   { k: "rew", h: "Reward", d0: 1, key: k => k.reward, cell: k => `<td class="iv-item">${skyItemSpan(k.reward)}</td>` },
-  { k: "slot", h: "Slot", d0: 1, key: k => k.rk.slot, cell: k => `<td class="dim">${esc(k.rk.slot)}</td>` },
-  { k: "score", h: "Score", d0: -1, key: k => k.rk.score, cell: k => `<td class="iv-n">${Math.round(k.rk.score)}</td>` },
+  { k: "rep", h: "Repeat pays", d0: -1, key: k => (k.tier == null ? null : k.tier),
+    cell: k => `<td class="iv-n">${!k.done ? `<span class="dim">first copy</span>`
+      : k.tier == null ? `<span class="dim">—</span>`
+      : `<span class="skd__n" title="running it again hands you a duplicate, and merging it takes your copy up a tier">+${k.tier} → +${k.tier + 1}</span>`}</td>` },
   { k: "rank", h: "Rank", d0: -1, key: k => k.rk.rank,
     cell: k => `<td class="iv-n skd__n" title="against every in-era item ${esc(k.code)} can wear in ${esc(k.rk.slot)}">${k.rk.rank} of ${k.rk.of}</td>` },
   { k: "beat", h: "Beaten by", d0: 1, key: k => k.rk.better[0] || null,
@@ -2923,8 +2925,34 @@ const SKD_TCOLS = [
     cell: k => `<td class="iv-n" title="${esc(k.held.join(", ")) || "none"}">${k.held.length || ""}</td>` },
   { k: "frees", h: "Frees", d0: -1, key: k => k.frees.length || null,
     cell: k => `<td class="iv-n${k.frees.length ? " skd__n" : ""}" title="${k.frees.length
-      ? esc(k.frees.join(", ")) : "nothing you hold would become spare — another open test wants the same pieces"}">${k.frees.length || ""}</td>` },
+      ? esc(k.frees.join(", ")) : "nothing you hold would come free — another test you have not skipped wants the same pieces"}">${k.frees.length || ""}</td>` },
 ];
+
+const SKD_CCOLS = [
+  // section first, then the bag and slot NUMBERS as numbers — see /sky's locSortKey
+  { k: "where", h: "Where", d0: 1,
+    key: r => String(r.secIdx).padStart(2, "0") + "|" + String(r.loc).replace(/\d+/g, d => d.padStart(4, "0")),
+    cell: r => `<td>${r.loc ? skyBadgeHtml(skyBadge(r.loc)) : `<span class="dim">your log, not the dump</span>`}</td>` },
+  { k: "item", h: "Item", d0: 1, key: r => r.n.toLowerCase(),
+    cell: r => `<td class="iv-item">${skyItemSpan(r.n)}${r.tier ? ` <b class="skd__t">+${r.tier}</b>` : ""}</td>` },
+  { k: "count", h: "Count", d0: -1, key: r => r.count, cell: r => `<td class="iv-n">${r.count}</td>` },
+  { k: "wt", h: "Weight", d0: -1, key: r => r.wt * r.count || null,
+    cell: r => `<td class="iv-n dim" title="${r.wt} each">${r.wt ? (r.wt * r.count).toFixed(1) : ""}</td>` },
+  { k: "how", h: "Get rid of it by", d0: 1, key: r => (r.give ? "a" : r.give === false ? "b" : "z"),
+    cell: r => `<td>${skdHow(r)}</td>` },
+  { k: "for", h: "Skipped for", d0: 1, key: r => r.uses[0].code,
+    cell: r => `<td>${r.uses.map(u => `<span class="skd__w skd__w--skip" title="${esc(SKY_CLASS[u.code] || u.code)} — ${esc(u.test.n)}, you skipped it">${
+      esc(u.code)} ${esc(skdShort(u.code, u.test.n))}</span>`).join(" ")}</td>` },
+];
+
+function skdHow(r) {
+  const fl = (r.rec && r.rec.fl) || [];
+  const flag = fl.includes("no_drop") ? "NO DROP" : fl.includes("no_trade") ? "No Trade" : "";
+  const clash = r.clash ? ` <span class="skd__w skd__w--clash" title="the item window and the wiki's Plane of Sky table disagree about this one; the window is what the game shows you">wiki disagrees</span>` : "";
+  if (r.give === null) return `<span class="dim" title="no item page on the wiki, so nothing here knows whether it is NO DROP">not known</span>`;
+  if (r.give) return `<span class="skd__h skd__h--give" title="not NO DROP, so another player can take it${r.wantedBy ? `. ${r.wantedBy} class test${r.wantedBy === 1 ? "" : "s"} use it` : ""}">sell to a player</span>${clash}`;
+  return `<span class="skd__h skd__h--nd" title="${esc(flag || "NO DROP")} — nobody else can take it, so destroying it is what frees the slot">destroy</span>${clash}`;
+}
 
 function skyDropHtml(m, q) {
   const d = skyDropModel();
@@ -2935,70 +2963,72 @@ function skyDropHtml(m, q) {
      screen at a time, and one menu implementation is the point. */
   SKY_DROPS = new Map();
   for (const r of d.items) {
-    if (!r.uses.length) continue;
     SKY_DROPS.set(r.n, r.uses.map(u => ({
       code: u.code, cls: SKY_CLASS[u.code], test: u.test.n,
       short: skdShort(u.code, u.test.n), reward: u.reward,
       fin: !!u.st.done, skip: !!u.st.skip,
     })));
   }
-  let rows = d.items.filter(r => hit(r.n));
-  if (SKD.spareOnly) rows = rows.filter(r => r.spare > 0);
-  // Kyle: "show me what items i have that are skipped for all uses" — a piece
-  // whose every test you ticked, as opposed to one the game finished for you.
-  if (SKD.skipOnly) rows = rows.filter(r => r.kind === "piece" && r.uses.length
-    && r.uses.every(u => u.st.skip));
-  const col = SKD_COLS.find(c => c.k === SKD.sort) || SKD_COLS[3];
-  rows = rows.slice().sort((a, b) => cmpNullLast(col.key(a), col.key(b), SKD.dir)
-    || a.n.localeCompare(b.n));
 
-  const spare = d.items.filter(r => r.spare > 0);
-  const give = spare.filter(r => r.give);
-  const nSpare = spare.reduce((a, r) => a + r.spare, 0);
-  const wt = spare.reduce((a, r) => a + r.wt * r.spare, 0);
   const arrow = (k, s, dir) => s === k ? (dir > 0 ? " ▲" : " ▼") : "";
   const head = (cols, attr, s, dir) => `<thead><tr>${cols.map(c =>
     `<th class="is-sort" data-${attr}="${c.k}">${esc(c.h)}${arrow(c.k, s, dir)}</th>`).join("")}<th></th></tr></thead>`;
 
   const tests = d.tests.filter(k => hit(k.test.n) || hit(k.reward));
-  const openK = tests.filter(k => !k.st.skip);
-  const frees = new Set(openK.flatMap(k => k.frees)).size;
-  const tcol = SKD_TCOLS.find(c => c.k === SKD.tsort) || SKD_TCOLS[5];
+  const open = tests.filter(k => !k.st.skip);
+  const frees = new Set(open.flatMap(k => k.frees)).size;
+  const tcol = SKD_TCOLS.find(c => c.k === SKD.sort) || SKD_TCOLS[8];
   const trows = tests.slice().sort((a, b) => (a.st.skip - b.st.skip)
-    || cmpNullLast(tcol.key(a), tcol.key(b), SKD.tdir) || a.test.n.localeCompare(b.test.n));
+    || cmpNullLast(tcol.key(a), tcol.key(b), SKD.dir) || a.test.n.localeCompare(b.test.n));
+
+  const items = d.items.filter(r => hit(r.n));
+  const ccol = SKD_CCOLS.find(c => c.k === SKD.csort) || SKD_CCOLS[0];
+  const crows = items.slice().sort((a, b) => cmpNullLast(ccol.key(a), ccol.key(b), SKD.cdir)
+    || a.n.localeCompare(b.n));
+  const n = items.reduce((a, r) => a + r.count, 0);
+  const wt = items.reduce((a, r) => a + r.wt * r.count, 0);
+  const give = items.filter(r => r.give);
+  const places = new Set(items.map(r => r.sec)).size;
+
+  const one = open.length === 1;
+  const back = [];
+  if (d.tests.unlock) back.push(`<b>${d.tests.unlock}</b> more rank outside it, but you have never run ${
+    d.tests.unlock === 1 ? "that one" : "them"}: the first run of a test is what unlocks the class.`);
+  if (d.tests.unranked) back.push(`${d.tests.unranked} can't be ranked — the wiki has no stats for the reward.`);
+  const cnote = [];
+  if (d.items.mixed) cnote.push(`${d.items.mixed} more ${d.items.mixed === 1 ? "piece is" : "pieces are"} still wanted by a test you haven't skipped.`);
+  if (d.items.worn) cnote.push(`${d.items.worn} ${d.items.worn === 1 ? "is" : "are"} on your character.`);
 
   const html = `<div class="skd">
     <div class="skd__ctl">
-      <label class="chk">a reward is worth keeping if it is in the top
-        <select data-skd="top">${[1, 3, 5, 10].map(n =>
-          `<option value="${n}"${SKD.top === n ? " selected" : ""}>${n}</option>`).join("")}</select>
-        of its own slot</label>
-      <label class="chk"><input type="checkbox" data-skd="spareOnly"${SKD.spareOnly ? " checked" : ""}> only what I hold spare</label>
-      <label class="chk"><input type="checkbox" data-skd="skipOnly"${SKD.skipOnly ? " checked" : ""}> only pieces I skipped every use of</label>
+      <label class="chk"><input type="checkbox" data-skd="unlockFirst"${SKD.unlockFirst ? " checked" : ""}> do each test at least once to unlock its class</label>
+      <span class="dim">a finished test is worth running again if its reward is in the top
+        <select data-skd="top">${[1, 3, 5, 10].map(x =>
+          `<option value="${x}"${SKD.top === x ? " selected" : ""}>${x}</option>`).join("")}</select>
+        of its own slot</span>
     </div>
-    <h3 class="skd__h3">Items you can get rid of</h3>
-    <p class="skd__sum">${spare.length
-      ? `<b>${nSpare}</b> spare item${nSpare === 1 ? "" : "s"} across <b>${spare.length}</b> of the Sky things in your bank${
-          wt ? `, ${wt.toFixed(1)} weight` : ""}.`
-        + (give.length ? ` <b>${give.length}</b> of them ${give.length === 1 ? "is" : "are"} not NO DROP: sell those to a player rather than a merchant.` : "")
-      : `Nothing you are holding is spare. Skip a test you will never do and its pieces arrive here.`}</p>
-    ${rows.length ? `<table class="qtab ivt skd__t2">${head(SKD_COLS, "skdsort", SKD.sort, SKD.dir)}<tbody>${
-      rows.map(r => `<tr>${SKD_COLS.map(c => c.cell(r)).join("")}<td>${r.kind === "piece"
-        ? `<button type="button" class="lnk skd__u" data-drop="${esc(r.n)}">uses</button>` : ""}</td></tr>`).join("")
-    }</tbody></table>` : `<p class="empty">Nothing matches those filters.</p>`}
-    <h3 class="skd__h3">Tests worth skipping</h3>
-    <p class="skd__sum">${openK.length
-      ? `<b>${openK.length}</b> open test${openK.length === 1 ? "" : "s"} pay a reward outside the top ${SKD.top} of its slot.`
-        + (frees ? ` Skipping them frees <b>${frees}</b> piece${frees === 1 ? "" : "s"} you are holding.` : "")
-      : `No open test pays a reward outside the top ${SKD.top} of its slot.`}</p>
-    ${trows.length ? `<table class="qtab ivt skd__t2">${head(SKD_TCOLS, "skdtsort", SKD.tsort, SKD.tdir)}<tbody>${
+    <h3 class="skd__h3">Tests to skip</h3>
+    <p class="skd__sum">${(open.length
+      ? `<b>${open.length}</b> test${one ? "" : "s"} you have already finished pay${one ? "s" : ""} a reward outside the top ${SKD.top} of its slot.`
+        + (frees ? ` Skipping ${one ? "it" : "them"} clears <b>${frees}</b> piece${frees === 1 ? "" : "s"} out of your bags.` : "")
+      : `Every test you have finished pays a reward inside the top ${SKD.top} of its slot.`)
+      + (back.length ? " " + back.join(" ") : "")}</p>
+    ${trows.length ? `<table class="qtab ivt skd__t2">${head(SKD_TCOLS, "skdtsort", SKD.sort, SKD.dir)}<tbody>${
       trows.map(k => `<tr class="${k.st.skip ? "is-skip" : ""}">${SKD_TCOLS.map(c => c.cell(k)).join("")}<td><button type="button" class="lnk"
         data-skyskip="${esc(k.code)}" data-test="${esc(k.test.n)}">${k.st.skip ? "un-skip" : "skip"}</button></td></tr>`).join("")
+    }</tbody></table>` : `<p class="empty">Nothing to skip.</p>`}
+    <h3 class="skd__h3">Skipped, and still in your bags</h3>
+    <p class="skd__sum">${(items.length
+      ? `<b>${n}</b> item${n === 1 ? "" : "s"} across <b>${places}</b> place${places === 1 ? "" : "s"}${wt ? `, ${wt.toFixed(1)} weight` : ""}. Nothing else wants any of ${n === 1 ? "it" : "them"}.`
+        + (give.length ? ` <b>${give.length}</b> ${give.length === 1 ? "is" : "are"} not NO DROP: sell ${give.length === 1 ? "that one" : "those"} to a player rather than a merchant.` : "")
+      : `Nothing in your bags belongs to a test you've skipped.`)
+      + (cnote.length ? " " + cnote.join(" ") : "")}</p>
+    ${crows.length ? `<table class="qtab ivt skd__t2">${head(SKD_CCOLS, "skdcsort", SKD.csort, SKD.cdir)}<tbody>${
+      crows.map(r => `<tr>${SKD_CCOLS.map(c => c.cell(r)).join("")}<td><button type="button" class="lnk skd__u" data-drop="${esc(r.n)}">uses</button></td></tr>`).join("")
     }</tbody></table>` : ""}
   </div>`;
-  return { html, shown: rows.length + trows.length };
+  return { html, shown: crows.length + trows.length };
 }
-
 function populateSkyFilters() {
   const sel = $("skyClass");
   sel.innerHTML = `<option value="">all classes</option>` +
@@ -3365,34 +3395,146 @@ function renderUnlocks() {
     (rows.length ? rows.map(unlockRowHtml).join("") : `<p class="empty">Nothing matches.</p>`);
 }
 
-/* ── parser tab: the site's /log-parser page, embedded whole ──────────────
-   The iframe loads the vendored page over eqlt:// on first open; we post the
-   active log's tail into its embed intake and re-post while the tab stays
-   open (5 s cadence, only when new lines arrived — the page re-parses the
-   whole tail each time, exactly like its own live-watch mode). */
-const PARSER = { fedLines: -1, timer: null };
-let LINES_SEEN = 0; // bootstrap + live lines; the parser re-feeds on growth
+/* ── Parser tab: the site's report, rendered here ─────────────────────────
+   Not an iframe of /log-parser and no file to drop — the log is the one
+   Settings points at. vendor/site/log-parser/render.js is the SAME renderer
+   the website runs, so a panel cannot look or count differently in the two
+   places; this file only decides which slice it draws.
 
-async function feedParser(keep) {
-  const t = await window.companion.getLogTail();
-  if (!t) return;
-  PARSER.fedLines = LINES_SEEN;
-  $("lpFrame").contentWindow.postMessage({ type: "eqlt-log", text: t.text, name: t.name, keep: !!keep }, "*");
-  $("lpFrame").hidden = false;
-  $("lpEmpty").hidden = true;
+   TWO windows, on purpose, because they answer different questions:
+
+   * CB.live — the current zone visit, re-parsed on a fast adaptive cadence.
+     It drives the plaques, the damage meter and the overlay: what is
+     happening right now. Rolls (and forgets) when you zone.
+   * PR.win — the SESSION: the freshest lines regardless of zoning, pinned to
+     a zone-entry line at the head so buildClaims still cuts at the window
+     start. It drives the report panels, so zoning doesn't wipe the mob table,
+     and its seg.visits fills the zone-session picker for free. Parsed only
+     while this tab is open, on a much slower cadence — it is a report you
+     read between pulls, not a meter you watch mid-fight. */
+let LINES_SEEN = 0; // bootstrap + live lines; PR re-parses on growth
+const PR_WIN_LINES = 60000;   // session window; ~50m of a busy raid group
+const PR = {
+  win: [], zoneLine: null, run: null,
+  open: false, timer: null, runMs: 0, fedLines: -1,
+  view: "fights",     // which panel group is showing
+  sess: null,         // chosen zone session (seg visit id), null = all of them
+  fight: "*",         // focused fight key
+};
+
+/* Same head-pinning rule as capLive(): a plain tail-slice would cut the
+   window's own zone-entry line, and with it both the zone readout and the
+   claims-cut-at-window-start property. */
+function prPush(lines) {
+  for (const l of lines) {
+    if (CB_ZONE_RX.test(l)) PR.zoneLine = l;
+    PR.win.push(l);
+  }
+  if (PR.win.length > PR_WIN_LINES) {
+    PR.win = PR.win.slice(-PR_WIN_LINES);
+    if (PR.zoneLine && PR.win[0] !== PR.zoneLine) PR.win.unshift(PR.zoneLine);
+  }
 }
 
+function prRun() {
+  if (!PR.open) return;
+  const t0 = performance.now();
+  PR.run = combatParse(PR.win);
+  PR.runMs = performance.now() - t0;
+  PR.fedLines = LINES_SEEN;
+  renderParser();
+}
+function prSoon() {
+  if (PR.timer || !PR.open) return;
+  // a report between pulls, not a meter: 3 s floor, and it still backs off on
+  // a window expensive enough to matter
+  PR.timer = setTimeout(() => { PR.timer = null; if (LINES_SEEN > PR.fedLines) prRun(); else prSoon(); },
+    Math.max(3000, PR.runMs * 8));
+}
 function parserTabActive(on) {
-  if (!on) {
-    if (PARSER.timer) { clearInterval(PARSER.timer); PARSER.timer = null; }
-    return;
-  }
-  const f = $("lpFrame");
-  if (!f.src) {
-    f.addEventListener("load", () => feedParser(false), { once: true });
-    f.src = "eqlt://app/log-parser/index.html?embed=1";
-  } else if (LINES_SEEN > PARSER.fedLines) feedParser(true);
-  if (!PARSER.timer) PARSER.timer = setInterval(() => { if (LINES_SEEN > PARSER.fedLines) feedParser(true); }, 5000);
+  PR.open = on;
+  if (!on) { if (PR.timer) { clearTimeout(PR.timer); PR.timer = null; } return; }
+  if (!PR.run || LINES_SEEN > PR.fedLines) prRun(); else renderParser();
+  prSoon();
+}
+
+/* The slice, in the shape render.js takes. Day and level stay open: this
+   window is at most an evening, and the app already knows whose log it is. */
+const prSel = () => ({
+  day: null, sess: PR.sess, levels: null, combo: "*", fight: PR.fight,
+  labels: { sess: prSessLabel() },
+});
+function prSessLabel() {
+  if (PR.sess == null || !PR.run) return null;
+  const v = PR.run.seg.visits.find(x => x.id === PR.sess);
+  return v ? v.name : null;
+}
+
+function prVisitOpts() {
+  const sel = $("cbScope");
+  if (!PR.run) { sel.hidden = true; return; }
+  const vs = PR.run.seg.visits.slice().reverse();
+  sel.hidden = vs.length < 2;
+  const prev = String(PR.sess ?? "*");
+  sel.innerHTML = `<option value="*">All ${vs.length} zone sessions</option>` +
+    vs.map(v => `<option value="${v.id}">${esc(v.name)}${v.tier ? ` · D${v.tier}` : ""} · ${tsShort(v.ts)}</option>`).join("");
+  // a session that slid out of the window falls back to all, never to a
+  // different one — the same stale-key rule the site's controls follow
+  if ([...sel.options].some(o => o.value === prev)) sel.value = prev;
+  else { PR.sess = null; sel.value = "*"; }
+}
+function prFightOpts() {
+  const sel = $("cbFight");
+  if (!PR.run) { sel.hidden = true; return; }
+  const fights = PR.run.seg.fights.filter(f => f.total > 0 || f.taken > 0)
+    .filter(f => PR.sess == null || f.zv === PR.sess)
+    .sort((a, b) => b.start - a.start);
+  sel.hidden = !fights.length;
+  const prev = PR.fight;
+  sel.innerHTML = `<option value="*">All fights</option>` +
+    fights.slice(0, 300).map(f => `<option value="${esc(E.fkey(f))}">${esc(f.mob)} · ${tsShort(f.start)} · ${fmtN(f.total)} dmg</option>`).join("");
+  if ([...sel.options].some(o => o.value === prev)) sel.value = prev;
+  else { PR.fight = "*"; sel.value = "*"; }
+}
+
+function renderParser() {
+  const empty = $("cbEmpty"), report = $("lpReport");
+  const has = !!(PR.run && PR.run.P.events.length);
+  empty.hidden = has;
+  report.hidden = !has;
+  $("plaques").hidden = !has;
+  $("cbViews").hidden = !has;
+  if (!has) { $("whoLine").innerHTML = ""; $("cbScope").hidden = true; $("cbFight").hidden = true; return; }
+
+  const { P, seg, side } = PR.run;
+  const w = P.who;
+  const pets = [...new Set(side.claims.names.filter(c => c.kind === "pet").map(c => c.name))];
+  const charms = [...new Set(side.claims.names.filter(c => c.kind === "charm").map(c => c.name))];
+  const here = seg.visits.length ? seg.visits[seg.visits.length - 1] : null;
+  $("whoLine").innerHTML = `<span class="who-name">${esc(P.owner || "—")}</span>` +
+    (w ? `<span class="who-meta">${esc(w.race)} · ${esc(w.classes)}</span>` : "") +
+    (here ? `<span class="who-meta">${esc(here.name)}${here.tier ? ` · D${here.tier}` : ""}</span>` : "") +
+    (pets.length ? `<span class="who-pet">pets: ${esc(pets.slice(0, 3).join(", "))}</span>` : "") +
+    (charms.length ? `<span class="who-pet">charm: ${esc(charms.slice(0, 2).join(", "))}</span>` : "") +
+    (seg.levels.length ? `<span class="who-lvl">levels ${seg.levels[0]}–${seg.levels[seg.levels.length - 1]}</span>` : "");
+
+  const t = $("cbTrunc");
+  t.hidden = PR.win.length < PR_WIN_LINES;
+  if (!t.hidden) t.textContent = `Reading the freshest ${fmtN(PR_WIN_LINES)} lines of your log — earlier play isn't in this report.`;
+
+  prVisitOpts();
+  prFightOpts();
+  EQLLogView.render(PR.run, prSel());
+  // everyone's damage is a companion panel, not one of the site's — the site
+  // report is your own side only, and a group meter is the thing you actually
+  // want on the second monitor
+  $("prRaid").innerHTML = raidHtml();
+  paintParserView();
+}
+
+function paintParserView() {
+  for (const el of document.querySelectorAll("#lpReport .lpview")) el.hidden = el.dataset.lpview !== PR.view;
+  for (const b of document.querySelectorAll("#cbViews .seg__b")) b.classList.toggle("is-on", b.dataset.lpview === PR.view);
 }
 
 /* ── combat tab: live per-fight and session stats ─────────────────────────
@@ -3472,7 +3614,7 @@ function capLive() {
 function combatSeed(file, text) {
   CB.owner = (file.match(/eqlog_([^_]+)_/) || [])[1] || null;
   CB.hist = []; CB.histKeys = new Set(); CB.encHist = []; CB.encKeys = new Set();
-  CB.live = []; CB.run = null; CB.session = null; CB.sel = null; CB.raidSel = null;
+  CB.live = []; CB.run = null; CB.session = null; CB.raidSel = null;
   CB.encCache = new Map(); CB.trunc = false; CB.raidZero = null;
   // the bootstrap tail can be 40 MB; slice and parse off the handler's stack
   setTimeout(() => {
@@ -3490,6 +3632,11 @@ function combatSeed(file, text) {
       const r = combatParse(lines.slice(0, cut));
       if (r) combatFreeze(r);
     }
+    // the Parser's window spans visits, so it takes the whole seed, not the
+    // slice from the last zone line
+    PR.win = []; PR.zoneLine = null; PR.run = null; PR.sess = null; PR.fight = "*";
+    prPush(lines);
+    if (PR.open) prRun();
     combatSoon();
   }, 50);
 }
@@ -3500,6 +3647,8 @@ function combatFeed(lines) {
     if (CB_ZONE_RX.test(l)) combatRollVisit(l);
   }
   capLive();
+  prPush(lines);
+  prSoon();
   CB.dirty = true;
   combatSoon();
 }
@@ -3839,11 +3988,6 @@ function combatRun() {
 // merged fight list, newest first. The engine emits fights in CLOSE order (an
 // idle-closed fight lands after kills that happened mid-way through it), so
 // sort by start time or the list reads shuffled.
-function combatRows() {
-  const rows = CB.hist.slice();
-  if (CB.run) for (const f of CB.run.seg.fights) if (f.total > 0 || f.taken > 0) rows.push(combatRow(f, CB.run));
-  return rows.sort((a, b) => b.ts - a.ts);
-}
 
 const fmtN = n => Math.round(n).toLocaleString();
 const fmtDur = s => s >= 3600 ? `${Math.floor(s / 3600)}h${String(Math.floor(s % 3600 / 60)).padStart(2, "0")}m` : `${Math.floor(s / 60)}m`;
@@ -3854,80 +3998,17 @@ const fmtCu = cu => {
   return p ? `${fmtN(p)}p ${g}g` : g ? `${g}g ${s}s` : `${s}s ${cu % 10}c`;
 };
 
+/* The fast per-visit path only owns the live meter now: the fights table, the
+   plaques and every panel come from PR's session parse through render.js.
+   Redrawing the meter is cheap (raidTable is memoized per run), but it still
+   only happens when the panel it lives in is actually on screen. */
 function renderCombat() {
-  const sEl = $("cbSession"), body = $("cbBody"), empty = $("cbEmpty");
-  const rows = combatRows();
-  if (!rows.length && !CB.session) { sEl.hidden = true; body.innerHTML = ""; empty.hidden = false; return; }
-  empty.hidden = true;
-  if (CB.session) {
-    const { a, kills } = CB.session;
-    const hrs = a.activeSecs / 3600;
-    const visit = CB.run.seg.visits[CB.run.seg.visits.length - 1] || null;
-    const cell = (v, label) => `<span class="stat"><b>${v}</b> ${label}</span>`;
-    sEl.innerHTML =
-      (visit ? `<span class="stat cb-zone">${esc(visit.name)}${visit.tier ? " · tier " + visit.tier : ""}</span>` : "") +
-      cell(fmtDur(a.activeSecs), "active") +
-      cell(fmtN(a.total), "damage") +
-      (a.combatSec >= 5 ? cell(fmtN(a.total / a.combatSec), "dps") : "") +
-      cell(kills, "kills") +
-      (a.xp ? cell(a.xp.toFixed(1) + "%", "xp") : "") +
-      (a.activeSecs >= 120 && kills ? cell((kills / hrs).toFixed(0), "kills/h") : "") +
-      (a.activeSecs >= 120 && a.xp ? cell((a.xp / hrs).toFixed(1) + "%", "xp/h") : "") +
-      (a.taken.dmg ? cell(fmtN(a.taken.dmg), "taken") : "") +
-      (a.copper ? cell(fmtCu(a.copper), "coin") : "");
-    sEl.hidden = false;
-  } else sEl.hidden = true;
-  if (!rows.length) { body.innerHTML = raidHtml(); return; }
-  let h = raidHtml();
-  h += `<table class="qtab cbt"><thead><tr><th>Time</th><th>Mob</th><th></th><th>Dur</th><th>Damage</th><th>DPS</th><th>Taken</th><th>XP</th></tr></thead><tbody>`;
-  for (const row of rows) {
-    const open = CB.sel === row.key;
-    h += `<tr class="cbr${row.team ? "" : " cb-dim"}" data-fight="${esc(row.key)}">` +
-      `<td class="dim">${tsShort(row.ts)}</td>` +
-      `<td class="cb-mob">${esc(row.mob)}</td>` +
-      `<td title="${row.killed ? (row.team ? "your kill" : "killed by someone else") : "no death line"}">${row.killed ? (row.team ? "✓" : "✕") : ""}</td>` +
-      `<td>${row.secs}s</td>` +
-      `<td class="cb-dmg">${fmtN(row.total)}</td>` +
-      `<td>${fmtN(row.total / row.secs)}</td>` +
-      `<td>${row.taken ? fmtN(row.taken) : "—"}</td>` +
-      `<td>${row.xp ? row.xp.toFixed(1) + "%" : "—"}</td></tr>`;
-    if (open) h += `<tr class="cbd"><td colspan="8">${combatDetailHtml(row)}</td></tr>`;
-  }
-  body.innerHTML = h + "</tbody></table>";
+  if (!PR.open || PR.view !== "damage") return;
+  const el = $("prRaid");
+  if (el) el.innerHTML = raidHtml();
 }
 
-function combatDetail(row) {
-  if (row.detail) return row.detail;
-  if (!CB.run) return null;
-  const f = CB.run.seg.fights.find(x => E.fkey(x) === row.key);
-  if (!f) return null;
-  row.detail = combatDetailFor(f, CB.run);
-  return row.detail;
-}
 
-function combatDetailHtml(row) {
-  const d = combatDetail(row);
-  if (!d) return `<span class="dim">no detail for this fight</span>`;
-  const src = d.sources.map(s =>
-    `<tr><td>${esc(s.name)}${s.side !== "you" ? ` <span class="dim">${s.side}</span>` : ""}</td>` +
-    `<td>${s.hits}</td><td class="cb-dmg">${fmtN(s.dmg)}</td><td>${fmtN(s.max)}</td><td>${s.crit || "—"}</td></tr>`).join("");
-  const tkn = (d.takenBy || []).map(t =>
-    `<tr><td>${esc(t.src)} <span class="dim">${esc(t.name)}</span></td>` +
-    `<td>${t.hits}</td><td class="cb-dmg">${fmtN(t.dmg)}</td><td>${fmtN(t.max)}</td><td>${t.res || "—"}</td></tr>`).join("");
-  const bits = [];
-  if (row.you) bits.push(`you ${fmtN(row.you)}`);
-  if (row.pet) bits.push(`pet ${fmtN(row.pet)}`);
-  if (row.charm) bits.push(`charm ${fmtN(row.charm)}`);
-  for (const [how, n] of d.avoid || []) bits.push(`${how} ×${n}`);
-  if (d.healTot) bits.push(`healed ${fmtN(d.healTot)}`);
-  if (d.healInTot) bits.push(`took heals ${fmtN(d.healInTot)}`);
-  if (d.petTaken) bits.push(`pet took ${fmtN(d.petTaken)}`);
-  if (row.coin) bits.push(fmtCu(row.coin));
-  return (src ? `<table class="cbt-sub"><thead><tr><th>Source</th><th>Hits</th><th>Damage</th><th>Max</th><th>Crits</th></tr></thead><tbody>${src}</tbody></table>` : "") +
-    (tkn ? `<table class="cbt-sub"><thead><tr><th>Hit you with</th><th>Hits</th><th>Damage</th><th>Max</th><th>Resisted</th></tr></thead><tbody>${tkn}</tbody></table>` : "") +
-    swingHtml(d.swings) +
-    (bits.length ? `<p class="dim cb-line">${bits.join(" · ")}</p>` : "");
-}
 
 /* ── swing intervals ──────────────────────────────────────────────────────
    How fast each actor is actually swinging, per weapon verb. Built for the
@@ -3935,29 +4016,7 @@ function combatDetailHtml(row) {
    interval. Both the number and its range are shown because the range is what
    says whether a difference is real — two fights whose ranges overlap have
    not measurably changed, however different the middle numbers look. */
-const SW = { sort: "swings", dir: 1 };
 const SIDE_LABEL = { you: "you", pet: "your pet", charm: "your charm", othermob: "other", other: "other" };
-function swingHtml(rows) {
-  if (!rows || !rows.length) return "";
-  const key = r => SW.sort === "actor" ? r.actor.toLowerCase() : SW.sort === "verb" ? r.verb : r[SW.sort];
-  const sorted = rows.slice().sort((a, b) => {
-    const ka = key(a), kb = key(b);
-    return ((ka < kb ? -1 : ka > kb ? 1 : 0) * -SW.dir) || (b.swings - a.swings);
-  });
-  const arrow = k => SW.sort === k ? (SW.dir > 0 ? " ▼" : " ▲") : "";
-  const th = (k, label) => `<th class="is-sort" data-swsort="${k}">${label}${arrow(k)}</th>`;
-  return `<div class="cb-swingwrap"><table class="cbt-sub cb-swings"><thead><tr>` +
-    th("actor", "Swinging") + th("verb", "Attack") + th("swings", "Swings") +
-    th("engaged", "Engaged") + th("interval", "Every") + `<th>95% range</th>` +
-    `</tr></thead><tbody>` +
-    sorted.map(r => `<tr><td>${esc(r.actor)} <span class="dim">${SIDE_LABEL[r.side] || r.side}</span></td>` +
-      `<td>${esc(r.verb)}</td><td>${r.swings}</td><td>${r.engaged}s</td>` +
-      `<td class="cb-dmg">${r.interval.toFixed(2)}s</td>` +
-      `<td class="dim">${r.lo.toFixed(2)}–${r.hi == null ? "?" : r.hi.toFixed(2)}s</td></tr>`).join("") +
-    `</tbody></table></div><p class="dim cb-line cb-swingnote">Seconds between swings — not the weapon's ` +
-    `delay stat, since haste and double attacks fold in. For one actor across two fights those cancel: ` +
-    `overlapping ranges mean no measurable change.</p>`;
-}
 
 /* Everyone's damage — the raid meter, on the Combat tab too. Collapsed to its
    header row until clicked; each actor row expands to that actor's source
@@ -4284,9 +4343,11 @@ async function main() {
   $("setGeneric").checked = s.genericEverywhere;
   $("setWitnessed").checked = s.witnessed;
 
-  renderStatus(); renderTracker(); renderFeed(); renderData();
+  loadViews();
+  renderStatus(); renderFeed(); renderData();
   populateZoneSel(); renderZoneTab(); populateQuestFilters(); populateInvFilters(); renderQuests();
   populateSkyFilters(); renderSky(); initTip();
+  parserTabActive(true); // Parser is the tab the app opens on
   wireValet(); valetReload(); renderValet(); pushValet();
 
   window.companion.onBootstrap(onBootstrap);
@@ -4309,6 +4370,46 @@ async function main() {
     document.querySelectorAll(".pane").forEach(p => p.classList.toggle("on", p.id === "tab-" + b.dataset.tab));
     parserTabActive(b.dataset.tab === "parser");
   }));
+
+  /* The Parser tab is the site's report in the app's window. render.js draws
+     it; this wiring says which slice, and routes the clicks it makes back
+     through one redraw so the selects and the panels can never disagree. */
+  EQLLogView.config({
+    dataBase: "eqlt://app/log-parser/data/",
+    onRerender: () => { if (PR.run) EQLLogView.render(PR.run, prSel()); },
+    onFocusFight: (fid) => { PR.fight = fid; renderParser(); },
+  });
+  $("cbViews").addEventListener("click", e => {
+    const b = e.target.closest("[data-lpview]");
+    if (!b || b.dataset.lpview === PR.view) return;
+    PR.view = b.dataset.lpview;
+    paintParserView();
+    if (PR.view === "damage") renderCombat(); // the meter redraws on view, not on a timer it can't see
+  });
+  $("cbScope").addEventListener("change", e => {
+    PR.sess = e.target.value === "*" ? null : +e.target.value;
+    PR.fight = "*";               // a fight from another session isn't in this slice
+    renderParser();
+  });
+  $("cbFight").addEventListener("change", e => { PR.fight = e.target.value; renderParser(); });
+  $("cbCopy").addEventListener("click", async () => {
+    if (!PR.run) return;
+    try {
+      await navigator.clipboard.writeText(EQLLogView.summary(PR.run, prSel()));
+      const b = $("cbCopy"); b.textContent = "Copied";
+      setTimeout(() => { b.textContent = "Copy summary"; }, 1500);
+    } catch {}
+  });
+
+  // sub-tab strips: Inventory (bags | recent loot) and Quests (turn-ins |
+  // tracked | all). Same shape, so one helper wires both.
+  const wireViews = (stripId, attr, paint) => $(stripId).addEventListener("click", e => {
+    const b = e.target.closest("[data-" + attr + "]");
+    if (!b) return;
+    paint(b.dataset[attr]);
+  });
+  wireViews("invViews", "invview", v => setInvView(v));
+  wireViews("qViews", "qview", v => setQuestView(v));
 
   $("onlyQuest").addEventListener("change", renderFeed);
   $("feedFilter").addEventListener("input", renderFeed);
@@ -4385,17 +4486,17 @@ async function main() {
     saveSkyDropPrefs(); renderSky();
   });
   $("skyBody").addEventListener("click", e => {
-    const s = e.target.closest("[data-skdsort]");
+    const s = e.target.closest("[data-skdtsort]");
     if (s) {
-      const k = s.dataset.skdsort, c = SKD_COLS.find(x => x.k === k);
+      const k = s.dataset.skdtsort, c = SKD_TCOLS.find(x => x.k === k);
       SKD.dir = SKD.sort === k ? -SKD.dir : (c ? c.d0 : -1);
       SKD.sort = k; saveSkyDropPrefs(); renderSky(); return;
     }
-    const t = e.target.closest("[data-skdtsort]");
-    if (t) {
-      const k = t.dataset.skdtsort, c = SKD_TCOLS.find(x => x.k === k);
-      SKD.tdir = SKD.tsort === k ? -SKD.tdir : (c ? c.d0 : -1);
-      SKD.tsort = k; saveSkyDropPrefs(); renderSky(); return;
+    const cs = e.target.closest("[data-skdcsort]");
+    if (cs) {
+      const k = cs.dataset.skdcsort, c = SKD_CCOLS.find(x => x.k === k);
+      SKD.cdir = SKD.csort === k ? -SKD.cdir : (c ? c.d0 : 1);
+      SKD.csort = k; saveSkyDropPrefs(); renderSky(); return;
     }
     // the same per-test skip menu the boss board's right-click opens
     const d = e.target.closest("button.skd__u");
@@ -4438,7 +4539,6 @@ async function main() {
   $("qbEra").addEventListener("change", e => { QB.era = e.target.value; renderQuestBrowser(); });
   $("qbLvlMin").addEventListener("input", e => { QB.lvlMin = e.target.value; renderQuestBrowser(); });
   $("qbLvlMax").addEventListener("input", e => { QB.lvlMax = e.target.value; renderQuestBrowser(); });
-  $("trkSearch").addEventListener("input", e => { TRACKER_Q = e.target.value; renderTracker(); });
   $("trkAtlas").addEventListener("click", () => {
     // Land on the player's zone with the atlas sidebar open on KILLS; the
     // atlas root otherwise.
@@ -4494,14 +4594,6 @@ async function main() {
   });
 
   document.addEventListener("click", e => {
-    // swing-table headers sit INSIDE an expanded fight row, so they have to
-    // win before [data-fight] or sorting would collapse the fight instead
-    const sw = e.target.closest("[data-swsort]");
-    if (sw) {
-      const k = sw.dataset.swsort;
-      if (SW.sort === k) SW.dir = -SW.dir; else { SW.sort = k; SW.dir = k === "actor" || k === "verb" ? -1 : 1; }
-      renderCombat(); return;
-    }
     // window chips and sort headers sit in/under the meter's own header line,
     // so both have to win before the toggle collapses the table under them
     const rr = e.target.closest("[data-raidreset]");
@@ -4518,8 +4610,6 @@ async function main() {
     if (rt) { CB.raidOpen = !CB.raidOpen; renderCombat(); return; }
     const ra = e.target.closest("[data-raidactor]");
     if (ra) { CB.raidSel = CB.raidSel === ra.dataset.raidactor ? null : ra.dataset.raidactor; renderCombat(); return; }
-    const cf = e.target.closest("[data-fight]");
-    if (cf) { CB.sel = CB.sel === cf.dataset.fight ? null : cf.dataset.fight; renderCombat(); return; }
     const tk = e.target.closest("[data-track]");
     if (tk) { toggleTrack(tk.dataset.track); return; }
     const tv = e.target.closest("[data-trackview]");
