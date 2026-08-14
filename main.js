@@ -8,6 +8,7 @@
 const { app, BrowserWindow, Menu, ipcMain, dialog, shell, globalShortcut, protocol } = require("electron");
 const fs = require("fs");
 const path = require("path");
+const { moveGeom, resizeGeom } = require("./overlay-geom");
 
 const isDev = !app.isPackaged;
 
@@ -81,6 +82,21 @@ function saveSettings() {
 /* ── windows ──────────────────────────────────────────────────────────────*/
 let mainWin = null;
 let overlayWin = null;
+/* Authoritative overlay geometry in DIPs — see overlay-geom.js. We only ever
+   WRITE this to the OS via applyOverlayGeom(); we never read the live window
+   bounds back and re-apply them, which is what grew the window on every drag.
+   `height` here is always the EXPANDED height; the collapsed bar height is
+   applied on top so a rolled-up overlay still remembers its real size. */
+let overlayGeom = null;
+const overlayAppliedHeight = () =>
+  SETTINGS.overlay.collapsed ? OVERLAY_BAR_H : Math.max(70, overlayGeom.height);
+function applyOverlayGeom() {
+  if (!overlayWin || !overlayGeom) return;
+  overlayWin.setBounds({
+    x: overlayGeom.x, y: overlayGeom.y,
+    width: overlayGeom.width, height: overlayAppliedHeight(),
+  });
+}
 
 function createMainWindow() {
   mainWin = new BrowserWindow({
@@ -161,9 +177,17 @@ function createOverlayWindow() {
   overlayWin.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
   overlayWin.loadFile(path.join(__dirname, "overlay", "overlay.html"));
   overlayWin.webContents.on("did-finish-load", () => { sendOverlayInit(); applyClickThrough(); });
-  overlayWin.on("moved", saveOverlayBounds);
-  overlayWin.on("resized", saveOverlayBounds);
-  overlayWin.on("closed", () => { overlayWin = null; SETTINGS.overlay.shown = false; saveSettings(); notifyOverlayState(); });
+  /* Seed the authoritative geometry ONCE from the just-created window (reading
+     bounds a single time is fine — the drift only came from doing it in a loop
+     on every pointermove). Store the EXPANDED height even if we open collapsed. */
+  const gb = overlayWin.getBounds();
+  overlayGeom = {
+    x: b ? b.x : gb.x,
+    y: b ? b.y : gb.y,
+    width: b ? b.width : gb.width,
+    height: o.collapsed ? Math.max(70, o.height || 240) : (b ? b.height : gb.height),
+  };
+  overlayWin.on("closed", () => { overlayWin = null; overlayGeom = null; SETTINGS.overlay.shown = false; saveSettings(); notifyOverlayState(); });
 }
 
 /* Collapsed bounds must not become the remembered size — expanding would
@@ -173,10 +197,14 @@ function createOverlayWindow() {
    settings.json. */
 let boundsTimer = null;
 function saveOverlayBounds() {
-  if (!overlayWin) return;
-  const g = overlayWin.getBounds();
-  SETTINGS.overlay.bounds = g;
-  if (!SETTINGS.overlay.collapsed) SETTINGS.overlay.height = g.height;
+  if (!overlayGeom) return;
+  // Persist our OWN geometry, not overlayWin.getBounds() — reading the live
+  // bounds back is exactly the round-trip that used to accumulate.
+  SETTINGS.overlay.bounds = {
+    x: overlayGeom.x, y: overlayGeom.y,
+    width: overlayGeom.width, height: overlayAppliedHeight(),
+  };
+  if (!SETTINGS.overlay.collapsed) SETTINGS.overlay.height = overlayGeom.height;
   clearTimeout(boundsTimer);
   boundsTimer = setTimeout(saveSettings, 400);
 }
@@ -816,12 +844,11 @@ ipcMain.on("overlay:menu", () => {
 function setCollapsed(on) {
   const o = SETTINGS.overlay;
   if (o.collapsed === on) return;
-  if (on && overlayWin) o.height = overlayWin.getBounds().height;
   o.collapsed = on;
-  if (!overlayWin) return;
-  const b = overlayWin.getBounds();
-  overlayWin.setBounds({ x: b.x, y: b.y, width: b.width,
-                         height: on ? OVERLAY_BAR_H : Math.max(70, o.height || 240) });
+  // overlayGeom.height is already the expanded height; applyOverlayGeom picks the
+  // bar height when collapsed. No getBounds round-trip.
+  if (overlayGeom) o.height = overlayGeom.height;
+  applyOverlayGeom();
 }
 /* Transparent frameless windows have NO native resize borders on Windows —
    the overlay's corner grip drives resizing through here instead. */
@@ -830,16 +857,18 @@ function setCollapsed(on) {
    reaches the page — which is where the settings menu now lives. Deltas, not
    absolute coordinates, so the pointer and the window can't drift apart. */
 ipcMain.on("overlay:move", (_e, dx, dy) => {
-  if (!overlayWin) return;
-  const b = overlayWin.getBounds();
-  overlayWin.setBounds({ ...b, x: Math.round(b.x + (+dx || 0)), y: Math.round(b.y + (+dy || 0)) });
+  if (!overlayWin || !overlayGeom) return;
+  // Advance our own x/y by the delta; width/height pass through untouched, so a
+  // move can never grow the window regardless of display scale. See overlay-geom.
+  overlayGeom = moveGeom(overlayGeom, dx, dy);
+  applyOverlayGeom();
   saveOverlayBounds();
 });
 ipcMain.on("overlay:resize", (_e, w, h) => {
-  if (!overlayWin) return;
-  const b = overlayWin.getBounds();
-  overlayWin.setBounds({ x: b.x, y: b.y,
-    width: Math.min(900, Math.max(180, ~~w)), height: Math.min(900, Math.max(70, ~~h)) });
+  if (!overlayWin || !overlayGeom) return;
+  overlayGeom = resizeGeom(overlayGeom, w, h);
+  applyOverlayGeom();
+  saveOverlayBounds();
 });
 ipcMain.on("overlay:opacity", (_e, v) => applyOverlayPrefs({ opacity: v }));
 ipcMain.on("feed:event", (_e, ev) => {
