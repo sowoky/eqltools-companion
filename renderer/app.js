@@ -610,23 +610,14 @@ function renderZoneTab() {
 const INV = { file: null, mtime: 0, rows: null, problem: null };
 const IV = { tab: "all", trade: "", cls: "", sort: "where", dir: 1 };
 const IV_OPEN = new Set(); // expanded rows, keyed by row id
-const WORN_RX = /^(Charm|Ear|Head|Face|Neck|Shoulders|Arms|Back|Wrist|Range|Hands|Primary|Secondary|Fingers?|Ring|Chest|Legs|Feet|Waist|Ammo|Power Source)(-Slot\d+)?$/;
-/* The client writes "General 1" WITH a space but "Bank1" without — matchers
-   take an optional space so a format nudge doesn't reclassify. No real dump
-   with the Dragon's Hoard open has been captured yet, so its location string
-   is unconfirmed — the prefix matcher is deliberately loose, and any location
-   nothing matches lands in Elsewhere instead of vanishing. */
-const INV_SECTIONS = [
-  ["worn", "Worn", loc => WORN_RX.test(loc)],
-  ["bags", "Bags", loc => /^(General ?\d+|Held$|Any Slot$)/.test(loc)],
-  ["bank", "Bank", loc => /^Bank ?\d+/.test(loc)],
-  ["shared", "Shared bank", loc => /^SharedBank/.test(loc)],
-  ["depot", "Depot", loc => /^Personal-Depot/.test(loc)],
-  ["hoard", "Dragon's hoard", loc => /^Dragon/i.test(loc)],
-  ["keyring", "Key ring", loc => /^KeyRing/.test(loc)],
-  ["other", "Elsewhere", () => true],
-];
-const invSection = loc => INV_SECTIONS.find(([, , test]) => test(loc))[0];
+/* The location vocabulary is /_shared/gear-score.js (vendored) — the site's
+   /gear, /sky and /valet read the same dump and a second classifier here is
+   exactly the fork the vendor script exists to prevent. It also carries the
+   fix this file was wrong about: `Any Slot` is a WORN slot, not a bag, and
+   the storage bins (Equipment, Activated, the loose exaltation stones) are a
+   section of their own instead of 113 rows landing in Elsewhere. */
+const INV_SECTIONS = window.EQLGearScore.LOC_SECTIONS;
+const invSection = window.EQLGearScore.locSection;
 
 const TIER_RX = /\s\+(\d+)$/; // the same "+N" decoration /gear parses
 function parseInventory(text) {
@@ -2114,28 +2105,15 @@ function skyHave(have, name, seen) {
    number means nothing on a worn slot or the depot.
 
    'General 1-Slot2' is bag one, slot two — the badge prints both, since the
-   bag number alone still leaves you opening it and reading. */
+   bag number alone still leaves you opening it and reading.
+
+   The badge itself is /_shared/gear-score.js (vendored), so the site's Sky page
+   and this tab name a place the same way — including the storage bins, which
+   this file used to print as the bare location string ("equipment", which reads
+   like a worn slot). */
 const SKY_BAG_SVG = `<svg class="skl__i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 5.5h8.8l-.9 7.4a1 1 0 0 1-1 .9H5.5a1 1 0 0 1-1-.9z"/><path d="M6 5.5V4a2 2 0 0 1 4 0v1.5"/></svg>`;
 const SKY_COIN_SVG = `<svg class="skl__i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="5.2"/><circle cx="8" cy="8" r="1.9"/></svg>`;
-const SKY_LOC_WORD = [
-  [/^SharedBank ?(\d+)/, "shared bank"],
-  [/^Personal-Depot ?(\d+)?/, "depot"],
-  [/^Dragon/i, "hoard"],
-  [/^KeyRing/, "key ring"],
-  [/^Cursor/, "cursor"],
-];
-function skyBadge(loc) {
-  let m;
-  if ((m = /^General ?(\d+)(?:-Slot(\d+))?/.exec(loc)))
-    return { kind: "bag", n: +m[1], sub: m[2] ? +m[2] : null,
-             title: `Bag ${m[1]}${m[2] ? `, slot ${m[2]}` : ""}` };
-  if ((m = /^Bank ?(\d+)(?:-Slot(\d+))?/.exec(loc)))
-    return { kind: "bank", n: +m[1], sub: m[2] ? +m[2] : null,
-             title: `Bank slot ${m[1]}${m[2] ? `, slot ${m[2]}` : ""}` };
-  for (const [rx, word] of SKY_LOC_WORD) if (rx.test(loc)) return { kind: "word", word, title: loc };
-  if (WORN_RX.test(loc)) return { kind: "word", word: "worn", title: `Worn — ${loc}` };
-  return { kind: "word", word: loc.toLowerCase(), title: loc };
-}
+const skyBadge = window.EQLGearScore.locBadge;
 /* Dump rows by item, in the order the client wrote them, keyed both raw and
    decoration-stripped like every other lookup here. Built once per model —
    asking each of 95 tests' components to re-scan the whole dump was the same

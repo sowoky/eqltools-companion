@@ -1,3 +1,5 @@
+/* DO NOT EDIT — generated copy of public/_shared/gear-score.js (companion/scripts/sync-vendor.mjs).
+   Edit the original; both the site and this app load the same logic. */
 /* Gear scoring — the ONE implementation, loaded by /gear and /sky.
    Edit here; never fork. (Same contract as tier.js and spell-engine.js.)
 
@@ -22,13 +24,25 @@
   const A = window.EQL_ATTRIBUTES;
   const statAt = window.EQLTier.statAt, statsAt = window.EQLTier.statsAt;
 
-  /* ── slots ───────────────────────────────────────── */
-  // Inventory Location vocabulary; paired slots hold two items.
+  /* ── slots ───────────────────────────────────────────────────────────────
+     SLOTS is the placement vocabulary — the slot names the wiki puts on an
+     item, and the only slots a candidate can be assigned to.
+
+     ANY ("Any Slot") is worn but is NOT a placement the item data can name:
+     it takes anything the character's classes can equip, so no item record
+     ever says "Any Slot". Two positions, and they are where the best gear
+     left over after every other slot is filled goes (Kyle, 2026-08-14).
+     WORN_SLOTS is therefore what the DUMP can report you wearing, and it is
+     what worn AC and worn stat totals must be summed over — reading only
+     SLOTS silently dropped both of Kyle's equipped shields. */
+  const ANY = "Any Slot";
   const SLOTS = ["Charm", "Ear", "Head", "Face", "Neck", "Shoulders", "Arms",
     "Back", "Wrist", "Range", "Hands", "Primary", "Secondary", "Fingers",
     "Chest", "Legs", "Feet", "Waist", "Ammo", "Power Source"];
-  const PAIRED = { Ear: 2, Wrist: 2, Fingers: 2 };
-  const WORN_RX = /^(Charm|Ear|Head|Face|Neck|Shoulders|Arms|Back|Wrist|Range|Hands|Primary|Secondary|Fingers?|Ring|Chest|Legs|Feet|Waist|Ammo|Power Source)$/;
+  const WORN_SLOTS = SLOTS.concat([ANY]);
+  const PAIRED = { Ear: 2, Wrist: 2, Fingers: 2, [ANY]: 2 };
+  const WORN_RX = /^(Charm|Ear|Head|Face|Neck|Shoulders|Arms|Back|Wrist|Range|Hands|Primary|Secondary|Fingers?|Ring|Chest|Legs|Feet|Waist|Ammo|Power Source|Any Slot)$/;
+  const TWO_H = (rec) => /^2H|Two/i.test((rec && rec.skill) || "");
 
   /* ── class mechanics ─────────────────────────────── */
   const MANA_STAT = { BRD: "int", SHD: "int", NEC: "int", WIZ: "int", MAG: "int", ENC: "int",
@@ -64,29 +78,116 @@
 
   const seals = (t) => `<span class="fine">${t}</span>`;
 
-  /* ── inventory ───────────────────────────────────── */
-  // The dump names carry the tier ("Giant Snake Fang +4", same item ID as +0).
+  /* ── inventory ───────────────────────────────────────────────────────────
+     ONE read of `/outputfile inventory`, for every surface that takes one:
+     /gear (worn slots), /sky (held counts and where a piece is), /valet (the
+     whole owned corpus) and the companion app. Edit here; never fork.
+
+     The dump is tab-separated, CRLF, with "Empty" placeholder rows and TWO
+     header rows (the KeyRing table repeats Location/Name/ID) — both skipped by
+     shape, not by first column. Names carry the tier ("Giant Snake Fang +4",
+     same item ID as +0) and exaltation stones carry a "(Exaltation)" suffix.
+
+     STORAGE rows are three columns where the rest are five (no Count, no
+     Slots), which is exactly how the storage bins can be told apart. They were
+     undocumented until 2026-08-14 and every agent asked said the export did not
+     carry them; it does — 113 rows on the reference dump. */
   const TIER_RX = /\s\+(\d+)$/;
+  const EXALT_RX = /\s*\(Exaltation\)$/;
   function baseName(name) {
     const plain = String(name).replace(/\*+$/, "");   // the dump stars some items
     const m = TIER_RX.exec(plain);
     return m ? { base: plain.slice(0, m.index), tier: Math.min(10, +m[1]) }
              : { base: plain, tier: 0 };
   }
-  function parseInventory(text) {
-    const slots = {};
-    SLOTS.forEach((s) => { slots[s] = []; });
+
+  /* A location string is a chain: "General 8-Slot6-Slot7" is a thing inside a
+     thing inside bag 8. The root decides which place you walk to. */
+  const rootLoc = (loc) => String(loc).replace(/(-Slot\d+)+$/, "");
+  /* The client writes "General 1" WITH a space and "Bank1" without, so every
+     matcher takes an optional one. Anything nothing matches lands in
+     "elsewhere" rather than vanishing. */
+  const LOC_SECTIONS = [
+    ["worn",    "Worn",           (r) => WORN_RX.test(r)],
+    ["bags",    "Bags",           (r) => /^(General ?\d+|Held)$/.test(r)],
+    ["storage", "Storage",        (r) => /^(Equipment|Activated|Augmentation)$/.test(r)],
+    ["bank",    "Bank",           (r) => /^Bank ?\d+$/.test(r)],
+    ["shared",  "Shared bank",    (r) => /^SharedBank ?\d*$/.test(r)],
+    ["depot",   "Depot",          (r) => /^Personal-Depot/.test(r)],
+    ["hoard",   "Dragon's hoard", (r) => /^Dragon/i.test(r)],
+    ["keyring", "Key ring",       (r) => /^KeyRing/.test(r)],
+    ["other",   "Elsewhere",      () => true],
+  ];
+  const SECTION_LABEL = {};
+  LOC_SECTIONS.forEach(([k, label]) => { SECTION_LABEL[k] = label; });
+  const locSection = (loc) => LOC_SECTIONS.find(([, , t]) => t(rootLoc(loc)))[0];
+
+  /* Every non-empty row the dump holds, at full granularity — the grouping is
+     the caller's. `sub` is a row nested inside another (a bag's contents, or a
+     stone socketed into a worn item); `exalt` is an exaltation stone, which
+     names itself after the item it was rendered from ("Shining Metallic Robes
+     (Exaltation)") and would otherwise resolve to that item's gear record and
+     be scored as if it were the robe. */
+  function parseRows(text) {
+    const rows = [];
     for (const raw of String(text).split(/\r?\n/)) {
       const f = raw.replace(/\r$/, "").split("\t");
       if (f.length < 3 || (f[1] === "Name" && f[2] === "ID")) continue;
       const loc = f[0], name = f[1];
       if (!name || name === "Empty") continue;
-      const m = WORN_RX.exec(loc);
-      if (!m) continue;                       // bags, bank, cursor, -SlotN augs
+      const exalt = EXALT_RX.test(name);
+      const b = baseName(name.replace(EXALT_RX, ""));
+      rows.push({
+        loc, root: rootLoc(loc), sec: locSection(loc),
+        name, base: b.base, tier: b.tier, exalt,
+        sub: /-Slot\d+$/.test(loc),
+        itemId: +f[2] || 0,
+        count: f.length > 3 ? (parseInt(f[3], 10) || 1) : 1,
+      });
+    }
+    return rows;
+  }
+
+  /* Where to walk, as data. Bags and bank get a container number and a slot
+     number because that is what gets your hand on the item; everywhere else a
+     number means nothing, so it gets a word. Kyle, 2026-08-10: "a little bag
+     icon with a number indicating the slot number 1-8, or a coin number showing
+     1-16. that helps people find that item." Rendering is the caller's — the
+     site and the app draw different chips off the same answer. */
+  const LOC_WORD = [
+    [/^SharedBank ?(\d+)?/, "shared bank"],
+    [/^Personal-Depot/, "depot"],
+    [/^Dragon/i, "hoard"],
+    [/^KeyRing/, "key ring"],
+    [/^Cursor/, "cursor"],
+    [/^Equipment/, "storage"],
+    [/^Activated/, "activated"],
+    [/^Augmentation/, "exaltation"],
+  ];
+  function locBadge(loc) {
+    let m;
+    if ((m = /^General ?(\d+)(?:-Slot(\d+))?/.exec(loc)))
+      return { kind: "bag", n: +m[1], sub: m[2] ? +m[2] : null,
+               title: `Bag ${m[1]}${m[2] ? `, slot ${m[2]}` : ""}` };
+    if ((m = /^Bank ?(\d+)(?:-Slot(\d+))?/.exec(loc)))
+      return { kind: "bank", n: +m[1], sub: m[2] ? +m[2] : null,
+               title: `Bank slot ${m[1]}${m[2] ? `, slot ${m[2]}` : ""}` };
+    for (const [rx, word] of LOC_WORD) if (rx.test(loc)) return { kind: "word", word, title: loc };
+    if (WORN_RX.test(rootLoc(loc))) return { kind: "word", word: "worn", title: `Worn — ${loc}` };
+    return { kind: "word", word: loc.toLowerCase(), title: loc };
+  }
+
+  /* The worn slots only, in the shape /gear's scorer wants. */
+  function parseInventory(text) {
+    const slots = {};
+    WORN_SLOTS.forEach((s) => { slots[s] = []; });
+    for (const r of parseRows(text)) {
+      if (r.sub) continue;                    // -SlotN augs are not the worn item
+      const m = WORN_RX.exec(r.loc);
+      if (!m) continue;                       // bags, bank, storage, cursor
       let slot = m[1];
       if (slot === "Finger" || slot === "Ring") slot = "Fingers";
-      const b = baseName(name);
-      slots[slot].push({ name, base: b.base, tier: b.tier });
+      slots[slot].push({ name: r.name, base: r.base, tier: r.tier });
     }
     return slots;
   }
@@ -159,7 +260,7 @@
     function wornStats() {
       const out = {};
       if (!equipped) return out;
-      for (const s of SLOTS) for (const e of equipped[s] || []) {
+      for (const s of WORN_SLOTS) for (const e of equipped[s] || []) {
         if (!e.rec || !e.rec.st) continue;
         for (const k in e.rec.st) out[k] = (out[k] || 0) + statAt(e.rec.st[k], e.tier);
       }
@@ -176,7 +277,7 @@
     function wornAC() {
       if (!equipped) return 0;
       let total = 0;
-      for (const s of SLOTS) for (const e of equipped[s] || []) {
+      for (const s of WORN_SLOTS) for (const e of equipped[s] || []) {
         if (e.rec && e.rec.st && e.rec.st.ac > 0) total += statAt(e.rec.st.ac, e.tier);
       }
       return total;
@@ -328,8 +429,12 @@
       // the upgrade-tier marker, with no combat effect yet
       for (const k in rec.sv || {}) if (k !== "v") sum += w.sv * rec.sv[k];
       if (rec.haste) sum += w.haste * rec.haste;
+      // A weapon's ratio only counts where it can swing. Two-handers deal
+      // double damage and double ratio in EQL (dannuic, chat — combat-stats.md
+      // "EQL-specific"), so the ratio term doubles for them; without that a 2H
+      // read as a strictly worse 1H and could never win a weapon comparison.
       if (rec.dmg && rec.dly && (placement === "Primary" || placement === "Secondary" || placement === "Range")) {
-        sum += w.ratio * 10 * statAt(rec.dmg, tier) / rec.dly;
+        sum += w.ratio * 10 * statAt(rec.dmg, tier) / rec.dly * (TWO_H(rec) ? 2 : 1);
       }
       return sum;
     }
@@ -364,8 +469,9 @@
   }
 
   window.EQLGearScore = {
-    SLOTS, PAIRED, WORN_RX, STAT_DEFS, RATES,
+    SLOTS, WORN_SLOTS, ANY, PAIRED, WORN_RX, TWO_H, STAT_DEFS, RATES,
     MANA_STAT, FULL_CASTER, PURE_MELEE, TANKS,
-    baseName, parseInventory, make,
+    LOC_SECTIONS, SECTION_LABEL, rootLoc, locSection, locBadge,
+    baseName, parseRows, parseInventory, make,
   };
 })();

@@ -1,3 +1,5 @@
+/* DO NOT EDIT — generated copy of public/sky/sky-core.js (companion/scripts/sync-vendor.mjs).
+   Edit the original; both the site and this app load the same logic. */
 /* Plane of Sky — the measurement layer, shared by /sky and the companion app.
 
    This file owns the log grammar, the inventory read, "what do you hold", and
@@ -171,20 +173,31 @@
   const parseLog = (text, me) => stream(me).text(text);
 
   /* ── inventory (optional) ───────────────────────────────────────────────
-     Worn slots plus bags and bank — a Sky component sits in a bag, not on your
-     head, so the worn-slot parser /gear uses is the wrong shape here. */
+     Every place the dump can hold a thing, not just the worn slots /gear
+     reads — a Sky component sits in a bag, a bank slot or the storage
+     Equipment bin, never on your head.
+
+     Locations are kept, not collapsed to a count: "you hold 1" and "it is in
+     bank slot 12" are the same question asked twice, and the second one is
+     what gets you off the island. Exaltation stones are excluded — a stone is
+     named after the item it was rendered from, so counting one would report a
+     component you no longer own.
+
+     Returns base name -> { n, where: [{ loc, sec, count }] }. */
   function parseInv(text) {
     const held = new Map();
-    for (const raw of String(text).split(/\r?\n/)) {
-      const f = raw.replace(/\r$/, "").split("\t");
-      if (f.length < 3 || (f[1] === "Name" && f[2] === "ID")) continue;
-      const name = f[1];
-      if (!name || name === "Empty") continue;
-      const n = baseOf(name);
-      held.set(n, (held.get(n) || 0) + (parseInt(f[3], 10) || 1));
+    for (const r of GS.parseRows(text)) {
+      if (r.exalt) continue;
+      const n = baseOf(r.base);
+      let e = held.get(n);
+      if (!e) held.set(n, (e = { n: 0, where: [] }));
+      e.n += r.count;
+      e.where.push({ loc: r.loc, sec: r.sec, count: r.count });
     }
     return held;
   }
+  const invCount = (inv, name) => (inv && inv.get(name) ? inv.get(name).n : 0);
+  const invWhere = (inv, name) => (inv && inv.get(name) ? inv.get(name).where : []);
 
   /* ── what you hold ──────────────────────────────────────────────────────
      From the log alone: looted, minus handed over, minus destroyed. Handing to
@@ -219,12 +232,36 @@
   // export — so however good the dump is, the log is the only witness for one.
   const isRune = (name) => String(name).indexOf("Wind Rune") === 0;
 
+  const logHeld = (led, name) => Math.max(0, (led.looted.get(name) || 0)
+    - (led.delivered.get(name) || 0) - goneCount(led, name));
+
   function held(led, inv, name) {
-    const fromLog = Math.max(0, (led.looted.get(name) || 0)
-      - (led.delivered.get(name) || 0) - goneCount(led, name));
+    const fromLog = logHeld(led, name);
     if (!inv) return { n: fromLog, src: "log" };
     if (isRune(name)) return { n: fromLog, src: "log" };
-    return { n: inv.get(name) || 0, src: "inv" };
+    return { n: invCount(inv, name), src: "inv", where: invWhere(inv, name) };
+  }
+
+  /* ── reconciling the two witnesses ───────────────────────────────────────
+     The dump is authoritative for what you hold right now, so `held` returns
+     it. That silently discards the log's own count, and the two disagree for
+     reasons worth reading rather than hiding:
+
+       log HIGHER  — looted before the dump and moved since (traded to a player,
+                     put in the Dragon's Hoard while its window was shut, sold
+                     by hand), or the dump is simply older than the loot.
+       log LOWER   — you had it before `/log on`, or it came from a quest reward
+                     or a merchant, neither of which prints a loot line.
+
+     Neither is an error, and neither number is the "right" one. `gap` is
+     inv − log; a caller shows both when it is non-zero and says nothing when
+     the two agree. Wind runes have no dump number at all, so they reconcile to
+     nothing. */
+  function reconcile(led, inv, name) {
+    const log = logHeld(led, name);
+    if (!inv || isRune(name)) return { log, inv: null, gap: 0 };
+    const n = invCount(inv, name);
+    return { log, inv: n, gap: n - log };
   }
 
   /* ── which tests are done ───────────────────────────────────────────────
@@ -306,8 +343,8 @@
 
   window.EQLSky = {
     RX, keptIt, wasSold, qty, baseOf, isRune,
-    stream, parseLog, parseInv,
-    soldCount, vendorCount, goneCount, held,
+    stream, parseLog, parseInv, invCount, invWhere,
+    soldCount, vendorCount, goneCount, held, logHeld, reconcile,
     completions, needsOf, testState, bossBoard,
   };
 })();
