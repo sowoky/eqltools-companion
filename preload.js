@@ -25,8 +25,12 @@ contextBridge.exposeInMainWorld("companion", {
   overlayHotspot: (on) => ipcRenderer.send("overlay:hotspot", on),
   setOverlayPrefs: (p) => ipcRenderer.send("overlay:prefs", p),
   overlayMenu: () => ipcRenderer.send("overlay:menu"),
-  resizeOverlay: (w, h) => ipcRenderer.send("overlay:resize", w, h),
-  moveOverlay: (dx, dy) => ipcRenderer.send("overlay:move", dx, dy),
+  /* Move/resize gestures: main reads the cursor, so these carry no
+     coordinates — see the drag block in main.js. */
+  overlayDragStart: (kind, sx, sy) => ipcRenderer.send("overlay:dragStart", kind, sx, sy),
+  overlayDragMove: (sx, sy) => ipcRenderer.send("overlay:dragMove", sx, sy),
+  overlayDragEnd: () => ipcRenderer.send("overlay:dragEnd"),
+  resetOverlayPlacement: () => ipcRenderer.send("overlay:resetPlacement"),
   setOverlayOpacity: (v) => ipcRenderer.send("overlay:opacity", v),
   sendFeedEvent: (ev) => ipcRenderer.send("feed:event", ev),
   sendZone: (z) => ipcRenderer.send("feed:zone", z),

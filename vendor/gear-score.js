@@ -1,5 +1,3 @@
-/* DO NOT EDIT — generated copy of public/_shared/gear-score.js (companion/scripts/sync-vendor.mjs).
-   Edit the original; both the site and this app load the same logic. */
 /* Gear scoring — the ONE implementation, loaded by /gear and /sky.
    Edit here; never fork. (Same contract as tier.js and spell-engine.js.)
 

@@ -3671,6 +3671,7 @@ async function main() {
   });
   $("btnOverlay").addEventListener("click", () => window.companion.toggleOverlay());
   $("btnOverlay2").addEventListener("click", () => window.companion.toggleOverlay());
+  $("btnOvReset").addEventListener("click", () => window.companion.resetOverlayPlacement());
   $("setClickThrough").addEventListener("change", e => window.companion.setClickThrough(e.target.checked));
   $("setOpacity").addEventListener("input", e => window.companion.setOverlayOpacity(+e.target.value));
   $("setOvScale").addEventListener("input", e => window.companion.setOverlayPrefs({ fontScale: +e.target.value }));

@@ -5,7 +5,7 @@
    runs in the renderer via the vendored site modules (vendor/shared.js,
    vendor/parse.js), so the app can never disagree with eqltools.com. */
 "use strict";
-const { app, BrowserWindow, Menu, ipcMain, dialog, shell, globalShortcut, protocol } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog, shell, globalShortcut, protocol, screen } = require("electron");
 const fs = require("fs");
 const path = require("path");
 
@@ -51,6 +51,27 @@ const BOOTSTRAP_CAP = 40 * 1024 * 1024; // same tail cap as the /kills page
    fails to round-trip, which is how the Sky tab first refused to stick. */
 const OVERLAY_VIEWS = ["tracked", "loot", "stats", "sky"];
 const OVERLAY_BAR_H = 26;   // the title bar alone, in DIPs — collapsed height
+const OVERLAY_DEF_W = 340, OVERLAY_DEF_H = 240;      // first-run and reset size
+const OVERLAY_MIN_W = 180, OVERLAY_MIN_H = 70, OVERLAY_MAX = 900;
+/* However far it is dragged, this much of the widget stays on a display. The
+   title bar is the only handle it has, so a title bar nobody can reach is a
+   widget nobody can move, close, or open the menu on (Kyle, 2026-08-14: "I was
+   able to somehow drag the overlay widget so that the title bar goes off
+   screen, and there's no way for me to grab it now"). */
+const OVERLAY_KEEP_ON_SCREEN = 90;
+/* Clamped against whichever display the widget is mostly on, so dragging it
+   from one monitor to the next still works — the clamp only bites at the far
+   edge, and by then the next display is the one it is mostly over. Against
+   that display's full bounds, not its work area: the overlay draws above the
+   taskbar, so the strip behind it is a fair place to park the widget. */
+function clampOverlayBounds(b) {
+  const s = screen.getDisplayMatching(b).bounds, keep = Math.min(OVERLAY_KEEP_ON_SCREEN, b.width);
+  return {
+    ...b,
+    x: Math.round(Math.min(Math.max(b.x, s.x - (b.width - keep)), s.x + s.width - keep)),
+    y: Math.round(Math.min(Math.max(b.y, s.y), s.y + s.height - OVERLAY_BAR_H)),
+  };
+}
 const settingsPath = () => path.join(app.getPath("userData"), "settings.json");
 let SETTINGS = null;
 function loadSettings() {
@@ -145,13 +166,22 @@ function createMainWindow() {
 
 function createOverlayWindow() {
   if (overlayWin) return;
-  const o = SETTINGS.overlay, b = o.bounds;
+  const o = SETTINGS.overlay;
+  /* Saved bounds are re-clamped on the way in, not just on the way out: a
+     monitor can be unplugged, its resolution can change, and a build before
+     this one could store a position with the title bar off every display. */
+  const b = o.bounds ? clampOverlayBounds(o.bounds) : null;
   overlayWin = new BrowserWindow({
-    width: b ? b.width : 340,
-    height: o.collapsed ? OVERLAY_BAR_H : (b ? b.height : 240),
+    width: b ? b.width : OVERLAY_DEF_W,
+    height: o.collapsed ? OVERLAY_BAR_H : (b ? b.height : OVERLAY_DEF_H),
     x: b ? b.x : undefined, y: b ? b.y : undefined,
     transparent: true, frame: false, resizable: true, hasShadow: false,
     skipTaskbar: true, minimizable: false, maximizable: false, fullscreenable: false,
+    /* The overlay is opened without focus and lives over a focused game, so on
+       macOS the click that grabs the title bar is the click that activates the
+       window — and an inactive window swallows it. Windows delivers it either
+       way; this makes both behave like the game does. */
+    acceptFirstMouse: true,
     webPreferences: { preload: path.join(__dirname, "preload.js"), contextIsolation: true, sandbox: true },
   });
   /* screen-saver level sits above a borderless-windowed game. Exclusive
@@ -821,26 +851,68 @@ function setCollapsed(on) {
   if (!overlayWin) return;
   const b = overlayWin.getBounds();
   overlayWin.setBounds({ x: b.x, y: b.y, width: b.width,
-                         height: on ? OVERLAY_BAR_H : Math.max(70, o.height || 240) });
+                         height: on ? OVERLAY_BAR_H : Math.max(OVERLAY_MIN_H, o.height || OVERLAY_DEF_H) });
 }
-/* Transparent frameless windows have NO native resize borders on Windows —
-   the overlay's corner grip drives resizing through here instead. */
-/* The title bar drags the window from JS rather than being an app-region: on
-   Windows a drag region is a caption hit-test, and a right-click on it never
-   reaches the page — which is where the settings menu now lives. Deltas, not
-   absolute coordinates, so the pointer and the window can't drift apart. */
-ipcMain.on("overlay:move", (_e, dx, dy) => {
+/* ── moving and resizing the widget ───────────────────────────────────────
+   Transparent frameless windows have NO native resize borders on Windows and
+   the title bar is not an app-region either (on Windows a drag region is a
+   caption hit-test, and a right-click on it never reaches the page — which is
+   where the settings menu lives). So both gestures are driven from the page,
+   and both land here.
+
+   Every position is computed from the anchor taken at pointerdown — the
+   window's bounds then, plus the pointer's screen position then — and each
+   move carries its OWN screen position. Three properties come out of that, and
+   the overlay has been bitten by the absence of each:
+
+   · The window can't drift. It is placed absolutely from the anchor, so a
+     coalesced or dropped move costs nothing, where accumulated per-event
+     deltas would quietly bank the error.
+   · It can't chase a stale cursor. The coordinates travel with the event, so a
+     move that main gets to late still lands where the pointer was, not where
+     it has since gone.
+   · It can't feed on itself. Screen coordinates don't shift when the window
+     moves under the pointer, which page-relative ones do.
+
+   Only DIFFERENCES between screen positions are ever used, never an absolute
+   one. Chromium hands web content screen coordinates in DIPs — the unit
+   setBounds takes — on a scaled display too: on a 2x screen the window's own
+   top-left reads identically in both spaces. But where that space is anchored
+   is not as dependable (synthetic input reports the window's origin as 0,0),
+   and a difference doesn't care where zero is. */
+let overlayDrag = null;
+ipcMain.on("overlay:dragStart", (_e, kind, sx, sy) => {
   if (!overlayWin) return;
-  const b = overlayWin.getBounds();
-  overlayWin.setBounds({ ...b, x: Math.round(b.x + (+dx || 0)), y: Math.round(b.y + (+dy || 0)) });
+  overlayDrag = { resize: kind === "resize", bounds: overlayWin.getBounds(), sx: +sx || 0, sy: +sy || 0 };
+});
+ipcMain.on("overlay:dragMove", (_e, sx, sy) => {
+  if (!overlayWin || !overlayDrag) return;
+  const a = overlayDrag;
+  const dx = Math.round(sx - a.sx), dy = Math.round(sy - a.sy);
+  if (a.resize) overlayWin.setBounds({ x: a.bounds.x, y: a.bounds.y,
+    width: Math.min(OVERLAY_MAX, Math.max(OVERLAY_MIN_W, a.bounds.width + dx)),
+    height: Math.min(OVERLAY_MAX, Math.max(OVERLAY_MIN_H, a.bounds.height + dy)) });
+  else overlayWin.setBounds(clampOverlayBounds({ ...a.bounds, x: a.bounds.x + dx, y: a.bounds.y + dy }));
   saveOverlayBounds();
 });
-ipcMain.on("overlay:resize", (_e, w, h) => {
-  if (!overlayWin) return;
-  const b = overlayWin.getBounds();
-  overlayWin.setBounds({ x: b.x, y: b.y,
-    width: Math.min(900, Math.max(180, ~~w)), height: Math.min(900, Math.max(70, ~~h)) });
-});
+ipcMain.on("overlay:dragEnd", () => { overlayDrag = null; saveOverlayBounds(); });
+
+/* The way back when the widget has ended up somewhere unreachable — dragged
+   past an edge by an older build, or left on a monitor that is no longer
+   plugged in. Default size, top-right of whichever display the app window is
+   on, and unrolled, since a widget rolled up to 26px reads as a lost one too. */
+function resetOverlayPlacement() {
+  const o = SETTINGS.overlay;
+  const wa = (mainWin ? screen.getDisplayMatching(mainWin.getBounds()) : screen.getPrimaryDisplay()).workArea;
+  o.collapsed = false;
+  o.height = OVERLAY_DEF_H;
+  o.bounds = { x: Math.round(wa.x + wa.width - OVERLAY_DEF_W - 24), y: Math.round(wa.y + 24),
+               width: OVERLAY_DEF_W, height: OVERLAY_DEF_H };
+  saveSettings();
+  if (overlayWin) overlayWin.setBounds(o.bounds);
+  sendOverlayInit(); notifyOverlayState();
+}
+ipcMain.on("overlay:resetPlacement", () => resetOverlayPlacement());
 ipcMain.on("overlay:opacity", (_e, v) => applyOverlayPrefs({ opacity: v }));
 ipcMain.on("feed:event", (_e, ev) => {
   FEED_RING.push(ev); if (FEED_RING.length > 50) FEED_RING.shift();

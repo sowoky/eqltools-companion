@@ -1,5 +1,3 @@
-/* DO NOT EDIT — generated copy of public/sky/sky-core.js (companion/scripts/sync-vendor.mjs).
-   Edit the original; both the site and this app load the same logic. */
 /* Plane of Sky — the measurement layer, shared by /sky and the companion app.
 
    This file owns the log grammar, the inventory read, "what do you hold", and

@@ -477,22 +477,38 @@ barEl.addEventListener("contextmenu", e => {
 });
 
 /* …and the bar moves the window itself, because it is no longer an app-region
-   (a Windows caption hit-test would eat the right-click above). Same pointer-
-   capture shape as the resize grip; deltas go to main, which does the setBounds. */
-barEl.addEventListener("pointerdown", e => {
-  if (e.button !== 0 || e.target.closest("button")) return;
-  e.preventDefault();
-  barEl.setPointerCapture(e.pointerId);
-  let lx = e.screenX, ly = e.screenY;
-  const move = ev => {
-    window.companion.moveOverlay(ev.screenX - lx, ev.screenY - ly);
-    lx = ev.screenX; ly = ev.screenY;
-  };
-  const up = () => barEl.removeEventListener("pointermove", move);
-  barEl.addEventListener("pointermove", move);
-  barEl.addEventListener("pointerup", up, { once: true });
-  barEl.addEventListener("pointercancel", up, { once: true });
-});
+   (a Windows caption hit-test would eat the right-click above).
+
+   ONE gesture implementation for the bar and the corner grip. Every event
+   hands main its own screen position, and main works in the difference from
+   the one below — which is why these are screen coordinates and not clientX:
+   client coordinates move with the window, so a drag would be reading its own
+   output back. */
+function dragsWindow(el, kind) {
+  el.addEventListener("pointerdown", e => {
+    if (e.button !== 0 || e.target.closest("button")) return;
+    e.preventDefault();
+    try { el.setPointerCapture(e.pointerId); } catch {}
+    window.companion.overlayDragStart(kind, e.screenX, e.screenY);
+    const move = ev => window.companion.overlayDragMove(ev.screenX, ev.screenY);
+    let done = false;
+    /* Every way the gesture can end has to detach `move`. A pointerup can go
+       missing — the OS can take the capture away mid-drag — and a `move` left
+       attached keeps dragging the window around with no button held. */
+    const up = () => {
+      if (done) return;
+      done = true;
+      el.removeEventListener("pointermove", move);
+      try { el.releasePointerCapture(e.pointerId); } catch {}
+      window.companion.overlayDragEnd();
+    };
+    el.addEventListener("pointermove", move);
+    el.addEventListener("pointerup", up, { once: true });
+    el.addEventListener("pointercancel", up, { once: true });
+    el.addEventListener("lostpointercapture", up, { once: true });
+  });
+}
+dragsWindow(barEl, "move");
 
 /* Mini EQ item tooltip — the sb lines ride on the hovered element. Works
    pinned too (forward:true keeps mousemove flowing). */
@@ -745,15 +761,7 @@ document.addEventListener("click", e => {
   if (q && q.dataset.url) window.companion.openWiki(q.dataset.url);
 });
 
-/* Corner resize grip. Pointer capture keeps the drag alive even when the
-   cursor briefly leaves this small window. Sizes are DIPs, same as
-   setBounds. */
-gripEl.addEventListener("pointerdown", e => {
-  e.preventDefault();
-  gripEl.setPointerCapture(e.pointerId);
-  const sx = e.screenX, sy = e.screenY, sw = window.innerWidth, sh = window.innerHeight;
-  const move = ev => window.companion.resizeOverlay(sw + ev.screenX - sx, sh + ev.screenY - sy);
-  const up = () => gripEl.removeEventListener("pointermove", move);
-  gripEl.addEventListener("pointermove", move);
-  gripEl.addEventListener("pointerup", up, { once: true });
-});
+/* Corner resize grip — same gesture as the title bar, sized from the window's
+   own top-left instead of moving it. Pointer capture keeps the drag alive when
+   the cursor leaves this small window. */
+dragsWindow(gripEl, "resize");
