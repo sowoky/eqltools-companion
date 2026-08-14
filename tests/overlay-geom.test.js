@@ -39,6 +39,18 @@ test("moveGeom tolerates junk deltas without resizing or NaN", () => {
   }
 });
 
+test("moveGeom keeps integer coords and constant size under fractional deltas", () => {
+  // trackpads and high-DPI mice send sub-pixel deltas; coords must stay
+  // integers (setBounds wants ints) and the size invariant must still hold
+  let g = { x: 100, y: 100, width: 341, height: 247 };
+  for (let i = 0; i < 300; i++) {
+    g = moveGeom(g, 0.3, -0.7);
+    assert.ok(Number.isInteger(g.x) && Number.isInteger(g.y), `non-integer coords at step ${i}`);
+    assert.equal(g.width, 341);
+    assert.equal(g.height, 247);
+  }
+});
+
 test("resizeGeom clamps to sane bounds and leaves position alone", () => {
   const g = { x: 50, y: 60, width: 340, height: 240 };
   const tiny = resizeGeom(g, 10, 10);
