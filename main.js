@@ -5,9 +5,10 @@
    runs in the renderer via the vendored site modules (vendor/shared.js,
    vendor/parse.js), so the app can never disagree with eqltools.com. */
 "use strict";
-const { app, BrowserWindow, Menu, ipcMain, dialog, shell, globalShortcut, protocol } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog, shell, globalShortcut, protocol, screen } = require("electron");
 const fs = require("fs");
 const path = require("path");
+const { clampToDisplay, sanitizeBounds } = require("./overlay-bounds");
 
 const isDev = !app.isPackaged;
 
@@ -145,7 +146,11 @@ function createMainWindow() {
 
 function createOverlayWindow() {
   if (overlayWin) return;
-  const o = SETTINGS.overlay, b = o.bounds;
+  /* Cap a saved bounds to the current display before using it — a monitor may
+     have been unplugged, or an older build stored an off-screen/oversized
+     window, and we must not hand that straight back to BrowserWindow. */
+  const o = SETTINGS.overlay,
+        b = o.bounds && sanitizeBounds(o.bounds, screen.getDisplayMatching(o.bounds).workArea);
   overlayWin = new BrowserWindow({
     width: b ? b.width : 340,
     height: o.collapsed ? OVERLAY_BAR_H : (b ? b.height : 240),
@@ -832,7 +837,12 @@ function setCollapsed(on) {
 ipcMain.on("overlay:move", (_e, dx, dy) => {
   if (!overlayWin) return;
   const b = overlayWin.getBounds();
-  overlayWin.setBounds({ ...b, x: Math.round(b.x + (+dx || 0)), y: Math.round(b.y + (+dy || 0)) });
+  /* Clamp the new position to the work area so the title bar can't be dragged
+     off the top/edge out of reach. */
+  const nx = Math.round(b.x + (+dx || 0)), ny = Math.round(b.y + (+dy || 0));
+  const wa = screen.getDisplayMatching({ x: nx, y: ny, width: b.width, height: b.height }).workArea;
+  const { x, y } = clampToDisplay(nx, ny, b.width, b.height, wa);
+  overlayWin.setBounds({ ...b, x, y });
   saveOverlayBounds();
 });
 ipcMain.on("overlay:resize", (_e, w, h) => {
