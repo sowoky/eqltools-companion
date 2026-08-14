@@ -268,10 +268,48 @@
              ready: missing.length === 0 && done === 0 && !skip, missing };
   }
 
+  /* ── the drop table, arranged for reading ────────────────────────────────
+     sky.json keeps every mob the island rosters name — 48 of them — because the
+     data should be at full granularity and the grouping should live in the
+     display. Forty-eight folds is not a board you read with a corpse on the
+     floor, and eleven of them are one-item spiroc commons.
+
+     So: a fold per NAMED mob (the boss, and the Efreeti-cycle mobs that spawn
+     off each other), and ONE fold per island for everything else on it. `src`
+     keeps which common dropped what, so a row can still say so on hover — the
+     detail is grouped, not discarded.
+
+     `rowFor(name, mob)` is the host's: /sky and the companion count what you
+     hold differently (a dump with bag slots, a held mark) and neither answer
+     belongs in here. */
+  function bossBoard(data, rowFor) {
+    return (data.isles || []).map(function (isle) {
+      const named = [], loose = [];
+      isle.mobs.forEach((m) => (m.role === "common" || m.role === "trash" ? loose : named).push(m));
+      const mk = (n, role, drops, from, src) => ({
+        isl: isle.isl, isle: isle.name, req: isle.req || [], key: isle.key || [],
+        n: n, role: role, from: from, src: src || null,
+        rows: drops.map((d) => rowFor(d, n)),
+      });
+      const out = named.map((m) => mk(m.n, m.role, m.drops, [m.n]));
+      const drops = [], from = [], src = {};
+      for (const m of loose) {
+        if (m.drops.length) from.push(m.n);
+        for (const n of m.drops) {
+          if (!src[n]) { src[n] = []; drops.push(n); }
+          src[n].push(m.n);
+        }
+      }
+      if (drops.length) out.push(mk("Island trash", "trash", drops, from, src));
+      return { isl: isle.isl, name: isle.name, req: isle.req || [],
+               key: isle.key || [], mobs: out };
+    });
+  }
+
   window.EQLSky = {
     RX, keptIt, wasSold, qty, baseOf, isRune,
     stream, parseLog, parseInv,
     soldCount, vendorCount, goneCount, held,
-    completions, needsOf, testState,
+    completions, needsOf, testState, bossBoard,
   };
 })();

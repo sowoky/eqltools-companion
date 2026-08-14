@@ -480,10 +480,79 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .skl--bank { color: var(--arcane); }
 .skl--word { color: var(--ink-dim); }
 
+/* the two marks on a test: track (a star, and it sorts first) and skip (struck
+   through, and it stops owing you anything) */
+.skt__star, .skb__ustar { background: none; border: 0; padding: 0 2px; cursor: pointer;
+  color: var(--ink-faint); font-size: 13px; line-height: 1; }
+.skt__star:hover, .skb__ustar:hover { color: var(--gold); }
+.skt__star.on, .skb__ustar.on { color: var(--gold-bright); }
+.skt.is-track { border-left: 2px solid var(--gold-bright); padding-left: 8px; margin-left: -10px; }
+.skt.is-skip .skt__n, .skt.is-skip .skt__rew { text-decoration: line-through; opacity: .55; }
+.skt.is-skip .skt__items { opacity: .5; }
+.skt__skip { background: none; border: 1px solid var(--line); border-radius: 4px;
+  color: var(--ink-faint); font: 11px inherit; padding: 0 5px; cursor: pointer; margin-left: 6px; }
+.skt__skip:hover { border-color: var(--ember); color: var(--ember); }
+.sk-st--skip { color: var(--ink-dim); border-style: dashed; }
+
+/* ── the boss board ──────────────────────────────────────────────────────
+   A drop line, not a quest line: the item, what it buys, and the two numbers.
+   Grid rather than flex — the numbers have to line up down the column or you
+   can't scan them, which is the entire point of putting them there. */
+.skb { list-style: none; padding: 0; margin: 2px 0 0; }
+.skb__r { display: grid; grid-template-columns: 12px minmax(10rem, 1.3fr) minmax(8rem, 1fr) 2.2rem 2.2rem 1.4rem;
+  align-items: baseline; gap: 6px; padding: 2px 0; font-size: 13px; }
+.skb__r + .skb__r { border-top: 1px solid var(--line-soft); }
+.skb__star { color: var(--gold-bright); font-size: 11px; }
+.skb__nm { display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap; min-width: 0; }
+.skb__buys { font-size: 11px; color: var(--ink-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.skb__n, .skb__need { font: 12px var(--mono); text-align: right; }
+.skb__n { color: var(--ink-soft); }
+.skb__need { color: var(--ink-faint); }
+.skb__r.is-need .skb__need { color: var(--gold-bright); font-weight: 700; }
+.skb__r.is-need .itn { color: var(--gold-pale); }
+.skb__r.is-track { background: color-mix(in srgb, var(--gold) 8%, transparent); }
+/* nothing wants it, or nothing wants it any more: still on the drop table,
+   still not what you are looking for */
+.skb__r.is-extra .itn, .skb__r.is-off .itn { color: var(--ink-dim); }
+.skb__r.is-off .itn { text-decoration: line-through; }
+.skb__x { background: none; border: 0; color: var(--ink-faint); cursor: pointer; font-size: 11px; padding: 0; }
+.skb__x:hover { color: var(--gold); }
+.skb__x2 { padding: 3px 0 5px 18px; border-top: 1px solid var(--line-soft); background: var(--bg-deep); }
+.skb__u { display: flex; align-items: baseline; gap: 6px; font-size: 12px; padding: 1px 0; flex-wrap: wrap; }
+.skb__u.is-skip { opacity: .5; text-decoration: line-through; }
+.skb__u.is-skip .skb__uskip, .skb__u.is-skip .skb__ustar { text-decoration: none; }
+.skb__u.is-done .skb__utest { color: var(--wiki); }
+.skb__ucls { color: var(--ink-dim); min-width: 6.5rem; }
+.skb__urew { color: var(--gold-pale); }
+.skb__uskip { background: none; border: 1px solid var(--line); border-radius: 4px; margin-left: auto;
+  color: var(--ink-faint); font: 11px inherit; padding: 0 5px; cursor: pointer; }
+.skb__uskip:hover { border-color: var(--ember); color: var(--ember); }
+.skb__role { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-dim);
+  border: 1px solid var(--line); border-radius: 999px; padding: 0 5px; }
+.skb__role--boss { color: var(--gold); border-color: var(--gold-line, var(--line)); }
+.skb__key { font-size: 11px; color: var(--ink-dim); margin: 3px 0 5px; }
+.sk-n--need { color: var(--gold-bright); }
+.sk-n--track { color: var(--gold-bright); }
+
+/* right-click → skip. One line per test, because skip is a per-test decision. */
+.skmenu { position: fixed; z-index: 90; min-width: 210px; padding: 4px;
+  background: var(--bg-panel); border: 1px solid var(--line); border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .55); }
+.skmenu__h { font-size: 12px; color: var(--gold-bright); padding: 2px 6px 4px;
+  border-bottom: 1px solid var(--line-soft); margin-bottom: 3px; }
+.skmenu__i { display: flex; align-items: baseline; gap: 6px; width: 100%; text-align: left;
+  background: none; border: 0; color: var(--ink); font: 12px inherit; padding: 4px 6px;
+  border-radius: 4px; cursor: pointer; }
+.skmenu__i:hover { background: var(--bg-panel-2); color: var(--gold-bright); }
+.skmenu__i.is-skip { opacity: .6; text-decoration: line-through; }
+.skmenu__b { color: var(--gold); width: 10px; }
+.skmenu__all { border-top: 1px solid var(--line-soft); margin-top: 3px; color: var(--ink-dim); }
+
 /* widget options */
 .skw { min-width: 260px; }
 .skw__r { display: block; font-size: 12px; padding: 2px 0; }
 .skw__r select { background: var(--bg-deep); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 1px 4px; }
+.skw__note { font-size: 11px; color: var(--ink-dim); margin: 6px 0 0; }
 .skw__h { font-size: 12px; color: var(--ink-dim); margin-top: 7px; border-top: 1px solid var(--line-soft); padding-top: 5px; }
 .skw__cls { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8px; }
 .skw__c { font-size: 12px; white-space: nowrap; }

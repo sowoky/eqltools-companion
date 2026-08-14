@@ -548,7 +548,9 @@ function renderSky() {
   }
   const head = document.createElement("div");
   head.className = "osk-head";
-  head.textContent = `${SKYP.ready} ready · ${SKYP.done}/${SKYP.tests} done`;
+  head.textContent = SKYP.view === "boss"
+    ? `${SKYP.loot || 0} pieces to loot · ${SKYP.done}/${SKYP.tests} done`
+    : `${SKYP.ready} ready · ${SKYP.done}/${SKYP.tests} done`;
   skyEl.append(head);
   if (!SKYP.inv) {
     const w = document.createElement("div");
@@ -561,6 +563,7 @@ function renderSky() {
     w.textContent = `Inventory is ${m < 60 ? `${m}m` : `${Math.round(m / 60)}h`} old — /out inventory to refresh`;
     skyEl.append(w);
   }
+  if (SKYP.view === "boss") { renderSkyBoss(); return; }
   if (!SKYP.groups.length) {
     const d = document.createElement("div");
     d.className = "osk-none";
@@ -610,6 +613,69 @@ function renderSky() {
     skyEl.append(sec);
   }
 }
+/* The same board arranged by what drops it — the view you want with a corpse on
+   the floor. Only mobs that still owe you something are sent, so an empty board
+   here means the islands have nothing left for you.
+
+   `have` and `need` are the two numbers: what you are holding, and how many
+   more this piece owes across every test that still wants it. A starred row is
+   a test you are tracking, and those come first. */
+function renderSkyBoss() {
+  const list = SKYP.bosses || [];
+  if (!list.length) {
+    const d = document.createElement("div");
+    d.className = "osk-none";
+    d.textContent = "No island still owes you a piece.";
+    skyEl.append(d);
+    return;
+  }
+  for (const b of list) {
+    const key = "b:" + b.isl + b.n;
+    const sec = document.createElement("div");
+    sec.className = "osg";
+    const h = document.createElement("div");
+    h.className = "osg__h"; h.dataset.osky = key;
+    const open = !SKY_CLOSED.has(key);
+    h.title = `${b.isle} (island ${b.isl}) — ${b.role}`;
+    h.innerHTML = `<span class="osg__k">${open ? "▾" : "▸"}</span>` +
+      `<span class="osg__n">${esc(b.n)}</span><span class="osg__g">I${esc(b.isl)}</span>` +
+      `<span class="osg__c">${b.track ? `<b class="osg__star">★${b.track}</b> · ` : ""}${b.need} to loot</span>`;
+    sec.append(h);
+    if (open) {
+      const ul = document.createElement("ul");
+      ul.className = "oskl-list";
+      for (const it of b.drops) {
+        const li = document.createElement("li");
+        li.className = "oski osb" + (it.track ? " is-track" : "") + (it.have ? " is-have" : "");
+        const star = document.createElement("span");
+        star.className = "oski__t osb__star";
+        star.textContent = it.track ? "★" : "·";
+        star.title = it.track ? "A test you're tracking wants this" : "";
+        li.append(star, itemSpan(it.n, it.url, it.sb, "oski__n"));
+        const c = document.createElement("span");
+        c.className = "oski__c";
+        c.textContent = `${it.have}/${it.have + it.need}`;
+        c.title = `Holding ${it.have}; ${it.need} more to finish every test that wants it`;
+        li.append(c);
+        for (const bd of it.locs || []) li.append(skyLocEl(bd));
+        if (it.buys && it.buys.length) {
+          const s = document.createElement("span");
+          s.className = "oski__src";
+          // a bare "+1" would read as the item's upgrade tier, which is a
+          // real thing here — say what the number counts
+          s.textContent = it.buys[0] +
+            (it.buys.length > 1 ? ` \u00b7 ${it.buys.length} tests` : "");
+          s.title = it.buys.join("\n");
+          li.append(s);
+        }
+        ul.append(li);
+      }
+      sec.append(ul);
+    }
+    skyEl.append(sec);
+  }
+}
+
 skyEl.addEventListener("click", e => {
   const h = e.target.closest("[data-osky]");
   if (!h) return;

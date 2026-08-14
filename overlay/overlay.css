@@ -254,6 +254,14 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unlock first
 .oski__c { color: #b6aecb; font-size: 10.5px; }
 .oski__star { color: #e0713a; cursor: help; }
 .oski__src { color: #8d84a8; font-size: 10.5px; }
+/* boss board: a starred row is a test you're tracking, and it sorts first */
+.osb { border-bottom: 1px solid rgba(255,255,255,.05); padding-bottom: 1px; }
+.osb:last-child { border-bottom: 0; }
+.osb.is-track { background: rgba(231,185,78,.09); }
+.osb__star { color: #e7b94e; width: 9px; }
+.osg__star { color: #e7b94e; }
+.osb .oski__c { margin-left: auto; font-variant-numeric: tabular-nums; }
+.osb .oski__src { width: 100%; padding-left: 13px; }
 /* where it is: a number only means something for a bag or a bank slot */
 .oskl {
   display: inline-flex; align-items: center; gap: 1px; font-size: 10.5px;

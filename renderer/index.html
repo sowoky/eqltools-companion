@@ -92,6 +92,10 @@
   <section id="tab-sky" class="pane pane--wide">
     <div id="skyBanner" class="banner" hidden></div>
     <div class="feedhead qbhead">
+      <div class="seg" id="skyView" role="group" aria-label="How to group the Sky board">
+        <button type="button" class="seg__b" data-skyview="class">By giver</button>
+        <button type="button" class="seg__b" data-skyview="boss">By boss</button>
+      </div>
       <input id="skySearch" type="search" placeholder="search test, piece, NPC, reward">
       <select id="skyShow">
         <option value="ready">ready to turn in</option>
@@ -100,6 +104,7 @@
       </select>
       <select id="skyClass"></select>
       <label class="chk"><input type="checkbox" id="skyHideDone"> hide completed</label>
+      <label class="chk" id="skyNeedWrap"><input type="checkbox" id="skyOnlyNeed"> only what I need</label>
       <button id="skyExpand" class="btn btn--sm">expand all</button>
       <details id="skyWidWrap" class="invcols">
         <summary>widget</summary>

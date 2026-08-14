@@ -1188,6 +1188,9 @@ function mergePlans(plans) {
    tests' shopping lists along (Kyle, 2026-08-09). A part-plan is a pared-down
    pseudo-quest: that part's items only, the base page kept for the wiki link. */
 function trackedPlan(key, have) {
+  // a Sky test tracked from the Sky tab: sky.json is its source, because its
+  // wiki page is a `{{#lsth:}}` stub the quest parser reads as empty
+  if (key.startsWith(SKY_TRACK)) return skyTrackPlan(key, have);
   const ix = key.indexOf("::");
   const t = ix < 0 ? key : key.slice(0, ix);
   const q = T2Q.get(t);
@@ -1930,9 +1933,18 @@ const SKY_DEF = {
   // open: null = never chosen, so the folds that have something ready open
   // themselves — the quest room's first question is "what can I hand in".
   show: "held", hideDone: false, cls: "", open: null,
+  /* Two arrangements of the same board. `class` is the quest room — sixteen
+     givers, what you can hand in. `boss` is the island — what the thing on the
+     floor drops and whether you want any of it. */
+  view: "class", onlyNeed: false, openBoss: null,
+  // "never doing this one": a want, not a measurement, so it can only ever
+  // suppress. Same meaning as /sky's skip; the two can't share storage because
+  // the app and the site are different origins.
+  skipped: {},
   // wid.cls is an explicit list of class codes — [] really means none, so
   // "show me nothing but my trio" and "show me nothing" stay different answers
-  wid: { show: "ready", hideDone: true, loc: true, say: true, cls: null },
+  wid: { show: "ready", hideDone: true, loc: true, say: true, cls: null,
+         view: "class", trackedFirst: true },
 };
 let SKYP = JSON.parse(JSON.stringify(SKY_DEF));
 function loadSkyPrefs() {
@@ -1940,8 +1952,74 @@ function loadSkyPrefs() {
     const o = JSON.parse(localStorage.getItem(SKY_KEY)) || {};
     SKYP = { ...SKY_DEF, ...o, wid: { ...SKY_DEF.wid, ...(o.wid || {}) } };
     if (SKYP.open !== null && !Array.isArray(SKYP.open)) SKYP.open = null;
+    if (SKYP.openBoss !== null && !Array.isArray(SKYP.openBoss)) SKYP.openBoss = null;
+    if (!SKYP.skipped || typeof SKYP.skipped !== "object") SKYP.skipped = {};
   } catch { SKYP = JSON.parse(JSON.stringify(SKY_DEF)); }
   if (!Array.isArray(SKYP.wid.cls)) SKYP.wid.cls = Object.keys(SKY_CLASS);
+}
+const skyMark = (code, test) => code + "::" + test;
+const skySkipped = (code, test) => !!SKYP.skipped[skyMark(code, test)];
+function skyToggleSkip(code, test, on) {
+  if (on) SKYP.skipped[skyMark(code, test)] = true;
+  else delete SKYP.skipped[skyMark(code, test)];
+  saveSkyPrefs();
+  renderSkySoon();
+}
+
+/* ── tracking a Sky test ──────────────────────────────────────────────────
+   ONE tracked list. The Quests tab can still track a Sky turn-in off its wiki
+   page, so a Sky test tracked here has to be the same entry, not a second one:
+   toggling looks for an existing quest-tracker key for this test first and
+   flips that when it finds one.
+
+   It usually won't. The wiki is converting the sixteen `<Class> Plane of Sky
+   Tests` pages into `{{#lsth:Plane of Sky|…}}` transclusions, and a page that
+   is now a transclusion call parses to nothing — as of 2026-08-14, ten of the
+   sixteen carry no turn-ins in quest-items.json and three have no page at all.
+   sky.json is built from the `Plane of Sky` page itself and has all 95, so a
+   sky-native key is the one that keeps working. `trackedPlan` resolves both. */
+const SKY_TRACK = "sky::";
+const skyTrackKey = (code, test) => SKY_TRACK + code + "::" + test;
+// the quest-tracker key for the same test, when its wiki page still parses
+function skyQuestKey(code, test) {
+  const page = `${SKY_CLASS[code]} Plane of Sky Tests`;
+  for (const [t, q] of T2Q) {
+    if (q.n !== page) continue;
+    const i = (q.parts || []).findIndex(p => (p.n || "") === test);
+    if (i >= 0) return `${t}::${i}`;
+  }
+  return null;
+}
+const skyTracked = (code, test) => {
+  const qk = skyQuestKey(code, test);
+  return TRACKED.includes(skyTrackKey(code, test)) || (!!qk && TRACKED.includes(qk));
+};
+function skyToggleTrack(code, test) {
+  const qk = skyQuestKey(code, test);
+  toggleTrack(qk && TRACKED.includes(qk) ? qk : (qk || skyTrackKey(code, test)));
+  renderSkySoon();
+}
+/* A sky-native tracked key as a plan, in the shape every tracked-quest consumer
+   already reads — so the Tracked tab, the overlay and the pooled shopping list
+   pick Sky tests up without knowing this shape exists. */
+function skyTrackPlan(key, have) {
+  if (!SKYD) return null;
+  const p = key.split("::");
+  const c = SKYD.classes[p[1]];
+  const t = c && c.tests.find(x => x.n === p[2]);
+  if (!t) return null;
+  const seen = n => SKY_LOCS ? SKY_LOCS.has(itemKey(n)) : false;
+  const comps = t.rune.map(n => ({ n, want: 1, have: skyHave(have, n).n }))
+    .concat(t.items.map(i => ({ n: i.n, want: 1, have: skyHave(have, i.n, seen(i.n)).n })));
+  const got = comps.filter(x => x.have >= x.want).length;
+  const q = {
+    t: key, wk: `${SKY_CLASS[p[1]].replace(/ /g, "_")}_Plane_of_Sky_Tests`,
+    n: t.n, sn: t.n.replace(SKY_CLASS[p[1]] + " ", ""),
+    giver: c.giver || "", rewards: t.reward ? [t.reward] : [],
+    items: comps.map(x => x.n), need: comps.map(x => [x.n, 1]), parts: [],
+  };
+  return { q, comps, got, need: comps.length,
+           done: comps.length > 0 && got === comps.length };
 }
 const saveSkyPrefs = () => { try { localStorage.setItem(SKY_KEY, JSON.stringify(SKYP)); } catch {} };
 
@@ -2069,8 +2147,10 @@ function skyLocIndex() {
     for (const k of new Set([itemKey(r.name), itemKey(stripDecor(r.name))]))
       m.set(k, (m.get(k) || []).concat(b));
   }
+  SKY_LOCS = m;   // skyTrackPlan runs outside a model build and needs the same answer
   return m;
 }
+let SKY_LOCS = null;
 const skyLocs = (idx, name) => idx.get(itemKey(name)) || idx.get(itemKey(stripDecor(name))) || [];
 function skyBadgeHtml(b) {
   const cnt = b.count > 1 ? ` <b class="skl__c">×${b.count}</b>` : "";
@@ -2120,7 +2200,8 @@ function skyModel() {
          apart so a row can say which one it is standing on. Either one means
          the test is behind you, so both suppress "ready". */
       const ach = !!(ACH_SKY[code] && ACH_SKY[code].byTest[t.n]);
-      const st = SKY.testState(t, done + (ach ? 1 : 0), false, n => skyHave(have, n, locIdx.has(itemKey(n))).n);
+      const skip = skySkipped(code, t.n);
+      const st = SKY.testState(t, done + (ach ? 1 : 0), skip, n => skyHave(have, n, locIdx.has(itemKey(n))).n);
       /* Progress on a test means a COMPONENT of it. Runes are generic — one
          Wind Rune Dena feeds seven different tests, so counting it as progress
          listed all seven as started off a single drop. */
@@ -2130,6 +2211,7 @@ function skyModel() {
         code, full: t.n, n: t.n.replace(SKY_CLASS[code] + " ", ""),
         say: t.say || "", reward: t.reward || "", items, rune,
         done, ach, ready: st.ready, missing: st.missing.length, held,
+        skip, track: skyTracked(code, t.n),
         need: items.length + rune.length,
       };
     });
@@ -2139,7 +2221,61 @@ function skyModel() {
     tot.tests += tests.length; tot.done += nDone; tot.ready += nReady; tot.partial += nPartial;
     out.push({ code, name: SKY_CLASS[code], giver: c.giver || "", tests, nDone, nReady, nPartial, orphan: comp.orphan });
   }
-  return { classes: out, tot };
+  return { classes: out, tot, isles: skyBossModel(out) };
+}
+
+/* ── the same board, arranged by what dropped it ──────────────────────────
+   Kyle, 2026-08-14: "by boss. show me what each boss drops, and what i need /
+   want / have" — then, exactly: "have and need are numbers, (how many do i
+   currently have, how many do i still need to complete all quests that use this
+   object), skip is a strikethrough or something, and track is some indicator
+   like a star".
+
+   So the two numbers are different kinds of claim and the row keeps them apart:
+
+     have  measured — the dump, the log, or your own held mark
+     need  how many MORE this object owes: every test that still wants it,
+           minus what you are holding
+
+   A test stops owing when it is turned in (measured), when the achievement
+   record says it is behind you (measured), or when you skip it (a want). Track
+   changes no number at all — it is the ordering, and the star.
+
+   Item counts come straight off the class model, so a piece can never read one
+   number here and another under its giver. */
+function skyBossModel(classes) {
+  if (!SKYD || !SKYD.isles) return [];
+  const idx = new Map();
+  for (const g of classes) for (const t of g.tests) for (const i of t.items) {
+    let e = idx.get(i.n);
+    if (!e) idx.set(i.n, e = { have: i.have, src: i.src, locs: i.locs, uses: [] });
+    e.uses.push({ code: g.code, cls: g.name, giver: g.giver, test: t.full,
+                  short: t.n, reward: t.reward, fin: t.done > 0 || t.ach,
+                  skip: t.skip, track: t.track });
+  }
+  const have = haveMap();
+  const board = SKY.bossBoard(SKYD, n => {
+    const e = idx.get(n);
+    const uses = e ? e.uses : [];
+    const open = uses.filter(u => !u.fin && !u.skip);
+    const held = e ? e.have : skyHave(have, n, false).n;
+    return {
+      n, have: held, uses, open: open.length, quest: !!e,
+      need: Math.max(0, open.length - held),
+      track: uses.some(u => u.track && !u.fin && !u.skip),
+      locs: (e && e.locs) || [],
+    };
+  });
+  /* Tracked first — "shows those items first". Then what you still owe, then
+     quest pieces, then the rest of the drop table. */
+  for (const isle of board) for (const m of isle.mobs) {
+    m.rows.sort((a, b) => (b.track - a.track) || (b.need - a.need)
+      || (b.open - a.open) || (b.quest - a.quest) || a.n.localeCompare(b.n));
+    m.need = m.rows.reduce((s, r) => s + r.need, 0);
+    m.track = m.rows.filter(r => r.track).length;
+    m.nq = m.rows.filter(r => r.quest).length;
+  }
+  return board;
 }
 
 // One rule, both surfaces: "ready" is everything in hand, "held" adds the tests
@@ -2208,6 +2344,7 @@ function skyRuneHtml(r) {
 }
 
 function skyStatus(t) {
+  if (t.skip) return `<span class="sk-st sk-st--skip">skipped</span>`;
   if (t.ready) return `<span class="sk-st sk-st--ready">ready</span>`;
   const fin = t.done > 0 || t.ach;
   if (fin && t.missing === 0) return `<span class="sk-st sk-st--ready">can repeat</span>`;
@@ -2216,6 +2353,165 @@ function skyStatus(t) {
   if (t.done > 0) return `<span class="sk-st sk-st--done">turned in</span>`;
   if (t.ach) return `<span class="sk-st sk-st--done">done</span>`;
   return `<span class="sk-st sk-st--miss">missing ${t.missing}</span>`;
+}
+
+/* The boss board. One fold per mob, ordered down the islands, and inside it the
+   drop table with the two numbers on it. A drop no class test wants is still
+   listed — it IS what the boss drops — but it never outranks a piece you owe. */
+function skyBossHtml(m, q) {
+  let shown = 0, openCount = 0;
+  SKY_DROPS = new Map();
+  for (const isle of m.isles || []) for (const mob of isle.mobs)
+    for (const r of mob.rows) if (r.quest) SKY_DROPS.set(r.n, r.uses);
+  const html = (m.isles || []).map(isle => isle.mobs.map(mob => {
+    let rows = mob.rows;
+    if (q) rows = rows.filter(r => (r.n + " " + mob.n + " " + isle.name
+      + " " + r.uses.map(u => u.short + " " + u.reward).join(" ")).toLowerCase().includes(q));
+    if (SKYP.onlyNeed) rows = rows.filter(r => r.need > 0);
+    if (!rows.length) return "";
+    shown += rows.length;
+    const key = isle.isl + "::" + mob.n;
+    const open = SKYP.openBoss ? SKYP.openBoss.includes(key) : (mob.need > 0 || mob.track > 0);
+    openCount += open ? 1 : 0;
+    const tally = [
+      mob.track ? `<b class="sk-n sk-n--track">★${mob.track}</b>` : "",
+      mob.need ? `<b class="sk-n sk-n--need">${mob.need}</b> to loot` : "",
+      `${mob.rows.length} drops`,
+    ].filter(Boolean).join(" · ");
+    return `<section class="skg">
+      <button type="button" class="skg__h" data-skyboss="${esc(key)}" aria-expanded="${open}">
+        <span class="skg__caret" aria-hidden="true">${open ? "▾" : "▸"}</span>
+        <span class="skg__n">${esc(mob.n)}</span>
+        <span class="skb__role skb__role--${esc(mob.role)}">${esc(mob.role)}</span>
+        <span class="skg__giver">${esc(isle.name)} · I${esc(isle.isl)}</span>
+        <span class="skg__tally">${tally}</span>
+      </button>
+      <div class="skg__b"${open ? "" : " hidden"}>
+        ${mob.role === "trash" && mob.from.length ? `<p class="skb__key">${esc(mob.from.join(", "))}</p>` : ""}
+        ${isle.req.length ? `<p class="skb__key">${esc(isle.req.join(", "))} to reach${
+          isle.key.length ? ` · drops ${esc(isle.key.join(", "))}` : ""}</p>` : ""}
+        <ul class="skb">${rows.map(r => skyDropHtml(r, key, mob.src)).join("")}</ul>
+      </div>
+    </section>`;
+  }).join("")).join("");
+  return { html, shown, openCount };
+}
+
+/* Distinct pieces, not folds. The same piece drops off several mobs, so adding
+   up the per-mob counts would bill you twice for one Djinni War Blade. */
+function skyTotalNeed(m) {
+  const per = new Map();
+  for (const isle of m.isles || []) for (const mob of isle.mobs)
+    for (const r of mob.rows) if (r.need) per.set(r.n, r.need);
+  let n = 0;
+  for (const v of per.values()) n += v;
+  return n;
+}
+
+/* One drop. The star and the strikethrough are the two marks; the two numbers
+   are measurements. Right-click reaches skip, and the whole row expands to the
+   tests it feeds — a corpse is not where you read four reward names at once
+   (Kyle, 2026-08-14: "i need to mouseover to see the rewards the item gives,
+   or an expand thing. and i need to be able to right click to choose skip"). */
+function skyDropHtml(r, mobKey, src) {
+  const dead = r.quest && r.open === 0;
+  const cls = ["skb__r", r.quest ? "" : "is-extra", dead ? "is-off" : "",
+               r.need ? "is-need" : "", r.track ? "is-track" : ""].filter(Boolean).join(" ");
+  const who = src && src[r.n] ? src[r.n].join(", ") : "";
+  /* The count says what it counts. A bare "+1" after a reward name would read
+     as an upgrade tier — "Skycleaver +1" is a different item from "Skycleaver",
+     and this app strips exactly that suffix elsewhere. */
+  const buys = r.quest
+    ? `${esc(r.uses[0].reward || r.uses[0].short)}${r.uses.length > 1
+        ? ` <span class="dim">&middot; ${r.uses.length} tests</span>` : ""}`
+    : `<span class="dim" title="${esc(who)}">${who ? esc(src[r.n][0]) : "no test wants it"}</span>`;
+  const locs = r.locs.length ? ` ${r.locs.map(skyBadgeHtml).join(" ")}` : "";
+  /* Exactly six grid children, always. The bag badges have to live INSIDE the
+     name cell — as siblings they were extra grid items, and a piece the dump
+     could place shunted its own numbers into the next column and wrapped the
+     row. */
+  return `<li class="${cls}" data-drop="${esc(r.n)}" data-mob="${esc(mobKey)}"
+      title="${esc(r.uses.map(u => `${u.cls} · ${u.short}${u.reward ? " → " + u.reward : ""}${
+        u.skip ? " (skipped)" : u.fin ? " (done)" : ""}`).join("\n"))}">
+    <span class="skb__star">${r.track ? "★" : ""}</span>
+    <span class="skb__nm">${skyItemSpan(r.n)}${locs}</span>
+    <span class="skb__buys">${buys}</span>
+    <span class="skb__n" title="How many you are holding">${r.have || "·"}</span>
+    <span class="skb__need" title="How many more you must loot to finish every test that still wants it">${
+      r.quest ? (r.need || "·") : ""}</span>
+    ${r.quest ? `<button type="button" class="skb__x" data-skyexp="${esc(r.n)}" aria-expanded="false" title="What it buys">▾</button>` : "<span></span>"}
+  </li>`;
+}
+
+/* What the expand and the right-click menu read. Rebuilt with the board, so a
+   menu can never act on a test the row above it no longer shows. */
+let SKY_DROPS = new Map();   // item name -> uses[]
+
+function skyExpandDrop(btn) {
+  const li = btn.closest("li");
+  const open = btn.getAttribute("aria-expanded") === "true";
+  const next = li.nextElementSibling;
+  if (open) {
+    if (next && next.classList.contains("skb__x2")) next.remove();
+    btn.setAttribute("aria-expanded", "false"); btn.textContent = "▾";
+    return;
+  }
+  const uses = SKY_DROPS.get(li.dataset.drop) || [];
+  const el = document.createElement("li");
+  el.className = "skb__x2";
+  el.innerHTML = uses.map(u => `<div class="skb__u${u.skip ? " is-skip" : ""}${u.fin ? " is-done" : ""}${u.track ? " is-track" : ""}">
+      <button type="button" class="skb__ustar${u.track ? " on" : ""}" data-skytrack="${esc(u.code)}" data-test="${esc(u.test)}"
+        title="${u.track ? "Tracking — click to stop" : "Track this test"}">${u.track ? "★" : "☆"}</button>
+      <span class="skb__ucls">${esc(u.cls)}</span>
+      <span class="skb__utest">${esc(u.short)}</span>
+      <span class="dim">→</span>
+      <span class="skb__urew">${u.reward ? skyItemSpan(u.reward) : "?"}</span>
+      <span class="dim">${u.skip ? "skipped" : u.fin ? "done" : esc(u.giver || "")}</span>
+      <button type="button" class="skb__uskip" data-skyskip="${esc(u.code)}" data-test="${esc(u.test)}"
+        title="${u.skip ? "Un-skip" : "Never doing this one"}">${u.skip ? "un-skip" : "skip"}</button>
+    </div>`).join("");
+  li.after(el);
+  btn.setAttribute("aria-expanded", "true"); btn.textContent = "▴";
+  retip();
+}
+
+/* Right-click a drop → skip a test that wants it. Skip is per TEST: a piece
+   four classes want carries four separate decisions, so the menu lists them
+   instead of toggling something ambiguous under the cursor. */
+let SKY_MENU = null;
+function skyCloseMenu() { if (SKY_MENU) { SKY_MENU.remove(); SKY_MENU = null; } }
+function skyOpenMenu(li, x, y) {
+  skyCloseMenu();
+  const name = li.dataset.drop;
+  const uses = SKY_DROPS.get(name) || [];
+  if (!uses.length) return;
+  const el = document.createElement("div");
+  el.className = "skmenu";
+  el.dataset.drop = name;
+  el.innerHTML = `<div class="skmenu__h">${esc(name)}</div>`
+    + uses.map(u => `<button type="button" class="skmenu__i${u.skip ? " is-skip" : ""}${u.fin ? " is-done" : ""}"
+        data-skyskip="${esc(u.code)}" data-test="${esc(u.test)}">
+        <span class="skmenu__b">${u.skip ? "✓" : ""}</span>
+        <span>${esc(u.cls)} · ${esc(u.short)}</span>
+        <span class="dim">${u.reward ? "→ " + esc(u.reward) : ""}</span></button>`).join("")
+    + (uses.length > 1 ? `<button type="button" class="skmenu__i skmenu__all" data-skyskipall="${esc(name)}">${
+        uses.every(u => u.skip) ? "Un-skip all" : "Skip all"}</button>` : "");
+  document.body.appendChild(el);
+  const r = el.getBoundingClientRect();
+  el.style.left = Math.min(x, window.innerWidth - r.width - 8) + "px";
+  el.style.top = Math.min(y, window.innerHeight - r.height - 8) + "px";
+  SKY_MENU = el;
+}
+
+function paintSkyView() {
+  for (const b of document.querySelectorAll("[data-skyview]"))
+    b.classList.toggle("is-on", b.dataset.skyview === SKYP.view);
+  const boss = SKYP.view === "boss";
+  // the giver-view filters mean nothing on a drop table, and vice versa
+  $("skyShow").hidden = boss;
+  $("skyClass").hidden = boss;
+  $("skyHideDone").closest("label").hidden = boss;
+  $("skyNeedWrap").hidden = !boss;
 }
 
 function renderSky(model) {
@@ -2234,7 +2530,7 @@ function renderSky(model) {
   empty.hidden = true;
   const q = ($("skySearch").value || "").trim().toLowerCase();
   let shown = 0, openCount = 0;
-  const html = m.classes.map(g => {
+  const classHtml = () => m.classes.map(g => {
     if (SKYP.cls && g.code !== SKYP.cls) return "";
     const rows = g.tests.filter(t => skyKeep(t, SKYP.show, SKYP.hideDone) && skyMatch(g, t, q));
     if (!rows.length) return "";
@@ -2255,14 +2551,19 @@ function renderSky(model) {
     const orphan = g.orphan
       ? `<p class="sk-orphan">${g.orphan} completed trade${g.orphan === 1 ? "" : "s"} with ${esc(g.giver)} matched no single test — that is what a turn-in split across two trades looks like.</p>`
       : "";
-    const tests = rows.map(t => `<div class="skt${t.ready ? " is-ready" : ""}${t.done || t.ach ? " is-done" : ""}">
+    const tests = rows.map(t => `<div class="skt${t.ready ? " is-ready" : ""}${t.done || t.ach ? " is-done" : ""}${t.skip ? " is-skip" : ""}${t.track ? " is-track" : ""}">
       <div class="skt__h">
+        <button type="button" class="skt__star${t.track ? " on" : ""}" data-skytrack="${g.code}" data-test="${esc(t.full)}"
+          title="${t.track ? "Tracking this one — click to stop" : "Track this test: it stars here and joins the Tracked tab"}"
+          aria-pressed="${t.track}">${t.track ? "★" : "☆"}</button>
         <span class="skt__n">${esc(t.n)}</span>
         ${t.say ? `<span class="skt__say" title="Hail ${esc(g.giver)} and say this">say <code>${esc(t.say)}</code></span>` : ""}
         ${skyStatus(t)}
         ${t.done ? `<span class="skt__done" title="Your log shows ${t.done} turn-in${t.done === 1 ? "" : "s"} of this test">✓${t.done}</span>` : ""}
         ${t.ach && !t.done ? `<span class="skt__done skt__done--ach" title="Your achievement record says you obtained ${esc(t.reward)}; the turn-in happened before this log">✓ recorded</span>` : ""}
         <span class="skt__rew">→ ${skyItemSpan(t.reward)}</span>
+        <button type="button" class="skt__skip" data-skyskip="${g.code}" data-test="${esc(t.full)}"
+          title="${t.skip ? "Un-skip: count this one again" : "Never doing this one — its pieces stop counting as needed"}">${t.skip ? "un-skip" : "skip"}</button>
       </div>
       <ul class="skt__items">${t.rune.map(skyRuneHtml).join("")}${t.items.map(skyPieceHtml).join("")}</ul>
     </div>`).join("");
@@ -2276,8 +2577,20 @@ function renderSky(model) {
       <div class="skg__b"${open ? "" : " hidden"}>${orphan}${tests}</div>
     </section>`;
   }).join("");
-  body.innerHTML = html || `<p class="empty">Nothing matches. Widen <b>show</b>, or clear the search.</p>`;
-  meta.textContent = `${m.tot.ready} ready · ${m.tot.done}/${m.tot.tests} done · ${m.tot.partial} started · ${shown} shown`;
+
+  let html;
+  if (SKYP.view === "boss") {
+    const b = skyBossHtml(m, q);
+    html = b.html; shown = b.shown; openCount = b.openCount;
+  } else {
+    html = classHtml();
+  }
+  body.classList.toggle("sky--boss", SKYP.view === "boss");
+  body.innerHTML = html || `<p class="empty">Nothing matches. ${
+    SKYP.view === "boss" ? "Clear the search, or untick <b>only what I need</b>." : "Widen <b>show</b>, or clear the search."}</p>`;
+  meta.textContent = SKYP.view === "boss"
+    ? `${skyTotalNeed(m)} pieces to loot · ${m.tot.done}/${m.tot.tests} tests done · ${shown} shown`
+    : `${m.tot.ready} ready · ${m.tot.done}/${m.tot.tests} done · ${m.tot.partial} started · ${shown} shown`;
   $("skyExpand").textContent = openCount ? "collapse all" : "expand all";
   // What this reading can and can't have seen. Both halves are real limits and
   // neither is recoverable, so they are stated rather than left to be inferred.
@@ -2298,6 +2611,29 @@ function renderSky(model) {
    window; the tab's own filters stay out of it deliberately (the two are read
    in different places and for different reasons). */
 let lastSkyJson = "";
+/* The widget's boss board. Only mobs that owe you something — a 340px window is
+   not where you read a full 46-mob drop table — and tracked pieces first inside
+   each one, which is the whole reason the star exists (Kyle, 2026-08-14: "it
+   also indicates what im tracking. shows those items first"). */
+function pushSkyBosses(m, w) {
+  const out = [];
+  for (const isle of m.isles || []) for (const mob of isle.mobs) {
+    const rows = mob.rows.filter(r => r.need > 0 || (w.trackedFirst && r.track));
+    if (!rows.length) continue;
+    out.push({
+      n: mob.n, role: mob.role, isle: isle.name, isl: isle.isl,
+      need: mob.need, track: mob.track,
+      drops: rows.map(r => ({
+        ...skyRef(r.n), have: r.have, need: r.need, track: r.track,
+        buys: r.uses.filter(u => !u.fin && !u.skip)
+          .map(u => `${u.cls}: ${u.reward || u.short}`).slice(0, 4),
+        locs: w.loc ? r.locs.map(b => ({ k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title })) : [],
+      })),
+    });
+  }
+  return out;
+}
+
 function pushSky(model) {
   const m = model || skyModel();
   if (!m) return;
@@ -2305,10 +2641,11 @@ function pushSky(model) {
   const groups = [];
   for (const g of m.classes) {
     if (!w.cls.includes(g.code)) continue;
-    const tests = g.tests.filter(t => skyKeep(t, w.show, w.hideDone)).map(t => ({
+    const tests = g.tests.filter(t => skyKeep(t, w.show, w.hideDone) && !t.skip).map(t => ({
       // `ach` rides along so the overlay marks a pre-log completion the same
       // way the tab does; an older overlay build just ignores the extra key.
-      n: t.n, say: w.say ? t.say : "", done: t.done, ach: t.ach, ready: t.ready, missing: t.missing,
+      n: t.n, say: w.say ? t.say : "", done: t.done, ach: t.ach, ready: t.ready,
+      missing: t.missing, track: t.track,
       rew: skyRef(t.reward),
       items: t.rune.map(r => ({ ...skyRef(r.n), n: "Rune " + r.short, have: r.have, need: 1, rune: true, locs: [] }))
         .concat(t.items.map(i => ({
@@ -2317,10 +2654,15 @@ function pushSky(model) {
           locs: w.loc ? i.locs.map(b => ({ k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title })) : [],
         }))),
     }));
+    // tracked tests lead their giver's fold, same rule as the boss board
+    tests.sort((a, b) => (b.track - a.track) || (b.ready - a.ready));
     if (tests.length) groups.push({ code: g.code, name: g.name, giver: g.giver,
                                     ready: tests.filter(t => t.ready).length, tests });
   }
-  const p = { groups, ready: m.tot.ready, tests: m.tot.tests, done: m.tot.done,
+  const p = { groups, view: w.view === "boss" ? "boss" : "class",
+              bosses: w.view === "boss" ? pushSkyBosses(m, w) : [],
+              ready: m.tot.ready, tests: m.tot.tests, done: m.tot.done,
+              loot: skyTotalNeed(m),
               inv: INV.rows ? { age: INV.mtime ? Date.now() - INV.mtime : 0 } : null };
   const j = JSON.stringify(p);
   if (j !== lastSkyJson) { lastSkyJson = j; window.companion.sendSky(p); }
@@ -2342,18 +2684,27 @@ function renderSkySoon() {   // loot bursts land in batches; coalesce like the f
 function renderSkyWidget() {
   const w = SKYP.wid;
   const chip = code => `<label class="skw__c"><input type="checkbox" data-skywcls="${code}"${w.cls.includes(code) ? " checked" : ""}> ${esc(SKY_CLASS[code])}</label>`;
+  const boss = w.view === "boss";
   $("skyWidBody").innerHTML =
+    `<label class="skw__r">Group by <select data-skyw="view">
+       <option value="class"${!boss ? " selected" : ""}>quest giver</option>
+       <option value="boss"${boss ? " selected" : ""}>boss</option>
+     </select></label>` +
+    (boss ? "" :
     `<label class="skw__r">Show <select data-skyw="show">
        <option value="ready"${w.show === "ready" ? " selected" : ""}>ready to turn in</option>
        <option value="held"${w.show === "held" ? " selected" : ""}>anything I hold a piece of</option>
        <option value="all"${w.show === "all" ? " selected" : ""}>every test</option>
      </select></label>` +
-    `<label class="skw__r"><input type="checkbox" data-skyw="hideDone"${w.hideDone ? " checked" : ""}> hide tests I've finished</label>` +
+    `<label class="skw__r"><input type="checkbox" data-skyw="hideDone"${w.hideDone ? " checked" : ""}> hide tests I've finished</label>`) +
     `<label class="skw__r"><input type="checkbox" data-skyw="loc"${w.loc ? " checked" : ""}> show where each piece is</label>` +
-    `<label class="skw__r"><input type="checkbox" data-skyw="say"${w.say ? " checked" : ""}> show the hail phrase</label>` +
+    (boss
+      ? `<label class="skw__r"><input type="checkbox" data-skyw="trackedFirst"${w.trackedFirst ? " checked" : ""}> keep tracked pieces on the board</label>`
+      : `<label class="skw__r"><input type="checkbox" data-skyw="say"${w.say ? " checked" : ""}> show the hail phrase</label>`) +
+    (boss ? `<p class="skw__note">The boss board lists the mobs that still owe you a piece. Tracked pieces come first and keep their star.</p>` :
     `<div class="skw__h">Classes <button type="button" class="lnk" data-skywall="1">all</button> ·
        <button type="button" class="lnk" data-skywall="0">none</button></div>` +
-    `<div class="skw__cls">${Object.keys(SKY_CLASS).sort((a, b) => SKY_CLASS[a].localeCompare(SKY_CLASS[b])).map(chip).join("")}</div>`;
+    `<div class="skw__cls">${Object.keys(SKY_CLASS).sort((a, b) => SKY_CLASS[a].localeCompare(SKY_CLASS[b])).map(chip).join("")}</div>`);
 }
 
 function populateSkyFilters() {
@@ -2363,6 +2714,8 @@ function populateSkyFilters() {
       .map(c => `<option value="${c}"${SKYP.cls === c ? " selected" : ""}>${esc(SKY_CLASS[c])}</option>`).join("");
   $("skyShow").value = SKYP.show;
   $("skyHideDone").checked = SKYP.hideDone;
+  $("skyOnlyNeed").checked = !!SKYP.onlyNeed;
+  paintSkyView();
   renderSkyWidget();
 }
 
@@ -3241,13 +3594,32 @@ async function main() {
   renderUnlocks();
 
   $("skySearch").addEventListener("input", renderSky);
+  $("skyBody").addEventListener("contextmenu", e => {
+    const li = e.target.closest("li[data-drop]");
+    if (!li || !SKY_DROPS.has(li.dataset.drop)) return;
+    e.preventDefault();
+    skyOpenMenu(li, e.clientX, e.clientY);
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") skyCloseMenu(); });
+  window.addEventListener("blur", skyCloseMenu);
   $("skyShow").addEventListener("change", e => { SKYP.show = e.target.value; saveSkyPrefs(); renderSky(); });
   $("skyClass").addEventListener("change", e => { SKYP.cls = e.target.value; saveSkyPrefs(); renderSky(); });
   $("skyHideDone").addEventListener("change", e => { SKYP.hideDone = e.target.checked; saveSkyPrefs(); renderSky(); });
+  $("skyOnlyNeed").addEventListener("change", e => { SKYP.onlyNeed = e.target.checked; saveSkyPrefs(); renderSky(); });
+  $("skyView").addEventListener("click", e => {
+    const b = e.target.closest("[data-skyview]");
+    if (!b || b.dataset.skyview === SKYP.view) return;
+    SKYP.view = b.dataset.skyview;
+    saveSkyPrefs(); paintSkyView(); renderSky();
+  });
   $("skyExpand").addEventListener("click", () => {
-    const all = Object.keys(SKY_CLASS);
     const anyOpen = !!document.querySelector(".skg__h[aria-expanded=true]");
-    SKYP.open = anyOpen ? [] : all.slice();
+    if (SKYP.view === "boss") {
+      SKYP.openBoss = anyOpen ? [] : [...document.querySelectorAll("[data-skyboss]")]
+        .map(b => b.dataset.skyboss);
+    } else {
+      SKYP.open = anyOpen ? [] : Object.keys(SKY_CLASS);
+    }
     saveSkyPrefs(); renderSky();
   });
   // widget options — every one of them reshapes the payload, so each writes
@@ -3397,6 +3769,29 @@ async function main() {
       QEXPANDED.has(t) ? QEXPANDED.delete(t) : QEXPANDED.add(t);
       renderQuestBrowser(); return;
     }
+    const str = e.target.closest("[data-skytrack]");
+    if (str) { skyToggleTrack(str.dataset.skytrack, str.dataset.test); return; }
+    const ssk = e.target.closest("[data-skyskip]");
+    if (ssk) {
+      skyCloseMenu();
+      skyToggleSkip(ssk.dataset.skyskip, ssk.dataset.test, !skySkipped(ssk.dataset.skyskip, ssk.dataset.test));
+      return;
+    }
+    const sall = e.target.closest("[data-skyskipall]");
+    if (sall) {
+      const uses = SKY_DROPS.get(sall.dataset.skyskipall) || [];
+      const on = !uses.every(u => u.skip);
+      skyCloseMenu();
+      for (const u of uses) {
+        if (on) SKYP.skipped[skyMark(u.code, u.test)] = true;
+        else delete SKYP.skipped[skyMark(u.code, u.test)];
+      }
+      saveSkyPrefs(); renderSkySoon();
+      return;
+    }
+    if (SKY_MENU && !e.target.closest(".skmenu")) skyCloseMenu();
+    const sx = e.target.closest("[data-skyexp]");
+    if (sx) { skyExpandDrop(sx); return; }
     const sg = e.target.closest("[data-skyclass]");
     if (sg) {
       const c = sg.dataset.skyclass;
@@ -3404,6 +3799,13 @@ async function main() {
       // fold closing doesn't reshuffle the other fifteen
       if (!SKYP.open) SKYP.open = [...document.querySelectorAll(".skg__h[aria-expanded=true]")].map(b => b.dataset.skyclass);
       SKYP.open = SKYP.open.includes(c) ? SKYP.open.filter(x => x !== c) : SKYP.open.concat(c);
+      saveSkyPrefs(); renderSky(); return;
+    }
+    const sb = e.target.closest("[data-skyboss]");
+    if (sb) {
+      const k = sb.dataset.skyboss;
+      if (!SKYP.openBoss) SKYP.openBoss = [...document.querySelectorAll(".skg__h[aria-expanded=true]")].map(b => b.dataset.skyboss).filter(Boolean);
+      SKYP.openBoss = SKYP.openBoss.includes(k) ? SKYP.openBoss.filter(x => x !== k) : SKYP.openBoss.concat(k);
       saveSkyPrefs(); renderSky(); return;
     }
     const zh = e.target.closest("[data-zone]");
