@@ -166,6 +166,13 @@ main { flex: 1; overflow-y: auto; padding: 16px; }
 .ivb--bis { color: var(--gold-pale); border-color: color-mix(in srgb, var(--gold) 45%, transparent); margin-left: 0; margin-right: 4px; }
 .ivb--warn { color: var(--gold-bright); border-color: var(--gold); }
 .ivb--quest { color: var(--bg-deep); background: var(--gold); border-color: var(--gold); font-weight: 600; }
+/* Exalt mode: the four socket kinds, one hue each, same on the site's /exalt. */
+.ivb--xfocus { color: var(--invoke); border-color: color-mix(in srgb, var(--arcane) 45%, var(--line)); margin-left: 0; margin-right: 4px; }
+.ivb--xclick { color: var(--gold-pale); border-color: color-mix(in srgb, var(--gold) 45%, var(--line)); margin-left: 0; margin-right: 4px; }
+.ivb--xworn { color: var(--wiki); border-color: var(--wiki-line); margin-left: 0; margin-right: 4px; }
+.ivb--xproc { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 45%, var(--line)); margin-left: 0; margin-right: 4px; }
+.ivb--dim { opacity: .55; }
+.ivt .ok { color: var(--wiki); }
 .ivt td.iv-by { white-space: normal; min-width: 300px; max-width: 520px; }
 .iv-byline { font-size: 12px; display: inline-block; margin-right: 10px; white-space: nowrap; }
 .iv-nichex { font: 10px var(--sans); color: var(--ink-dim); margin-left: 6px; }

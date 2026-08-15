@@ -627,7 +627,7 @@ const IV = { tab: "all", trade: "", cls: "", sort: "where", dir: 1 };
 /* One sort per mode. Spare opens on the item the most things beat, which is
    the whole point of the mode; Gear opens on the pieces that are first pick
    for the most classes. */
-const IV_SORT = { quest: { k: "where", d: 1 }, gear: { k: "bis", d: -1 }, spare: { k: "ahead", d: -1 } };
+const IV_SORT = { quest: { k: "where", d: 1 }, gear: { k: "bis", d: -1 }, spare: { k: "ahead", d: -1 }, exalt: { k: "xfits", d: -1 } };
 const IV_OPEN = new Set(); // expanded rows, keyed by row id
 /* The location vocabulary is /_shared/gear-score.js (vendored) — the site's
    /gear, /sky and /valet read the same dump and a second classifier here is
@@ -874,6 +874,61 @@ function spareReload() {
   if (!VINV || !window.EQLSpare) return;
   SPARE = window.EQLSpare.analyze({ rows: VINV.rows, level: VL.level, D: window.EQL_DATA });
   SPARE_BY = new Map(SPARE.items.map(it => [spareKey(it.row.loc, it.row.name), it]));
+  exaltReload();
+}
+
+/* ── Exalt: the fourth mode ──────────────────────────────────────────────
+   vendor/exalt-core.js (the /exalt page's core) reads the dump once — every
+   worn item's four sockets, every loose exaltation and where it fits, every
+   item you own whose wiki record yields one — and this layer keys the answer
+   back onto the rows by location + name, same as Spare. */
+let EXALT = null, EXALT_CAT = null, EXALT_BY = null;
+function exaltReload() {
+  EXALT = null; EXALT_BY = null;
+  if (!INV.text || !GDATA || !window.EQLExaltCore) return;
+  const X = window.EQLExaltCore;
+  if (!EXALT_CAT || EXALT_CAT.data !== GDATA) {
+    X.setLockedZones(GDATA.zone_oe);
+    EXALT_CAT = X.build(GDATA); EXALT_CAT.data = GDATA;
+  }
+  const rows = window.EQLGearScore.parseRows(INV.text);
+  EXALT = X.readDump(rows, GDATA, EXALT_CAT);
+  EXALT_BY = new Map();
+  for (const l of EXALT.loose) EXALT_BY.set(spareKey(l.row.loc, l.row.name), { kind: "loose", l });
+  for (const src of EXALT.sources) {
+    EXALT_BY.set(spareKey(src.row.loc, src.row.name), { kind: "source", src });
+    for (const t of X.TYPES) {
+      const sk = src.sockets[t.key];
+      if (sk.filled) EXALT_BY.set(spareKey(sk.stone.row.loc, sk.stone.row.name), { kind: "socketed", host: src, type: t.key, st: sk.stone });
+    }
+  }
+  pushExalt();
+}
+const exaltOf = v => (EXALT_BY && EXALT_BY.get(spareKey(v.r.loc, v.r.name))) || null;
+const xKind = t => `<span class="ivb ivb--x${t}">${window.EQLExaltCore.TYPE[t].label}</span>`;
+const xEffText = (y) => {
+  const fx = GDATA && GDATA.effects ? GDATA.effects[y.effect] : null;
+  return `<span title="${esc(fx && fx.d ? fx.d : "")}">${esc(y.effect)}</span>`;
+};
+/* The overlay's Exalt view: loose exaltations that fit something worn right
+   now, one line each. Same shape of push as Spare — the answer the tab already
+   computed, trimmed for 340px. */
+let lastExaltJson = "";
+function pushExalt() {
+  if (!EXALT) { if (lastExaltJson !== "null") { lastExaltJson = "null"; window.companion.sendExalt(null); } return; }
+  const X = window.EQLExaltCore;
+  const rows = [];
+  for (const l of EXALT.loose) for (const y of l.yields.filter(x => x.type)) {
+    const h = X.homesFor(y, EXALT.worn);
+    if (!h.now.length) continue;
+    const ref = skyRef(l.row.base);
+    rows.push({ n: l.row.base, url: ref.url, sb: ref.sb, kind: X.TYPE[y.type].label, effect: y.effect,
+                into: `${h.now[0].w.slot}: ${h.now[0].w.row.base}`,
+                more: h.now.length > 1 ? h.now.slice(1).map(x => x.w.slot).join(", ") : null });
+  }
+  const p = { loose: EXALT.loose.length, rows: rows.slice(0, 40) };
+  const j = JSON.stringify(p);
+  if (j !== lastExaltJson) { lastExaltJson = j; window.companion.sendExalt(p); }
 }
 const spareOf = v => (SPARE_BY && SPARE_BY.get(spareKey(v.r.loc, v.r.name))) || null;
 
@@ -927,6 +982,74 @@ const IV_COLS = [
   { k: "cls", h: "Class", d0: 1, key: v => v.clsTxt || null, cell: v => `<td class="iv-cls">${esc(v.clsTxt)}</td>` },
   { k: "era", h: "Era", d0: 1, key: v => v.eraKey, cell: v => `<td>${v.oe ? `<span class="oe">out of era</span>` : esc(v.eraTxt)}</td>` },
   { k: "src", h: "Source", d0: 1, key: v => v.src.cell.toLowerCase() || null, cell: v => `<td class="iv-src">${esc(v.src.cell)}</td>` },
+
+  /* ── the Exalt columns ─────────────────────────────────────────────────
+     A row is one of three things to this mode: an exaltation sitting loose,
+     an exaltation socketed in an item, or an item that yields one. Effect says
+     which effect(s), Fits says where it can go (or whether the socket it is in
+     agrees with the wiki), Sockets shows an item's four sockets. */
+  { k: "xeff", h: "Effect", d0: 1,
+    key: v => { const x = exaltOf(v); if (!x) return null; if (x.kind === "socketed") return x.st.stone ? x.st.stone.effect.toLowerCase() : "zz"; const ys = (x.kind === "loose" ? x.l.yields : x.src.yields).filter(y => y.type); return ys.length ? ys[0].effect.toLowerCase() : null; },
+    cell: v => {
+      const x = exaltOf(v);
+      if (!x) return `<td></td>`;
+      if (x.kind === "socketed") {
+        const st = x.st;
+        return `<td class="iv-eff">${st.stone ? `${xKind(st.stone.type)} ${xEffText(st.stone)}` : `<span class="dim">${esc(st.row.base)} — kind unknown</span>`}</td>`;
+      }
+      const ys = (x.kind === "loose" ? x.l.yields : x.src.yields).filter(y => y.type);
+      if (!ys.length) return `<td class="iv-eff"><span class="dim">${x.l && !x.l.rec ? "no wiki record" : "no focus, click, worn or proc effect on the wiki"}</span></td>`;
+      const one = x.kind === "loose" && ys.length > 1 ? ` <span class="dim" title="the item yields more than one effect; this exaltation is one of them">one of ${ys.length}</span>` : "";
+      return `<td class="iv-eff">${ys.map(y => `<div>${xKind(y.type)} ${xEffText(y)}${x.kind === "source" ? ` <span class="dim">+${y.at}</span>` : ""}</div>`).join("")}${one}</td>`;
+    } },
+  { k: "xfits", h: "Fits", d0: -1,
+    key: v => {
+      const x = exaltOf(v); if (!x) return null;
+      const X = window.EQLExaltCore;
+      if (x.kind === "loose") { let n = 0; for (const y of x.l.yields.filter(y => y.type)) n += X.homesFor(y, EXALT.worn).now.length; return n; }
+      if (x.kind === "socketed") { if (!x.st.stone || !x.host.rec) return null; return X.fit(x.st.stone, { cls: x.host.cls, sl: x.host.sl, tier: x.host.tier }).ok ? 1 : 0; }
+      return x.src.yields.filter(y => y.type && x.src.tier >= y.at).length;
+    },
+    cell: v => {
+      const x = exaltOf(v);
+      if (!x) return `<td></td>`;
+      const X = window.EQLExaltCore;
+      if (x.kind === "loose") {
+        const lines = [];
+        for (const y of x.l.yields.filter(y => y.type)) {
+          const h = X.homesFor(y, EXALT.worn);
+          const now = h.now.map(z => `${esc(z.w.slot)}: ${esc(z.w.row.base)}${z.occupied ? ' <span class="dim">(holds one)</span>' : ""}${z.f.narrowsCls ? ` <span class="ivb ivb--warn" title="would be usable only by ${esc(X.clsText(z.f.cls))}">narrows</span>` : ""}`);
+          const later = h.later.map(z => `${esc(z.w.slot)}: ${esc(z.w.row.base)} <span class="dim">at +${z.needs}</span>`);
+          lines.push(`<div>${now.join("; ") || '<span class="dim">nothing you wear</span>'}${later.length ? ` <span class="dim">· after upgrade: ${later.join("; ")}</span>` : ""}</div>`);
+        }
+        return `<td class="iv-by">${lines.join("")}</td>`;
+      }
+      if (x.kind === "socketed") {
+        if (!x.st.stone || !x.host.rec) return `<td><span class="dim">no wiki record to check</span></td>`;
+        const f = X.fit(x.st.stone, { cls: x.host.cls, sl: x.host.sl, tier: x.host.tier });
+        return f.ok ? `<td><span class="ok">in ${esc(x.host.row.base)}</span>${f.narrowsCls ? ` <span class="dim">→ ${esc(X.clsText(f.cls))}</span>` : ""}</td>`
+                    : `<td><span class="ivb ivb--warn" title="the wiki's class or slot line for one of these two items disagrees with the game, which accepted this exaltation (${esc(f.why.join("; "))})">wiki?</span></td>`;
+      }
+      const ys = x.src.yields.filter(y => y.type);
+      return `<td>${ys.map(y => {
+        const sk = x.src.sockets[y.type];
+        if (x.src.socketsKnown && sk.open && !sk.filled) return `<div class="dim">${esc(y.effect)}: pulled out already</div>`;
+        if (x.src.socketsKnown && sk.filled && sk.stone.key !== x.src.key) return `<div class="dim">${esc(y.effect)}: replaced by ${esc(sk.stone.row.base)}</div>`;
+        return x.src.tier >= y.at ? `<div><span class="ok">ready</span> to pull ${esc(y.effect)}</div>` : `<div class="dim">${esc(y.effect)}: +${x.src.tier} of +${y.at}</div>`;
+      }).join("")}</td>`;
+    } },
+  { k: "xsock", h: "Sockets", d0: -1,
+    key: v => { const x = exaltOf(v); if (!x || x.kind !== "source" || !x.src.socketsKnown) return null; return Object.values(x.src.sockets).filter(s => s.filled).length; },
+    cell: v => {
+      const x = exaltOf(v);
+      if (!x || x.kind !== "source" || !x.src.socketsKnown) return `<td></td>`;
+      const X = window.EQLExaltCore;
+      return `<td class="iv-by">${X.TYPES.map(t => {
+        const sk = x.src.sockets[t.key];
+        const body = sk.filled ? esc(sk.stone.stone ? sk.stone.stone.effect : sk.stone.row.base) : sk.open ? "empty" : `+${t.at}`;
+        return `<span class="ivb ivb--x${t.key}${sk.filled ? "" : " ivb--dim"}" title="${t.label}: ${sk.filled ? "holds " + body : sk.open ? "open, empty" : "opens at +" + t.at}">${t.label[0]} ${body}</span>`;
+      }).join(" ")}</td>`;
+    } },
 
   /* ── the three ranking columns ─────────────────────────────────────────
      Kyle's Gear-mode spec, verbatim: "best for classes (a list of classes for
@@ -983,6 +1106,7 @@ const IV_DEFAULTS = {
   quest: ["where", "item", "qty", "quests"],
   gear:  ["where", "item", "bis"],
   spare: ["where", "item", "ahead", "beatenby"],
+  exalt: ["where", "item", "tier", "xeff", "xfits", "xsock"],
 };
 const IV_DEFAULT_COLS = IV_DEFAULTS.quest;
 const IV_COLS_KEY = "eqlt-companion-invcols-v2";
@@ -1128,7 +1252,13 @@ function renderInv() {
      suggestion to get rid of something. Quest and Gear say nothing — their
      columns are the explanation. */
   const note = $("invNote");
-  note.hidden = mode !== "spare";
+  note.hidden = mode !== "spare" && mode !== "exalt";
+  if (mode === "exalt") {
+    note.innerHTML = `Everything in the dump that is an exaltation or could yield one. `
+      + `An exaltation keeps its item's class and slot lines and the item you put it in becomes the overlap; the game refuses a pair with no shared class. `
+      + `Sockets open at +1 focus, +2 click, +3 worn, +4 proc, and the same tier pulls the effect out of the item that has it. `
+      + `<span class="dim">Full finder by slot: eqltools.com/exalt.</span>`;
+  }
   if (mode === "spare") {
     note.innerHTML = `Every class that can wear it has better options in every slot it fits. `
       + `<b>Better</b> counts what beats it in the slot where it does best — Ear, Wrist, Fingers and Any Slot keep two. `
@@ -1151,6 +1281,7 @@ function renderInv() {
      belongs in Quest mode where it can still carry a turn-in. */
   const modeOk = v => {
     if (mode === "quest") return true;
+    if (mode === "exalt") return !!exaltOf(v);
     const s = spareOf(v);
     if (!s) return false;
     return mode === "gear" || s.spare;
@@ -1178,6 +1309,7 @@ function renderInv() {
   // the weight total belongs to the Wt column — hidden column, no stray number
   const wt = IV_SHOW.has("wt") ? rows.reduce((n, v) => n + (v.wt != null ? v.wt * v.r.count : 0), 0) : null;
   const scope = mode === "quest" ? `${rows.length} of ${INV.rows.length} items`
+    : mode === "exalt" ? `${rows.length} rows · ${EXALT ? EXALT.loose.length : 0} loose exaltations · ${EXALT ? EXALT.worn.length : 0} worn`
     : `${rows.length} of ${SPARE ? SPARE.items.length : 0} rankable items`;
   $("invMeta").textContent =
     `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()} · ${scope}${wt != null ? ` · ${Math.round(wt * 10) / 10} wt` : ""}`;
@@ -1196,6 +1328,7 @@ function invEmptyText(mode) {
   const filtered = $("invSearch").value.trim() || $("invQuestOnly").checked || IV.trade || IV.cls;
   if (filtered) return "Nothing matches those filters.";
   if (mode === "quest") return "Nothing in the dump.";
+  if (mode === "exalt") return EXALT ? "Nothing in the dump is an exaltation or yields one." : "The gear dataset has not loaded — refresh from eqltools.com in Settings.";
   if (!SPARE) return "The gear dataset has not loaded — refresh from eqltools.com in Settings.";
   if (!SPARE.items.length) return "Nothing in the dump resolves to an item the wiki has stats for.";
   return mode === "spare"
@@ -2157,7 +2290,7 @@ function setQuestView(v) {
    buttons show the same element. "bags" was the old key for what is now
    "quest"; anything unrecognised falls back to it rather than showing a blank
    tab to someone upgrading. */
-const INV_MODES = ["quest", "gear", "spare"];
+const INV_MODES = ["quest", "gear", "spare", "exalt"];
 function setInvView(v) {
   INV_VIEW = v;
   try { localStorage.setItem(IVIEW_KEY, v); } catch {}
@@ -4560,7 +4693,7 @@ function renderUpdate(u) {
    person wants/doesn't want. the widget could be small and having too many tabs
    may be clutter." The last ticked box is disabled — an overlay with no tabs
    can show nothing, and unticking it would look like the app broke. */
-const OV_VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Parser", sky: "Sky", valet: "Valet" };
+const OV_VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Parser", sky: "Sky", valet: "Valet", spare: "Spare", exalt: "Exalt" };
 function renderOverlayViews(prefs) {
   const all = prefs.all || Object.keys(OV_VIEW_LABEL);
   const on = prefs.views || all;

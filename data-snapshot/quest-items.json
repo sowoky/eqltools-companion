@@ -69587,11 +69587,11 @@
        1
       ],
       [
-       "Adamantite Band",
+       "Electrum-Bladed Wakizashi",
        1
       ],
       [
-       "Electrum-Bladed Wakizashi",
+       "Adamantite Band",
        1
       ]
      ],
@@ -69754,11 +69754,11 @@
        1
       ],
       [
-       "Adamantite Band",
+       "Electrum-Bladed Wakizashi",
        1
       ],
       [
-       "Electrum-Bladed Wakizashi",
+       "Adamantite Band",
        1
       ]
      ],
@@ -110027,11 +110027,11 @@
     {
      "c": [
       [
-       "Head of Sir Edwin Motte",
+       "Apprentice Ring",
        1
       ],
       [
-       "Apprentice Ring",
+       "Head of Sir Edwin Motte",
        1
       ]
      ],
@@ -110073,15 +110073,15 @@
        1
       ],
       [
-       "Head of Sir Edwin Motte",
-       1
-      ],
-      [
        "Twisted Bone Earring",
        1
       ],
       [
        "Apprentice Ring",
+       1
+      ],
+      [
+       "Head of Sir Edwin Motte",
        1
       ]
      ],
@@ -110282,11 +110282,11 @@
      "i": 4,
      "in": [
       [
-       "Head of Sir Edwin Motte",
+       "Apprentice Ring",
        1
       ],
       [
-       "Apprentice Ring",
+       "Head of Sir Edwin Motte",
        1
       ]
      ],
@@ -110355,15 +110355,15 @@
        1
       ],
       [
-       "Head of Sir Edwin Motte",
-       1
-      ],
-      [
        "Twisted Bone Earring",
        1
       ],
       [
        "Apprentice Ring",
+       1
+      ],
+      [
+       "Head of Sir Edwin Motte",
        1
       ]
      ],
@@ -120421,11 +120421,11 @@
        1
       ],
       [
-       "Dragonbane Herb",
+       "Dragon Blood",
        1
       ],
       [
-       "Dragon Blood",
+       "Dragonbane Herb",
        1
       ]
      ],
@@ -121956,15 +121956,15 @@
     {
      "c": [
       [
-       "Tattered Toupee",
-       1
-      ],
-      [
        "Lock of Hair",
        1
       ],
       [
        "Clump of Gorilla Hair",
+       1
+      ],
+      [
+       "Tattered Toupee",
        1
       ]
      ],
@@ -122185,15 +122185,15 @@
      "i": 12,
      "in": [
       [
-       "Tattered Toupee",
-       1
-      ],
-      [
        "Lock of Hair",
        1
       ],
       [
        "Clump of Gorilla Hair",
+       1
+      ],
+      [
+       "Tattered Toupee",
        1
       ]
      ],
@@ -125368,11 +125368,11 @@
     {
      "c": [
       [
-       "Drogan Warlord's Insignia",
+       "Forged Note to Courier",
        1
       ],
       [
-       "Forged Note to Courier",
+       "Drogan Warlord's Insignia",
        1
       ]
      ],
@@ -125484,11 +125484,11 @@
      "i": 7,
      "in": [
       [
-       "Drogan Warlord's Insignia",
+       "Forged Note to Courier",
        1
       ],
       [
-       "Forged Note to Courier",
+       "Drogan Warlord's Insignia",
        1
       ]
      ],
@@ -144209,12 +144209,12 @@
        4
       ],
       [
-       "Pieces of the Iceclad Map",
-       1
-      ],
-      [
        "Third part of an Iceclad Map",
        4
+      ],
+      [
+       "Pieces of the Iceclad Map",
+       1
       ]
      ],
      "g": "Bloodmaw",
@@ -144330,12 +144330,12 @@
        4
       ],
       [
-       "Pieces of the Iceclad Map",
-       1
-      ],
-      [
        "Third part of an Iceclad Map",
        4
+      ],
+      [
+       "Pieces of the Iceclad Map",
+       1
       ]
      ],
      "k": "give",
@@ -147587,7 +147587,7 @@
      "i": 12,
      "in": [
       [
-       "Blade of Nobility",
+       "Amstaf's Scroll",
        1
       ],
       [
@@ -147595,7 +147595,7 @@
        1
       ],
       [
-       "Amstaf's Scroll",
+       "Blade of Nobility",
        1
       ],
       [
@@ -160554,11 +160554,11 @@
     {
      "c": [
       [
-       "Bunker Cell No 1",
+       "Bog Juice",
        1
       ],
       [
-       "Bog Juice",
+       "Bunker Cell No 1",
        1
       ]
      ],
@@ -160792,11 +160792,11 @@
      "i": 5,
      "in": [
       [
-       "Bunker Cell No 1",
+       "Bog Juice",
        1
       ],
       [
-       "Bog Juice",
+       "Bunker Cell No 1",
        1
       ]
      ],

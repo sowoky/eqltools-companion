@@ -36,8 +36,9 @@ const statsEl = document.getElementById("ostats");
 const skyEl = document.getElementById("osky");
 const valetEl = document.getElementById("ovalet");
 const spareEl = document.getElementById("ospare");
+const exaltEl = document.getElementById("oexalt");
 const VIEWS = { tracked: "otTracked", loot: "otLoot", stats: "otStats", sky: "otSky",
-                valet: "otValet", spare: "otSpare" };
+                valet: "otValet", spare: "otSpare", exalt: "otExalt" };
 /* Which tabs this window carries at all — chosen in the app's Settings, not
    here: four tabs is a lot of chrome in a 340px window, and the ones a player
    never opens are pure clutter (Kyle, 2026-08-13). */
@@ -55,6 +56,7 @@ function applyView() {
   skyEl.hidden = v !== "sky";
   valetEl.hidden = v !== "valet";
   spareEl.hidden = v !== "spare";
+  exaltEl.hidden = v !== "exalt";
   for (const [name, id] of Object.entries(VIEWS)) {
     const b = document.getElementById(id);
     b.hidden = !on.includes(name);
@@ -624,7 +626,44 @@ function renderSpare() {
   spareEl.append(ul);
 }
 
-window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests, stats, sky, valet, spare }) => {
+/* ── Exalt ────────────────────────────────────────────────────────────────
+   The loose exaltations in your storage that would go into something you are
+   wearing right now — socket open, class and slot shared — one line each,
+   with the worn item it fits. The verdicts are the app's (vendor/exalt-core.js
+   over the same dump the Inventory tab reads); this window only lists them.
+   Off by default like Spare: it is a banker's-desk read, not a fight read. */
+let EXALT = null;
+function renderExalt() {
+  exaltEl.innerHTML = "";
+  if (!EXALT) {
+    exaltEl.innerHTML = `<div class="osk-none">Load an inventory dump in the app — type <code>/out inventory</code> in game.</div>`;
+    return;
+  }
+  const head = document.createElement("div");
+  head.className = "osk-head";
+  head.textContent = EXALT.rows.length
+    ? `${EXALT.rows.length} of ${EXALT.loose} loose fit what you wear`
+    : `${EXALT.loose} loose · none fit what you wear`;
+  exaltEl.append(head);
+  if (!EXALT.rows.length) return;
+  const ul = document.createElement("ul");
+  ul.className = "ovl";
+  for (const r of EXALT.rows) {
+    const li = document.createElement("li");
+    li.className = "ovi";
+    const k = document.createElement("span");
+    k.className = "ovi__s"; k.textContent = r.kind;
+    li.append(k, itemSpan(r.n, r.url, r.sb, "ovi__n"));
+    const to = document.createElement("span");
+    to.className = "ovi__warn"; to.textContent = `→ ${r.into}`;
+    to.title = r.effect + (r.more ? ` · also fits ${r.more}` : "");
+    li.append(to);
+    ul.append(li);
+  }
+  exaltEl.append(ul);
+}
+
+window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests, stats, sky, valet, spare, exalt }) => {
   if (prefs) PREFS = { ...PREFS, ...prefs };
   panelEl.style.zoom = PREFS.fontScale;
   setMode(clickThrough, opacity);
@@ -644,6 +683,8 @@ window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, ques
   renderValet();
   if (spare) SPARE = spare;
   renderSpare();
+  if (exalt) EXALT = exalt;
+  renderExalt();
   applyView(); applyRoll();
 });
 window.companion.onOverlayMode(({ clickThrough, opacity }) => setMode(clickThrough, opacity));
@@ -941,6 +982,7 @@ skyEl.addEventListener("click", e => {
 window.companion.onFeedSky(s => { SKYP = s; renderSky(); rehotspot(); });
 window.companion.onFeedValet(v => { VALET = v; renderValet(); rehotspot(); });
 window.companion.onFeedSpare(v => { SPARE = v; renderSpare(); rehotspot(); });
+window.companion.onFeedExalt(v => { EXALT = v; renderExalt(); rehotspot(); });
 
 const tipEl = document.createElement("div");
 tipEl.id = "otip"; tipEl.hidden = true;

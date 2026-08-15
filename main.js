@@ -49,14 +49,14 @@ const BOOTSTRAP_CAP = 40 * 1024 * 1024; // same tail cap as the /kills page
 /* Every overlay view, in tab order. The list is the allowlist for the `view`
    pref AND the menu the main window offers — a view missing from here silently
    fails to round-trip, which is how the Sky tab first refused to stick. */
-const OVERLAY_VIEWS = ["tracked", "loot", "stats", "sky", "valet", "spare"];
+const OVERLAY_VIEWS = ["tracked", "loot", "stats", "sky", "valet", "spare", "exalt"];
 /* Views that do NOT switch themselves on. The migration below exists so a new
    tab reaches existing installs without a manual tick — Sky and Valet both
    needed it. Spare is the exception Kyle asked for by name (2026-08-14: "yes
    overlay, off by default. enablable by right clicking the title bar"): it is
    still in OVERLAY_VIEWS so the pref round-trips and it appears in the Tabs
    menu, it just starts unticked and stays that way until someone ticks it. */
-const OVERLAY_VIEWS_OFF = ["spare"];
+const OVERLAY_VIEWS_OFF = ["spare", "exalt"];
 const OVERLAY_VIEWS_ON = OVERLAY_VIEWS.filter(v => !OVERLAY_VIEWS_OFF.includes(v));
 /* The Parser meter's window, minutes; 0 is the whole zone visit. Same
    allowlist job as OVERLAY_VIEWS — an unlisted value is silently dropped
@@ -269,6 +269,7 @@ function sendOverlayInit() {
     sky: LAST_SKY,
     valet: LAST_VALET,
     spare: LAST_SPARE,
+    exalt: LAST_EXALT,
   });
 }
 
@@ -315,6 +316,7 @@ let LAST_SKY = null;
    anyone would do with a corpse on the floor. */
 let LAST_VALET = null;
 let LAST_SPARE = null;
+let LAST_EXALT = null;   // overlay Exalt view: loose exaltations that fit worn gear
 
 /* ── log tail engine ──────────────────────────────────────────────────────
    Poll-stat the log directory (fs.watch is unreliable enough on Windows
@@ -847,7 +849,7 @@ ipcMain.on("overlay:prefs", (_e, p) => applyOverlayPrefs(p || {}));
    there and other settings. opacity, etc." */
 // the `stats` key is the stored pref and stays; only the word on screen moved
 // (Kyle, 2026-08-14: "rename stats to parser in the widget")
-const VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Parser", sky: "Sky", valet: "Valet", spare: "Spare" };
+const VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Parser", sky: "Sky", valet: "Valet", spare: "Spare", exalt: "Exalt" };
 const OPACITY_STEPS = [1, 0.92, 0.85, 0.75, 0.6, 0.45];
 const SCALE_STEPS = [0.8, 0.9, 1, 1.15, 1.3, 1.6];
 ipcMain.on("overlay:menu", () => {
@@ -985,6 +987,10 @@ ipcMain.on("feed:sky", (_e, s) => {
 ipcMain.on("feed:spare", (_e, v) => {
   LAST_SPARE = v && typeof v === "object" ? v : null;
   if (overlayWin) overlayWin.webContents.send("feed:spare", LAST_SPARE);
+});
+ipcMain.on("feed:exalt", (_e, v) => {
+  LAST_EXALT = v && typeof v === "object" ? v : null;
+  if (overlayWin) overlayWin.webContents.send("feed:exalt", LAST_EXALT);
 });
 ipcMain.on("feed:valet", (_e, v) => {
   LAST_VALET = v && typeof v === "object" ? v : null;

@@ -216,22 +216,15 @@
   /* ── Sky ────────────────────────────────────────────────────────────────
      A Primary Class Unlock's "Obtain X" criteria ARE that class's Plane of Sky
      test rewards, one per test — verified against sky.json: the criterion count
-     equals the test count for all sixteen classes, and 90 of 95 reward names
-     match outright.
+     equals the test count for all sixteen classes.
 
-     The five that don't are the client and the wiki spelling one item two ways.
-     No rule derives "Scintillating" from "Shimmering", so this is the
-     out-of-band table the pipeline is allowed to have: five rows, each with the
-     client's own string as its receipt, read out of a real dump. The client is
-     the game and therefore right; sky.json is keyed by the wiki's title, so the
-     mapping runs client -> sky.json. */
+     Since 2026-08-15 sky.json names every reward the way the CLIENT does
+     (build_sky_data.py use_client_names — the same 95 strings the dump prints,
+     read from AchievementComponentsClient.txt), so 94 of 95 match outright.
+     The one that doesn't is a criterion naming a PAIR: the client hands over
+     two weapons under one line, and sky.json keeps the test under the sword. */
   const REWARD_ALIAS = {
-    "amulet of the fae": "Fae Amulet",
-    // The client names the pair the test hands over; the wiki page is the sword.
     "windhowl and spirit render": "Windhowl",
-    "griffin hide armguards": "Griffon-Hide Armguards",
-    "griffon wing spaulders": "Griffon Wing Spauldors",
-    "shimmering bracer of protection": "Scintillating Bracer of Protection",
   };
 
   /* `classNames` is the caller's own code->name map (SKY_CLASS) rather than a

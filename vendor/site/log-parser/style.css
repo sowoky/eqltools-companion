@@ -294,4 +294,7 @@ tbody tr.tot td { border-top: 1px solid var(--line-hot, #5c4630); color: var(--i
 /* companion embed (?embed=1): the host app tails the log and posts it in —
    site chrome, file intake, and reset have no job inside the app */
 body.embed .eq-header, body.embed .eq-footer, body.embed .intake, body.embed #btnReset { display: none; }
+
+/* the shared file line under the drop zone (_shared/file-bar.js) */
+.log-line { margin: 0; color: var(--ink-soft); font-size: .86rem; }
 }

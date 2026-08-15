@@ -39,6 +39,7 @@ contextBridge.exposeInMainWorld("companion", {
   sendSky: (s) => ipcRenderer.send("feed:sky", s),
   sendValet: (v) => ipcRenderer.send("feed:valet", v),
   sendSpare: (v) => ipcRenderer.send("feed:spare", v),
+  sendExalt: (v) => ipcRenderer.send("feed:exalt", v),
   markHeld: (n) => ipcRenderer.send("quest:markHeld", n),
   onMarkHeld: (fn) => ipcRenderer.on("quest:markHeld", (_e, p) => fn(p)),
   /* The Parser meter's reset stamp. Same shape as markHeld: the overlay asks,
@@ -67,4 +68,5 @@ contextBridge.exposeInMainWorld("companion", {
   onFeedSky: (fn) => ipcRenderer.on("feed:sky", (_e, p) => fn(p)),
   onFeedValet: (fn) => ipcRenderer.on("feed:valet", (_e, p) => fn(p)),
   onFeedSpare: (fn) => ipcRenderer.on("feed:spare", (_e, p) => fn(p)),
+  onFeedExalt: (fn) => ipcRenderer.on("feed:exalt", (_e, p) => fn(p)),
 });
