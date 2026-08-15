@@ -160,17 +160,23 @@
   </section>
 
   <!-- ── Inventory ─────────────────────────────────────────────────────────
-       Bags is the dump; Recent loot is the live feed off the log. Same tab
-       because they answer the same question a beat apart — what do I have,
-       and what did I just get. -->
+       One dump, three questions, plus the live feed off the log. Quest is what
+       the table has always been: which of these does a quest want. Gear ranks
+       every piece against every class that could wear it. Spare is the same
+       ranking kept to the pieces nobody has a use for any more. All three are
+       ONE table with one set of filters and one column picker per mode — they
+       differ in which columns open and which rows are kept. -->
   <section id="tab-inv" class="pane pane--full">
     <div id="invBanner" class="banner" hidden></div>
     <div class="seg" id="invViews" role="group" aria-label="Inventory view">
-      <button type="button" class="seg__b is-on" data-invview="bags">Bags</button>
+      <button type="button" class="seg__b is-on" data-invview="quest">Quest</button>
+      <button type="button" class="seg__b" data-invview="gear">Gear</button>
+      <button type="button" class="seg__b" data-invview="spare">Spare</button>
       <button type="button" class="seg__b" data-invview="recent">Recent loot</button>
     </div>
 
-    <div class="invview" data-invview="bags">
+    <div class="invview" data-invview="table">
+      <p id="invNote" class="invnote" hidden></p>
       <div class="feedhead qbhead">
         <input id="invSearch" type="search" placeholder="search name, slot, effect, source, quest">
         <select id="invTrade">
@@ -424,10 +430,13 @@
 <script src="../vendor/parse.js"></script>
 <script src="../vendor/tier.js"></script>
 <script src="../vendor/attributes-data.js"></script>
+<script src="../vendor/combat-data.js"></script>
 <script src="../vendor/char-state.js"></script>
 <script src="../vendor/gear-score.js"></script>
 <script src="../vendor/sky-core.js"></script>
 <script src="../vendor/valet-core.js"></script>
+<script src="../vendor/exalt-slots.js"></script>
+<script src="../vendor/spare-core.js"></script>
 <script src="../vendor/achievements.js"></script>
 <script src="../vendor/site/log-parser/engine.js"></script>
 <script src="../vendor/site/log-parser/render.js"></script>

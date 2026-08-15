@@ -624,6 +624,10 @@ function renderZoneTab() {
    the same dump. */
 const INV = { file: null, mtime: 0, rows: null, text: null, problem: null };
 const IV = { tab: "all", trade: "", cls: "", sort: "where", dir: 1 };
+/* One sort per mode. Spare opens on the item the most things beat, which is
+   the whole point of the mode; Gear opens on the pieces that are first pick
+   for the most classes. */
+const IV_SORT = { quest: { k: "where", d: 1 }, gear: { k: "bis", d: -1 }, spare: { k: "ahead", d: -1 } };
 const IV_OPEN = new Set(); // expanded rows, keyed by row id
 /* The location vocabulary is /_shared/gear-score.js (vendored) — the site's
    /gear, /sky and /valet read the same dump and a second classifier here is
@@ -684,8 +688,13 @@ function onInvFile({ file, mtime, text }) {
   INV.text = text;
   INV.rows = parseInventory(text);
   LIVE_HAVE = new Map(); // the dump holds everything looted before it
+  /* valetReload() first: it builds the row set with gear records attached,
+     which the Gear and Spare modes of the Inventory table rank off. Rendering
+     the table before the analysis existed showed an empty Spare tab on the
+     first dump of every session. */
+  valetReload();
   renderInv(); renderQuests(); pushQuests(); renderSky(); pushSky();
-  valetReload(); renderValet(); pushValet();
+  renderValet(); pushValet(); pushSpare();
 }
 
 function onInvStatus({ problem }) {
@@ -844,16 +853,64 @@ function invQuestsCell(v) {
   return lines.join("") + more;
 }
 
+/* ── Gear and Spare: the ranking behind two of the three modes ────────────
+   vendor/spare-core.js does the work — it is the site's file, and /valet runs
+   the identical analysis over the identical dump. All this layer does is run
+   it when the data changes and key the answer back onto the rows this table
+   already has.
+
+   It runs ONCE per dump, never inside renderInv(): the table re-renders on
+   every keystroke in the search box and the analysis is ~70ms over 16 classes.
+
+   The two parses of the dump are keyed together by location + name rather than
+   by row index. They agree on index today — both skip the same header and
+   "Empty" rows in file order — but that is a coincidence of two independent
+   parsers, and a table that silently attributes one item's verdict to another
+   is worse than one that shows nothing. */
+let SPARE = null, SPARE_BY = null;
+const spareKey = (loc, name) => loc + "|" + name;
+function spareReload() {
+  SPARE = null; SPARE_BY = null;
+  if (!VINV || !window.EQLSpare) return;
+  SPARE = window.EQLSpare.analyze({ rows: VINV.rows, level: VL.level, D: window.EQL_DATA });
+  SPARE_BY = new Map(SPARE.items.map(it => [spareKey(it.row.loc, it.row.name), it]));
+}
+const spareOf = v => (SPARE_BY && SPARE_BY.get(spareKey(v.r.loc, v.r.name))) || null;
+
+const CLS_ORDER = window.EQLChar.CLASSES;
+const clsSort = list => list.slice().sort((a, b) => CLS_ORDER.indexOf(a) - CLS_ORDER.indexOf(b));
+
+/* Where a row is, as a place you can walk to. A socket is the one case the raw
+   location cannot express: "Head-Slot7" is a stone inside the thing on your
+   head, and the number is an exaltation TYPE (vendor/exalt-slots.js), not a
+   position. Bag and bank positions keep their numbers because that is what
+   gets your hand on the item. */
+function whereText(loc) {
+  const GS = window.EQLGearScore;
+  const sock = window.EQLExalt.socketAt(loc);
+  const base = sock ? sock.host : loc;
+  const b = GS.locBadge(base);
+  let head;
+  if (b.kind === "bag") head = `Bag ${b.n}${b.sub ? ` · ${b.sub}` : ""}`;
+  else if (b.kind === "bank") head = `Bank ${b.n}${b.sub ? ` · ${b.sub}` : ""}`;
+  else if (GS.WORN_RX.test(GS.rootLoc(base))) head = base;
+  else head = b.word;
+  if (!sock) return head;
+  return `${head} · ${sock.type ? sock.type.label : `socket ${sock.n}`}`;
+}
+
 /* Every column the data can fill exists; WHICH show is the player's call
-   (the columns picker, persisted). Defaults are the quest-ID job — where,
-   what, how many, which quests — not a stat sheet. */
+   (the columns picker, persisted per mode). Defaults answer the mode's own
+   question and nothing else. */
 const IV_COLS = [
-  { k: "where", h: "Where", d0: 1, key: v => v.r.idx, cell: v => `<td class="iv-where">${esc(v.r.loc)}</td>` },
+  { k: "where", h: "Where", d0: 1, key: v => v.r.idx,
+    cell: v => `<td class="iv-where" title="${esc(v.r.loc)}">${esc(whereText(v.r.loc))}</td>` },
   { k: "item", h: "Item", d0: 1, always: true, key: v => v.r.name.toLowerCase(), cell: v => {
     // the name already prints "+N" and "(Exaltation)" — no chips restating it
     const badges = (v.r.kids ? `<span class="ivb">${v.r.kids.length} inside</span>` : "") +
       (v.vars ? `<span class="ivb" title="the wiki lists ${v.vars.length} items with this name — the columns show the first; open the row for all of them">${v.vars.length} variants</span>` : "");
-    return `<td class="iv-item">${itemSpan(v.r.name, true)}${badges}</td>`;
+    const span = v.r.exalt ? exaltSpan(v.r) : itemSpan(v.r.name, true);
+    return `<td class="iv-item">${span}${badges}${spareChips(v)}</td>`;
   } },
   { k: "qty", h: "Qty", d0: -1, key: v => v.r.count > 1 ? v.r.count : null, cell: v => `<td class="iv-n">${v.r.count > 1 ? v.r.count : ""}</td>` },
   { k: "quests", h: "Quests", d0: -1, key: v => v.quests.length || null, cell: v => `<td class="iv-q">${invQuestsCell(v)}</td>` },
@@ -870,22 +927,126 @@ const IV_COLS = [
   { k: "cls", h: "Class", d0: 1, key: v => v.clsTxt || null, cell: v => `<td class="iv-cls">${esc(v.clsTxt)}</td>` },
   { k: "era", h: "Era", d0: 1, key: v => v.eraKey, cell: v => `<td>${v.oe ? `<span class="oe">out of era</span>` : esc(v.eraTxt)}</td>` },
   { k: "src", h: "Source", d0: 1, key: v => v.src.cell.toLowerCase() || null, cell: v => `<td class="iv-src">${esc(v.src.cell)}</td>` },
+
+  /* ── the three ranking columns ─────────────────────────────────────────
+     Kyle's Gear-mode spec, verbatim: "best for classes (a list of classes for
+     which this is judged the #1 item for a slot - remember some slots need 2
+     items so the 2nd best is still bis)". So a class is listed when the item
+     holds a position in a slot for it, and a paired slot has two positions. */
+  { k: "bis", h: "Best for", d0: -1,
+    key: v => { const s = spareOf(v); return s ? (s.bis.length || null) : null; },
+    cell: v => {
+      const s = spareOf(v);
+      if (!s) return `<td class="iv-cls"></td>`;
+      if (!s.bis.length) return `<td class="iv-cls"><span class="dim">—</span></td>`;
+      const where = {};
+      for (const n of s.niches) if (n.ahead < n.cap) (where[n.cls] || (where[n.cls] = [])).push(`${n.slot}${n.cap > 1 ? ` #${n.ahead + 1}` : ""}`);
+      // sixteen codes in a cell is a wall; the rest of the app already says ALL
+      if (s.bis.length === CLS_ORDER.length)
+        return `<td class="iv-cls"><span class="ivb ivb--bis" title="first pick for every class that can wear it">ALL</span></td>`;
+      return `<td class="iv-cls">${clsSort(s.bis).map(c =>
+        `<span class="ivb ivb--bis" title="${esc(`${window.EQLChar.name(c)}: ${where[c].join(", ")}`)}">${c}</span>`).join(" ")}</td>`;
+    } },
+  { k: "ahead", h: "Better", d0: -1,
+    key: v => { const s = spareOf(v); return s ? s.ahead : null; },
+    cell: v => {
+      const s = spareOf(v);
+      if (!s) return `<td class="iv-n"></td>`;
+      if (s.noClass) return `<td class="iv-n"><span class="dim" title="the wiki lists no class that can equip this">no class</span></td>`;
+      const b = s.best;
+      const t = `${s.ahead} of the items you own beat this for a ${window.EQLChar.name(b.cls)} in ${b.slot}` +
+        `${b.cap > 1 ? ` — that slot takes ${b.cap}` : ""}` +
+        (s.aheadAsIs !== s.ahead ? `. At the tiers they are actually at: ${s.aheadAsIs}.` : "");
+      return `<td class="iv-n"><b>${s.ahead}</b>${s.spare ? "" : `<span class="dim"> / ${b.cap}</span>`}` +
+        `<span class="iv-nichex" title="${esc(t)}">${esc(b.cls)} ${esc(b.slot)}</span></td>`;
+    } },
+  { k: "beatenby", h: "Beaten by", d0: 1,
+    key: v => { const s = spareOf(v); return s && s.best && s.best.by.length ? s.best.by[0].item.row.name.toLowerCase() : null; },
+    cell: v => {
+      const s = spareOf(v);
+      if (!s || !s.best || !s.best.by.length) return `<td class="iv-by"></td>`;
+      /* One wrapping line, not one line per rival — stacked divs made every
+         row in the table four lines tall. */
+      const CAP = 3;
+      const rows = s.best.by.slice(0, CAP).map(x =>
+        `<span class="iv-byline">${itemSpan(x.item.row.name, true)} <span class="dim">${esc(whereText(x.item.row.loc))}</span></span>`);
+      const more = s.best.ahead > Math.min(CAP, s.best.by.length)
+        ? `<span class="iv-byline dim">+${s.best.ahead - Math.min(CAP, s.best.by.length)} more</span>` : "";
+      return `<td class="iv-by">${rows.join("")}${more}</td>`;
+    } },
 ];
-const IV_DEFAULT_COLS = ["where", "item", "qty", "quests"];
-const IV_COLS_KEY = "eqlt-companion-invcols-v1";
-let IV_SHOW = new Set(IV_DEFAULT_COLS);
+/* One saved column set PER MODE. The three modes ask different questions and
+   a single shared set meant switching to Gear showed the quest columns.
+   Defaults are what Kyle asked each mode for and nothing else — the picker is
+   how you get the rest. */
+const IV_DEFAULTS = {
+  quest: ["where", "item", "qty", "quests"],
+  gear:  ["where", "item", "bis"],
+  spare: ["where", "item", "ahead", "beatenby"],
+};
+const IV_DEFAULT_COLS = IV_DEFAULTS.quest;
+const IV_COLS_KEY = "eqlt-companion-invcols-v2";
+const IV_MODE_COLS = {};
+let IV_SHOW = new Set(IV_DEFAULTS.quest);
 function loadInvCols() {
+  for (const m of INV_MODES) IV_MODE_COLS[m] = new Set(IV_DEFAULTS[m]);
   try {
-    const a = JSON.parse(localStorage.getItem(IV_COLS_KEY));
-    if (Array.isArray(a) && a.length) IV_SHOW = new Set(a.filter(k => IV_COLS.some(c => c.k === k)));
+    const o = JSON.parse(localStorage.getItem(IV_COLS_KEY));
+    if (o && typeof o === "object") for (const m of INV_MODES) {
+      if (Array.isArray(o[m]) && o[m].length)
+        IV_MODE_COLS[m] = new Set(o[m].filter(k => IV_COLS.some(c => c.k === k)));
+    }
   } catch { /* defaults stand */ }
-  IV_SHOW.add("item");
+  for (const m of INV_MODES) IV_MODE_COLS[m].add("item");
+  syncInvCols();
 }
-function saveInvCols() { try { localStorage.setItem(IV_COLS_KEY, JSON.stringify([...IV_SHOW])); } catch {} }
+// the mode's own set, aliased so every existing IV_SHOW reader keeps working
+function syncInvCols() {
+  const m = invMode();
+  if (!IV_MODE_COLS[m]) IV_MODE_COLS[m] = new Set(IV_DEFAULTS[m]);
+  IV_SHOW = IV_MODE_COLS[m];
+}
+function saveInvCols() {
+  try {
+    const o = {};
+    for (const m of INV_MODES) o[m] = [...IV_MODE_COLS[m]];
+    localStorage.setItem(IV_COLS_KEY, JSON.stringify(o));
+  } catch {}
+}
+const invMode = () => (INV_MODES.includes(INV_VIEW) ? INV_VIEW : "quest");
 const invVisibleCols = () => IV_COLS.filter(c => IV_SHOW.has(c.k));
 function renderInvColPicker() {
+  syncInvCols();
   $("invColsBody").innerHTML = IV_COLS.map(c => `<label class="chk invcols__row">
     <input type="checkbox" data-ivcol="${c.k}" ${IV_SHOW.has(c.k) ? "checked" : ""} ${c.always ? "disabled" : ""}> ${c.h}</label>`).join("");
+}
+
+/* An exaltation row carries its socket with it, so the hover can say which of
+   the source item's properties this stone actually holds. */
+function exaltSpan(r) {
+  const sock = window.EQLExalt.socketAt(r.loc);
+  return `<span class="itn" data-tt="${esc(r.name)}" data-exalt="${sock ? sock.n : 0}">${esc(r.name)}</span>`;
+}
+
+/* What the score could not read, said on the item rather than in a footnote.
+   The scorer prices stats, resists, AC, haste and weapon ratio; a click, a
+   proc, a worn effect and a bard's resonance are invisible to it, and the
+   first run of this ranking put a lute and a war horn at the top of the list
+   of things to throw away. A quest chip rides along here too — Kyle chose a
+   chip over a separate section (2026-08-14). */
+const UNSCORED_WORD = { inst: "instrument", effect: "effect", charges: "charges" };
+function spareChips(v) {
+  if (invMode() === "quest") return "";
+  const s = spareOf(v);
+  const out = [];
+  if (v.quests.length) out.push(`<span class="ivb ivb--quest" title="${esc(v.quests.map(q => q.n).join(", "))}">quest</span>`);
+  if (s) for (const u of s.unscored)
+    out.push(`<span class="ivb ivb--warn" title="Its ${UNSCORED_WORD[u]} is not part of the score.">${UNSCORED_WORD[u]}</span>`);
+  if (s && s.spareAsIs && !s.spare)
+    out.push(`<span class="ivb" title="At the upgrade ranks these items are actually at, this one is beaten. It wins the comparison only because it was scaled up to match.">needs +${s.upgradeTo || "?"}</span>`);
+  else if (s && s.spare && s.upgradeTo)
+    out.push(`<span class="ivb" title="Taking it to +${s.upgradeTo} would put it back in a slot.">+${s.upgradeTo} saves it</span>`);
+  return out.join("");
 }
 function cmpNullLast(a, b, dir) {
   if (a == null && b == null) return 0;
@@ -960,6 +1121,20 @@ function renderInv() {
   empty.hidden = true;
   banner.hidden = !!GDATA;
   if (!GDATA) banner.textContent = "Item stats, flags and sources need the gear dataset — refresh from eqltools.com in Settings.";
+  const mode = invMode();
+  syncInvCols();
+  /* Spare states the rule it ranks by. Without it the number in the Better
+     column is uninterpretable, and this is the one mode whose output is a
+     suggestion to get rid of something. Quest and Gear say nothing — their
+     columns are the explanation. */
+  const note = $("invNote");
+  note.hidden = mode !== "spare";
+  if (mode === "spare") {
+    note.innerHTML = `Every class that can wear it has better options in every slot it fits. `
+      + `<b>Better</b> counts what beats it in the slot where it does best — Ear, Wrist, Fingers and Any Slot keep two. `
+      + `An item at a lower upgrade rank is scaled up to its rival's before the comparison. `
+      + `<span class="dim">Clicks, procs, worn effects and bard resonance are not part of the score; items carrying one are chipped.</span>`;
+  }
   const needle = $("invSearch").value.trim().toLowerCase();
   const qOnly = $("invQuestOnly").checked;
   // a gear record with NO cls field is an unrestricted item (the wiki page had
@@ -970,8 +1145,18 @@ function renderInv() {
     (IV.trade === "yes" ? v.trade === "yes"
       : IV.trade === "att" ? v.trade === "attunable"
       : v.trade === "no drop" || v.trade === "no trade");
+  /* Spare keeps only the rows the analysis calls beaten. Gear keeps every row
+     it could rank — an unresolvable row (a gem, a bag, a tradeskill component)
+     has no slot and no classes, so there is nothing to be best at, and it
+     belongs in Quest mode where it can still carry a turn-in. */
+  const modeOk = v => {
+    if (mode === "quest") return true;
+    const s = spareOf(v);
+    if (!s) return false;
+    return mode === "gear" || s.spare;
+  };
   const pool = INV.rows.map(invView).filter(v =>
-    (!qOnly || v.quests.length) && tradeOk(v) && clsOk(v) &&
+    modeOk(v) && (!qOnly || v.quests.length) && tradeOk(v) && clsOk(v) &&
     (!needle || v.hay.includes(needle)));
   // subtab counts respect every other filter: searching shows WHERE the hits live
   const counts = { all: pool.length };
@@ -983,20 +1168,39 @@ function renderInv() {
     .map(([k, label]) => `<button class="invtab ${IV.tab === k ? "is-on" : ""}" data-ivtab="${k}">${label} <span class="invtab__n">${counts[k] || 0}</span></button>`).join("");
   const rows = pool.filter(v => IV.tab === "all" || v.r.sec === IV.tab);
   const cols = invVisibleCols();
-  if (!IV_SHOW.has(IV.sort)) { IV.sort = cols[0].k; IV.dir = cols[0].d0; } // hiding the sorted column resets the sort
-  const col = IV_COLS.find(c => c.k === IV.sort) || cols[0];
-  rows.sort((a, b) => cmpNullLast(col.key(a), col.key(b), IV.dir) || (a.r.idx - b.r.idx));
+  // the sort belongs to the MODE — Spare opens on the most-beaten item, and
+  // carrying Quest's "where" sort into it buries the answer
+  const st = IV_SORT[mode];
+  if (!IV_SHOW.has(st.k)) { st.k = cols[0].k; st.d = cols[0].d0; } // hiding the sorted column resets the sort
+  IV.sort = st.k; IV.dir = st.d;
+  const col = IV_COLS.find(c => c.k === st.k) || cols[0];
+  rows.sort((a, b) => cmpNullLast(col.key(a), col.key(b), st.d) || (a.r.idx - b.r.idx));
   // the weight total belongs to the Wt column — hidden column, no stray number
   const wt = IV_SHOW.has("wt") ? rows.reduce((n, v) => n + (v.wt != null ? v.wt * v.r.count : 0), 0) : null;
+  const scope = mode === "quest" ? `${rows.length} of ${INV.rows.length} items`
+    : `${rows.length} of ${SPARE ? SPARE.items.length : 0} rankable items`;
   $("invMeta").textContent =
-    `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()} · ${rows.length} of ${INV.rows.length} items${wt != null ? ` · ${Math.round(wt * 10) / 10} wt` : ""}`;
-  const arrow = k => IV.sort === k ? (IV.dir > 0 ? " ▲" : " ▼") : "";
+    `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()} · ${scope}${wt != null ? ` · ${Math.round(wt * 10) / 10} wt` : ""}`;
+  const arrow = k => st.k === k ? (st.d > 0 ? " ▲" : " ▼") : "";
   body.innerHTML = rows.length
     ? `<table class="qtab ivt"><thead><tr>${cols.map(c =>
         `<th class="is-sort${c.k === "item" ? " iv-item" : ""}" data-ivsort="${c.k}">${c.h}${arrow(c.k)}</th>`).join("")}</tr></thead>
       <tbody>${rows.map(v => invRow(v, cols)).join("")}</tbody></table>`
-    : `<p class="empty">Nothing matches those filters.</p>`;
+    : `<p class="empty">${invEmptyText(mode)}</p>`;
   retip();
+}
+
+/* Why a mode is showing nothing. "Nothing matches those filters" is wrong for
+   two of the three cases and sends you looking for a filter you never set. */
+function invEmptyText(mode) {
+  const filtered = $("invSearch").value.trim() || $("invQuestOnly").checked || IV.trade || IV.cls;
+  if (filtered) return "Nothing matches those filters.";
+  if (mode === "quest") return "Nothing in the dump.";
+  if (!SPARE) return "The gear dataset has not loaded — refresh from eqltools.com in Settings.";
+  if (!SPARE.items.length) return "Nothing in the dump resolves to an item the wiki has stats for.";
+  return mode === "spare"
+    ? "Nothing you own is beaten in every slot it fits."
+    : "Nothing in the dump can be ranked.";
 }
 
 /* ── Quests tab — search every wiki quest, track any, see what's hand-in ready ─
@@ -1938,7 +2142,7 @@ function renderQuests() { renderTurnins(); renderTrackedTab(); renderQuestBrowse
    sticks — you come back to the view you were using. */
 const QVIEW_KEY = "eqlt-companion-qview-v1";
 const IVIEW_KEY = "eqlt-companion-invview-v1";
-let QUEST_VIEW = "turnins", INV_VIEW = "bags";
+let QUEST_VIEW = "turnins", INV_VIEW = "quest";
 const paintStrip = (stripId, wrapSel, attr, val) => {
   for (const b of document.querySelectorAll(`#${stripId} [data-${attr}]`)) b.classList.toggle("is-on", b.dataset[attr] === val);
   for (const p of document.querySelectorAll(wrapSel)) p.hidden = p.dataset[attr] !== val;
@@ -1948,17 +2152,28 @@ function setQuestView(v) {
   try { localStorage.setItem(QVIEW_KEY, v); } catch {}
   paintStrip("qViews", "#tab-quests .qview", "qview", v);
 }
+/* Quest, Gear and Spare are three readings of ONE table, so they share a pane
+   and the strip cannot be painted by the generic matcher — three of the four
+   buttons show the same element. "bags" was the old key for what is now
+   "quest"; anything unrecognised falls back to it rather than showing a blank
+   tab to someone upgrading. */
+const INV_MODES = ["quest", "gear", "spare"];
 function setInvView(v) {
   INV_VIEW = v;
   try { localStorage.setItem(IVIEW_KEY, v); } catch {}
-  paintStrip("invViews", "#tab-inv .invview", "invview", v);
+  for (const b of document.querySelectorAll("#invViews [data-invview]"))
+    b.classList.toggle("is-on", b.dataset.invview === v);
+  for (const p of document.querySelectorAll("#tab-inv .invview"))
+    p.hidden = p.dataset.invview !== (v === "recent" ? "recent" : "table");
+  if (v !== "recent") { renderInvColPicker(); renderInv(); }
 }
 function loadViews() {
   try {
     const q = localStorage.getItem(QVIEW_KEY);
     if (q === "turnins" || q === "tracked" || q === "all") QUEST_VIEW = q;
     const i = localStorage.getItem(IVIEW_KEY);
-    if (i === "bags" || i === "recent") INV_VIEW = i;
+    if (i === "recent" || INV_MODES.includes(i)) INV_VIEW = i;
+    else if (i === "bags") INV_VIEW = "quest";
   } catch {}
   setQuestView(QUEST_VIEW); setInvView(INV_VIEW);
 }
@@ -2821,7 +3036,7 @@ function skyScorer(code) {
   const key = code + "|" + VL.level;
   if (!SKY_SCORERS.has(key)) {
     SKY_SCORERS.set(key, window.EQLGearScore.make({
-      classes: [code], level: VL.level, race: null, equipped: null, D: null }));
+      classes: [code], level: VL.level, race: null, equipped: null, D: window.EQL_DATA }));
   }
   return SKY_SCORERS.get(key);
 }
@@ -3080,11 +3295,12 @@ function valetReload() {
      picker. Without it the weights fall back to the class/level model, exactly
      as the site does before you choose a race. */
   VINV = (INV.text && GDATA) ? window.EQLValet.readInventory(INV.text, GDATA) : null;
+  spareReload();
   valetRestart();
 }
 function valetScorer() {
   return window.EQLGearScore.make({ classes: VL.classes, level: VL.level, race: null,
-                                    equipped: VINV && VINV.equipped, D: null });
+                                    equipped: VINV && VINV.equipped, D: window.EQL_DATA });
 }
 function valetRestart() {
   VWALK = VINV ? window.EQLValet.makeWalk({ rows: VINV.rows, equipped: VINV.equipped,
@@ -3236,6 +3452,30 @@ function pushValet() {
   if (j !== lastValetJson) { lastValetJson = j; window.companion.sendValet(p); }
 }
 
+/* The Spare list, trimmed for a 340px window: the most-beaten first, one line
+   each, and the ONE caveat a row can carry. The overlay never re-runs the
+   analysis — it gets the answer the Inventory tab already computed. */
+let lastSpareJson = "";
+const SPARE_OVERLAY_ROWS = 40;
+function pushSpare() {
+  if (!SPARE) { if (lastSpareJson !== "null") { lastSpareJson = "null"; window.companion.sendSpare(null); } return; }
+  const p = {
+    n: SPARE.spare.length, total: SPARE.items.length,
+    rows: SPARE.spare.slice(0, SPARE_OVERLAY_ROWS).map(it => {
+      const b = window.EQLGearScore.locBadge(it.row.loc);
+      const ref = skyRef(it.row.name);
+      return {
+        n: it.row.name, url: ref.url, sb: ref.sb,
+        ahead: it.ahead, cls: it.best.cls, slot: it.best.slot,
+        warn: it.unscored.length ? UNSCORED_WORD[it.unscored[0]] : null,
+        loc: { k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title },
+      };
+    }),
+  };
+  const j = JSON.stringify(p);
+  if (j !== lastSpareJson) { lastSpareJson = j; window.companion.sendSpare(p); }
+}
+
 function drawValetTrio() {
   const C = window.EQLChar;
   ["vlC1", "vlC2", "vlC3"].forEach((id, i) => {
@@ -3252,25 +3492,27 @@ function wireValet() {
     const v = $(id).value, j = VL.classes.indexOf(v);
     if (j !== -1 && j !== i) VL.classes[j] = VL.classes[i];   // a trio is 3 distinct
     VL.classes[i] = v;
-    saveValetPrefs(); valetRestart(); renderValet(); pushValet();
+    saveValetPrefs(); valetRestart(); renderValet(); pushValet(); pushSpare();
   }));
   $("vlLvl").addEventListener("change", () => {
     VL.level = Math.min(50, Math.max(1, $("vlLvl").value | 0 || 50));
-    saveValetPrefs(); valetRestart(); renderValet(); pushValet();
+    // every per-class scorer behind Gear and Spare is built at this level
+    saveValetPrefs(); spareReload(); valetRestart();
+    renderValet(); pushValet(); pushSpare(); renderInv();
   });
-  $("vlRestart").addEventListener("click", () => { valetRestart(); renderValet(); pushValet(); });
-  $("vlSkip").addEventListener("click", () => { VWALK.skip(); renderValet(); pushValet(); });
-  $("vlBack").addEventListener("click", () => { if (VWALK.back()) { renderValet(); pushValet(); } });
+  $("vlRestart").addEventListener("click", () => { valetRestart(); renderValet(); pushValet(); pushSpare(); });
+  $("vlSkip").addEventListener("click", () => { VWALK.skip(); renderValet(); pushValet(); pushSpare(); });
+  $("vlBack").addEventListener("click", () => { if (VWALK.back()) { renderValet(); pushValet(); pushSpare(); } });
   $("vlAuto").addEventListener("click", (e) => {
     if (!e.target.closest("#vlClearMem")) return;
-    delete VL.mem[vlTrioKey()]; saveValetPrefs(); valetRestart(); renderValet(); pushValet();
+    delete VL.mem[vlTrioKey()]; saveValetPrefs(); valetRestart(); renderValet(); pushValet(); pushSpare();
   });
   const take = (e) => {
     if (e.target.closest("a")) return;
     const b = e.target.closest("[data-vlopt]");
     if (!b || !VWALK) return;
     VWALK.pick(VWALK.step().key, VWALK.options()[+b.dataset.vlopt], $("vlRemember").checked);
-    renderValet(); pushValet();
+    renderValet(); pushValet(); pushSpare();
   };
   $("vlCards").addEventListener("click", take);
   $("vlCards").addEventListener("keydown", (e) => {
@@ -4235,8 +4477,38 @@ function retip() {
   if (!tipEl) return;
   const el = document.elementFromPoint(MX, MY);
   const t = el && el.closest ? el.closest("[data-tt]") : null;
+  if (t && t.dataset.exalt != null) { showExaltTip(t.dataset.tt, +t.dataset.exalt || 0); return; }
   const e = t && lookupItem(TIDX, t.dataset.tt); // "+N"/"*" decorated names resolve too
   if (e) showTip(e); else tipEl.hidden = true;
+}
+
+/* An exaltation stone is NOT the item it is named after, and the ordinary
+   tooltip path says it is: lookupItem() strips "(Exaltation)" along with "+N"
+   and "*", so hovering "Shining Metallic Robes (Exaltation)" was drawing the
+   robe's full stat block — AC, HP, the lot. A stone carries exactly ONE
+   property of its source item, decided by the socket it sits in (the wiki's
+   "Exaltations" page; vendor/exalt-slots.js maps the socket number to the
+   type). Socket 0 means a loose stone in the Augmentation bin, where nothing
+   has told us which of the source item's properties it holds — so every
+   transferable one is listed and none is claimed. */
+function showExaltTip(name, socketN) {
+  const src = stripDecor(name);
+  const rec = gearFor(src);
+  const X = window.EQLExalt;
+  const lines = [];
+  if (socketN) {
+    const d = X.describe(rec, socketN, src);
+    lines.push([d.title, d.body]);
+  } else {
+    for (const r of X.describeLoose(rec, src)) lines.push([r.label, r.text]);
+    if (!lines.length) lines.push(["", `Rendered from ${src}. The wiki records no transferable effect on it.`]);
+  }
+  tipEl.innerHTML = `<div class="tt__name">${esc(name)}</div>`
+    + `<div class="tt__flags">EXALTATION</div>`
+    + lines.map(([k, v]) => `<div class="tt__line">${k ? `<b>${esc(k)}</b> — ` : ""}${esc(v)}</div>`).join("")
+    + `<div class="tt__line tt__dim">Carries one property of ${esc(src)}, not its stats.</div>`;
+  tipEl.hidden = false;
+  moveTip();
 }
 function initTip() {
   tipEl = document.createElement("div");
@@ -4348,7 +4620,7 @@ async function main() {
   populateZoneSel(); renderZoneTab(); populateQuestFilters(); populateInvFilters(); renderQuests();
   populateSkyFilters(); renderSky(); initTip();
   parserTabActive(true); // Parser is the tab the app opens on
-  wireValet(); valetReload(); renderValet(); pushValet();
+  wireValet(); valetReload(); renderValet(); pushValet(); pushSpare();
 
   window.companion.onBootstrap(onBootstrap);
   window.companion.onLines(onLines);
@@ -4357,7 +4629,7 @@ async function main() {
   window.companion.onInvStatus(onInvStatus);
   window.companion.onAchFile(onAchFile);
   window.companion.onAchStatus(onAchStatus);
-  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); populateInvFilters(); renderInv(); populateQuestFilters(); renderQuests(); populateSkyFilters(); renderSky(); pushZone(); pushQuests(); pushSky(); valetReload(); renderValet(); pushValet(); });
+  window.companion.onDataUpdated(d => { buildIndexes(d); if (STATE && K.reclassify(STATE, NAMEZONES)) K.save(STATE); renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); populateInvFilters(); valetReload(); renderInv(); populateQuestFilters(); renderQuests(); populateSkyFilters(); renderSky(); pushZone(); pushQuests(); pushSky(); renderValet(); pushValet(); pushSpare(); });
   window.companion.onOverlayState(renderOverlayState);
   window.companion.onUpdate(renderUpdate);
   renderUpdate(await window.companion.getUpdate());
@@ -4421,6 +4693,7 @@ async function main() {
   $("invColsBody").addEventListener("change", e => {
     const k = e.target.dataset.ivcol;
     if (!k) return;
+    syncInvCols();
     e.target.checked ? IV_SHOW.add(k) : IV_SHOW.delete(k);
     saveInvCols(); renderInv();
   });
@@ -4636,8 +4909,8 @@ async function main() {
     if (ivt) { IV.tab = ivt.dataset.ivtab; renderInv(); return; }
     const ivs = e.target.closest("[data-ivsort]");
     if (ivs) {
-      const k = ivs.dataset.ivsort, c = IV_COLS.find(x => x.k === k);
-      if (IV.sort === k) IV.dir = -IV.dir; else { IV.sort = k; IV.dir = (c && c.d0) || 1; }
+      const k = ivs.dataset.ivsort, c = IV_COLS.find(x => x.k === k), st = IV_SORT[invMode()];
+      if (st.k === k) st.d = -st.d; else { st.k = k; st.d = (c && c.d0) || 1; }
       renderInv(); return;
     }
     const mo = e.target.closest("[data-open]");

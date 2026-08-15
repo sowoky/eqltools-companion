@@ -39,7 +39,7 @@
   /* Reading order for a fetch list: the trip first, the things already on your
      body last, because those are the rows with nothing to do. Kyle's order —
      "bags, storage, bank, equipped". */
-  const SEC_ORDER = ["bags", "storage", "bank", "shared", "depot", "hoard", "other", "worn"];
+  const SEC_ORDER = ["bags", "storage", "exalts", "bank", "shared", "depot", "hoard", "other", "worn"];
 
   function buildSteps() {
     const steps = [], seen = {};

@@ -35,7 +35,9 @@ const filtersEl = document.getElementById("filters");
 const statsEl = document.getElementById("ostats");
 const skyEl = document.getElementById("osky");
 const valetEl = document.getElementById("ovalet");
-const VIEWS = { tracked: "otTracked", loot: "otLoot", stats: "otStats", sky: "otSky", valet: "otValet" };
+const spareEl = document.getElementById("ospare");
+const VIEWS = { tracked: "otTracked", loot: "otLoot", stats: "otStats", sky: "otSky",
+                valet: "otValet", spare: "otSpare" };
 /* Which tabs this window carries at all — chosen in the app's Settings, not
    here: four tabs is a lot of chrome in a 340px window, and the ones a player
    never opens are pure clutter (Kyle, 2026-08-13). */
@@ -52,6 +54,7 @@ function applyView() {
   statsEl.hidden = v !== "stats";
   skyEl.hidden = v !== "sky";
   valetEl.hidden = v !== "valet";
+  spareEl.hidden = v !== "spare";
   for (const [name, id] of Object.entries(VIEWS)) {
     const b = document.getElementById(id);
     b.hidden = !on.includes(name);
@@ -576,7 +579,52 @@ valetEl.addEventListener("click", (e) => {
   renderValet();
 });
 
-window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests, stats, sky, valet }) => {
+/* ── Spare ────────────────────────────────────────────────────────────────
+   The bank-trip half of the same dump the Valet view reads. Valet says what to
+   pull out; this says what can go back in, or go. It is one flat list — the
+   most-beaten first, with where it is sitting — because the decision at a
+   banker is per item and there is nothing to fold.
+
+   Off by default (Kyle, 2026-08-14) — this is not a thing you read mid-fight.
+   The chip on a row is the one thing the ranking cannot see: an item whose
+   whole point is a click, a proc or a bard resonance is beaten on stats and
+   still worth keeping, and a 340px window has no room to explain that twice. */
+let SPARE = null;
+function renderSpare() {
+  spareEl.innerHTML = "";
+  if (!SPARE) {
+    spareEl.innerHTML = `<div class="osk-none">Load an inventory dump in the app — type <code>/out inventory</code> in game.</div>`;
+    return;
+  }
+  const head = document.createElement("div");
+  head.className = "osk-head";
+  head.textContent = SPARE.rows.length
+    ? `${SPARE.n} beaten of ${SPARE.total}`
+    : `nothing beaten of ${SPARE.total}`;
+  spareEl.append(head);
+  if (!SPARE.rows.length) return;
+  const ul = document.createElement("ul");
+  ul.className = "ovl";
+  for (const r of SPARE.rows) {
+    const li = document.createElement("li");
+    li.className = "ovi";
+    const n = document.createElement("span");
+    n.className = "ovi__s"; n.textContent = r.ahead;
+    n.title = `${r.ahead} of the things you own beat it for a ${r.cls} in ${r.slot}`;
+    li.append(n, itemSpan(r.n, r.url, r.sb, "ovi__n"));
+    if (r.warn) {
+      const w = document.createElement("span");
+      w.className = "ovi__warn"; w.textContent = r.warn;
+      w.title = "Not part of the score.";
+      li.append(w);
+    }
+    li.append(skyLocEl(r.loc));
+    ul.append(li);
+  }
+  spareEl.append(ul);
+}
+
+window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, quests, stats, sky, valet, spare }) => {
   if (prefs) PREFS = { ...PREFS, ...prefs };
   panelEl.style.zoom = PREFS.fontScale;
   setMode(clickThrough, opacity);
@@ -594,6 +642,8 @@ window.companion.onOverlayInit(({ opacity, clickThrough, prefs, feed, zone, ques
   renderSky();
   if (valet) VALET = valet;
   renderValet();
+  if (spare) SPARE = spare;
+  renderSpare();
   applyView(); applyRoll();
 });
 window.companion.onOverlayMode(({ clickThrough, opacity }) => setMode(clickThrough, opacity));
@@ -890,6 +940,7 @@ skyEl.addEventListener("click", e => {
 });
 window.companion.onFeedSky(s => { SKYP = s; renderSky(); rehotspot(); });
 window.companion.onFeedValet(v => { VALET = v; renderValet(); rehotspot(); });
+window.companion.onFeedSpare(v => { SPARE = v; renderSpare(); rehotspot(); });
 
 const tipEl = document.createElement("div");
 tipEl.id = "otip"; tipEl.hidden = true;

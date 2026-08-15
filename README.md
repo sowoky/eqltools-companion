@@ -24,11 +24,20 @@ past works:
 - **Item tooltips** — mouse over any item name and get the in-game item
   window: flags, slot, AC, stats, effect, weight, classes, races.
 - **Inventory browser** — type `/out inventory` in game and every bag, bank
-  slot, depot, and Dragon's Hoard row lands in one sortable table that shows
-  which quests want each item, right on the row: the quest as a wiki link,
-  its rewards with their in-game tooltips. Pick your own columns for more —
-  stats at your upgrade tier, resists, effect, trade flags, class, era, drop
-  sources. Search across all of it, filter by area, tradeability, or class.
+  slot, depot, and Dragon's Hoard row lands in one sortable table, in three
+  readings. **Quest** shows which quests want each item, right on the row: the
+  quest as a wiki link, its rewards with their in-game tooltips. **Gear** ranks
+  everything you own and names the classes each piece is first pick for — a
+  paired slot has two positions, so second-best still counts. **Spare** keeps
+  only what nothing needs any more: beaten in every slot it fits, for every
+  class that could wear it, sorted by how many of your own things beat it, with
+  where each of those is sitting. An item at a lower upgrade rank is scaled up
+  to its rival's before the comparison, and anything whose whole point is a
+  click, a proc or a bard's resonance says so, because the score can't read
+  those. Pick your own columns for more — stats at your upgrade tier, resists,
+  effect, trade flags, class, era, drop sources. Search across all of it, filter
+  by area, tradeability, or class. Exaltation sockets say what they are —
+  `Head · Focus`, not `Slot7` — and hovering a stone tells you what it grants.
 - **Auto-updates** — installed builds update themselves from GitHub
   Releases; portable/zip builds tell you when a new version is out.
 - **Zone browser** — the atlas mobs & drops data, following your character:

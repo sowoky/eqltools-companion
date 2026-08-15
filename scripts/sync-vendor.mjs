@@ -39,10 +39,18 @@ const VENDOR_JS = {
   "public/kills/parse.js": "parse.js",
   "public/gear/tier.js": "tier.js",
   "public/attributes/data.js": "attributes-data.js", // basename would collide
+  /* The AC softcap table. It was never vendored, so every scorer in this app
+     was built with `D: null` — and gear-score's effAC() falls back to a cap of
+     ZERO, which prices AC past the cap at 0.25x. The app was quartering every
+     point of AC while the site counted it in full, so the same item scored
+     differently in the two places. */
+  "public/combat/data.js": "combat-data.js",         // basename would collide
   "public/_shared/gear-score.js": "gear-score.js",
   "public/_shared/char-state.js": "char-state.js",   // gear-score's nakedStats() calls EQLChar.name
   "public/sky/sky-core.js": "sky-core.js",
   "public/valet/valet-core.js": "valet-core.js",
+  "public/_shared/exalt-slots.js": "exalt-slots.js",
+  "public/_shared/spare-core.js": "spare-core.js",
   "public/_shared/achievements.js": "achievements.js",
 };
 for (const [rel, name] of Object.entries(VENDOR_JS)) {

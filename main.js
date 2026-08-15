@@ -49,7 +49,15 @@ const BOOTSTRAP_CAP = 40 * 1024 * 1024; // same tail cap as the /kills page
 /* Every overlay view, in tab order. The list is the allowlist for the `view`
    pref AND the menu the main window offers — a view missing from here silently
    fails to round-trip, which is how the Sky tab first refused to stick. */
-const OVERLAY_VIEWS = ["tracked", "loot", "stats", "sky", "valet"];
+const OVERLAY_VIEWS = ["tracked", "loot", "stats", "sky", "valet", "spare"];
+/* Views that do NOT switch themselves on. The migration below exists so a new
+   tab reaches existing installs without a manual tick — Sky and Valet both
+   needed it. Spare is the exception Kyle asked for by name (2026-08-14: "yes
+   overlay, off by default. enablable by right clicking the title bar"): it is
+   still in OVERLAY_VIEWS so the pref round-trips and it appears in the Tabs
+   menu, it just starts unticked and stays that way until someone ticks it. */
+const OVERLAY_VIEWS_OFF = ["spare"];
+const OVERLAY_VIEWS_ON = OVERLAY_VIEWS.filter(v => !OVERLAY_VIEWS_OFF.includes(v));
 /* The Parser meter's window, minutes; 0 is the whole zone visit. Same
    allowlist job as OVERLAY_VIEWS — an unlisted value is silently dropped
    rather than persisted. */
@@ -100,12 +108,12 @@ function loadSettings() {
        written one has been offered nothing. Seeding it with OVERLAY_VIEWS made
        every new view look already-known, so the migration below computed "no
        new views" and the Valet tab silently never appeared. */
-    views: OVERLAY_VIEWS.slice(), viewsKnown: [], collapsed: false, height: null,
+    views: OVERLAY_VIEWS_ON.slice(), viewsKnown: [], collapsed: false, height: null,
     ...SETTINGS.overlay,
   };
   // a stored list from an older build predates any view added since
   if (!Array.isArray(SETTINGS.overlay.views) || !SETTINGS.overlay.views.length)
-    SETTINGS.overlay.views = OVERLAY_VIEWS.slice();
+    SETTINGS.overlay.views = OVERLAY_VIEWS_ON.slice();
   /* A view added AFTER the user's list was written is not a view they turned
      off — they have never seen it. `viewsKnown` is the snapshot of what existed
      when they last chose, so anything new gets switched on once and only once,
@@ -114,7 +122,7 @@ function loadSettings() {
      this one.) */
   {
     const known = Array.isArray(SETTINGS.overlay.viewsKnown) ? SETTINGS.overlay.viewsKnown : [];
-    const fresh = OVERLAY_VIEWS.filter(v => !known.includes(v) && !SETTINGS.overlay.views.includes(v));
+    const fresh = OVERLAY_VIEWS_ON.filter(v => !known.includes(v) && !SETTINGS.overlay.views.includes(v));
     if (fresh.length) SETTINGS.overlay.views = SETTINGS.overlay.views.concat(fresh);
     SETTINGS.overlay.viewsKnown = OVERLAY_VIEWS.slice();
   }
@@ -260,6 +268,7 @@ function sendOverlayInit() {
     stats: LAST_STATS,
     sky: LAST_SKY,
     valet: LAST_VALET,
+    spare: LAST_SPARE,
   });
 }
 
@@ -305,6 +314,7 @@ let LAST_SKY = null;
    RESULT — picking twenty-three slots through a 300px panel is not a thing
    anyone would do with a corpse on the floor. */
 let LAST_VALET = null;
+let LAST_SPARE = null;
 
 /* ── log tail engine ──────────────────────────────────────────────────────
    Poll-stat the log directory (fs.watch is unreliable enough on Windows
@@ -837,7 +847,7 @@ ipcMain.on("overlay:prefs", (_e, p) => applyOverlayPrefs(p || {}));
    there and other settings. opacity, etc." */
 // the `stats` key is the stored pref and stays; only the word on screen moved
 // (Kyle, 2026-08-14: "rename stats to parser in the widget")
-const VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Parser", sky: "Sky", valet: "Valet" };
+const VIEW_LABEL = { tracked: "Tracked", loot: "Loot", stats: "Parser", sky: "Sky", valet: "Valet", spare: "Spare" };
 const OPACITY_STEPS = [1, 0.92, 0.85, 0.75, 0.6, 0.45];
 const SCALE_STEPS = [0.8, 0.9, 1, 1.15, 1.3, 1.6];
 ipcMain.on("overlay:menu", () => {
@@ -971,6 +981,10 @@ ipcMain.on("feed:stats", (_e, s) => {
 ipcMain.on("feed:sky", (_e, s) => {
   LAST_SKY = s && typeof s === "object" ? s : null;
   if (overlayWin) overlayWin.webContents.send("feed:sky", LAST_SKY);
+});
+ipcMain.on("feed:spare", (_e, v) => {
+  LAST_SPARE = v && typeof v === "object" ? v : null;
+  if (overlayWin) overlayWin.webContents.send("feed:spare", LAST_SPARE);
 });
 ipcMain.on("feed:valet", (_e, v) => {
   LAST_VALET = v && typeof v === "object" ? v : null;

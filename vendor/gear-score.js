@@ -107,10 +107,19 @@
   /* The client writes "General 1" WITH a space and "Bank1" without, so every
      matcher takes an optional one. Anything nothing matches lands in
      "elsewhere" rather than vanishing. */
+  /* Equipment storage and the loose exaltation stones were ONE "Storage"
+     section and should never have been (Kyle, 2026-08-14: "storage needs to be
+     broken into exaltations and equipment storage, they shouldn't share a
+     tab"). They are different things you go looking for: the Equipment and
+     Activated bins hold gear, the Augmentation bin holds stones that are not
+     items at all — each one is named after the item it was rendered from and
+     resolves to that item's record if anything counts it. locBadge already
+     told them apart as words; the sections now agree with it. */
   const LOC_SECTIONS = [
     ["worn",    "Worn",           (r) => WORN_RX.test(r)],
     ["bags",    "Bags",           (r) => /^(General ?\d+|Held)$/.test(r)],
-    ["storage", "Storage",        (r) => /^(Equipment|Activated|Augmentation)$/.test(r)],
+    ["storage", "Equipment storage", (r) => /^(Equipment|Activated)$/.test(r)],
+    ["exalts",  "Exaltations",    (r) => /^Augmentation$/.test(r)],
     ["bank",    "Bank",           (r) => /^Bank ?\d+$/.test(r)],
     ["shared",  "Shared bank",    (r) => /^SharedBank ?\d*$/.test(r)],
     ["depot",   "Depot",          (r) => /^Personal-Depot/.test(r)],

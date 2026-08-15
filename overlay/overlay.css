@@ -311,4 +311,9 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unlock first
 .ovi__s { color: #8d84a8; min-width: 4.6em; flex: none; }
 .ovi__n { flex: 1 1 auto; min-width: 0; }
 .ovi__sub { color: #8d84a8; font-size: 10.5px; flex: none; }
+/* Spare: the count sits where the slot label does in the Valet list, and the
+   warn word is the one thing the ranking could not read. */
+#ospare .ovi__s { min-width: 2.2em; text-align: right; color: #e7b94e; }
+.ovi__warn { color: #e7b94e; font-size: 10px; border: 1px solid rgba(201,149,42,.5);
+  border-radius: 3px; padding: 0 3px; flex: none; }
 .osk-warn { color: #e7c07a; font-size: 10.5px; padding: 2px 0; }

@@ -161,6 +161,20 @@ main { flex: 1; overflow-y: auto; padding: 16px; }
   font-size: 10px; color: var(--ink-dim); border: 1px solid var(--line);
   border-radius: 4px; padding: 0 4px; margin-left: 6px; vertical-align: 1px;
 }
+/* Gear/Spare. The warn chip carries the one thing the ranking cannot see, so
+   it has to read as a caveat and not as another neutral tag. */
+.ivb--bis { color: var(--gold-pale); border-color: color-mix(in srgb, var(--gold) 45%, transparent); margin-left: 0; margin-right: 4px; }
+.ivb--warn { color: var(--gold-bright); border-color: var(--gold); }
+.ivb--quest { color: var(--bg-deep); background: var(--gold); border-color: var(--gold); font-weight: 600; }
+.ivt td.iv-by { white-space: normal; min-width: 300px; max-width: 520px; }
+.iv-byline { font-size: 12px; display: inline-block; margin-right: 10px; white-space: nowrap; }
+.iv-nichex { font: 10px var(--sans); color: var(--ink-dim); margin-left: 6px; }
+/* the rule Spare ranks by — one line, above the filters */
+.invnote {
+  margin: 0 0 8px; font-size: 12.5px; line-height: 1.5; color: var(--ink-soft);
+  max-width: 96ch; border-left: 2px solid var(--line); padding-left: 10px;
+}
+.invnote[hidden] { display: none; }
 .ivd > td { background: var(--bg-panel); border-bottom: 1px solid var(--line); padding: 8px 12px 10px; cursor: default; white-space: normal; }
 .ivd__src div { padding: 1px 0; font-size: 13px; }
 
@@ -373,6 +387,9 @@ a.zg__name:hover { color: var(--gold-pale); }
 }
 #eqtip .tt__name { color: var(--gold-bright); font-weight: 700; font-size: 13.5px; margin-bottom: 2px; }
 #eqtip .tt__flags { color: #fff; letter-spacing: .02em; }
+/* the exaltation tooltip's closing caveat — it is the line that stops the
+   stone reading as the item it is named after */
+#eqtip .tt__dim { color: #9a9385; margin-top: 4px; }
 .itn { cursor: default; }
 .ev.is-quest .itn, .ev--loot .itn { border-bottom: 1px dotted var(--line); }
 .itn.is-link { cursor: pointer; }
