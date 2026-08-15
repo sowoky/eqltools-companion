@@ -171,6 +171,7 @@ function onBootstrap({ file, text }) {
   if (ZONE.follow && DATA && DATA.zones[stream.zone]) selectZone(stream.zone);
   combatSeed(file, text);
   skySeed(file, text);
+  exaltSeed(file, text);
   renderStatus(); renderTracker(); pushZone(); renderSky(); pushSky();
 }
 
@@ -184,6 +185,7 @@ function onLines({ file, lines }) {
   }
   combatFeed(lines);
   skyFeed(lines);
+  exaltFeed(lines);
   if (stream.zone !== lastStreamZone) {
     lastStreamZone = stream.zone;
     pushZone();
@@ -883,6 +885,37 @@ function spareReload() {
    item you own whose wiki record yields one — and this layer keys the answer
    back onto the rows by location + name, same as Spare. */
 let EXALT = null, EXALT_CAT = null, EXALT_BY = null;
+
+/* ── which exaltations actually fire ────────────────────────────────────
+   The client names the exaltation when its effect goes off: a focus applying
+   prints "Your Idol of the Underking (Exaltation) feels alive with power.", a
+   worn vision effect "…pulses with light as your vision sharpens.", others
+   "…shimmers briefly." (client-observed — 5,891 such lines in Kyle's own log
+   for three exaltations, 2026-08-15). Counted per exaltation over the log
+   tail the app bootstrapped from plus everything live since; the count is a
+   "does this one do anything" reading, never a rate. */
+const EXFIRE_RX = /^\[[^\]]{20,30}\] Your (.+?) \(Exaltation\) (?:feels alive with power|shimmers briefly|pulses with light[^.]*)\.\s*$/;
+let EXFIRED = new Map(), exfireFile = null, exfireDirty = false;
+function exaltSeed(file, text) {
+  if (file !== exfireFile) { EXFIRED = new Map(); exfireFile = file; }
+  exaltFeed(text.split(/\r?\n/));
+}
+function exaltFeed(lines) {
+  let hit = false;
+  for (const line of lines) {
+    const m = EXFIRE_RX.exec(line);
+    if (!m) continue;
+    EXFIRED.set(m[1], (EXFIRED.get(m[1]) || 0) + 1);
+    hit = true;
+  }
+  if (hit && INV_VIEW === "exalt" && !exfireDirty) {
+    exfireDirty = true;
+    setTimeout(() => { exfireDirty = false; renderInv(); }, 1500);
+  }
+}
+// the companion's rows keep the raw name; the log names the source item
+const exfireOf = v => (v.r.exalt ? EXFIRED.get(stripDecor(v.r.name)) : null) || null;
+
 function exaltReload() {
   EXALT = null; EXALT_BY = null;
   if (!INV.text || !GDATA || !window.EQLExaltCore) return;
@@ -1038,6 +1071,9 @@ const IV_COLS = [
         return x.src.tier >= y.at ? `<div><span class="ok">ready</span> to pull ${esc(y.effect)}</div>` : `<div class="dim">${esc(y.effect)}: +${x.src.tier} of +${y.at}</div>`;
       }).join("")}</td>`;
     } },
+  { k: "xfire", h: "Fired", d0: -1,
+    key: v => exfireOf(v),
+    cell: v => { const n = exfireOf(v); return `<td class="iv-n" title="times the log named this exaltation going off — the tail the app read at start plus everything since">${n || ""}</td>`; } },
   { k: "xsock", h: "Sockets", d0: -1,
     key: v => { const x = exaltOf(v); if (!x || x.kind !== "source" || !x.src.socketsKnown) return null; return Object.values(x.src.sockets).filter(s => s.filled).length; },
     cell: v => {
@@ -1106,7 +1142,7 @@ const IV_DEFAULTS = {
   quest: ["where", "item", "qty", "quests"],
   gear:  ["where", "item", "bis"],
   spare: ["where", "item", "ahead", "beatenby"],
-  exalt: ["where", "item", "tier", "xeff", "xfits", "xsock"],
+  exalt: ["where", "item", "tier", "xeff", "xfits", "xfire", "xsock"],
 };
 const IV_DEFAULT_COLS = IV_DEFAULTS.quest;
 const IV_COLS_KEY = "eqlt-companion-invcols-v2";
@@ -1257,6 +1293,7 @@ function renderInv() {
     note.innerHTML = `Everything in the dump that is an exaltation or could yield one. `
       + `An exaltation keeps its item's class and slot lines and the item you put it in becomes the overlap; the game refuses a pair with no shared class. `
       + `Sockets open at +1 focus, +2 click, +3 worn, +4 proc, and the same tier pulls the effect out of the item that has it. `
+      + `<b>Fired</b> counts the log lines that name an exaltation going off ("feels alive with power"), from the tail read at start plus everything since. `
       + `<span class="dim">Full finder by slot: eqltools.com/exalt.</span>`;
   }
   if (mode === "spare") {
