@@ -11,6 +11,11 @@ const path = require("path");
 
 const isDev = !app.isPackaged;
 
+/* Dev/test only: point userData somewhere disposable so an end-to-end test can
+   seed a settings.json, run the real app, and inspect what it persisted —
+   without touching the player's profile. */
+if (isDev && process.env.EQLC_USERDATA) app.setPath("userData", process.env.EQLC_USERDATA);
+
 /* Where the EQL client writes logs on a default Windows install. The client
    only writes when the player has `/log on` — the renderer surfaces that. */
 const WIN_LOG_DIR = "C:\\Users\\Public\\Daybreak Game Company\\Installed Games\\EverQuest Legends\\Logs";
@@ -136,6 +141,9 @@ function saveSettings() {
 /* ── windows ──────────────────────────────────────────────────────────────*/
 let mainWin = null;
 let overlayWin = null;
+/* True from `before-quit` on: window teardown during quit must not be
+   confused with the user closing a window. */
+let QUITTING = false;
 
 function createMainWindow() {
   mainWin = new BrowserWindow({
@@ -227,7 +235,16 @@ function createOverlayWindow() {
   overlayWin.webContents.on("did-finish-load", () => { sendOverlayInit(); applyClickThrough(); });
   overlayWin.on("moved", saveOverlayBounds);
   overlayWin.on("resized", saveOverlayBounds);
-  overlayWin.on("closed", () => { overlayWin = null; SETTINGS.overlay.shown = false; saveSettings(); notifyOverlayState(); });
+  /* `shown` is user INTENT — "I want the overlay". The app quitting also fires
+     'closed' on this window, and that must not be mistaken for the user hiding
+     it: clobbering `shown` here on quit is why "reopen the overlay next launch"
+     never survived a clean exit. During quit, keep the intent as-is. */
+  overlayWin.on("closed", () => {
+    overlayWin = null;
+    if (!QUITTING) SETTINGS.overlay.shown = false;
+    saveSettings();
+    notifyOverlayState();
+  });
 }
 
 /* Collapsed bounds must not become the remembered size — expanding would
@@ -1034,6 +1051,15 @@ else {
         if (overlayWin) fs.writeFileSync(path.join(process.env.EQLC_SHOT, "overlay.png"), (await overlayWin.webContents.capturePage()).toPNG());
       } catch {}
     }, 5000);
+  });
+  /* Quit is a two-part contract with the overlay's 'closed' handler:
+     1. QUITTING first, so teardown-closes don't clobber the user's `shown`
+        intent (before-quit fires before any window closes).
+     2. Flush the 400ms bounds debounce — a drag inside that window would
+        otherwise lose its final position, and nothing after this runs timers. */
+  app.on("before-quit", () => {
+    QUITTING = true;
+    if (boundsTimer) { clearTimeout(boundsTimer); boundsTimer = null; saveSettings(); }
   });
   app.on("will-quit", () => globalShortcut.unregisterAll());
   app.on("window-all-closed", () => app.quit());
