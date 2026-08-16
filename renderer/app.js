@@ -143,7 +143,7 @@ function newStream(file) {
 // "no reason to start blank") — the bootstrap tail's trailing drops seed it.
 const SEED_CAP = 100;
 
-function onBootstrap({ file, text }) {
+function onBootstrap({ file, text, head }) {
   // another character's log took over — their live loot tally isn't yours
   if (file !== currentFile) LIVE_HAVE = new Map();
   newStream(file);
@@ -176,7 +176,7 @@ function onBootstrap({ file, text }) {
   }
   if (ZONE.follow && DATA && DATA.zones[stream.zone]) selectZone(stream.zone);
   combatSeed(file, text);
-  skySeed(file, text);
+  skySeed(file, text, head);
   exaltSeed(file, text);
   renderStatus(); renderTracker(); pushZone(); renderSky(); pushSky();
   renderQuestsSoon(); // the tail's trades, buys and combines just landed in the ledger
@@ -1509,11 +1509,54 @@ function haveMap() {
       for (const [n, q] of t.items) for (const k of nameKeys(n)) if (m.has(k)) m.set(k, Math.max(0, m.get(k) - q));
     }
   }
+  /* The log is a FLOOR under the dump, over the whole log. It used to be a
+     delta on top of it (only lines newer than the dump), on the premise that
+     the dump had already seen everything older — and the dump lies: the
+     storage export drops rows (docs/KNOWN-ISSUES.md), so a Trueshot Longbow
+     bought from a player on Aug 11 sat in storage through three dumps that
+     never listed it, while the log had "Franchise has offered you 1 Trueshot
+     Longbow" the whole time (Kyle, 2026-08-16). sky-core's logFloor is the
+     arithmetic and the guard (0 for anything ever hand-sold — a sale prints
+     no quantity). One more silent exit is visible from here: a render into an
+     exaltation leaves a stone wearing the item's name in the dump, and each
+     such stone is one copy the log still counts. Rows the floor raised are
+     kept in LOG_FLOOR so the row can SAY the count is the log's word.
+
+     The floor fills only a row the dump has NONE of. Where the dump shows the
+     item at all, its count stands: the log runs high on gear whose spare
+     copies fed an upgrade, and "you hold 3" over a dump that shows 1 would
+     tick a two-of quest that isn't done. The bug this answers hides whole
+     rows, and a hidden row is a zero. */
+  LOG_FLOOR = new Set();
+  if (led) {
+    const stones = new Map();
+    for (const r of INV.rows || []) if (r.exalt) {
+      const b = K.normName(stripDecor(r.name));
+      stones.set(b, (stones.get(b) || 0) + 1);
+    }
+    const seen = new Set();
+    const consider = name => {
+      if (seen.has(name)) return;
+      seen.add(name);
+      const keys = nameKeys(name);
+      for (const k of keys) if (m.get(k)) return; // the dump (or live loot) has it: its word
+      const floor = SKY.logFloor(led, name) - (stones.get(K.normName(name)) || 0);
+      if (floor <= 0) return;
+      for (const k of keys) { m.set(k, floor); LOG_FLOOR.add(k); }
+    };
+    for (const n of led.looted.keys()) consider(n);
+    for (const e of led.bought) consider(e.n);
+    for (const e of led.made) consider(e.n);
+    for (const e of led.received) consider(e.n);
+  }
   // a mark is a FLOOR, never a sum: re-dumping with the item finally visible
   // must not read as two of them
   for (const [k, v] of HELD) m.set(k, Math.max(m.get(k) || 0, v.c));
   return m;
 }
+let LOG_FLOOR = new Set(); // itemKeys whose held count is the log's floor, not the dump's row
+// is this row's count the log's word rather than the dump's?
+const logSaid = name => { for (const k of nameKeys(name)) if (LOG_FLOOR.has(k)) return true; return false; };
 // how many of a WIKI-named item the player holds: exact, then article-stripped
 function heldCount(have, name) {
   const exact = have.get(itemKey(name)) ?? have.get(itemKey(stripDecor(name)));
@@ -2004,14 +2047,21 @@ function zoneItemRow(r, zone) {
   return `<li class="qc ${done ? "is-have" : ""} ${mark ? "is-marked" : ""}">${holdChk(r)}${itemSpan(r.n)}${count}
     ${r.tag ? `<span class="qtag"${r.tt ? ` title="${esc(r.tt)}"` : ""}>${esc(r.tag)}</span>` : ""}
     ${via}${who ? `<span class="qsrc dim">${who}</span>` : ""}${fr ? `<span class="qsrc dim">${fr}</span>` : ""}
-    ${mark ? `<span class="qsrc dim">marked held — the app can't see your pet's bags</span>` : ""}</li>`;
+    ${mark ? `<span class="qsrc dim">marked held — the app can't see your pet's bags</span>` : logSaidTag(r.n)}</li>`;
 }
+
+/* A held count that is the log's word, not the dump's, says so on the row —
+   the same rule the pet mark follows: an inference never dresses as an
+   observation. */
+const LOG_SAID_TT = "The log has you getting this and never handing it in, destroying it or selling it. The dump doesn't list it — the storage export drops rows.";
+const logSaidTag = name => logSaid(name)
+  ? `<span class="qsrc dim" title="${LOG_SAID_TT}">log says held — not in the dump</span>` : "";
 
 /* The checkbox on a component row is the "I have this" switch. It carries the
    item name so one delegated listener serves every list that renders a row. */
 const holdChk = r =>
   `<span class="kchk kchk--hold" data-hold="${esc(r.n)}" data-want="${r.want || 1}"
-     title="${heldMark(r.n) ? "Marked as held — click to clear" : "Mark as held (it's on your pet, or the log missed it)"}"></span>`;
+     title="${heldMark(r.n) ? "Marked as held — click to clear" : "Mark as held (it's on your pet, or neither the dump nor the log saw it)"}"></span>`;
 
 // the pre-zone-grouping rendering, kept for datasets that predate `src`:
 // item, held/needed, and the lowest-level droppers with their zone
@@ -2024,7 +2074,7 @@ function flatCompsHtml(rows) {
     return `<li class="qc ${done ? "is-have" : ""} ${heldMark(r.n) ? "is-marked" : ""}">${holdChk(r)}${itemSpan(r.n)}
       ${r.want > 1 || r.have ? `<span class="qct ${done ? "is-ok" : ""}">${r.have}/${r.want}</span>` : ""}
       ${r.tag ? `<span class="qtag">${esc(r.tag)}</span>` : ""}
-      ${src ? `<span class="qsrc dim">${src}</span>` : ""}</li>`;
+      ${src ? `<span class="qsrc dim">${src}</span>` : ""}${heldMark(r.n) ? "" : logSaidTag(r.n)}</li>`;
   }).join("")}</ul>`;
 }
 
@@ -2073,6 +2123,7 @@ function pushQuests() {
       ...(c.tag ? { tag: c.tag } : {}),
       ...(c.tt ? { tt: c.tt } : {}),
       ...(heldMark(c.n) ? { mk: true } : {}),
+      ...(!heldMark(c.n) && logSaid(c.n) ? { lg: true } : {}),
     };
   };
   // no source table (a dataset older than this app) means no zone answer at
@@ -2178,7 +2229,7 @@ function partsHtml(q, have) {
         <button class="btn btn--mini qtrk" data-track="${esc(pkey)}">${ptracked ? "Untrack" : "Track"}</button>
       </div>
       <ul class="qcomps">${cs.map(c => `<li class="qc ${c.have >= c.want ? "is-have" : ""} ${heldMark(c.n) ? "is-marked" : ""}">
-        ${holdChk(c)}${itemSpan(c.n)}${c.want > 1 || c.have ? `<span class="qct ${c.have >= c.want ? "is-ok" : ""}">${c.have}/${c.want}</span>` : ""}</li>`).join("")}</ul>
+        ${holdChk(c)}${itemSpan(c.n)}${c.want > 1 || c.have ? `<span class="qct ${c.have >= c.want ? "is-ok" : ""}">${c.have}/${c.want}</span>` : ""}${heldMark(c.n) ? "" : logSaidTag(c.n)}</li>`).join("")}</ul>
     </li>`;
   }).join("");
   return `<div class="qparts">
@@ -2629,15 +2680,21 @@ function skyTrackPlan(key, have) {
 }
 const saveSkyPrefs = () => { try { localStorage.setItem(SKY_KEY, JSON.stringify(SKYP)); } catch {} };
 
-/* One fold per log file. The bootstrap tail seeds it and live lines extend it,
-   which is the same deal every other tab gets: turn-ins from before the 40 MB
-   tail are invisible, and the tab says so rather than reading as "not done". */
+/* One fold per log file. The bootstrap seeds it — every ledger line from the
+   whole file before the tail (`head`, prefiltered in main.js), then the 40 MB
+   tail itself — and live lines extend it. So this fold, unlike the kill and
+   exalt streams, sees the character's whole log: a quest item bought from a
+   player a week ago is still "held" here even when the dump can't show it. */
 function skyReset(file) {
   const me = (String(file || "").match(/eqlog_([^_]+)_/) || [])[1] || "";
   SKYL = { st: SKY.stream(me), me, file };
   SKYL.led = SKYL.st.led;
 }
-function skySeed(file, text) { skyReset(file); SKYL.st.text(text); }
+function skySeed(file, text, head) {
+  skyReset(file);
+  if (head && head.length) SKYL.st.feed(head);
+  SKYL.st.text(text);
+}
 /* Only a line the Sky grammar actually consumed can move this board, and a
    busy zone is thousands of lines a minute that don't. */
 function skyFeed(lines) {
@@ -2673,26 +2730,6 @@ function buildSkyUses() {
       }
 }
 
-/* Deliveries the dump can't know about yet. A dump is a snapshot: everything
-   handed over before it is already missing from it, but a turn-in you did five
-   minutes later still shows in the bags it exported. Only trades AFTER the
-   dump come off the count. */
-let SKY_DEL = { key: "", map: new Map() };
-function deliveredAfter(cut) {
-  const led = SKYL && SKYL.led;
-  if (!led) return new Map();
-  const key = `${led.trades.length}|${cut}`;
-  if (SKY_DEL.key === key) return SKY_DEL.map;
-  const m = new Map();
-  for (const tr of led.trades) {
-    const ts = Date.parse(tr.ts);
-    if (!(ts > cut)) continue;
-    for (const [n, q] of tr.items) m.set(itemKey(n), (m.get(itemKey(n)) || 0) + q);
-  }
-  SKY_DEL = { key, map: m };
-  return m;
-}
-
 /* How many of a piece you hold, and on whose word.
      inv   — the dump, minus anything handed over since it was written
      log   — looted minus delivered minus destroyed; the only answer for a wind
@@ -2711,8 +2748,10 @@ function skyHave(have, name, seen) {
     const n = SKY.held(led, null, name).n;
     return mark ? { n: Math.max(n, mark.c), src: n ? "log" : "mark" } : { n, src: "log" };
   }
-  const n = heldCount(have, name) - (deliveredAfter(INV.mtime).get(itemKey(name)) || 0);
-  return { n: Math.max(0, n), src: !seen && mark ? "mark" : "inv" };
+  // haveMap already took post-dump hand-ins off the dump's count — taking
+  // them off again here read "2 held, 1 handed in" as 0
+  const n = heldCount(have, name);
+  return { n: Math.max(0, n), src: !seen && mark ? "mark" : !seen && logSaid(name) ? "log" : "inv" };
 }
 
 /* ── where is it ──────────────────────────────────────────────────────────

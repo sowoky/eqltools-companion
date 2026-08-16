@@ -214,10 +214,12 @@ function itemLi(it) {
   }
   // note AND mobs: 'Isle 6 · Bazzt Zzzt' — the island rides alongside the boss
   const src = it.mk ? "marked held"
+    : it.lg ? "log says held"   // the dump doesn't list it; the log's receipt does
     : !done && [it.note, it.mobs && it.mobs.join(", ")].filter(Boolean).join(" · ");
   if (src) {
     const s = document.createElement("span");
     s.className = "tqc__src"; s.textContent = src;
+    if (it.lg) s.title = "The log has you getting this and never handing it in, destroying it or selling it. The dump doesn't list it — the storage export drops rows.";
     cl.append(s);
   }
   return cl;

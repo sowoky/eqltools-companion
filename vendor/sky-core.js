@@ -18,8 +18,9 @@
   const GS = window.EQLGearScore;
 
   /* ── log ─────────────────────────────────────────────────────────────────
-     Six lines carry everything this page needs (plus two — buys and
-     combines — the companion's quest tracker reads off the same fold):
+     Six lines carry everything this page needs (plus five — buys, combines,
+     player trades in, parcels, cancels — the companion's quest tracker reads
+     off the same fold):
 
        You looted a Wind Rune Neza from Protector of Sky's corpse and stored
          it in your currency
@@ -68,7 +69,21 @@
        fashion X." and hands nothing over. */
     bought:new RegExp(TS + String.raw`You purchased ([\d,]+) (.+?) from (.+?) for +(.*)\.$`),
     made:  new RegExp(TS + String.raw`You have fashioned the items together to create something new: (.+?)\.$`),
+    /* Two receipts (2026-08-16). A player-to-player trade coming IN —
+       "Franchise has offered you 1 Trueshot Longbow." — closes on the very
+       same "You complete the trade with Franchise." an outgoing one does,
+       and cancels the same way. A parcel arrives as "Lelillia hands you the
+       Adamantite Band +1 that was sent from Lothlain." Neither was read, so a
+       quest item bought from a player and put straight into storage — which
+       the dump can hide, docs/KNOWN-ISSUES.md — was never held. */
+    given: new RegExp(TS + String.raw`(.+?) has offered you ([\d,]+) (.+?)\.$`),
+    parcel:new RegExp(TS + String.raw`.+? hands you the (.+?) that was sent from .+?\.$`),
+    // one trade window at a time, so a cancel empties everything pending
+    cancel:new RegExp(TS + String.raw`You have cancelled the trade\.$`),
   };
+  // "You offered 500 Platinum to Franchise." / "Yarrow has offered you 3,500
+  // platinum." — coin rides the trade lines and is not an item
+  const isCoin = (n) => /^(?:platinum|gold|silver|copper)$/i.test(n);
 
   /* A loot line does NOT mean you kept it. In a real 1.5M-line log, 1,928 lines
      end "and sold it for <coin>." and 334 "and sold it for free." — autosell
@@ -101,6 +116,7 @@
       trades: [],             // {npc, items:Map(name->qty), ts}
       bought: [],             // {n, q, npc, ts} merchant purchases, in order
       made: [],               // {n, ts} successful tradeskill combines, in order
+      received: [],           // {n, q, from, ts, via:"trade"|"parcel"} handed to you, in order
       first: null, last: null, sawSky: false,
       /* Lines this ledger has actually consumed. A tailing host re-renders off
          it: a second of combat spam moves nothing here, and re-deriving a
@@ -108,6 +124,7 @@
       n: 0,
     };
     const pending = new Map();      // npc -> [{n, q}] offered but not yet closed
+    const incoming = new Map();     // player -> [{n, q}] offered TO you, not yet closed
     const handback = new Map();     // npc -> items refused since the offer opened
     const bump = (m, k, v) => m.set(k, (m.get(k) || 0) + v);
 
@@ -123,8 +140,28 @@
       }
       if ((m = RX.offer.exec(ln))) {
         const npc = m[4];
-        if (!pending.has(npc)) pending.set(npc, []);
-        pending.get(npc).push({ n: baseOf(m[3]), q: qty(m[2]) });
+        if (!isCoin(m[3])) {
+          if (!pending.has(npc)) pending.set(npc, []);
+          pending.get(npc).push({ n: baseOf(m[3]), q: qty(m[2]) });
+        }
+        led.first = led.first || m[1]; led.last = m[1];
+        return true;
+      }
+      if ((m = RX.given.exec(ln))) {
+        if (!isCoin(m[4])) {
+          if (!incoming.has(m[2])) incoming.set(m[2], []);
+          incoming.get(m[2]).push({ n: baseOf(m[4]), q: qty(m[3]) });
+        }
+        led.first = led.first || m[1]; led.last = m[1];
+        return true;
+      }
+      if ((m = RX.parcel.exec(ln))) {
+        led.received.push({ n: baseOf(m[2]), q: 1, from: "", ts: m[1], via: "parcel" });
+        led.first = led.first || m[1]; led.last = m[1];
+        return true;
+      }
+      if ((m = RX.cancel.exec(ln))) {
+        pending.clear(); incoming.clear(); handback.clear();
         led.first = led.first || m[1]; led.last = m[1];
         return true;
       }
@@ -152,6 +189,10 @@
           items.forEach((v, k) => bump(led.delivered, k, v));
           led.trades.push({ npc, items, ts: m[1] });
         }
+        // the other side of a player trade: what they put in is yours now
+        const got = incoming.get(npc);
+        incoming.delete(npc);
+        for (const o of got || []) led.received.push({ n: o.n, q: o.q, from: npc, ts: m[1], via: "trade" });
         led.first = led.first || m[1]; led.last = m[1];
         return true;
       }
@@ -263,28 +304,54 @@
   // export — so however good the dump is, the log is the only witness for one.
   const isRune = (name) => String(name).indexOf("Wind Rune") === 0;
 
+  /* What the log says you still hold: every way a thing arrives that prints a
+     line (loot kept, merchant buy, combine, player trade, parcel) minus every
+     way it leaves that prints one (closed hand-in, destroy). Exits that print
+     nothing — an ingredient a combine ate, a copy an upgrade consumed, a
+     render into an exaltation, a hand-off to your pet — leave this HIGH, so a
+     caller floors on it, never replaces the dump with it. */
+  const listCount = (arr, name) => {
+    let n = 0;
+    for (const e of arr || []) if (e.n === name) n += e.q || 1;
+    return n;
+  };
   const logHeld = (led, name) => Math.max(0, (led.looted.get(name) || 0)
+    + listCount(led.bought, name) + listCount(led.made, name) + listCount(led.received, name)
     - (led.delivered.get(name) || 0) - goneCount(led, name));
+  /* The number a dump-holder may floor on. A hand-sale prints no quantity (a
+     stack of twenty is one line), so an item you have EVER sold by hand can't
+     be counted from the log — the floor is 0, not a guess. Exists because the
+     storage export drops rows (docs/KNOWN-ISSUES.md, 2026-08-16): a Trueshot
+     Longbow bought from a player, in storage, absent from three dumps —
+     while the log had the trade the whole time. */
+  const logFloor = (led, name) => vendorCount(led, name) > 0 ? 0 : logHeld(led, name);
 
   function held(led, inv, name) {
     const fromLog = logHeld(led, name);
     if (!inv) return { n: fromLog, src: "log", tier: 0, worn: 0 };
     if (isRune(name)) return { n: fromLog, src: "log", tier: 0, worn: 0 };
     const e = inv.get(name);
-    return { n: invCount(inv, name), src: "inv", where: invWhere(inv, name),
+    const n = invCount(inv, name);
+    // a row the dump has none of may be a storage row it dropped: the log
+    // fills it, and says so (KNOWN-ISSUES #32) — same rule as the companion
+    if (!n) { const f = logFloor(led, name); if (f > 0) return { n: f, src: "log", tier: 0, worn: 0 }; }
+    return { n, src: "inv", where: invWhere(inv, name),
              tier: (e && e.tier) || 0, worn: (e && e.worn) || 0 };
   }
 
   /* ── reconciling the two witnesses ───────────────────────────────────────
      The dump is authoritative for what you hold right now, so `held` returns
-     it. That silently discards the log's own count, and the two disagree for
-     reasons worth reading rather than hiding:
+     it (floored by the log only where the dump shows none). That silently
+     discards the log's own count, and the two disagree for reasons worth
+     reading rather than hiding:
 
        log HIGHER  — looted before the dump and moved since (traded to a player,
                      put in the Dragon's Hoard while its window was shut, sold
-                     by hand), or the dump is simply older than the loot.
-       log LOWER   — you had it before `/log on`, or it came from a quest reward
-                     or a merchant, neither of which prints a loot line.
+                     by hand), sitting in a storage slot the export never
+                     reaches (docs/KNOWN-ISSUES.md), or the dump is simply
+                     older than the loot.
+       log LOWER   — you had it before `/log on`, or it came from a quest
+                     reward, which prints no line.
 
      Neither is an error, and neither number is the "right" one. `gap` is
      inv − log; a caller shows both when it is non-zero and says nothing when
@@ -577,7 +644,7 @@
   window.EQLSky = {
     RX, keptIt, wasSold, qty, baseOf, isRune,
     stream, parseLog, parseInv, invCount, invWhere,
-    soldCount, vendorCount, goneCount, held, logHeld, reconcile,
+    soldCount, vendorCount, goneCount, held, logHeld, logFloor, reconcile,
     completions, needsOf, testState, bossBoard,
     skyIndex, disposal, skipRows, cleanoutRows,
   };

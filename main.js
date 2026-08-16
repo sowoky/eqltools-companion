@@ -385,13 +385,51 @@ function readTailText(file, size) {
   return text;
 }
 
+/* The holdings ledger (sky-core) wants the WHOLE log, not the last 40 MB: a
+   quest item bought from a player six days ago is still yours, and the dump
+   can't be trusted to show it (storage export drops rows — KNOWN-ISSUES).
+   Everything before the tail is streamed through a cheap prefilter and only
+   the lines the ledger grammar can consume are kept: a 160 MB log yields a
+   few tens of thousands of lines, not a 160 MB string over IPC. The filter
+   is a SUPERSET of sky-core's RX — anything it drops the ledger never reads.
+   Kills, exalts and the feed still work off the tail alone. */
+const LEDGER_LINE = /You (?:have )?looted |You offered |I have no need for this, |You complete the trade with |You successfully destroyed |You receive .+ for the .+\(s\)\.|You purchased |You have fashioned the items|has offered you |hands you the .+ that was sent from |You have cancelled the trade\.|You have entered /;
+function readHeadLines(file, end) {
+  return new Promise((resolve) => {
+    if (end <= 0) { resolve([]); return; }
+    const out = [];
+    let rem = "";
+    const rs = fs.createReadStream(file, { start: 0, end: end - 1, encoding: "utf8", highWaterMark: 1 << 20 });
+    rs.on("data", (chunk) => {
+      const parts = (rem + chunk).split(/\r?\n/);
+      rem = parts.pop();
+      for (const l of parts) if (l.length && LEDGER_LINE.test(l)) out.push(l);
+    });
+    rs.on("end", () => { if (rem.length && LEDGER_LINE.test(rem)) out.push(rem); resolve(out); });
+    rs.on("error", () => resolve(out)); // a partial head is still a head; the tail carries the rest
+  });
+}
+
+let bootstrapSeq = 0;
 function bootstrap(file, size) {
   let text = "";
   try { text = readTailText(file, size); }
   catch { activeFile = null; return; } // retry next poll rather than wedging on this file
-  tails.set(file, { offset: size, remainder: "" });
-  mainWin.webContents.send("log:bootstrap", { file: path.basename(file), text });
-  sendStatus();
+  const seq = ++bootstrapSeq;
+  const start = Math.max(0, size - BOOTSTRAP_CAP);
+  // The head is read async so a big log never stalls the poll loop. The tail
+  // entry is registered only once the bootstrap has gone out: pollTail reads
+  // nothing for a file with no entry, so no appended line can reach the
+  // renderer before the bootstrap it belongs behind (it would be dropped —
+  // onLines ignores a file it hasn't been bootstrapped on).
+  readHeadLines(file, start > 0 ? start : 0).then((head) => {
+    if (seq !== bootstrapSeq || !mainWin || activeFile !== file) return; // a newer file took over
+    tails.set(file, { offset: size, remainder: "" });
+    // the head ends where the tail text begins: the tail's first line was
+    // already cut at a newline boundary, so nothing is read twice
+    mainWin.webContents.send("log:bootstrap", { file: path.basename(file), text, head });
+    sendStatus();
+  });
 }
 
 function readAppended(file, t, size) {
