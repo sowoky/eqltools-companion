@@ -29,6 +29,11 @@ let GVARS = new Map(); // itemKey(item) -> [all records sharing that display nam
 let GEO = null;       // quest-items.json geo: {nodes: {name: {adj, keys, oe}}, alias}
 let KEY2NODE = new Map(); // atlas zone key -> geo node name
 let NPCLOC = {};      // NPC display name -> {t, z, loc}
+/* itemKey(in-game name) -> wiki page title. The dataset speaks page titles
+   ('Bunker Cell No 1'); the dump and the log speak the client's name ('Bunker
+   Cell #1'). Without this map the key you are holding never matched the key
+   the chain says you need (Zimel's Blades, 2026-08-16). */
+let QALIAS = {};
 
 function buildIndexes(datasets) {
   const kd = datasets["kills-data.json"], qd = datasets["quest-items.json"];
@@ -58,6 +63,7 @@ function buildIndexes(datasets) {
     QZONES = QDATA.zones || {};
     GEO = QDATA.geo || null;
     NPCLOC = QDATA.npcs || {};
+    QALIAS = QDATA.alias || {};
     KEY2NODE = new Map();
     if (GEO) {
       for (const [name, node] of Object.entries(GEO.nodes))
@@ -173,6 +179,7 @@ function onBootstrap({ file, text }) {
   skySeed(file, text);
   exaltSeed(file, text);
   renderStatus(); renderTracker(); pushZone(); renderSky(); pushSky();
+  renderQuestsSoon(); // the tail's trades, buys and combines just landed in the ledger
 }
 
 let lastStreamZone = "?";
@@ -1431,13 +1438,14 @@ function toggleTrack(t) {
 let LIVE_HAVE = new Map(); // normName -> qty looted since the current dump
 
 /* ── items the app CANNOT see you holding ─────────────────────────────────
-   Held counts come from a `/outputfile inventory` dump plus loot lines. Two
-   real holdings never reach either: something you bought from a merchant
-   (the client prints no line for an ordinary merchant sale — the "You've
-   bought" string belongs to the barter log) and something parked on your
-   pet (/outputfile has no `pet` option, and handing an item over prints
-   nothing). Both leave the tracker demanding an item you already own
-   (Kyle, 2026-08-11: bought a Fire Opal; Ghoulbane on the pet).
+   Held counts come from a `/outputfile inventory` dump plus what the log
+   says happened since it: loot, merchant buys ("You purchased 4 Drom's
+   Champagne from …" — a line the 2026-08-11 finding wrongly said never
+   prints), combines, and hand-ins closed with "You complete the trade".
+   One real holding reaches none of that: something parked on your pet
+   (/outputfile has no `pet` option, and handing an item over prints
+   nothing). It leaves the tracker demanding an item you already own
+   (Kyle, 2026-08-11: Ghoulbane on the pet).
 
    So the player can say it: a marked item counts as held, and every row
    that leans on the mark SAYS it's a mark, never dressing it up as
@@ -1470,15 +1478,37 @@ const heldMark = name => HELD.get(itemKey(name)) || null;
    'Sapphire' and 'A Sapphire' are two rows and must stay two counts. The loose
    fallback lives in held() below, so a dump row that DOES carry a stray article
    still finds its item. */
+/* every key a name answers to: raw, decoration-stripped, and the wiki title
+   the client name aliases ('Bunker Cell #1' -> 'Bunker Cell No 1') */
+function nameKeys(name) {
+  const ks = new Set([itemKey(name), itemKey(stripDecor(name))]);
+  for (const k of [...ks]) if (QALIAS[k]) ks.add(itemKey(QALIAS[k]));
+  return ks;
+}
+/* The log's own record of what changed hands since the dump — the same
+   ledger the Sky board reads (sky-core stream over the tail + live lines).
+   Log timestamps are local time; so is the dump's mtime. */
+const logTs = ts => { const t = Date.parse(ts); return Number.isFinite(t) ? t : 0; };
+const questLedger = () => (SKYL && SKYL.led) || null;
 function haveMap() {
   const m = new Map();
+  const add = (name, n) => { for (const k of nameKeys(name)) m.set(k, (m.get(k) || 0) + n); };
   for (const r of INV.rows || []) {
     // an exaltation stone carries the name of an item you no longer own
     if (r.exalt) continue;
-    for (const k of new Set([itemKey(r.name), itemKey(stripDecor(r.name))]))
-      m.set(k, (m.get(k) || 0) + r.count);
+    add(r.name, r.count);
   }
   for (const [k, c] of LIVE_HAVE) m.set(k, (m.get(k) || 0) + c);
+  // since the dump: buys and combines arrive, closed hand-ins leave
+  const led = questLedger(), since = INV.mtime || 0;
+  if (led) {
+    for (const b of led.bought || []) if (logTs(b.ts) > since) add(b.n, b.q);
+    for (const c of led.made || []) if (logTs(c.ts) > since) add(c.n, 1);
+    for (const t of led.trades || []) {
+      if (logTs(t.ts) <= since) continue;
+      for (const [n, q] of t.items) for (const k of nameKeys(n)) if (m.has(k)) m.set(k, Math.max(0, m.get(k) - q));
+    }
+  }
   // a mark is a FLOOR, never a sum: re-dumping with the item finally visible
   // must not read as two of them
   for (const [k, v] of HELD) m.set(k, Math.max(m.get(k) || 0, v.c));
@@ -1493,49 +1523,109 @@ function heldCount(have, name) {
   return 0;
 }
 
-/* A quest's shopping list: q.need (rolled up and recipe-expanded) crossed with
-   what you hold. `got` counts items you hold ENOUGH of — with quantities in the
-   data, holding one of four Bone Chips is not holding Bone Chips. Older
-   datasets have no `need`; those fall back to the flat item list at one each,
-   so a companion that hasn't refreshed still works. */
+/* A quest's shopping list: what is still to be handed in, crossed with what
+   you hold. `got` counts items you hold ENOUGH of — with quantities in the
+   data, holding one of four Bone Chips is not holding Bone Chips.
+
+   Where the page has a step graph, the list is the INPUTS OF THE STEPS NOT
+   YET DONE — nothing else. Handing Tykar his four Drom's Champagne (proven by
+   the H. K. 102 in your bag, or by the log's "You complete the trade with
+   Tykar Renlin") takes the champagne off the list; the old list re-read
+   q.need — a build-time base list that never heard the trade happened —
+   and kept demanding it two steps later (Kyle, 2026-08-15).
+
+   Recipes roll up at RUN time, against the bag: an item you can only make
+   (no world source; `src[].r`) expands into ingredients for the SHORTFALL
+   only, so four Edible Goo in the bag never turn into "Rat Ears 0/1". The
+   dataset's `want` is the unexpanded turn-in list; `need` (older, expanded)
+   and the flat item list are the fallbacks for stale data. */
+function recipeFor(name) {
+  const s = srcFor(name);
+  if (!s || !s.r || !(s.r.c || []).length) return null;
+  // a real world source outranks the recipe: killing for it is an answer
+  if ((s.z && s.z.length) || s.many || s.various) return null;
+  return s.r;
+}
 function compsFor(q, have) {
-  const held = n => heldCount(have, n);
+  const ss0 = stepState(q, have);
+  const held = n => heldCount(have, n) + ((ss0 && ss0.gained.get(itemKey(n))) || 0);
   /* An item this quest's own steps hand you (give-step `out`) is chain-made,
      not farmed — and the item's GLOBAL src can be a different item wearing the
      same name ('Sealed Note' is five distinct notes on one wiki page; the
      SoulFire one comes from Assistant Kiolna, not The Prophet in Crushbone).
      The step knows better than the item page: source these rows from the
      step's NPC. */
+  const steps = q.steps || [];
   const madeBy = new Map();          // itemKey -> [every step producing it]
-  for (const st of q.steps || []) {
+  const consumed = new Set();        // itemKey of every step input
+  for (const st of steps) {
     for (const [n] of st.out || []) {
       const k2 = itemKey(n);
       if (!madeBy.has(k2)) madeBy.set(k2, []);
       madeBy.get(k2).push(st);
     }
+    for (const [n] of st.in || []) consumed.add(itemKey(n));
   }
+  const ss = ss0;
+  const stStateOf = new Map((ss ? ss.states : []).map(s => [s.st, s]));
+
+  // the top-level wants: undone steps' inputs, plus page items no step touches
+  const wants = new Map();           // itemKey -> {n, want}
+  const want = (n, w) => {
+    const k = itemKey(n), cur = wants.get(k);
+    if (cur) cur.want += w; else wants.set(k, { n, want: w });
+  };
+  const top = (q.want && q.want.length ? q.want : q.need && q.need.length ? q.need
+    : (q.items || []).map(n => [n, 1]));
+  if (ss) {
+    for (const s of ss.states) {
+      if (s.done) continue;
+      for (const [n, w] of s.st.in || []) want(n, w);
+    }
+    for (const [n, w] of top) {
+      const k = itemKey(n);
+      if (!consumed.has(k) && !madeBy.has(k)) want(n, w);
+    }
+  } else {
+    for (const [n, w] of top) want(n, w);
+  }
+
   /* The zone list is a "do now" list, so it obeys the step graph the same
      way the checklist does: an item whose EVERY producing step is locked
      behind unmet prereqs (Testimony needs Token of Truth needs Guard Willia
      needs both token turn-ins — Kyle, 2026-08-11) is not something to go
      get yet. `lk` rows stay in the counts and the checklist but never
      render as a zone row until the chain reaches them. */
-  const ss = stepState(q, have);
-  const stStateOf = new Map((ss ? ss.states : []).map(s => [s.st, s]));
-  const rows = (q.need && q.need.length ? q.need : (q.items || []).map(n => [n, 1]))
-    .map(([n, want]) => {
-      const mks = madeBy.get(itemKey(n)) || [];
-      const giver = mks.find(st2 => st2.k === "give" && st2.npc);
-      const st = giver
-        ? { npc: giver.npc, z: giver.z || (NPCLOC[giver.npc] && NPCLOC[giver.npc].z) || "" }
-        : undefined;
-      const states = mks.map(st2 => stStateOf.get(st2)).filter(Boolean);
-      const lk = states.length > 0 && states.every(s2 => !s2.done && !s2.can);
-      return { n, want, have: held(n), fr: q.from && q.from[n],
-               ...(st ? { st } : {}), ...(lk ? { lk: true } : {}) };
-    });
-  const got = rows.filter(c => c.have >= c.want).length;
-  return { q, comps: rows, got, need: rows.length, done: rows.length > 0 && got === rows.length };
+  const rows = new Map();            // itemKey -> row
+  const put = (n, w, via) => {
+    const k = itemKey(n), cur = rows.get(k);
+    if (cur) { cur.want += w; if (via && cur.via !== via) cur.via = ""; return; }
+    const mks = madeBy.get(k) || [];
+    // an NPC hands it over — for a turn-in, for coin, or for asking
+    const giver = mks.find(st2 => st2.npc && (st2.k === "give" || st2.k === "get" || st2.k === "buy"));
+    const st = giver
+      ? { npc: giver.npc, k: giver.k, z: giver.z || (NPCLOC[giver.npc] && NPCLOC[giver.npc].z) || "" }
+      : undefined;
+    const states = mks.map(st2 => stStateOf.get(st2)).filter(Boolean);
+    const lk = states.length > 0 && states.every(s2 => !s2.done && !s2.can);
+    rows.set(k, { n, want: w, have: held(n), fr: q.from && q.from[n],
+                  ...(st ? { st } : {}), ...(lk ? { lk: true } : {}),
+                  ...(via ? { via } : {}) });
+  };
+  const expand = (n, w, depth, via) => {
+    const k = itemKey(n);
+    // a step makes it, or another quest pays it: the chain says how, no rollup
+    if (madeBy.has(k) || (q.from && q.from[n]) || depth >= 3) return put(n, w, via);
+    const short = w - held(n);
+    const r = short > 0 ? recipeFor(n) : null;
+    if (!r) return put(n, w, via);
+    // held copies cover their share; only the shortfall costs ingredients
+    for (const [qn, ing] of r.c) expand(ing, qn * short, depth + 1, n);
+  };
+  for (const { n, want: w } of wants.values()) expand(n, w, 0, "");
+  const comps = [...rows.values()];
+  const got = comps.filter(c => c.have >= c.want).length;
+  return { q, comps, got, need: comps.length, done: comps.length > 0 && got === comps.length };
 }
 
 /* Pool tracked plans into one shopping list: an item two quests want is one
@@ -1613,23 +1703,76 @@ function trackedPlan(key, have) {
    Locked steps are noise while wandering — the UI folds them away (Kyle,
    2026-08-09: "things they can't do yet is noise").
 
-   done, inferred from the bag: a made step (give/combine) is done when its
+   done, two ways. From the LOG: a give step is done when a closed trade with
+   its NPC ("You offered … to X" … "You complete the trade with X") carried
+   every input; a combine when "You have fashioned … : <product>" printed; a
+   buy when "You purchased N <item>" did — the log the tail read plus every
+   line since. From the BAG: a made step (give/combine) is done when its
    product is in hand, or when anything consuming that product is done — you
    can't hold the Gleaming coin without having handed over the Glowing one.
-   World pickups pool: holding 3 of the 10 coins marks 3 pins done. */
+   World pickups pool: holding 3 of the 10 coins marks 3 pins done.
+
+   Notes (`k: "note"`, advice the checklist carries — "obtain warmly faction")
+   are shown, never counted and never "doable": nothing could ever tick them. */
+const isNote = st => st.k === "note";
+// NPC names as the log prints them vs the wiki titles them: case and article
+const npcKey = s => String(s || "").toLowerCase().replace(/^(?:a|an|the)\s+/, "").replace(/[`']/g, "").trim();
+const sameItem = (a, b) => {
+  const ka = nameKeys(a), kb = nameKeys(b);
+  for (const k of ka) if (kb.has(k)) return true;
+  return K.normName(stripDecor(a)) === K.normName(stripDecor(b));
+};
+// the closed trade with this NPC that carried everything the step hands over
+function tradeProves(led, st) {
+  if (!led || !st.npc || !(st.in || []).length) return null;
+  const npc = npcKey(st.npc);
+  return led.trades.find(t => npcKey(t.npc) === npc &&
+    st.in.every(([n, w]) => { let got = 0; for (const [tn, tq] of t.items) if (sameItem(tn, n)) got += tq; return got >= w; })) || null;
+}
 function stepState(q, have) {
   const steps = q.steps || [];
   if (!steps.length) return null;
   const held = n => heldCount(have, n);
+  const led = questLedger();
   const done = new Map();
   const outsHeld = st => (st.out || []).length &&
     st.out.every(([n]) => held(n) >= 1);
+  /* What a hand-in the log proved must have put in your bags: an NPC's
+     payout prints no item line ("A prisoner hands you something"), so the
+     Sealed Note Kiolna handed over after the last dump is invisible to every
+     count — except that the step that pays it is proven done. `gained` is
+     that credit, per item, for trades newer than the dump: the step's out
+     minus what later proven trades consumed, never below zero. */
+  const gained = new Map();
+  const credit = (n, q) => { const k = itemKey(n); gained.set(k, (gained.get(k) || 0) + q); };
+  const since = INV.mtime || 0;
+  const logged = st => {
+    if (!led) return false;
+    if (st.k === "give") {
+      const t = tradeProves(led, st);
+      if (t && logTs(t.ts) > since) {
+        for (const [n, q] of st.out || []) credit(n, q);
+        for (const [n, q] of st.in || []) credit(n, -q);
+      }
+      return !!t;
+    }
+    if (st.k === "combine" && (st.out || []).length)
+      return (led.made || []).some(m => sameItem(m.n, st.out[0][0]));
+    if (st.k === "buy" && (st.out || []).length)
+      return (led.bought || []).some(b => sameItem(b.n, st.out[0][0]));
+    return false;
+  };
   for (let j = steps.length - 1; j >= 0; j--) {
     const st = steps[j];
+    if (isNote(st)) continue;
     const consumerDone = steps.some(s2 => (s2.pre || []).includes(st.i) && done.get(s2.i));
     // world pickups (no inputs) are pooled below — ten coin pins all "hold"
     // the same 3 coins, and marking them all done here read 3/10 as complete
-    done.set(st.i, consumerDone || ((st.in || st.tool) ? outsHeld(st) : false));
+    // A combine whose product IS its container (fill the casket) can't be
+    // read off the bag — the empty casket is already there — so only the
+    // log or the hand-in after it can tick it.
+    const madeNew = (st.out || []).some(([n]) => !(st.tool || []).includes(n));
+    done.set(st.i, consumerDone || logged(st) || ((st.in || st.tool) && madeNew ? outsHeld(st) : false));
   }
   // pooled world pickups: the first `held` pins of an item count as done
   const pools = new Map();
@@ -1641,23 +1784,33 @@ function stepState(q, have) {
     pools.get(n).push(st);
   }
   for (const [n, pins] of pools) {
+    // enough in hand for every step that wants it: every way of getting it is
+    // done ('Loot from a treant' OR 'from Jyle Windshot' — one Wooden Heart
+    // satisfies both, Rain Caller 2026-08-16); otherwise the first `held`
+    // pins count (three of the ten coins)
+    const needQ = Math.max(1, ...steps.map(s2 => ((s2.in || []).find(([m]) => m === n) || [])[1] || 0));
+    if (held(n) >= needQ) { for (const st of pins) done.set(st.i, true); continue; }
     // pins already done via a consumer stay done; these are the leftovers
     const already = steps.filter(s2 => (s2.out || []).some(([m]) => m === n) && done.get(s2.i)).length;
     let k = Math.max(0, Math.min(held(n) - already, pins.length));
     for (const st of pins) { if (k <= 0) break; done.set(st.i, true); k--; }
   }
-  const actionable = st => !done.get(st.i) &&
+  const actionable = st => !isNote(st) && !done.get(st.i) &&
     (st.pre || []).every(i => done.get(i));
   const states = steps.map(st => ({
-    st, done: !!done.get(st.i), can: actionable(st),
+    st, done: !!done.get(st.i), can: actionable(st), note: isNote(st),
   }));
   const next = states.find(s => s.can && (s.st.k === "give" || s.st.k === "combine"))
     || states.find(s => s.can);
   const finalGive = [...steps].reverse().find(st => st.k === "give" && (st.in || []).length);
-  const handinReady = !!finalGive && finalGive.in.every(([n, w]) => held(n) >= w) &&
+  const handinReady = !!finalGive && !done.get(finalGive.i) &&
+    finalGive.in.every(([n, w]) => held(n) >= w) &&
     (finalGive.pre || []).every(i => done.get(i));
-  return { states, next: next ? next.st : null, handinReady,
-           doneN: states.filter(s => s.done).length };
+  const real = states.filter(s => !s.note);
+  for (const [k, v] of gained) if (v <= 0) gained.delete(k);
+  return { states, next: next ? next.st : null, handinReady, gained,
+           doneN: real.filter(s => s.done).length, total: real.length,
+           finished: real.length > 0 && real.every(s => s.done) };
 }
 
 // one line of a step as the player acts on it: what, where, from whom
@@ -1673,14 +1826,19 @@ const QSTEPS_OPEN = new Set(); // quests whose locked-steps fold is expanded
 function stepsHtml(q, ss) {
   if (!ss) return "";
   const doable = ss.states.filter(s => s.can);
-  const locked = ss.states.filter(s => !s.done && !s.can);
+  const locked = ss.states.filter(s => !s.note && !s.done && !s.can);
+  const notes = ss.states.filter(s => s.note);
   const open = QSTEPS_OPEN.has(q.t);
+  const led = questLedger();
+  const seen = led && led.first ? `log read from ${esc(String(led.first).replace(/ \d{2}:\d{2}:\d{2}/, ""))}` : "";
   return `<div class="qsteps">
-    ${ss.doneN ? `<div class="qsteps__done dim">✓ ${ss.doneN} of ${ss.states.length} steps done</div>` : ""}
+    ${ss.finished ? `<div class="qsteps__done dim">✓ all ${ss.total} steps done${seen ? ` · ${seen}` : ""}</div>`
+      : ss.doneN ? `<div class="qsteps__done dim">✓ ${ss.doneN} of ${ss.total} steps done — from the bag${seen ? `, and the ${seen}` : ""}</div>` : ""}
     <ul class="qcomps">${doable.map(s => stepLine(s.st, "is-can")).join("")}</ul>
     ${locked.length ? `<button class="qparts__toggle" data-steps="${esc(q.t)}">${open ? "▾" : "▸"}
       ${locked.length} later step${locked.length === 1 ? "" : "s"} — locked until the ones above are done</button>
       ${open ? `<ul class="qcomps">${locked.map(s => stepLine(s.st, "is-locked")).join("")}</ul>` : ""}` : ""}
+    ${notes.length ? `<ul class="qcomps qsteps__notes">${notes.map(s => `<li class="qc qstep is-note dim">${esc(s.st.txt)}</li>`).join("")}</ul>` : ""}
   </div>`;
 }
 
@@ -1822,11 +1980,13 @@ const zoneLink = z => BUCKET_LABEL[z]
     : `<span class="zg__name">${esc(z)}</span>`)
     + (isUmbrella(z) ? `<span class="zg__umb dim">the wiki doesn't say which zone</span>` : "");
 
+// how a chain-made row is obtained: the step's NPC and what you do there
+const stNote = st => st.k === "get" ? `from ${st.npc}` : st.k === "buy" ? `buy from ${st.npc}` : `turn-in at ${st.npc}`;
 // one item row inside a zone bucket: held/needed, and who drops it here
 function zoneItemRow(r, zone) {
   const done = r.have >= r.want;
   const src = done ? { mobs: [] }
-    : r.st ? { mobs: [], note: `turn-in at ${r.st.npc}` }
+    : r.st ? { mobs: [], note: stNote(r.st) }
     : sourceIn(r.n, zone);
   const count = r.want > 1 || r.have
     ? `<span class="qct ${done ? "is-ok" : ""}">${r.have}/${r.want}</span>` : "";
@@ -1839,17 +1999,19 @@ function zoneItemRow(r, zone) {
   const fr = !done && r.fr && T2Q.get(r.fr)
     ? `<a class="wk qfrom" data-wiki="${esc(r.fr)}">reward of ${esc(T2Q.get(r.fr).n)}</a>` : "";
   const mark = heldMark(r.n);
+  // an ingredient standing in for something you make: say what it is for
+  const via = !done && r.via ? `<span class="qsrc dim">for ${esc(r.via)}</span>` : "";
   return `<li class="qc ${done ? "is-have" : ""} ${mark ? "is-marked" : ""}">${holdChk(r)}${itemSpan(r.n)}${count}
     ${r.tag ? `<span class="qtag"${r.tt ? ` title="${esc(r.tt)}"` : ""}>${esc(r.tag)}</span>` : ""}
-    ${who ? `<span class="qsrc dim">${who}</span>` : ""}${fr ? `<span class="qsrc dim">${fr}</span>` : ""}
-    ${mark ? `<span class="qsrc dim">marked held — the app can't see a merchant buy or your pet's bags</span>` : ""}</li>`;
+    ${via}${who ? `<span class="qsrc dim">${who}</span>` : ""}${fr ? `<span class="qsrc dim">${fr}</span>` : ""}
+    ${mark ? `<span class="qsrc dim">marked held — the app can't see your pet's bags</span>` : ""}</li>`;
 }
 
 /* The checkbox on a component row is the "I have this" switch. It carries the
    item name so one delegated listener serves every list that renders a row. */
 const holdChk = r =>
   `<span class="kchk kchk--hold" data-hold="${esc(r.n)}" data-want="${r.want || 1}"
-     title="${heldMark(r.n) ? "Marked as held — click to clear" : "Mark as held (bought it, or it's on your pet)"}"></span>`;
+     title="${heldMark(r.n) ? "Marked as held — click to clear" : "Mark as held (it's on your pet, or the log missed it)"}"></span>`;
 
 // the pre-zone-grouping rendering, kept for datasets that predate `src`:
 // item, held/needed, and the lowest-level droppers with their zone
@@ -1902,9 +2064,9 @@ function pushQuests() {
 
   const packRow = (c, zone) => {
     const s = c.have >= c.want ? { mobs: [] }
-      : c.st ? { mobs: [], note: `turn-in at ${c.st.npc}` }
+      : c.st ? { mobs: [], note: stNote(c.st) }
       : sourceIn(c.n, zone);
-    const note = [s.isl, s.note].filter(Boolean).join(" · ");
+    const note = [c.have < c.want && c.via ? `for ${c.via}` : "", s.isl, s.note].filter(Boolean).join(" · ");
     return {
       n: c.n, have: c.have, want: c.want, url: itemUrl(c.n),
       mobs: s.mobs.slice(0, 3), ...(note ? { note } : {}),
@@ -1939,9 +2101,10 @@ function pushQuests() {
   };
 
   window.companion.sendQuests({
-    // how old the held counts are: a merchant buy or a pet hand-off never
-    // reaches a log line, so "you still need it" is only ever true as of the
-    // last dump — the overlay says so rather than implying live truth
+    // how old the held counts are: a pet hand-off never reaches a log line
+    // (and the log's own receipts only go back as far as the tail it read),
+    // so "you still need it" is only ever true as of the last dump — the
+    // overlay says so rather than implying live truth
     inv: INV.mtime ? { age: Date.now() - INV.mtime } : null,
     zones: packZones(pooled),
     quests: plans.map(p => {
@@ -2481,7 +2644,9 @@ function skyFeed(lines) {
   if (!SKYL) return;
   const before = SKYL.led.n;
   SKYL.st.feed(lines);
-  if (SKYL.led.n !== before) renderSkySoon();
+  // the quest tracker reads the same ledger: a closed trade, a buy or a
+  // combine moves a step or a held count there too
+  if (SKYL.led.n !== before) { renderSkySoon(); renderQuestsSoon(); }
 }
 
 const skyRec = name => {
@@ -2747,6 +2912,12 @@ function skyItemSpan(name) {
     ? `<span class="itn is-link" data-tt="${esc(name)}" data-url="${esc(r.url)}">${esc(name)}</span>`
     : `<span class="itn" data-tt="${esc(name)}">${esc(name)}</span>`;
 }
+/* The check beside a reward you already own, on the boss board — the test rows
+   carry ✓N / ✓ recorded already; a use line and the buys cell print the reward
+   without a state, so the mark rides the name (site parity, 2026-08-16). */
+function skyGot(u) {
+  return u && u.fin ? `<span class="sk-got" title="Already yours — turned in, or your achievement record lists it">✓</span>` : "";
+}
 function skyPieceHtml(i) {
   const has = i.have >= i.need;
   const star = i.star
@@ -2853,7 +3024,7 @@ function skyDropHtml(r, mobKey, src) {
      as an upgrade tier — "Skycleaver +1" is a different item from "Skycleaver",
      and this app strips exactly that suffix elsewhere. */
   const buys = r.quest
-    ? `${esc(r.uses[0].reward || r.uses[0].short)}${r.uses.length > 1
+    ? `${esc(r.uses[0].reward || r.uses[0].short)}${skyGot(r.uses[0])}${r.uses.length > 1
         ? ` <span class="dim">&middot; ${r.uses.length} tests</span>` : ""}`
     : `<span class="dim" title="${esc(who)}">${who ? esc(src[r.n][0]) : "no test wants it"}</span>`;
   const locs = r.locs.length ? ` ${r.locs.map(skyBadgeHtml).join(" ")}` : "";
@@ -2896,7 +3067,7 @@ function skyExpandDrop(btn) {
       <span class="skb__ucls">${esc(u.cls)}</span>
       <span class="skb__utest">${esc(u.short)}</span>
       <span class="dim">→</span>
-      <span class="skb__urew">${u.reward ? skyItemSpan(u.reward) : "?"}</span>
+      <span class="skb__urew">${u.reward ? skyItemSpan(u.reward) : "?"}${skyGot(u)}</span>
       <span class="dim">${u.skip ? "skipped" : u.fin ? "done" : esc(u.giver || "")}</span>
       <button type="button" class="skb__uskip" data-skyskip="${esc(u.code)}" data-test="${esc(u.test)}"
         title="${u.skip ? "Un-skip" : "Never doing this one"}">${u.skip ? "un-skip" : "skip"}</button>
@@ -2924,7 +3095,7 @@ function skyOpenMenu(li, x, y) {
         data-skyskip="${esc(u.code)}" data-test="${esc(u.test)}">
         <span class="skmenu__b">${u.skip ? "✓" : ""}</span>
         <span>${esc(u.cls)} · ${esc(u.short)}</span>
-        <span class="dim">${u.reward ? "→ " + esc(u.reward) : ""}</span></button>`).join("")
+        <span class="dim">${u.reward ? "→ " + esc(u.reward) + skyGot(u) : ""}</span></button>`).join("")
     + (uses.length > 1 ? `<button type="button" class="skmenu__i skmenu__all" data-skyskipall="${esc(name)}">${
         uses.every(u => u.skip) ? "Un-skip all" : "Skip all"}</button>` : "");
   document.body.appendChild(el);

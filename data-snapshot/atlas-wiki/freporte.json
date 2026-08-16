@@ -489,9 +489,9 @@
    "dr": [],
    "drops": [],
    "loc": [
-    -87.0,
-    -624.0,
-    null
+    -326.0,
+    -842.0,
+    -106.0
    ],
    "lvl": "14",
    "n": "Gren Frikniller",
@@ -1629,7 +1629,7 @@
    "u": "https://eqlwiki.com/index.php/Zhem_Xecia"
   }
  ],
- "updated": "2026-08-06T08:05:48Z",
+ "updated": "2026-08-13T20:32:12Z",
  "wikiTitle": "East Freeport",
  "wikiUrl": "https://eqlwiki.com/index.php/East_Freeport",
  "zone": "freporte"

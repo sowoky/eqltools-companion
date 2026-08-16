@@ -111,6 +111,9 @@
       const cls = classesOf(rec);
       const sl = slotsOf(rec);
       if (!sl.length || (cls && !cls.length)) continue;
+      // conjured items ("Summoned: Staff of Runes") are not known to yield an
+      // exaltation and are left out (Kyle, 2026-08-15)
+      if (/^Summoned:/i.test(rec.n)) continue;
       const list = [];
       const push = (type, effect, eff) => {
         const s = {

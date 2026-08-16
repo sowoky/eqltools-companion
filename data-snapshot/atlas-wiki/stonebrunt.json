@@ -860,29 +860,11 @@
   },
   {
    "dr": [
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Common",
-    "Common",
-    "Rare",
-    "Common",
-    "Ultra Rare"
+    null,
+    null
    ],
    "drops": [
-    18,
-    19,
-    20,
-    21,
-    43,
-    62,
-    102,
-    103,
     107,
-    108,
     123
    ],
    "loc": [
@@ -2562,7 +2544,7 @@
    "u": "https://eqlwiki.com/index.php/Yuio_Kaliio"
   }
  ],
- "updated": "2026-08-09T13:02:04Z",
+ "updated": "2026-08-14T13:16:16Z",
  "wikiTitle": "Stonebrunt Mountains",
  "wikiUrl": "https://eqlwiki.com/index.php/Stonebrunt_Mountains",
  "zone": "stonebrunt"

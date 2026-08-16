@@ -90,10 +90,6 @@
    "u": "https://eqlwiki.com/index.php/Bone_Armplates"
   },
   {
-   "n": "Bone Chips",
-   "u": "https://eqlwiki.com/index.php/Bone_Chips"
-  },
-  {
    "g": 1,
    "n": "Bone Legplates",
    "u": "https://eqlwiki.com/index.php/Bone_Legplates"
@@ -246,18 +242,8 @@
   },
   {
    "g": 1,
-   "n": "Cloth Pants",
-   "u": "https://eqlwiki.com/index.php/Cloth_Pants"
-  },
-  {
-   "g": 1,
    "n": "Cloth Shirt",
    "u": "https://eqlwiki.com/index.php/Cloth_Shirt"
-  },
-  {
-   "g": 1,
-   "n": "Cloth Sleeves",
-   "u": "https://eqlwiki.com/index.php/Cloth_Sleeves"
   },
   {
    "g": 1,
@@ -598,11 +584,6 @@
    "u": "https://eqlwiki.com/index.php/Order_of_Thunder"
   },
   {
-   "g": 1,
-   "n": "Parrying Dagger",
-   "u": "https://eqlwiki.com/index.php/Parrying_Dagger"
-  },
-  {
    "n": "Part of Tasarin's Grimoire Pg. 312 (Left)",
    "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._312_(Left)"
   },
@@ -646,16 +627,6 @@
   {
    "n": "Ration",
    "u": "https://eqlwiki.com/index.php/Ration"
-  },
-  {
-   "g": 1,
-   "n": "Raw-hide Cloak",
-   "u": "https://eqlwiki.com/index.php/Raw-hide_Cloak"
-  },
-  {
-   "g": 1,
-   "n": "Raw-hide Tunic",
-   "u": "https://eqlwiki.com/index.php/Raw-hide_Tunic"
   },
   {
    "n": "Ruby",
@@ -774,11 +745,6 @@
   },
   {
    "g": 1,
-   "n": "Rusty Mace",
-   "u": "https://eqlwiki.com/index.php/Rusty_Mace"
-  },
-  {
-   "g": 1,
    "n": "Rusty Morning Star",
    "u": "https://eqlwiki.com/index.php/Rusty_Morning_Star"
   },
@@ -786,11 +752,6 @@
    "g": 1,
    "n": "Rusty Short Sword",
    "u": "https://eqlwiki.com/index.php/Rusty_Short_Sword"
-  },
-  {
-   "g": 1,
-   "n": "Rusty Warhammer",
-   "u": "https://eqlwiki.com/index.php/Rusty_Warhammer"
   },
   {
    "g": 1,
@@ -883,11 +844,6 @@
    "u": "https://eqlwiki.com/index.php/Splinted_Bronze_Cloak"
   },
   {
-   "g": 1,
-   "n": "Splintering Club",
-   "u": "https://eqlwiki.com/index.php/Splintering_Club"
-  },
-  {
    "n": "Star Rose Quartz",
    "u": "https://eqlwiki.com/index.php/Star_Rose_Quartz"
   },
@@ -917,23 +873,8 @@
   },
   {
    "g": 1,
-   "n": "Tarnished Broad Sword",
-   "u": "https://eqlwiki.com/index.php/Tarnished_Broad_Sword"
-  },
-  {
-   "g": 1,
    "n": "Tarnished Dagger",
    "u": "https://eqlwiki.com/index.php/Tarnished_Dagger"
-  },
-  {
-   "g": 1,
-   "n": "Tarnished Morning Star",
-   "u": "https://eqlwiki.com/index.php/Tarnished_Morning_Star"
-  },
-  {
-   "g": 1,
-   "n": "Tarnished Rapier",
-   "u": "https://eqlwiki.com/index.php/Tarnished_Rapier"
   },
   {
    "n": "Tattered Cloth Note",
@@ -996,11 +937,6 @@
   {
    "n": "Wooden Shards",
    "u": "https://eqlwiki.com/index.php/Wooden_Shards"
-  },
-  {
-   "g": 1,
-   "n": "Wooden Shield",
-   "u": "https://eqlwiki.com/index.php/Wooden_Shield"
   },
   {
    "n": "Words of Cazic-Thule",
@@ -1069,10 +1005,6 @@
   {
    "n": "Words of Transcendence",
    "u": "https://eqlwiki.com/index.php/Words_of_Transcendence"
-  },
-  {
-   "n": "Zombie Skin",
-   "u": "https://eqlwiki.com/index.php/Zombie_Skin"
   }
  ],
  "meta": {
@@ -1119,33 +1051,33 @@
     6,
     7,
     8,
-    23,
-    28,
+    22,
+    27,
+    32,
     33,
     34,
-    35,
+    37,
     38,
     39,
-    40,
+    41,
     42,
-    43,
+    50,
     51,
     52,
-    54,
+    92,
     95,
-    98,
-    114,
-    141,
-    167,
-    170,
-    172,
-    173,
-    184,
-    185,
-    190,
-    191,
-    212,
-    228
+    111,
+    137,
+    161,
+    164,
+    165,
+    166,
+    176,
+    177,
+    182,
+    183,
+    200,
+    215
    ],
    "loc": [
     -3500.0,
@@ -1169,12 +1101,12 @@
    ],
    "drops": [
     16,
-    50,
-    92,
-    117,
-    124,
-    149,
-    218
+    49,
+    89,
+    114,
+    121,
+    143,
+    206
    ],
    "loc": null,
    "lvl": "1",
@@ -1212,19 +1144,19 @@
     "Rare"
    ],
    "drops": [
-    57,
-    58,
-    84,
-    86,
-    129,
-    134,
+    54,
+    55,
+    81,
+    83,
+    126,
+    130,
+    150,
     156,
-    162,
-    189,
-    224,
-    232,
-    235,
-    236
+    181,
+    211,
+    219,
+    222,
+    223
    ],
    "loc": null,
    "lvl": "29 - 32 (40-42 only the ones that spawn in OOT)",
@@ -1251,13 +1183,13 @@
     7,
     8,
     13,
-    23,
+    22,
+    92,
     95,
-    98,
-    106,
-    185,
-    190,
-    191
+    103,
+    177,
+    182,
+    183
    ],
    "loc": [
     -2128.0,
@@ -1270,19 +1202,6 @@
    "u": "https://eqlwiki.com/index.php/A_farmer"
   },
   {
-   "dr": [],
-   "drops": [],
-   "loc": [
-    -3505.0,
-    -15292.0,
-    null
-   ],
-   "lvl": "13-16",
-   "n": "a ghoul yeoman",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_ghoul_yeoman"
-  },
-  {
    "dr": [
     null,
     null,
@@ -1290,10 +1209,10 @@
     "Rare"
    ],
    "drops": [
-    72,
-    73,
-    77,
-    78
+    69,
+    70,
+    74,
+    75
    ],
    "loc": null,
    "lvl": "6-8",
@@ -1309,8 +1228,8 @@
    ],
    "drops": [
     2,
-    192,
-    193
+    184,
+    185
    ],
    "loc": null,
    "lvl": "7 - 9",
@@ -1331,13 +1250,13 @@
    ],
    "drops": [
     12,
-    50,
-    88,
-    90,
-    115,
-    122,
-    146,
-    208
+    49,
+    85,
+    87,
+    112,
+    119,
+    140,
+    196
    ],
    "loc": null,
    "lvl": "9-11",
@@ -1401,50 +1320,50 @@
     5,
     14,
     17,
-    46,
+    45,
+    58,
+    60,
     61,
+    62,
     63,
     64,
     65,
     66,
     67,
     68,
-    69,
-    70,
-    71,
-    85,
-    93,
+    82,
+    90,
+    96,
     99,
+    100,
     102,
-    103,
-    105,
+    126,
     129,
-    133,
-    135,
-    150,
-    151,
+    131,
+    144,
+    145,
+    146,
+    148,
     152,
+    153,
     154,
-    158,
-    159,
-    160,
-    161,
-    176,
-    177,
-    188,
+    155,
+    168,
+    169,
+    180,
+    181,
+    187,
     189,
-    196,
-    198,
-    207,
-    222,
-    223,
-    225,
-    226,
-    227,
-    230,
-    231,
-    233,
-    234
+    195,
+    209,
+    210,
+    212,
+    213,
+    214,
+    217,
+    218,
+    220,
+    221
    ],
    "loc": null,
    "lvl": "33-37",
@@ -1463,13 +1382,13 @@
     "Uncommon"
    ],
    "drops": [
-    50,
-    91,
-    110,
-    116,
-    123,
-    147,
-    148
+    49,
+    88,
+    107,
+    113,
+    120,
+    141,
+    142
    ],
    "loc": null,
    "lvl": "10",
@@ -1485,10 +1404,10 @@
     "Common"
    ],
    "drops": [
-    50,
-    125,
-    149,
-    218
+    49,
+    122,
+    143,
+    206
    ],
    "loc": null,
    "lvl": "3",
@@ -1507,13 +1426,13 @@
     "Uncommon"
    ],
    "drops": [
-    50,
-    91,
-    110,
-    116,
-    123,
-    147,
-    148
+    49,
+    88,
+    107,
+    113,
+    120,
+    141,
+    142
    ],
    "loc": null,
    "lvl": "8-10",
@@ -1531,12 +1450,12 @@
     "Uncommon"
    ],
    "drops": [
-    50,
-    91,
-    110,
-    123,
-    147,
-    148
+    49,
+    88,
+    107,
+    120,
+    141,
+    142
    ],
    "loc": null,
    "lvl": "6-8",
@@ -1554,10 +1473,10 @@
    ],
    "drops": [
     12,
-    50,
-    88,
-    137,
-    208
+    49,
+    85,
+    133,
+    196
    ],
    "loc": null,
    "lvl": "7-10",
@@ -1571,8 +1490,8 @@
     "Rare"
    ],
    "drops": [
-    60,
-    75
+    57,
+    72
    ],
    "loc": null,
    "lvl": "4",
@@ -1586,8 +1505,8 @@
     "Common"
    ],
    "drops": [
-    101,
-    175
+    98,
+    167
    ],
    "loc": [
     -2350.0,
@@ -1601,29 +1520,10 @@
   },
   {
    "dr": [
-    "Uncommon",
-    "Rare",
-    "Rare",
-    "Rare"
-   ],
-   "drops": [
-    21,
-    202,
-    204,
-    205
-   ],
-   "loc": null,
-   "lvl": "6",
-   "n": "a skeletal footsoldier",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_skeletal_soldier"
-  },
-  {
-   "dr": [
     "Always"
    ],
    "drops": [
-    94
+    91
    ],
    "loc": [
     1067.0,
@@ -1641,8 +1541,8 @@
     null
    ],
    "drops": [
-    179,
-    180
+    171,
+    172
    ],
    "loc": null,
    "lvl": "~10",
@@ -1666,16 +1566,16 @@
    ],
    "drops": [
     3,
-    87,
-    109,
-    153,
-    155,
-    157,
-    164,
-    219,
-    221,
-    229,
-    237
+    84,
+    106,
+    147,
+    149,
+    151,
+    158,
+    207,
+    208,
+    216,
+    224
    ],
    "loc": null,
    "lvl": "23 - 27",
@@ -1709,13 +1609,13 @@
    ],
    "drops": [
     1,
-    118,
-    119,
-    126,
-    182,
-    214,
-    215,
-    216
+    115,
+    116,
+    123,
+    174,
+    202,
+    203,
+    204
    ],
    "loc": [
     -3843.0,
@@ -1734,9 +1634,9 @@
     null
    ],
    "drops": [
-    50,
-    91,
-    110
+    49,
+    88,
+    107
    ],
    "loc": null,
    "lvl": "5",
@@ -1751,9 +1651,9 @@
     null
    ],
    "drops": [
-    50,
-    91,
-    110
+    49,
+    88,
+    107
    ],
    "loc": null,
    "lvl": "5",
@@ -1768,9 +1668,9 @@
     "Rare"
    ],
    "drops": [
-    50,
-    91,
-    110
+    49,
+    88,
+    107
    ],
    "loc": [
     -188.0,
@@ -1790,10 +1690,10 @@
     "Rare"
    ],
    "drops": [
-    50,
-    91,
-    110,
-    147
+    49,
+    88,
+    107,
+    141
    ],
    "loc": [
     -3372.0,
@@ -1804,53 +1704,6 @@
    "n": "a young plains lioness",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_young_plains_lioness"
-  },
-  {
-   "dr": [
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Ultra Rare",
-    "Common"
-   ],
-   "drops": [
-    52,
-    53,
-    54,
-    55,
-    131,
-    142,
-    143,
-    167,
-    170,
-    171,
-    172,
-    173,
-    174,
-    195,
-    220,
-    238
-   ],
-   "loc": [
-    -3480.0,
-    -15258.0,
-    null
-   ],
-   "lvl": "6",
-   "n": "a zombie yeoman",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_zombie_yeoman"
   },
   {
    "dr": [],
@@ -1870,24 +1723,7 @@
     "Rare"
    ],
    "drops": [
-    101
-   ],
-   "loc": [
-    -2350.0,
-    -5573.0,
-    null
-   ],
-   "lvl": "15",
-   "n": "an animated scarecrow",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/An_animated_scarecrow"
-  },
-  {
-   "dr": [
-    "Rare"
-   ],
-   "drops": [
-    97
+    94
    ],
    "loc": [
     -656.0,
@@ -1914,11 +1750,11 @@
     10,
     11,
     20,
-    22,
-    49,
-    81,
-    83,
-    183
+    21,
+    48,
+    78,
+    80,
+    175
    ],
    "loc": [
     -659.0,
@@ -1949,15 +1785,15 @@
     10,
     11,
     20,
-    22,
+    21,
+    47,
     48,
-    49,
-    81,
-    83,
-    107,
-    132,
-    183,
-    210
+    78,
+    80,
+    104,
+    128,
+    175,
+    198
    ],
    "loc": [
     -677.0,
@@ -1988,13 +1824,13 @@
     11,
     19,
     20,
-    22,
+    21,
+    47,
     48,
-    49,
-    65,
-    83,
-    183,
-    210
+    62,
+    80,
+    175,
+    198
    ],
    "loc": [
     -677.0,
@@ -2012,8 +1848,8 @@
     "Always"
    ],
    "drops": [
-    95,
-    212
+    92,
+    200
    ],
    "loc": [
     -3725.0,
@@ -2060,7 +1896,7 @@
     "Uncommon"
    ],
    "drops": [
-    45
+    44
    ],
    "loc": [
     3.0,
@@ -2081,11 +1917,11 @@
     "Rare"
    ],
    "drops": [
-    45,
-    95,
-    140,
-    209,
-    213
+    44,
+    92,
+    136,
+    197,
+    201
    ],
    "loc": [
     -13.0,
@@ -2103,8 +1939,8 @@
     null
    ],
    "drops": [
-    56,
-    95
+    53,
+    92
    ],
    "loc": [
     1340.0,
@@ -2135,13 +1971,13 @@
     11,
     19,
     20,
-    22,
+    21,
+    47,
     48,
-    49,
-    65,
-    83,
-    183,
-    210
+    62,
+    80,
+    175,
+    198
    ],
    "loc": [
     -659.0,
@@ -2160,9 +1996,9 @@
     "Common"
    ],
    "drops": [
-    58,
-    163,
-    211
+    55,
+    157,
+    199
    ],
    "loc": [
     -1213.0,
@@ -2182,10 +2018,10 @@
     "Always"
    ],
    "drops": [
-    95,
-    166,
-    201,
-    206
+    92,
+    160,
+    192,
+    194
    ],
    "loc": [
     -3745.0,
@@ -2217,22 +2053,22 @@
     "Ultra Rare"
    ],
    "drops": [
+    23,
     24,
     25,
     26,
-    27,
+    28,
     29,
     30,
     31,
-    32,
-    34,
+    33,
+    35,
     36,
-    37,
-    44,
-    64,
-    68,
-    76,
-    194
+    43,
+    61,
+    65,
+    73,
+    186
    ],
    "loc": [
     -3803.0,
@@ -2252,10 +2088,10 @@
     "Common"
    ],
    "drops": [
-    57,
-    58,
-    155,
-    165
+    54,
+    55,
+    149,
+    159
    ],
    "loc": [
     -1267.0,
@@ -2272,7 +2108,7 @@
     null
    ],
    "drops": [
-    104
+    101
    ],
    "loc": [
     -3532.0,
@@ -2290,8 +2126,8 @@
     "Uncommon"
    ],
    "drops": [
-    139,
-    187
+    135,
+    179
    ],
    "loc": [
     -3279.0,
@@ -2308,7 +2144,7 @@
     "Uncommon"
    ],
    "drops": [
-    199
+    190
    ],
    "loc": null,
    "lvl": "27",
@@ -2322,8 +2158,8 @@
     "Rare"
    ],
    "drops": [
-    95,
-    130
+    92,
+    127
    ],
    "loc": [
     -47.0,
@@ -2341,8 +2177,8 @@
     "Rare"
    ],
    "drops": [
-    95,
-    130
+    92,
+    127
    ],
    "loc": [
     -47.0,
@@ -2362,10 +2198,10 @@
     "Rare"
    ],
    "drops": [
-    68,
-    89,
-    138,
-    186
+    65,
+    86,
+    134,
+    178
    ],
    "loc": [
     -465.0,
@@ -2383,8 +2219,8 @@
     "Always"
    ],
    "drops": [
-    89,
-    173
+    86,
+    166
    ],
    "loc": [
     -2913.0,
@@ -2401,7 +2237,7 @@
     "Always"
    ],
    "drops": [
-    170
+    164
    ],
    "loc": [
     955.0,
@@ -2420,9 +2256,9 @@
     "Always"
    ],
    "drops": [
-    68,
-    89,
-    138
+    65,
+    86,
+    134
    ],
    "loc": [
     -480.0,
@@ -2442,10 +2278,10 @@
     "Uncommon"
    ],
    "drops": [
-    68,
-    89,
-    138,
-    173
+    65,
+    86,
+    134,
+    166
    ],
    "loc": [
     -744.0,
@@ -2463,8 +2299,8 @@
     "Always"
    ],
    "drops": [
-    89,
-    186
+    86,
+    178
    ],
    "loc": [
     -2927.0,
@@ -2482,8 +2318,8 @@
     "Always"
    ],
    "drops": [
-    68,
-    89
+    65,
+    86
    ],
    "loc": [
     -758.0,
@@ -2500,7 +2336,7 @@
     "Common"
    ],
    "drops": [
-    95
+    92
    ],
    "loc": [
     -47.0,
@@ -2517,7 +2353,7 @@
     "Uncommon"
    ],
    "drops": [
-    200
+    191
    ],
    "loc": [
     -3603.0,
@@ -2535,8 +2371,8 @@
     "Rare"
    ],
    "drops": [
-    130,
-    136
+    127,
+    132
    ],
    "loc": [
     -47.0,
@@ -2553,7 +2389,7 @@
     null
    ],
    "drops": [
-    95
+    92
    ],
    "loc": [
     -526.0,
@@ -2570,7 +2406,7 @@
     "Common"
    ],
    "drops": [
-    95
+    92
    ],
    "loc": [
     -47.0,
@@ -2588,8 +2424,8 @@
     "Rare"
    ],
    "drops": [
-    95,
-    130
+    92,
+    127
    ],
    "loc": [
     -47.0,
@@ -2608,9 +2444,9 @@
     "Rare"
    ],
    "drops": [
-    108,
-    181,
-    203
+    105,
+    173,
+    193
    ],
    "loc": [
     1004.0,
@@ -2627,7 +2463,7 @@
     "Uncommon"
    ],
    "drops": [
-    47
+    46
    ],
    "loc": [
     -4112.0,
@@ -2644,7 +2480,7 @@
     "Rare"
    ],
    "drops": [
-    75
+    72
    ],
    "loc": [
     -3898.0,
@@ -2661,7 +2497,7 @@
     "Uncommon"
    ],
    "drops": [
-    96
+    93
    ],
    "loc": [
     -3740.0,
@@ -2679,8 +2515,8 @@
     null
    ],
    "drops": [
-    120,
-    128
+    117,
+    125
    ],
    "loc": [
     1191.0,
@@ -2698,8 +2534,8 @@
     null
    ],
    "drops": [
-    120,
-    128
+    117,
+    125
    ],
    "loc": [
     1249.0,
@@ -2742,7 +2578,7 @@
     "Always"
    ],
    "drops": [
-    121
+    118
    ],
    "loc": [
     849.0,
@@ -2774,9 +2610,9 @@
     "Always"
    ],
    "drops": [
-    111,
-    112,
-    113
+    108,
+    109,
+    110
    ],
    "loc": [
     -2239.0,
@@ -2812,9 +2648,9 @@
     "Rare"
    ],
    "drops": [
-    95,
-    130,
-    136
+    92,
+    127,
+    132
    ],
    "loc": [
     -47.0,
@@ -2832,8 +2668,8 @@
     "Rare"
    ],
    "drops": [
-    95,
-    130
+    92,
+    127
    ],
    "loc": [
     -47.0,
@@ -2851,8 +2687,8 @@
     "Always"
    ],
    "drops": [
-    95,
-    212
+    92,
+    200
    ],
    "loc": [
     -3706.0,
@@ -2869,7 +2705,7 @@
     "Common"
    ],
    "drops": [
-    95
+    92
    ],
    "loc": [
     -47.0,
@@ -2912,16 +2748,16 @@
    "drops": [
     15,
     18,
-    59,
-    74,
-    79,
-    80,
-    100,
-    127,
-    144,
-    145,
-    178,
-    197
+    56,
+    71,
+    76,
+    77,
+    97,
+    124,
+    138,
+    139,
+    170,
+    188
    ],
    "loc": null,
    "lvl": "35-36",
@@ -2934,7 +2770,7 @@
     "Always"
    ],
    "drops": [
-    217
+    205
    ],
    "loc": [
     800.0,
@@ -2966,9 +2802,9 @@
     null
    ],
    "drops": [
-    168,
-    175,
-    187
+    162,
+    167,
+    179
    ],
    "loc": [
     -2439.0,
@@ -2986,8 +2822,8 @@
     "Rare"
    ],
    "drops": [
-    95,
-    130
+    92,
+    127
    ],
    "loc": [
     -47.0,
@@ -3019,9 +2855,9 @@
     "Rare"
    ],
    "drops": [
-    82,
-    169,
-    207
+    79,
+    163,
+    195
    ],
    "loc": [
     -3793.0,
@@ -3039,8 +2875,8 @@
     "Uncommon"
    ],
    "drops": [
-    41,
-    62
+    40,
+    59
    ],
    "loc": [
     167.0,

@@ -1210,6 +1210,19 @@
    "u": "https://eqlwiki.com/index.php/Dry_Bones_Skeleton"
   },
   {
+   "dr": [],
+   "drops": [],
+   "loc": [
+    905.0,
+    -740.0,
+    null
+   ],
+   "lvl": "50",
+   "n": "Emissary of Zebuxoruk",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Emissary_of_Zebuxoruk"
+  },
+  {
    "dr": [
     "Rare",
     "Rare"
@@ -1329,7 +1342,7 @@
    "u": "https://eqlwiki.com/index.php/Tran"
   }
  ],
- "updated": "2026-08-06T18:47:27Z",
+ "updated": "2026-08-15T07:42:19Z",
  "wikiTitle": "Oasis of Marr",
  "wikiUrl": "https://eqlwiki.com/index.php/Oasis_of_Marr",
  "zone": "oasis"

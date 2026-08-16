@@ -46,11 +46,6 @@
   },
   {
    "g": 1,
-   "n": "Cloth Sleeves",
-   "u": "https://eqlwiki.com/index.php/Cloth_Sleeves"
-  },
-  {
-   "g": 1,
    "n": "Cracked Staff",
    "u": "https://eqlwiki.com/index.php/Cracked_Staff"
   },
@@ -74,19 +69,6 @@
    "u": "https://eqlwiki.com/index.php/Eye_of_Shadow"
   },
   {
-   "n": "Fire Beetle Carapace",
-   "u": "https://eqlwiki.com/index.php/Fire_Beetle_Carapace"
-  },
-  {
-   "g": 1,
-   "n": "Fire Beetle Eye",
-   "u": "https://eqlwiki.com/index.php/Fire_Beetle_Eye"
-  },
-  {
-   "n": "Fire Beetle Leg",
-   "u": "https://eqlwiki.com/index.php/Fire_Beetle_Leg"
-  },
-  {
    "n": "First Riddle for the Troll",
    "u": "https://eqlwiki.com/index.php/First_Riddle_for_the_Troll"
   },
@@ -97,11 +79,6 @@
   {
    "n": "Fresh Fish",
    "u": "https://eqlwiki.com/index.php/Fresh_Fish"
-  },
-  {
-   "g": 1,
-   "n": "Giant Snake Fang",
-   "u": "https://eqlwiki.com/index.php/Giant_Snake_Fang"
   },
   {
    "g": 1,
@@ -145,10 +122,6 @@
    "u": "https://eqlwiki.com/index.php/Large_Wooden_Shield"
   },
   {
-   "n": "Leathered Zombie Flesh",
-   "u": "https://eqlwiki.com/index.php/Leathered_Zombie_Flesh"
-  },
-  {
    "g": 1,
    "n": "Leatherfoot Raider Skullcap",
    "u": "https://eqlwiki.com/index.php/Leatherfoot_Raider_Skullcap"
@@ -162,11 +135,6 @@
    "g": 1,
    "n": "Leatherfoot Short Bow",
    "u": "https://eqlwiki.com/index.php/Leatherfoot_Short_Bow"
-  },
-  {
-   "g": 1,
-   "n": "Lock of Zombie Hair",
-   "u": "https://eqlwiki.com/index.php/Lock_of_Zombie_Hair"
   },
   {
    "g": 1,
@@ -195,11 +163,6 @@
    "u": "https://eqlwiki.com/index.php/Medium_Quality_Wolf_Skin"
   },
   {
-   "g": 1,
-   "n": "Parrying Dagger",
-   "u": "https://eqlwiki.com/index.php/Parrying_Dagger"
-  },
-  {
    "n": "Part of Tasarin's Grimoire Pg. 30 (Left)",
    "u": "https://eqlwiki.com/index.php/Part_of_Tasarin's_Grimoire_Pg._30_(Left)"
   },
@@ -215,11 +178,6 @@
   {
    "n": "Raw Darkwater Piranha",
    "u": "https://eqlwiki.com/index.php/Raw_Darkwater_Piranha"
-  },
-  {
-   "g": 1,
-   "n": "Raw-hide Gorget",
-   "u": "https://eqlwiki.com/index.php/Raw-hide_Gorget"
   },
   {
    "g": 1,
@@ -256,11 +214,6 @@
    "g": 1,
    "n": "Rusty Bastard Sword",
    "u": "https://eqlwiki.com/index.php/Rusty_Bastard_Sword"
-  },
-  {
-   "g": 1,
-   "n": "Rusty Broad Sword",
-   "u": "https://eqlwiki.com/index.php/Rusty_Broad_Sword"
   },
   {
    "g": 1,
@@ -403,36 +356,12 @@
    "u": "https://eqlwiki.com/index.php/Silver_Ring"
   },
   {
-   "n": "Snake Egg",
-   "u": "https://eqlwiki.com/index.php/Snake_Egg"
-  },
-  {
-   "n": "Snake Fang",
-   "u": "https://eqlwiki.com/index.php/Snake_Fang"
-  },
-  {
-   "n": "Snake Scales",
-   "u": "https://eqlwiki.com/index.php/Snake_Scales"
-  },
-  {
    "n": "Spider Legs",
    "u": "https://eqlwiki.com/index.php/Spider_Legs"
   },
   {
    "n": "Spider Silk",
    "u": "https://eqlwiki.com/index.php/Spider_Silk"
-  },
-  {
-   "n": "Spiderling Eye",
-   "u": "https://eqlwiki.com/index.php/Spiderling_Eye"
-  },
-  {
-   "n": "Spiderling Legs",
-   "u": "https://eqlwiki.com/index.php/Spiderling_Legs"
-  },
-  {
-   "n": "Spiderling Silk",
-   "u": "https://eqlwiki.com/index.php/Spiderling_Silk"
   },
   {
    "g": 1,
@@ -443,21 +372,6 @@
    "g": 1,
    "n": "Tainted Darksteel Shield",
    "u": "https://eqlwiki.com/index.php/Tainted_Darksteel_Shield"
-  },
-  {
-   "g": 1,
-   "n": "Tattered Journal Page 1",
-   "u": "https://eqlwiki.com/index.php/Tattered_Journal_Page_1"
-  },
-  {
-   "g": 1,
-   "n": "Tattered Journal Page 2",
-   "u": "https://eqlwiki.com/index.php/Tattered_Journal_Page_2"
-  },
-  {
-   "g": 1,
-   "n": "Tattered Journal Page 3",
-   "u": "https://eqlwiki.com/index.php/Tattered_Journal_Page_3"
   },
   {
    "n": "Thick Grizzly Bear Skin",
@@ -502,10 +416,6 @@
    "g": 1,
    "n": "Woven Grass Amulet",
    "u": "https://eqlwiki.com/index.php/Woven_Grass_Amulet"
-  },
-  {
-   "n": "Zombie Skin",
-   "u": "https://eqlwiki.com/index.php/Zombie_Skin"
   }
  ],
  "meta": {
@@ -525,31 +435,16 @@
    "drops": [
     3,
     9,
-    28,
-    38,
-    41,
-    52
+    23,
+    31,
+    34,
+    43
    ],
    "loc": null,
    "lvl": "4-5",
    "n": "a black bear",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_Black_Bear"
-  },
-  {
-   "dr": [
-    "Uncommon",
-    "Uncommon"
-   ],
-   "drops": [
-    22,
-    86
-   ],
-   "loc": null,
-   "lvl": "7",
-   "n": "a black mamba",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_black_mamba"
   },
   {
    "dr": [
@@ -564,11 +459,11 @@
    "drops": [
     4,
     9,
-    29,
-    39,
-    42,
-    53,
-    101
+    24,
+    32,
+    35,
+    44,
+    82
    ],
    "loc": null,
    "lvl": "1",
@@ -586,10 +481,10 @@
    ],
    "drops": [
     9,
-    20,
-    21,
-    46,
-    47
+    16,
+    17,
+    38,
+    39
    ],
    "loc": [
     -766.0,
@@ -607,8 +502,8 @@
     "Ultra Rare"
    ],
    "drops": [
-    31,
-    102
+    26,
+    83
    ],
    "loc": null,
    "lvl": "7-9",
@@ -618,27 +513,10 @@
   },
   {
    "dr": [
-    "Rare",
-    "Uncommon",
-    "Rare"
-   ],
-   "drops": [
-    86,
-    87,
-    88
-   ],
-   "loc": null,
-   "lvl": "1",
-   "n": "a garter snake",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_garter_snake"
-  },
-  {
-   "dr": [
     "Common"
    ],
    "drops": [
-    90
+    77
    ],
    "loc": null,
    "lvl": "10-14",
@@ -656,25 +534,16 @@
    ],
    "drops": [
     7,
-    12,
-    49,
-    50,
-    51
+    11,
+    40,
+    41,
+    42
    ],
    "loc": null,
    "lvl": "7-20 / 11-13 (Befallen / Najena)",
    "n": "a greater skeleton",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_Greater_Skeleton"
-  },
-  {
-   "dr": [],
-   "drops": [],
-   "loc": null,
-   "lvl": "?",
-   "n": "a large arachneidae",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_large_arachneidae"
   },
   {
    "dr": [
@@ -684,69 +553,14 @@
    ],
    "drops": [
     2,
-    89,
-    90
+    76,
+    77
    ],
    "loc": null,
    "lvl": "2 - 4",
    "n": "a large spider",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_large_spider"
-  },
-  {
-   "dr": [
-    "Uncommon",
-    "Uncommon",
-    "Always"
-   ],
-   "drops": [
-    16,
-    17,
-    18
-   ],
-   "loc": null,
-   "lvl": "2",
-   "n": "A pyre beetle",
-   "named": true,
-   "u": "https://eqlwiki.com/index.php/A_pyre_beetle"
-  },
-  {
-   "dr": [
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare",
-    "Always"
-   ],
-   "drops": [
-    32,
-    36,
-    43,
-    48,
-    67,
-    109
-   ],
-   "loc": null,
-   "lvl": "7",
-   "n": "a rotting citizen",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_Rotting_Citizen"
-  },
-  {
-   "dr": [
-    "Uncommon",
-    "Always"
-   ],
-   "drops": [
-    10,
-    109
-   ],
-   "loc": null,
-   "lvl": "7",
-   "n": "a rotting initiate",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_Rotting_Initiate"
   },
   {
    "dr": [
@@ -777,29 +591,29 @@
    ],
    "drops": [
     1,
+    13,
     14,
-    15,
-    23,
-    24,
-    27,
-    40,
-    44,
+    18,
+    19,
+    22,
+    33,
+    36,
+    37,
     45,
-    54,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
     72,
     73,
     74,
-    75,
-    76,
-    77,
-    78,
-    79,
-    80,
-    81,
-    82,
-    83,
-    84,
-    106
+    87
    ],
    "loc": null,
    "lvl": "24-26",
@@ -834,37 +648,18 @@
    "drops": [
     3,
     9,
-    28,
-    38,
-    41,
-    52,
-    99,
-    105
+    23,
+    31,
+    34,
+    43,
+    80,
+    86
    ],
    "loc": null,
    "lvl": "10",
    "n": "a young kodiak",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_Young_Kodiak"
-  },
-  {
-   "dr": [
-    "Rare",
-    "Rare",
-    "Rare",
-    "Rare"
-   ],
-   "drops": [
-    89,
-    91,
-    92,
-    93
-   ],
-   "loc": null,
-   "lvl": "1",
-   "n": "an araneidae spiderling",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/An_araneidae_spiderling"
   },
   {
    "dr": [
@@ -876,8 +671,8 @@
    "drops": [
     5,
     6,
-    30,
-    85
+    25,
+    75
    ],
    "loc": null,
    "lvl": "20 ~ 22",
@@ -887,46 +682,10 @@
   },
   {
    "dr": [
-    "Always",
-    "Uncommon",
-    "Uncommon",
-    "Uncommon",
-    "Uncommon"
-   ],
-   "drops": [
-    7,
-    57,
-    96,
-    97,
-    98
-   ],
-   "loc": null,
-   "lvl": "10",
-   "n": "An Undead Annalkeeper",
-   "named": true,
-   "u": "https://eqlwiki.com/index.php/An_Undead_Annalkeeper"
-  },
-  {
-   "dr": [
-    "Always",
-    "Uncommon"
-   ],
-   "drops": [
-    7,
-    65
-   ],
-   "loc": null,
-   "lvl": "10",
-   "n": "An Undead Steward",
-   "named": true,
-   "u": "https://eqlwiki.com/index.php/An_Undead_Steward"
-  },
-  {
-   "dr": [
     null
    ],
    "drops": [
-    34
+    28
    ],
    "loc": null,
    "lvl": "6",
@@ -940,8 +699,8 @@
     null
    ],
    "drops": [
-    34,
-    70
+    28,
+    60
    ],
    "loc": [
     -1055.0,
@@ -999,7 +758,7 @@
    ],
    "drops": [
     8,
-    61
+    51
    ],
    "loc": [
     -818.0,
@@ -1029,7 +788,7 @@
     "Rare"
    ],
    "drops": [
-    13
+    12
    ],
    "loc": null,
    "lvl": "50",
@@ -1042,7 +801,7 @@
     "Uncommon"
    ],
    "drops": [
-    13
+    12
    ],
    "loc": [
     2324.0,
@@ -1060,8 +819,8 @@
     "Uncommon"
    ],
    "drops": [
-    13,
-    37
+    12,
+    30
    ],
    "loc": [
     -1085.0,
@@ -1091,7 +850,7 @@
     null
    ],
    "drops": [
-    34
+    28
    ],
    "loc": [
     -886.0,
@@ -1109,8 +868,8 @@
     null
    ],
    "drops": [
-    34,
-    70
+    28,
+    60
    ],
    "loc": [
     -1045.0,
@@ -1127,7 +886,7 @@
     null
    ],
    "drops": [
-    34
+    28
    ],
    "loc": null,
    "lvl": "8",
@@ -1144,11 +903,11 @@
     "Rare"
    ],
    "drops": [
-    19,
-    33,
-    66,
-    69,
-    100
+    15,
+    27,
+    56,
+    59,
+    81
    ],
    "loc": null,
    "lvl": "7",
@@ -1362,11 +1121,11 @@
     "Rare"
    ],
    "drops": [
-    19,
-    34,
-    66,
-    69,
-    100
+    15,
+    28,
+    56,
+    59,
+    81
    ],
    "loc": null,
    "lvl": "7",
@@ -1380,8 +1139,8 @@
     "Common"
    ],
    "drops": [
-    34,
-    108
+    28,
+    89
    ],
    "loc": [
     1.0,
@@ -1398,7 +1157,7 @@
     null
    ],
    "drops": [
-    70
+    60
    ],
    "loc": [
     25.0,
@@ -1416,8 +1175,8 @@
     "Common"
    ],
    "drops": [
-    34,
-    108
+    28,
+    89
    ],
    "loc": [
     564.0,
@@ -1441,14 +1200,14 @@
     "Uncommon"
    ],
    "drops": [
-    19,
-    26,
-    33,
-    59,
-    71,
-    100,
-    107,
-    108
+    15,
+    21,
+    27,
+    49,
+    61,
+    81,
+    88,
+    89
    ],
    "loc": [
     -897.0,
@@ -1482,11 +1241,11 @@
     "Rare"
    ],
    "drops": [
-    19,
-    26,
-    33,
-    100,
-    108
+    15,
+    21,
+    27,
+    81,
+    89
    ],
    "loc": [
     -928.0,
@@ -1516,7 +1275,7 @@
     "Always"
    ],
    "drops": [
-    95
+    79
    ],
    "loc": [
     2045.0,
@@ -1560,8 +1319,8 @@
     null
    ],
    "drops": [
-    70,
-    108
+    60,
+    89
    ],
    "loc": [
     1000.0,
@@ -1589,18 +1348,18 @@
     "Common"
    ],
    "drops": [
-    11,
-    33,
+    10,
+    27,
+    48,
+    52,
+    53,
+    54,
+    55,
+    57,
     58,
-    62,
-    63,
-    64,
-    65,
-    67,
-    68,
-    103,
-    104,
-    105
+    84,
+    85,
+    86
    ],
    "loc": [
     1026.0,
@@ -1618,8 +1377,8 @@
     "Uncommon"
    ],
    "drops": [
-    34,
-    94
+    28,
+    78
    ],
    "loc": [
     58.0,
@@ -1636,7 +1395,7 @@
     null
    ],
    "drops": [
-    34
+    28
    ],
    "loc": [
     1127.0,
@@ -1655,9 +1414,9 @@
     null
    ],
    "drops": [
-    34,
-    63,
-    70
+    28,
+    53,
+    60
    ],
    "loc": [
     1047.0,
@@ -1674,7 +1433,7 @@
     "Always"
    ],
    "drops": [
-    25
+    20
    ],
    "loc": [
     -929.0,
@@ -1705,8 +1464,8 @@
     null
    ],
    "drops": [
-    56,
-    108
+    47,
+    89
    ],
    "loc": [
     564.0,
@@ -1738,7 +1497,7 @@
    ],
    "drops": [
     0,
-    55
+    46
    ],
    "loc": [
     -303.0,
@@ -1756,8 +1515,8 @@
     null
    ],
    "drops": [
-    34,
-    60
+    28,
+    50
    ],
    "loc": [
     -929.0,
@@ -1788,8 +1547,8 @@
     "Common"
    ],
    "drops": [
-    26,
-    108
+    21,
+    89
    ],
    "loc": [
     -958.0,
@@ -1806,7 +1565,7 @@
     null
    ],
    "drops": [
-    34
+    28
    ],
    "loc": [
     -998.0,
@@ -1850,8 +1609,8 @@
     "Rare"
    ],
    "drops": [
-    35,
-    68
+    29,
+    58
    ],
    "loc": null,
    "lvl": "9",

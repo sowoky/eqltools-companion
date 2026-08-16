@@ -65,11 +65,6 @@
    "u": "https://eqlwiki.com/index.php/Crystallized_Sulfur"
   },
   {
-   "g": 1,
-   "n": "Damaged Annals",
-   "u": "https://eqlwiki.com/index.php/Damaged_Annals"
-  },
-  {
    "n": "Electrum Bar",
    "u": "https://eqlwiki.com/index.php/Electrum_Bar"
   },
@@ -340,10 +335,6 @@
   {
    "n": "Words of the Quickening",
    "u": "https://eqlwiki.com/index.php/Words_of_the_Quickening"
-  },
-  {
-   "n": "Words of the Sentient (Azia)",
-   "u": "https://eqlwiki.com/index.php/Words_of_the_Sentient_(Azia)"
   }
  ],
  "meta": {
@@ -360,11 +351,11 @@
     "Uncommon"
    ],
    "drops": [
-    23,
-    27,
+    22,
+    26,
+    34,
     35,
-    36,
-    75
+    74
    ],
    "loc": [
     66.0,
@@ -381,7 +372,7 @@
     "Always"
    ],
    "drops": [
-    22
+    21
    ],
    "loc": [
     705.0,
@@ -407,12 +398,12 @@
    "drops": [
     0,
     11,
-    24,
-    28,
-    30,
-    47,
-    53,
-    58
+    23,
+    27,
+    29,
+    46,
+    52,
+    57
    ],
    "loc": null,
    "lvl": "8",
@@ -433,13 +424,13 @@
    ],
    "drops": [
     12,
-    21,
-    30,
-    34,
-    50,
-    53,
-    55,
-    58
+    20,
+    29,
+    33,
+    49,
+    52,
+    54,
+    57
    ],
    "loc": [
     738.0,
@@ -470,12 +461,12 @@
     "Rare"
    ],
    "drops": [
-    23,
+    22,
+    34,
     35,
-    36,
+    71,
     72,
-    73,
-    74
+    73
    ],
    "loc": null,
    "lvl": "15-16",
@@ -501,16 +492,16 @@
    "drops": [
     6,
     7,
-    15,
-    20,
+    14,
+    19,
+    30,
     31,
-    32,
-    39,
-    43,
-    49,
-    52,
-    54,
-    56
+    38,
+    42,
+    48,
+    51,
+    53,
+    55
    ],
    "loc": null,
    "lvl": "15",
@@ -534,55 +525,20 @@
    "drops": [
     6,
     7,
-    20,
+    19,
+    30,
     31,
-    32,
-    39,
-    49,
-    52,
-    54,
-    56
+    38,
+    48,
+    51,
+    53,
+    55
    ],
    "loc": null,
    "lvl": "10-11",
    "n": "a muddite minor",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_Muddite_Minor"
-  },
-  {
-   "dr": [
-    "Uncommon",
-    "Uncommon",
-    "Rare",
-    "Uncommon",
-    "Uncommon",
-    "Uncommon",
-    "Uncommon",
-    "Uncommon",
-    "Uncommon",
-    "Rare"
-   ],
-   "drops": [
-    6,
-    7,
-    14,
-    15,
-    20,
-    39,
-    49,
-    52,
-    56,
-    76
-   ],
-   "loc": [
-    677.0,
-    -1829.0,
-    null
-   ],
-   "lvl": "10",
-   "n": "a muddite recordkeeper",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_Muddite_Recordkeeper"
   },
   {
    "dr": [
@@ -600,14 +556,14 @@
    "drops": [
     8,
     10,
+    15,
     16,
-    17,
-    40,
+    39,
+    43,
     44,
     45,
-    46,
-    57,
-    72
+    56,
+    71
    ],
    "loc": [
     532.0,
@@ -626,7 +582,7 @@
    ],
    "drops": [
     9,
-    29
+    28
    ],
    "loc": [
     680.0,
@@ -661,10 +617,10 @@
    ],
    "drops": [
     10,
+    43,
     44,
-    45,
-    48,
-    51
+    47,
+    50
    ],
    "loc": [
     672.0,
@@ -684,8 +640,8 @@
    ],
    "drops": [
     10,
-    33,
-    44
+    32,
+    43
    ],
    "loc": [
     492.0,
@@ -713,14 +669,14 @@
    "drops": [
     5,
     10,
+    15,
     16,
-    17,
-    27,
-    38,
+    26,
+    37,
+    40,
     41,
-    42,
-    44,
-    45
+    43,
+    44
    ],
    "loc": [
     538.0,
@@ -749,11 +705,11 @@
     5,
     10,
     13,
-    16,
-    18,
+    15,
+    17,
+    24,
     25,
-    26,
-    44
+    43
    ],
    "loc": [
     469.0,
@@ -780,15 +736,15 @@
    ],
    "drops": [
     6,
-    15,
+    14,
+    30,
     31,
-    32,
-    39,
-    49,
-    52,
-    54,
-    56,
-    71
+    38,
+    48,
+    51,
+    53,
+    55,
+    70
    ],
    "loc": [
     846.0,
@@ -816,6 +772,7 @@
     "Rare"
    ],
    "drops": [
+    58,
     59,
     60,
     61,
@@ -826,8 +783,7 @@
     66,
     67,
     68,
-    69,
-    70
+    69
    ],
    "loc": [
     702.0,
@@ -862,8 +818,8 @@
     "Common"
    ],
    "drops": [
-    19,
-    37
+    18,
+    36
    ],
    "loc": [
     876.0,

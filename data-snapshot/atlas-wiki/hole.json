@@ -61,11 +61,6 @@
   },
   {
    "g": 1,
-   "n": "Gleaming Crystal Scepter",
-   "u": "https://eqlwiki.com/index.php/Gleaming_Crystal_Scepter"
-  },
-  {
-   "g": 1,
    "n": "Glohnor wrappings",
    "u": "https://eqlwiki.com/index.php/Glohnor_wrappings"
   },
@@ -169,14 +164,6 @@
    "u": "https://eqlwiki.com/index.php/Red_Dragon_Scales"
   },
   {
-   "n": "Rune of Coruscation",
-   "u": "https://eqlwiki.com/index.php/Rune_of_Coruscation"
-  },
-  {
-   "n": "Rune of Crippling",
-   "u": "https://eqlwiki.com/index.php/Rune_of_Crippling"
-  },
-  {
    "g": 1,
    "n": "Rusted Throneblade",
    "u": "https://eqlwiki.com/index.php/Rusted_Throneblade"
@@ -269,10 +256,6 @@
    "g": 1,
    "n": "Withered Leather Wristbands",
    "u": "https://eqlwiki.com/index.php/Withered_Leather_Wristbands"
-  },
-  {
-   "n": "Words of Crippling Force",
-   "u": "https://eqlwiki.com/index.php/Words_of_Crippling_Force"
   }
  ],
  "meta": {
@@ -338,8 +321,8 @@
     null
    ],
    "drops": [
-    17,
-    39
+    16,
+    36
    ],
    "loc": null,
    "lvl": "45-50",
@@ -354,9 +337,9 @@
     null
    ],
    "drops": [
-    17,
-    50,
-    52
+    16,
+    47,
+    49
    ],
    "loc": null,
    "lvl": "49-54",
@@ -372,8 +355,8 @@
    ],
    "drops": [
     2,
-    17,
-    32
+    16,
+    31
    ],
    "loc": null,
    "lvl": "48-54",
@@ -388,9 +371,9 @@
     null
    ],
    "drops": [
-    17,
-    50,
-    52
+    16,
+    47,
+    49
    ],
    "loc": null,
    "lvl": "51-54",
@@ -409,9 +392,9 @@
    "drops": [
     6,
     8,
-    19,
-    25,
-    39
+    18,
+    24,
+    36
    ],
    "loc": null,
    "lvl": "43-47",
@@ -430,9 +413,9 @@
    "drops": [
     6,
     8,
-    19,
-    25,
-    39
+    18,
+    24,
+    36
    ],
    "loc": null,
    "lvl": "40-44",
@@ -451,9 +434,9 @@
    "drops": [
     6,
     8,
-    19,
-    25,
-    39
+    18,
+    24,
+    36
    ],
    "loc": [
     340.0,
@@ -476,9 +459,9 @@
    "drops": [
     6,
     8,
-    19,
-    25,
-    39
+    18,
+    24,
+    36
    ],
    "loc": null,
    "lvl": "39-44",
@@ -497,9 +480,9 @@
    "drops": [
     6,
     8,
-    19,
-    25,
-    39
+    18,
+    24,
+    36
    ],
    "loc": null,
    "lvl": "43-47",
@@ -518,9 +501,9 @@
    "drops": [
     6,
     8,
-    19,
-    25,
-    39
+    18,
+    24,
+    36
    ],
    "loc": null,
    "lvl": "38-45",
@@ -539,9 +522,9 @@
    "drops": [
     6,
     8,
-    19,
-    25,
-    39
+    18,
+    24,
+    36
    ],
    "loc": null,
    "lvl": "38-42",
@@ -560,9 +543,9 @@
    "drops": [
     6,
     8,
-    19,
-    25,
-    39
+    18,
+    24,
+    36
    ],
    "loc": null,
    "lvl": "43-46",
@@ -576,8 +559,8 @@
     "Uncommon"
    ],
    "drops": [
-    29,
-    30
+    28,
+    29
    ],
    "loc": null,
    "lvl": "49",
@@ -603,7 +586,7 @@
     "Always"
    ],
    "drops": [
-    51
+    48
    ],
    "loc": [
     641.0,
@@ -622,9 +605,9 @@
     "Rare"
    ],
    "drops": [
-    18,
-    42,
-    53
+    17,
+    39,
+    50
    ],
    "loc": [
     851.0,
@@ -651,8 +634,8 @@
     "Common"
    ],
    "drops": [
-    24,
-    28
+    23,
+    27
    ],
    "loc": null,
    "lvl": "48-49",
@@ -683,8 +666,8 @@
     null
    ],
    "drops": [
-    45,
-    48
+    42,
+    45
    ],
    "loc": [
     952.0,
@@ -702,8 +685,8 @@
     "Uncommon"
    ],
    "drops": [
-    43,
-    54
+    40,
+    51
    ],
    "loc": null,
    "lvl": "50",
@@ -716,7 +699,7 @@
     null
    ],
    "drops": [
-    40
+    37
    ],
    "loc": [
     238.0,
@@ -729,12 +712,8 @@
    "u": "https://eqlwiki.com/index.php/Jaeil_the_Insane"
   },
   {
-   "dr": [
-    "Always"
-   ],
-   "drops": [
-    34
-   ],
+   "dr": [],
+   "drops": [],
    "loc": [
     238.0,
     873.0,
@@ -750,7 +729,7 @@
     "Always"
    ],
    "drops": [
-    41
+    38
    ],
    "loc": [
     807.0,
@@ -782,7 +761,7 @@
    ],
    "drops": [
     0,
-    15
+    14
    ],
    "loc": [
     420.0,
@@ -807,9 +786,9 @@
     3,
     7,
     11,
-    17,
-    27,
-    38
+    16,
+    26,
+    35
    ],
    "loc": [
     800.0,
@@ -826,7 +805,7 @@
     "Always"
    ],
    "drops": [
-    20
+    19
    ],
    "loc": null,
    "lvl": "49-50",
@@ -840,8 +819,8 @@
     "Always"
    ],
    "drops": [
-    13,
-    14
+    12,
+    13
    ],
    "loc": [
     820.0,
@@ -859,8 +838,8 @@
     null
    ],
    "drops": [
-    46,
-    49
+    43,
+    46
    ],
    "loc": null,
    "lvl": "51",
@@ -874,8 +853,8 @@
     null
    ],
    "drops": [
-    33,
-    36
+    32,
+    33
    ],
    "loc": null,
    "lvl": "52",
@@ -902,8 +881,8 @@
     "Uncommon"
    ],
    "drops": [
-    21,
-    22
+    20,
+    21
    ],
    "loc": null,
    "lvl": "49",
@@ -931,9 +910,9 @@
     "Common"
    ],
    "drops": [
+    15,
     16,
-    17,
-    39
+    36
    ],
    "loc": [
     372.0,
@@ -950,7 +929,7 @@
     "Always"
    ],
    "drops": [
-    26
+    25
    ],
    "loc": null,
    "lvl": "49",
@@ -963,7 +942,7 @@
     "Common"
    ],
    "drops": [
-    23
+    22
    ],
    "loc": null,
    "lvl": "44-46",
@@ -994,8 +973,8 @@
     "Always"
    ],
    "drops": [
-    31,
-    37
+    30,
+    34
    ],
    "loc": null,
    "lvl": "50",
@@ -1009,8 +988,8 @@
     null
    ],
    "drops": [
-    44,
-    47
+    41,
+    44
    ],
    "loc": [
     800.0,
@@ -1021,27 +1000,6 @@
    "n": "Ulrik the Devout",
    "named": true,
    "u": "https://eqlwiki.com/index.php/Ulrik_the_Devout"
-  },
-  {
-   "dr": [
-    "Uncommon",
-    "Always",
-    "Always"
-   ],
-   "drops": [
-    12,
-    35,
-    55
-   ],
-   "loc": [
-    759.0,
-    499.0,
-    null
-   ],
-   "lvl": "55",
-   "n": "Urwenae the Cold",
-   "named": true,
-   "u": "https://eqlwiki.com/index.php/Urwenae_the_Cold"
   }
  ],
  "updated": "2026-08-08T10:37:23Z",

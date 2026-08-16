@@ -495,7 +495,7 @@ function readJson(p) {
    cannot answer, and could only say so. Below the floor we fall back to the
    bundled snapshot until the next refresh brings the live file up. Raise the
    number here in the same commit that starts depending on the new field. */
-const MIN_SCHEMA = { "quest-items.json": 4, "item-tooltips.json": 1, "sky.json": 2 };
+const MIN_SCHEMA = { "quest-items.json": 5, "item-tooltips.json": 1, "sky.json": 2 };
 
 function loadDatasets() {
   const out = {};
@@ -999,13 +999,16 @@ ipcMain.on("feed:valet", (_e, v) => {
 ipcMain.on("feed:quests", (_e, q) => {
   const p = Array.isArray(q) ? { zones: [], quests: q }
     : (q && typeof q === "object" ? q : { zones: [], quests: [] });
-  LAST_QUESTS = { zones: p.zones || [], quests: (p.quests || []).slice(0, 20) };
+  // `inv` (the dump's age) rides along: without it the overlay's Tracked view
+  // said "No inventory dump yet" over a list it had just counted off the dump
+  LAST_QUESTS = { zones: p.zones || [], quests: (p.quests || []).slice(0, 20),
+                  inv: p.inv && typeof p.inv === "object" ? p.inv : null };
   if (overlayWin) overlayWin.webContents.send("feed:quests", LAST_QUESTS);
 });
-/* Overlay -> main window: "I have this one, you just can't see it" (bought
-   from a merchant, parked on the pet — neither prints a log line, and
-   /outputfile has no pet option). The main renderer owns the tracker state,
-   so the overlay only relays the item name. */
+/* Overlay -> main window: "I have this one, you just can't see it" (parked on
+   the pet — handing it over prints no log line, and /outputfile has no pet
+   option). The main renderer owns the tracker state, so the overlay only
+   relays the item name. */
 // the widget's reset button; the main renderer owns the stamp itself
 ipcMain.on("stats:reset", (_e, on) => {
   if (mainWin) mainWin.webContents.send("stats:reset", !!on);

@@ -287,6 +287,9 @@ a.zg__name:hover { color: var(--gold-pale); }
 .qstep { font-size: 12px; }
 .qstep.is-can .kchk { border-color: var(--gold); }
 .qstep.is-locked { color: var(--ink-dim); }
+/* advice the checklist carries (faction, tips): shown, never a box to tick */
+.qstep.is-note { font-style: italic; }
+.qsteps__notes { margin-top: 2px; }
 .qfrom { font-style: italic; }
 
 /* ── turn-ins — what you hand to whom, folded away until asked for ─────── */
@@ -577,6 +580,7 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .skb__u.is-skip { opacity: .5; text-decoration: line-through; }
 .skb__u.is-skip .skb__uskip, .skb__u.is-skip .skb__ustar { text-decoration: none; }
 .skb__u.is-done .skb__utest { color: var(--wiki); }
+.sk-got { color: var(--wiki); font-weight: 700; margin-left: .3em; cursor: help; }
 .skb__ucls { color: var(--ink-dim); min-width: 6.5rem; }
 .skb__urew { color: var(--gold-pale); }
 .skb__uskip { background: none; border: 1px solid var(--line); border-radius: 4px; margin-left: auto;

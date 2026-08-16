@@ -105,14 +105,6 @@
    "u": "https://eqlwiki.com/index.php/Drop_of_Mercury"
   },
   {
-   "n": "Ebon Drakeling Bile",
-   "u": "https://eqlwiki.com/index.php/Ebon_Drakeling_Bile"
-  },
-  {
-   "n": "Ebon Drakeling Scales",
-   "u": "https://eqlwiki.com/index.php/Ebon_Drakeling_Scales"
-  },
-  {
    "g": 1,
    "n": "Elven Blood",
    "u": "https://eqlwiki.com/index.php/Elven_Blood"
@@ -333,10 +325,6 @@
    "u": "https://eqlwiki.com/index.php/Ruined_Cat_Pelt"
   },
   {
-   "n": "Ruined Ebon Drakeling Scales",
-   "u": "https://eqlwiki.com/index.php/Ruined_Ebon_Drakeling_Scales"
-  },
-  {
    "n": "Ruined Kobold Pelt",
    "u": "https://eqlwiki.com/index.php/Ruined_Kobold_Pelt"
   },
@@ -377,11 +365,6 @@
    "g": 1,
    "n": "Rusty Long Sword",
    "u": "https://eqlwiki.com/index.php/Rusty_Long_Sword"
-  },
-  {
-   "g": 1,
-   "n": "Rusty Mining Pick",
-   "u": "https://eqlwiki.com/index.php/Rusty_Mining_Pick"
   },
   {
    "g": 1,
@@ -615,10 +598,6 @@
    "g": 1,
    "n": "Winex's Staff",
    "u": "https://eqlwiki.com/index.php/Winex's_Staff"
-  },
-  {
-   "n": "Wolf Meat",
-   "u": "https://eqlwiki.com/index.php/Wolf_Meat"
   }
  ],
  "meta": {
@@ -659,9 +638,9 @@
     null
    ],
    "drops": [
-    40,
-    62,
-    68
+    38,
+    60,
+    66
    ],
    "loc": null,
    "lvl": "5 ~ 7",
@@ -676,9 +655,9 @@
     "Rare"
    ],
    "drops": [
-    40,
-    67,
-    68
+    38,
+    65,
+    66
    ],
    "loc": [
     1077.0,
@@ -698,8 +677,8 @@
    ],
    "drops": [
     0,
-    125,
-    126
+    121,
+    122
    ],
    "loc": null,
    "lvl": "7 - 9",
@@ -718,34 +697,17 @@
    ],
    "drops": [
     8,
-    82,
-    87,
+    79,
+    83,
+    85,
     89,
-    93,
-    94
+    90
    ],
    "loc": null,
    "lvl": "1",
    "n": "a gnome skeleton",
    "named": false,
    "u": "https://eqlwiki.com/index.php/A_Gnome_Skeleton"
-  },
-  {
-   "dr": [
-    "Uncommon"
-   ],
-   "drops": [
-    86
-   ],
-   "loc": [
-    1511.0,
-    1664.0,
-    null
-   ],
-   "lvl": "3",
-   "n": "a gnome slave",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_Gnome_Slave"
   },
   {
    "dr": [
@@ -771,16 +733,16 @@
     15,
     16,
     19,
+    33,
     35,
-    37,
+    44,
     46,
-    48,
-    53,
-    61,
-    100,
-    101,
-    128,
-    135
+    51,
+    59,
+    96,
+    97,
+    124,
+    131
    ],
    "loc": [
     751.0,
@@ -799,7 +761,7 @@
    ],
    "drops": [
     3,
-    30
+    28
    ],
    "loc": [
     1891.0,
@@ -820,11 +782,11 @@
     "Uncommon"
    ],
    "drops": [
-    41,
-    47,
-    63,
-    77,
-    129
+    39,
+    45,
+    61,
+    74,
+    125
    ],
    "loc": null,
    "lvl": "1",
@@ -875,21 +837,25 @@
     4,
     9,
     20,
-    43,
-    51,
-    69,
+    41,
+    49,
+    67,
+    77,
+    78,
+    79,
     80,
-    81,
     82,
     83,
-    85,
+    84,
+    86,
     87,
     88,
     90,
-    91,
-    92,
     94,
-    98,
+    105,
+    106,
+    107,
+    108,
     109,
     110,
     111,
@@ -900,12 +866,8 @@
     116,
     117,
     118,
-    119,
-    120,
-    121,
-    122,
-    127,
-    136
+    123,
+    132
    ],
    "loc": null,
    "lvl": "3 - 5",
@@ -922,11 +884,11 @@
     "Uncommon"
    ],
    "drops": [
-    47,
-    60,
-    63,
-    77,
-    84
+    45,
+    58,
+    61,
+    74,
+    81
    ],
    "loc": [
     -306.0,
@@ -945,9 +907,9 @@
     "Uncommon"
    ],
    "drops": [
-    65,
-    66,
-    68
+    63,
+    64,
+    66
    ],
    "loc": null,
    "lvl": "8",
@@ -979,16 +941,16 @@
     15,
     16,
     19,
+    33,
     35,
-    37,
+    44,
     46,
-    48,
-    53,
-    61,
-    100,
-    101,
-    128,
-    135
+    51,
+    59,
+    96,
+    97,
+    124,
+    131
    ],
    "loc": [
     1498.0,
@@ -1006,8 +968,8 @@
     "14.7%"
    ],
    "drops": [
-    56,
-    58
+    54,
+    56
    ],
    "loc": null,
    "lvl": "9 - 11",
@@ -1031,25 +993,6 @@
   {
    "dr": [
     "Common",
-    "Uncommon",
-    "Uncommon",
-    "Common"
-   ],
-   "drops": [
-    38,
-    52,
-    54,
-    75
-   ],
-   "loc": null,
-   "lvl": "7",
-   "n": "a mountain lion",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_Mountain_Lion"
-  },
-  {
-   "dr": [
-    "Common",
     "Rare",
     "Uncommon",
     "Rare",
@@ -1059,12 +1002,12 @@
    ],
    "drops": [
     18,
-    38,
+    36,
+    48,
     50,
     52,
-    54,
-    64,
-    75
+    62,
+    73
    ],
    "loc": null,
    "lvl": "5 - 10",
@@ -1080,10 +1023,10 @@
     "Ultra Rare"
    ],
    "drops": [
-    95,
-    102,
-    104,
-    106
+    91,
+    98,
+    100,
+    102
    ],
    "loc": [
     -1427.0,
@@ -1105,10 +1048,10 @@
    ],
    "drops": [
     6,
-    95,
-    102,
-    104,
-    106
+    91,
+    98,
+    100,
+    102
    ],
    "loc": [
     -1427.0,
@@ -1122,50 +1065,12 @@
   },
   {
    "dr": [
-    "Uncommon",
-    "Rare"
-   ],
-   "drops": [
-    18,
-    138
-   ],
-   "loc": [
-    -1014.0,
-    1697.0,
-    null
-   ],
-   "lvl": "3",
-   "n": "a small coyote",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/A_small_coyote"
-  },
-  {
-   "dr": [
-    "Common",
-    "Uncommon",
-    "Uncommon",
-    "Common"
-   ],
-   "drops": [
-    38,
-    52,
-    54,
-    75
-   ],
-   "loc": null,
-   "lvl": "3-6",
-   "n": "A small mountain lion",
-   "named": true,
-   "u": "https://eqlwiki.com/index.php/A_small_mountain_lion"
-  },
-  {
-   "dr": [
     null,
     null
    ],
    "drops": [
-    78,
-    131
+    75,
+    127
    ],
    "loc": null,
    "lvl": "9 - 10",
@@ -1194,10 +1099,10 @@
     "Rare"
    ],
    "drops": [
-    40,
+    38,
+    63,
     65,
-    67,
-    68
+    66
    ],
    "loc": [
     -1467.0,
@@ -1224,11 +1129,11 @@
     15,
     17,
     23,
-    36,
-    49,
-    78,
-    123,
-    129
+    34,
+    47,
+    75,
+    119,
+    125
    ],
    "loc": null,
    "lvl": "9-17",
@@ -1238,33 +1143,12 @@
   },
   {
    "dr": [
-    "Rare",
-    "Rare",
-    "Rare"
-   ],
-   "drops": [
-    24,
-    25,
-    76
-   ],
-   "loc": [
-    -1272.0,
-    -1143.0,
-    null
-   ],
-   "lvl": "5",
-   "n": "an ebon drakeling",
-   "named": false,
-   "u": "https://eqlwiki.com/index.php/An_ebon_drakeling"
-  },
-  {
-   "dr": [
     "Uncommon",
     "Uncommon"
    ],
    "drops": [
     5,
-    85
+    82
    ],
    "loc": [
     -1098.0,
@@ -1303,14 +1187,14 @@
    ],
    "drops": [
     16,
-    31,
-    37,
-    42,
-    48,
-    53,
-    84,
-    128,
-    134
+    29,
+    35,
+    40,
+    46,
+    51,
+    81,
+    124,
+    130
    ],
    "loc": [
     -1152.0,
@@ -1330,10 +1214,10 @@
     null
    ],
    "drops": [
-    95,
-    102,
-    104,
-    106
+    91,
+    98,
+    100,
+    102
    ],
    "loc": [
     -1784.0,
@@ -1366,10 +1250,10 @@
     "Always"
    ],
    "drops": [
-    26,
-    27,
-    59,
-    130
+    24,
+    25,
+    57,
+    126
    ],
    "loc": [
     1350.0,
@@ -1412,7 +1296,7 @@
     null
    ],
    "drops": [
-    84
+    81
    ],
    "loc": null,
    "lvl": "10?",
@@ -1427,7 +1311,7 @@
    ],
    "drops": [
     14,
-    33
+    31
    ],
    "loc": [
     245.0,
@@ -1457,7 +1341,7 @@
     null
    ],
    "drops": [
-    33
+    31
    ],
    "loc": [
     -67.0,
@@ -1487,7 +1371,7 @@
     "Always"
    ],
    "drops": [
-    32
+    30
    ],
    "loc": [
     -157.0,
@@ -1534,11 +1418,11 @@
     "Uncommon"
    ],
    "drops": [
-    29,
-    33,
-    65,
-    68,
-    108
+    27,
+    31,
+    63,
+    66,
+    104
    ],
    "loc": [
     1690.0,
@@ -1556,8 +1440,8 @@
     "Rare"
    ],
    "drops": [
-    56,
-    58
+    54,
+    56
    ],
    "loc": [
     1700.0,
@@ -1576,9 +1460,9 @@
     "Uncommon"
    ],
    "drops": [
-    56,
-    57,
-    58
+    54,
+    55,
+    56
    ],
    "loc": [
     1227.9,
@@ -1598,8 +1482,8 @@
    ],
    "drops": [
     10,
-    56,
-    58
+    54,
+    56
    ],
    "loc": [
     1555.0,
@@ -1618,9 +1502,9 @@
     "Rare"
    ],
    "drops": [
-    39,
-    56,
-    58
+    37,
+    54,
+    56
    ],
    "loc": [
     1700.0,
@@ -1646,7 +1530,7 @@
     "Always"
    ],
    "drops": [
-    34
+    32
    ],
    "loc": [
     1675.0,
@@ -1683,14 +1567,14 @@
     null
    ],
    "drops": [
-    45,
+    43,
+    68,
+    69,
     70,
     71,
     72,
-    73,
-    74,
-    132,
-    133
+    128,
+    129
    ],
    "loc": null,
    "lvl": "43, Triggered lvl 51[https://web.archive.org/web/20010423172726/http://eqbeastiary.allakhazam.com:80/search.shtml?id=2946]",
@@ -1709,9 +1593,9 @@
    "drops": [
     1,
     9,
-    43,
-    69,
-    136
+    41,
+    67,
+    132
    ],
    "loc": null,
    "lvl": "2",
@@ -1736,15 +1620,15 @@
    "drops": [
     6,
     22,
-    55,
-    79,
-    95,
+    53,
+    76,
+    91,
+    98,
+    99,
+    100,
+    101,
     102,
-    103,
-    104,
-    105,
-    106,
-    107
+    103
    ],
    "loc": [
     -264.0,
@@ -1794,10 +1678,10 @@
    "drops": [
     11,
     12,
-    28,
-    29,
-    84,
-    90
+    26,
+    27,
+    81,
+    86
    ],
    "loc": [
     -1372.0,
@@ -1833,11 +1717,11 @@
    ],
    "drops": [
     12,
-    44,
-    90,
-    97,
-    99,
-    124
+    42,
+    86,
+    93,
+    95,
+    120
    ],
    "loc": [
     -834.0,
@@ -1856,9 +1740,9 @@
     "Always"
    ],
    "drops": [
-    97,
-    99,
-    124
+    93,
+    95,
+    120
    ],
    "loc": [
     152.0,
@@ -1882,10 +1766,10 @@
    "drops": [
     11,
     12,
-    28,
-    29,
-    84,
-    90
+    26,
+    27,
+    81,
+    86
    ],
    "loc": [
     -1861.0,
@@ -1909,10 +1793,10 @@
    "drops": [
     11,
     12,
-    28,
-    29,
-    84,
-    90
+    26,
+    27,
+    81,
+    86
    ],
    "loc": [
     -1861.0,
@@ -1929,7 +1813,7 @@
     "Uncommon"
    ],
    "drops": [
-    137
+    133
    ],
    "loc": [
     -153.0,
@@ -1946,7 +1830,7 @@
     "Always"
    ],
    "drops": [
-    96
+    92
    ],
    "loc": [
     -1469.0,
@@ -1963,7 +1847,7 @@
     null
    ],
    "drops": [
-    33
+    31
    ],
    "loc": [
     -1788.0,

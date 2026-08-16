@@ -1318,6 +1318,13 @@
     {
      "lv": 23.5,
      "lvl": "22-25",
+     "n": "a Teir`Dal priest",
+     "named": false,
+     "t": "A_Teir%60Dal_priest"
+    },
+    {
+     "lv": 23.5,
+     "lvl": "22-25",
      "n": "a Teir`Dal priestess",
      "named": false,
      "t": "A_Teir%60Dal_priestess"
@@ -1537,13 +1544,6 @@
      "n": "a muddite minor",
      "named": false,
      "t": "A_Muddite_Minor"
-    },
-    {
-     "lv": 10.0,
-     "lvl": "10",
-     "n": "a muddite recordkeeper",
-     "named": false,
-     "t": "A_Muddite_Recordkeeper"
     },
     {
      "lv": 19.0,
@@ -2102,13 +2102,6 @@
      "n": "an undead rook",
      "named": false,
      "t": "An_undead_rook"
-    },
-    {
-     "lv": 7.0,
-     "lvl": "7",
-     "n": "aqua goblin marauder",
-     "named": false,
-     "t": "Aqua_goblin_marauder"
     },
     {
      "lv": 35.0,
@@ -7938,13 +7931,6 @@
      "t": "A_giant_wasp_drone"
     },
     {
-     "lv": 7.0,
-     "lvl": "7",
-     "n": "a giant wasp warrior",
-     "named": false,
-     "t": "A_giant_wasp_warrior"
-    },
-    {
      "lv": 5.0,
      "lvl": "5",
      "n": "a giant wasp worker",
@@ -7978,13 +7964,6 @@
      "n": "Aleena Lightleaf",
      "named": true,
      "t": "Aleena_Lightleaf"
-    },
-    {
-     "lv": 12.0,
-     "lvl": "12",
-     "n": "an orc arsonist",
-     "named": false,
-     "t": "An_orc_arsonist"
     },
     {
      "lv": 8.0,
@@ -8342,13 +8321,6 @@
      "n": "Merchant Aluwenae",
      "named": true,
      "t": "Merchant_Aluwenae"
-    },
-    {
-     "lv": 40.0,
-     "lvl": "40",
-     "n": "Merchant Lanin",
-     "named": true,
-     "t": "Merchant_Lanin"
     },
     {
      "lv": 40.0,
@@ -11449,13 +11421,6 @@
      "n": "Ulrik the Devout",
      "named": true,
      "t": "Ulrik_the_Devout"
-    },
-    {
-     "lv": 55.0,
-     "lvl": "55",
-     "n": "Urwenae the Cold",
-     "named": true,
-     "t": "Urwenae_the_Cold"
     }
    ],
    "name": "The Ruins of Old Paineel"
@@ -12411,6 +12376,13 @@
      "n": "aqua goblin prisoner",
      "named": false,
      "t": "Aqua_goblin_prisoner"
+    },
+    {
+     "lv": 50.0,
+     "lvl": "50",
+     "n": "Auraline",
+     "named": true,
+     "t": "Auraline"
     },
     {
      "lv": 49.0,
@@ -13443,6 +13415,13 @@
      "n": "Guard Treal",
      "named": true,
      "t": "Guard_Treal"
+    },
+    {
+     "lv": 61.0,
+     "lvl": "61",
+     "n": "Guja Master Therik",
+     "named": true,
+     "t": "Guja_Master_Therik"
     },
     {
      "lv": 15.0,
@@ -15525,13 +15504,6 @@
      "t": "A_Black_Bear"
     },
     {
-     "lv": 7.0,
-     "lvl": "7",
-     "n": "a black mamba",
-     "named": false,
-     "t": "A_black_mamba"
-    },
-    {
      "lv": 1.0,
      "lvl": "1",
      "n": "a black wolf",
@@ -15553,13 +15525,6 @@
      "t": "A_Deathfist_Legionnaire"
     },
     {
-     "lv": 1.0,
-     "lvl": "1",
-     "n": "a garter snake",
-     "named": false,
-     "t": "A_garter_snake"
-    },
-    {
      "lv": 12.0,
      "lvl": "10-14",
      "n": "a giant widow",
@@ -15574,39 +15539,11 @@
      "t": "A_Greater_Skeleton"
     },
     {
-     "lv": null,
-     "lvl": "?",
-     "n": "a large arachneidae",
-     "named": false,
-     "t": "A_large_arachneidae"
-    },
-    {
      "lv": 3.0,
      "lvl": "2 - 4",
      "n": "a large spider",
      "named": false,
      "t": "A_large_spider"
-    },
-    {
-     "lv": 2.0,
-     "lvl": "2",
-     "n": "A pyre beetle",
-     "named": true,
-     "t": "A_pyre_beetle"
-    },
-    {
-     "lv": 7.0,
-     "lvl": "7",
-     "n": "a rotting citizen",
-     "named": false,
-     "t": "A_Rotting_Citizen"
-    },
-    {
-     "lv": 7.0,
-     "lvl": "7",
-     "n": "a rotting initiate",
-     "named": false,
-     "t": "A_Rotting_Initiate"
     },
     {
      "lv": 25.0,
@@ -15630,32 +15567,11 @@
      "t": "A_Young_Kodiak"
     },
     {
-     "lv": 1.0,
-     "lvl": "1",
-     "n": "an araneidae spiderling",
-     "named": false,
-     "t": "An_araneidae_spiderling"
-    },
-    {
      "lv": 21.0,
      "lvl": "20 ~ 22",
      "n": "an iron guardian",
      "named": false,
      "t": "An_Iron_Guardian"
-    },
-    {
-     "lv": 10.0,
-     "lvl": "10",
-     "n": "An Undead Annalkeeper",
-     "named": true,
-     "t": "An_Undead_Annalkeeper"
-    },
-    {
-     "lv": 10.0,
-     "lvl": "10",
-     "n": "An Undead Steward",
-     "named": true,
-     "t": "An_Undead_Steward"
     },
     {
      "lv": 6.0,
@@ -17702,6 +17618,13 @@
      "t": "Dry_Bones_Skeleton"
     },
     {
+     "lv": 50.0,
+     "lvl": "50",
+     "n": "Emissary of Zebuxoruk",
+     "named": true,
+     "t": "Emissary_of_Zebuxoruk"
+    },
+    {
      "lv": 21.0,
      "lvl": "21",
      "n": "Hatar",
@@ -18384,13 +18307,6 @@
      "n": "Ran Aldorne",
      "named": true,
      "t": "Ran_Aldorne"
-    },
-    {
-     "lv": 15.0,
-     "lvl": "15",
-     "n": "Raotin Teawel",
-     "named": true,
-     "t": "Raotin_Teawel"
     },
     {
      "lv": 19.0,
@@ -20089,13 +20005,6 @@
      "t": "A_farmer"
     },
     {
-     "lv": 14.5,
-     "lvl": "13-16",
-     "n": "a ghoul yeoman",
-     "named": false,
-     "t": "A_ghoul_yeoman"
-    },
-    {
      "lv": 7.0,
      "lvl": "6-8",
      "n": "a giant beetle",
@@ -20173,13 +20082,6 @@
      "t": "A_scarecrow"
     },
     {
-     "lv": 6.0,
-     "lvl": "6",
-     "n": "a skeletal footsoldier",
-     "named": false,
-     "t": "A_skeletal_soldier"
-    },
-    {
      "lv": 15.0,
      "lvl": "15",
      "n": "a Splitpaw assassin",
@@ -20243,25 +20145,11 @@
      "t": "A_young_plains_lioness"
     },
     {
-     "lv": 6.0,
-     "lvl": "6",
-     "n": "a zombie yeoman",
-     "named": false,
-     "t": "A_zombie_yeoman"
-    },
-    {
      "lv": 25.0,
      "lvl": "25",
      "n": "Alzekar Kerda",
      "named": true,
      "t": "Alzekar_Kerda"
-    },
-    {
-     "lv": 15.0,
-     "lvl": "15",
-     "n": "an animated scarecrow",
-     "named": false,
-     "t": "An_animated_scarecrow"
     },
     {
      "lv": 21.5,
@@ -22688,13 +22576,6 @@
      "t": "A_lizard_man_warrior"
     },
     {
-     "lv": 17.0,
-     "lvl": "17",
-     "n": "a lizardman robber",
-     "named": false,
-     "t": "A_Lizardman_Robber"
-    },
-    {
      "lv": 24.0,
      "lvl": "23-25",
      "n": "a skeletal monk",
@@ -22742,6 +22623,13 @@
      "n": "an orc warrior",
      "named": false,
      "t": "An_Orc_Warrior"
+    },
+    {
+     "lv": 49.0,
+     "lvl": "49",
+     "n": "Animal Trainer Visop",
+     "named": true,
+     "t": "Animal_Trainer_Visop"
     },
     {
      "lv": 40.0,
@@ -23059,6 +22947,13 @@
      "t": "Sentry_Joanna"
     },
     {
+     "lv": 7.0,
+     "lvl": "7",
+     "n": "Sethena",
+     "named": true,
+     "t": "Sethena"
+    },
+    {
      "lv": 41.0,
      "lvl": "40-42",
      "n": "Shardwing",
@@ -23245,13 +23140,6 @@
      "n": "a large piranha",
      "named": false,
      "t": "A_large_piranha"
-    },
-    {
-     "lv": 1.0,
-     "lvl": "1",
-     "n": "a rodent",
-     "named": false,
-     "t": "A_rodent"
     },
     {
      "lv": 10.0,
@@ -25300,13 +25188,6 @@
      "t": "Shaman_Ren%60Rex"
     },
     {
-     "lv": 70.0,
-     "lvl": "70",
-     "n": "Sir Telian Mottsworth",
-     "named": true,
-     "t": "Sir_Telian_Mottsworth"
-    },
-    {
      "lv": 26.0,
      "lvl": "26",
      "n": "Synger Foxfyre",
@@ -25599,13 +25480,6 @@
      "t": "A_Gnome_Skeleton"
     },
     {
-     "lv": 3.0,
-     "lvl": "3",
-     "n": "a gnome slave",
-     "named": false,
-     "t": "A_Gnome_Slave"
-    },
-    {
      "lv": 10.0,
      "lvl": "9 - 11",
      "n": "a harpy",
@@ -25669,13 +25543,6 @@
      "t": "A_Mountain_Brownie"
     },
     {
-     "lv": 7.0,
-     "lvl": "7",
-     "n": "a mountain lion",
-     "named": false,
-     "t": "A_Mountain_Lion"
-    },
-    {
      "lv": 7.5,
      "lvl": "5 - 10",
      "n": "a puma",
@@ -25695,20 +25562,6 @@
      "n": "a runaway clockwork",
      "named": false,
      "t": "Runaway_Clockwork"
-    },
-    {
-     "lv": 3.0,
-     "lvl": "3",
-     "n": "a small coyote",
-     "named": false,
-     "t": "A_small_coyote"
-    },
-    {
-     "lv": 4.5,
-     "lvl": "3-6",
-     "n": "A small mountain lion",
-     "named": true,
-     "t": "A_small_mountain_lion"
     },
     {
      "lv": 9.5,
@@ -25737,13 +25590,6 @@
      "n": "an earth elemental",
      "named": false,
      "t": "An_Earth_Elemental"
-    },
-    {
-     "lv": 5.0,
-     "lvl": "5",
-     "n": "an ebon drakeling",
-     "named": false,
-     "t": "An_ebon_drakeling"
     },
     {
      "lv": 8.0,

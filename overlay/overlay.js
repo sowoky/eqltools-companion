@@ -247,10 +247,11 @@ function zoneLi(g) {
   return li;
 }
 
-/* Held counts are only ever as fresh as the last `/outputfile inventory`.
-   Nothing you buy or hand to your pet shows up until you dump again, so once
-   the dump is old enough to be misleading the list says how old — silence
-   here reads as "you definitely still need this". */
+/* Held counts are the last `/outputfile inventory` plus what the log has
+   said since (loot, buys, combines, closed hand-ins). What you hand to your
+   pet never shows up until you dump again, so once the dump is old enough to
+   be misleading the list says how old — silence here reads as "you definitely
+   still need this". */
 const INV_STALE_MS = 10 * 60 * 1000;
 function invAge() {
   const inv = TRACKED.inv;

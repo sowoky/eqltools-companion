@@ -562,7 +562,7 @@
   },
   {
    "dr": [
-    "Uncommon"
+    null
    ],
    "drops": [
     1
@@ -608,7 +608,7 @@
    "u": "https://eqlwiki.com/index.php/Walthin_Fireweaver"
   }
  ],
- "updated": "2026-08-06T05:38:29Z",
+ "updated": "2026-08-15T03:09:31Z",
  "wikiTitle": "Temple of Solusek Ro",
  "wikiUrl": "https://eqlwiki.com/index.php/Temple_of_Solusek_Ro",
  "zone": "soltemple"

@@ -2419,19 +2419,6 @@
    "dr": [],
    "drops": [],
    "loc": [
-    2196.0,
-    4243.0,
-    null
-   ],
-   "lvl": "15",
-   "n": "Raotin Teawel",
-   "named": true,
-   "u": "https://eqlwiki.com/index.php/Raotin_Teawel"
-  },
-  {
-   "dr": [],
-   "drops": [],
-   "loc": [
     156.0,
     -4773.0,
     null
@@ -2639,7 +2626,7 @@
    "u": "https://eqlwiki.com/index.php/Zyle_Bensmill"
   }
  ],
- "updated": "2026-08-09T23:46:37Z",
+ "updated": "2026-08-12T22:40:20Z",
  "wikiTitle": "Ocean of Tears",
  "wikiUrl": "https://eqlwiki.com/index.php/Ocean_of_Tears",
  "zone": "oot"

@@ -58,6 +58,9 @@
     ["sv",    "Resists (each; SV VOID unscored)"], ["haste", "Haste (per 1%)"],
     ["ratio", "Weapon ratio (dmg/dly ×10)"],
   ];
+  // the twelve an item's stat block can carry, in the order a breakdown lists them
+  const ITEM_STATS = STAT_DEFS.filter(([k]) => k !== "sv" && k !== "haste" && k !== "ratio");
+  const SV_NAMES = { f: "FIRE", c: "COLD", m: "MAGIC", d: "DISEASE", p: "POISON", v: "VOID" };
   // Derivation inputs (the sliders override the resulting WEIGHTS, not these).
   // lm: the ancestral per-class HP factor at 50 (EQEmu GetClassLevelFactor,
   // transcribed on the wiki's Game Mechanics page) — marginal HP per STA for
@@ -479,6 +482,42 @@
       return sum;
     }
 
+    /* score(), itemised — the same arithmetic term by term, so a head-to-head can
+       show WHY one item beats another and not only by how much. Each entry is
+       {k, label, v, pts}: v is the stat as the item carries it at that tier, pts
+       its contribution in HP-equivalents. `unscored` marks a line the reader
+       needs to see that the model does not price (SV VOID, DMG and delay on
+       their own, ratio in a slot that never swings).
+
+       The pts of a breakdown sum to score() exactly; that is the point of it
+       living here. AC is priced through the same softcap position, so two
+       breakdowns taken at the same baseAC subtract cleanly. */
+    function terms(rec, tier, baseAC, placement) {
+      const out = [];
+      if (!rec) return out;
+      const st = statsAt(rec, tier);
+      for (const [k, label] of ITEM_STATS) {
+        if (!st[k]) continue;
+        out.push({ k, label, v: st[k],
+          pts: k === "ac" ? w.ac * (effAC(baseAC + st.ac) - effAC(baseAC)) : (w[k] || 0) * st[k] });
+      }
+      for (const k in rec.sv || {}) {
+        out.push({ k: "sv:" + k, label: "SV " + (SV_NAMES[k] || k.toUpperCase()), v: rec.sv[k],
+          pts: k === "v" ? 0 : w.sv * rec.sv[k], unscored: k === "v" });
+      }
+      if (rec.haste) out.push({ k: "haste", label: "Haste", v: rec.haste, unit: "%", pts: w.haste * rec.haste });
+      if (rec.dmg) out.push({ k: "dmg", label: "DMG", v: statAt(rec.dmg, tier), pts: 0, unscored: true });
+      if (rec.dly) out.push({ k: "dly", label: "Delay", v: rec.dly, pts: 0, unscored: true });
+      if (rec.dmg && rec.dly) {
+        const swings = placement === "Primary" || placement === "Secondary" || placement === "Range";
+        const ratio = statAt(rec.dmg, tier) / rec.dly;
+        out.push({ k: "ratio", label: "DMG/DLY" + (TWO_H(rec) ? " (2H, ×2)" : ""),
+          v: Math.round(ratio * 100) / 100, dec: 2,
+          pts: swings ? w.ratio * 10 * ratio * (TWO_H(rec) ? 2 : 1) : 0, unscored: !swings });
+      }
+      return out;
+    }
+
     function legal(rec) {
       if (rec.req && rec.req > level) return false;
       const c = rec.cls;
@@ -503,13 +542,13 @@
 
     return {
       w, why: cw.why, computed: cw.w, sc, worn,
-      dualWieldCap, score, legal, weakestEq,
+      dualWieldCap, score, terms, legal, weakestEq,
       nakedStats, wornStats, currentStats, poolSelection,
     };
   }
 
   window.EQLGearScore = {
-    SLOTS, WORN_SLOTS, ANY, PAIRED, WORN_RX, TWO_H, STAT_DEFS, RATES,
+    SLOTS, WORN_SLOTS, ANY, PAIRED, WORN_RX, TWO_H, STAT_DEFS, ITEM_STATS, SV_NAMES, RATES,
     MANA_STAT, FULL_CASTER, PURE_MELEE, TANKS,
     LOC_SECTIONS, SECTION_LABEL, rootLoc, locSection, locBadge,
     baseName, parseRows, parseInventory, make,

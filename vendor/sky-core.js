@@ -18,7 +18,8 @@
   const GS = window.EQLGearScore;
 
   /* ── log ─────────────────────────────────────────────────────────────────
-     Six lines carry everything this page needs:
+     Six lines carry everything this page needs (plus two — buys and
+     combines — the companion's quest tracker reads off the same fold):
 
        You looted a Wind Rune Neza from Protector of Sky's corpse and stored
          it in your currency
@@ -58,6 +59,15 @@
        literal "(s)" is the client's, and the line carries no quantity, so this
        counts transactions, not items. Same regex /log-parser uses. */
     vendor:new RegExp(TS + String.raw`You receive (.+?) from .+? for the (.+?)\(s\)\.$`),
+    /* Two more lines the quest tracker reads off the same fold (2026-08-16).
+       A merchant BUY prints — "You purchased 4 Drom's Champagne from Henna
+       Treghost for  1 platinum 2 gold 5 silver 6 copper." (two spaces before
+       the price; a free item ends "for .") — which the 2026-08-11 finding
+       said it never did. A tradeskill combine that succeeds prints its
+       product by name; a failed one prints "You lacked the skills to
+       fashion X." and hands nothing over. */
+    bought:new RegExp(TS + String.raw`You purchased ([\d,]+) (.+?) from (.+?) for +(.*)\.$`),
+    made:  new RegExp(TS + String.raw`You have fashioned the items together to create something new: (.+?)\.$`),
   };
 
   /* A loot line does NOT mean you kept it. In a real 1.5M-line log, 1,928 lines
@@ -89,6 +99,8 @@
       destroyed: new Map(),   // base name -> destroyed by hand
       delivered: new Map(),   // base name -> times handed over in a closed trade
       trades: [],             // {npc, items:Map(name->qty), ts}
+      bought: [],             // {n, q, npc, ts} merchant purchases, in order
+      made: [],               // {n, ts} successful tradeskill combines, in order
       first: null, last: null, sawSky: false,
       /* Lines this ledger has actually consumed. A tailing host re-renders off
          it: a second of combat spam moves nothing here, and re-deriving a
@@ -150,6 +162,16 @@
       }
       if ((m = RX.vendor.exec(ln))) {
         bump(led.vendored, baseOf(m[3]), 1);
+        led.first = led.first || m[1]; led.last = m[1];
+        return true;
+      }
+      if ((m = RX.bought.exec(ln))) {
+        led.bought.push({ n: baseOf(m[3]), q: qty(m[2]), npc: m[4], ts: m[1] });
+        led.first = led.first || m[1]; led.last = m[1];
+        return true;
+      }
+      if ((m = RX.made.exec(ln))) {
+        led.made.push({ n: baseOf(m[2]), ts: m[1] });
         led.first = led.first || m[1]; led.last = m[1];
         return true;
       }

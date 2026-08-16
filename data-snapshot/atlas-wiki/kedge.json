@@ -1288,6 +1288,15 @@
    "u": "https://eqlwiki.com/index.php/Aqua_goblin_prisoner"
   },
   {
+   "dr": [],
+   "drops": [],
+   "loc": null,
+   "lvl": "50",
+   "n": "Auraline",
+   "named": true,
+   "u": "https://eqlwiki.com/index.php/Auraline"
+  },
+  {
    "dr": [
     "Common",
     "Common"
@@ -1503,7 +1512,7 @@
    "u": "https://eqlwiki.com/index.php/Undertow"
   }
  ],
- "updated": "2026-08-08T23:04:58Z",
+ "updated": "2026-08-15T02:27:57Z",
  "wikiTitle": "Kedge Keep",
  "wikiUrl": "https://eqlwiki.com/index.php/Kedge_Keep",
  "zone": "kedge"
