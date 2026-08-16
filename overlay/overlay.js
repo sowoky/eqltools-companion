@@ -68,7 +68,30 @@ function applyView() {
   // the payload carries no zones to group by
   const qv = document.getElementById("qView");
   if (qv) qv.hidden = v !== "tracked" || !(TRACKED.zones || []).length;
+  paintSkyView();
 }
+
+/* Sky grouping, on the widget. The board has always had three groupings, and
+   picking one meant opening the app and finding a select in the Sky tab's
+   widget options — while the boss board is the one you read standing in front
+   of a boss (Kyle, 2026-08-16: "on the sky tab of the overlay, let me get the
+   per boss view"). Same button idiom as Tracked's by zone / by quest, but this
+   one has to travel: the payload for a boss board is built in the main window,
+   so the click asks and the next feed:sky answers. The label follows what
+   actually arrived, never what was clicked. */
+const SKY_VIEWS = [["class", "by giver"], ["boss", "by boss"], ["drop", "get rid of"]];
+const skyViewEl = document.getElementById("skyView");
+function paintSkyView() {
+  if (!skyViewEl) return;
+  skyViewEl.hidden = PREFS.view !== "sky";
+  const cur = (SKYP && SKYP.view) || "class";
+  skyViewEl.textContent = (SKY_VIEWS.find(([k]) => k === cur) || SKY_VIEWS[0])[1];
+}
+if (skyViewEl) skyViewEl.addEventListener("click", () => {
+  const cur = (SKYP && SKYP.view) || "class";
+  const i = SKY_VIEWS.findIndex(([k]) => k === cur);
+  window.companion.skyView(SKY_VIEWS[(i + 1) % SKY_VIEWS.length][0]);
+});
 document.getElementById("otabs").addEventListener("click", e => {
   const b = e.target.closest("[data-oview]");
   if (!b || PREFS.view === b.dataset.oview) return;
@@ -188,6 +211,32 @@ const link = (text, url, cls) => {
   return a;
 };
 
+/* Folding, same idea as the app's Quests tab and the same reason the widget
+   exists at all: on screen over the game there is room for a few lines, and the
+   zone you have already cleared should not be spending them. A closed-list over
+   an open default — a quest you track next, or a zone the data learns about,
+   arrives open. Kept out of the payload deliberately: what you have folded on
+   the widget is a widget-sized decision, not the same one you make in a window
+   you can scroll. */
+const OFOLD_KEY = "eqlt-overlay-fold-v1";
+const OFOLD = { q: new Set(), z: new Set() };
+try {
+  const o = JSON.parse(localStorage.getItem(OFOLD_KEY)) || {};
+  if (Array.isArray(o.q)) OFOLD.q = new Set(o.q.filter(s => typeof s === "string"));
+  if (Array.isArray(o.z)) OFOLD.z = new Set(o.z.filter(s => typeof s === "string"));
+} catch {}
+const saveFolds = () => {
+  try { localStorage.setItem(OFOLD_KEY, JSON.stringify({ q: [...OFOLD.q], z: [...OFOLD.z] })); } catch {}
+};
+// its own element, never the heading: the heading is the wiki link
+function caret(kind, key, open) {
+  const b = document.createElement("span");
+  b.className = "tfold"; b.textContent = open ? "▾" : "▸";
+  b.dataset.fold = kind; b.dataset.foldkey = key;
+  b.title = open ? "Collapse" : "Expand";
+  return b;
+}
+
 function itemLi(it) {
   const done = it.have >= it.want;
   const cl = document.createElement("li");
@@ -226,11 +275,12 @@ function itemLi(it) {
 }
 
 function zoneLi(g) {
+  const open = !OFOLD.z.has(g.z);
   const li = document.createElement("li");
-  li.className = g.left ? "tz" : "tz is-done";
+  li.className = `tz ${g.left ? "" : "is-done"} ${open ? "" : "is-folded"}`.trim();
   const h = document.createElement("div");
   h.className = "tz__h";
-  h.append(link(g.z, g.url, "tz__n"));
+  h.append(caret("z", g.z, open), link(g.z, g.url, "tz__n"));
   // a wiki city page ('Freeport') covers several client zones — it is not
   // somewhere you can stand, so say the data is vague instead of naming it
   if (g.umb) {
@@ -242,6 +292,7 @@ function zoneLi(g) {
   c.className = "tz__c"; c.textContent = g.left ? `${g.left} to get` : "all held";
   h.append(c);
   li.append(h);
+  if (!open) return li;
   const ul = document.createElement("ul");
   ul.className = "tqc";
   for (const it of g.items) ul.append(itemLi(it));
@@ -287,11 +338,12 @@ function renderQuests() {
     return;
   }
   for (const q of quests) {
+    const open = !OFOLD.q.has(q.n);
     const li = document.createElement("li");
-    li.className = q.done ? "tq is-done" : "tq";
+    li.className = `tq ${q.done ? "is-done" : ""} ${open ? "" : "is-folded"}`.trim();
     const nm = link(q.n, q.url, "tq__n");
     if (q.rew) nm.title = `reward: ${q.rew}`;
-    li.append(nm);
+    li.append(caret("q", q.n, open), nm);
     if (q.oe) {
       const o = document.createElement("span");
       o.className = "oe"; o.textContent = "out of era";
@@ -300,6 +352,8 @@ function renderQuests() {
     const c = document.createElement("span");
     c.className = "tq__c"; c.textContent = q.done ? `✓ ${q.got}/${q.need}` : `${q.got}/${q.need}`;
     li.append(c);
+    questsEl.append(li);
+    if (!open) continue;
     if (q.next) {
       // the one thing to do next on this quest, resolved by the main window
       const nx = document.createElement("div");
@@ -315,7 +369,6 @@ function renderQuests() {
       for (const it of q.comps || []) ul.append(itemLi(it));
     }
     li.append(ul);
-    questsEl.append(li);
   }
 }
 
@@ -982,7 +1035,7 @@ skyEl.addEventListener("click", e => {
   SKY_CLOSED.has(c) ? SKY_CLOSED.delete(c) : SKY_CLOSED.add(c);
   renderSky(); rehotspot();
 });
-window.companion.onFeedSky(s => { SKYP = s; renderSky(); rehotspot(); });
+window.companion.onFeedSky(s => { SKYP = s; renderSky(); paintSkyView(); rehotspot(); });
 window.companion.onFeedValet(v => { VALET = v; renderValet(); rehotspot(); });
 window.companion.onFeedSpare(v => { SPARE = v; renderSpare(); rehotspot(); });
 window.companion.onFeedExalt(v => { EXALT = v; renderExalt(); rehotspot(); });
@@ -1012,7 +1065,7 @@ document.addEventListener("mousemove", e => {
    right-click menu is the way back out, so the bar has to be able to hear a
    click. The cost is that dragging the pointer across that one thin strip takes
    the mouse from the game for as long as it is over it. */
-const HOTSPOT_SEL = "#bar, [data-url], [data-hold], #btnRoll, #filters, #otabs, [data-enc], [data-ract], [data-osub], [data-osky]";
+const HOTSPOT_SEL = "#bar, [data-url], [data-hold], [data-fold], #btnRoll, #filters, #otabs, [data-enc], [data-ract], [data-osub], [data-osky]";
 function rehotspot() {
   if (!THROUGH) return;
   const el = document.elementFromPoint(MX, MY);
@@ -1041,6 +1094,13 @@ document.addEventListener("mouseout", e => {
 });
 
 document.addEventListener("click", e => {
+  const f = e.target.closest("[data-fold]");
+  if (f) {
+    const set = f.dataset.fold === "z" ? OFOLD.z : OFOLD.q;
+    const k = f.dataset.foldkey;
+    set.has(k) ? set.delete(k) : set.add(k);
+    saveFolds(); renderQuests(); rehotspot(); return;
+  }
   const h = e.target.closest("[data-hold]");
   if (h) { window.companion.markHeld(h.dataset.hold); return; }
   const q = e.target.closest("[data-url]");

@@ -1054,6 +1054,10 @@ ipcMain.on("stats:reset", (_e, on) => {
 ipcMain.on("quest:markHeld", (_e, n) => {
   if (mainWin && typeof n === "string") mainWin.webContents.send("quest:markHeld", n);
 });
+// the widget picking how its Sky board is grouped; the main renderer builds it
+ipcMain.on("sky:view", (_e, v) => {
+  if (mainWin && ["class", "boss", "drop"].includes(v)) mainWin.webContents.send("sky:view", v);
+});
 
 /* ── lifecycle ────────────────────────────────────────────────────────────*/
 if (!app.requestSingleInstanceLock()) app.quit();

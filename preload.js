@@ -48,6 +48,13 @@ contextBridge.exposeInMainWorld("companion", {
      from a previous run names a moment no window still holds. */
   statsReset: (on) => ipcRenderer.send("stats:reset", !!on),
   onStatsReset: (fn) => ipcRenderer.on("stats:reset", (_e, p) => fn(p)),
+  /* How the widget's Sky board is grouped. Same shape again: the payload for a
+     boss board is BUILT in the main renderer (the overlay holds no datasets),
+     so asking for it has to reach the window that can make it. It writes
+     through to the same widget option the Sky tab shows — one setting, two
+     places to change it. */
+  skyView: (v) => ipcRenderer.send("sky:view", v),
+  onSkyView: (fn) => ipcRenderer.on("sky:view", (_e, p) => fn(p)),
   onBootstrap: (fn) => ipcRenderer.on("log:bootstrap", (_e, p) => fn(p)),
   onLines: (fn) => ipcRenderer.on("log:lines", (_e, p) => fn(p)),
   onLogStatus: (fn) => ipcRenderer.on("log:status", (_e, p) => fn(p)),

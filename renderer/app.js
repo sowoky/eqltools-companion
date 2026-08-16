@@ -384,8 +384,23 @@ const lookupItem = (map, name) => lookupExact(map, name);
 
 // called with a name off a log line or an inventory row — loose lookup
 const questRefsFor = name => (lookupLoose(QIDX, QIDX_L, name) || []).map(({ q, as }) => ({
-  n: q.n, t: q.t, as, rewards: q.rewards || [], zone: q.zone, lvl: q.lvl, oe: !!q.oe,
+  n: q.n, t: q.t, as, rewards: as === "c" ? partRewards(q, name) : (q.rewards || []),
+  zone: q.zone, lvl: q.lvl, oe: !!q.oe,
 }));
+/* A split page is many turn-ins under one URL, and each pays its own prize:
+   the Efreeti War Spear buys the Spear of Harmony, not every Bard test's
+   reward. The parts that consume this item name what they pay; when none does
+   (a flat page, or parts with no stated payout) the page's rewards stand. Only
+   real prizes count — a step-made part pays an intermediate (the pick digs up
+   a leg bone), and that is not what the quest is for. */
+function partRewards(q, name) {
+  const prizes = q.rewards || [], out = [];
+  for (const p of q.parts || []) {
+    if (!(p.r || []).length || !(p.c || []).some(([c]) => sameItem(c, name))) continue;
+    for (const r of p.r) if (prizes.includes(r) && !out.includes(r)) out.push(r);
+  }
+  return out.length ? out : prizes;
+}
 
 /* Mob name -> its wiki page. The kill-tracker roster already carries a wiki
    path per mob (kills-data rows: {n, t, lv, …}), so any mob the feed names is
@@ -1411,6 +1426,67 @@ const TURNIN = { q: "", readyOnly: false }; // Turn-ins tab — filter within he
 const QB = { q: "", cls: "", zone: "", era: "", lvlMin: "", lvlMax: "", sort: "name", dir: 1 }; // Quests browser
 const QEXPANDED = new Set(); // browser rows opened to full detail (q.t keys)
 const QPARTS_OPEN = new Set(); // quests whose turn-in list is expanded (q.t keys)
+
+/* ── folding ──────────────────────────────────────────────────────────────
+   Kyle, 2026-08-16: "i need to be able to collapse quests/zones." A quest
+   folds to its head — name, count, facts, Track — and a zone to its heading
+   and how many are left. Both are CLOSED-lists over an open default, so a
+   quest you track tomorrow and a zone the data learns about next patch arrive
+   open rather than hidden by a set written today.
+
+   Zones fold by name, everywhere the name appears: pooled across tracked
+   quests and inside each quest's own group. "I'm finished with Lower Guk" is
+   a fact about the zone, not about one quest's copy of it.
+
+   Folded detail is never built — no step list, no zone groups, no turn-ins —
+   which is what makes a long Turn-ins list cheap to redraw. */
+const QFOLD_KEY = "eqlt-companion-qfold-v1";
+const QFOLD = { q: new Set(), z: new Set() };
+function loadFolds() {
+  try {
+    const o = JSON.parse(localStorage.getItem(QFOLD_KEY)) || {};
+    if (Array.isArray(o.q)) QFOLD.q = new Set(o.q.filter(s => typeof s === "string"));
+    if (Array.isArray(o.z)) QFOLD.z = new Set(o.z.filter(s => typeof s === "string"));
+  } catch {}
+}
+function saveFolds() {
+  try { localStorage.setItem(QFOLD_KEY, JSON.stringify({ q: [...QFOLD.q], z: [...QFOLD.z] })); } catch {}
+}
+const qOpen = t => !QFOLD.q.has(t);
+const zOpen = z => !QFOLD.z.has(z);
+/* Collapse all / expand all reads the carets that are ON SCREEN rather than a
+   list it keeps of its own, so it always means "these", whatever the filter and
+   whichever view is up: quest rows under Turn-ins and by-quest, zone headings
+   under by-zone. Nested zones inside a folded quest aren't touched — they come
+   back the way you left them. */
+const foldCarets = id => {
+  const el = $(id);
+  if (!el) return [];
+  // quest rows are the outer level wherever there are any; the by-zone view has
+  // none, and there the zone headings are what "all" means
+  const rows = [...el.querySelectorAll("li.qrow > .qrow__head > [data-fold]")];
+  return rows.length ? rows : [...el.querySelectorAll(".zg > .zg__head > [data-fold]")];
+};
+function paintFoldAll(id) {
+  const btn = document.querySelector(`[data-foldall="${id}"]`);
+  if (!btn) return;
+  const cs = foldCarets(id);
+  btn.hidden = cs.length < 2;
+  btn.textContent = cs.some(c => c.getAttribute("aria-expanded") === "true") ? "Collapse all" : "Expand all";
+}
+function foldAll(id) {
+  const cs = foldCarets(id);
+  const close = cs.some(c => c.getAttribute("aria-expanded") === "true");
+  for (const c of cs) {
+    const set = c.dataset.fold === "z" ? QFOLD.z : QFOLD.q;
+    if (close) set.add(c.dataset.foldkey); else set.delete(c.dataset.foldkey);
+  }
+  saveFolds();
+}
+// the twisty. A button, not the heading itself: the heading is a wiki link, and
+// a link that sometimes folds instead of opening the page is a trap (page-design 0f)
+const caret = (kind, key, open) => `<button class="fold" data-fold="${kind}" data-foldkey="${esc(key)}"
+  aria-expanded="${open ? "true" : "false"}" title="${open ? "Collapse" : "Expand"}">${open ? "▾" : "▸"}</button>`;
 const TRACK_KEY = "eqlt-companion-tracked-v1";
 const TRACK_VIEW_KEY = "eqlt-companion-trackview-v1";
 let TRACKED = []; // q.t keys, in the order the player tracked them
@@ -1557,13 +1633,37 @@ function haveMap() {
 let LOG_FLOOR = new Set(); // itemKeys whose held count is the log's floor, not the dump's row
 // is this row's count the log's word rather than the dump's?
 const logSaid = name => { for (const k of nameKeys(name)) if (LOG_FLOOR.has(k)) return true; return false; };
+/* The article-stripped fallback used to WALK the whole have map, calling
+   normName on every key, every time a name missed — and a miss is the ordinary
+   case, because most quest items are ones you don't own. At 389 held keys and
+   ~14k lookups a render that was 82% of the entire Quests tab: renderQuests()
+   took 1.7s, the log tail re-fired it every 500ms, and the window stopped
+   answering clicks (Kyle, 2026-08-16: "changing tabs takes seconds"). The walk
+   is now an index built once per have map. First key wins, and where both
+   spellings hit, the earlier insertion wins — which is the entry the walk
+   returned. */
+const HAVE_LOOSE = new WeakMap(); // a have map -> its normName index, built on first miss
+function haveLoose(have) {
+  let ix = HAVE_LOOSE.get(have);
+  if (ix) return ix;
+  ix = new Map();
+  let i = 0;
+  for (const [k, c] of have) {
+    const nk = K.normName(k);
+    if (!ix.has(nk)) ix.set(nk, { c, i });
+    i++;
+  }
+  HAVE_LOOSE.set(have, ix);
+  return ix;
+}
 // how many of a WIKI-named item the player holds: exact, then article-stripped
 function heldCount(have, name) {
   const exact = have.get(itemKey(name)) ?? have.get(itemKey(stripDecor(name)));
   if (exact !== undefined) return exact;
-  const lk = K.normName(name), lk2 = K.normName(stripDecor(name));
-  for (const [k, c] of have) if (K.normName(k) === lk || K.normName(k) === lk2) return c;
-  return 0;
+  const ix = haveLoose(have);
+  const a = ix.get(K.normName(name)), b = ix.get(K.normName(stripDecor(name)));
+  if (a && b) return (a.i <= b.i ? a : b).c;
+  return a ? a.c : b ? b.c : 0;
 }
 
 /* A quest's shopping list: what is still to be handed in, crossed with what
@@ -2088,11 +2188,14 @@ function zoneGroupsHtml(rows) {
     return `<ul class="qcomps qcomps--bare">${zoneItemRow(groups[0].items[0], groups[0].z)}
       <li class="qc qc--where dim">${zoneLink(groups[0].z)}</li></ul>`;
   }
-  return `<div class="zgs">${groups.map(g => `
-    <div class="zg ${g.left ? "" : "is-done"}">
-      <div class="zg__head">${zoneLink(g.z)}<span class="zg__n">${g.left ? `${g.left} to get` : "all held"}</span></div>
-      <ul class="qcomps">${g.items.map(r => zoneItemRow(r, g.z)).join("")}</ul>
-    </div>`).join("")}</div>`;
+  return `<div class="zgs">${groups.map(g => {
+    const open = zOpen(g.z);
+    return `
+    <div class="zg ${g.left ? "" : "is-done"} ${open ? "" : "is-folded"}">
+      <div class="zg__head">${caret("z", g.z, open)}${zoneLink(g.z)}<span class="zg__n">${g.left ? `${g.left} to get` : "all held"}</span></div>
+      ${open ? `<ul class="qcomps">${g.items.map(r => zoneItemRow(r, g.z)).join("")}</ul>` : ""}
+    </div>`;
+  }).join("")}</div>`;
 }
 
 let questsTimer = null;
@@ -2269,14 +2372,16 @@ function questRow(p, tracked, have) {
   // the base materials are pocketed — 10 coins in the bag is step 13 of 17
   const ss = have ? stepState(q, have) : null;
   const ready = ss ? ss.handinReady : p.done;
-  return `<li class="qrow ${ready ? "is-ready" : ""} ${tracked ? "is-tracked" : ""}">
+  const open = qOpen(q.t);
+  return `<li class="qrow ${ready ? "is-ready" : ""} ${tracked ? "is-tracked" : ""} ${open ? "" : "is-folded"}">
     <div class="qrow__head">
+      ${caret("q", q.t, open)}
       <a class="wk" data-wiki="${esc(q.wk || q.t || "")}">${esc(q.n)}</a>
       <span class="qprog">${p.got}/${p.need}</span>
       ${facts ? `<span class="dim">${esc(facts)}</span>` : ""}
       <button class="btn btn--mini qtrk" data-track="${esc(q.t)}">${tracked ? "Untrack" : "Track"}</button>
     </div>
-    ${questDetail(p, have)}</li>`;
+    ${open ? questDetail(p, have) : ""}</li>`;
 }
 
 /* ── Turn-ins tab — what the inventory says you could hand in ────────────── */
@@ -2287,6 +2392,7 @@ function renderTurnins() {
   if (!QDATA) {
     banner.textContent = "Quest data not loaded yet — refresh from eqltools.com in Settings.";
     $("tiMeta").textContent = ""; body.innerHTML = ""; empty.hidden = true;
+    paintFoldAll("turninsBody");
     return;
   }
   banner.hidden = hasSrc();
@@ -2322,6 +2428,7 @@ function renderTurnins() {
     else if (INV.problem) empty.textContent = INV.problem;
     else empty.innerHTML = TURNIN_HINT;
     body.innerHTML = "";
+    paintFoldAll("turninsBody");
     return;
   }
   const trackedSet = new Set(TRACKED);
@@ -2336,6 +2443,7 @@ function renderTurnins() {
          never said how many. Items you can only make are counted through their recipe —
          a full Lambent set needs seven Lambent Stones its own page never totals up.</p>`
       : "");
+  paintFoldAll("turninsBody");
   retip();
 }
 
@@ -2472,12 +2580,16 @@ function renderQuestBrowser() {
    and that view has to pool every tracked quest, or you clear a zone and find
    out later the other quest wanted something here too. Inside a quest the
    items still group by zone for the same reason. */
+// the count rides the sub-tab chip now, not a top-level tab — and it is painted
+// whether or not the Tracked view is the one on screen
+function paintTrackedChip() {
+  const tab = document.querySelector('[data-qview="tracked"]');
+  if (tab) tab.textContent = TRACKED.length ? `Tracked (${TRACKED.length})` : "Tracked";
+}
 function renderTrackedTab() {
   const banner = $("trackedBanner"), body = $("trackedBody"), empty = $("trackedEmpty");
-  // the count rides the sub-tab chip now, not a top-level tab
-  const tab = document.querySelector('[data-qview="tracked"]');
   const head = $("trackedHead");
-  if (tab) tab.textContent = TRACKED.length ? `Tracked (${TRACKED.length})` : "Tracked";
+  paintTrackedChip();
   banner.hidden = !!QDATA;
   if (!QDATA) {
     // tracked keys can't resolve without the dataset — "nothing tracked yet"
@@ -2498,7 +2610,7 @@ function renderTrackedTab() {
   if (seg) seg.hidden = !hasSrc();
   banner.hidden = hasSrc();
   if (!hasSrc()) banner.textContent = STALE_DATA_NOTE;
-  if (!plans.length) { body.innerHTML = ""; return; }
+  if (!plans.length) { body.innerHTML = ""; paintFoldAll("trackedBody"); return; }
 
   if (TRACK_VIEW === "zone" && hasSrc() && plans.length > 1) {
     // one item wanted by two quests is one thing to farm, so the rows merge and
@@ -2514,10 +2626,29 @@ function renderTrackedTab() {
       ? `${plans.length} quests · ${ready} ready to hand in` : "";
     body.innerHTML = `<ul class="qlist">${plans.map(p => questRow(p, true, have)).join("")}</ul>`;
   }
+  paintFoldAll("trackedBody");
   retip();
 }
 
-function renderQuests() { renderTurnins(); renderTrackedTab(); renderQuestBrowser(); }
+/* Three views over one dataset and one of them on screen. Every log line that
+   moved the ledger used to redraw all three, so the two you weren't looking at
+   cost the same as the one you were. A view you can't see is marked dirty and
+   drawn when you switch to it — the sub-tab strip and the tab bar both flush.
+   The Tracked chip's count is not part of that: it is painted from the tab bar,
+   so it stays live whichever view is up. */
+const QDRAW = { turnins: renderTurnins, tracked: renderTrackedTab, all: renderQuestBrowser };
+const QDIRTY = new Set(Object.keys(QDRAW));
+const qPaneOn = () => { const p = $("tab-quests"); return !!p && p.classList.contains("on"); };
+const qLive = v => qPaneOn() && QUEST_VIEW === v;
+function drawQuestView(v) {
+  if (!qLive(v)) { QDIRTY.add(v); return; }
+  QDIRTY.delete(v); QDRAW[v]();
+}
+function flushQuests() { for (const v of [...QDIRTY]) if (qLive(v)) drawQuestView(v); }
+function renderQuests() {
+  paintTrackedChip();
+  for (const v of Object.keys(QDRAW)) drawQuestView(v);
+}
 
 /* ── the two sub-tab strips ───────────────────────────────────────────────
    Quests was three top-level tabs (Turn-ins, Tracked, Quests) over one
@@ -2535,6 +2666,7 @@ function setQuestView(v) {
   QUEST_VIEW = v;
   try { localStorage.setItem(QVIEW_KEY, v); } catch {}
   paintStrip("qViews", "#tab-quests .qview", "qview", v);
+  flushQuests(); // the view you just switched to may have gone stale while hidden
 }
 /* Quest, Gear and Spare are three readings of ONE table, so they share a pane
    and the strip cannot be painted by the generic matcher — three of the four
@@ -2629,15 +2761,17 @@ function skyToggleSkip(code, test, on) {
    toggling looks for an existing quest-tracker key for this test first and
    flips that when it finds one.
 
-   It usually won't. The wiki is converting the sixteen `<Class> Plane of Sky
-   Tests` pages into `{{#lsth:Plane of Sky|…}}` transclusions, and a page that
-   is now a transclusion call parses to nothing — as of 2026-08-14, ten of the
-   sixteen carry no turn-ins in quest-items.json and three have no page at all.
-   sky.json is built from the `Plane of Sky` page itself and has all 95, so a
-   sky-native key is the one that keeps working. `trackedPlan` resolves both. */
+   Since 2026-08-16 it always finds one: quest-items.json builds the sixteen
+   `<Class> Plane of Sky Tests` quests from the `Plane of Sky` page's own
+   tables (the same tables sky.json reads), one part per test, named as the
+   test is named here — so the wiki key is the normal case. The sky-native key
+   remains for a test tracked before that, or when quest-items is older than
+   the app; `trackedPlan` resolves both. Whichever key is ALREADY tracked is
+   the one a click flips, so an old sky-native entry never gains a wiki-key
+   twin. */
 const SKY_TRACK = "sky::";
 const skyTrackKey = (code, test) => SKY_TRACK + code + "::" + test;
-// the quest-tracker key for the same test, when its wiki page still parses
+// the quest-tracker key for the same test, when quest-items carries its part
 function skyQuestKey(code, test) {
   const page = `${SKY_CLASS[code]} Plane of Sky Tests`;
   for (const [t, q] of T2Q) {
@@ -2652,8 +2786,8 @@ const skyTracked = (code, test) => {
   return TRACKED.includes(skyTrackKey(code, test)) || (!!qk && TRACKED.includes(qk));
 };
 function skyToggleTrack(code, test) {
-  const qk = skyQuestKey(code, test);
-  toggleTrack(qk && TRACKED.includes(qk) ? qk : (qk || skyTrackKey(code, test)));
+  const qk = skyQuestKey(code, test), sk = skyTrackKey(code, test);
+  toggleTrack(TRACKED.includes(sk) ? sk : qk && TRACKED.includes(qk) ? qk : (qk || sk));
   renderSkySoon();
 }
 /* A sky-native tracked key as a plan, in the shape every tracked-quest consumer
@@ -4979,6 +5113,7 @@ async function main() {
   buildIndexes(init.datasets);
   STATE = K.load();
   loadTracked();
+  loadFolds();
   loadHeld();
   loadSkyPrefs();
   for (const b of document.querySelectorAll("[data-trackview]"))
@@ -5021,6 +5156,7 @@ async function main() {
     document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === b));
     document.querySelectorAll(".pane").forEach(p => p.classList.toggle("on", p.id === "tab-" + b.dataset.tab));
     parserTabActive(b.dataset.tab === "parser");
+    flushQuests(); // Quests skips drawing while it is off screen
   }));
 
   /* The Parser tab is the site's report in the app's window. render.js draws
@@ -5089,6 +5225,14 @@ async function main() {
   });
   window.companion.onMarkHeld(n => toggleHeld(n, 1));
   window.companion.onStatsReset(on => on ? raidResetNow() : setRaidZero(null));
+  /* The widget asked for a different Sky grouping. It writes through to the
+     same widget option the Sky tab draws, so the select down there follows —
+     the two are one setting, and a boss board can only be built here. */
+  window.companion.onSkyView(v => {
+    if (SKYP.wid.view === v) return;
+    SKYP.wid.view = v;
+    saveSkyPrefs(); renderSkyWidget(); pushSky();
+  });
   /* Unlocks tab */
   try { Object.assign(UNL, JSON.parse(localStorage.getItem(UNL_KEY)) || {}); } catch { /* defaults */ }
   const saveUnl = () => { try { localStorage.setItem(UNL_KEY, JSON.stringify(UNL)); } catch { /* full */ } };
@@ -5184,14 +5328,26 @@ async function main() {
     saveSkyPrefs(); renderSkyWidget(); pushSky();
   });
   $("zoneFilter").addEventListener("input", renderZoneTab);
-  $("tiSearch").addEventListener("input", e => { TURNIN.q = e.target.value; renderTurnins(); });
+  /* Typed filters redraw on a pause, not on a keystroke. The browser is 2,004
+     rows over 924 quests and drawing them costs ~200ms, so "bard" used to buy
+     four full redraws and the box swallowed letters. The selects and the level
+     boxes are one gesture each and stay immediate. */
+  const typed = (id, fn) => {
+    let t = null;
+    $(id).addEventListener("input", e => {
+      const v = e.target.value;
+      clearTimeout(t);
+      t = setTimeout(() => { t = null; fn(v); }, 140);
+    });
+  };
+  typed("tiSearch", v => { TURNIN.q = v; renderTurnins(); });
   $("qReadyOnly").addEventListener("change", e => { TURNIN.readyOnly = e.target.checked; renderTurnins(); });
-  $("qSearch").addEventListener("input", e => { QB.q = e.target.value; renderQuestBrowser(); });
+  typed("qSearch", v => { QB.q = v; renderQuestBrowser(); });
   $("qbClass").addEventListener("change", e => { QB.cls = e.target.value; renderQuestBrowser(); });
   $("qbZone").addEventListener("change", e => { QB.zone = e.target.value; renderQuestBrowser(); });
   $("qbEra").addEventListener("change", e => { QB.era = e.target.value; renderQuestBrowser(); });
-  $("qbLvlMin").addEventListener("input", e => { QB.lvlMin = e.target.value; renderQuestBrowser(); });
-  $("qbLvlMax").addEventListener("input", e => { QB.lvlMax = e.target.value; renderQuestBrowser(); });
+  typed("qbLvlMin", v => { QB.lvlMin = v; renderQuestBrowser(); });
+  typed("qbLvlMax", v => { QB.lvlMax = v; renderQuestBrowser(); });
   $("trkAtlas").addEventListener("click", () => {
     // Land on the player's zone with the atlas sidebar open on KILLS; the
     // atlas root otherwise.
@@ -5267,6 +5423,15 @@ async function main() {
     if (tk) { toggleTrack(tk.dataset.track); return; }
     const tv = e.target.closest("[data-trackview]");
     if (tv) { setTrackView(tv.dataset.trackview); return; }
+    const fd = e.target.closest("[data-fold]");
+    if (fd) {
+      const set = fd.dataset.fold === "z" ? QFOLD.z : QFOLD.q;
+      const k = fd.dataset.foldkey;
+      set.has(k) ? set.delete(k) : set.add(k);
+      saveFolds(); renderQuests(); return;
+    }
+    const fa = e.target.closest("[data-foldall]");
+    if (fa) { foldAll(fa.dataset.foldall); renderQuests(); return; }
     const pt = e.target.closest("[data-parts]");
     if (pt) {
       const t = pt.dataset.parts;

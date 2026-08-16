@@ -63,7 +63,7 @@ body.rolled #bar { border-bottom: 0; }
 #otabs button:hover { color: #ece8f7; }
 #otabs button.on { color: #e7b94e; border-bottom-color: #c9952a; }
 /* the grouping toggle is not a view — push it right and keep it quiet */
-#qView { margin-left: auto; color: #9ccc9c; }
+#qView, #skyView { margin-left: auto; color: #9ccc9c; }
 
 /* filter row (Loot view) — same prefs as Settings, reachable in game */
 #filters {
@@ -83,6 +83,12 @@ body.rolled #bar { border-bottom: 0; }
 #quests[hidden] { display: none; }
 .tq-none { color: #8d84a8; padding: 4px 0; }
 .tq { padding: 2px 0 4px; border-bottom: 1px solid rgba(44, 37, 69, .45); }
+/* the twisty — small, but a real hit target: the widget is clicked over a game */
+.tfold {
+  display: inline-block; width: 11px; margin-right: 2px; cursor: pointer;
+  color: #8d84a8; font-size: 10px;
+}
+.tfold:hover { color: #e7b94e; }
 .tq:last-child { border-bottom: none; }
 .tq > .tq__n { color: #f6dfa0; font-weight: 600; }
 .tq .oe { margin-left: 5px; }
