@@ -34,6 +34,13 @@ let NPCLOC = {};      // NPC display name -> {t, z, loc}
    Cell #1'). Without this map the key you are holding never matched the key
    the chain says you need (Zimel's Blades, 2026-08-16). */
 let QALIAS = {};
+/* GVARS is several wiki PAGES sharing a display name. These two are the other
+   shape of the same trouble: ONE page covering several real items, told apart
+   only by the client item ID the inventory dump prints.
+     IDLABEL  item ID   -> what that ID actually is ("Coin of the Tash - Azia")
+     IDGROUP  itemKey   -> [[id, label], …] for every item wearing that name */
+let IDLABEL = new Map();
+let IDGROUP = new Map();
 
 function buildIndexes(datasets) {
   const kd = datasets["kills-data.json"], qd = datasets["quest-items.json"];
@@ -64,6 +71,16 @@ function buildIndexes(datasets) {
     GEO = QDATA.geo || null;
     NPCLOC = QDATA.npcs || {};
     QALIAS = QDATA.alias || {};
+    /* One display name, several real items. The dump prints the client's item
+       ID beside every row, and that ID is the only thing separating ten
+       different `Old Silver Coin` — the wiki has one page for all ten. QDATA.ids
+       (schema 6) says which ID is which; an older cached download simply has no
+       `ids` and every count falls back to being by name, as before. */
+    IDLABEL = new Map(); IDGROUP = new Map();
+    for (const [key, list] of Object.entries(QDATA.ids || {})) {
+      IDGROUP.set(key, list);
+      for (const [id, label] of list) IDLABEL.set(id, label);
+    }
     KEY2NODE = new Map();
     if (GEO) {
       for (const [name, node] of Object.entries(GEO.nodes))
@@ -1015,12 +1032,23 @@ function whereText(loc) {
 const IV_COLS = [
   { k: "where", h: "Where", d0: 1, key: v => v.r.idx,
     cell: v => `<td class="iv-where" title="${esc(v.r.loc)}">${esc(whereText(v.r.loc))}</td>` },
-  { k: "item", h: "Item", d0: 1, always: true, key: v => v.r.name.toLowerCase(), cell: v => {
+  // sorts on name THEN on which item the ID says it is — otherwise ten rows
+  // reading `Old Silver Coin` tie and land in whatever order they came in
+  { k: "item", h: "Item", d0: 1, always: true,
+    key: v => `${v.r.name} ${IDLABEL.get(v.r.itemId) || ""}`.toLowerCase(), cell: v => {
     // the name already prints "+N" and "(Exaltation)" — no chips restating it
     const badges = (v.r.kids ? `<span class="ivb">${v.r.kids.length} inside</span>` : "") +
       (v.vars ? `<span class="ivb" title="the wiki lists ${v.vars.length} items with this name — the columns show the first; open the row for all of them">${v.vars.length} variants</span>` : "");
     const span = v.r.exalt ? exaltSpan(v.r) : itemSpan(v.r.name, true);
-    return `<td class="iv-item">${span}${badges}${spareChips(v)}</td>`;
+    /* Which one this actually is. Five rows reading `Old Silver Coin` are five
+       different items, and the row's own ID is the only thing that says which —
+       so it goes beside the name rather than in a column you have to turn on.
+       Classic EQ's word for the ID, not EQL's: see the tooltip. */
+    const which = v.r.itemId ? IDLABEL.get(v.r.itemId) : null;
+    const idl = which ? ` <span class="dim">· <span title="Item ID ${v.r.itemId}. ${
+      IDGROUP.has(itemKey(v.r.name)) ? `${IDGROUP.get(itemKey(v.r.name)).length} different items carry this name. ` : ""
+      }The name is what classic EverQuest called this ID — EQL has edited some of these strings.">${esc(which)}</span></span>` : "";
+    return `<td class="iv-item">${span}${idl}${badges}${spareChips(v)}</td>`;
   } },
   { k: "qty", h: "Qty", d0: -1, key: v => v.r.count > 1 ? v.r.count : null, cell: v => `<td class="iv-n">${v.r.count > 1 ? v.r.count : ""}</td>` },
   { k: "quests", h: "Quests", d0: -1, key: v => v.quests.length || null, cell: v => `<td class="iv-q">${invQuestsCell(v)}</td>` },
@@ -1657,6 +1685,24 @@ function haveLoose(have) {
   return ix;
 }
 // how many of a WIKI-named item the player holds: exact, then article-stripped
+/* Which of the same-named items you actually hold, by client item ID.
+
+   The DUMP only. The log prints names and never IDs, so a coin looted since
+   the last export raises the count without saying which coin it was — see
+   unidentified() below, which says so rather than guessing. */
+function heldIds() {
+  const s = new Set();
+  for (const r of INV.rows || []) if (r.itemId && IDLABEL.has(r.itemId)) s.add(r.itemId);
+  return s;
+}
+/* Copies of `name` in hand that the dump can't put an ID on: looted since the
+   export, or in a bag the export dropped. The number of pins we cannot honestly
+   tick. */
+function unidentified(have, name, ids) {
+  const held = heldIds();
+  const known = ids.filter(id => held.has(id)).length;
+  return Math.max(0, heldCount(have, name) - known);
+}
 function heldCount(have, name) {
   const exact = have.get(itemKey(name)) ?? have.get(itemKey(stripDecor(name)));
   if (exact !== undefined) return exact;
@@ -1751,9 +1797,20 @@ function compsFor(q, have) {
       : undefined;
     const states = mks.map(st2 => stStateOf.get(st2)).filter(Boolean);
     const lk = states.length > 0 && states.every(s2 => !s2.done && !s2.can);
+    /* Ten `Old Silver Coin` is one row wanting ten, and it used to bucket into
+       all ten cities — so a coin already in the bank still put its city on the
+       list. Where every producing step is pinned to a specific item ID, the
+       row goes ONLY to the cities whose own coin is still missing, and the
+       walk is the five swims you actually have left. Falls back to the item's
+       global sources whenever the pinning is partial: a half-pinned set would
+       hide a zone that is genuinely still needed. */
+    const pins = mks.filter(st2 => st2.iid && st2.z);
+    const zs = pins.length > 1 && pins.length === mks.length
+      ? [...new Set(pins.filter(st2 => !(stStateOf.get(st2) || {}).done).map(st2 => st2.z))]
+      : null;
     rows.set(k, { n, want: w, have: held(n), fr: q.from && q.from[n],
                   ...(st ? { st } : {}), ...(lk ? { lk: true } : {}),
-                  ...(via ? { via } : {}) });
+                  ...(zs && zs.length ? { zs } : {}), ...(via ? { via } : {}) });
   };
   const expand = (n, w, depth, via) => {
     const k = itemKey(n);
@@ -1790,9 +1847,13 @@ function mergePlans(plans) {
         // claim the chain (same-named items are sometimes different items) —
         // and it hides only when EVERY quest that wants it says locked
         if (!cur.st !== !c.st) cur.st = undefined;
+        // pinned zones survive pooling only if BOTH quests pin them; one quest
+        // that reads the item's global sources needs all of them
+        if (!cur.zs !== !c.zs) cur.zs = undefined;
+        else if (cur.zs && c.zs) cur.zs = [...new Set([...cur.zs, ...c.zs])];
         cur.lk = cur.lk && c.lk;
       }
-      else merged.set(k, { n: c.n, want: c.want, have: c.have, st: c.st,
+      else merged.set(k, { n: c.n, want: c.want, have: c.have, st: c.st, zs: c.zs,
                            lk: !!c.lk, quests: new Map([[name, rew]]) });
     }
   }
@@ -1917,11 +1978,31 @@ function stepState(q, have) {
     const madeNew = (st.out || []).some(([n]) => !(st.tool || []).includes(n));
     done.set(st.i, consumerDone || logged(st) || ((st.in || st.tool) && madeNew ? outsHeld(st) : false));
   }
+  /* Pins the data can name: a step whose item ID the build pinned (`iid`) is
+     done when THAT ID is in the dump, never when some same-named item is.
+     Ten `Old Silver Coin` are ten different items; holding Azia, Beza, Caza,
+     Dena and Geza used to tick the first five pins in step order, which said
+     Ena was done and Geza wasn't — exactly backwards, and it sent you to
+     Grobb for a coin already in the bank. */
+  const idHeld = heldIds();
+  const pinned = new Set();
+  const pinnedItems = new Map();     // item name -> every ID pinned for it
+  for (const st of steps) {
+    if (!st.iid || isNote(st)) continue;
+    pinned.add(st.i);
+    if (!done.get(st.i)) done.set(st.i, idHeld.has(st.iid));
+    const n = (st.out && st.out[0] && st.out[0][0]) || null;
+    if (n) { if (!pinnedItems.has(n)) pinnedItems.set(n, []); pinnedItems.get(n).push(st.iid); }
+  }
+  // copies in hand the dump can't name — looted since the export. Counted, not
+  // guessed at: ticking an arbitrary pin is how the old pooling got it wrong.
+  let unnamed = 0;
+  for (const [n, ids] of pinnedItems) unnamed += unidentified(have, n, ids);
   // pooled world pickups: the first `held` pins of an item count as done
   const pools = new Map();
   for (const st of steps) {
     if (st.in || st.tool || !(st.out || []).length) continue;
-    if (done.get(st.i)) continue;
+    if (done.get(st.i) || pinned.has(st.i)) continue;
     const n = st.out[0][0];
     if (!pools.has(n)) pools.set(n, []);
     pools.get(n).push(st);
@@ -1951,7 +2032,7 @@ function stepState(q, have) {
     (finalGive.pre || []).every(i => done.get(i));
   const real = states.filter(s => !s.note);
   for (const [k, v] of gained) if (v <= 0) gained.delete(k);
-  return { states, next: next ? next.st : null, handinReady, gained,
+  return { states, next: next ? next.st : null, handinReady, gained, unnamed,
            doneN: real.filter(s => s.done).length, total: real.length,
            finished: real.length > 0 && real.every(s => s.done) };
 }
@@ -1977,6 +2058,7 @@ function stepsHtml(q, ss) {
   return `<div class="qsteps">
     ${ss.finished ? `<div class="qsteps__done dim">✓ all ${ss.total} steps done${seen ? ` · ${seen}` : ""}</div>`
       : ss.doneN ? `<div class="qsteps__done dim">✓ ${ss.doneN} of ${ss.total} steps done — from the bag${seen ? `, and the ${seen}` : ""}</div>` : ""}
+    ${ss.unnamed ? `<div class="qsteps__done dim">${ss.unnamed} more in hand than the dump can name — several items here share one name, and only the export carries the ID that tells them apart. Run /outputfile inventory to place ${ss.unnamed === 1 ? "it" : "them"}.</div>` : ""}
     <ul class="qcomps">${doable.map(s => stepLine(s.st, "is-can")).join("")}</ul>
     ${locked.length ? `<button class="qparts__toggle" data-steps="${esc(q.t)}">${open ? "▾" : "▸"}
       ${locked.length} later step${locked.length === 1 ? "" : "s"} — locked until the ones above are done</button>
@@ -2090,7 +2172,9 @@ function zoneBuckets(rows) {
     if (r.lk) continue; // chain-locked: not doable yet, the checklist shows why
     // chain-made rows live where their hand-in happens, not where the item's
     // global src points (which can be a same-named different item)
-    const zs = r.st && r.st.z ? [r.st.z] : bucketsFor(r.n);
+    // r.zs: the item's steps are pinned to item IDs, so only the zones whose
+    // own copy is still missing count (see compsFor)
+    const zs = r.st && r.st.z ? [r.st.z] : r.zs && r.zs.length ? r.zs : bucketsFor(r.n);
     for (const z of zs) {
       if (!by.has(z)) by.set(z, []);
       by.get(z).push(r);
