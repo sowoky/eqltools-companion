@@ -195,6 +195,30 @@ function createMainWindow() {
     console.log("[harness] renderer never signalled ready — running anyway");
     const f = harnessRun; harnessRun = null; f();
   }, 15000);
+  /* A window that never got its document is the "blank on the first boot after
+     an update, fine once you close and reopen it" report (Kyle, 2026-08-16).
+     The tab bar is static markup in index.html, so a renderer that merely threw
+     still paints chrome — a BLANK window means the load itself failed or the
+     renderer process died, and nothing here was listening for either. Both are
+     recoverable by loading again, which is all that closing and reopening did.
+
+     Bounded, and never on a user-driven navigation (errorCode -3 is an aborted
+     load): a reload loop against a genuinely missing file would spin forever. */
+  let reloads = 0;
+  const recover = (why) => {
+    if (!mainWin || mainWin.isDestroyed() || reloads >= 3) return;
+    reloads++;
+    console.log(`[main] renderer ${why} — reload ${reloads}/3`);
+    setTimeout(() => {
+      if (mainWin && !mainWin.isDestroyed())
+        mainWin.loadFile(path.join(__dirname, "renderer", "index.html"));
+    }, 400 * reloads);
+  };
+  mainWin.webContents.on("did-fail-load", (_e, code, desc, url, isMainFrame) => {
+    if (isMainFrame && code !== -3) recover(`failed to load (${code} ${desc} ${url})`);
+  });
+  mainWin.webContents.on("render-process-gone", (_e, details) => recover(`process gone (${details.reason})`));
+  mainWin.webContents.on("did-finish-load", () => { reloads = 0; });
   mainWin.on("closed", () => { mainWin = null; app.quit(); });
 }
 

@@ -5606,4 +5606,15 @@ async function main() {
     if (zh) { const k = zh.dataset.zone; EXPANDED.has(k) ? EXPANDED.delete(k) : EXPANDED.add(k); renderTracker(); }
   });
 }
-main();
+/* main() builds every index and wires every listener before anything is
+   interactive, so a throw in it leaves the static chrome painted and the whole
+   app dead — with nothing on screen saying so, and no way to tell that apart
+   from a window that never loaded at all. Say it, in the page. */
+main().catch(err => {
+  console.error("companion: startup failed", err);
+  const box = document.createElement("div");
+  box.style.cssText = "padding:16px;margin:16px;border:1px solid var(--warn,#c66);border-radius:6px;font:13px/1.5 system-ui";
+  box.innerHTML = `<b>The app failed to start.</b><br>Close and reopen it. If it keeps happening, this is the reason:<br>
+    <code style="display:block;margin-top:8px;white-space:pre-wrap">${String((err && err.stack) || err).slice(0, 600).replace(/[<&]/g, c => (c === "<" ? "&lt;" : "&amp;"))}</code>`;
+  document.body.prepend(box);
+});
