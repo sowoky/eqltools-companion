@@ -495,6 +495,29 @@
     return { give: !nd, src: "item", clash: mark != null && mark !== nd };
   }
 
+  /* ── the reward in your hands ────────────────────────────────────────────
+     A third witness to a turn-in, and the only one that can speak for a class
+     whose unlock was granted at creation or bought with a token: the client
+     force-marks every criterion under those, so the achievement record says
+     nothing about them (`_shared/achievements.js`, `trust`).
+
+     Holding a reward means the turn-in happened. Across all 95: no reward is a
+     component of another test, none is on the island drop table, none is paid
+     by two tests, and gear-data has no mob dropping one — the giver is the only
+     source. 92 say NO DROP or No Trade in their own item window, so nobody
+     handed you one either. The two tradeable rewards (Bloody Griffon-Hide Wrist
+     Guard, Sphinx Heart Amulet) and the one with no item window at all (Azarack
+     Skin Wristwraps) prove nothing and are not read; `check_sky_drop.mjs`
+     asserts all of it against sky.json.
+
+     Positive only. A reward can be destroyed, or sit in one of the storage rows
+     the export drops by slot position (KNOWN-ISSUES #32) — so NOT holding one
+     says nothing at all. */
+  function rewardProves(rec) {
+    if (!rec || !(rec.fl || rec.sb)) return false;
+    return (rec.fl || []).some((f) => NO_GIVE[f]);
+  }
+
   /* ── which tests to skip ──────────────────────────────────────────────────
      **Doing a test the first time is not optional.** A class's Primary Class
      Unlock is exactly its Sky tests — one "Obtain <reward>" criterion each, all
@@ -646,6 +669,6 @@
     stream, parseLog, parseInv, invCount, invWhere,
     soldCount, vendorCount, goneCount, held, logHeld, logFloor, reconcile,
     completions, needsOf, testState, bossBoard,
-    skyIndex, disposal, skipRows, cleanoutRows,
+    skyIndex, disposal, rewardProves, skipRows, cleanoutRows,
   };
 })();

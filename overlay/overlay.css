@@ -242,7 +242,7 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unlock first
 .osk-note { color: #8d84a8; font-size: 10.5px; padding: 2px 0; }
 .osk-none { color: #8d84a8; padding: 4px 0; }
 .osg { border-bottom: 1px solid rgba(255,255,255,.07); padding-bottom: 3px; margin-bottom: 3px; }
-.osg__h { display: flex; gap: 5px; align-items: baseline; cursor: pointer; padding: 2px 0; }
+.osg__h { display: flex; gap: 5px; align-items: baseline; cursor: pointer; padding: 2px 0; flex-wrap: wrap; }
 .osg__h:hover { color: #f6dfa0; }
 .osg__k { color: #8d84a8; width: 7px; }
 .osg__n { color: #e7b94e; font-weight: 600; }
@@ -251,12 +251,16 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unlock first
 .ost { padding: 1px 0 3px 7px; }
 .ost.is-ready { border-left: 2px solid #c9952a; padding-left: 5px; }
 .ost.is-done .ost__n { color: #b6aecb; font-weight: 400; }
-.ost__h { display: flex; gap: 5px; align-items: baseline; }
+/* wraps rather than crushing the state word: "first time" is longer than the
+   "ready" this row used to say, and the window goes down to 180px */
+.ost__h { display: flex; gap: 5px; align-items: baseline; flex-wrap: wrap; }
 .ost__n { font-weight: 600; }
 .ost__say { color: #8d84a8; }
 .ost__say b { color: #f6dfa0; font-weight: 600; }
-.ost__st { margin-left: auto; color: #e7b94e; font-weight: 700; }
+.ost__st { margin-left: auto; color: #e7b94e; font-weight: 700; white-space: nowrap; }
 .ost__st.is-done { color: #9ccc9c; font-weight: 400; }
+/* a repeat is handed in the same way ready is, but the reward is already yours */
+.ost__st.is-rep { color: #9ccc9c; font-weight: 700; }
 .ost__st.is-miss { color: #8d84a8; font-weight: 400; }
 .ost__rew { color: #8d84a8; padding-left: 13px; }
 .ost__rew .ri { color: #b6aecb; }

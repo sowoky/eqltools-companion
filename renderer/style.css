@@ -506,6 +506,7 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .skg__tally { font-size: 12px; color: var(--ink-soft); margin-left: auto; }
 .sk-n { font-weight: 700; }
 .sk-n--ready { color: var(--gold-bright); }
+.sk-n--rep { color: var(--wiki); }
 .sk-n--done { color: var(--wiki); }
 .skg__b { padding: 2px 10px 8px; border-top: 1px solid var(--line-soft); }
 .sk-orphan { font-size: 12px; color: var(--ink-dim); margin: 6px 0; max-width: 78ch; }
@@ -523,6 +524,9 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .sk-st { font-size: 11px; padding: 0 6px; border-radius: 3px; border: 1px solid var(--line); color: var(--ink-dim); }
 .sk-st--ready { background: var(--gold); border-color: var(--gold); color: var(--bg-deep); font-weight: 700; }
 .sk-st--done { color: var(--wiki); border-color: var(--wiki-line); }
+/* A repeat can be handed in right now, like ready, but the reward is already
+   yours — so it reads in the finished colour, not the gold that means "do it". */
+.sk-st--rep { color: var(--wiki); border-color: var(--wiki); font-weight: 700; }
 
 .skt__items { list-style: none; padding: 0; margin: 4px 0 0 2px; }
 .skp { display: flex; align-items: baseline; gap: 6px; padding: 2px 0; font-size: 13px; flex-wrap: wrap; }
@@ -664,8 +668,6 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .unl__tick { color: var(--ink-dim); width: 11px; }
 .unl__steps li.is-done .unl__tick { color: var(--gold); }
 .unl__note { padding: 2px 10px 8px; font-size: 12px; max-width: 78ch; }
-/* the achievement record's own tick — a different witness from the log's */
-.skt__done--ach { color: var(--ink-soft); font-weight: 600; }
 
 /* ── Valet tab ─────────────────────────────────────────────────────────────
    Four cards, one slot at a time, then the fetch list. The card is the button:

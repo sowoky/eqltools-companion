@@ -3029,6 +3029,10 @@ function skyModel() {
   for (const code of classes) {
     const c = SKYD.classes[code];
     const comp = SKY.completions(SKYD, led, code);
+    // Can this class's achievement record be read at all? A granted or
+    // token-bought unlock has every criterion force-marked, so it answers
+    // neither way and no row under it may claim a first run.
+    const achOk = !!(ACH_SKY[code] && ACH_SKY[code].trusted);
     const tests = c.tests.map(t => {
       const items = t.items.map(i => {
         const locs = skyLocs(locIdx, i.n);
@@ -3046,15 +3050,27 @@ function skyModel() {
         n: r, short: r.replace("Wind Rune ", ""), need: 1, have: skyHave(have, r).n,
       }));
       const done = comp.byTest[t.n] || 0;
-      /* The second witness. `done` is what this log saw you hand over; `ach`
-         is the client's own achievement record saying you hold the reward —
-         the only evidence that survives from before the app was installed.
-         Both are measurements, neither is a player's mark, and they are kept
-         apart so a row can say which one it is standing on. Either one means
-         the test is behind you, so both suppress "ready". */
+      /* Three witnesses to one turn-in, kept apart so a row can say which one
+         it is standing on. None is a player's mark; all three are measurements.
+
+           done  this log watched you hand it over
+           ach   the client's achievement record lists the reward as obtained
+           rew   the reward is in your dump, and only this giver hands it out
+                 (sky-core `rewardProves`)
+
+         Any of them puts the test behind you, so all three suppress "ready". */
       const ach = !!(ACH_SKY[code] && ACH_SKY[code].byTest[t.n]);
+      const rew = !!t.reward && SKY.rewardProves(skyRec(t.reward))
+        && locIdx.has(itemKey(t.reward));
+      const fin = done > 0 || ach || rew;
+      /* The negative. Nothing measures "never handed in" — the log only starts
+         where it starts and the dump only says what you hold now. The one
+         source that can is a class unlock whose criteria are readable: an
+         unflagged `Obtain <reward>` under it means you have never had that
+         reward. Without that, a row with no witness is unknown, not new. */
+      const never = !fin && achOk;
       const skip = skySkipped(code, t.n);
-      const st = SKY.testState(t, done + (ach ? 1 : 0), skip, n => skyHave(have, n, locIdx.has(itemKey(n))).n);
+      const st = SKY.testState(t, fin ? Math.max(done, 1) : 0, skip, n => skyHave(have, n, locIdx.has(itemKey(n))).n);
       /* Progress on a test means a COMPONENT of it. Runes are generic — one
          Wind Rune Dena feeds seven different tests, so counting it as progress
          listed all seven as started off a single drop. */
@@ -3063,18 +3079,21 @@ function skyModel() {
       return {
         code, full: t.n, n: t.n.replace(SKY_CLASS[code] + " ", ""),
         say: t.say || "", reward: t.reward || "", items, rune,
-        done, ach, ready: st.ready, missing: st.missing.length, held,
+        done, ach, rew, fin, never, ready: st.ready, missing: st.missing.length, held,
         skip, track: skyTracked(code, t.n),
         need: items.length + rune.length,
       };
     });
-    const nDone = tests.filter(t => t.done > 0 || t.ach).length;
+    const nDone = tests.filter(t => t.fin).length;
     const nReady = tests.filter(t => t.ready).length;
-    const nPartial = tests.filter(t => !t.ready && !t.done && t.held > 0).length;
+    const nRepeat = tests.filter(t => t.fin && t.missing === 0 && !t.skip).length;
+    const nPartial = tests.filter(t => !t.ready && !t.fin && t.held > 0).length;
     tot.tests += tests.length; tot.done += nDone; tot.ready += nReady; tot.partial += nPartial;
-    out.push({ code, name: SKY_CLASS[code], giver: c.giver || "", tests, nDone, nReady, nPartial, orphan: comp.orphan });
+    out.push({ code, name: SKY_CLASS[code], giver: c.giver || "", tests,
+               nDone, nReady, nRepeat, nPartial, orphan: comp.orphan,
+               achOk, achWhy: (ACH_SKY[code] && ACH_SKY[code].whyText) || "" });
   }
-  return { classes: out, tot, isles: skyBossModel(out) };
+  return { classes: out, tot, ach: Object.keys(ACH_SKY).length > 0, isles: skyBossModel(out) };
 }
 
 /* ── the same board, arranged by what dropped it ──────────────────────────
@@ -3103,7 +3122,7 @@ function skyBossModel(classes) {
     let e = idx.get(i.n);
     if (!e) idx.set(i.n, e = { have: i.have, src: i.src, locs: i.locs, uses: [] });
     e.uses.push({ code: g.code, cls: g.name, giver: g.giver, test: t.full,
-                  short: t.n, reward: t.reward, fin: t.done > 0 || t.ach,
+                  short: t.n, reward: t.reward, fin: t.fin,
                   skip: t.skip, track: t.track });
   }
   const have = haveMap();
@@ -3134,10 +3153,9 @@ function skyBossModel(classes) {
 // One rule, both surfaces: "ready" is everything in hand, "held" adds the tests
 // you have started, "all" is the other 90 you have not.
 function skyKeep(t, show, hideDone) {
-  const fin = t.done > 0 || t.ach;   // either witness closes a test
-  if (hideDone && fin) return false;
-  if (show === "ready") return t.ready || (fin && !hideDone && t.missing === 0);
-  if (show === "held") return t.ready || t.held > 0 || fin;
+  if (hideDone && t.fin) return false;
+  if (show === "ready") return t.ready || (t.fin && !hideDone && t.missing === 0);
+  if (show === "held") return t.ready || t.held > 0 || t.fin;
   return true;
 }
 function skyMatch(g, t, q) {
@@ -3173,7 +3191,7 @@ function skyItemSpan(name) {
    carry ✓N / ✓ recorded already; a use line and the buys cell print the reward
    without a state, so the mark rides the name (site parity, 2026-08-16). */
 function skyGot(u) {
-  return u && u.fin ? `<span class="sk-got" title="Already yours — turned in, or your achievement record lists it">✓</span>` : "";
+  return u && u.fin ? `<span class="sk-got" title="Already yours — you turned it in, your achievement record lists it, or it is in your dump">✓</span>` : "";
 }
 function skyPieceHtml(i) {
   const has = i.have >= i.need;
@@ -3202,15 +3220,30 @@ function skyRuneHtml(r) {
     `<span class="skp__ct" title="${esc(SKY_SRC_NOTE.log)}">${r.have}/1</span></li>`;
 }
 
+/* Which turn-in this would be — the question you are actually asking standing
+   at the giver (Kyle, 2026-08-16: "i need to know if the turn in is a repeat or
+   first time"). The first run of a test is what the class unlock counts; a
+   repeat only merges a duplicate reward into the copy you hold to raise its
+   upgrade tier.
+
+   Whichever witness answered says so on hover, because they are not equally
+   direct: a log turn-in was watched, an achievement flag and a reward in the
+   bank are inferences from what you ended up holding. `ready` is what is left
+   when nothing can settle it — everything in hand, no turn-in seen, and no
+   readable achievement record to say you have never had the reward. */
+const skyWitness = t =>
+  t.done > 0 ? `Your log shows ${t.done} turn-in${t.done === 1 ? "" : "s"} of this test`
+  : t.ach ? `Your achievement record lists ${t.reward} as obtained — that turn-in happened before this log`
+  : t.rew ? `${t.reward} is in your inventory dump, and this test is the only place it comes from`
+  : "";
 function skyStatus(t) {
   if (t.skip) return `<span class="sk-st sk-st--skip">skipped</span>`;
-  if (t.ready) return `<span class="sk-st sk-st--ready">ready</span>`;
-  const fin = t.done > 0 || t.ach;
-  if (fin && t.missing === 0) return `<span class="sk-st sk-st--ready">can repeat</span>`;
-  // "done" when only the achievement witnessed it: the turn-in happened before
-  // this log, so calling it "turned in" would imply a trade we never saw.
-  if (t.done > 0) return `<span class="sk-st sk-st--done">turned in</span>`;
-  if (t.ach) return `<span class="sk-st sk-st--done">done</span>`;
+  if (t.fin && t.missing === 0)
+    return `<span class="sk-st sk-st--rep" title="${esc(skyWitness(t))}. Handing it in again merges a duplicate into the copy you hold and raises its upgrade tier.">repeat</span>`;
+  if (t.fin) return `<span class="sk-st sk-st--done" title="${esc(skyWitness(t))}">done</span>`;
+  if (t.ready) return t.never
+    ? `<span class="sk-st sk-st--ready" title="Your achievement record doesn't list ${esc(t.reward)}, so this one is still ahead of you. The first run is what the class unlock counts.">first time</span>`
+    : `<span class="sk-st sk-st--ready" title="Everything is in hand. Nothing here has seen a turn-in of this test, and without a readable achievement record that is not the same as never.">ready</span>`;
   return `<span class="sk-st sk-st--miss">missing ${t.missing}</span>`;
 }
 
@@ -3402,16 +3435,23 @@ function renderSky(model) {
     // number twice
     const tally = [
       g.nReady ? `<b class="sk-n sk-n--ready">${g.nReady}</b> ready` : "",
-      // "done", not "turned in": this count now folds in tests only the
-      // achievement record witnessed, which this log never saw handed over.
+      g.nRepeat ? `<b class="sk-n sk-n--rep">${g.nRepeat}</b> repeat` : "",
+      // "done", not "turned in": this count folds in tests the log never saw
+      // handed over, witnessed by the achievement record or by the reward.
       g.nDone ? `<b class="sk-n sk-n--done">${g.nDone}</b> done` : "",
       g.nPartial ? `${g.nPartial} started` : "",
       `${g.tests.length} tests`,
     ].filter(Boolean).join(" · ");
+    /* A granted or token-bought unlock force-marks its criteria, so nothing
+       under this giver can tell a first run from a repeat unless the log or the
+       reward itself says so. Once per class, not once per row. */
+    const blind = !g.achOk && m.ach
+      ? `<p class="sk-orphan">${esc(g.name)} was ${esc(g.achWhy || "already unlocked")}, so its achievement record marks every test complete and can't say which you ran. A turn-in in this log, or the reward in your dump, still can.</p>`
+      : "";
     const orphan = g.orphan
       ? `<p class="sk-orphan">${g.orphan} completed trade${g.orphan === 1 ? "" : "s"} with ${esc(g.giver)} matched no single test — that is what a turn-in split across two trades looks like.</p>`
       : "";
-    const tests = rows.map(t => `<div class="skt${t.ready ? " is-ready" : ""}${t.done || t.ach ? " is-done" : ""}${t.skip ? " is-skip" : ""}${t.track ? " is-track" : ""}">
+    const tests = rows.map(t => `<div class="skt${t.ready ? " is-ready" : ""}${t.fin ? " is-done" : ""}${t.skip ? " is-skip" : ""}${t.track ? " is-track" : ""}">
       <div class="skt__h">
         <button type="button" class="skt__star${t.track ? " on" : ""}" data-skytrack="${g.code}" data-test="${esc(t.full)}"
           title="${t.track ? "Tracking this one — click to stop" : "Track this test: it stars here and joins the Tracked tab"}"
@@ -3419,8 +3459,10 @@ function renderSky(model) {
         <span class="skt__n">${esc(t.n)}</span>
         ${t.say ? `<span class="skt__say" title="Hail ${esc(g.giver)} and say this">say <code>${esc(t.say)}</code></span>` : ""}
         ${skyStatus(t)}
-        ${t.done ? `<span class="skt__done" title="Your log shows ${t.done} turn-in${t.done === 1 ? "" : "s"} of this test">✓${t.done}</span>` : ""}
-        ${t.ach && !t.done ? `<span class="skt__done skt__done--ach" title="Your achievement record says you obtained ${esc(t.reward)}; the turn-in happened before this log">✓ recorded</span>` : ""}
+        <!-- the COUNT, and only when there is one to give: a bare tick beside a
+             chip already reading "repeat" says the same thing twice, and which
+             witness answered is on that chip's hover -->
+        ${t.done ? `<span class="skt__done" title="${esc(skyWitness(t))}">✓${t.done}</span>` : ""}
         <span class="skt__rew">→ ${skyItemSpan(t.reward)}</span>
         <button type="button" class="skt__skip" data-skyskip="${g.code}" data-test="${esc(t.full)}"
           title="${t.skip ? "Un-skip: count this one again" : "Never doing this one — its pieces stop counting as needed"}">${t.skip ? "un-skip" : "skip"}</button>
@@ -3434,7 +3476,7 @@ function renderSky(model) {
         <span class="skg__giver">${esc(g.giver)}</span>
         <span class="skg__tally">${tally}</span>
       </button>
-      <div class="skg__b"${open ? "" : " hidden"}>${orphan}${tests}</div>
+      <div class="skg__b"${open ? "" : " hidden"}>${blind}${orphan}${tests}</div>
     </section>`;
   }).join("");
 
@@ -3466,6 +3508,9 @@ function renderSky(model) {
     if (age > 10 * 60 * 1000) bits.push(`Inventory dump is ${age > 3600e3 ? Math.round(age / 3600e3) + "h" : Math.round(age / 60000) + "m"} old — <code>/out inventory</code> to refresh.`);
   }
   if (SKYL.led && !SKYL.led.sawSky) bits.push("No Plane of Sky zone-in in this log — turn-ins from before it aren't counted.");
+  // Without it, a row with everything in hand can only say "ready": the log
+  // starts where it starts, so "no turn-in seen" is not "never turned in".
+  if (!m.ach) bits.push("No achievement record — that is the one source that can tell a first run from a repeat on a test you did before this log. Type <code>/outputfile achievements</code> in game.");
   banner.innerHTML = bits.join(" ");
   banner.hidden = !bits.length;
   retip();
@@ -3530,9 +3575,13 @@ function pushSky(model) {
   for (const g of m.classes) {
     if (!w.cls.includes(g.code)) continue;
     const tests = g.tests.filter(t => skyKeep(t, w.show, w.hideDone) && !t.skip).map(t => ({
-      // `ach` rides along so the overlay marks a pre-log completion the same
-      // way the tab does; an older overlay build just ignores the extra key.
-      n: t.n, say: w.say ? t.say : "", done: t.done, ach: t.ach, ready: t.ready,
+      /* `fin` and `never` are the repeat-or-first-time answer, resolved here
+         like everything else the widget draws; done/ach/rewHeld ride along so
+         the row can name the witness on hover. An older overlay build ignores
+         the extra keys and falls back to its own done/ach reading. `rew` below
+         is the reward ITEM — the witness flag can't share the name. */
+      n: t.n, say: w.say ? t.say : "", done: t.done, ach: t.ach, rewHeld: t.rew,
+      fin: t.fin, never: t.never, ready: t.ready,
       missing: t.missing, track: t.track,
       rew: skyRef(t.reward),
       items: t.rune.map(r => ({ ...skyRef(r.n), n: "Rune " + r.short, have: r.have, need: 1, rune: true, locs: [] }))
@@ -3545,14 +3594,19 @@ function pushSky(model) {
     // tracked tests lead their giver's fold, same rule as the boss board
     tests.sort((a, b) => (b.track - a.track) || (b.ready - a.ready));
     if (tests.length) groups.push({ code: g.code, name: g.name, giver: g.giver,
-                                    ready: tests.filter(t => t.ready).length, tests });
+                                    ready: tests.filter(t => t.ready).length,
+                                    repeat: tests.filter(t => t.fin && t.missing === 0).length,
+                                    // a granted unlock's record can't tell a
+                                    // first run from a repeat — say so once
+                                    blind: !g.achOk && m.ach ? (g.achWhy || "already unlocked") : "",
+                                    tests });
   }
   const drop = w.view === "drop" ? pushSkyDrops(m, w) : null;
   const p = { groups, view: w.view === "boss" ? "boss" : w.view === "drop" ? "drop" : "class",
               bosses: w.view === "boss" ? pushSkyBosses(m, w) : [],
               drop,
               ready: m.tot.ready, tests: m.tot.tests, done: m.tot.done,
-              loot: skyTotalNeed(m),
+              loot: skyTotalNeed(m), ach: m.ach,
               inv: INV.rows ? { age: INV.mtime ? Date.now() - INV.mtime : 0 } : null };
   const j = JSON.stringify(p);
   if (j !== lastSkyJson) { lastSkyJson = j; window.companion.sendSky(p); }
@@ -3705,9 +3759,11 @@ function skyDropModel() {
     if (!comp.has(code)) comp.set(code, SKY.completions(SKYD, SKYL.led, code));
     const done = comp.get(code).byTest[test.n] || 0;
     const ach = !!(ACH_SKY[code] && ACH_SKY[code].byTest[test.n]);
-    // times done, every witness — the achievement record proves one, the log
-    // may have watched more
-    return { done: Math.max(done, ach ? 1 : 0), logDone: done, ach,
+    const rew = !!test.reward && SKY.rewardProves(skyRec(test.reward))
+      && locIdx.has(itemKey(test.reward));
+    // times done, every witness — the record and the reward each prove one, the
+    // log may have watched more
+    return { done: Math.max(done, ach || rew ? 1 : 0), logDone: done, ach, rew,
              skip: skySkipped(code, test.n) };
   };
   const o = { top: SKD.top, unlockFirst: SKD.unlockFirst, have: hav,

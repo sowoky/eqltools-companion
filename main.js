@@ -492,10 +492,11 @@ function sendStatus(problem) {
    Two kinds ride this: `inventory` (what you are carrying, 3 s — it changes
    as you play) and `achievements` (what you have ever done, 30 s — it only
    changes when the player types the command, and it is the slower, bigger
-   file). The achievements FILENAME is inferred from /outputfile's own
-   convention and has not yet been seen on disk here, so the Unlocks tab also
-   offers a manual pick: a wrong guess must degrade to "browse for it", never
-   to a tab that stays silently empty. */
+   file). The achievements filename was a guess from /outputfile's convention
+   until a real one turned up on disk as `<Char>_<server>-Achievements.txt`
+   (2026-08-16), which is what this matches. The Unlocks tab keeps its manual
+   pick anyway: a wrong guess must degrade to "browse for it", never to a tab
+   that stays silently empty. */
 const DUMPS = {
   inv: { rx: /-Inventory\.txt$/i, ms: 3000, chan: "inv" },
   ach: { rx: /-Achievements\.txt$/i, ms: 30000, chan: "ach" },

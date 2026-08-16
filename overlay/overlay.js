@@ -839,6 +839,28 @@ function skyItemLi(it) {
   }
   return li;
 }
+/* Repeat or first time — the thing you are standing at the giver deciding
+   (Kyle, 2026-08-16: "i need to know if the turn in is a repeat or first
+   time"). The first run of a test is what the class unlock counts; a repeat
+   only merges a duplicate reward into the copy you hold, for one upgrade tier.
+
+   Three witnesses put a test behind you, all resolved in the app: a turn-in in
+   the log, the achievement record listing the reward, or the reward sitting in
+   your dump. `never` is the other direction and only a readable achievement
+   record can say it — so a row with everything in hand and nothing to settle it
+   keeps the old word, "ready", and says why on hover. */
+function skyState(t, fin) {
+  const seen = t.done > 0 ? `Your log shows ${t.done} turn-in${t.done === 1 ? "" : "s"}`
+    : t.ach ? "Your achievement record lists the reward"
+    : t.rewHeld ? "The reward is in your inventory dump" : "";
+  if (fin && t.missing === 0)
+    return `<span class="ost__st is-rep" title="${esc(seen)}. Handing it in again raises the reward's upgrade tier by one.">repeat</span>`;
+  if (fin) return `<span class="ost__st is-done" title="${esc(seen)}">done</span>`;
+  if (t.ready) return t.never
+    ? `<span class="ost__st" title="Your achievement record doesn't list this reward — the first run is what the class unlock counts.">first time</span>`
+    : `<span class="ost__st" title="Everything is in hand. Nothing has seen a turn-in of this one, which is not the same as never — the app's Sky tab says what's missing.">ready</span>`;
+  return `<span class="ost__st is-miss">${t.missing} left</span>`;
+}
 function renderSky() {
   skyEl.innerHTML = "";
   if (!SKYP || !SKYP.groups) {
@@ -865,6 +887,14 @@ function renderSky() {
     w.textContent = `Inventory is ${m < 60 ? `${m}m` : `${Math.round(m / 60)}h`} old — /out inventory to refresh`;
     skyEl.append(w);
   }
+  // the only source that can tell a first run from a repeat on a test you did
+  // before this log started
+  if (SKYP.ach === false) {
+    const w = document.createElement("div");
+    w.className = "osk-note";
+    w.textContent = "No achievement record — /outputfile achievements to see which tests are behind you";
+    skyEl.append(w);
+  }
   if (SKYP.view === "boss") { renderSkyBoss(); return; }
   if (SKYP.view === "drop") { renderSkyDrops(); return; }
   if (!SKYP.groups.length) {
@@ -881,24 +911,32 @@ function renderSky() {
     h.className = "osg__h"; h.dataset.osky = g.code;
     const open = !SKY_CLOSED.has(g.code);
     h.title = `${g.tests.length} test${g.tests.length === 1 ? "" : "s"} shown for ${g.name}`;
+    // what you can hand in at this giver right now, split by which kind it is
+    const cnt = [g.ready ? `${g.ready} ready` : "", g.repeat ? `${g.repeat} repeat` : ""]
+      .filter(Boolean).join(" · ") || `${g.tests.length} test${g.tests.length === 1 ? "" : "s"}`;
     h.innerHTML = `<span class="osg__k">${open ? "▾" : "▸"}</span>` +
       `<span class="osg__n">${esc(g.name)}</span><span class="osg__g">${esc(g.giver)}</span>` +
-      `<span class="osg__c">${g.ready ? `${g.ready} ready` : `${g.tests.length} test${g.tests.length === 1 ? "" : "s"}`}</span>`;
+      `<span class="osg__c">${cnt}</span>`;
     sec.append(h);
     if (open) {
+      /* This class was unlocked without running the tests, so the client marks
+         every one of its criteria complete and the record can't tell a first
+         run from a repeat. Once per giver, not once per row. */
+      if (g.blind) {
+        const b = document.createElement("div");
+        b.className = "osk-note";
+        b.textContent = `${g.name} was ${g.blind} — its record can't say which of these you've run`;
+        sec.append(b);
+      }
       for (const t of g.tests) {
+        const fin = t.fin != null ? t.fin : (t.done > 0 || t.ach);
         const d = document.createElement("div");
-        d.className = "ost" + (t.ready ? " is-ready" : "") + (t.done || t.ach ? " is-done" : "");
+        d.className = "ost" + (t.ready ? " is-ready" : "") + (fin ? " is-done" : "");
         const th = document.createElement("div");
         th.className = "ost__h";
         th.innerHTML = `<span class="ost__n">${esc(t.n)}</span>` +
           (t.say ? `<span class="ost__say">say <b>${esc(t.say)}</b></span>` : "") +
-          (t.ready ? `<span class="ost__st">ready</span>`
-            : t.done ? `<span class="ost__st is-done">✓${t.done}</span>`
-            // The achievement record witnessed it, this log didn't — no count
-            // to print, so the tick stands alone.
-            : t.ach ? `<span class="ost__st is-done">✓</span>`
-            : `<span class="ost__st is-miss">${t.missing} left</span>`);
+          skyState(t, fin);
         d.append(th);
         const ul = document.createElement("ul");
         ul.className = "oskl-list";

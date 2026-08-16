@@ -88,6 +88,33 @@ if (process.argv.includes("--sky")) {
   L.push(`${at(m += 1)} You complete the trade with ${sky.classes.CLR.giver}.`);
   bags.push(["General 4", wrong.items[0].n]);
 
+  /* 5. the same test's pieces looted AGAIN after its turn-in. This is the row
+        that has to read "repeat": finished, and a full set in hand for another
+        run — the only difference from "first time" being a witness. */
+  done.items.forEach((it, i) => { loot(it.n, it.mob || "a spiroc guardian"); bags.push([`Bank1-Slot${i + 1}`, it.n]); });
+  loot(done.rune[0], "Protector of Sky", " and stored it in your currency");
+
+  /* 6. everything in hand for a class whose unlock was bought with a token
+        (ENC below). Its record marks every criterion complete, so nothing can
+        say whether this run is the first — the row keeps saying "ready". */
+  const blind = pick("ENC", 0);
+  blind.items.forEach((it, i) => { loot(it.n, it.mob || "a spiroc guardian"); bags.push([`Bank2-Slot${i + 1}`, it.n]); });
+  loot(blind.rune[0], "Protector of Sky", " and stored it in your currency");
+
+  /* 7. a reward sitting in the bank for a class unlocked at creation (MNK),
+        where the achievement record is equally blind and the log never saw the
+        turn-in. sky-core's `rewardProves` is the only witness left, and the row
+        still has to come out done. */
+  const proven = sky.classes.MNK.tests.find((t) => {
+    const k = t.reward && sky.names[t.reward.toLowerCase()];
+    const rec = k ? sky.items[k] : null;
+    // sky-core's rewardProves, spelled out: a fixture generator loading the
+    // module it feeds would drag in gear-score and the whole attribute chain
+    return !!rec && !!(rec.fl || rec.sb)
+      && (rec.fl || []).some((f) => f === "no_drop" || f === "no_trade");
+  });
+  if (proven) bags.push(["Bank3-Slot1", proven.reward]);
+
   writeFileSync(out, L.join("\n") + "\n");
   const inv = ["Location\tName\tID\tCount\tSlots",
     "Charm\tA Rabbit Foot\t1001\t1\t0",
@@ -141,8 +168,10 @@ if (process.argv.includes("--sky")) {
   console.log(`sky scenario -> ${out} (${L.length} lines) and ${invOut} (${bags.length} pieces)`);
   console.log(`  achievements -> ${achOut}`);
   console.log(`  backfill:  RNG 2 tests (open unlock) · ENC/MNK unlocked but force-marked, must import 0`);
-  console.log(`  turned in: BER ${done.n}`);
-  console.log(`  ready:     ${readyTests.join(" / ")}`);
+  console.log(`  turned in: BER ${done.n} — and re-looted, so it reads "repeat"`);
+  console.log(`  first time:${readyTests.join(" / ")}`);
+  console.log(`  unknown:   ENC ${blind.n} (token unlock — in hand, but nothing can say it's the first)`);
+  if (proven) console.log(`  reward:    MNK ${proven.n} done on ${proven.reward} in the bank alone`);
   console.log(`  autosold:  ${eaten.items[0].n} (wanted by SHM ${eaten.n})`);
 } else if (process.argv.includes("--fixture")) {
   const src = join(repo, "pipeline", "tests", "fixtures", "eqlog_Testchar_oggok.txt");
