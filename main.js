@@ -40,7 +40,12 @@ const REMOTE_PAGES = {
   "log-parser/data/wiki-mobs.json": "https://eqltools.com/log-parser/data/wiki-mobs.json",
   "spellmaster/data/spells.json": "https://eqltools.com/spellmaster/data/spells.json",
 };
+/* Refresh cadence, per FILE. A file that fetched, parsed and cached is good
+   for REFRESH_MS; one that didn't (offline, 404, an error page) is tried again
+   after REFRESH_RETRY_MS. One clock for the whole pass meant a failed or
+   partial refresh stamped itself as done and nothing retried for twelve hours. */
 const REFRESH_MS = 12 * 3600 * 1000;
+const REFRESH_RETRY_MS = 15 * 60 * 1000;
 
 const TAIL_POLL_MS = 1000;
 const BOOTSTRAP_CAP = 40 * 1024 * 1024; // same tail cap as the /kills page
@@ -394,20 +399,43 @@ function pollTail() {
        ingest high-water mark keeps already-counted kills from recounting. */
     t.offset = 0; t.remainder = "";
   }
-  if (st.size > t.offset) readAppended(activeFile, t, st.size);
+  if (st.size > t.offset) {
+    const lines = readAppended(activeFile, t, st.size);
+    if (lines.length) mainWin.webContents.send("log:lines", { file: path.basename(activeFile), lines });
+  }
 }
 
-// ≤40 MB tail of a log file, first partial line dropped. Throws on fs errors.
-function readTailText(file, size) {
-  const start = Math.max(0, size - BOOTSTRAP_CAP);
+/* Bytes [start, end) of a file — exactly the bytes that were there, which can
+   be fewer than asked: the file can shrink between the caller's stat and this
+   read, and a network drive can hand back a short read. Never pad to the
+   requested length: Buffer.alloc zero-fills, so returning the whole buffer
+   after a short read injected NULs into the line stream, and a cursor advanced
+   to the stat's size then skipped real bytes for good. Throws on fs errors. */
+function readRange(file, start, end) {
   const fd = fs.openSync(file, "r");
-  const buf = Buffer.alloc(size - start);
-  fs.readSync(fd, buf, 0, buf.length, start);
-  fs.closeSync(fd);
-  let text = buf.toString("utf8");
-  if (start > 0) text = text.slice(text.indexOf("\n") + 1);
-  return text;
+  try {
+    const buf = Buffer.alloc(Math.max(0, end - start));
+    let n = 0;
+    while (n < buf.length) {
+      const got = fs.readSync(fd, buf, n, buf.length - n, start + n);
+      if (got <= 0) break; // EOF: the file is shorter than the stat promised
+      n += got;
+    }
+    return buf.subarray(0, n);
+  } finally { fs.closeSync(fd); }
 }
+
+/* ≤40 MB tail of a log file, first partial line dropped. `end` is the byte the
+   text runs to — where the appended-bytes cursor must start, and less than
+   `size` when the file shrank under us. Throws on fs errors. */
+function readTail(file, size) {
+  const start = Math.max(0, size - BOOTSTRAP_CAP);
+  const bytes = readRange(file, start, size);
+  let text = bytes.toString("utf8");
+  if (start > 0) text = text.slice(text.indexOf("\n") + 1);
+  return { text, end: start + bytes.length };
+}
+const readTailText = (file, size) => readTail(file, size).text;
 
 /* The holdings ledger (sky-core) wants the WHOLE log, not the last 40 MB: a
    quest item bought from a player six days ago is still yours, and the dump
@@ -436,8 +464,8 @@ function readHeadLines(file, end) {
 
 let bootstrapSeq = 0;
 function bootstrap(file, size) {
-  let text = "";
-  try { text = readTailText(file, size); }
+  let text = "", end = size;
+  try { ({ text, end } = readTail(file, size)); }
   catch { activeFile = null; return; } // retry next poll rather than wedging on this file
   const seq = ++bootstrapSeq;
   const start = Math.max(0, size - BOOTSTRAP_CAP);
@@ -448,7 +476,7 @@ function bootstrap(file, size) {
   // onLines ignores a file it hasn't been bootstrapped on).
   readHeadLines(file, start > 0 ? start : 0).then((head) => {
     if (seq !== bootstrapSeq || !mainWin || activeFile !== file) return; // a newer file took over
-    tails.set(file, { offset: size, remainder: "" });
+    tails.set(file, { offset: end, remainder: "" });
     // the head ends where the tail text begins: the tail's first line was
     // already cut at a newline boundary, so nothing is read twice
     mainWin.webContents.send("log:bootstrap", { file: path.basename(file), text, head });
@@ -456,21 +484,18 @@ function bootstrap(file, size) {
   });
 }
 
+/* Advance a tail cursor over the bytes appended since t.offset and return the
+   whole lines they complete; the trailing partial line waits in t.remainder.
+   The cursor moves by what was READ, not by what the stat said was there —
+   the difference is the shrink-in-the-poll-gap case pollTail resets on next
+   time round. Returns [] (cursor untouched) when the file can't be read. */
 function readAppended(file, t, size) {
-  let chunk;
-  try {
-    const fd = fs.openSync(file, "r");
-    const buf = Buffer.alloc(size - t.offset);
-    fs.readSync(fd, buf, 0, buf.length, t.offset);
-    fs.closeSync(fd);
-    chunk = buf.toString("utf8");
-  } catch { return; }
-  t.offset = size;
-  const text = t.remainder + chunk;
-  const parts = text.split(/\r?\n/);
+  let bytes;
+  try { bytes = readRange(file, t.offset, size); } catch { return []; }
+  t.offset += bytes.length;
+  const parts = (t.remainder + bytes.toString("utf8")).split(/\r?\n/);
   t.remainder = parts.pop(); // last piece may be a partial line; hold it
-  const lines = parts.filter(l => l.length);
-  if (lines.length) mainWin.webContents.send("log:lines", { file: path.basename(file), lines });
+  return parts.filter(l => l.length);
 }
 
 function sendStatus(problem) {
@@ -557,8 +582,11 @@ function readJson(p) {
    a field this app renders: a fresh install would then start on data that
    cannot answer, and could only say so. Below the floor we fall back to the
    bundled snapshot until the next refresh brings the live file up. Raise the
-   number here in the same commit that starts depending on the new field. */
-const MIN_SCHEMA = { "quest-items.json": 6, "item-tooltips.json": 1, "sky.json": 2 };
+   number here in the same commit that starts depending on the new field.
+   Every file the renderer reads a versioned field from is listed: gear-data 2
+   is `effects` (Exalt) and `zone_oe` (the locked-zone filter) — a schema-1
+   cache would win over the bundle and lose both. */
+const MIN_SCHEMA = { "quest-items.json": 6, "item-tooltips.json": 1, "gear-data.json": 2, "sky.json": 2 };
 
 function loadDatasets() {
   const out = {};
@@ -575,24 +603,67 @@ function loadDatasets() {
   }
   return out;
 }
+const REFRESH_FILES = { ...REMOTE, ...REMOTE_PAGES };
+/* settings.dataRefreshedAt: {file: ms of its last VALIDATED, CACHED fetch}.
+   Installs before this shape wrote one number for the whole pass; it is read
+   as "every file, then" once and rewritten as the map — a failed pass back
+   then can hold a file one more cycle at most, which is what it did anyway. */
+function fetchedAt() {
+  let m = SETTINGS.dataRefreshedAt;
+  if (typeof m === "number") {
+    const t = m; m = {};
+    for (const name of Object.keys(REFRESH_FILES)) m[name] = t;
+    SETTINGS.dataRefreshedAt = m;
+  } else if (!m || typeof m !== "object") SETTINGS.dataRefreshedAt = m = {};
+  return m;
+}
+const triedAt = {};       // file -> ms of its last attempt this run, either way
+let refreshTimer = null, refreshing = null;
+const dueFiles = (force, now) => Object.keys(REFRESH_FILES).filter(name => force
+  || (now - (fetchedAt()[name] || 0) >= REFRESH_MS && now - (triedAt[name] || 0) >= REFRESH_RETRY_MS));
+/* When the next file comes due: its success + REFRESH_MS if it is fresh, its
+   last attempt + REFRESH_RETRY_MS if it is not. */
+function nextRefreshDue(now) {
+  const ok = fetchedAt();
+  let next = Infinity;
+  for (const name of Object.keys(REFRESH_FILES)) {
+    const fresh = now - (ok[name] || 0) < REFRESH_MS;
+    next = Math.min(next, fresh ? ok[name] + REFRESH_MS : (triedAt[name] || 0) + REFRESH_RETRY_MS);
+  }
+  return next;
+}
+function scheduleRefresh() {
+  if (refreshTimer) clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(() => refreshDatasets(false).catch(() => {}), Math.max(1000, nextRefreshDue(Date.now()) - Date.now()));
+}
+/* One pass at a time — a second caller (the Settings button during a
+   background pass) waits for the running pass, then runs its own. Every pass
+   re-arms the timer for the next due file, so a long-running app keeps its
+   12 h cadence and a failed file gets its retry without a relaunch. */
 async function refreshDatasets(force) {
-  const last = SETTINGS.dataRefreshedAt || 0;
-  if (!force && Date.now() - last < REFRESH_MS) return;
-  fs.mkdirSync(cacheDir(), { recursive: true });
+  while (refreshing) await refreshing;
+  refreshing = refreshPass(!!force).finally(() => { refreshing = null; scheduleRefresh(); });
+  return refreshing;
+}
+async function refreshPass(force) {
+  const due = dueFiles(force, Date.now());
+  if (!due.length) return;
+  const ok = fetchedAt();
   let any = false;
-  for (const [name, url] of Object.entries({ ...REMOTE, ...REMOTE_PAGES })) {
+  for (const name of due) {
+    triedAt[name] = Date.now();
     try {
-      const r = await fetch(url, { headers: { "user-agent": `eqltools-companion/${app.getVersion()}` } });
+      const r = await fetch(REFRESH_FILES[name], { headers: { "user-agent": `eqltools-companion/${app.getVersion()}` } });
       if (!r.ok) continue; // quest-items may 404 until the site ships it
       const body = await r.text();
       JSON.parse(body); // never cache a non-JSON error page
       const out = path.join(cacheDir(), name); // page-data names carry site subpaths
       fs.mkdirSync(path.dirname(out), { recursive: true });
       fs.writeFileSync(out, body);
-      any = true;
+      ok[name] = Date.now(); any = true;   // only a validated, cached file advances its clock
     } catch { /* offline is normal; bundled data carries on */ }
   }
-  SETTINGS.dataRefreshedAt = Date.now(); saveSettings();
+  saveSettings();
   if (any && mainWin) mainWin.webContents.send("data:updated", loadDatasets());
 }
 
@@ -1114,3 +1185,11 @@ else {
   app.on("will-quit", () => globalShortcut.unregisterAll());
   app.on("window-all-closed", () => app.quit());
 }
+
+/* Test seam: companion/scripts/main-check.mjs loads this file under a stubbed
+   `electron` and drives the tail engine and dataset refresh against real
+   files. Electron itself ignores a main script's exports. */
+module.exports = {
+  readRange, readTail, readAppended, loadSettings, loadDatasets, refreshDatasets, MIN_SCHEMA,
+  settings: () => SETTINGS, REFRESH_MS, REFRESH_RETRY_MS,
+};
