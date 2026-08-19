@@ -246,6 +246,14 @@ function tipProvider(arg) {
       // tells === 0 can only be a charm grant: those are the two ways in
       return `<h5>Your pets</h5><p>Claimed by their own tells, which the client only ever shows you for your own pet — or, for a charm, by the broadcast landing as your own cast finished.</p><p>${ns.map(c => `<b>${c.name}</b> (${c.kind}) — ${c.tells ? `${c.tells} tell${c.tells === 1 ? "" : "s"}` : "your charm cast"}, ${dtShort(c.from)} → ${dtShort(c.to)}`).join("<br>")}</p>`;
     }
+    case "resout": return `<h5>Resisted</h5><p>Times the log said the target resisted it outright — “&lt;mob&gt; resisted your &lt;spell&gt;!”. A partial resist still lands and is counted as damage, so this is the floor, not the whole story. The <a href="#resists">Resists</a> table breaks it down by spell and by mob.</p>`;
+    case "resatt": return `<h5>Attempts</h5><p>What the resist rate divides by, and the log states it three different ways. Your own spells print a cast line, so the casts <em>are</em> the attempts. A proc never prints one, so its attempts are what landed plus what was resisted — where both readings exist they agree. A spell that never lands damage at all (a charm's snare, a DoT whose ticks are not applications) leaves no denominator, and the rate stays blank rather than dividing the resists by themselves.</p>`;
+    case "resticks": return `<h5>DoT ticks</h5><p>Damage lines the spell produced after it landed. Ticks are not attempts — one application ticks many times — so they never enter the rate.</p>`;
+    case "resrow": {
+      const r = TIPCTX.resists && TIPCTX.resists[idx];
+      if (!r || !r.actors.length) return null;
+      return `<h5>${esc(r.spell)}</h5><p>Cast by ${r.actors.map(esc).join(" · ")}</p>`;
+    }
     case "droprate": return `<h5>Observed drop rate</h5><p>Loot lines ÷ kills seen. The log has no line for opening an empty corpse, so a corpse you never looted still counts as a kill — the rate here can only run low, never high.</p>`;
     case "enchp": return `<h5>HP this fight</h5><p>Bracketed by overkill: the mob took some total damage, and the killing blow either landed in full or was capped by whatever HP was left — so its HP sits between total−lastblow+1 and total. Heals it received subtract. A trailing <b>?</b> means another same-name mob was in the fray; the log can't tell two of a name apart, so that bracket is unreliable and stays out of the mob's HP.</p>`;
     case "srcrow": {
@@ -351,7 +359,7 @@ function renderReport(state, sel) {
 
   // damage by source
   const t = $("sourceTable");
-  t.innerHTML = `<thead><tr><th></th><th>Source</th><th></th><th>Element</th><th>Hits</th><th>Total</th><th>%</th><th>Avg</th><th>Max</th><th>Crit</th></tr></thead>`;
+  t.innerHTML = `<thead><tr><th></th><th>Source</th><th></th><th>Element</th><th>Hits</th><th>Total</th><th>%</th><th>Avg</th><th>Max</th><th>Crit</th><th><span class="tipv" data-tip="lp:resout">Resisted</span></th></tr></thead>`;
   const tb = el("tbody");
   const TAGS = { you: `<span class="tag-you">you</span>`, pet: `<span class="tag-pet">pet</span>`, charm: `<span class="tag-charm">charm</span>` };
   a.sources.forEach((s, i) => {
@@ -368,7 +376,7 @@ function renderReport(state, sel) {
     const isOpen = expandable && EXPANDED_SRC.has(srcKey);
     const critCell = s.cat === "melee" || s.cat === "ranged" || s.cat === "spell" || s.cat === "proc" ? pct(s.crit, s.hits) : "—";
     const tr = el("tr", expandable ? "src-row" + (isOpen ? " open" : "") : null,
-      `<td class="c-gem">${gemFor(s)}</td><td class="c-name">${expandable ? `<span class="m-caret" aria-hidden="true">${isOpen ? "▾" : "▸"}</span>` : ""}${nameCell}</td><td>${TAGS[s.side] || ""}</td><td class="c-el">${s.elem}</td><td>${fmt(s.hits)}</td><td class="c-dmg">${fmt(s.dmg)}</td><td>${pct(s.dmg, a.total)}</td><td>${fmt(s.dmg / s.hits)}</td><td>${fmt(s.max)}</td><td>${critCell}</td>`);
+      `<td class="c-gem">${gemFor(s)}</td><td class="c-name">${expandable ? `<span class="m-caret" aria-hidden="true">${isOpen ? "▾" : "▸"}</span>` : ""}${nameCell}</td><td>${TAGS[s.side] || ""}</td><td class="c-el">${s.elem}</td><td>${fmt(s.hits)}</td><td class="c-dmg">${fmt(s.dmg)}</td><td>${pct(s.dmg, a.total)}</td><td>${s.hits ? fmt(s.dmg / s.hits) : "—"}</td><td>${fmt(s.max)}</td><td>${critCell}</td><td>${s.res ? fmt(s.res) : "—"}</td>`);
     if (expandable) tr.addEventListener("click", ev => {
       if (ev.target.closest("[data-tip]")) return; // the tip owns that click
       if (EXPANDED_SRC.has(srcKey)) EXPANDED_SRC.delete(srcKey); else EXPANDED_SRC.add(srcKey);
@@ -376,11 +384,13 @@ function renderReport(state, sel) {
     });
     tb.append(tr);
     if (isOpen) for (const sub of [...s.sub.values()].sort((x, y) => y.dmg - x.dmg)) {
-      tb.append(el("tr", "src-sub", `<td class="c-gem"></td><td class="c-name">${esc(sub.name)}</td><td></td><td class="c-el"></td><td>${fmt(sub.hits)}</td><td class="c-dmg">${fmt(sub.dmg)}</td><td>${pct(sub.dmg, a.total)}</td><td>${fmt(sub.dmg / sub.hits)}</td><td>${fmt(sub.max)}</td><td>${pct(sub.crit, sub.hits)}</td>`));
+      const str = el("tr", "src-sub", `<td class="c-gem"></td><td class="c-name">${esc(sub.name)}</td><td></td><td class="c-el"></td><td>${fmt(sub.hits)}</td><td class="c-dmg">${fmt(sub.dmg)}</td><td>${pct(sub.dmg, a.total)}</td><td>${sub.hits ? fmt(sub.dmg / sub.hits) : "—"}</td><td>${fmt(sub.max)}</td><td>${sub.hits ? pct(sub.crit, sub.hits) : "—"}</td><td>${sub.res ? fmt(sub.res) : "—"}</td>`);
+      str.setAttribute("data-detail", ""); // travels with its parent row when the table sorts
+      tb.append(str);
     }
   });
   t.append(tb);
-  if (!a.sources.length) t.append(el("tbody", null, `<tr><td colspan="10" class="empty">No damage from your side in this slice.</td></tr>`));
+  if (!a.sources.length) t.append(el("tbody", null, `<tr><td colspan="11" class="empty">No damage from your side in this slice.</td></tr>`));
 
   // swing intervals — how often each actor swings, per verb. The range is the
   // point: two fights whose ranges overlap have not measurably changed, which
@@ -420,6 +430,8 @@ function renderReport(state, sel) {
     }
     tt.append(ttb);
   } else tp.hidden = true;
+
+  renderResists(a);
 
   // composition + by-class
   const comp = $("composition"); comp.innerHTML = "";
@@ -583,6 +595,63 @@ function mobCell(name) {
   const t = WIKI_MOBS && WIKI_MOBS.map.get(String(name).toLowerCase());
   if (t) return `<a class="loot-wiki" href="${WIKI_MOBS.base + encodeURIComponent(t.replace(/ /g, "_"))}" target="_blank" rel="noopener">${esc(name)}</a>`;
   return esc(name);
+}
+
+/* ─── resists: which spell, how often, and which mob ──────────────────────
+   The summary counts resists and stops there; this says what they were. Any
+   spell that landed damage or was resisted gets a row, so one that was
+   resisted every time it was cast is a line here instead of a hole in the
+   meter, and each row opens to the mobs that resisted it. (Asked for by a
+   player measuring resists to report them to the devs, 2026-08-19.) */
+const EXPANDED_RES = new Set();
+const RES_TAGS = { you: `<span class="tag-you">you</span>`, pet: `<span class="tag-pet">pet</span>`, charm: `<span class="tag-charm">charm</span>` };
+function renderResists(a) {
+  const panel = $("resistPanel");
+  if (!panel) return; // a host that hasn't got the panel simply doesn't show it
+  const rows = a.resistTbl || [];
+  if (!rows.length) { panel.hidden = true; return; }
+  panel.hidden = false;
+  TIPCTX.resists = rows;
+  if (rows.some(r => r.byMob.length)) loadWikiMobs(); // the expansions name mobs
+  const t = $("resistTable");
+  t.innerHTML = `<thead><tr><th></th><th>Spell</th><th></th><th>Element</th>` +
+    `<th><span class="tipv" data-tip="lp:resatt">Attempts</span></th><th>Resisted</th><th>Resist rate</th>` +
+    `<th>Landed</th><th><span class="tipv" data-tip="lp:resticks">DoT ticks</span></th></tr></thead>`;
+  const tb = el("tbody");
+  rows.forEach((r, i) => {
+    const key = `${r.side}|${r.spell}`;
+    const expandable = r.byMob.length > 0;
+    const isOpen = expandable && EXPANDED_RES.has(key);
+    const rate = r.attempts ? 100 * r.resisted / r.attempts : null;
+    const nameCell = r.actors.length ? `<span class="tipv" data-tip="lp:resrow:${i}">${esc(r.spell)}</span>` : esc(r.spell);
+    const tr = el("tr", expandable ? "src-row" + (isOpen ? " open" : "") : null,
+      `<td class="c-gem">${gemFor({ name: r.spell, elem: r.elem })}</td>` +
+      `<td class="c-name">${expandable ? `<span class="m-caret" aria-hidden="true">${isOpen ? "▾" : "▸"}</span>` : ""}${nameCell}</td>` +
+      `<td>${RES_TAGS[r.side] || ""}</td><td class="c-el">${esc(r.elem)}</td>` +
+      `<td data-sort="${r.attempts == null ? -1 : r.attempts}">${r.attempts == null ? "—" : fmt(r.attempts)}</td>` +
+      `<td class="c-dmg">${fmt(r.resisted)}</td>` +
+      `<td data-sort="${rate == null ? -1 : rate}">${rate == null ? "—" : rate.toFixed(1) + "%"}</td>` +
+      `<td data-sort="${r.landed}">${r.landed ? fmt(r.landed) : "—"}</td>` +
+      `<td data-sort="${r.ticks}">${r.ticks ? fmt(r.ticks) : "—"}</td>`);
+    if (expandable) tr.addEventListener("click", ev => {
+      if (ev.target.closest("[data-tip], a")) return; // the tip and wiki links own their clicks
+      if (EXPANDED_RES.has(key)) EXPANDED_RES.delete(key); else EXPANDED_RES.add(key);
+      redraw();
+    });
+    tb.append(tr);
+    if (!isOpen) return;
+    // no per-mob denominator exists — a cast line never names its target — so
+    // the mob rows carry counts and the rate column stays empty rather than
+    // showing a share of the resists dressed up as a rate
+    for (const m of r.byMob) {
+      const sub = el("tr", "src-sub",
+        `<td class="c-gem"></td><td class="c-name">${mobCell(m.mob)}</td><td></td><td class="c-el"></td>` +
+        `<td>—</td><td class="c-dmg">${fmt(m.n)}</td><td>—</td><td>—</td><td>—</td>`);
+      sub.setAttribute("data-detail", ""); // travels with its spell row when the table sorts
+      tb.append(sub);
+    }
+  });
+  t.append(tb);
 }
 
 /* ─── mobs & fights: one table, per-mob rows that open into encounters ─────*/
@@ -796,7 +865,7 @@ window.EQLLogView = {
   /* A new log is a new report: the expanded-row sets key on mob and source
      NAME, so carrying them across files silently opens rows in a log the
      player never expanded. */
-  reset() { EXPANDED.clear(); EXPANDED_SRC.clear(); SHOW_ALL_MOBS = false; SHOW_ALL_LOOT = false; LASTDRAW = null; },
+  reset() { EXPANDED.clear(); EXPANDED_SRC.clear(); EXPANDED_RES.clear(); SHOW_ALL_MOBS = false; SHOW_ALL_LOOT = false; LASTDRAW = null; },
   toggleAllMobs() { SHOW_ALL_MOBS = !SHOW_ALL_MOBS; redraw(); },
   toggleAllLoot() { SHOW_ALL_LOOT = !SHOW_ALL_LOOT; redraw(); },
 };

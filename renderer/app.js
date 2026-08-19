@@ -4637,7 +4637,7 @@ function combatSliceDetail(names, start, end, r) {
   const a = E.analyze(r.P, evs, r.side, oc);
   return {
     tot: { you: a.tot.you, pet: a.tot.pet, charm: a.tot.charm },
-    sources: a.sources.slice(0, 14).map(s => ({ name: s.name, side: s.side, hits: s.hits, dmg: s.dmg, max: s.max, crit: s.crit })),
+    sources: a.sources.slice(0, 14).map(s => ({ name: s.name, side: s.side, hits: s.hits, dmg: s.dmg, max: s.max, crit: s.crit, res: s.res })),
     takenBy: a.takenBy.slice(0, 10).map(t => ({ src: t.src, name: t.name, hits: t.hits, dmg: t.dmg, max: t.max, res: t.res })),
     taken: a.taken.dmg, avoid: a.taken.avoid,
     healTot: a.healTot, healInTot: a.healInTot, petTaken: a.petTaken,
@@ -4646,38 +4646,31 @@ function combatSliceDetail(names, start, end, r) {
 }
 function combatDetailFor(f, r) { return combatSliceDetail(new Set([f.mob]), f.start, f.end, r); }
 
-/* One ENCOUNTER = every fight that overlapped in time — the pull plus its
-   adds. A fight opening while the previous group is still running joins it;
-   a chain-pull that starts after the last mob dropped is a new encounter. */
-function encounterize(fights) {
-  const fs = fights.filter(f => f.total > 0 || f.taken > 0).sort((a, b) => a.start - b.start);
-  const groups = [];
-  for (const f of fs) {
-    const g = groups[groups.length - 1];
-    if (g && f.start <= g.end) { g.fights.push(f); if (f.end > g.end) g.end = f.end; }
-    else groups.push({ start: f.start, end: f.end, fights: [f] });
-  }
-  return groups;
-}
+/* One ENCOUNTER = one pull, which is usually several fights. The engine owns
+   the rule (E.buildEncounters, log-parser/engine.js): it cuts where combat
+   stopped, and a mob still on you across the cut splits its damage between
+   the two pulls instead of welding them into one row. */
+const encounterize = fights => E.buildEncounters(fights);
 
 // same identity rule as fkey: (start second, first mob) survives re-parses
 function encRow(g, r) {
-  const sum = k => g.fights.reduce((a, f) => a + f[k], 0);
-  const mobs = g.fights.map(f => ({
-    mob: f.mob, killed: f.killed, team: teamKill(f, r),
-    dmg: f.total, taken: f.taken, xp: Math.round(f.xp * 10) / 10, coin: f.coin,
+  const mobs = g.mobs.map(m => ({
+    mob: m.mob, kills: m.kills, killed: m.kills > 0,
+    // credit is asked of the fight that produced the kill, so a pull that
+    // only holds the tail of a mob's fight claims nothing
+    team: m.kills > 0 && m.fights.some(f => teamKill(f, r)),
+    dmg: m.total, taken: m.taken, xp: Math.round(m.xp * 10) / 10, coin: m.coin,
   }));
   return {
-    key: `${g.start.getTime()}~${g.fights[0].mob}`, ts: g.start,
-    secs: Math.max(1, Math.round((g.end - g.start) / 1000)),
-    mobs, total: sum("total"), taken: sum("taken"),
-    xp: Math.round(sum("xp") * 10) / 10, coin: sum("coin"),
-    kills: mobs.filter(m => m.killed).length,
+    key: g.key, ts: g.start, secs: Math.max(1, g.secs),
+    mobs, total: g.total, taken: g.taken,
+    xp: Math.round(g.xp * 10) / 10, coin: g.coin,
+    kills: g.kills,
     team: mobs.some(m => m.team),
     detail: null, raid: null,
   };
 }
-const encDetail = (g, r) => combatSliceDetail(new Set(g.fights.map(f => f.mob)), g.start, g.end, r);
+const encDetail = (g, r) => combatSliceDetail(g.names, g.start, g.end, r);
 /* Drill-down memo: an analyze() pass per encounter per tick is waste when the
    encounter hasn't changed. The signature covers every encRow number — any
    new damage/kill/xp moves one of them; a heals-only second can serve one

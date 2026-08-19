@@ -417,7 +417,8 @@ const RAID_LBL = { you: "you", pet: "your pet", charm: "your charm" };
 function osrcRows(rows) {
   return rows.map(s =>
     `<tr><td class="os-tn">${esc(s.name)}</td><td>${s.hits}×</td>` +
-    `<td class="os-td">${n(s.dmg)}</td><td>${n(s.max)} max</td><td>${s.crit ? s.crit + " crit" : ""}</td></tr>`).join("");
+    `<td class="os-td">${n(s.dmg)}</td><td>${n(s.max)} max</td>` +
+    `<td>${[s.crit ? s.crit + " crit" : "", s.res ? s.res + " resisted" : ""].filter(Boolean).join(" · ")}</td></tr>`).join("");
 }
 
 /* Everyone's damage over one stretch — the meter's rows, shared by the pull
@@ -435,7 +436,7 @@ function encDetailHtml(f) {
   let h = `<div class="os-x">`;
   if (f.mobs && f.mobs.length > 1) {
     h += `<table class="os-t">` + f.mobs.map(m =>
-      `<tr><td class="os-tn">${m.killed ? (m.team ? "✓ " : "✕ ") : ""}${esc(m.mob)}</td>` +
+      `<tr><td class="os-tn">${m.killed ? (m.team ? "✓" : "✕") + (m.kills > 1 ? `×${m.kills}` : "") + " " : ""}${esc(m.mob)}</td>` +
       `<td class="os-td">${n(m.dmg)}</td><td>${m.taken ? n(m.taken) + " to you" : ""}</td>` +
       `<td>${m.xp ? m.xp + "% xp" : ""}</td></tr>`).join("") + `</table>`;
   }

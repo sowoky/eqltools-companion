@@ -678,6 +678,19 @@ function buildFights(P, side) {
   // only way a fight whose opening blow shares a second with a ding lands in
   // the right level bucket (a timestamp lookup ties to the wrong side)
   let lvlNow = null, comboNow = null;
+  // Per-second damage ledger. A fight carries running totals, which answer
+  // "what did this mob cost me" and nothing else; buildEncounters has to cut
+  // a fight at a moment in the middle of it, and that is only arithmetic if
+  // the damage is kept by the second. Events arrive in order, so the second
+  // being written is always the last bucket.
+  const beat = (f, ts) => {
+    const s = epochSec(ts);
+    const last = f.beats[f.beats.length - 1];
+    if (last && last.t === s) return last;
+    const b = { t: s, you: 0, pet: 0, charm: 0, taken: 0 };
+    f.beats.push(b);
+    return b;
+  };
   const touch = (name, ts) => {
     let f = open.get(name);
     // dmgAll/lastBlow/healed feed the HP bounds; offTotal/offT0/offSecs/maxHit
@@ -685,7 +698,7 @@ function buildFights(P, side) {
     // mob or two wearing the same name" audit. All are per-encounter — the
     // per-mob roll-up in buildMobStats is what the UI reads.
     if (!f) { f = { mob: name, zone, tier, zv: zv < 0 ? null : zv, lvl: lvlNow, combo: comboNow, start: ts, end: ts, last: ts, dmg: { you: 0, pet: 0, charm: 0 }, taken: 0, xp: 0, coin: 0, killed: false, inferred: false,
-      dmgAll: 0, lastBlow: null, healed: 0, offTotal: 0, offT0: null, offSecs: 0, maxHit: 0, dotKeys: null, dotStack: false, tainted: false, hpMin: null, hpMax: null }; open.set(name, f); }
+      dmgAll: 0, lastBlow: null, healed: 0, offTotal: 0, offT0: null, offSecs: 0, maxHit: 0, dotKeys: null, dotStack: false, tainted: false, hpMin: null, hpMax: null, beats: [] }; open.set(name, f); }
     f.last = f.end = ts;
     return f;
   };
@@ -731,11 +744,18 @@ function buildFights(P, side) {
     // the same mob is dropped rather than guessed onto one of them.
     if (e.k === "heal" && e.who && open.has(e.who)) open.get(e.who).healed += e.amt;
     if (e.k === "dmg" || e.k === "miss" || e.k === "mez" || e.k === "shed") {
-      for (const name of [e.src, e.tgt]) if (name && name !== P.owner && P.mobSet.has(name)) touch(name, t);
+      // A BEAT is a second in which this mob was visibly trading blows, and
+      // only dmg/miss make one: a mez refresh on a parked add is bookkeeping,
+      // not combat, and buildEncounters reads these to find where combat
+      // stopped. A miss beats with no damage — the swing still happened.
+      for (const name of [e.src, e.tgt]) if (name && name !== P.owner && P.mobSet.has(name)) {
+        const ft = touch(name, t);
+        if (e.k === "dmg" || e.k === "miss") beat(ft, t);
+      }
       if (e.k === "dmg" && e.tgt && P.mobSet.has(e.tgt)) {
         const s = side(e);
         const ft = open.get(e.tgt);
-        if (s === "you" || s === "pet" || s === "charm") ft.dmg[s] += e.amt;
+        if (s === "you" || s === "pet" || s === "charm") { ft.dmg[s] += e.amt; beat(ft, t)[s] += e.amt; }
         // HP is a property of the MOB, not of our contribution: every point it
         // lost counts, whoever landed it (another player, an unclaimed pet, a
         // damage shield, a DoT). lastBlow is the last of them to land before
@@ -757,7 +777,10 @@ function buildFights(P, side) {
           if (ft.dotKeys.has(dk)) ft.dotStack = true; else ft.dotKeys.add(dk);
         }
       }
-      if (e.k === "dmg" && e.tgt === P.owner && e.src && open.has(e.src)) open.get(e.src).taken += e.amt;
+      if (e.k === "dmg" && e.tgt === P.owner && e.src && open.has(e.src)) {
+        const fs = open.get(e.src);
+        fs.taken += e.amt; beat(fs, t).taken += e.amt;
+      }
       // What the MOB puts out, at anyone — you, a pet, a charm, another mob.
       // (`taken` above stays owner-only; this is the separate question of how
       // hard the mob hits.) A miss starts the clock but adds no damage: the
@@ -830,6 +853,96 @@ function markTaint(fights, P) {
 // sliding forward renumbers everything (measured: 28% of simulated polls on
 // the reference log swapped which mob a positional id named).
 const fkey = f => `${f.start.getTime()}~${f.mob}`;
+
+/* ─── encounters: the pull, not the mob ───────────────────────────────────
+   A fight is ONE MOB. A pull is usually several — what you aggroed plus what
+   came with it — and a meter that only ever lists mobs can't answer "what did
+   that pull cost me". Grouping them is a presentation question, so this reads
+   the fights' own per-second ledger instead of changing what a fight is.
+
+   Two things end a group:
+     - a LULL: nothing traded a blow for ENC_LULL seconds. Combat visibly
+       stopped, so the next blow opens a new pull.
+     - nobody left standing: no fight has beats on both sides of the gap, so
+       the last pull finished before the next one started. A chain-pull with
+       no downtime is still two encounters, which is the rule this had before.
+   A mob still on you across a cut belongs to BOTH pulls and its damage splits
+   at the boundary — the beats say which side of the cut each blow landed on.
+   Grouping by overlapping fight WINDOWS instead let one such mob bridge them:
+   a fire giant warrior still swinging while Kyle looted fused Magus Rokyl and
+   Lord Nagafen, 25 seconds apart, into one 4-minute "encounter" (2026-08-19).
+   Rows are per mob NAME, so a group that ate two same-named mobs shows one
+   row with kills=2 — the log can't tell them apart and neither can this. */
+const ENC_LULL = 20; // s of total quiet that ends a pull. Under the engine's
+// own FIGHT_IDLE (45) and well over real pull-to-pull downtime; measured over
+// two full sessions the encounter count moves under 8% across 15–30s, so the
+// exact value carries no weight.
+function buildEncounters(fights, lull = ENC_LULL) {
+  const fs = fights.filter(f => (f.total > 0 || f.taken > 0) && f.beats && f.beats.length);
+  if (!fs.length) return [];
+  const span = fs.map(f => ({ lo: f.beats[0].t, hi: f.beats[f.beats.length - 1].t }));
+  const all = [...new Set(fs.flatMap(f => f.beats.map(b => b.t)))].sort((a, b) => a - b);
+  const cut = new Set();
+  for (let i = 1; i < all.length; i++) {
+    const prev = all[i - 1], next = all[i];
+    if (next - prev <= 1) continue;
+    if (next - prev > lull || !span.some(s => s.lo <= prev && s.hi >= next)) cut.add(next);
+  }
+  const groups = [];
+  for (const s of all) {
+    if (!groups.length || cut.has(s)) groups.push({ t0: s, t1: s, byMob: new Map() });
+    groups[groups.length - 1].t1 = s;
+  }
+  const starts = groups.map(g => g.t0);
+  const at = s => { // rightmost group whose start is at or before this second
+    let lo = 0, hi = starts.length - 1, r = 0;
+    while (lo <= hi) { const m = (lo + hi) >> 1; if (starts[m] <= s) { r = m; lo = m + 1; } else hi = m - 1; }
+    return r;
+  };
+  const rowIn = (g, f, t) => {
+    let r = g.byMob.get(f.mob);
+    if (!r) { r = { mob: f.mob, zone: f.zone, lvl: f.lvl, fights: [], dmg: { you: 0, pet: 0, charm: 0 },
+                    total: 0, taken: 0, xp: 0, coin: 0, kills: 0, killers: [], t0: t, t1: t };
+      g.byMob.set(f.mob, r); }
+    if (!r.fights.includes(f)) r.fights.push(f);
+    return r;
+  };
+  for (const f of fs) {
+    for (const b of f.beats) {
+      const r = rowIn(groups[at(b.t)], f, b.t);
+      r.dmg.you += b.you; r.dmg.pet += b.pet; r.dmg.charm += b.charm;
+      r.total += b.you + b.pet + b.charm; r.taken += b.taken;
+      if (b.t > r.t1) r.t1 = b.t;
+    }
+    // the kill and its rewards belong to the group holding the fight's last
+    // beat — the death line lands on the blow that caused it
+    if (f.killed) {
+      const r = rowIn(groups[at(f.beats[f.beats.length - 1].t)], f, f.beats[f.beats.length - 1].t);
+      r.kills++; r.xp += f.xp; r.coin += f.coin; r.killers.push(f.killer);
+    }
+  }
+  return groups.map(g => {
+    const rows = [...g.byMob.values()].sort((a, b) => a.t0 - b.t0 || b.total - a.total || a.mob.localeCompare(b.mob));
+    // A mob whose whole contribution to THIS stretch was swinging at another
+    // mob is not a row — your charm mauling the puller shows up as the charm's
+    // damage, not as a second entry with two zeroes in it. The fight list
+    // applies the same filter whole-fight; this is that rule per slice.
+    const mobs = rows.filter(m => m.total || m.taken || m.kills);
+    if (!mobs.length) return null;
+    const sum = k => mobs.reduce((a, m) => a + m[k], 0);
+    return {
+      start: new Date(g.t0 * 1000), end: new Date(g.t1 * 1000), secs: g.t1 - g.t0 + 1,
+      // identity survives a re-parse the way fkey does: the group's own first
+      // second plus the mob that opened it, never an array position
+      key: `${g.t0 * 1000}~${mobs[0].mob}`,
+      zone: mobs[0].zone, mobs,
+      total: sum("total"), taken: sum("taken"), xp: sum("xp"), coin: sum("coin"),
+      // the drill-down slices on NAMES, and it wants every actor that was in
+      // the stretch — including the ones filtered out of the rows above
+      kills: sum("kills"), names: new Set(rows.map(m => m.mob)),
+    };
+  }).filter(Boolean);
+}
 
 /* ─── per-mob aggregate: kills, xp, coin, drops ────────────────────────────
    The drop-rate denominator is KILLS SEEN. The log has no line for opening
@@ -1171,6 +1284,22 @@ function combatSecondsOf(events, side) {
 }
 function analyze(P, events, side, ownerClasses) {
   const src = new Map();
+  // One row per (side, thing that did damage). Resists create a row too, so a
+  // spell that was resisted every single time it was cast still gets a line
+  // instead of vanishing from the meter — the same rule the incoming table
+  // has always used.
+  const srcRow = (s, nm, cat, elem) => {
+    const key = `${s}|${nm}`;
+    let row = src.get(key);
+    if (!row) { row = { name: nm, side: s, cat, elem, hits: 0, dmg: 0, crit: 0, max: 0, res: 0, actors: null, sub: null }; src.set(key, row); }
+    return row;
+  };
+  const subRow = (row, nm) => {
+    row.sub = row.sub || new Map();
+    let sr = row.sub.get(nm);
+    if (!sr) { sr = { name: nm, hits: 0, dmg: 0, crit: 0, max: 0, res: 0 }; row.sub.set(nm, sr); }
+    return sr;
+  };
   const tot = { you: 0, pet: 0, charm: 0 };
   const buckets = { melee: 0, skill: 0, ranged: 0, cast: 0, proc: 0, dot: 0, ds: 0, pet: 0, charm: 0 };
   const elem = new Map(), byClass = new Map();
@@ -1196,20 +1325,16 @@ function analyze(P, events, side, ownerClasses) {
         : e.cat === "ranged" ? "ranged"
         : SKILL_VERBS.has(e.verb) ? (e.lane || e.verb) : `auto-attack (${e.verb})`)
       : e.spell || "unknown";
-    const key = `${s}|${nm}`;
-    const row = src.get(key) || { name: nm, side: s, cat: e.cat, elem: e.elem || (phys ? "physical" : "—"), hits: 0, dmg: 0, crit: 0, max: 0, actors: null, sub: null };
+    const row = srcRow(s, nm, e.cat, e.elem || (phys ? "physical" : "—"));
     row.hits++; row.dmg += e.amt; if (e.crit) row.crit++; if (e.amt > row.max) row.max = e.amt; if (e.elem) row.elem = e.elem;
     if (s !== "you") {
       row.actors = row.actors || new Map(); row.actors.set(e.src, (row.actors.get(e.src) || 0) + e.amt);
       // grouped rows still collect the full per-verb/per-spell split — the
       // row expands to it, so grouping costs the reader nothing
       const subName = phys ? (e.cat === "ranged" ? "ranged" : SKILL_VERBS.has(e.verb) ? e.verb : `auto-attack (${e.verb})`) : e.spell || "unknown";
-      row.sub = row.sub || new Map();
-      const sr = row.sub.get(subName) || { name: subName, hits: 0, dmg: 0, crit: 0, max: 0 };
+      const sr = subRow(row, subName);
       sr.hits++; sr.dmg += e.amt; if (e.crit) sr.crit++; if (e.amt > sr.max) sr.max = e.amt;
-      row.sub.set(subName, sr);
     }
-    src.set(key, row);
     tot[s] += e.amt;
     if (s === "you") {
       buckets[e.cat === "melee" ? (SKILL_VERBS.has(e.verb) ? "skill" : "melee") : e.cat === "spell" ? "cast" : e.cat] += e.amt;
@@ -1247,6 +1372,63 @@ function analyze(P, events, side, ownerClasses) {
   const resistIn = events.filter(e => e.k === "resist_in").length;
   // a resisted named caster claimed at that moment is YOUR pet's resist
   const petResists = events.filter(e => e.k === "resist_other" && side.claims.at(e.caster, e.ts)).length;
+  /* Resists, per spell and per mob that resisted it. A running total answers
+     "am I fighting my resist rate" and nothing else; which spell and which mob
+     is the question anyone measuring resists actually has.
+
+     ATTEMPTS is the denominator, and the log gives it three different ways:
+       - your own spells print a cast line, so the casts ARE the attempts
+       - a proc never prints one, so its attempts are what landed plus what
+         was resisted (verified: where both readings exist they agree —
+         Gasping Embrace, 18 casts vs 14 landed + 4 resisted)
+       - a spell that never lands damage at all — a charm's snare, a proc that
+         was resisted every time — prints neither, and a DoT tick is not an
+         application. There is no denominator, so the rate stays blank rather
+         than dividing the resists by themselves and reading 100%. */
+  const rt = new Map();
+  const rtRow = (s, spell, actor) => {
+    const k = `${s}|${spell}`;
+    let r = rt.get(k);
+    if (!r) { r = { spell, side: s, actors: new Set(), elem: "—", casts: 0, landed: 0, ticks: 0, resisted: 0, byMob: new Map() }; rt.set(k, r); }
+    if (actor) r.actors.add(actor);
+    return r;
+  };
+  const resistedBy = (r, mob) => r.byMob.set(mob || "unknown", (r.byMob.get(mob || "unknown") || 0) + 1);
+  for (const e of events) {
+    if (e.k === "cast") { rtRow("you", e.spell).casts++; continue; }
+    // a damage shield is worn, not cast, and never draws a resist line — it
+    // would sit at the top of this table on volume alone and say nothing
+    if (e.k === "dmg" && e.spell && e.cat !== "ds" && P.mobSet.has(e.tgt)) {
+      const s = side(e);
+      if (s !== "you" && s !== "pet" && s !== "charm") continue;
+      const r = rtRow(s, e.spell, s === "you" ? null : e.src);
+      if (e.cat === "dot") r.ticks++; else r.landed++;
+      if (e.elem) r.elem = e.elem;
+      continue;
+    }
+    if (e.k === "resist") {                        // "<mob> resisted your <spell>!"
+      const r = rtRow("you", e.spell); r.resisted++; resistedBy(r, e.tgt);
+      srcRow("you", e.spell, "spell", "—").res++;
+      continue;
+    }
+    if (e.k === "resist_other" && side.claims.at(e.caster, e.ts)) {
+      const s = P.mobSet.has(e.caster) ? "charm" : "pet";
+      const r = rtRow(s, e.spell, e.caster); r.resisted++; resistedBy(r, e.tgt);
+      // the meter files a charm under its own name and a pet under the spell;
+      // a resist goes on the row it belongs to, and on the charm's expansion
+      if (s === "charm") { const pr = srcRow("charm", e.caster, "spell", "—"); pr.res++; subRow(pr, e.spell).res++; }
+      else srcRow("pet", e.spell, "spell", "—").res++;
+    }
+  }
+  const resistTbl = [...rt.values()]
+    .filter(r => r.resisted > 0 || r.landed > 0 || r.ticks > 0)
+    .map(r => ({
+      spell: r.spell, side: r.side, actors: [...r.actors], elem: r.elem,
+      casts: r.casts, landed: r.landed, ticks: r.ticks, resisted: r.resisted,
+      attempts: r.casts > 0 ? r.casts : r.landed > 0 ? r.landed + r.resisted : null,
+      byMob: [...r.byMob.entries()].map(([mob, n]) => ({ mob, n })).sort((a, b) => b.n - a.n || a.mob.localeCompare(b.mob)),
+    }))
+    .sort((a, b) => b.resisted - a.resisted || (b.attempts || 0) - (a.attempts || 0) || a.spell.localeCompare(b.spell));
   const merges = new Map(); let mergeFails = 0;
   for (const e of events) {
     if (e.k === "merge") merges.set(e.item, (merges.get(e.item) || 0) + 1);
@@ -1342,7 +1524,7 @@ function analyze(P, events, side, ownerClasses) {
     swings: swingTable(events, side),
     skills: [...skills.values()].sort((a, b) => b.dmg - a.dmg),
     weapons: [...weapons.values()].sort((a, b) => b.dmg - a.dmg), ranged, mend,
-    casts, interrupts, resists, fizzles, resistIn, petResists, deaths, combatSec: secs, wallSecs, activeSecs,
+    casts, interrupts, resists, fizzles, resistIn, petResists, resistTbl, deaths, combatSec: secs, wallSecs, activeSecs,
     merges: [...merges.entries()].sort((a, b) => b[1] - a[1]), mergeFails,
     heals: [...heals.values()].sort((a, b) => b.real - a.real), healTot, overTot,
     healsIn: [...healsIn.values()].sort((a, b) => b.amt - a.amt), healInTot,
@@ -1362,7 +1544,8 @@ const EQLLog = {
   buildLevelSpans, buildSegments, analyze, combatSecondsOf, classOf, swingTable,
   loadSpellData, spellIcon, loadConBands, setConBands, conBand, conScore,
   conDiscriminative, fkey, epochSec, dayKey, inCopper, toDate, flagsOf,
-  CLASS_ABBR, SKILL_VERBS, RANGED_VERBS, FIGHT_IDLE,
+  buildEncounters,
+  CLASS_ABBR, SKILL_VERBS, RANGED_VERBS, FIGHT_IDLE, ENC_LULL,
 };
 if (typeof window !== "undefined") window.EQLLog = EQLLog;
 else if (typeof globalThis !== "undefined") globalThis.EQLLog = EQLLog;
