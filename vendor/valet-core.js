@@ -79,11 +79,18 @@
         e.rec = e.key ? DATA.items[e.key] : null;
       }
     }
-    const rows = GS.parseRows(text).map((r, i) => {
-      const keys = r.exalt ? null : DATA.names[r.base.toLowerCase()];
+    /* The dump prints an open socket with nothing in it as an "Empty" row.
+       Those are kept in `all` (flagged `empty`, in dump order) for
+       exalt-core's readDump, which reads them as "the effect was pulled out"
+       rather than "sockets unknown"; `rows` — what every other consumer
+       walks — has no placeholders. The same row objects sit in both lists,
+       so what readDump says about a worn item is said about THIS row. */
+    const all = GS.parseRows(text, { keepEmpty: true }).map((r, i) => {
+      const keys = r.exalt || r.empty ? null : DATA.names[r.base.toLowerCase()];
       const key = keys ? keys[0] : null;
       return Object.assign({ i, key, rec: key ? DATA.items[key] : null }, r);
     });
+    const rows = all.filter((r) => !r.empty);
     /* Gear the wiki has no record of cannot be scored, so it is not a candidate
        for anything. Reported rather than dropped: the dangerous ones are the
        pieces you are WEARING, because the walk will cheerfully suggest swapping
@@ -91,7 +98,7 @@
     const unmatched = rows.filter((r) => !r.exalt && !r.rec);
     const wornUnknown = [];
     for (const s of GS.WORN_SLOTS) for (const e of equipped[s] || []) if (!e.rec) wornUnknown.push({ slot: s, name: e.name });
-    return { rows, equipped, unmatched, wornUnknown };
+    return { rows, all, equipped, unmatched, wornUnknown };
   }
 
   // Identity for a remembered decision: the ITEM, at its tier. Row order changes
@@ -163,11 +170,15 @@
         return { id: items.map((it) => itemId(it.row)).sort().join(" | "), items, score };
       };
 
+      /* The off hand's damage gate has the same worn escape as the class one:
+         the reference trio has no Dual Wield and an off hand holding a
+         12-damage one-hander, so the game lets a hand hold what it cannot
+         swing. Refusing it meant the walk would not put back what was on. */
       if (step.kind === "primary" || step.kind === "secondary") {
         const pool = step.kind === "primary"
           ? rows.filter((r) => usable(r) && r.rec.sl.includes("Primary"))
           : rows.filter((r) => usable(r) && r.rec.sl.includes("Secondary")
-              && !GS.TWO_H(r.rec) && (dw || !r.rec.dmg));
+              && !GS.TWO_H(r.rec) && (dw || !r.rec.dmg || wornSlotOf(r.loc) === "Secondary"));
         return dedupe(pool.map((r) => mk([{ row: r, slot: step.slot }])));
       }
 
@@ -441,8 +452,321 @@
   }
   const secRank = (sec) => SEC_ORDER.indexOf(sec);
 
+  /* ── by slot ─────────────────────────────────────────────────────────────
+     The walk asks one question per slot and takes an answer. This is the
+     other way round: pick a slot and see the whole field for it — every copy
+     you own that fits, where each one is, and how they rank — with no decision
+     attached (Kyle, 2026-08-23: "go to a slot and see all the gear for that
+     slot. where it is, what it's ranked").
+
+     Twenty slots, in character-sheet order, the hands named as the walk names
+     them. Power Source is not offered: no row on any dump has carried one. */
+  const BROWSE = ORDER.filter((s, i) => ORDER.indexOf(s) === i)
+    .map((slot) => ({ slot, label: slot }))
+    .concat([{ slot: "Primary", label: "Main hand" }, { slot: "Secondary", label: "Off hand" },
+             { slot: ANY, label: ANY }]);
+
+  const wornSlotOf = (loc) => {
+    const m = GS.WORN_RX.exec(GS.rootLoc(loc));
+    if (!m) return null;
+    return m[1] === "Finger" || m[1] === "Ring" ? "Fingers" : m[1];
+  };
+  const scorable = (rec) => !!(rec && (rec.st || rec.sv || rec.haste || rec.dmg));
+  const fitsSlot = (rec, slot) => slot === ANY ? !!(rec.sl && rec.sl.length) : (rec.sl || []).includes(slot);
+  /* The off hand's gate, the same one the walk and spare-core apply: never a
+     two-hander, and a damaging one-hander only with Dual Wield. */
+  const placeable = (rec, slot, dw) => slot !== "Secondary" || (!GS.TWO_H(rec) && (dw || !rec.dmg));
+
+  /* The AC base for a slot is what /gear uses: the AC you are wearing minus
+     the AC of what this slot holds, so every candidate — including the one
+     already on — is priced as the thing that would sit there against the rest
+     of the kit. A paired slot subtracts its weaker occupant, the one a new
+     piece would displace. */
+  function slotContext(equipped, sc, slot) {
+    let wornAC = 0;
+    if (equipped) for (const s of GS.WORN_SLOTS) for (const e of equipped[s] || []) wornAC += acOf(e.rec, e.tier);
+    const now = ((equipped && equipped[slot]) || []).map((e) => {
+      const ac = acOf(e.rec, e.tier);
+      return { e, ac, score: e.rec ? sc.score(e.rec, e.tier, wornAC - ac, slot) : null };
+    });
+    const scored = now.filter((n) => n.score !== null);
+    const vs = scored.length ? scored.reduce((a, b) => (b.score < a.score ? b : a)) : null;
+    const baseAC = wornAC - (vs ? vs.ac : 0);
+    /* Every occupant is then re-priced at the table's base, so the number in
+       "on you now" is the number on the same item's row below it. On a
+       paired slot the two bases differ for the stronger occupant, and past
+       the AC softcap they gave two different scores for one item on one
+       screen. */
+    for (const n of now) if (n.score !== null) n.score = sc.score(n.e.rec, n.e.tier, baseAC, slot);
+    return { wornAC, now, vs, baseAC };
+  }
+
+  /* slotView({ rows, equipped, scorer, slot, trio, ranker, exalt })
+       rows/equipped – readInventory()
+       scorer        – EQLGearScore.make() for the trio
+       ranker        – EQLInventory.makeRanker() (optional): the catalogue rank
+                       of each copy, "4 of 212", for the best of your classes,
+                       at the tier you hold it
+       exalt         – EQLExaltCore.readDump() over the same rows (optional):
+                       the sockets of each worn copy
+     Returns { slot, now, baseAC, owned, handsNow } where owned is every copy
+     you own that fits, score-sorted, each with its rank among them (ties
+     share), where it is, and whether it is the one on you in this slot. */
+  function slotView(o) {
+    const sc = o.scorer, slot = o.slot, rows = o.rows || [];
+    const dw = sc.dualWieldCap() > 0;
+    const ctx = slotContext(o.equipped, sc, slot);
+    const socketsByRow = new Map();
+    if (o.exalt) for (const w of o.exalt.worn) socketsByRow.set(w.row, w.sockets);
+    /* What is worn IN THIS SLOT is a candidate for it whatever the wiki's
+       class list, slot list or the Dual Wield gate say — the game put it
+       there (the walk's rule, and the 2026-08-14 shield). Worn elsewhere,
+       it is gated like anything else. */
+    const usable = (r) => r.rec && !r.exalt && ((r.sec === "worn" && wornSlotOf(r.loc) === slot)
+      || (fitsSlot(r.rec, slot) && placeable(r.rec, slot, dw) && (sc.legal(r.rec) || r.sec === "worn")));
+    const owned = rows.filter(usable).map((r) => {
+      const wornIn = r.sec === "worn" ? wornSlotOf(r.loc) : null;
+      return {
+        row: r, score: sc.score(r.rec, r.tier, ctx.baseAC, slot),
+        wornHere: wornIn === slot, wornIn,
+        twoH: GS.TWO_H(r.rec),
+        catalog: catalogRank(o.ranker, r.rec, slot, 0, o.trio),   // the item's own worth, at +0
+        sockets: socketsByRow.get(r) || null,
+        unscored: unscoredOf(r.rec),
+        legal: sc.legal(r.rec),
+        placeable: fitsSlot(r.rec, slot) && placeable(r.rec, slot, dw),
+      };
+    });
+    owned.sort((a, b) => b.score - a.score || (b.wornHere - a.wornHere) || b.row.tier - a.row.tier
+      || a.row.name.localeCompare(b.row.name));
+    let rank = 0;
+    owned.forEach((c, i) => { if (i === 0 || c.score < owned[i - 1].score) rank = i + 1; c.rank = rank; });
+    /* A two-hander in the main hand displaces both hands, so the number to
+       beat for one is main + off together, not the main hand alone. */
+    let handsNow = null;
+    if (slot === "Primary" && o.equipped) {
+      const off = slotContext(o.equipped, sc, "Secondary");
+      handsNow = { main: ctx.now[0] || null, off: off.now[0] || null,
+                   total: (ctx.now[0] && ctx.now[0].score || 0) + (off.now[0] && off.now[0].score || 0) };
+    }
+    /* The rank the catalogue gap is priced at: the highest you hold in this
+       slot — the rank you have demonstrably reached here — not the tier of
+       whichever copy scores best, which is +0 often enough to print two
+       identical score columns. */
+    const parTier = owned.reduce((m, c) => Math.max(m, c.row.tier), 0);
+    return { slot, now: ctx.now, vs: ctx.vs, baseAC: ctx.baseAC, wornAC: ctx.wornAC, owned, handsNow, parTier };
+  }
+
+  /* Where the item stands in the whole in-era catalogue for the best of your
+     classes, at +0 — its own worth, the same for every copy whatever rank
+     each is at. The ranker's pool is scored at +0, so passing the held tier
+     pinned every upgraded copy at rank 1. Any Slot has no catalogue of its own —
+     an item parked there is ranked in its own best slot. "Best" is the best
+     PERCENTILE, not the lowest number: 36 of 340 is a stronger standing than
+     14 of 91, and the lowest-number rule was quoting the small catalogue. */
+  function catalogRank(ranker, rec, slot, tier, trio) {
+    if (!ranker || !rec) return null;
+    const slots = slot === ANY ? (rec.sl || []).filter((s) => GS.SLOTS.includes(s)) : [slot];
+    let best = null;
+    const pct = (r) => r.rank / r.of;
+    for (const cls of trio || []) for (const s of slots) {
+      const r = ranker.rank(rec, cls, s, tier || 0);
+      if (r && (!best || pct(r) < pct(best) || (pct(r) === pct(best) && r.of > best.of)))
+        best = { cls, slot: s, rank: r.rank, of: r.of, better: r.better };
+    }
+    return best;
+  }
+
+  /* What the score cannot see, chipped on the item: an instrument's
+     resonance, and a click that runs out. (The effects themselves get a
+     column of their own, so they are not a chip.) */
+  function unscoredOf(rec) {
+    const out = [];
+    if (rec.inst && rec.inst.some((k) => /Resonance$/.test(k))) out.push("inst");
+    if (rec.charges) out.push("charges");
+    return out;
+  }
+
+  /* slotGap({ scorer, slot, D, ownedKeys, baseAC, parTier })
+     The catalogue side of the same slot: every in-era item your trio can wear
+     there that no row of your dump is (Kyle: "gear i don't have yet for that
+     slot for a selected trio"). Scored twice — at +0, which is what a drop is
+     when it lands, and at `parTier`, the rank your best owned copy is at, so a
+     +5 on your back and a +0 on the wiki are compared at the same rank
+     (spare-core's parity rule). Items the wiki gives no stats are not listed:
+     nothing on them can be priced, so nothing about them can be an upgrade.
+     Out-of-era records never appear. */
+  function slotGap(o) {
+    const sc = o.scorer, slot = o.slot, D = o.D, owned = o.ownedKeys || new Set();
+    const dw = sc.dualWieldCap() > 0, par = o.parTier || 0, baseAC = o.baseAC || 0;
+    const items = [];
+    if (D && D.items) for (const key of Object.keys(D.items)) {
+      const rec = D.items[key];
+      if (rec.oe || owned.has(key) || !scorable(rec)) continue;
+      if (!fitsSlot(rec, slot) || !placeable(rec, slot, dw) || !sc.legal(rec)) continue;
+      const s0 = sc.score(rec, 0, baseAC, slot);
+      const sPar = par ? sc.score(rec, par, baseAC, slot) : s0;
+      items.push({ key, rec, s0, sPar, twoH: GS.TWO_H(rec), unscored: unscoredOf(rec) });
+    }
+    items.sort((a, b) => b.sPar - a.sPar || b.s0 - a.s0 || a.rec.n.localeCompare(b.rec.n));
+    /* A name the wiki files under several pages — deity variants of a crafted
+       piece, mostly, with different stats — is several rows here, each a
+       real record. The row carries the page's own qualifier so two
+       "Imbued Dwarven Chain Gorget" at 85 and 39 can be told apart. */
+    const byName = new Map();
+    for (const it of items) (byName.get(it.rec.n) || byName.set(it.rec.n, []).get(it.rec.n)).push(it);
+    for (const group of byName.values()) {
+      if (group.length < 2) continue;
+      for (const it of group) {
+        const suffix = it.key.slice(it.rec.n.toLowerCase().length).trim();
+        it.variant = suffix || it.key;
+        it.variants = group.length;
+      }
+    }
+    return { slot, parTier: par, items };
+  }
+  /* Two records of one name are the same item when nothing the scorer or the
+     fitting rule reads differs — the hyphen/no-hyphen pair — and different
+     items when the stats do (deity variants of a crafted piece). */
+  function sameItem(a, b) {
+    const sig = (r) => JSON.stringify([r.st || null, r.sv || null, r.haste || 0, r.dmg || 0, r.dly || 0, r.sl || null, r.cls || null]);
+    return sig(a) === sig(b);
+  }
+  /* Every item a dump holds at least one copy of, by record key. A stone is
+     named after an item and is not one, so it never counts as owning it. A
+     name the wiki files under more than one page (60 of them — "Slime Blood
+     of Cazic-Thule" has a hyphenated page and a plain one, identical stats)
+     counts as owning every record of that name: the dump prints the name,
+     not the page, and the worn piece was turning up as something to go get. */
+  function ownedKeys(rows, DATA) {
+    const s = new Set();
+    const names = (DATA && DATA.names) || {}, items = (DATA && DATA.items) || {};
+    for (const r of rows || []) {
+      if (r.exalt || !r.key) continue;
+      s.add(r.key);
+      const mine = items[r.key];
+      for (const k of names[String(r.base).toLowerCase()] || [])
+        if (k !== r.key && mine && items[k] && sameItem(mine, items[k])) s.add(k);
+    }
+    return s;
+  }
+
+  /* ── exaltations ─────────────────────────────────────────────────────────
+     exaltAudit({ exalt, trio })
+       exalt – EQLExaltCore.readDump() over the dump's rows
+       trio  – your three class codes
+
+     Two flags Kyle asked for (2026-08-23: "be flagged if i have empty
+     exaltations and especially if i have exaltations somewhere i could be
+     using"):
+
+       empty – every socket on a worn item that its tier has opened and
+               nothing is in. Sockets open by tier alone (exalt-slots.js,
+               23 of 23 worn items), so an open socket with no "-SlotN" child
+               row is an empty one.
+       idle  – every exaltation that is NOT on your body: the Augmentation
+               bin, a bag, the bank, or socketed into an item you are not
+               wearing. For each, the worn items it fits RIGHT NOW through the
+               fitting rule — an empty socket of its type (`homes.empty`), a
+               full one it would replace (`homes.occupied`) — and the ones it
+               fits once they reach the tier that opens the socket
+               (`homes.later`). A home must leave the item wearable by one of
+               your classes; a result none of your three could wear is not a
+               home.
+
+     A loose exaltation whose source yields more than one effect is a MAYBE:
+     the dump does not say which effect it holds (exalt-core's rule), so every
+     effect the source could yield is tried and the row says so. One whose
+     source the wiki has no page for has no known effect and no homes. */
+  function exaltAudit(o) {
+    const X = window.EQLExaltCore, exalt = o.exalt, trio = o.trio || [];
+    const empty = [], idle = [];
+    if (!exalt || !X) return { empty, idle, summary: { empty: 0, wornWithEmpty: 0, fillable: 0, idle: 0, usable: 0, swaps: 0, later: 0 } };
+    const emptyAt = new Map();   // worn item -> { type -> entry }
+    for (const w of exalt.worn) for (const t of X.TYPES) {
+      const s = w.sockets[t.key];
+      if (s && !s.filled && (s.empty || s.open)) {
+        const e = { w, type: t.key, at: t.at, fits: [] };
+        empty.push(e);
+        (emptyAt.get(w) || emptyAt.set(w, {}).get(w))[t.key] = e;
+      }
+    }
+    const mk = (row, key, rec, defs, host, type) => {
+      const homes = { empty: [], occupied: [], later: [] };
+      /* Why a worn item refuses it, for the row that ends with no home at
+         all, read in order: nothing worn shares its slot; or those that do
+         all lack a shared class; or the result would be wearable by none of
+         your three. Counting the commonest refusal across all twenty worn
+         items was wrong — a ring's exaltation read "no shared slot" because
+         eighteen worn items are not rings. */
+      let slotOk = 0, clsOk = 0, trioNo = 0, sameFx = 0;
+      for (const def of defs) {
+        const h = X.homesFor(def, exalt.worn);
+        for (const n of h.never) if (!n.f.why.includes("no shared slot")) slotOk++;
+        for (const n of h.now.concat(h.later)) { slotOk++; clsOk++; if (!X.usableBy(n.f.cls, trio)) trioNo++; }
+        for (const n of h.now) {
+          if (!X.usableBy(n.f.cls, trio)) continue;
+          const sock = n.w.sockets[def.type];
+          if (n.occupied) {
+            /* Replacing an effect with the same effect is not a swap: the
+               reference dump had two such rows, a loose Diamondine Earring
+               exaltation "replacing" the Affliction Efficiency I already in
+               the worn earring. */
+            const cur = sock && sock.stone && sock.stone.stone;
+            if (cur && cur.effect === def.effect) { sameFx++; continue; }
+            homes.occupied.push({ w: n.w, type: def.type, def, f: n.f, current: sock && sock.stone });
+          } else homes.empty.push({ w: n.w, type: def.type, def, f: n.f });
+        }
+        for (const l of h.later) if (X.usableBy(l.f.cls, trio)) homes.later.push({ w: l.w, type: def.type, def, f: l.f, needs: l.needs });
+      }
+      let reason = null;
+      if (!defs.length) reason = rec ? "the wiki lists no effect of a known kind on its source" : "no wiki page for its source";
+      else if (!homes.empty.length && !homes.occupied.length && !homes.later.length) {
+        reason = !slotOk ? "no worn item shares a slot with it"
+          : !clsOk ? "no worn item in its slot shares a class with it"
+          : trioNo ? "none of your classes could wear the result"
+          : sameFx ? "the same effect is already in every socket it fits" : "nothing worn takes it";
+      }
+      const it = { row, key, rec, defs, host: host || null, type: type || (defs.length === 1 ? defs[0].type : null),
+                   maybe: defs.length > 1, unknown: !defs.length, homes, why: reason,
+                   deity: defs.some((d) => d.deity) };
+      for (const h of homes.empty) {
+        const e = emptyAt.get(h.w) && emptyAt.get(h.w)[h.type];
+        if (e && !e.fits.includes(it)) e.fits.push(it);
+      }
+      idle.push(it);
+    };
+    for (const l of exalt.loose) mk(l.row, l.key, l.rec, l.yields.filter((y) => y.type), null, null);
+    for (const src of exalt.sources) {
+      if (src.worn) continue;
+      for (const t of X.TYPES) {
+        const sk = src.sockets[t.key];
+        if (!sk || !sk.filled) continue;
+        mk(sk.stone.row, sk.stone.key, sk.stone.rec, sk.stone.stone ? [sk.stone.stone] : [], src, t.key);
+      }
+    }
+    /* The ones you could be using first, then the ones that would replace
+       something, then the rest — and within a group, the bin before a bag
+       before the bank, the order you would go and get them. */
+    const tier = (it) => (it.homes.empty.length ? 0 : it.homes.occupied.length ? 1 : it.homes.later.length ? 2 : 3);
+    idle.sort((a, b) => tier(a) - tier(b) || secRank(a.row.sec) - secRank(b.row.sec) || a.row.name.localeCompare(b.row.name));
+    const summary = {
+      empty: empty.length,
+      wornWithEmpty: emptyAt.size,
+      /* sockets that can be filled from what you own — the number of wins,
+         where `usable` is the number of candidates competing for them */
+      fillable: empty.filter((e) => e.fits.length).length,
+      idle: idle.length,
+      usable: idle.filter((it) => it.homes.empty.length).length,
+      swaps: idle.filter((it) => !it.homes.empty.length && it.homes.occupied.length).length,
+      later: idle.filter((it) => !it.homes.empty.length && !it.homes.occupied.length && it.homes.later.length).length,
+    };
+    return { empty, idle, summary };
+  }
+
   window.EQLValet = {
-    ORDER, SEC_ORDER, ANY,
+    ORDER, SEC_ORDER, ANY, BROWSE,
     buildSteps, readInventory, itemId, acOf, makeWalk, fetchOrder, secRank, breakdown,
+    slotView, slotGap, ownedKeys, catalogRank, exaltAudit, wornSlotOf,
   };
 })();

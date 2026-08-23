@@ -51,6 +51,7 @@ const VENDOR_JS = {
   "public/valet/valet-core.js": "valet-core.js",
   "public/_shared/exalt-slots.js": "exalt-slots.js",
   "public/_shared/spare-core.js": "spare-core.js",
+  "public/_shared/priorities.js": "priorities.js",
   "public/exalt/exalt-core.js": "exalt-core.js",
   "public/_shared/inventory-core.js": "inventory-core.js",
   "public/_shared/achievements.js": "achievements.js",

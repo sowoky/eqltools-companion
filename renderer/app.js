@@ -4273,10 +4273,14 @@ function loadValetPrefs() {
     if (Array.isArray(o.classes) && o.classes.length === 3) VL.classes = o.classes;
     if (o.level) VL.level = Math.min(50, Math.max(1, o.level | 0));
     if (o.mem && typeof o.mem === "object") VL.mem = o.mem;
+    // the By slot view's own state: which view, which slot, which columns, the gap toggle
+    if (o.vs && typeof o.vs === "object") Object.assign(VS, { view: ["slot", "dress", "exalt"].includes(o.vs.view) ? o.vs.view : "slot",
+      slot: o.vs.slot || "Head", cols: Array.isArray(o.vs.cols) ? o.vs.cols : null, gapAll: !!o.vs.gapAll });
   } catch (e) {}
 }
 const saveValetPrefs = () => {
-  try { localStorage.setItem(VL_KEY, JSON.stringify({ classes: VL.classes, level: VL.level, mem: VL.mem })); } catch (e) {}
+  try { localStorage.setItem(VL_KEY, JSON.stringify({ classes: VL.classes, level: VL.level, mem: VL.mem,
+    vs: { view: VS.view, slot: VS.slot, cols: VS.cols, gapAll: VS.gapAll } })); } catch (e) {}
 };
 const vlTrioKey = () => VL.classes.slice().sort().join("/");
 const VL_MEM = {
@@ -4295,13 +4299,213 @@ function valetReload() {
   spareReload();
   valetRestart();
 }
+/* The companion's own priorities store: the site's is another origin and
+   invisible here (the same wall Sky's skip marks hit). One panel, under the
+   trio picker; the same widget the site mounts (vendor/priorities.js). */
+const VL_PRIO = window.EQLPriorities ? window.EQLPriorities.localStore("eqlt-companion-priorities-v1") : null;
+const vlOverrides = () => (VL_PRIO ? VL_PRIO.read() : {});
+let VSCORER = null;
 function valetScorer() {
-  return window.EQLGearScore.make({ classes: VL.classes, level: VL.level, race: null,
-                                    equipped: VINV && VINV.equipped, D: window.EQL_DATA });
+  if (!VSCORER) VSCORER = window.EQLGearScore.make({ classes: VL.classes, level: VL.level, race: null,
+                                    equipped: VINV && VINV.equipped, D: window.EQL_DATA, overrides: vlOverrides() });
+  return VSCORER;
 }
 function valetRestart() {
+  VSCORER = null;
   VWALK = VINV ? window.EQLValet.makeWalk({ rows: VINV.rows, equipped: VINV.equipped,
                                             scorer: valetScorer(), mem: VL_MEM }) : null;
+  valetAuditReload();
+}
+
+/* ── By slot and Exaltations: the same cores the site runs ─────────────────
+   VEXALT is exalt-core's reading of THIS tab's rows (VINV.rows), so a worn
+   item in the slot table and the same item in the audit are one object; the
+   Inventory tab's EXALT is a different parse of the same dump and is not
+   reused here. VAUDIT is per trio. */
+let VEXALT = null, VAUDIT = null, VRANKER = null, VRANKER_LVL = 0;
+const VS = { view: "slot", slot: "Head", cols: null, gapAll: false, sort: null, dir: 1, gsort: null, gdir: 1 };
+function valetAuditReload() {
+  VEXALT = null; VAUDIT = null;
+  if (!VINV || !GDATA || !window.EQLExaltCore) return;
+  const X = window.EQLExaltCore;
+  if (!EXALT_CAT || EXALT_CAT.data !== GDATA) {
+    EXALT_CAT = X.build(GDATA); EXALT_CAT.data = GDATA;
+    X.setLockedZones(GDATA.zone_oe || []);
+  }
+  VEXALT = X.readDump(VINV.all || VINV.rows, GDATA, EXALT_CAT);
+  VAUDIT = window.EQLValet.exaltAudit({ exalt: VEXALT, trio: VL.classes });
+}
+function valetRanker() {
+  if (!GDATA || !window.EQLInventory) return null;
+  if (!VRANKER || VRANKER_LVL !== VL.level || VRANKER.data !== GDATA) {
+    VRANKER = window.EQLInventory.makeRanker({ D: GDATA, level: VL.level, combat: window.EQL_DATA });
+    VRANKER.data = GDATA; VRANKER_LVL = VL.level;
+  }
+  return VRANKER;
+}
+const vlFxName = (name) => String(name).replace(/\s*\((?:Spell|spell|proc|click|worn|focus)\)$/, "");
+function vlEffects(rec) {
+  const X = window.EQLExaltCore, out = [];
+  if (rec.foc) out.push(`<span class="vlfx"><span class="vlfx__k">focus</span> ${esc(vlFxName(rec.foc))}</span>`);
+  for (const e of rec.eff || []) {
+    if (e.n === rec.foc) continue;
+    out.push(`<span class="vlfx"><span class="vlfx__k">${esc((X && X.kindOf(e)) || "effect")}</span> ${esc(vlFxName(e.n))}</span>`);
+  }
+  return out.join(" ");
+}
+function vlSockets(w) {
+  const X = window.EQLExaltCore;
+  if (!w || !w.sockets || !X) return "";
+  return X.TYPES.map((t) => {
+    const s = w.sockets[t.key];
+    if (!s.open) return `<span class="vlsock vlsock--shut" title="${t.label} opens at +${t.at}">${t.label}</span>`;
+    if (!s.filled) {
+      const e = VAUDIT ? VAUDIT.empty.find((x) => x.w === w && x.type === t.key) : null;
+      const n = e ? e.fits.length : 0;
+      return `<span class="vlsock vlsock--empty${n ? " vlsock--fit" : ""}" title="${t.label} socket is empty${n ? ` — ${n} exaltation${n === 1 ? "" : "s"} you own fit${n === 1 ? "s" : ""} it` : ""}">${t.label}: empty${n ? ` · ${n} fit` : ""}</span>`;
+    }
+    const st = s.stone, eff = st && st.stone ? st.stone.effect : null;
+    const name = st ? st.row.name.replace(/\s*\(Exaltation\)\*?$/, "") : "?";
+    return `<span class="vlsock vlsock--full" title="${t.label}: ${esc(name)}">${t.label}: ${esc(eff ? vlFxName(eff) : name)}</span>`;
+  }).join(" ");
+}
+const VL_SOCK_KNOWN = new Set(["worn", "bags", "bank", "shared"]);
+function vlSocketsFor(c) {
+  const X = window.EQLExaltCore, r = c.row;
+  if (!VEXALT || !X) return null;
+  if (c.wornHere || c.wornIn) return VEXALT.worn.find((w) => w.row === r) || null;
+  if (!VL_SOCK_KNOWN.has(r.sec)) return null;
+  const src = VEXALT.sources.find((s) => s.row === r);
+  if (src) return src;
+  const sockets = {};
+  for (const t of X.TYPES) sockets[t.key] = { open: r.tier >= t.at, filled: false, stone: null };
+  return { row: r, sockets };
+}
+const VS_ATTRS = ["str", "sta", "agi", "dex", "wis", "int", "cha", "atk", "end"];
+const vsTopAttrs = () => { const w = valetScorer().w || {}; return VS_ATTRS.slice().sort((a, b) => (w[b] || 0) - (w[a] || 0)).slice(0, 3); };
+const vsStat = (k, h) => ({ k, h, num: 1, def: () => ["ac", "hp", "mana"].includes(k) || vsTopAttrs().includes(k),
+  v: (rec, tier) => window.EQLTier.statsAt(rec, tier)[k] || 0, cell: (rec, tier) => { const v = window.EQLTier.statsAt(rec, tier)[k] || 0; return v ? String(v) : ""; } });
+const VS_COLS = [
+  { k: "rank", h: "#", num: 1, def: true, own: 1, v: (c) => c.rank, cell: (c) => String(c.rank) },
+  { k: "score", h: "Score", num: 1, def: true, own: 1, v: (c) => c.score, cell: (c) => `<b title="HP-equivalents for this trio">${Math.round(c.score)}</b>` },
+  { k: "item", h: "Item", fixed: 1, def: true },
+  { k: "where", h: "Where", def: true, own: 1 },
+  { k: "crank", h: "Class rank", def: true, own: 1, v: (c) => (c.catalog ? c.catalog.rank : 9999),
+    cell: (c) => (c.catalog ? `<span title="${c.catalog.rank} of ${c.catalog.of} ${esc(c.catalog.slot)} items a ${esc(window.EQLChar.name(c.catalog.cls))} can wear, at +0">${c.catalog.rank} <span class="dim">of ${c.catalog.of} · ${esc(c.catalog.cls)}</span></span>` : "") },
+  ...window.EQLGearScore.ITEM_STATS.map(([k, h]) => vsStat(k, h)),
+  { k: "ratio", h: "DMG/DLY", num: 1, def: null, v: (rec, tier) => (rec.dmg && rec.dly ? window.EQLTier.statAt(rec.dmg, tier) / rec.dly : 0),
+    cell: (rec, tier) => (rec.dmg && rec.dly ? `${window.EQLTier.statAt(rec.dmg, tier)}/${rec.dly} = ${(window.EQLTier.statAt(rec.dmg, tier) / rec.dly).toFixed(2)}` : "") },
+  { k: "fx", h: "Effects", def: true, v: (rec) => (rec.eff || []).length + (rec.foc ? 1 : 0), cell: (rec) => vlEffects(rec) },
+  { k: "sock", h: "Sockets", def: true, own: 1 },
+];
+const VS_HANDS = ["Primary", "Secondary", "Range"];
+function vsCols() {
+  const picked = Array.isArray(VS.cols) ? new Set(VS.cols) : null;
+  return VS_COLS.filter((c) => c.fixed || (picked ? picked.has(c.k)
+    : (c.def === null ? VS_HANDS.includes(VS.slot) : typeof c.def === "function" ? c.def() : c.def)));
+}
+function vsSorted(list, cols, key, dir, valueOf) {
+  const col = cols.find((c) => c.k === key);
+  if (!col) return list;
+  return list.slice().sort((a, b) => {
+    const av = valueOf(col, a), bv = valueOf(col, b);
+    return (typeof av === "number" && typeof bv === "number" ? av - bv : String(av).localeCompare(String(bv))) * dir;
+  });
+}
+function renderValetFlags() {
+  const s = VAUDIT ? VAUDIT.summary : null, bits = [];
+  if (s && s.fillable) bits.push(`<button type="button" class="vl-flag vl-flag--fit" data-vlview="exalt"><b>${s.fillable}</b> empty socket${s.fillable === 1 ? "" : "s"} on what you're wearing can be filled from what you own <span class="dim">(${s.usable} exaltation${s.usable === 1 ? "" : "s"} fit)</span></button>`);
+  if (s && s.empty) bits.push(`<button type="button" class="vl-flag" data-vlview="exalt"><b>${s.empty}</b> empty socket${s.empty === 1 ? "" : "s"} on ${s.wornWithEmpty} worn item${s.wornWithEmpty === 1 ? "" : "s"}</button>`);
+  $("vlFlags").innerHTML = bits.join("");
+  $("vlFlags").hidden = !bits.length;
+}
+function renderValetSlot() {
+  const V = window.EQLValet, GS = window.EQLGearScore, sc = valetScorer();
+  const counts = {}, flags = {};
+  for (const b of V.BROWSE) counts[b.slot] = V.slotView({ rows: VINV.rows, equipped: VINV.equipped, scorer: sc, slot: b.slot }).owned.length;
+  if (VAUDIT) for (const e of VAUDIT.empty) if (e.fits.length) flags[e.w.slot] = 1;
+  $("vlSlotPick").innerHTML = V.BROWSE.map((b) =>
+    `<button type="button" class="invtab${b.slot === VS.slot ? " is-on" : ""}" data-vlslot="${esc(b.slot)}" title="${flags[b.slot] ? "an exaltation you own fits an empty socket here" : ""}">${esc(b.label)} <span class="invtab__n">${counts[b.slot] || 0}</span>${flags[b.slot] ? `<i class="slotdot"></i>` : ""}</button>`).join("");
+  const slot = VS.slot, label = (V.BROWSE.find((b) => b.slot === slot) || {}).label || slot;
+  const sv = V.slotView({ rows: VINV.rows, equipped: VINV.equipped, scorer: sc, slot, trio: VL.classes, ranker: valetRanker(), exalt: VEXALT });
+  $("vlSlotName").textContent = label;
+  // names only: the score and sockets sit on the same item's highlighted row below
+  $("vlSlotNow").innerHTML = (sv.now.map((n) => n.e.rec ? itemSpan(n.e.name, true) : `<b>${esc(n.e.name)}</b> <span class="warn">no wiki page</span>`).join(` <span class="dim">+</span> `) || `<span class="dim">Nothing in this slot.</span>`)
+    + (sv.handsNow && sv.handsNow.off ? `<div class="dim">Main + off together: <b>${Math.round(sv.handsNow.total)}</b> — the number a two-hander has to beat.</div>` : "");
+  // columns
+  const C = vsCols(), on = new Set(C.map((c) => c.k));
+  $("vlOwnCols").innerHTML = VS_COLS.filter((c) => !c.fixed).map((c) => `<label class="chk"><input type="checkbox" data-vlcol="${c.k}" ${on.has(c.k) ? "checked" : ""}> ${esc(c.h)}</label>`).join("")
+    + `<button type="button" class="linkish" id="vlColsReset">reset</button>`;
+  $("vlOwnCount").textContent = sv.owned.length ? `${sv.owned.length} cop${sv.owned.length === 1 ? "y" : "ies"} fit` : "";
+  const valueOf = (col, c) => (col.k === "item" ? c.row.name.toLowerCase() : col.k === "where" ? V.secRank(c.row.sec) * 1000 + (GS.locBadge(c.row.loc).n || 0)
+    : col.k === "sock" ? (vlSocketsFor(c) ? 0 : 1) : col.own ? col.v(c) : col.v(c.row.rec, c.row.tier));
+  const rows = VS.sort ? vsSorted(sv.owned, C, VS.sort, VS.dir, valueOf) : sv.owned;
+  const arrow = (k, s, d) => (s === k ? (d > 0 ? " ▲" : " ▼") : "");
+  $("vlOwn").innerHTML = `<table class="qtab ivt"><thead><tr>${C.map((c) => `<th data-vlosort="${c.k}">${esc(c.h)}${arrow(c.k, VS.sort, VS.dir)}</th>`).join("")}</tr></thead><tbody>${
+    rows.length ? rows.map((c) => {
+      const r = c.row, w = vlSocketsFor(c);
+      return `<tr class="${c.wornHere ? "is-worn" : ""}">${C.map((col) => {
+        if (col.k === "item") return `<td class="iv-item vl-item">${itemSpan(r.name, true)}${c.twoH ? ` <span class="dim">2H</span>` : ""}${c.unscored.includes("charges") ? ` <span class="warn" title="Its click has charges and runs out.">charges</span>` : ""}${!c.legal ? ` <span class="warn" title="The wiki's class list for this item has none of your three; it is on your body, so the game disagrees.">wiki: not your class</span>` : ""}${c.wornHere && !c.placeable ? ` <span class="warn" title="Without Dual Wield the wiki says a damaging one-hander cannot go here; it is in your off hand, so the game disagrees.">wiki: can't hold it</span>` : ""}</td>`;
+        if (col.k === "where") return `<td>${c.wornHere ? `<span class="skl skl--word">on you</span>` : c.wornIn ? `<span class="skl skl--word">on you · ${esc(c.wornIn)}</span>` : vlBadge(r.loc)}</td>`;
+        if (col.k === "sock") return `<td>${w ? vlSockets(w) : `<span class="dim" title="The storage bins export no sockets.">not listed</span>`}</td>`;
+        return `<td class="${col.num ? "num" : ""}">${col.own ? col.cell(c) : col.cell(r.rec, r.tier)}</td>`;
+      }).join("")}</tr>`;
+    }).join("") : `<tr><td colspan="${C.length}">Nothing you own fits here.</td></tr>`}</tbody></table>`;
+  // the catalogue gap
+  const par = sv.parTier, best = sv.owned.length ? sv.owned[0].score : 0;
+  const gap = V.slotGap({ scorer: sc, slot, D: GDATA, ownedKeys: V.ownedKeys(VINV.rows, GDATA), baseAC: sv.baseAC, parTier: par });
+  const above = gap.items.filter((g) => g.sPar > best);
+  const list = VS.gapAll ? gap.items : above;
+  $("vlGapCount").textContent = gap.items.length ? `${above.length} of ${gap.items.length} score above your best` : "";
+  $("vlGapAll").textContent = gap.items.length > above.length ? (VS.gapAll ? `Show only the ${above.length} above your best` : `Show all ${gap.items.length}`) : "";
+  $("vlGapNote").innerHTML = gap.items.length ? `In era, wearable by your trio, not in your dump.${par ? ` <b>+${par}</b> is the rank of your best copy.` : ""}` : "The catalogue has nothing in era your trio can wear here that you don't already own.";
+  const GC = C.filter((c) => !c.own);
+  const gcols = [{ k: "s0", h: par ? "Score +0" : "Score", num: 1, v: (g) => g.s0 }, ...(par ? [{ k: "sPar", h: `at +${par}`, num: 1, v: (g) => g.sPar }] : []),
+    ...GC.map((c) => ({ k: c.k, h: c.h, num: c.num, v: (g) => (c.k === "item" ? g.rec.n.toLowerCase() : c.v(g.rec, par)) })),
+    { k: "src", h: "Source", v: (g) => { const d = ((g.rec.src || {}).d || []).find(([z]) => !(GDATA.zone_oe || []).includes(z)); return d ? d[0].toLowerCase() : "~"; } }];
+  const grows = VS.gsort ? vsSorted(list, gcols, VS.gsort, VS.gdir, (col, g) => col.v(g)) : list;
+  $("vlGap").innerHTML = `<table class="qtab ivt"><thead><tr>${gcols.map((c) => `<th data-vlgsort="${c.k}">${esc(c.h)}${arrow(c.k, VS.gsort, VS.gdir)}</th>`).join("")}</tr></thead><tbody>${
+    grows.length ? grows.map((g) => {
+      const k = V.catalogRank(valetRanker(), g.rec, slot, 0, VL.classes);
+      return `<tr>${gcols.map((col) => {
+        if (col.k === "s0") return `<td class="num">${Math.round(g.s0)}</td>`;
+        if (col.k === "sPar") return `<td class="num"><b>${Math.round(g.sPar)}</b></td>`;
+        if (col.k === "item") return `<td class="iv-item vl-item">${itemSpan(g.rec.n, true)}${g.twoH ? ` <span class="dim">2H</span>` : ""}${g.variant ? ` <span class="dim" title="The wiki has ${g.variants} pages under this name with different stats.">${esc(g.variant)}</span>` : ""}${g.unscored.includes("charges") ? ` <span class="warn" title="Its click has charges and runs out.">charges</span>` : ""}</td>`;
+        if (col.k === "crank") return `<td class="num">${k ? `${k.rank} <span class="dim">of ${k.of} · ${esc(k.cls)}</span>` : ""}</td>`;
+        if (col.k === "src") return `<td>${esc(window.EQLExaltCore ? window.EQLExaltCore.sourceText(g.rec) : "")}</td>`;
+        const c = GC.find((x) => x.k === col.k);
+        return `<td class="${c.num ? "num" : ""}">${c.cell(g.rec, par)}</td>`;
+      }).join("")}</tr>`;
+    }).join("") : `<tr><td colspan="${gcols.length}">${gap.items.length ? "Nothing in the catalogue scores above your best copy at its rank." : ""}</td></tr>`}</tbody></table>`;
+}
+function renderValetExalt() {
+  const X = window.EQLExaltCore, a = VAUDIT, GS = window.EQLGearScore, V = window.EQLValet;
+  const stoneName = (row) => row.name.replace(/\s*\(Exaltation\)\*?$/, "");
+  const wornLine = (w) => `<b>${esc(w.slot)}</b> · ${esc(w.row.name)}`;
+  const byItem = new Map();
+  for (const e of (a ? a.empty : [])) (byItem.get(e.w) || byItem.set(e.w, []).get(e.w)).push(e);
+  const items = [...byItem.entries()].map(([w, es]) => ({ w, es, fits: es.reduce((n, e) => n + e.fits.length, 0) })).sort((x, y) => y.fits - x.fits || x.es.length - y.es.length);
+  const stoneWhere = (it) => (it.host ? `${vlBadge(it.host.row.loc)} <span class="dim">in ${esc(it.host.row.name)}</span>` : it.row.sec === "exalts" ? "" : vlBadge(it.row.loc));
+  $("vlExEmpty").innerHTML = `<table class="qtab ivt"><thead><tr><th>Slot</th><th>Item</th><th>Sockets</th><th>Exaltations you own that fit an empty one</th></tr></thead><tbody>${
+    items.length ? items.map(({ w, es, fits }) => `<tr class="${fits ? "is-worn" : ""}"><td>${esc(w.slot)}</td><td class="iv-item vl-item">${w.rec ? itemSpan(w.row.name, true) : esc(w.row.name)}</td><td>${vlSockets(w)}</td><td>${es.filter((e) => e.fits.length).map((e) => `<span class="dim">${esc(X.TYPE[e.type].label)}:</span> ${e.fits.map((it) => `${it.rec ? itemSpan(stoneName(it.row), true) : esc(stoneName(it.row))} ${stoneWhere(it)}`).join(", ")}`).join("<br>") || (w.rec ? "" : `<span class="dim">no wiki page, so nothing can be fitted</span>`)}</td></tr>`).join("")
+    : `<tr><td colspan="4">Every open socket on what you're wearing has something in it.</td></tr>`}</tbody></table>`;
+  const all = a ? a.idle : [];
+  const idle = all.filter((it) => it.homes.empty.length || it.homes.occupied.length || it.homes.later.length);
+  const none = all.filter((it) => !idle.includes(it));
+  $("vlExIdleN").textContent = idle.length ? `${idle.length}` : "";
+  $("vlExNoneN").textContent = none.length ? `${none.length}` : "";
+  $("vlExNone").innerHTML = `<table class="qtab ivt"><thead><tr><th>Where</th><th>Exaltation</th><th>Effect</th><th>Why</th></tr></thead><tbody>${
+    none.length ? none.map((it) => `<tr><td>${vlBadge(it.row.loc)}${it.host ? `<br><span class="dim">in ${esc(it.host.row.name)}</span>` : ""}</td><td class="iv-item vl-item">${it.rec ? itemSpan(stoneName(it.row), true) : esc(stoneName(it.row))}</td><td>${it.unknown ? `<span class="dim">no wiki page for its source</span>` : it.defs.map((d) => `<span class="vlfx"><span class="vlfx__k">${esc(d.type)}</span> ${esc(vlFxName(d.effect))}</span>`).join(" ")}</td><td>${esc(it.why || "")}</td></tr>`).join("")
+    : `<tr><td colspan="4">Every exaltation you own fits something you're wearing.</td></tr>`}</tbody></table>`;
+  $("vlExIdle").innerHTML = `<table class="qtab ivt"><thead><tr><th>Where</th><th>Exaltation</th><th>Effect</th><th>Fits an empty socket</th><th>Would replace</th><th>After an upgrade</th></tr></thead><tbody>${
+    idle.length ? idle.map((it) => {
+      const h = it.homes;
+      const eff = it.unknown ? `<span class="dim">no wiki page for its source</span>` : it.defs.map((d) => `<span class="vlfx"><span class="vlfx__k">${esc(d.type)}</span> ${esc(vlFxName(d.effect))}</span>`).join(" ") + (it.maybe ? ` <span class="dim" title="The dump does not say which of its source's effects a loose exaltation holds.">one of these</span>` : "");
+      return `<tr><td>${vlBadge(it.row.loc)}${it.host ? `<br><span class="dim">in ${esc(it.host.row.name)}</span>` : ""}</td><td class="iv-item vl-item">${it.rec ? itemSpan(stoneName(it.row), true) : esc(stoneName(it.row))}</td><td>${eff}</td>
+        <td>${h.empty.map((x) => `${wornLine(x.w)} <span class="dim">${esc(X.TYPE[x.type].label)}</span>`).join("<br>")}</td>
+        <td>${h.occupied.map((x) => `${wornLine(x.w)} <span class="dim">${esc(X.TYPE[x.type].label)}${x.current && x.current.stone ? ` · now ${esc(vlFxName(x.current.stone.effect))}` : ""}</span>`).join("<br>")}</td>
+        <td>${h.later.map((x) => `${wornLine(x.w)} <span class="dim">${esc(X.TYPE[x.type].label)} at +${x.needs}</span>`).join("<br>")}</td></tr>`;
+    }).join("") : `<tr><td colspan="6">${all.length ? "None of them fits anything you're wearing." : "Every exaltation you own is socketed into something you're wearing."}</td></tr>`}</tbody></table>`;
 }
 
 const vlStat = (rec, tier) => {
@@ -4325,14 +4529,21 @@ function renderValet() {
   drawValetTrio();
   if (!VWALK) {
     run.hidden = true; done.hidden = true; empty.hidden = false;
+    $("vlSlotView").hidden = true; $("vlExaltView").hidden = true; $("vlFlags").hidden = true;
     if (INV.problem) empty.textContent = INV.problem;
     meta.textContent = "";
     return;
   }
   empty.hidden = true;
   meta.textContent = `${INV.file} · ${VINV.rows.length} items · ${VL.classes.join("/")} at ${VL.level}`;
-  if (VWALK.done()) { run.hidden = true; done.hidden = false; renderValetDone(); }
-  else { done.hidden = true; run.hidden = false; renderValetRun(); }
+  renderValetFlags();
+  for (const b of $("vlViews").querySelectorAll("[data-vlview]")) b.classList.toggle("is-on", b.dataset.vlview === VS.view);
+  $("vlSlotView").hidden = VS.view !== "slot"; $("vlExaltView").hidden = VS.view !== "exalt";
+  run.hidden = true; done.hidden = true;
+  if (VS.view === "slot") renderValetSlot();
+  else if (VS.view === "exalt") renderValetExalt();
+  else if (VWALK.done()) { done.hidden = false; renderValetDone(); }
+  else { run.hidden = false; renderValetRun(); }
 }
 
 function renderValetRun() {
@@ -4438,6 +4649,15 @@ function pushValet() {
     gain: Math.round(plan.score - cur.score),
     worn: all.filter(it => it.row.sec === "worn").length,
     ready: VWALK.done(),
+    /* the two exaltation flags, and the exaltations that fit an empty socket
+       on what is worn — the bank-side question the overlay exists for */
+    flags: VAUDIT ? { usable: VAUDIT.summary.usable, fillable: VAUDIT.summary.fillable, empty: VAUDIT.summary.empty, worn: VAUDIT.summary.wornWithEmpty,
+      fits: VAUDIT.idle.filter(it => it.homes.empty.length).slice(0, 20).map(it => {
+        const b = window.EQLGearScore.locBadge(it.row.loc);
+        return { n: it.row.name.replace(/\s*\(Exaltation\)\*?$/, ""), host: it.host ? it.host.row.name : null,
+                 loc: { k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title },
+                 into: it.homes.empty.map(h => `${h.w.slot} · ${h.w.row.name} (${h.type})`) };
+      }) } : null,
     fetch: all.filter(it => it.row.sec !== "worn").map(it => {
       const b = window.EQLGearScore.locBadge(it.row.loc);
       const ref = skyRef(it.row.name);
@@ -4499,6 +4719,28 @@ function wireValet() {
     renderValet(); pushValet(); pushSpare(); renderInv();
   });
   $("vlRestart").addEventListener("click", () => { valetRestart(); renderValet(); pushValet(); pushSpare(); });
+  // By slot / Get dressed / Exaltations, the flags, the slot picker, the two tables' sorts, the column picker
+  const vsRedraw = () => { renderValet(); };
+  const pickView = (v) => { VS.view = v; saveValetPrefs(); vsRedraw(); };
+  $("vlViews").addEventListener("click", (e) => { const b = e.target.closest("[data-vlview]"); if (b) pickView(b.dataset.vlview); });
+  $("vlFlags").addEventListener("click", (e) => { const b = e.target.closest("[data-vlview]"); if (b) pickView(b.dataset.vlview); });
+  $("vlSlotPick").addEventListener("click", (e) => { const b = e.target.closest("[data-vlslot]"); if (!b) return; VS.slot = b.dataset.vlslot; saveValetPrefs(); vsRedraw(); });
+  $("vlOwn").addEventListener("click", (e) => { const th = e.target.closest("[data-vlosort]"); if (!th) return; const k = th.dataset.vlosort; VS.dir = VS.sort === k ? -VS.dir : 1; VS.sort = k; vsRedraw(); });
+  $("vlGap").addEventListener("click", (e) => { const th = e.target.closest("[data-vlgsort]"); if (!th) return; const k = th.dataset.vlgsort; VS.gdir = VS.gsort === k ? -VS.gdir : 1; VS.gsort = k; vsRedraw(); });
+  $("vlGapAll").addEventListener("click", () => { VS.gapAll = !VS.gapAll; saveValetPrefs(); vsRedraw(); });
+  $("vlOwnCols").addEventListener("change", (e) => {
+    const inp = e.target.closest("[data-vlcol]"); if (!inp) return;
+    const on = new Set(vsCols().map((c) => c.k)); if (inp.checked) on.add(inp.dataset.vlcol); else on.delete(inp.dataset.vlcol);
+    VS.cols = VS_COLS.filter((c) => !c.fixed && on.has(c.k)).map((c) => c.k); saveValetPrefs(); vsRedraw();
+  });
+  $("vlOwnCols").addEventListener("click", (e) => { if (!e.target.closest("#vlColsReset")) return; VS.cols = null; saveValetPrefs(); vsRedraw(); });
+  if (window.EQLPriorities && VL_PRIO) {
+    window.EQLPriorities.mount($("vlPrio"), {
+      store: VL_PRIO, scorer: valetScorer, summary: $("vlPrioSummary"), btnClass: "btn btn--sm",
+      note: "HP-equivalents per point of the stat, computed from your trio and level. Hover a stat for the derivation. Edits here apply to every ranking for your trio in this app; the site keeps its own.",
+      onChange: () => { valetRestart(); renderValet(); pushValet(); },
+    });
+  }
   $("vlSkip").addEventListener("click", () => { VWALK.skip(); renderValet(); pushValet(); pushSpare(); });
   $("vlBack").addEventListener("click", () => { if (VWALK.back()) { renderValet(); pushValet(); pushSpare(); } });
   $("vlAuto").addEventListener("click", (e) => {

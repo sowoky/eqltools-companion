@@ -324,6 +324,49 @@
       <button id="vlRestart" class="btn btn--sm">start over</button>
       <span id="vlMeta" class="dim"></span>
     </div>
+    <details class="vl-prio" id="vlPrioWrap">
+      <summary>Stat priorities <span id="vlPrioSummary" class="dim"></span></summary>
+      <div id="vlPrio"></div>
+    </details>
+
+    <!-- the two exaltation flags, whenever either is non-zero -->
+    <div class="vl-flags" id="vlFlags" hidden></div>
+
+    <div class="seg vl-views" id="vlViews" role="tablist">
+      <button type="button" class="seg__b is-on" data-vlview="slot">By slot</button>
+      <button type="button" class="seg__b" data-vlview="dress">Get dressed</button>
+      <button type="button" class="seg__b" data-vlview="exalt">Exaltations</button>
+    </div>
+
+    <div id="vlSlotView" hidden>
+      <div class="invtabs" id="vlSlotPick" role="tablist" aria-label="Slot"></div>
+      <div class="vl-slothead">
+        <h3 id="vlSlotName"></h3>
+        <div id="vlSlotNow" class="vl-now"></div>
+      </div>
+      <div class="vl-tblhead">
+        <b>What you own</b> <span id="vlOwnCount" class="dim"></span>
+        <details class="vl-cols"><summary>columns</summary><div id="vlOwnCols" class="vl-colpick"></div></details>
+      </div>
+      <div id="vlOwn" class="invwrap"></div>
+      <div class="vl-tblhead">
+        <b>What you don't have yet</b> <span id="vlGapCount" class="dim"></span>
+        <button type="button" class="linkish" id="vlGapAll"></button>
+      </div>
+      <p id="vlGapNote" class="dim"></p>
+      <div id="vlGap" class="invwrap"></div>
+    </div>
+
+    <div id="vlExaltView" hidden>
+      <h3>Empty sockets on what you're wearing</h3>
+      <p class="dim">A socket opens with the item's upgrade rank: Focus at +1, Click at +2, Worn at +3, Proc at +4.</p>
+      <div id="vlExEmpty" class="invwrap"></div>
+      <h3>Exaltations you could be using <span id="vlExIdleN" class="dim"></span></h3>
+      <p class="dim">Not on your body &mdash; and a fit has to leave the item wearable by one of your three classes.</p>
+      <div id="vlExIdle" class="invwrap"></div>
+      <h3>Nowhere on what you're wearing <span id="vlExNoneN" class="dim"></span></h3>
+      <div id="vlExNone" class="invwrap"></div>
+    </div>
 
     <div id="vlRun" hidden>
       <div class="vl-head">
@@ -449,6 +492,7 @@
 <script src="../vendor/combat-data.js"></script>
 <script src="../vendor/char-state.js"></script>
 <script src="../vendor/gear-score.js"></script>
+<script src="../vendor/priorities.js"></script>
 <script src="../vendor/sky-core.js"></script>
 <script src="../vendor/valet-core.js"></script>
 <script src="../vendor/exalt-slots.js"></script>

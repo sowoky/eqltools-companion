@@ -1417,6 +1417,21 @@ th.sort-desc::after { content: " ▼"; color: var(--gold); font-size: .6rem; }
    /learn/experience's own stylesheet, so the motes tables pushed the whole page
    sideways at 414px. A class used by more than one page belongs here. */
 
+/* ── Priorities — the shared stat-weight panel (_shared/priorities.js) ─────
+   One grid on /gear, /valet and /sky; the companion vendors the same file.
+   A custom row is gold so an edited weight is visible at a glance. */
+/* the small grey aside every tool page uses ("(3 custom)", "no stats on the
+   wiki"); /gear had it, the rest of the pages used the class unstyled */
+.fine { color: var(--ink-dim); font-size: .86rem; font-family: var(--font-accent), Georgia, serif; }
+.prio-note { margin: 0 0 .5rem; }
+.prio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); gap: .25rem .9rem; margin: .5rem 0; }
+.prio-row { display: grid; grid-template-columns: minmax(0, 1fr) 4.5em auto; gap: .4rem; align-items: center;
+  font-family: var(--font-accent), Georgia, serif; font-size: .9rem; color: var(--ink-soft); }
+.prio-row.custom { color: var(--gold-bright); }
+.prio-row input { width: 100%; }
+.prio-name { cursor: help; }
+.prio-foot { margin-top: .35rem; }
+
 /* ── Section index — a sticky left rail on desktop ─────────────────────────
    The "On this page" list used to be a horizontal strip above the content on
    13 pages, which cost a band of vertical space at the top of every one and

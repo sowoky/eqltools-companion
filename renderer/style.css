@@ -836,3 +836,36 @@ select { cursor: pointer; max-width: 100%; text-overflow: ellipsis; }
 
 /* the vendored sheet is written for a page: keep its page furniture out */
 .pane .site-head, .pane .site-foot, .pane .intake { display: none; }
+
+/* ── Valet: By slot / Exaltations / priorities ───────────────────────────── */
+.vl-prio { margin: 6px 0; }
+.vl-prio summary { cursor: pointer; color: var(--ink-soft); font-size: 12px; }
+.vl-prio .prio-note { font-size: 12px; color: var(--ink-dim); margin: 4px 0 6px; }
+.vl-prio .prio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 2px 12px; margin: 4px 0; }
+.vl-prio .prio-row { display: grid; grid-template-columns: 1fr 5.5em auto; gap: 6px; align-items: center; font-size: 12px; color: var(--ink-soft); }
+.vl-prio .prio-row.custom { color: var(--gold-pale); }
+.vl-prio .prio-row input { width: 100%; }
+.vl-prio .prio-name { cursor: help; }
+.vl-prio .prio-foot { margin-top: 4px; }
+.vl-flags { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.vl-flag { font-size: 12px; padding: 3px 8px; border-radius: 6px; cursor: pointer; background: var(--bg-panel); border: 1px solid var(--line); color: var(--ink-soft); text-align: left; }
+.vl-flag--fit { border-color: var(--gold); color: var(--gold-pale); }
+.vl-views { margin: 6px 0 8px; }
+.vl-slothead { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: flex-start; margin: 8px 0; }
+.vl-slothead h3 { margin: 0; min-width: 6em; }
+.vl-now { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; min-width: 0; }
+.vl-now__line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.vl-now__score { font-weight: 600; color: var(--gold-pale); }
+.vl-tblhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 10px 0 4px; }
+.vl-cols summary { font-size: 12px; color: var(--ink-dim); cursor: pointer; }
+.vl-colpick { display: flex; flex-wrap: wrap; gap: 2px 10px; padding: 4px 0; font-size: 12px; }
+.vlsock { display: inline-block; font-size: 10.5px; padding: 1px 5px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink-dim); margin: 1px 2px 1px 0; white-space: nowrap; }
+.vlsock--full { color: var(--ink-soft); }
+.vlsock--empty { color: var(--warn); border-color: var(--warn); }
+.vlsock--fit { color: var(--gold-pale); border-color: var(--gold); }
+.vlsock--shut { opacity: .5; }
+.vlfx { display: inline-block; margin-right: 6px; white-space: nowrap; }
+.vlfx__k { font-size: 9.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-dim); }
+.slotdot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-left: 4px; vertical-align: middle; }
+.ivt tr.is-worn td { background: color-mix(in srgb, var(--gold) 6%, transparent); }
+.ivt td.vl-item { min-width: 13em; }

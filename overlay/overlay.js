@@ -629,6 +629,48 @@ function renderValet() {
     }
     valetEl.append(sec);
   }
+  /* The bank-side question the app's audit answers: which of the exaltations
+     you are carrying around would fill an empty socket on what you have on.
+     One line of counts, then one fold listing them — name, where it is, and
+     the worn item and socket it goes into. */
+  const f = VALET.flags;
+  if (f && (f.usable || f.empty)) {
+    const line = document.createElement("div");
+    line.className = "osk-head ov-flags";
+    line.textContent = (f.fillable ? `${f.fillable} empty socket${f.fillable === 1 ? "" : "s"} on you can be filled from what you own (${f.usable} fit)` : "")
+      + (f.empty ? `${f.fillable ? " · " : ""}${f.empty} empty socket${f.empty === 1 ? "" : "s"} on ${f.worn} worn item${f.worn === 1 ? "" : "s"}` : "");
+    valetEl.append(line);
+    if (f.fits && f.fits.length) {
+      const sec = document.createElement("section");
+      sec.className = "ovg";
+      const h = document.createElement("button");
+      h.type = "button"; h.className = "ovg__h"; h.dataset.ovalet = "__fits";
+      h.textContent = "Exaltations you could be using";
+      const c = document.createElement("span");
+      c.className = "ovg__c"; c.textContent = f.fits.length;
+      h.append(c); sec.append(h);
+      if (!VAL_CLOSED.has("__fits")) {
+        const ul = document.createElement("ul");
+        ul.className = "ovl";
+        for (const x of f.fits) {
+          const li = document.createElement("li");
+          li.className = "ovi";
+          // the Augmentation bin is where a loose one lives by default; only a
+          // bag, bank slot or host item is a place worth naming
+          if (!(x.loc.k === "word" && x.loc.w === "exaltation")) li.append(skyLocEl(x.loc));
+          const n = document.createElement("span");
+          n.className = "ovi__n"; n.textContent = x.n + (x.host ? ` (in ${x.host})` : "");
+          li.append(n);
+          const into = document.createElement("span");
+          into.className = "ovi__into"; into.textContent = "→ " + x.into.join("; ");
+          li.append(into);
+          ul.append(li);
+        }
+        sec.append(ul);
+      }
+      valetEl.append(sec);
+    }
+  }
 }
 valetEl.addEventListener("click", (e) => {
   const h = e.target.closest("[data-ovalet]");
