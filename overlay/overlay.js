@@ -618,10 +618,27 @@ function renderValet() {
         const sl = document.createElement("span");
         sl.className = "ovi__s"; sl.textContent = r.slot;
         li.append(sl, itemSpan(r.n, r.url, r.sb, "ovi__n"));
+        // what the reach is worth, so a half-finished trip has an order
+        if (r.gain != null) {
+          const g2 = document.createElement("span");
+          g2.className = "ovi__gain" + (r.gain > 0 ? " up" : r.gain < 0 ? " down" : "");
+          g2.textContent = (r.gain > 0 ? "+" : "") + r.gain;
+          g2.title = r.off ? `Against ${r.off}, at the same AC base` : "Nothing is in this slot now";
+          li.append(g2);
+        }
         if (r.loc.sub) {
           const sub = document.createElement("span");
           sub.className = "ovi__sub"; sub.textContent = "slot " + r.loc.sub;
           li.append(sub);
+        }
+        // which worn piece it displaces, and whether that piece is holding
+        // exaltations that come off with it
+        if (r.off) {
+          const off = document.createElement("span");
+          off.className = "ovi__off";
+          off.textContent = r.moves ? `${r.off} moves to ${r.moves}` : "off: " + r.off + (r.strip ? ` · ✦${r.strip} strip first` : "");
+          off.title = r.strip ? "Its exaltations come off with it" : "";
+          li.append(off);
         }
         ul.append(li);
       }
@@ -753,10 +770,24 @@ function renderExalt() {
     const k = document.createElement("span");
     k.className = "ovi__s"; k.textContent = r.kind;
     li.append(k, itemSpan(r.n, r.url, r.sb, "ovi__n"));
+    /* The effect is what you are choosing between and it was hover-only; the
+       bag or bank slot is the other half of a banker's-desk read, and it was
+       not on the wire at all. Both go on the row's second line — three facts
+       do not fit across 340px. The Augmentation bin is where a loose one lives
+       by default, so only a real place is worth naming. */
+    const l2 = document.createElement("span");
+    l2.className = "ovi__l2";
+    if (r.effect) {
+      const fx = document.createElement("b");
+      fx.className = "ovi__fx"; fx.textContent = r.effect;
+      l2.append(fx);
+    }
+    if (r.loc && !(r.loc.k === "word" && r.loc.w === "exaltation")) l2.append(skyLocEl(r.loc));
     const to = document.createElement("span");
     to.className = "ovi__warn"; to.textContent = `→ ${r.into}`;
-    to.title = r.effect + (r.more ? ` · also fits ${r.more}` : "");
-    li.append(to);
+    to.title = r.more ? `also fits ${r.more}` : "";
+    l2.append(to);
+    li.append(l2);
     ul.append(li);
   }
   exaltEl.append(ul);
@@ -875,9 +906,29 @@ function skyItemLi(it) {
   c.className = "oski__c"; c.textContent = `${it.have}/${it.need}`;
   li.append(c);
   for (const b of it.locs || []) li.append(skyLocEl(b));
+  /* What the log watched happen to this piece without it ever reaching a bag.
+     An autosale is stamped on the loot line, so a dump can never show it. */
+  // one chip per kind, the way the tab draws them; only an autosale or a
+  // destroy is loud (a merchant sale carries no quantity)
+  for (const [n, word, hard] of [[it.sold, "autosold", true], [it.vend, "vendored", false], [it.gone, "destroyed", true]]) {
+    if (!n) continue;
+    const s = document.createElement("span");
+    s.className = "oski__loss" + (it.hard && hard ? " is-hard" : "");
+    s.textContent = `${word} ${n}×`;
+    s.title = "Your log watched this leave. An autosale is your loot filter — the piece never reached your bags.";
+    li.append(s);
+  }
   if (it.isl) {
     const s = document.createElement("span");
     s.className = "oski__src"; s.textContent = it.isl;
+    li.append(s);
+  }
+  if (it.req) {
+    const s = document.createElement("span");
+    s.className = "oski__req"; s.title = "The island cannot be reached without it.";
+    s.append("needs ");
+    if (it.reqs && it.reqs.length) it.reqs.forEach((r, i) => { if (i) s.append(", "); s.append(itemSpan(r.n, r.url, r.sb, "ri")); });
+    else s.append(it.req);
     li.append(s);
   }
   return li;

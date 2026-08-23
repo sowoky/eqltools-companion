@@ -61,8 +61,12 @@ function buildIndexes(datasets) {
     }
   }
   if (QDATA) {
+    /* A hub page ("Popular Quests by Level") indexes other quests' rewards
+       as its components. The pipeline flags it `hub`; a file built before
+       the flag is read by shape. Its component uses are nobody's turn-in. */
+    const isHub = q => !!q.hub || (!q.giver && !q.zone && !(q.steps || []).length && (q.need || []).length >= 20);
     for (const [nk, refs] of Object.entries(QDATA.items)) {
-      QIDX.set(nk, refs.map(([qi, as]) => ({ q: QDATA.quests[qi], as })));
+      QIDX.set(nk, refs.map(([qi, as]) => ({ q: QDATA.quests[qi], as })).filter(r => !(r.as === "c" && isHub(r.q))));
     }
     for (const q of QDATA.quests) T2Q.set(q.t, q);
     QDROPS = QDATA.drops || {};
@@ -1004,7 +1008,11 @@ function pushExalt() {
     const h = X.homesFor(y, EXALT.worn);
     if (!h.now.length) continue;
     const ref = skyRef(l.row.base);
+    // where the stone IS, not only what it fits: standing at the banker those
+    // are the two facts, and the location was not on the wire at all
+    const b = window.EQLGearScore.locBadge(l.row.loc);
     rows.push({ n: l.row.base, url: ref.url, sb: ref.sb, kind: X.TYPE[y.type].label, effect: y.effect,
+                loc: { k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title },
                 into: `${h.now[0].w.slot}: ${h.now[0].w.row.base}`,
                 more: h.now.length > 1 ? h.now.slice(1).map(x => x.w.slot).join(", ") : null });
   }
@@ -1362,6 +1370,13 @@ const IV_COLS = [
   { k: "wt", h: "Wt", d0: -1, key: v => v.wt, cell: v => `<td class="iv-n">${v.wt ?? ""}</td>` },
   { k: "eff", h: "Effect", d0: 1, key: v => v.effTxt.toLowerCase() || null, cell: v => `<td class="iv-eff">${esc(v.effTxt)}</td>` },
   { k: "trade", h: "Trade", d0: 1, key: v => v.tradeRank, cell: v => `<td>${esc(v.trade)}</td>` },
+  /* Spare proves an item is beaten and then says nothing about what to do
+     with it. Same rule and same words as the Sky cleanout list — a merchant
+     is the wrong place for anything another player can take. */
+  { k: "how", h: "Get rid of it by", d0: 1,
+    key: v => (v.trade === "" ? "z" : v.trade === "no drop" || v.trade === "no trade" ? "b" : "a"),
+    cell: v => `<td>${disposeHtml({ give: v.trade === "" ? null : !(v.trade === "no drop" || v.trade === "no trade"),
+      flag: v.trade === "no drop" ? "NO DROP" : v.trade === "no trade" ? "No Trade" : "" })}</td>` },
   { k: "flags", h: "Flags", d0: 1, key: v => v.flagsTxt || null, cell: v => `<td>${esc(v.flagsTxt)}</td>` },
   { k: "cls", h: "Class", d0: 1, key: v => v.clsTxt || null, cell: v => `<td class="iv-cls">${esc(v.clsTxt)}</td>` },
   { k: "era", h: "Era", d0: 1, key: v => v.eraKey, cell: v => `<td>${v.oe ? `<span class="oe">out of era</span>` : esc(v.eraTxt)}</td>` },
@@ -1493,27 +1508,33 @@ const IV_COLS = [
 const IV_DEFAULTS = {
   quest: ["where", "item", "rank", "copies", "xkeep", "qty", "quests"],
   gear:  ["where", "item", "bis", "rank", "copies", "xkeep"],
-  spare: ["where", "item", "ahead", "beatenby", "rank", "copies", "xkeep"],
+  /* Spare exists to reclaim bag space: the disposal route and the weight are
+     the two facts that make a row actionable, so they come before the wide
+     Beaten-by cell rather than off the right edge behind it. */
+  spare: ["where", "item", "ahead", "how", "wt", "beatenby", "rank", "copies", "xkeep"],
   exalt: ["where", "item", "tier", "xeff", "xfits", "xfire", "xsock", "xkeep"],
 };
 const IV_DEFAULT_COLS = IV_DEFAULTS.quest;
-/* v3: the three inventory-management columns joined the defaults. A saved v2
-   set is a player's own choice and is kept — with the new columns added
-   once, because a column nobody has heard of cannot be turned on. */
-const IV_COLS_KEY = "eqlt-companion-invcols-v3";
-const IV_COLS_KEY_V2 = "eqlt-companion-invcols-v2";
-const IV_NEW_COLS = ["rank", "copies", "xkeep"];
+/* A saved set is a player's own choice and is kept across a version bump —
+   with the columns added since it was written turned on once, because a
+   column nobody has heard of cannot be turned on. v3 added the three
+   inventory-management columns; v4 added Spare's disposal route and weight. */
+const IV_COLS_KEY = "eqlt-companion-invcols-v4";
+/* the columns each older set never heard of — only those get switched on;
+   a choice a v3 set made about rank/copies/xkeep stands */
+const IV_COLS_OLD = ["eqlt-companion-invcols-v3", "eqlt-companion-invcols-v2"];
+const IV_NEW_COLS = { "eqlt-companion-invcols-v3": ["how", "wt"], "eqlt-companion-invcols-v2": ["rank", "copies", "xkeep", "how", "wt"] };
 const IV_MODE_COLS = {};
 let IV_SHOW = new Set(IV_DEFAULTS.quest);
 function loadInvCols() {
   for (const m of INV_MODES) IV_MODE_COLS[m] = new Set(IV_DEFAULTS[m]);
   try {
-    let o = JSON.parse(localStorage.getItem(IV_COLS_KEY)), migrate = false;
-    if (!o) { o = JSON.parse(localStorage.getItem(IV_COLS_KEY_V2)); migrate = !!o; }
+    let o = JSON.parse(localStorage.getItem(IV_COLS_KEY)), migrate = null;
+    for (const k of IV_COLS_OLD) { if (o) break; o = JSON.parse(localStorage.getItem(k)); if (o) migrate = k; }
     if (o && typeof o === "object") for (const m of INV_MODES) {
       if (Array.isArray(o[m]) && o[m].length) {
         IV_MODE_COLS[m] = new Set(o[m].filter(k => IV_COLS.some(c => c.k === k)));
-        if (migrate) for (const k of IV_NEW_COLS) if (IV_DEFAULTS[m].includes(k)) IV_MODE_COLS[m].add(k);
+        if (migrate) for (const k of IV_NEW_COLS[migrate] || []) if (IV_DEFAULTS[m].includes(k)) IV_MODE_COLS[m].add(k);
       }
     }
     if (migrate) saveInvCols();
@@ -1568,7 +1589,12 @@ function spareChips(v) {
   if (invMode() === "quest") return "";
   const s = spareOf(v);
   const out = [];
-  if (v.quests.length) out.push(`<span class="ivb ivb--quest" title="${esc(v.quests.map(q => q.n).join(", "))}">quest</span>`);
+  /* The badge names only in-era quests: the Quests column marks a locked-era
+     quest with its pill (Kyle's call), but this chip has no pill, and in
+     Gear/Spare/Exalt it is the only quest signal on the row — "hold this for
+     the Paladin Epic" is advice about a quest EQL does not have. */
+  const live = v.quests.filter(q => !q.oe);
+  if (live.length) out.push(`<span class="ivb ivb--quest" title="${esc(live.map(q => q.n).join(", "))}">quest</span>`);
   if (s) for (const u of s.unscored)
     out.push(`<span class="ivb ivb--warn" title="Its ${UNSCORED_WORD[u]} is not part of the score.">${UNSCORED_WORD[u]}</span>`);
   if (s && s.spareAsIs && !s.spare)
@@ -2889,7 +2915,8 @@ function populateQuestFilters() {
   const classes = new Set(), zones = new Set();
   for (const q of QDATA.quests) {
     for (const c of q.classes || []) if (c && c !== "?" && c !== "Any") classes.add(c);
-    if (q.zone) zones.add(q.zone);
+    // the zone list follows the era filter: "in era" never names a locked zone
+    if (q.zone && !(QB.era === "in" && q.oe) && !(QB.era === "out" && !q.oe)) zones.add(q.zone);
   }
   const opt = (v, label) => `<option value="${esc(v)}">${esc(label)}</option>`;
   $("qbClass").innerHTML = opt("", "any class") + [...classes].sort().map(c => opt(c, c)).join("");
@@ -3162,6 +3189,8 @@ const SKY_DEF = {
      givers, what you can hand in. `boss` is the island — what the thing on the
      floor drops and whether you want any of it. */
   view: "class", onlyNeed: false, openBoss: null,
+  // the rollup above the folds: sixteen classes with one stat shape
+  rsort: "left", rdir: -1,
   // "never doing this one": a want, not a measurement, so it can only ever
   // suppress. Same meaning as /sky's skip; the two can't share storage because
   // the app and the site are different origins.
@@ -3357,6 +3386,17 @@ function skyLocIndex() {
 }
 let SKY_LOCS = null;
 const skyLocs = (idx, name) => idx.get(itemKey(name)) || idx.get(itemKey(stripDecor(name))) || [];
+/* Which key an island takes to stand on. sky.json states it per isle and the
+   boss board prints it; a component line named the island and never said what
+   the trip costs. */
+let SKY_ISLES = null, SKY_ISLES_D = null;
+function skyIsleIndex() {
+  if (SKY_ISLES && SKY_ISLES_D === SKYD) return SKY_ISLES;
+  SKY_ISLES = new Map();
+  for (const i of (SKYD && SKYD.isles) || []) SKY_ISLES.set(String(i.isl), i);
+  SKY_ISLES_D = SKYD;
+  return SKY_ISLES;
+}
 function skyBadgeHtml(b) {
   const cnt = b.count > 1 ? ` <b class="skl__c">×${b.count}</b>` : "";
   if (b.kind === "word")
@@ -3373,10 +3413,13 @@ function skyModel() {
   if (!SKYD || !SKYL) return null;
   const have = haveMap();
   const locIdx = skyLocIndex();
+  const placeIdx = skyPlaceIndex();
+  const isleIdx = skyIsleIndex();
   const led = SKYL.led;
   const classes = Object.keys(SKYD.classes).sort((a, b) =>
     SKY_CLASS[a].localeCompare(SKY_CLASS[b]));
-  const tot = { tests: 0, done: 0, ready: 0, partial: 0, pieces: 0 };
+  const tot = { tests: 0, done: 0, ready: 0, partial: 0, pieces: 0, held: 0 };
+  const heldNames = new Set();
   const out = [];
   for (const code of classes) {
     const c = SKYD.classes[code];
@@ -3390,9 +3433,17 @@ function skyModel() {
         const locs = skyLocs(locIdx, i.n);
         const h = skyHave(have, i.n, locs.length > 0);
         const uses = (SKY_USES.get(itemKey(i.n)) || []).filter(u => u.test !== t.n);
+        const isle = i.isl ? isleIdx.get(String(i.isl)) : null;
         return {
           n: i.n, need: 1, have: h.n, src: h.src,
           isl: i.isl || "", mob: i.mob || "", nodrop: !!i.nodrop,
+          // what the island takes to reach, so the component line prices the trip
+          req: (isle && isle.req) || [],
+          /* The three ways a piece leaves without reaching a bank. An autosale
+             is stamped on the loot line itself, so it can only be the loot
+             filter — nothing that reads an inventory dump can see it. */
+          sold: SKY.soldCount(led, i.n), vend: SKY.vendorCount(led, i.n),
+          gone: SKY.goneCount(led, i.n),
           star: uses.length > 0,
           starWith: uses.map(u => `${SKY_CLASS[u.code]}: ${u.test.replace(SKY_CLASS[u.code] + " ", "")}`),
           locs,
@@ -3428,23 +3479,43 @@ function skyModel() {
          listed all seven as started off a single drop. */
       const held = items.filter(i => i.have >= 1).length;
       tot.pieces += items.reduce((a, i) => a + i.have, 0);
+      for (const i of items) if (i.have >= 1) heldNames.add(i.n);
+      /* Where the reward stands in its own slot, and what a repeat pays. Both
+         are the numbers you decide on standing at the giver, and both were one
+         view away in Get-rid-of. Rank is read at +0, the item's own worth;
+         the tier is the copy you are holding, which a repeat takes up one. */
+      const rk = t.reward ? skyRankOf(t.reward, code, 0) : null;
+      const rewN = t.reward ? skyHave(have, t.reward, locIdx.has(itemKey(t.reward))).n : 0;
+      const rewP = t.reward && (placeIdx.get(itemKey(t.reward))
+        || placeIdx.get(itemKey(stripDecor(t.reward))));
       return {
         code, full: t.n, n: t.n.replace(SKY_CLASS[code] + " ", ""),
         say: t.say || "", reward: t.reward || "", items, rune,
         done, ach, rew, fin, never, ready: st.ready, missing: st.missing.length, held,
         skip, track: skyTracked(code, t.n),
         need: items.length + rune.length,
+        rank: rk ? rk.rank : null, of: rk ? rk.of : null, rslot: rk ? rk.slot : "",
+        better: rk ? rk.better : [],
+        heldTier: rewN ? (rewP ? rewP.tier : 0) : null,
       };
     });
     const nDone = tests.filter(t => t.fin).length;
     const nReady = tests.filter(t => t.ready).length;
     const nRepeat = tests.filter(t => t.fin && t.missing === 0 && !t.skip).length;
     const nPartial = tests.filter(t => !t.ready && !t.fin && t.held > 0).length;
+    const nSkip = tests.filter(t => t.skip).length;
+    const nLeft = tests.filter(t => !t.fin && !t.skip).length;
+    // distinct components, not copies: one Efreeti Zweihander is one piece
+    // however many tests it feeds
+    const mine = new Set();
+    for (const t of tests) for (const i of t.items) if (i.have >= 1) mine.add(i.n);
     tot.tests += tests.length; tot.done += nDone; tot.ready += nReady; tot.partial += nPartial;
     out.push({ code, name: SKY_CLASS[code], giver: c.giver || "", tests,
-               nDone, nReady, nRepeat, nPartial, orphan: comp.orphan,
+               nDone, nReady, nRepeat, nPartial, nSkip, nLeft, nHeld: mine.size,
+               orphan: comp.orphan,
                achOk, achWhy: (ACH_SKY[code] && ACH_SKY[code].whyText) || "" });
   }
+  tot.held = heldNames.size;
   return { classes: out, tot, ach: Object.keys(ACH_SKY).length > 0, isles: skyBossModel(out) };
 }
 
@@ -3472,7 +3543,8 @@ function skyBossModel(classes) {
   const idx = new Map();
   for (const g of classes) for (const t of g.tests) for (const i of t.items) {
     let e = idx.get(i.n);
-    if (!e) idx.set(i.n, e = { have: i.have, src: i.src, locs: i.locs, uses: [] });
+    if (!e) idx.set(i.n, e = { have: i.have, src: i.src, locs: i.locs, uses: [],
+                               sold: i.sold, vend: i.vend, gone: i.gone });
     e.uses.push({ code: g.code, cls: g.name, giver: g.giver, test: t.full,
                   short: t.n, reward: t.reward, fin: t.fin,
                   skip: t.skip, track: t.track });
@@ -3488,6 +3560,9 @@ function skyBossModel(classes) {
       need: Math.max(0, open.length - held),
       track: uses.some(u => u.track && !u.fin && !u.skip),
       locs: (e && e.locs) || [],
+      sold: e ? e.sold : SKY.soldCount(SKYL.led, n),
+      vend: e ? e.vend : SKY.vendorCount(SKYL.led, n),
+      gone: e ? e.gone : SKY.goneCount(SKYL.led, n),
     };
   });
   /* Tracked first — "shows those items first". Then what you still owe, then
@@ -3552,17 +3627,41 @@ function skyItemSpan(name) {
 function skyGot(u) {
   return u && u.fin ? `<span class="sk-got" title="Already yours — you turned it in, your achievement record lists it, or it is in your dump">✓</span>` : "";
 }
-function skyPieceHtml(i) {
+/* What the log watched happen to a piece that never reached your bags. The
+   loot filter selling one on pickup is the case nothing else can see: the
+   sale is stamped on the loot line itself, so an inventory dump only ever
+   shows what you kept. Loud when a live test still wants the piece and you
+   are holding none — that is a filter to fix, not a trip to make. */
+function skyLossHtml(i, wanted) {
+  const hard = !!wanted && !i.have;
+  const out = [];
+  if (i.sold) out.push(`<span class="sk-loss${hard ? " sk-loss--hard" : ""}" title="${esc(
+    `Your loot filter sold ${i.sold} of these on pickup.`
+    + (i.have ? ` You kept ${i.have}.` : hard ? " You are holding none and a test here still wants it." : ""))
+  }">autosold ${i.sold}×</span>`);
+  if (i.vend) out.push(`<span class="sk-loss" title="${esc(
+    `Your log has ${i.vend} merchant sale${i.vend === 1 ? "" : "s"} of this. A merchant line carries no quantity, so this counts sales, not pieces.`)
+  }">vendored ${i.vend}×</span>`);
+  if (i.gone) out.push(`<span class="sk-loss${hard ? " sk-loss--hard" : ""}" title="${esc(
+    `You destroyed ${i.gone}.` + (hard ? " A test here still wants this piece." : ""))
+  }">destroyed ${i.gone}×</span>`);
+  return out.length ? " " + out.join(" ") : "";
+}
+function skyPieceHtml(i, wanted) {
   const has = i.have >= i.need;
   const star = i.star
     ? `<span class="sk-star" title="Also wanted by ${esc(i.starWith.join("; "))}">★</span>` : "";
   const locs = i.locs.length ? ` ${i.locs.map(skyBadgeHtml).join(" ")}` : "";
   const where = i.isl ? `<span class="sk-src">${esc(skyIsle(i.isl))}${i.mob ? " · " + esc(i.mob) : ""}</span>` : "";
+  // the island's own toll, beside the island — the fact that decides whether
+  // the trip is possible at all
+  const req = !has && (i.req || []).length
+    ? `<span class="sk-req" title="Isle ${esc(String(i.isl))} cannot be reached without it">needs ${i.req.map(n => skyItemSpan(n)).join(", ")}</span>` : "";
   return `<li class="skp ${has ? "is-have" : "is-miss"}">` +
     `<span class="skp__tick" data-hold="${esc(i.n)}" data-want="1" title="${i.src === "mark" ? "Marked as held — click to clear" : has ? "" : "Mark as held (bought it, or it's on your pet)"}">${has ? "✓" : "·"}</span>` +
     skyItemSpan(i.n) + star +
     `<span class="skp__ct" title="${esc(SKY_SRC_NOTE[i.src] || "")}">${i.have}/${i.need}</span>` +
-    locs + (has ? "" : where) + `</li>`;
+    locs + skyLossHtml(i, wanted) + (has ? "" : where + req) + `</li>`;
 }
 const skyIsle = n => {
   const nm = SKYD && SKYD.islands && SKYD.islands[String(n)];
@@ -3604,6 +3703,31 @@ function skyStatus(t) {
     ? `<span class="sk-st sk-st--ready" title="Your achievement record doesn't list ${esc(t.reward)}, so this one is still ahead of you. The first run is what the class unlock counts.">first time</span>`
     : `<span class="sk-st sk-st--ready" title="Everything is in hand. Nothing here has seen a turn-in of this test, and without a readable achievement record that is not the same as never.">ready</span>`;
   return `<span class="sk-st sk-st--miss">missing ${t.missing}</span>`;
+}
+
+/* Where the reward stands against everything else that class can put in that
+   slot, and — on a test you have already run — what handing it in again pays.
+   Both were computed one view away in Get-rid-of and printed nowhere near the
+   row you decide on. */
+function skyRankHtml(t, code) {
+  if (!t.rank) return "";
+  return ` <span class="skt__rank" title="${esc(`${t.rank} of ${t.of} in-era ${t.rslot} items ${SKY_CLASS[code]} can wear, at +0`
+    + (t.better.length ? `. Beaten by ${t.better.join(", ")}.` : ""))}">${t.rank} of ${t.of}</span>`;
+}
+/* What a repeat pays, from the merge pyramid (inventory-core.mergeLanding):
+   the reward arrives at +0 and a +0 duplicate donates 1 exp, so it is a whole
+   tier only from +0 — from +4 it is 1 of the 16 exp to +5, and the chip says
+   so rather than promising a tier. */
+function skyPaysText(tier) {
+  const L = window.EQLInventory.mergeLanding(tier, [0]);
+  return L.rises
+    ? { text: `+${tier} → +${L.tier}`, title: `Handing it in again hands you a +0 duplicate; merged into your +${tier} it lands on +${L.tier}.` }
+    : { text: `+${tier} · 1 of ${L.nextCost} exp`, title: `Handing it in again hands you a +0 duplicate worth 1 exp; your +${tier} needs ${L.nextCost} for +${tier + 1}, so it stays +${tier}.` };
+}
+function skyPaysHtml(t) {
+  if (!t.fin || t.missing !== 0 || t.heldTier == null) return "";
+  const p = skyPaysText(t.heldTier);
+  return `<span class="skt__pays" title="${esc(p.title)}">${esc(p.text)}</span>`;
 }
 
 /* The boss board. One fold per mob, ordered down the islands, and inside it the
@@ -3685,7 +3809,7 @@ function skyDropHtml(r, mobKey, src) {
       title="${esc(r.uses.map(u => `${u.cls} · ${u.short}${u.reward ? " → " + u.reward : ""}${
         u.skip ? " (skipped)" : u.fin ? " (done)" : ""}`).join("\n"))}">
     <span class="skb__star">${r.track ? "★" : ""}</span>
-    <span class="skb__nm">${skyItemSpan(r.n)}${locs}</span>
+    <span class="skb__nm">${skyItemSpan(r.n)}${locs}${skyLossHtml(r, r.open > 0)}</span>
     <span class="skb__buys">${buys}</span>
     <span class="skb__n" title="How many you are holding">${r.have || "·"}</span>
     <span class="skb__need" title="How many more you must loot to finish every test that still wants it">${
@@ -3752,6 +3876,45 @@ function skyOpenMenu(li, x, y) {
   el.style.left = Math.min(x, window.innerWidth - r.width - 8) + "px";
   el.style.top = Math.min(y, window.innerHeight - r.height - 8) + "px";
   SKY_MENU = el;
+}
+
+/* ── the rollup ───────────────────────────────────────────────────────────
+   Sixteen classes with an identical stat shape: which one is closest to its
+   unlock, and where the pieces in your bags are pointed. The folds answer one
+   class at a time and nothing answered "which class". Same head()/sort idiom
+   as the Get-rid-of tables. */
+const SKR_COLS = [
+  { k: "cls", h: "Class", d0: 1, key: g => g.name,
+    cell: g => `<td><b>${esc(g.name)}</b></td>`, tot: () => `<td><b>All sixteen</b></td>` },
+  { k: "giver", h: "Quest giver", d0: 1, key: g => g.giver,
+    cell: g => `<td>${g.giver ? mobSpan(g.giver) : ""}</td>`, tot: () => `<td></td>` },
+  { k: "tests", h: "Tests", d0: -1, key: g => g.tests.length, n: g => g.tests.length },
+  { k: "done", h: "Finished", d0: -1, key: g => g.nDone, n: g => g.nDone, cls: "sk-n--done" },
+  { k: "ready", h: "Ready", d0: -1, key: g => g.nReady, n: g => g.nReady, cls: "sk-n--ready" },
+  { k: "repeat", h: "Repeat", d0: -1, key: g => g.nRepeat, n: g => g.nRepeat, cls: "sk-n--rep" },
+  { k: "skip", h: "Skipped", d0: -1, key: g => g.nSkip, n: g => g.nSkip },
+  { k: "left", h: "Left", d0: -1, key: g => g.nLeft, n: g => g.nLeft,
+    h2: "Tests neither finished nor skipped — what the class unlock still needs." },
+  { k: "held", h: "Pieces held", d0: -1, key: g => g.nHeld, n: g => g.nHeld,
+    h2: "Distinct components of this class's tests you are holding at least one of." },
+];
+function skRollupHtml(m) {
+  const rows = m.classes.filter(g => !SKYP.cls || g.code === SKYP.cls);
+  if (!rows.length) return "";
+  const col = SKR_COLS.find(c => c.k === SKYP.rsort) || SKR_COLS[0];
+  const sorted = rows.slice().sort((a, b) =>
+    cmpNullLast(col.key(a), col.key(b), SKYP.rdir) || a.name.localeCompare(b.name));
+  const arrow = k => SKYP.rsort === k ? (SKYP.rdir > 0 ? " ▲" : " ▼") : "";
+  const cell = (c, g) => c.cell ? c.cell(g)
+    : `<td class="iv-n"><b class="sk-n ${c.cls || ""}">${c.n(g) || ""}</b></td>`;
+  const sum = c => c.n ? sorted.reduce((n, g) => n + c.n(g), 0) : 0;
+  // the same piece feeds several classes, so the total holds the distinct
+  // names rather than adding the sixteen counts up
+  const tots = rows.length < 2 ? "" : `<tfoot><tr>${SKR_COLS.map(c => c.tot ? c.tot(m)
+    : `<td class="iv-n"${c.k === "held" ? ` title="distinct pieces across all sixteen — one component feeds several classes, so this is less than the column adds up to"` : ""}><b>${c.k === "held" ? m.tot.held : sum(c)}</b></td>`).join("")}</tr></tfoot>`;
+  return `<table class="qtab ivt skr"><thead><tr>${SKR_COLS.map(c =>
+      `<th class="is-sort" data-skrsort="${c.k}"${c.h2 ? ` title="${esc(c.h2)}"` : ""}>${esc(c.h)}${arrow(c.k)}</th>`).join("")}</tr></thead>
+    <tbody>${sorted.map(g => `<tr>${SKR_COLS.map(c => cell(c, g)).join("")}</tr>`).join("")}</tbody>${tots}</table>`;
 }
 
 function paintSkyView() {
@@ -3822,11 +3985,12 @@ function renderSky(model) {
              chip already reading "repeat" says the same thing twice, and which
              witness answered is on that chip's hover -->
         ${t.done ? `<span class="skt__done" title="${esc(skyWitness(t))}">✓${t.done}</span>` : ""}
-        <span class="skt__rew">→ ${skyItemSpan(t.reward)}</span>
+        ${skyPaysHtml(t)}
+        <span class="skt__rew">→ ${skyItemSpan(t.reward)}${skyRankHtml(t, g.code)}</span>
         <button type="button" class="skt__skip" data-skyskip="${g.code}" data-test="${esc(t.full)}"
           title="${t.skip ? "Un-skip: count this one again" : "Never doing this one — its pieces stop counting as needed"}">${t.skip ? "un-skip" : "skip"}</button>
       </div>
-      <ul class="skt__items">${t.rune.map(skyRuneHtml).join("")}${t.items.map(skyPieceHtml).join("")}</ul>
+      <ul class="skt__items">${t.rune.map(skyRuneHtml).join("")}${t.items.map(i => skyPieceHtml(i, !t.fin && !t.skip)).join("")}</ul>
     </div>`).join("");
     return `<section class="skg">
       <button type="button" class="skg__h" data-skyclass="${g.code}" aria-expanded="${open}">
@@ -3847,7 +4011,11 @@ function renderSky(model) {
     const d = skyGetRidHtml(m, q);
     html = d.html; shown = d.shown;
   } else {
-    html = classHtml();
+    // the rollup answers "which class", the folds answer "which test" — the
+    // search box shapes the folds and leaves the summary whole
+    const folds = classHtml();
+    html = `<div class="skrwrap invwrap">${skRollupHtml(m)}</div>`
+      + (folds || `<p class="empty">Nothing matches. Widen <b>show</b>, or clear the search.</p>`);
   }
   body.classList.toggle("sky--boss", SKYP.view === "boss");
   body.innerHTML = html || `<p class="empty">Nothing matches. ${
@@ -3947,6 +4115,11 @@ function pushSky(model) {
         .concat(t.items.map(i => ({
           ...skyRef(i.n), have: i.have, need: i.need, star: i.star,
           isl: i.have >= i.need ? "" : (i.isl ? skyIsle(i.isl) + (i.mob ? " · " + i.mob : "") : ""),
+          // the island's toll, and the three ways the log watched one leave —
+          // loud only when this test still wants the piece and you hold none
+          req: i.have >= i.need ? "" : (i.req || []).join(", "),
+          reqs: i.have >= i.need ? [] : (i.req || []).map(n => skyRef(n)),
+          sold: i.sold, vend: i.vend, gone: i.gone, hard: !t.fin && !i.have,
           locs: w.loc ? i.locs.map(b => ({ k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title })) : [],
         }))),
     }));
@@ -4132,6 +4305,18 @@ function skyDropModel() {
 
 const skdShort = (code, n) => n.replace((SKY_CLASS[code] || "") + " ", "");
 
+/* What an item is, in one line: the slot it goes in and the numbers on it, at
+   the upgrade rank you hold. Same string /sky's boss board prints. */
+const SKY_STAT_KEYS = ["ac", "hp", "mana", "end", "atk", "str", "sta", "agi", "dex", "wis", "int", "cha"];
+function skyStatText(rec, tier) {
+  const T = window.EQLTier, s = T.statsAt(rec, tier || 0), out = [];
+  for (const k of SKY_STAT_KEYS) if (s[k]) out.push(`${s[k]} ${k.toUpperCase()}`);
+  for (const k in rec.sv || {}) if (k !== "v") out.push(`${rec.sv[k]} SV${k.toUpperCase()}`);
+  if (rec.haste) out.push(`${rec.haste}% haste`);
+  if (rec.dmg && rec.dly) out.push(`${T.statAt(rec.dmg, tier || 0)}/${rec.dly}`);
+  return [(rec.sl || [])[0], out.join(" ")].filter(Boolean).join(" · ");
+}
+
 const SKD_TCOLS = [
   { k: "cls", h: "Class", d0: 1, key: k => SKY_CLASS[k.code], cell: k => `<td>${esc(SKY_CLASS[k.code])}</td>` },
   { k: "test", h: "Test", d0: 1, key: k => k.test.n, cell: k => `<td>${esc(skdShort(k.code, k.test.n))}</td>` },
@@ -4144,9 +4329,13 @@ const SKD_TCOLS = [
   { k: "rep", h: "Repeat pays", d0: -1, key: k => (k.tier == null ? null : k.tier),
     cell: k => `<td class="iv-n">${!k.done ? `<span class="dim">first copy</span>`
       : k.tier == null ? `<span class="dim">—</span>`
-      : `<span class="skd__n" title="running it again hands you a duplicate, and merging it takes your copy up a tier">+${k.tier} → +${k.tier + 1}</span>`}</td>` },
+      : (p => `<span class="skd__n" title="${esc(p.title)}">${esc(p.text)}</span>`)(skyPaysText(k.tier))}</td>` },
   { k: "rank", h: "Rank", d0: -1, key: k => k.rk.rank,
-    cell: k => `<td class="iv-n skd__n" title="against every in-era item ${esc(k.code)} can wear in ${esc(k.rk.slot)}">${k.rk.rank} of ${k.rk.of}</td>` },
+    cell: k => `<td class="iv-n skd__n" title="against every in-era item ${esc(k.code)} can wear in that slot">${k.rk.rank} of ${k.rk.of}</td>` },
+  // sorting by slot groups the rows you would compare against each other; the
+  // rank's denominator swings from 116 to 427 on slot alone
+  { k: "slot", h: "Slot", d0: 1, key: k => k.rk.slot,
+    cell: k => `<td>${esc(k.rk.slot)}</td>` },
   { k: "beat", h: "Beaten by", d0: 1, key: k => k.rk.better[0] || null,
     cell: k => `<td>${k.rk.better.map(n => skyItemSpan(n)).join(" · ")}</td>` },
   { k: "hold", h: "You hold", d0: -1, key: k => k.held.length || null,
@@ -4163,6 +4352,11 @@ const SKD_CCOLS = [
     cell: r => `<td>${r.loc ? skyBadgeHtml(skyBadge(r.loc)) : `<span class="dim">your log, not the dump</span>`}</td>` },
   { k: "item", h: "Item", d0: 1, key: r => r.n.toLowerCase(),
     cell: r => `<td class="iv-item">${skyItemSpan(r.n)}${r.tier ? ` <b class="skd__t">+${r.tier}</b>` : ""}</td>` },
+  /* Keep or destroy is the whole job of this list, and it was asking you to
+     decide on a bare name. Blank for the components the wiki gives no
+     statsblock. */
+  { k: "stats", h: "Stats", d0: 1, key: r => (r.rec && (r.rec.sl || [])[0]) || null,
+    cell: r => `<td class="dim">${r.rec ? esc(skyStatText(r.rec, r.tier)) : ""}</td>` },
   { k: "count", h: "Count", d0: -1, key: r => r.count, cell: r => `<td class="iv-n">${r.count}</td>` },
   { k: "wt", h: "Weight", d0: -1, key: r => r.wt * r.count || null,
     cell: r => `<td class="iv-n dim" title="${r.wt} each">${r.wt ? (r.wt * r.count).toFixed(1) : ""}</td>` },
@@ -4173,13 +4367,19 @@ const SKD_CCOLS = [
       esc(u.code)} ${esc(skdShort(u.code, u.test.n))}</span>`).join(" ")}</td>` },
 ];
 
+/* One rule, one wording, both surfaces: NO DROP → destroy, anything else →
+   sell to a player, never a merchant. The Sky cleanout list and the Inventory
+   tab's Spare mode are the same decision about the same bags. */
+function disposeHtml(o) {
+  const clash = o.clash ? ` <span class="skd__w skd__w--clash" title="the item window and the wiki's Plane of Sky table disagree about this one; the window is what the game shows you">wiki disagrees</span>` : "";
+  if (o.give === null) return `<span class="dim" title="no item page on the wiki, so nothing here knows whether it is NO DROP">not known</span>`;
+  if (o.give) return `<span class="skd__h skd__h--give" title="not NO DROP, so another player can take it${o.wantedBy ? `. ${o.wantedBy} class test${o.wantedBy === 1 ? "" : "s"} use it` : ""}">sell to a player</span>${clash}`;
+  return `<span class="skd__h skd__h--nd" title="${esc(o.flag || "NO DROP")} — nobody else can take it, so destroying it is what frees the slot">destroy</span>${clash}`;
+}
 function skdHow(r) {
   const fl = (r.rec && r.rec.fl) || [];
-  const flag = fl.includes("no_drop") ? "NO DROP" : fl.includes("no_trade") ? "No Trade" : "";
-  const clash = r.clash ? ` <span class="skd__w skd__w--clash" title="the item window and the wiki's Plane of Sky table disagree about this one; the window is what the game shows you">wiki disagrees</span>` : "";
-  if (r.give === null) return `<span class="dim" title="no item page on the wiki, so nothing here knows whether it is NO DROP">not known</span>`;
-  if (r.give) return `<span class="skd__h skd__h--give" title="not NO DROP, so another player can take it${r.wantedBy ? `. ${r.wantedBy} class test${r.wantedBy === 1 ? "" : "s"} use it` : ""}">sell to a player</span>${clash}`;
-  return `<span class="skd__h skd__h--nd" title="${esc(flag || "NO DROP")} — nobody else can take it, so destroying it is what frees the slot">destroy</span>${clash}`;
+  return disposeHtml({ give: r.give, wantedBy: r.wantedBy, clash: r.clash,
+    flag: fl.includes("no_drop") ? "NO DROP" : fl.includes("no_trade") ? "No Trade" : "" });
 }
 
 /* The Get-rid-of view. Was a second `function skyDropHtml` — the same name as
@@ -4209,7 +4409,7 @@ function skyGetRidHtml(m, q) {
   const tests = d.tests.filter(k => hit(k.test.n) || hit(k.reward));
   const open = tests.filter(k => !k.st.skip);
   const frees = new Set(open.flatMap(k => k.frees)).size;
-  const tcol = SKD_TCOLS.find(c => c.k === SKD.sort) || SKD_TCOLS[8];
+  const tcol = SKD_TCOLS.find(c => c.k === SKD.sort) || SKD_TCOLS.find(c => c.k === "frees");
   const trows = tests.slice().sort((a, b) => (a.st.skip - b.st.skip)
     || cmpNullLast(tcol.key(a), tcol.key(b), SKD.dir) || a.test.n.localeCompare(b.test.n));
 
@@ -4285,7 +4485,9 @@ function populateSkyFilters() {
    panel is not something anyone does with a corpse on the floor; reading "bank
    3 · Ethereal Mist Helm +2" while standing at the banker is the whole point. */
 const VL_KEY = "eqlt-companion-valet-v1";
-const VL = { classes: ["WAR", "CLR", "WIZ"], level: 50, mem: {}, sort: "where", dir: 1 };
+const VL = { classes: ["WAR", "CLR", "WIZ"], level: 50, mem: {}, sort: "where", dir: 1,
+  // the before-and-after table under the fetch list
+  csort: "d", cdir: -1 };
 let VWALK = null;
 function loadValetPrefs() {
   try {
@@ -4294,13 +4496,22 @@ function loadValetPrefs() {
     if (o.level) VL.level = Math.min(50, Math.max(1, o.level | 0));
     if (o.mem && typeof o.mem === "object") VL.mem = o.mem;
     // the By slot view's own state: which view, which slot, which columns, the gap toggle
-    if (o.vs && typeof o.vs === "object") Object.assign(VS, { view: ["slot", "dress", "exalt"].includes(o.vs.view) ? o.vs.view : "slot",
-      slot: o.vs.slot || "Head", cols: Array.isArray(o.vs.cols) ? o.vs.cols : null, gapAll: !!o.vs.gapAll });
+    if (o.vs && typeof o.vs === "object") {
+      Object.assign(VS, { view: ["slot", "dress", "exalt"].includes(o.vs.view) ? o.vs.view : "slot",
+        slot: o.vs.slot || "Head", cols: Array.isArray(o.vs.cols) ? o.vs.cols : null, gapAll: !!o.vs.gapAll });
+      // sorts and the show-all toggle: only what was actually stored, so a
+      // saved set from before they existed keeps this file's defaults
+      for (const k of ["xesort", "xedir", "xisort", "xidir", "xnsort", "xndir", "asort", "adir"])
+        if (o.vs[k] != null) VS[k] = o.vs[k];
+      VS.allOpen = !!o.vs.allOpen;
+    }
   } catch (e) {}
 }
 const saveValetPrefs = () => {
   try { localStorage.setItem(VL_KEY, JSON.stringify({ classes: VL.classes, level: VL.level, mem: VL.mem,
-    vs: { view: VS.view, slot: VS.slot, cols: VS.cols, gapAll: VS.gapAll } })); } catch (e) {}
+    vs: { view: VS.view, slot: VS.slot, cols: VS.cols, gapAll: VS.gapAll,
+          xesort: VS.xesort, xedir: VS.xedir, xisort: VS.xisort, xidir: VS.xidir,
+          xnsort: VS.xnsort, xndir: VS.xndir, allOpen: VS.allOpen, asort: VS.asort, adir: VS.adir } })); } catch (e) {}
 };
 const vlTrioKey = () => VL.classes.slice().sort().join("/");
 const VL_MEM = {
@@ -4343,7 +4554,11 @@ function valetRestart() {
    Inventory tab's EXALT is a different parse of the same dump and is not
    reused here. VAUDIT is per trio. */
 let VEXALT = null, VAUDIT = null, VRANKER = null, VRANKER_LVL = 0;
-const VS = { view: "slot", slot: "Head", cols: null, gapAll: false, sort: null, dir: 1, gsort: null, gdir: 1 };
+const VS = { view: "slot", slot: "Head", cols: null, gapAll: false, sort: null, dir: 1, gsort: null, gdir: 1,
+  // the Exaltations view's three tables, each sorted on its own
+  xesort: "fits", xedir: -1, xisort: "empty", xidir: -1, xnsort: "where", xndir: 1,
+  // Get dressed: every option for the open step, not only the four cards
+  allOpen: false, asort: "score", adir: -1 };
 function valetAuditReload() {
   VEXALT = null; VAUDIT = null;
   if (!VINV || !GDATA || !window.EQLExaltCore) return;
@@ -4401,18 +4616,38 @@ function vlSocketsFor(c) {
   for (const t of X.TYPES) sockets[t.key] = { open: r.tier >= t.at, filled: false, stone: null };
   return { row: r, sockets };
 }
+// what the By-slot table is pricing right now: the slot and the AC already on
+let VS_CTX = { baseAC: 0, slot: "Head" };
 const VS_ATTRS = ["str", "sta", "agi", "dex", "wis", "int", "cha", "atk", "end"];
 const vsTopAttrs = () => { const w = valetScorer().w || {}; return VS_ATTRS.slice().sort((a, b) => (w[b] || 0) - (w[a] || 0)).slice(0, 3); };
+const vsSvText = (rec) => Object.keys(rec.sv || {}).filter((k) => k !== "v")
+  .map((k) => `${rec.sv[k]} ${window.EQLGearScore.SV_NAMES[k] || k.toUpperCase()}`).join(" · ");
 const vsStat = (k, h) => ({ k, h, num: 1, def: () => ["ac", "hp", "mana"].includes(k) || vsTopAttrs().includes(k),
   v: (rec, tier) => window.EQLTier.statsAt(rec, tier)[k] || 0, cell: (rec, tier) => { const v = window.EQLTier.statsAt(rec, tier)[k] || 0; return v ? String(v) : ""; } });
 const VS_COLS = [
   { k: "rank", h: "#", num: 1, def: true, own: 1, v: (c) => c.rank, cell: (c) => String(c.rank) },
-  { k: "score", h: "Score", num: 1, def: true, own: 1, v: (c) => c.score, cell: (c) => `<b title="HP-equivalents for this trio">${Math.round(c.score)}</b>` },
+  /* The score opens its own derivation — the panel is the whole reason the
+     Stat priorities weights are editable. VS_CTX carries the slot and the AC
+     base the table priced this column at; without them a breakdown would not
+     total to the number beside it. */
+  { k: "score", h: "Score", num: 1, def: true, own: 1, v: (c) => c.score,
+    cell: (c) => `<b data-pop="vlwhy:${vlWhy(c.row.rec, c.row.tier, VS_CTX.baseAC, VS_CTX.slot, c.score)}">${Math.round(c.score)}</b>` },
   { k: "item", h: "Item", fixed: 1, def: true },
   { k: "where", h: "Where", def: true, own: 1 },
   { k: "crank", h: "Class rank", def: true, own: 1, v: (c) => (c.catalog ? c.catalog.rank : 9999),
     cell: (c) => (c.catalog ? `<span title="${c.catalog.rank} of ${c.catalog.of} ${esc(c.catalog.slot)} items a ${esc(window.EQLChar.name(c.catalog.cls))} can wear, at +0">${c.catalog.rank} <span class="dim">of ${c.catalog.of} · ${esc(c.catalog.cls)}</span></span>` : "") },
   ...window.EQLGearScore.ITEM_STATS.map(([k, h]) => vsStat(k, h)),
+  /* ITEM_STATS is STAT_DEFS minus resists, haste and the weapon ratio — but
+     the scorer reads all three, so a row can outrank another on 40 resists or
+     10% haste with nothing on screen saying so. Site parity, both off by
+     default and both in the picker. SV VOID is the upgrade-rank marker, never
+     a resist, so it stays out of the sum (same rule as /gear). */
+  { k: "sv", h: "Resists", num: 1, def: false,
+    v: (rec) => Object.keys(rec.sv || {}).reduce((n, k) => (k === "v" ? n : n + (+rec.sv[k] || 0)), 0),
+    cell: (rec) => { const t = vsSvText(rec); return t ? `<span title="${esc(t)}">${
+      Object.keys(rec.sv || {}).reduce((n, k) => (k === "v" ? n : n + (+rec.sv[k] || 0)), 0)}</span>` : ""; } },
+  { k: "haste", h: "Haste", num: 1, def: false, v: (rec) => rec.haste || 0,
+    cell: (rec) => (rec.haste ? `${rec.haste}%` : "") },
   { k: "ratio", h: "DMG/DLY", num: 1, def: null, v: (rec, tier) => (rec.dmg && rec.dly ? window.EQLTier.statAt(rec.dmg, tier) / rec.dly : 0),
     cell: (rec, tier) => (rec.dmg && rec.dly ? `${window.EQLTier.statAt(rec.dmg, tier)}/${rec.dly} = ${(window.EQLTier.statAt(rec.dmg, tier) / rec.dly).toFixed(2)}` : "") },
   { k: "fx", h: "Effects", def: true, v: (rec) => (rec.eff || []).length + (rec.foc ? 1 : 0), cell: (rec) => vlEffects(rec) },
@@ -4448,6 +4683,7 @@ function renderValetSlot() {
     `<button type="button" class="invtab${b.slot === VS.slot ? " is-on" : ""}" data-vlslot="${esc(b.slot)}" title="${flags[b.slot] ? "an exaltation you own fits an empty socket here" : ""}">${esc(b.label)} <span class="invtab__n">${counts[b.slot] || 0}</span>${flags[b.slot] ? `<i class="slotdot"></i>` : ""}</button>`).join("");
   const slot = VS.slot, label = (V.BROWSE.find((b) => b.slot === slot) || {}).label || slot;
   const sv = V.slotView({ rows: VINV.rows, equipped: VINV.equipped, scorer: sc, slot, trio: VL.classes, ranker: valetRanker(), exalt: VEXALT });
+  VS_CTX = { baseAC: sv.baseAC || 0, slot };
   $("vlSlotName").textContent = label;
   // names only: the score and sockets sit on the same item's highlighted row below
   $("vlSlotNow").innerHTML = (sv.now.map((n) => n.e.rec ? itemSpan(n.e.name, true) : `<b>${esc(n.e.name)}</b> <span class="warn">no wiki page</span>`).join(` <span class="dim">+</span> `) || `<span class="dim">Nothing in this slot.</span>`)
@@ -4488,8 +4724,8 @@ function renderValetSlot() {
     grows.length ? grows.map((g) => {
       const k = V.catalogRank(valetRanker(), g.rec, slot, 0, VL.classes);
       return `<tr>${gcols.map((col) => {
-        if (col.k === "s0") return `<td class="num">${Math.round(g.s0)}</td>`;
-        if (col.k === "sPar") return `<td class="num"><b>${Math.round(g.sPar)}</b></td>`;
+        if (col.k === "s0") return `<td class="num"><span data-pop="vlwhy:${vlWhy(g.rec, 0, sv.baseAC || 0, slot, g.s0)}">${Math.round(g.s0)}</span></td>`;
+        if (col.k === "sPar") return `<td class="num"><b data-pop="vlwhy:${vlWhy(g.rec, par, sv.baseAC || 0, slot, g.sPar)}">${Math.round(g.sPar)}</b></td>`;
         if (col.k === "item") return `<td class="iv-item vl-item">${itemSpan(g.rec.n, true)}${g.twoH ? ` <span class="dim">2H</span>` : ""}${g.variant ? ` <span class="dim" title="The wiki has ${g.variants} pages under this name with different stats.">${esc(g.variant)}</span>` : ""}${g.unscored.includes("charges") ? ` <span class="warn" title="Its click has charges and runs out.">charges</span>` : ""}</td>`;
         if (col.k === "crank") return `<td class="num">${k ? `${k.rank} <span class="dim">of ${k.of} · ${esc(k.cls)}</span>` : ""}</td>`;
         if (col.k === "src") return `<td>${esc(window.EQLExaltCore ? window.EQLExaltCore.sourceText(g.rec) : "")}</td>`;
@@ -4498,34 +4734,84 @@ function renderValetSlot() {
       }).join("")}</tr>`;
     }).join("") : `<tr><td colspan="${gcols.length}">${gap.items.length ? "Nothing in the catalogue scores above your best copy at its rank." : ""}</td></tr>`}</tbody></table>`;
 }
+const vlStoneName = (row) => row.name.replace(/\s*\(Exaltation\)\*?$/, "");
+const vlStoneLink = (it) => (it.rec ? itemSpan(vlStoneName(it.row), true) : esc(vlStoneName(it.row)));
+const vlStoneWhere = (it) => (it.host ? `${vlBadge(it.host.row.loc)} <span class="dim">in ${esc(it.host.row.name)}</span>`
+  : it.row.sec === "exalts" ? "" : vlBadge(it.row.loc));
+const vlWornLine = (w) => `<b>${esc(w.slot)}</b> · ${w.rec ? itemSpan(w.row.name, true) : esc(w.row.name)}`;
+const vlDefsHtml = (it) => (it.unknown ? `<span class="dim">no wiki page for its source</span>`
+  : it.defs.map((d) => `<span class="vlfx"><span class="vlfx__k">${esc(d.type)}</span> ${esc(vlFxName(d.effect))}</span>`).join(" "));
+const vlWhereKey = (row) => window.EQLValet.secRank(row.sec) * 1000 + (window.EQLGearScore.locBadge(row.loc).n || 0);
+/* What a candidate for one empty socket actually GRANTS. Three rows reading
+   "Serpentine Bracer, Serpentine Bracer, Ivory Bracelet" are three source
+   items and no choice; the effect is the choice. */
+function vlFitHtml(it, type) {
+  const d = (it.defs || []).find((x) => x.type === type);
+  const maybe = it.maybe
+    ? ` <span class="dim" title="The dump does not say which of its source's effects a loose exaltation holds.">one of ${it.defs.length}</span>` : "";
+  const where = vlStoneWhere(it);
+  return (d ? `<b>${esc(vlFxName(d.effect))}</b> <span class="dim">from</span> ` : "")
+    + vlStoneLink(it) + maybe + (where ? " " + where : "");
+}
+
+/* The three tables, each a list of records — so each sorts on every column.
+   Same column-def idiom as By slot's own table. */
+const VX_ECOLS = [
+  { k: "slot", h: "Slot", d0: 1, key: (x) => x.w.slot, cell: (x) => `<td>${esc(x.w.slot)}</td>` },
+  { k: "item", h: "Item", d0: 1, key: (x) => x.w.row.name.toLowerCase(),
+    cell: (x) => `<td class="iv-item vl-item">${x.w.rec ? itemSpan(x.w.row.name, true) : esc(x.w.row.name)}</td>` },
+  /* The answer before the four socket chips: the chips are the widest cell on
+     the row and pushed the column this table exists for off the edge. */
+  { k: "fits", h: "Exaltations you own that fit an empty one", d0: -1, key: (x) => x.fits || null,
+    cell: (x) => `<td>${x.es.filter((e) => e.fits.length).map((e) =>
+      `<span class="dim">${esc(window.EQLExaltCore.TYPE[e.type].label)}:</span> ${e.fits.map((it) => vlFitHtml(it, e.type)).join(", ")}`).join("<br>")
+      || (x.w.rec ? "" : `<span class="dim">no wiki page, so nothing can be fitted</span>`)}</td>` },
+  { k: "sock", h: "Sockets", d0: -1, key: (x) => x.es.length, cell: (x) => `<td>${vlSockets(x.w)}</td>` },
+];
+const VX_ICOLS = [
+  { k: "where", h: "Where", d0: 1, key: (it) => vlWhereKey(it.host ? it.host.row : it.row),
+    cell: (it) => `<td>${vlBadge(it.row.loc)}${it.host ? `<br><span class="dim">in ${esc(it.host.row.name)}</span>` : ""}</td>` },
+  { k: "stone", h: "Exaltation", d0: 1, key: (it) => vlStoneName(it.row).toLowerCase(),
+    cell: (it) => `<td class="iv-item vl-item">${vlStoneLink(it)}</td>` },
+  { k: "eff", h: "Effect", d0: 1, key: (it) => (it.defs[0] ? vlFxName(it.defs[0].effect).toLowerCase() : null),
+    cell: (it) => `<td>${vlDefsHtml(it)}${it.maybe ? ` <span class="dim" title="The dump does not say which of its source's effects a loose exaltation holds.">one of these</span>` : ""}</td>` },
+  { k: "empty", h: "Fits an empty socket", d0: -1, key: (it) => it.homes.empty.length || null,
+    cell: (it) => `<td>${it.homes.empty.map((x) => `${vlWornLine(x.w)} <span class="dim">${esc(window.EQLExaltCore.TYPE[x.type].label)}</span>`).join("<br>")}</td>` },
+  { k: "occ", h: "Would replace", d0: -1, key: (it) => it.homes.occupied.length || null,
+    cell: (it) => `<td>${it.homes.occupied.map((x) => `${vlWornLine(x.w)} <span class="dim">${esc(window.EQLExaltCore.TYPE[x.type].label)}${x.current && x.current.stone ? ` · now ${esc(vlFxName(x.current.stone.effect))}` : ""}</span>`).join("<br>")}</td>` },
+  { k: "later", h: "After an upgrade", d0: -1, key: (it) => it.homes.later.length || null,
+    cell: (it) => `<td>${it.homes.later.map((x) => `${vlWornLine(x.w)} <span class="dim">${esc(window.EQLExaltCore.TYPE[x.type].label)} at +${x.needs}</span>`).join("<br>")}</td>` },
+];
+const VX_NCOLS = [
+  VX_ICOLS[0], VX_ICOLS[1], VX_ICOLS[2],
+  { k: "why", h: "Why", d0: 1, key: (it) => it.why || null, cell: (it) => `<td>${esc(it.why || "")}</td>` },
+];
+function vxTable(id, cols, rows, attr, sort, dir, rowCls, empty) {
+  const col = cols.find((c) => c.k === sort);
+  const list = col ? rows.slice().sort((a, b) => cmpNullLast(col.key(a), col.key(b), dir)) : rows;
+  const arrow = (k) => (sort === k ? (dir > 0 ? " ▲" : " ▼") : "");
+  $(id).innerHTML = `<table class="qtab ivt"><thead><tr>${cols.map((c) =>
+    `<th class="is-sort" data-${attr}="${c.k}">${esc(c.h)}${arrow(c.k)}</th>`).join("")}</tr></thead><tbody>${
+    list.length ? list.map((r) => `<tr class="${rowCls ? rowCls(r) : ""}">${cols.map((c) => c.cell(r)).join("")}</tr>`).join("")
+      : `<tr><td colspan="${cols.length}">${empty}</td></tr>`}</tbody></table>`;
+}
 function renderValetExalt() {
-  const X = window.EQLExaltCore, a = VAUDIT, GS = window.EQLGearScore, V = window.EQLValet;
-  const stoneName = (row) => row.name.replace(/\s*\(Exaltation\)\*?$/, "");
-  const wornLine = (w) => `<b>${esc(w.slot)}</b> · ${esc(w.row.name)}`;
+  const a = VAUDIT;
   const byItem = new Map();
   for (const e of (a ? a.empty : [])) (byItem.get(e.w) || byItem.set(e.w, []).get(e.w)).push(e);
-  const items = [...byItem.entries()].map(([w, es]) => ({ w, es, fits: es.reduce((n, e) => n + e.fits.length, 0) })).sort((x, y) => y.fits - x.fits || x.es.length - y.es.length);
-  const stoneWhere = (it) => (it.host ? `${vlBadge(it.host.row.loc)} <span class="dim">in ${esc(it.host.row.name)}</span>` : it.row.sec === "exalts" ? "" : vlBadge(it.row.loc));
-  $("vlExEmpty").innerHTML = `<table class="qtab ivt"><thead><tr><th>Slot</th><th>Item</th><th>Sockets</th><th>Exaltations you own that fit an empty one</th></tr></thead><tbody>${
-    items.length ? items.map(({ w, es, fits }) => `<tr class="${fits ? "is-worn" : ""}"><td>${esc(w.slot)}</td><td class="iv-item vl-item">${w.rec ? itemSpan(w.row.name, true) : esc(w.row.name)}</td><td>${vlSockets(w)}</td><td>${es.filter((e) => e.fits.length).map((e) => `<span class="dim">${esc(X.TYPE[e.type].label)}:</span> ${e.fits.map((it) => `${it.rec ? itemSpan(stoneName(it.row), true) : esc(stoneName(it.row))} ${stoneWhere(it)}`).join(", ")}`).join("<br>") || (w.rec ? "" : `<span class="dim">no wiki page, so nothing can be fitted</span>`)}</td></tr>`).join("")
-    : `<tr><td colspan="4">Every open socket on what you're wearing has something in it.</td></tr>`}</tbody></table>`;
+  const items = [...byItem.entries()].map(([w, es]) => ({ w, es, fits: es.reduce((n, e) => n + e.fits.length, 0) }))
+    .sort((x, y) => y.fits - x.fits || x.es.length - y.es.length);
+  vxTable("vlExEmpty", VX_ECOLS, items, "vlxesort", VS.xesort, VS.xedir,
+    (x) => (x.fits ? "is-worn" : ""), "Every open socket on what you're wearing has something in it.");
   const all = a ? a.idle : [];
   const idle = all.filter((it) => it.homes.empty.length || it.homes.occupied.length || it.homes.later.length);
   const none = all.filter((it) => !idle.includes(it));
   $("vlExIdleN").textContent = idle.length ? `${idle.length}` : "";
   $("vlExNoneN").textContent = none.length ? `${none.length}` : "";
-  $("vlExNone").innerHTML = `<table class="qtab ivt"><thead><tr><th>Where</th><th>Exaltation</th><th>Effect</th><th>Why</th></tr></thead><tbody>${
-    none.length ? none.map((it) => `<tr><td>${vlBadge(it.row.loc)}${it.host ? `<br><span class="dim">in ${esc(it.host.row.name)}</span>` : ""}</td><td class="iv-item vl-item">${it.rec ? itemSpan(stoneName(it.row), true) : esc(stoneName(it.row))}</td><td>${it.unknown ? `<span class="dim">no wiki page for its source</span>` : it.defs.map((d) => `<span class="vlfx"><span class="vlfx__k">${esc(d.type)}</span> ${esc(vlFxName(d.effect))}</span>`).join(" ")}</td><td>${esc(it.why || "")}</td></tr>`).join("")
-    : `<tr><td colspan="4">Every exaltation you own fits something you're wearing.</td></tr>`}</tbody></table>`;
-  $("vlExIdle").innerHTML = `<table class="qtab ivt"><thead><tr><th>Where</th><th>Exaltation</th><th>Effect</th><th>Fits an empty socket</th><th>Would replace</th><th>After an upgrade</th></tr></thead><tbody>${
-    idle.length ? idle.map((it) => {
-      const h = it.homes;
-      const eff = it.unknown ? `<span class="dim">no wiki page for its source</span>` : it.defs.map((d) => `<span class="vlfx"><span class="vlfx__k">${esc(d.type)}</span> ${esc(vlFxName(d.effect))}</span>`).join(" ") + (it.maybe ? ` <span class="dim" title="The dump does not say which of its source's effects a loose exaltation holds.">one of these</span>` : "");
-      return `<tr><td>${vlBadge(it.row.loc)}${it.host ? `<br><span class="dim">in ${esc(it.host.row.name)}</span>` : ""}</td><td class="iv-item vl-item">${it.rec ? itemSpan(stoneName(it.row), true) : esc(stoneName(it.row))}</td><td>${eff}</td>
-        <td>${h.empty.map((x) => `${wornLine(x.w)} <span class="dim">${esc(X.TYPE[x.type].label)}</span>`).join("<br>")}</td>
-        <td>${h.occupied.map((x) => `${wornLine(x.w)} <span class="dim">${esc(X.TYPE[x.type].label)}${x.current && x.current.stone ? ` · now ${esc(vlFxName(x.current.stone.effect))}` : ""}</span>`).join("<br>")}</td>
-        <td>${h.later.map((x) => `${wornLine(x.w)} <span class="dim">${esc(X.TYPE[x.type].label)} at +${x.needs}</span>`).join("<br>")}</td></tr>`;
-    }).join("") : `<tr><td colspan="6">${all.length ? "None of them fits anything you're wearing." : "Every exaltation you own is socketed into something you're wearing."}</td></tr>`}</tbody></table>`;
+  vxTable("vlExIdle", VX_ICOLS, idle, "vlxisort", VS.xisort, VS.xidir, null,
+    all.length ? "None of them fits anything you're wearing." : "Every exaltation you own is socketed into something you're wearing.");
+  vxTable("vlExNone", VX_NCOLS, none, "vlxnsort", VS.xnsort, VS.xndir, null,
+    "Every exaltation you own fits something you're wearing.");
 }
 
 const vlStat = (rec, tier) => {
@@ -4555,6 +4841,8 @@ function renderValet() {
     return;
   }
   empty.hidden = true;
+  // the score-breakdown builders belong to whatever this render draws
+  VL_POPS = new Map();
   meta.textContent = `${INV.file} · ${VINV.rows.length} items · ${VL.classes.join("/")} at ${VL.level}`;
   renderValetFlags();
   for (const b of $("vlViews").querySelectorAll("[data-vlview]")) b.classList.toggle("is-on", b.dataset.vlview === VS.view);
@@ -4566,8 +4854,113 @@ function renderValet() {
   else { run.hidden = false; renderValetRun(); }
 }
 
+/* The AC already assigned when the walk reaches a step — the base its own
+   candidates were priced against. advance() accumulates it in step order, so
+   walking the picks the same way reproduces it exactly, and a breakdown totals
+   to the number printed on the card. */
+function vlBaseAC(step) {
+  const V = window.EQLValet;
+  let ac = 0;
+  for (const s of VWALK.steps) {
+    if (s.key === step.key) break;
+    const p = VWALK.picks[s.key];
+    if (p) for (const it of p.items) ac += V.acOf(it.row.rec, it.row.tier);
+  }
+  return ac;
+}
+/* The worn socket record for a step's occupant. exalt-core walks the dump in
+   the same order parseInventory does and normalises Finger/Ring the same way,
+   so the nth worn entry for a slot is the nth equipped one. */
+function vlWornAt(step) {
+  if (!VEXALT) return null;
+  const n = +(step.key.split("#")[1] || 1);
+  return VEXALT.worn.filter((w) => w.slot === step.slot)[n - 1] || null;
+}
+/* Whoever is in the slot right now, priced in the candidates' own context —
+   the same scorer call optionsFor makes, at the same AC base. Without it four
+   scores are shown and the only number they are measured against is off
+   screen. Not read off the option list: a worn piece an earlier step already
+   claimed is not in the list for the step it is sitting in. */
+function vlOccupant(step) {
+  const now = VWALK.wearingAt(step);
+  if (!now.length) return null;
+  const e = now[0];
+  return { e, w: vlWornAt(step),
+           score: e.rec ? valetScorer().score(e.rec, e.tier, vlBaseAC(step), step.slot) : null };
+}
+/* A worn piece the plan puts on again at another step has not come off — it
+   moves (Ear #2 to Ear #1, Back to Any Slot). Matched by row identity:
+   valet-core hands each worn entry its dump row. A moved piece keeps its
+   exaltations, so no strip chip; its gain arithmetic is unchanged (it is
+   subtracted here and added back at the step that wears it). */
+function vlMovedTo(step, occ) {
+  if (!occ || !occ.e || !occ.e.row || !VWALK) return null;
+  for (const s of VWALK.steps) {
+    if (s.key === step.key) continue;
+    const p = VWALK.picks[s.key];
+    if (p && p.items.some(it => it.row === occ.e.row)) return s;
+  }
+  return null;
+}
+/* An item coming off takes its exaltations with it. The Inventory tab's own
+   framing, on the row where the swap is being decided. */
+function vlStripEffects(w) {
+  if (!w || !w.sockets) return [];
+  const X = window.EQLExaltCore, eff = [];
+  for (const t of X.TYPES) {
+    const s = w.sockets[t.key];
+    if (!s || !s.filled) continue;
+    eff.push(s.stone && s.stone.stone ? vlFxName(s.stone.stone.effect) : s.stone.row.base);
+  }
+  return eff;
+}
+const vlStripCount = (w) => vlStripEffects(w).length;
+function vlStripHtml(w, names) {
+  const eff = vlStripEffects(w);
+  if (!eff.length) return "";
+  const list = eff.join(" · ");
+  return ` <span class="vl-strip" title="${esc(`${eff.length === 1 ? "Its exaltation comes" : "Its exaltations come"} off with it: ${list}`)}">✦ holds ${eff.length} exaltation${eff.length === 1 ? "" : "s"} — strip first</span>`
+    + (names ? ` <span class="dim">${esc(list)}</span>` : "");
+}
+const vlGainHtml = (gain) => (gain == null ? `<span class="dim" title="What is on you now has no wiki page, so nothing here can be measured against it.">—</span>`
+  : `<b class="${gain > 0 ? "up" : gain < 0 ? "down" : ""}">${gain > 0 ? "+" : ""}${Math.round(gain)}</b>`);
+
+/* Why a score is that score. `#ivpop` already floats a panel beside the
+   cursor off a data-pop attribute; this registry is what a Valet pop reads,
+   rebuilt with the view. Site parity — /valet's `why` and `why2` tooltips
+   exist because Kyle asked why 18 AC was worth less than he expected. */
+let VL_POPS = new Map();
+let VL_POP_N = 0;
+function vlWhy(rec, tier, baseAC, slot, head) {
+  const id = "v" + (++VL_POP_N);
+  VL_POPS.set(id, () => {
+    const b = window.EQLValet.breakdown(rec, tier, baseAC, slot, valetScorer());
+    // the printed parts add up to the printed score: rounding residue lands on the largest part
+    const shown = Math.round(head != null ? head : b.total);
+    const rv = b.parts.map((p) => Math.round(p.v));
+    const resid = shown - rv.reduce((a, x) => a + x, 0);
+    if (rv.length && resid) { let big = 0; rv.forEach((x, i) => { if (Math.abs(x) > Math.abs(rv[big])) big = i; }); rv[big] += resid; }
+    return `<div class="pop__head"><b>${esc(rec.n)}${tier ? ` +${tier}` : ""}</b> · score ${shown}</div>`
+      + `<table class="pop__t pop__t--list"><tbody>${b.parts.map((p, i) =>
+        `<tr><td>${esc(p.k)}</td><td class="pop__n">${p.n}</td><td class="pop__n">× ${p.w}</td><td class="pop__score">${rv[i]}</td><td class="dim">${
+          p.w === 0 ? "worth nothing to this trio" : p.cap ? "past the AC softcap" : ""}</td></tr>`).join("")}</tbody></table>`
+      + `<div class="pop__foot">HP-equivalents for ${esc(VL.classes.join("/"))} at ${VL.level}, against ${Math.round(baseAC)} AC already on. Change the weights under Stat priorities.</div>`;
+  });
+  return id;
+}
+/* A name inside a clickable row: the tooltip rides the name and the wiki page
+   gets its own ↗ affordance, so clicking the row is only ever the row's own
+   action (page-design 0f). */
+function vlNameCell(name) {
+  const ti = lookupLoose(TIDX, TIDX_L, name);
+  const base = (TDATA && TDATA.base) || (DATA && DATA.base) || "";
+  return `<span class="itn" data-tt="${esc(name)}">${esc(name)}</span>`
+    + (ti && base ? ` <span class="vl-out" data-url="${esc(base + ti.t)}" title="Open ${esc(name)} on the wiki">↗</span>` : "");
+}
+
 function renderValetRun() {
   const step = VWALK.step(), all = VWALK.options(), opts = all.slice(0, 4);
+  const baseAC = vlBaseAC(step);
   $("vlSlot").textContent = step.label;
   $("vlCount").textContent = `${VWALK.i + 1} of ${VWALK.steps.length}`;
   $("vlPool").textContent = all.length + " you own fit here"
@@ -4578,20 +4971,36 @@ function renderValetRun() {
   const b = wc && wc.bestPair ? `<b>${Math.round(wc.bestPair.total)}</b> main + off — ${esc(wc.bestPair.main.name)} + ${esc(wc.bestPair.off.name)}` : "";
   $("vlCmp").innerHTML = a || b ? [a, b].filter(Boolean).join(" · ") : "";
   $("vlCmp").hidden = !(a || b);
-  const now = VWALK.wearingAt(step);
-  $("vlNow").innerHTML = now.length
-    ? "On you now: " + now.map(e => e.rec ? `<b>${esc(e.name)}</b>`
-        : `<b>${esc(e.name)}</b> <span class="warn">no wiki page — nothing here can be compared against it</span>`).join(" + ")
+  const occ = vlOccupant(step);
+  const moved = vlMovedTo(step, occ);
+  $("vlNow").innerHTML = occ
+    ? "On you now: " + (occ.e.rec ? `<b>${itemSpan(occ.e.name, true)}</b>` : `<b>${esc(occ.e.name)}</b>`)
+      + (occ.e.rec ? "" : ` <span class="warn">no wiki page — nothing here can be compared against it</span>`)
+      + (occ.score != null ? ` <span class="vl-nowscore" data-pop="vlwhy:${vlWhy(occ.e.rec, occ.e.tier, baseAC, step.slot, occ.score)}">${Math.round(occ.score)}</span>` : "")
+      + (moved ? ` <span class="dim">· this plan moves it to ${esc(moved.label)}</span>` : vlStripHtml(occ.w, true))
     : "nothing in this slot";
-  $("vlCards").innerHTML = opts.map((o, n) => `
+  $("vlCards").innerHTML = opts.map((o, n) => {
+    const it0 = o.items[0];
+    const gain = occ && occ.score != null ? o.score - occ.score : null;
+    return `
     <div class="vlc" role="button" tabindex="0" data-vlopt="${n}">
-      <div class="vlc__s" title="HP-equivalents for this trio">${Math.round(o.score)}</div>
+      <div class="vlc__s" data-pop="vlwhy:${vlWhy(it0.row.rec, it0.row.tier, baseAC, it0.slot, o.score)}">${Math.round(o.score)}</div>
+      ${occ ? `<div class="vlc__d ${gain > 0 ? "up" : gain < 0 ? "down" : ""}" title="${esc(`Against ${occ.e.name}${moved ? `, which this plan moves to ${moved.label}` : ""}, priced at the same AC base`)}">${
+        gain == null ? "" : (gain > 0 ? "+" : "") + Math.round(gain)}</div>` : ""}
       ${o.items.map(it => `<div class="vlc__i">
-        <div class="vlc__n">${itemSpan(it.row.name, true)}</div>
+        <div class="vlc__n">${vlNameCell(it.row.name)}</div>
         <div class="vlc__st">${vlStat(it.row.rec, it.row.tier)}</div>
         <div class="vlc__w">${vlBadge(it.row.loc)}${o.items.length > 1 ? ` <span class="dim">${esc(it.slot)}</span>` : ""}</div>
       </div>`).join("")}
-    </div>`).join("") || `<p class="dim">Nothing you own fits here.</p>`;
+    </div>`;
+  }).join("") || `<p class="dim">Nothing you own fits here.</p>`;
+  /* The four cards are the decision; everything else that fits is one click
+     away as a sortable table. A cap that does not say it is a cap is a tool
+     lying — on Any Slot the cards are 4 of 95. */
+  $("vlAllWrap").hidden = all.length <= 4;
+  $("vlAllToggle").textContent = VS.allOpen ? `Show the four best only` : `Show all ${all.length}`;
+  $("vlAll").hidden = !VS.allOpen;
+  if (VS.allOpen && all.length > 4) renderValetAll(all, occ, baseAC);
   $("vlRemember").checked = !!VL_MEM.get(step.key);
   $("vlBack").disabled = VWALK.i === 0;
   const k = VWALK.autoSummary(), bits = [];
@@ -4604,15 +5013,103 @@ function renderValetRun() {
   $("vlAuto").innerHTML = bits.join(" · ");
 }
 
+/* Every option for the open step, with the numbers the cards only summarise.
+   Clicking a row picks it, same as clicking a card — so the item name carries
+   a tooltip and its wiki page gets a separate ↗ (page-design 0f). */
+const VA_COLS = [
+  { k: "score", h: "Score", d0: -1, num: 1, key: (o) => o.score },
+  { k: "gain", h: "Gain", d0: -1, num: 1, key: (o) => (o.__gain == null ? null : o.__gain) },
+  { k: "item", h: "Item", d0: 1, key: (o) => o.items.map((it) => it.row.name).join(" + ").toLowerCase() },
+  { k: "where", h: "Where", d0: 1, key: (o) => vlWhereKey(o.items[0].row) },
+  { k: "tier", h: "Tier", d0: -1, num: 1, key: (o) => o.items[0].row.tier || null },
+  ...["ac", "hp", "mana", "atk"].map((k) => ({ k, h: k.toUpperCase(), d0: -1, num: 1,
+    key: (o) => window.EQLTier.statsAt(o.items[0].row.rec, o.items[0].row.tier)[k] || null })),
+  { k: "ratio", h: "DMG/DLY", d0: -1, num: 1, key: (o) => { const r = o.items[0].row;
+    return r.rec.dmg && r.rec.dly ? window.EQLTier.statAt(r.rec.dmg, r.tier) / r.rec.dly : null; } },
+];
+function renderValetAll(all, occ, baseAC) {
+  for (const o of all) o.__gain = occ && occ.score != null ? o.score - occ.score : null;
+  const col = VA_COLS.find((c) => c.k === VS.asort) || VA_COLS[0];
+  const rows = all.slice().sort((a, b) => cmpNullLast(col.key(a), col.key(b), VS.adir));
+  const arrow = (k) => (VS.asort === k ? (VS.adir > 0 ? " ▲" : " ▼") : "");
+  const val = (c, o) => { const v = c.key(o); return v == null ? "" : c.k === "ratio" ? v.toFixed(2)
+    : c.k === "score" || c.k === "gain" ? Math.round(v) : c.k === "tier" ? "+" + v : v; };
+  $("vlAll").innerHTML = `<table class="qtab ivt vl-all"><thead><tr>${VA_COLS.map((c) =>
+    `<th class="is-sort" data-vlasort="${c.k}">${esc(c.h)}${arrow(c.k)}</th>`).join("")}</tr></thead><tbody>${
+    rows.map((o) => {
+      const n = all.indexOf(o), it0 = o.items[0];
+      return `<tr data-vlopt="${n}" class="${it0.row.sec === "worn" ? "is-worn" : ""}">${VA_COLS.map((c) => {
+        if (c.k === "score") return `<td class="num"><b data-pop="vlwhy:${vlWhy(it0.row.rec, it0.row.tier, baseAC, it0.slot, o.score)}">${Math.round(o.score)}</b></td>`;
+        if (c.k === "gain") return `<td class="num">${o.__gain == null ? "" : vlGainHtml(o.__gain)}</td>`;
+        if (c.k === "item") return `<td class="iv-item vl-item">${o.items.map((it) => vlNameCell(it.row.name)).join(` <span class="dim">+</span> `)}</td>`;
+        if (c.k === "where") return `<td>${o.items.map((it) => vlBadge(it.row.loc)).join(" ")}</td>`;
+        return `<td class="${c.num ? "num" : ""}">${val(c, o)}</td>`;
+      }).join("")}</tr>`;
+    }).join("")}</tbody></table>`;
+}
+
 /* The fetch list. Every column sorts, same rule as every other table here. */
 const VL_COLS = [
   { k: "where", h: "Where it is", d0: 1, v: it => window.EQLValet.secRank(it.row.sec) * 1000 + (window.EQLGearScore.locBadge(it.row.loc).n || 0) },
   { k: "slot", h: "Slot", d0: 1, v: it => it.step.label },
   { k: "item", h: "Item", d0: 1, v: it => it.row.name.toLowerCase() },
   { k: "tier", h: "Tier", d0: -1, v: it => it.row.tier, num: 1 },
-  { k: "stats", h: "Stats", d0: 1, v: it => it.row.name.toLowerCase() },
+  /* Which worn piece each reach displaces, and what the reach is worth.
+     Standing at the bank, ten rows saying "fetch" is not a priority order.
+     Ahead of Stats: the stat line is the widest cell on the row and pushes
+     everything after it off the edge (the Inventory tab's own receipt). */
+  { k: "off", h: "Comes off", d0: 1, v: it => { const o = vlOccupant(it.step); return o ? o.e.name.toLowerCase() : "~"; } },
+  { k: "gain", h: "Gain", d0: -1, num: 1, v: it => { const g = vlItemGain(it); return g == null ? -1e9 : g; } },
   { k: "do", h: "Do", d0: 1, v: it => (it.row.sec === "worn" ? 0 : 1) },
+  { k: "stats", h: "Stats", d0: 1, v: it => it.row.name.toLowerCase() },
 ];
+/* What one reach buys: the pick's score minus whatever it displaces, both
+   priced at that step's own AC base. */
+function vlItemGain(it) {
+  const p = VWALK.picks[it.step.key];
+  if (!p) return null;
+  const occ = vlOccupant(it.step);
+  if (!occ) return p.score;
+  return occ.score == null ? null : p.score - occ.score;
+}
+/* Before and after, per stat. The score is one number and the trade behind it
+   — 30 mana for 4 AC — is the thing you actually want to see. */
+const VC_COLS = [
+  { k: "stat", h: "Stat", d0: 1, key: (r) => r.k },
+  { k: "now", h: "Wearing now", d0: -1, num: 1, key: (r) => r.a },
+  { k: "new", h: "This loadout", d0: -1, num: 1, key: (r) => r.b },
+  { k: "d", h: "Difference", d0: -1, num: 1, key: (r) => r.d },
+];
+/* The two kits' totals: the tier-scaled stats valet-core sums, plus the
+   resists and haste the scorer also reads — a kit can win on 40 resists, and
+   a table that leaves them out would claim the opposite. SV VOID stays out
+   (the upgrade-tier marker). */
+function kitExtras(items) {
+  const out = {};
+  for (const it of items) {
+    const rec = it.rec || (it.row && it.row.rec);
+    if (!rec) continue;
+    for (const k in rec.sv || {}) if (k !== "v" && rec.sv[k]) out["sv " + (window.EQLGearScore.SV_NAMES[k] || k)] = (out["sv " + (window.EQLGearScore.SV_NAMES[k] || k)] || 0) + rec.sv[k];
+    if (rec.haste) out["haste %"] = Math.max(out["haste %"] || 0, rec.haste);   // haste does not stack across items
+  }
+  return out;
+}
+function renderValetCmp(cur, plan) {
+  const ca = kitExtras(cur.items || []), pa = kitExtras(plan.items || []);
+  const keys = SKY_STAT_KEYS.filter((k) => cur.st[k] || plan.st[k]);
+  const extra = [...new Set([...Object.keys(ca), ...Object.keys(pa)])].sort();
+  const rows = keys.map((k) => ({ k: k.toUpperCase(), a: cur.st[k] || 0, b: plan.st[k] || 0,
+    d: (plan.st[k] || 0) - (cur.st[k] || 0) }))
+    .concat(extra.map((k) => ({ k: k.toUpperCase(), a: ca[k] || 0, b: pa[k] || 0, d: (pa[k] || 0) - (ca[k] || 0) })));
+  const col = VC_COLS.find((c) => c.k === VL.csort) || VC_COLS[0];
+  rows.sort((a, b) => cmpNullLast(col.key(a), col.key(b), VL.cdir));
+  const arrow = (k) => (VL.csort === k ? (VL.cdir > 0 ? " ▲" : " ▼") : "");
+  $("vlCmp2").innerHTML = rows.length ? `<table class="qtab ivt"><thead><tr>${VC_COLS.map((c) =>
+    `<th class="is-sort" data-vlcsort="${c.k}">${esc(c.h)}${arrow(c.k)}</th>`).join("")}</tr></thead><tbody>${
+    rows.map((r) => `<tr><td>${esc(r.k)}</td><td class="num">${r.a || ""}</td><td class="num">${r.b || ""}</td>
+      <td class="num ${r.d > 0 ? "up" : r.d < 0 ? "down" : ""}">${r.d ? (r.d > 0 ? "+" : "") + r.d : ""}</td></tr>`).join("")
+    }</tbody></table>` : `<p class="dim">Nothing you are wearing or picking has a stat the wiki lists.</p>`;
+}
 function renderValetDone() {
   const plan = VWALK.planLoadout(), cur = VWALK.currentLoadout();
   const ds = plan.score - cur.score;
@@ -4638,22 +5135,32 @@ function renderValetDone() {
     VL_COLS.map(c => `<th data-vlsort="${c.k}">${esc(c.h)}${arrow(c.k)}</th>`).join("")
   }</tr></thead><tbody>${items.map(it => {
     const worn = it.row.sec === "worn";
+    const occ = vlOccupant(it.step);
+    const same = occ && occ.e.rec === it.row.rec && occ.e.tier === it.row.tier;
+    const moved = same ? null : vlMovedTo(it.step, occ);
     return `<tr class="${worn ? "is-dim" : ""}">
       <td>${vlBadge(it.row.loc)}</td>
       <td>${esc(it.step.label)}</td>
       <td class="iv-item">${itemSpan(it.row.name, true)}</td>
       <td>${it.row.tier ? "+" + it.row.tier : ""}</td>
-      <td>${vlStat(it.row.rec, it.row.tier)}</td>
+      <td class="iv-item">${occ && !same
+        ? (occ.e.rec ? itemSpan(occ.e.name, true) : esc(occ.e.name)) + (moved ? ` <span class="dim">moves to ${esc(moved.label)}</span>` : vlStripHtml(occ.w))
+        : `<span class="dim">${occ ? "" : "nothing"}</span>`}</td>
+      <td class="num">${same ? "" : vlGainHtml(vlItemGain(it))}</td>
       <td>${worn ? `<span class="dim">already on</span>` : "<b>fetch</b>"}</td>
+      <td>${vlStat(it.row.rec, it.row.tier)}</td>
     </tr>`;
   }).join("") + plan.kept.map(k => `<tr class="is-dim">
       <td>${vlBadge(k.slot)}</td>
       <td>${esc(k.step.label)}</td>
-      <td class="iv-item">${esc(k.e.name)}</td>
+      <td class="iv-item">${k.e.rec ? itemSpan(k.e.name, true) : esc(k.e.name)}</td>
       <td></td>
-      <td><span class="dim">${k.e.rec ? "not scored here" : "no wiki page — can't be scored"}</span></td>
+      <td></td>
+      <td class="num"></td>
       <td><span class="dim">keep</span></td>
+      <td><span class="dim">${k.e.rec ? "not scored here" : "no wiki page — can't be scored"}</span></td>
     </tr>`).join("")}</tbody></table>`;
+  renderValetCmp(cur, plan);
 }
 
 /* What crosses to the overlay: the pull list, and nothing you are already
@@ -4681,7 +5188,14 @@ function pushValet() {
     fetch: all.filter(it => it.row.sec !== "worn").map(it => {
       const b = window.EQLGearScore.locBadge(it.row.loc);
       const ref = skyRef(it.row.name);
+      // what each reach displaces and what it is worth — a half-finished trip
+      // is otherwise unprioritised, and you cannot see which piece comes off
+      const occ = vlOccupant(it.step);
+      const moved = vlMovedTo(it.step, occ);
+      const g = vlItemGain(it);
       return { slot: it.step.label, n: it.row.name, url: ref.url, sb: ref.sb,
+               off: occ ? occ.e.name : null, moves: moved ? moved.label : null, gain: g == null ? null : Math.round(g),
+               strip: occ && occ.w && !moved ? vlStripCount(occ.w) : 0,
                loc: { k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title } };
     }),
   };
@@ -4747,6 +5261,18 @@ function wireValet() {
   $("vlSlotPick").addEventListener("click", (e) => { const b = e.target.closest("[data-vlslot]"); if (!b) return; VS.slot = b.dataset.vlslot; saveValetPrefs(); vsRedraw(); });
   $("vlOwn").addEventListener("click", (e) => { const th = e.target.closest("[data-vlosort]"); if (!th) return; const k = th.dataset.vlosort; VS.dir = VS.sort === k ? -VS.dir : 1; VS.sort = k; vsRedraw(); });
   $("vlGap").addEventListener("click", (e) => { const th = e.target.closest("[data-vlgsort]"); if (!th) return; const k = th.dataset.vlgsort; VS.gdir = VS.gsort === k ? -VS.gdir : 1; VS.gsort = k; vsRedraw(); });
+  // the Exaltations view's three tables, one handler each
+  for (const [id, attr, cols, sk, dk] of [["vlExEmpty", "vlxesort", VX_ECOLS, "xesort", "xedir"],
+                                          ["vlExIdle", "vlxisort", VX_ICOLS, "xisort", "xidir"],
+                                          ["vlExNone", "vlxnsort", VX_NCOLS, "xnsort", "xndir"]]) {
+    $(id).addEventListener("click", (e) => {
+      const th = e.target.closest("[data-" + attr + "]");
+      if (!th) return;
+      const k = th.dataset[attr], c = cols.find((x) => x.k === k);
+      VS[dk] = VS[sk] === k ? -VS[dk] : (c ? c.d0 : 1);
+      VS[sk] = k; saveValetPrefs(); vsRedraw();
+    });
+  }
   $("vlGapAll").addEventListener("click", () => { VS.gapAll = !VS.gapAll; saveValetPrefs(); vsRedraw(); });
   $("vlOwnCols").addEventListener("change", (e) => {
     const inp = e.target.closest("[data-vlcol]"); if (!inp) return;
@@ -4768,10 +5294,13 @@ function wireValet() {
     delete VL.mem[vlTrioKey()]; saveValetPrefs(); valetRestart(); renderValet(); pushValet(); pushSpare();
   });
   const take = (e) => {
-    if (e.target.closest("a")) return;
+    // a wiki link inside the tile is not the tile's action (page-design 0f)
+    if (e.target.closest("a, [data-url], [data-wiki]")) return;
     const b = e.target.closest("[data-vlopt]");
     if (!b || !VWALK) return;
-    VWALK.pick(VWALK.step().key, VWALK.options()[+b.dataset.vlopt], $("vlRemember").checked);
+    const st = VWALK.step();
+    if (!st) return;   // the walk is done; a card left on screen picks nothing
+    VWALK.pick(st.key, VWALK.options()[+b.dataset.vlopt], $("vlRemember").checked);
     renderValet(); pushValet(); pushSpare();
   };
   $("vlCards").addEventListener("click", take);
@@ -4779,11 +5308,29 @@ function wireValet() {
     if ((e.key !== "Enter" && e.key !== " ") || !e.target.closest(".vlc")) return;
     e.preventDefault(); take(e);
   });
+  // every option for the open step: the toggle, the sorts, and the same pick
+  $("vlAllToggle").addEventListener("click", () => { VS.allOpen = !VS.allOpen; saveValetPrefs(); vsRedraw(); });
+  $("vlAll").addEventListener("click", (e) => {
+    const th = e.target.closest("[data-vlasort]");
+    if (th) {
+      const k = th.dataset.vlasort, c = VA_COLS.find((x) => x.k === k);
+      VS.adir = VS.asort === k ? -VS.adir : (c ? c.d0 : -1);
+      VS.asort = k; saveValetPrefs(); vsRedraw(); return;
+    }
+    take(e);
+  });
   $("vlFetch").addEventListener("click", (e) => {
     const th = e.target.closest("[data-vlsort]");
     if (!th) return;
     const k = th.dataset.vlsort, c = VL_COLS.find(x => x.k === k);
     if (VL.sort === k) VL.dir = -VL.dir; else { VL.sort = k; VL.dir = (c && c.d0) || 1; }
+    renderValetDone();
+  });
+  $("vlCmp2").addEventListener("click", (e) => {
+    const th = e.target.closest("[data-vlcsort]");
+    if (!th) return;
+    const k = th.dataset.vlcsort, c = VC_COLS.find(x => x.k === k);
+    if (VL.csort === k) VL.cdir = -VL.cdir; else { VL.csort = k; VL.cdir = (c && c.d0) || 1; }
     renderValetDone();
   });
 }
@@ -5780,8 +6327,11 @@ function repop() {
   const t = el && el.closest ? el.closest("[data-pop]") : null;
   if (!t) { popEl.hidden = true; return; }
   const [kind, id] = t.dataset.pop.split(":");
-  const v = IV_BYID.get(+id);
-  const html = v && IV_POPS[kind] ? IV_POPS[kind](v) : "";
+  // the Valet tab hangs a score breakdown off the same panel; its rows are
+  // not inventory views, so it registers a builder instead
+  let html = "";
+  if (kind === "vlwhy") { const f = VL_POPS.get(id); html = f ? f() : ""; }
+  else { const v = IV_BYID.get(+id); html = v && IV_POPS[kind] ? IV_POPS[kind](v) : ""; }
   if (!html) { popEl.hidden = true; return; }
   popEl.innerHTML = html;
   popEl.hidden = false;
@@ -6022,7 +6572,7 @@ async function main() {
   $("unlHideDone").checked = !!UNL.hideDone;
   renderUnlocks();
 
-  $("skySearch").addEventListener("input", renderSky);
+  $("skySearch").addEventListener("input", () => renderSky());
   $("skyBody").addEventListener("contextmenu", e => {
     const li = e.target.closest("li[data-drop]");
     if (!li || !SKY_DROPS.has(li.dataset.drop)) return;
@@ -6051,6 +6601,12 @@ async function main() {
     saveSkyDropPrefs(); renderSky();
   });
   $("skyBody").addEventListener("click", e => {
+    const rs = e.target.closest("[data-skrsort]");
+    if (rs) {
+      const k = rs.dataset.skrsort, c = SKR_COLS.find(x => x.k === k);
+      SKYP.rdir = SKYP.rsort === k ? -SKYP.rdir : (c ? c.d0 : -1);
+      SKYP.rsort = k; saveSkyPrefs(); renderSky(); return;
+    }
     const s = e.target.closest("[data-skdtsort]");
     if (s) {
       const k = s.dataset.skdtsort, c = SKD_TCOLS.find(x => x.k === k);
@@ -6113,7 +6669,7 @@ async function main() {
   typed("qSearch", v => { QB.q = v; renderQuestBrowser(); });
   $("qbClass").addEventListener("change", e => { QB.cls = e.target.value; renderQuestBrowser(); });
   $("qbZone").addEventListener("change", e => { QB.zone = e.target.value; renderQuestBrowser(); });
-  $("qbEra").addEventListener("change", e => { QB.era = e.target.value; renderQuestBrowser(); });
+  $("qbEra").addEventListener("change", e => { QB.era = e.target.value; populateQuestFilters(); renderQuestBrowser(); });
   typed("qbLvlMin", v => { QB.lvlMin = v; renderQuestBrowser(); });
   typed("qbLvlMax", v => { QB.lvlMax = v; renderQuestBrowser(); });
   $("trkAtlas").addEventListener("click", () => {

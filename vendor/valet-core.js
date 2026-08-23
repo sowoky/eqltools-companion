@@ -91,6 +91,22 @@
       return Object.assign({ i, key, rec: key ? DATA.items[key] : null }, r);
     });
     const rows = all.filter((r) => !r.empty);
+    /* Each worn entry points at ITS dump row (`e.row`): the entries and the
+       rows come off the same parse in the same order, and a paired slot has
+       two of each. A host that wants to know whether the thing in Ear #2 is
+       the row the plan puts in Ear #1 compares row identity, not names. */
+    {
+      const seen = {};
+      for (const r of rows) {
+        if (r.sub || !GS.WORN_RX.test(r.loc)) continue;
+        let slot = r.loc;
+        if (slot === "Finger" || slot === "Ring") slot = "Fingers";
+        const n = seen[slot] = (seen[slot] || 0);
+        const e = (equipped[slot] || [])[n];
+        if (e && e.name === r.name) e.row = r;
+        seen[slot] = n + 1;
+      }
+    }
     /* Gear the wiki has no record of cannot be scored, so it is not a candidate
        for anything. Reported rather than dropped: the dangerous ones are the
        pieces you are WEARING, because the walk will cheerfully suggest swapping
@@ -322,9 +338,14 @@
           continue;
         }
         for (const it of p.items) {
-          score += sc.score(it.row.rec, it.row.tier, ac, it.slot);
+          /* Each piece carries the number it was priced at and the AC base it
+             was priced against, so a host can say what the swap is worth
+             without re-walking the loadout: the occupant it displaces has to
+             be scored at that same base or the two numbers are not comparable. */
+          const sIt = sc.score(it.row.rec, it.row.tier, ac, it.slot);
+          score += sIt;
+          items.push({ step, slot: it.slot, row: it.row, score: sIt, baseAC: ac });
           ac += acOf(it.row.rec, it.row.tier);
-          items.push({ step, slot: it.slot, row: it.row });
           const s = statsAt(it.row.rec, it.row.tier);
           for (const k in s) st[k] = (st[k] || 0) + s[k];
         }
@@ -361,6 +382,11 @@
         if (k !== "Primary#1" || !c) return null;
         return weaponCompare(c.taken, c.lore, c.baseAC);
       },
+      /* What a step was priced in: the rows already spoken for, the LORE keys
+         already used, and the AC the loadout carries when the step opens.
+         A host needs the base to price the occupant of the slot against the
+         candidates for it. */
+      ctx: (key) => W.ctx[key || (steps[W.i] || {}).key] || null,
       get i() { return W.i; },
       get picks() { return W.picks; },
       get auto() { return W.auto; },

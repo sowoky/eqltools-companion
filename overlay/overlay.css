@@ -272,6 +272,10 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unlock first
 .oski__c { color: #b6aecb; font-size: 10.5px; }
 .oski__star { color: #e0713a; cursor: help; }
 .oski__src { color: #8d84a8; font-size: 10.5px; }
+/* what the log watched leave, and what the island costs to reach */
+.oski__loss { color: #8d84a8; font-size: 10.5px; cursor: help; }
+.oski__loss.is-hard { color: #e0713a; font-weight: 600; }
+.oski__req { color: #f6dfa0; font-size: 10.5px; }
 /* boss board: a starred row is a test you're tracking, and it sorts first */
 .osb { border-bottom: 1px solid rgba(255,255,255,.05); padding-bottom: 1px; }
 .osb:last-child { border-bottom: 0; }
@@ -324,6 +328,16 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unlock first
 /* the worn item an exaltation goes into: its own line under the name */
 .ovi { flex-wrap: wrap; }
 .ovi__into { flex: 1 0 100%; color: #8d84a8; font-size: 10.5px; padding-left: 2px; }
+/* Valet: what the reach buys, and what it takes off */
+.ovi__gain { font-size: 10.5px; flex: none; font-variant-numeric: tabular-nums; color: #8d84a8; }
+.ovi__gain.up { color: #9ccc9c; }
+.ovi__gain.down { color: #e0713a; }
+.ovi__off { flex: 1 0 100%; color: #8d84a8; font-size: 10.5px; padding-left: 2px; }
+/* Exalt: the effect is the choice, so it reads on the row rather than on
+   hover — on the row's second line, with where the stone is and what it fits */
+.ovi__l2 { flex: 1 0 100%; display: flex; gap: 4px; align-items: baseline;
+  flex-wrap: wrap; padding-left: 2px; }
+.ovi__fx { color: #f6dfa0; font-size: 10.5px; font-weight: 600; }
 /* Spare: the count sits where the slot label does in the Valet list, and the
    warn word is the one thing the ranking could not read. */
 #ospare .ovi__s { min-width: 2.2em; text-align: right; color: #e7b94e; }

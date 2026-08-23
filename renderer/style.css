@@ -543,6 +543,9 @@ input[type="checkbox"] { accent-color: var(--gold); }
 #tab-sky .chk, #skyMeta { white-space: nowrap; }
 #skySearch { min-width: 230px; }
 
+/* the sixteen-class rollup above the folds */
+.skrwrap { margin-bottom: 10px; }
+.skr tfoot td { border-top: 1px solid var(--line); color: var(--ink-soft); }
 .skg { border: 1px solid var(--line); border-radius: 6px; background: var(--bg-panel); margin-bottom: 6px; }
 .skg__h {
   display: flex; align-items: baseline; gap: 10px; width: 100%; text-align: left;
@@ -571,6 +574,9 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .skt__say code { color: var(--gold-pale); font-family: var(--mono); }
 .skt__rew { margin-left: auto; font-size: 12px; color: var(--ink-dim); }
 .skt__done { font: 12px var(--mono); color: var(--wiki); font-weight: 700; }
+/* where the reward stands in its own slot, and what a second run pays */
+.skt__rank { font: 11px var(--mono); color: var(--gold-pale); cursor: help; }
+.skt__pays { font: 11px var(--mono); color: var(--gold-bright); cursor: help; }
 .sk-st { font-size: 11px; padding: 0 6px; border-radius: 3px; border: 1px solid var(--line); color: var(--ink-dim); }
 .sk-st--ready { background: var(--gold); border-color: var(--gold); color: var(--bg-deep); font-weight: 700; }
 .sk-st--done { color: var(--wiki); border-color: var(--wiki-line); }
@@ -586,6 +592,14 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .skp__ct { font: 12px var(--mono); color: var(--ink-dim); }
 .skp.is-have .skp__ct { color: var(--ink-soft); }
 .sk-src { font-size: 11px; color: var(--ink-dim); }
+/* the island's toll, beside the island */
+.sk-req { font-size: 11px; color: var(--gold-pale); border: 1px dashed var(--line);
+  border-radius: 999px; padding: 0 5px; white-space: nowrap; }
+/* what the log watched leave: quiet while you still hold one, loud when a
+   live test wants it and you hold none */
+.sk-loss { font-size: 11px; color: var(--ink-dim); border: 1px solid var(--line);
+  border-radius: 999px; padding: 0 5px; white-space: nowrap; cursor: help; }
+.sk-loss--hard { color: var(--ember); border-color: currentColor; font-weight: 600; }
 /* the one warning on the row: hand this over and another test loses its piece */
 .sk-star { color: var(--ember); font-size: 12px; cursor: help; }
 
@@ -721,8 +735,9 @@ input[type="checkbox"] { accent-color: var(--gold); }
 
 /* ── Valet tab ─────────────────────────────────────────────────────────────
    Four cards, one slot at a time, then the fetch list. The card is the button:
-   an anchor inside it would be a hole you click expecting to pick, so the item
-   name here is itemSpan's tooltip span and there is no link to miss. */
+   a link inside it is a hole you click expecting to pick, so the name carries
+   the tooltip and the wiki page gets its own ↗ (.vl-out). Same for the rows
+   of the "show all" table, which pick the same way a card does. */
 .vl-head { display: flex; align-items: baseline; gap: 10px; margin: 8px 0 0; }
 .vl-head h3 { margin: 0; font-size: 17px; }
 #vlPool, #vlNow, #vlAuto, #vlNotes { margin: 2px 0 0; }
@@ -732,7 +747,10 @@ input[type="checkbox"] { accent-color: var(--gold); }
   padding: 8px 9px; cursor: pointer; min-width: 0; }
 .vlc:hover { border-color: var(--gold); background: rgba(255,255,255,.03); }
 .vlc:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.vlc__s { color: var(--gold-bright); font-size: 19px; font-weight: 600; line-height: 1; }
+.vlc__s { color: var(--gold-bright); font-size: 19px; font-weight: 600; line-height: 1; cursor: help; }
+/* what a card buys over what is in the slot right now — .up/.down below carry
+   the colour, so this rule has to come first */
+.vlc__d { font: 12px var(--mono); color: var(--ink-dim); margin-top: 2px; }
 .vlc__i + .vlc__i { border-top: 1px solid var(--line-soft); margin-top: 6px; padding-top: 6px; }
 .vlc__n { margin-top: 5px; }
 .vlc__st { color: var(--ink-soft); font-size: 11px; line-height: 1.5; margin-top: 3px; }
@@ -748,7 +766,16 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .is-dim td { color: var(--ink-dim); }
 .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--gold-bright);
   cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
-#vlFetch th { cursor: pointer; user-select: none; }
+#vlFetch th, #vlAll th, #vlCmp2 th, #vlExEmpty th, #vlExIdle th, #vlExNone th { cursor: pointer; user-select: none; }
+.vl-nowscore { font: 12px var(--mono); color: var(--gold-pale); cursor: help; }
+/* the ↗ that opens the wiki page, so the row/tile click stays the row's action */
+.vl-out { color: var(--wiki); cursor: pointer; font-size: 11px; }
+/* what comes off with the piece you are taking off */
+.vl-strip { font-size: 11px; color: var(--gold-pale); border: 1px solid var(--line);
+  border-radius: 999px; padding: 0 5px; white-space: nowrap; cursor: help; }
+.vl-allwrap { margin: 0 0 10px; }
+.vl-all tbody tr { cursor: pointer; }
+.vl-all tbody tr:hover td { background: rgba(255,255,255,.03); }
 @media (max-width: 1100px) { .vl-cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px)  { .vl-cards { grid-template-columns: 1fr; } }
 .vl-cmp { border-left: 2px solid var(--gold); padding-left: 8px; margin: 4px 0 0; color: var(--ink-soft); }

@@ -377,6 +377,11 @@
       <p id="vlNow" class="dim"></p>
       <p id="vlCmp" class="vl-cmp" hidden></p>
       <div id="vlCards" class="vl-cards"></div>
+      <!-- the cards are the decision; everything else that fits is one click away -->
+      <div id="vlAllWrap" class="vl-allwrap" hidden>
+        <button type="button" class="linkish" id="vlAllToggle"></button>
+        <div id="vlAll" class="invwrap" hidden></div>
+      </div>
       <div class="vl-foot">
         <label class="chk" title="Stop asking about this slot. It re-opens when something you own scores above the fourth card, or when you no longer have the one you picked."><input type="checkbox" id="vlRemember"> Remember &mdash; this beats the others</label>
         <button id="vlBack" class="btn btn--sm">Back</button>
@@ -393,6 +398,8 @@
       </div>
       <p id="vlNotes" class="dim"></p>
       <div id="vlFetch" class="invwrap"></div>
+      <div class="vl-tblhead"><b>Before and after</b> <span class="dim">stats, resists and haste, both kits</span></div>
+      <div id="vlCmp2" class="invwrap"></div>
     </div>
 
     <p id="vlEmpty" class="empty">No inventory dump found beside the log folder yet.<br>
