@@ -917,7 +917,7 @@ function renderSky() {
     ? `${SKYP.loot || 0} pieces to loot · ${SKYP.done}/${SKYP.tests} done`
     : SKYP.view === "drop"
     ? `${dr.n} to clear out${dr.give ? ` · ${dr.give} sellable` : ""} · ${SKYP.done}/${SKYP.tests} done`
-    : `${SKYP.ready} ready · ${SKYP.done}/${SKYP.tests} done`;
+    : `${SKYP.ready} ready${(r => r ? ` · ${r} repeat` : "")((SKYP.groups || []).reduce((n, g) => n + (g.repeat || 0), 0))} · ${SKYP.done}/${SKYP.tests} done`;
   skyEl.append(head);
   if (!SKYP.inv) {
     const w = document.createElement("div");

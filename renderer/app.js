@@ -1164,10 +1164,11 @@ function rankTable(v, b, opts) {
     <td class="pop__have">${t.me ? `<span class="ok">${esc(whereText(v.r.loc))}${v.r.tier ? ` +${v.r.tier}` : ""}</span>` : ownedText(t.rec) ? `<span class="ok">${esc(ownedText(t.rec))}</span>` : `<span class="dim">—</span>`}</td></tr>`).join("");
   const own = b.trio.length ? b.trio.map(t => `${t.cls} #${t.rank}`).join(" · ") : null;
   const others = b.all.filter(t => !VL.classes.includes(t.cls) && !(t.cls === x.cls && t.slot === x.slot));
-  const at = v.r.tier ? R.rank(v.g, x.cls, x.slot, v.r.tier) : null;
+  /* No "at +N as you hold it" rank: the pool is at +0, so any upgraded copy
+     lands at #1 against it by construction — a number, not a comparison. */
   return `<div class="pop__head"><b>${esc(x.slot)}</b> for <b>${esc(window.EQLChar.name(x.cls))}</b> · #${x.rank} of ${x.of} in-era items<span class="dim"> · scored at +0</span></div>
     <table class="pop__t"><thead><tr><th></th><th>Item</th><th>Carries</th><th>Score</th><th>From</th><th>You hold</th></tr></thead><tbody>${rows}</tbody></table>
-    <div class="pop__foot">${own ? `Your ${esc(VL.classes.join("/"))}: ${esc(own)}` : b.anyClass ? "Any class can wear it" : `Your ${esc(VL.classes.join("/"))} can't wear it`}${others.length ? `<span class="dim"> · also ${others.slice(0, 6).map(t => `${esc(t.cls)} #${t.rank}`).join(", ")}${others.length > 6 ? ` +${others.length - 6}` : ""}</span>` : ""}${at && at.rank !== x.rank ? ` · <span class="dim">at +${v.r.tier} as you hold it: #${at.rank}</span>` : ""}</div>`;
+    <div class="pop__foot">${own ? `Your ${esc(VL.classes.join("/"))}: ${esc(own)}` : b.anyClass ? "Any class can wear it" : `Your ${esc(VL.classes.join("/"))} can't wear it`}${others.length ? `<span class="dim"> · also ${others.slice(0, 6).map(t => `${esc(t.cls)} #${t.rank}`).join(", ")}${others.length > 6 ? ` +${others.length - 6}` : ""}</span>` : ""}</div>`;
 }
 /* Where a catalogue item comes from, one line: the first zone and mob as
    wiki links when the panel can be clicked, plain when it cannot. The
@@ -1490,7 +1491,7 @@ const IV_COLS = [
    Defaults are what Kyle asked each mode for and nothing else — the picker is
    how you get the rest. */
 const IV_DEFAULTS = {
-  quest: ["where", "item", "qty", "quests", "rank", "copies", "xkeep"],
+  quest: ["where", "item", "rank", "copies", "xkeep", "qty", "quests"],
   gear:  ["where", "item", "bis", "rank", "copies", "xkeep"],
   spare: ["where", "item", "ahead", "beatenby", "rank", "copies", "xkeep"],
   exalt: ["where", "item", "tier", "xeff", "xfits", "xfire", "xsock", "xkeep"],
@@ -1534,7 +1535,15 @@ function saveInvCols() {
   } catch {}
 }
 const invMode = () => (INV_MODES.includes(INV_VIEW) ? INV_VIEW : "quest");
-const invVisibleCols = () => IV_COLS.filter(c => IV_SHOW.has(c.k));
+/* Display order follows the mode's default list, then declaration order:
+   Gear opens Best for beside the name, Spare opens Better / Beaten by there,
+   and the three inventory-management columns come before the wide Quests
+   cell in Quest mode. A column the player turns on later lands after. */
+const invVisibleCols = () => {
+  const pref = IV_DEFAULTS[invMode()] || [];
+  const at = c => { const i = pref.indexOf(c.k); return i >= 0 ? i : pref.length + IV_COLS.indexOf(c); };
+  return IV_COLS.filter(c => IV_SHOW.has(c.k)).sort((a, b) => at(a) - at(b));
+};
 function renderInvColPicker() {
   syncInvCols();
   $("invColsBody").innerHTML = IV_COLS.map(c => `<label class="chk invcols__row">
@@ -3495,9 +3504,16 @@ function skyBossModel(classes) {
 
 // One rule, both surfaces: "ready" is everything in hand, "held" adds the tests
 // you have started, "all" is the other 90 you have not.
+/* A finished test whose pieces are in hand again is a turn-in — the thing
+   the widget exists to show at the giver. "Hide finished" hides a finished
+   test with NOTHING to hand in; it used to hide every finished test before
+   the repeat check ran, so the widget's default filter (ready + hide
+   finished) never showed a repeat at all (Kyle, 2026-08-23: "the widget
+   isn't showing me things i can turn in (duplicates)"). */
 function skyKeep(t, show, hideDone) {
-  if (hideDone && t.fin) return false;
-  if (show === "ready") return t.ready || (t.fin && !hideDone && t.missing === 0);
+  const repeat = t.fin && t.missing === 0;
+  if (hideDone && t.fin && !repeat) return false;
+  if (show === "ready") return t.ready || repeat;
   if (show === "held") return t.ready || t.held > 0 || t.fin;
   return true;
 }
@@ -3828,7 +3844,7 @@ function renderSky(model) {
     const b = skyBossHtml(m, q);
     html = b.html; shown = b.shown; openCount = b.openCount;
   } else if (SKYP.view === "drop") {
-    const d = skyDropHtml(m, q);
+    const d = skyGetRidHtml(m, q);
     html = d.html; shown = d.shown;
   } else {
     html = classHtml();
@@ -3840,7 +3856,7 @@ function renderSky(model) {
     ? `${skyTotalNeed(m)} pieces to loot · ${m.tot.done}/${m.tot.tests} tests done · ${shown} shown`
     : SKYP.view === "drop"
     ? `${m.tot.done}/${m.tot.tests} tests done · ${shown} rows`
-    : `${m.tot.ready} ready · ${m.tot.done}/${m.tot.tests} done · ${m.tot.partial} started · ${shown} shown`;
+    : `${m.tot.ready} ready${(r => r ? ` · ${r} repeat` : "")(m.classes.reduce((n, g) => n + g.tests.filter(t => t.fin && t.missing === 0 && !t.skip).length, 0))} · ${m.tot.done}/${m.tot.tests} done · ${m.tot.partial} started · ${shown} shown`;
   $("skyExpand").textContent = openCount ? "collapse all" : "expand all";
   // What this reading can and can't have seen. Both halves are real limits and
   // neither is recoverable, so they are stated rather than left to be inferred.
@@ -3984,7 +4000,7 @@ function renderSkyWidget() {
        <option value="held"${w.show === "held" ? " selected" : ""}>anything I hold a piece of</option>
        <option value="all"${w.show === "all" ? " selected" : ""}>every test</option>
      </select></label>` +
-    `<label class="skw__r"><input type="checkbox" data-skyw="hideDone"${w.hideDone ? " checked" : ""}> hide tests I've finished</label>`) +
+    `<label class="skw__r"><input type="checkbox" data-skyw="hideDone"${w.hideDone ? " checked" : ""}> hide finished tests with nothing to hand in</label>`) +
     `<label class="skw__r"><input type="checkbox" data-skyw="loc"${w.loc ? " checked" : ""}> show where each piece is</label>` +
     (boss
       ? `<label class="skw__r"><input type="checkbox" data-skyw="trackedFirst"${w.trackedFirst ? " checked" : ""}> keep tracked pieces on the board</label>`
@@ -4166,7 +4182,11 @@ function skdHow(r) {
   return `<span class="skd__h skd__h--nd" title="${esc(flag || "NO DROP")} — nobody else can take it, so destroying it is what frees the slot">destroy</span>${clash}`;
 }
 
-function skyDropHtml(m, q) {
+/* The Get-rid-of view. Was a second `function skyDropHtml` — the same name as
+   the By-boss row renderer above; the later declaration hoisted over the
+   earlier one, and every drop row on the boss board printed [object Object]
+   from 2026-08-14 until this rename. */
+function skyGetRidHtml(m, q) {
   const d = skyDropModel();
   if (!d) return { html: "", shown: 0 };
   const hit = (s) => !q || String(s).toLowerCase().includes(q);
@@ -4225,10 +4245,10 @@ function skyDropHtml(m, q) {
         + (frees ? ` Skipping ${one ? "it" : "them"} clears <b>${frees}</b> piece${frees === 1 ? "" : "s"} out of your bags.` : "")
       : `Every test you have finished pays a reward inside the top ${SKD.top} of its slot.`)
       + (back.length ? " " + back.join(" ") : "")}</p>
-    ${trows.length ? `<table class="qtab ivt skd__t2">${head(SKD_TCOLS, "skdtsort", SKD.sort, SKD.dir)}<tbody>${
+    ${trows.length ? `<div class="skd__scroll"><table class="qtab ivt skd__t2">${head(SKD_TCOLS, "skdtsort", SKD.sort, SKD.dir)}<tbody>${
       trows.map(k => `<tr class="${k.st.skip ? "is-skip" : ""}">${SKD_TCOLS.map(c => c.cell(k)).join("")}<td><button type="button" class="lnk"
         data-skyskip="${esc(k.code)}" data-test="${esc(k.test.n)}">${k.st.skip ? "un-skip" : "skip"}</button></td></tr>`).join("")
-    }</tbody></table>` : `<p class="empty">Nothing to skip.</p>`}
+    }</tbody></table></div>` : `<p class="empty">Nothing to skip.</p>`}
     <h3 class="skd__h3">Skipped, and still in your bags</h3>
     <p class="skd__sum">${(items.length
       ? `<b>${n}</b> item${n === 1 ? "" : "s"} across <b>${places}</b> place${places === 1 ? "" : "s"}${wt ? `, ${wt.toFixed(1)} weight` : ""}. Nothing else wants any of ${n === 1 ? "it" : "them"}.`

@@ -319,7 +319,13 @@
      never named: an in-era item can list a Kunark mob among its sources. */
   let LOCKED = new Set();
   const setLockedZones = (list) => { LOCKED = new Set(list || []); };
-  const drops = (rec) => (((rec && rec.src) || {}).d || []).filter(([zone]) => !LOCKED.has(zone));
+  /* Three zone strings in gear-data carry wiki-template residue
+     ("Dragon Necropolis}}") and slipped past the exact-match gate — a locked
+     zone named on a shipped page (2026-08-23). gearparse strips it at the
+     source now; this strips it again so a stale build cannot. */
+  const zoneName = (z) => String(z).replace(/[{}]/g, "").trim();
+  const drops = (rec) => (((rec && rec.src) || {}).d || [])
+    .map(([zone, ms]) => [zoneName(zone), ms]).filter(([zone]) => !LOCKED.has(zone));
 
   function sourceText(rec) {
     const s = (rec && rec.src) || {};

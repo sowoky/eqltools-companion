@@ -765,6 +765,9 @@ input[type="checkbox"] { accent-color: var(--gold); }
 .skd__sum { font-size: 12px; color: var(--ink-soft); margin: 0 0 6px;
   border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; background: var(--bg-panel); }
 .skd__sum b { color: var(--gold-bright); }
+/* ten columns run past 1100px and the skip button is the last one: the
+   table scrolls inside its own box, the way the Inventory table does */
+.skd__scroll { overflow-x: auto; max-width: 100%; }
 .skd__t2 td { vertical-align: top; }
 .skd__n { color: var(--gold-bright); font-weight: 600; }
 .skd__t { color: var(--gold-bright); font-size: 11px; }
