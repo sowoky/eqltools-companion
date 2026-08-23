@@ -202,16 +202,43 @@
       const key = keys ? keys[0] : null;
       return { key, rec: key ? DATA.items[key] : null };
     };
-    const byLoc = new Map(rows.map((r) => [r.loc, r]));
+    /* A socket row belongs to the row it FOLLOWS. Location strings are not
+       unique: the dump names both worn Ear, Wrist, Fingers and Any Slot
+       items "Ear", "Wrist", "Fingers", "Any Slot", and their stones
+       "Ear-Slot7", so a lookup by location handed the second earring's
+       stones to both earrings and lost the first one's. Each socket row is
+       filed under the most recent row whose location is its parent's, in
+       dump order. Only SOCKET rows (EX.socketAt) are filed: "General 6-Slot7"
+       is bag 6's seventh position, not a focus socket of the bag.
+
+       The dump prints an open socket with nothing in it as an "Empty" row.
+       Rows parsed with GS.parseRows(text, { keepEmpty: true }) carry those
+       (flagged `empty`), and that is the only evidence that an effect was
+       pulled OUT of an item; without them an item whose every socket is
+       empty reads as "sockets unknown". */
+    const kidsOf = new Map();
+    {
+      const last = new Map();
+      for (const r of rows) {
+        const sock = EX.socketAt(r.loc);
+        if (sock) {
+          const p = last.get(sock.host);
+          if (p) (kidsOf.get(p) || kidsOf.set(p, {}).get(p))[sock.n] = r;
+        }
+        if (!r.empty) last.set(r.loc, r);
+      }
+    }
     const yieldsOf = (key) => (key && cat.byKey.get(key)) || [];
     /* The four sockets of an item row, read off its "-SlotN" children. A
        storage-bin row (3 columns, no children) reports every socket as
-       unknown rather than empty. */
+       unknown rather than empty. `empty` is a socket the dump printed as
+       Empty; `own` is a socket holding the item's own rendered effect. */
     function socketsOf(r) {
       const sockets = {};
       let seen = false;
+      const kids = kidsOf.get(r) || {};
       for (const t of TYPES) {
-        const sub = byLoc.get(`${r.loc}-Slot${t.n}`);
+        const sub = kids[t.n];
         if (sub) seen = true;
         const filled = sub && sub.exalt ? sub : null;
         let stone = null;
@@ -222,12 +249,15 @@
           stone = { row: filled, key: fs.key, rec: fs.rec,
                     stone: list.find((s) => s.type === t.key) || null, yields: list };
         }
-        sockets[t.key] = { open: r.tier >= t.at, filled: !!filled, stone };
+        sockets[t.key] = { open: r.tier >= t.at, filled: !!filled, stone,
+                           empty: !!(sub && sub.empty),
+                           own: !!(stone && stone.key && stone.key === resolve(r.base).key) };
       }
       return { sockets, known: seen };
     }
     const worn = [], loose = [], sources = [];
     for (const r of rows) {
+      if (r.empty) continue;                 // placeholders carry no item
       if (EX.socketAt(r.loc)) continue;      // socketed stones ride on their host
       const isWorn = GS.WORN_RX.test(r.loc);
       const rs = resolve(r.base);

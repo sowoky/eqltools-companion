@@ -664,7 +664,7 @@ function renderZoneTab() {
    resolved at render time from the live datasets so a data refresh re-answers
    the same dump. */
 const INV = { file: null, mtime: 0, rows: null, text: null, problem: null };
-const IV = { tab: "all", trade: "", cls: "", sort: "where", dir: 1 };
+const IV = { tab: "all", trade: "", cls: "", focus: "", sort: "where", dir: 1 };
 /* One sort per mode. Spare opens on the item the most things beat, which is
    the whole point of the mode; Gear opens on the pieces that are first pick
    for the most classes. */
@@ -681,7 +681,7 @@ const invSection = window.EQLGearScore.locSection;
 
 const TIER_RX = /\s\+(\d+)$/; // the same "+N" decoration /gear parses
 function parseInventory(text) {
-  const rows = [], byLoc = new Map();
+  const rows = [], last = new Map();
   for (const raw of text.split(/\r?\n/)) {
     const f = raw.replace(/\r$/, "").split("\t");
     // The dump is two concatenated tables: Location/Name/ID/Count/Slots, then
@@ -707,17 +707,20 @@ function parseInventory(text) {
       exalt: /\(Exaltation\)\*?$/.test(name),
       parentLoc: pm ? pm[1] : null, parent: null, kids: null,
     });
-    // EVERY row is a potential parent — a socketed item sitting in a bag slot
-    // makes its rune a "General 1-Slot2-Slot1" child of a row that is itself
-    // a child (KeyRing rows repeat one loc; nothing references them, harmless)
-    byLoc.set(loc, rows[rows.length - 1]);
-  }
-  // General5-Slot3 sits in the container at General5; Chest-Slot1 sits in the
-  // item worn on Chest; deeper chains resolve one level at a time
-  for (const r of rows) {
-    if (!r.parentLoc) continue;
-    const p = byLoc.get(r.parentLoc);
-    if (p) { r.parent = p; (p.kids || (p.kids = [])).push(r); }
+    /* A child row belongs to the row it FOLLOWS, not to whatever row last
+       carried its parent's location: the dump names both worn Ear, Wrist,
+       Fingers and Any Slot items identically, so "Ear-Slot7" resolved by
+       location put the first earring's stone inside the second earring. Resolving in dump
+       order — the most recent row at the parent's location — files each
+       socket under its own item. EVERY row is a potential parent: a socketed
+       item sitting in a bag slot makes its rune a "General 1-Slot2-Slot1"
+       child of a row that is itself a child. */
+    const r = rows[rows.length - 1];
+    if (r.parentLoc) {
+      const p = last.get(r.parentLoc);
+      if (p) { r.parent = p; (p.kids || (p.kids = [])).push(r); }
+    }
+    last.set(loc, r);
   }
   return rows;
 }
@@ -912,10 +915,15 @@ let SPARE = null, SPARE_BY = null;
 const spareKey = (loc, name) => loc + "|" + name;
 function spareReload() {
   SPARE = null; SPARE_BY = null;
-  if (!VINV || !window.EQLSpare) return;
-  SPARE = window.EQLSpare.analyze({ rows: VINV.rows, level: VL.level, D: window.EQL_DATA });
-  SPARE_BY = new Map(SPARE.items.map(it => [spareKey(it.row.loc, it.row.name), it]));
+  if (VINV && window.EQLSpare) {
+    SPARE = window.EQLSpare.analyze({ rows: VINV.rows, level: VL.level, D: window.EQL_DATA });
+    SPARE_BY = new Map(SPARE.items.map(it => [spareKey(it.row.loc, it.row.name), it]));
+  }
   exaltReload();
+  /* Copies needs only the dump; Rank and Exalt inside need the gear dataset
+     too, and come back empty without it — the same degrade as every other
+     enrichment column. */
+  invxReload();
 }
 
 /* ── Exalt: the fourth mode ──────────────────────────────────────────────
@@ -923,7 +931,7 @@ function spareReload() {
    worn item's four sockets, every loose exaltation and where it fits, every
    item you own whose wiki record yields one — and this layer keys the answer
    back onto the rows by location + name, same as Spare. */
-let EXALT = null, EXALT_CAT = null, EXALT_BY = null;
+let EXALT = null, EXALT_CAT = null, EXALT_BY = null, EXALT_ROWS = null;
 
 /* ── which exaltations actually fire ────────────────────────────────────
    The client names the exaltation when its effect goes off: a focus applying
@@ -956,15 +964,17 @@ function exaltFeed(lines) {
 const exfireOf = v => (v.r.exalt ? EXFIRED.get(stripDecor(v.r.name)) : null) || null;
 
 function exaltReload() {
-  EXALT = null; EXALT_BY = null;
+  EXALT = null; EXALT_BY = null; EXALT_ROWS = null;
   if (!INV.text || !GDATA || !window.EQLExaltCore) return;
   const X = window.EQLExaltCore;
   if (!EXALT_CAT || EXALT_CAT.data !== GDATA) {
     X.setLockedZones(GDATA.zone_oe);
     EXALT_CAT = X.build(GDATA); EXALT_CAT.data = GDATA;
   }
-  const rows = window.EQLGearScore.parseRows(INV.text);
+  // keepEmpty: an Empty socket row is how the dump says an effect was pulled out
+  const rows = window.EQLGearScore.parseRows(INV.text, { keepEmpty: true });
   EXALT = X.readDump(rows, GDATA, EXALT_CAT);
+  EXALT_ROWS = rows;   // the row objects EXALT points at — invxReload joins on them
   EXALT_BY = new Map();
   for (const l of EXALT.loose) EXALT_BY.set(spareKey(l.row.loc, l.row.name), { kind: "loose", l });
   for (const src of EXALT.sources) {
@@ -1004,6 +1014,267 @@ function pushExalt() {
 }
 const spareOf = v => (SPARE_BY && SPARE_BY.get(spareKey(v.r.loc, v.r.name))) || null;
 
+/* ── Rank, Copies, Exalt inside: the inventory-management answers ─────────
+   vendor/inventory-core.js does the measuring; this layer runs it when the
+   dump or the datasets change and keys the answers onto the rows. Kyle
+   (2026-08-23): "on the /sky stuff we are already measuring how strong an item
+   is for its class, a ranking. so i want to see that as a column … highlight
+   … when a piece of gear i have is a duplicate also anywhere else in my
+   bag/bank/inventory. so i can merge and save space … an indication if an
+   item has an exaltation i don't have anywhere else so i know to strip it
+   before getting rid of the item."
+
+   Rank is the /sky ranking — gear-score per class against every in-era item
+   the class can wear in the slot, at +0 — and is a property of the ITEM, so
+   it is memoised per gear record, not per row. Copies and the exaltation
+   check are properties of the DUMP and are rebuilt with it. */
+let RANKER = null, RANKER_FOR = null, RANKER_LVL = 0, RANKER_CLS = "", RANK_MEMO = new Map();
+function ranker() {
+  if (!GDATA || !window.EQLInventory) return null;
+  if (!RANKER || RANKER_FOR !== GDATA || RANKER_LVL !== VL.level) {
+    RANKER = window.EQLInventory.makeRanker({ D: GDATA, level: VL.level, combat: window.EQL_DATA });
+    RANKER_FOR = GDATA; RANKER_LVL = VL.level; RANK_MEMO = new Map();
+  }
+  // the pools are per class and survive a trio change; the memo's headline
+  // tie-break and `trio` list do not
+  const cls = VL.classes.join("/");
+  if (cls !== RANKER_CLS) { RANKER_CLS = cls; RANK_MEMO = new Map(); }
+  return RANKER;
+}
+function rankOf(v) {
+  // a stone or an ornament is named after an item; it is not one
+  if (!v.g || v.r.exalt || /\(Ornamentation\)\*?$/.test(v.r.name)) return null;
+  const R = ranker();
+  if (!R) return null;
+  let b = RANK_MEMO.get(v.g);
+  if (b === undefined) { b = R.best(v.g, { classes: VL.classes }); RANK_MEMO.set(v.g, b); }
+  return b.best ? b : null;
+}
+/* The rank the cell leads with: the trio's best when one of the Valet trio
+   can wear the item — that is the keep-or-toss number on THIS character —
+   and the best of any class otherwise, with the class named either way. */
+const rankHead = b => b.trio[0] || b.best;
+// rank first, then the bigger pool: a #1 of 459 above a #1 of 27
+const rankKey = x => x.rank * 100000 - x.of;
+
+let COPIES = new Map();     // INV row -> copies group
+let UNIQX = new Map();      // row key -> { stones, unique }
+let OWNED = new Map();      // gear record -> [INV rows] (what you hold of a catalogue item)
+/* The two parses of the dump (this tab's and gear-score's) agree on row
+   order but not on row objects, and a location is not unique — both worn
+   Ear items are "Ear". Joined by location + name + the nth time that pair
+   has appeared. */
+function ordKeys(rows) {
+  const seen = new Map(), out = new Map();
+  for (const r of rows) {
+    const k = r.loc + "|" + r.name;
+    const n = (seen.get(k) || 0) + 1; seen.set(k, n);
+    out.set(r, k + "#" + n);
+  }
+  return out;
+}
+let INV_KEYS = new Map();
+/* A container: it holds things (positional children, not sockets), or the
+   tooltip dataset gives it a Capacity line (an empty bag in the bank). */
+function invIsContainer(r) {
+  if (r.kids && r.kids.some(k => !window.EQLExalt.socketAt(k.loc))) return true;
+  const ti = lookupLoose(TIDX, TIDX_L, r.name);
+  return !!(ti && (ti.sb || []).some(l => /^Capacity:/.test(l)));
+}
+/* Can this carry an upgrade tier: a wiki gear record, a "Slot:" line in its
+   item window, or a copy that already wears a +N. A quest component or a
+   tradeskill drop has none of those, and "merge → +1" on a Cyclops Skull is
+   advice about a mechanic it does not have. */
+function invIsGear(r) {
+  if (r.tier) return true;
+  const g = gearFor(r.name);
+  if (g && g.sl && g.sl.length) return true;
+  const ti = lookupLoose(TIDX, TIDX_L, r.name);
+  return !!(ti && (ti.sb || []).some(l => /^Slot:/.test(l)));
+}
+function invxReload() {
+  COPIES = new Map(); UNIQX = new Map(); OWNED = new Map(); INV_KEYS = new Map();
+  if (!INV.rows || !window.EQLInventory) return;
+  INV_KEYS = ordKeys(INV.rows);
+  COPIES = window.EQLInventory.copies(INV.rows, { isContainer: invIsContainer, isGear: invIsGear });
+  for (const r of INV.rows) {
+    if (r.exalt) continue;
+    const g = gearFor(r.name);
+    if (g) (OWNED.get(g) || OWNED.set(g, []).get(g)).push(r);
+  }
+  if (EXALT && EXALT_ROWS) {
+    const keys = ordKeys(EXALT_ROWS);
+    for (const [row, info] of window.EQLInventory.uniqueExaltations(EXALT)) UNIQX.set(keys.get(row), info);
+  }
+  /* Rank is lazy per gear record; touching every record the dump names here
+     (~130 ms, 280 pools) keeps that cost with the rest of the per-dump
+     analysis instead of inside the first renderInv(). */
+  if (ranker()) for (const g of OWNED.keys()) rankOf({ g, r: { exalt: false, name: g.n } });
+}
+const uniqOf = v => UNIQX.get(INV_KEYS.get(v.r)) || null;
+
+/* One line of what a record carries, for a comparison row: AC, stats,
+   resists, ratio, haste — the things the score reads, nothing it does not. */
+function recLine(rec, tier) {
+  const T = window.EQLTier, st = T.statsAt(rec, tier || 0), bits = [];
+  if (st.ac) bits.push(`${st.ac} AC`);
+  const sb = [];
+  for (const k of STAT_ORDER) if (st[k]) sb.push(`${st[k] > 0 ? "+" : ""}${st[k]} ${STAT_LABEL[k]}`);
+  if (sb.length) bits.push(sb.join(" "));
+  const sv = [];
+  for (const k of ["f", "c", "m", "d", "p"]) if (rec.sv && rec.sv[k]) sv.push(`${SV_LABEL[k]}${rec.sv[k] > 0 ? "+" : ""}${rec.sv[k]}`);
+  if (sv.length) bits.push(sv.join(" "));
+  if (rec.dmg && rec.dly) bits.push(`${T.statAt(rec.dmg, tier || 0)}/${rec.dly}`);
+  if (rec.haste) bits.push(`haste ${rec.haste}%`);
+  return bits.join(" · ");
+}
+/* Where you hold a catalogue item, if anywhere: every place, with tier. */
+function ownedText(rec) {
+  const rows = OWNED.get(rec);
+  if (!rows || !rows.length) return "";
+  return rows.map(r => `${whereText(r.loc)}${r.tier ? ` +${r.tier}` : ""}${r.count > 1 ? ` ×${r.count}` : ""}`).join("; ");
+}
+/* The comparison: the three best in the (class, slot) and this item, with
+   what each carries, where it comes from and whether you hold one. `link`
+   makes the names wiki links (the row detail); the hover popover cannot be
+   clicked, so it names them plain. */
+function rankTable(v, b, opts) {
+  const o = opts || {};
+  const R = ranker(), X = window.EQLExaltCore;
+  const x = rankHead(b);
+  const pool = R.pool(x.cls, x.slot);
+  // the same tie rule as the headline: 1 + the number scoring strictly above
+  let above = 0;
+  const top = pool.slice(0, o.n || 3).map((e, i) => {
+    if (i && e.s < pool[i - 1].s) above = i;
+    return { rec: e.rec, rank: above + 1, s: e.s };
+  });
+  const mine = top.find(t => t.rec === v.g);
+  const list = top.slice();
+  const lastShown = top.length ? top[top.length - 1].rank : 0;
+  if (!mine) list.push({ rec: v.g, rank: x.rank, s: x.score, me: true, gap: Math.max(0, x.rank - lastShown - 1) });
+  else mine.me = true;
+  const gbase = (GDATA && GDATA.base) || "";
+  const name = rec => o.link && rec.t
+    ? `<a class="wk" data-url="${esc(gbase + rec.t)}">${esc(rec.n)}</a>` : esc(rec.n);
+  const rows = list.map(t => `${t.gap > 0 ? `<tr class="pop__gap"><td></td><td colspan="5">${t.gap} more</td></tr>` : ""}
+    <tr class="${t.me ? "is-me" : ""}"><td class="pop__n">#${t.rank}</td><td class="pop__item">${name(t.rec)}${t.me ? ` <span class="dim">this</span>` : ""}</td>
+    <td class="pop__stats">${esc(recLine(t.rec, 0))}</td><td class="pop__score">${Math.round(t.s)}</td>
+    <td class="pop__src" title="${esc(X.sourceLines(t.rec).join("\n"))}">${srcCell(t.rec, o.link)}</td>
+    <td class="pop__have">${t.me ? `<span class="ok">${esc(whereText(v.r.loc))}${v.r.tier ? ` +${v.r.tier}` : ""}</span>` : ownedText(t.rec) ? `<span class="ok">${esc(ownedText(t.rec))}</span>` : `<span class="dim">—</span>`}</td></tr>`).join("");
+  const own = b.trio.length ? b.trio.map(t => `${t.cls} #${t.rank}`).join(" · ") : null;
+  const others = b.all.filter(t => !VL.classes.includes(t.cls) && !(t.cls === x.cls && t.slot === x.slot));
+  const at = v.r.tier ? R.rank(v.g, x.cls, x.slot, v.r.tier) : null;
+  return `<div class="pop__head"><b>${esc(x.slot)}</b> for <b>${esc(window.EQLChar.name(x.cls))}</b> · #${x.rank} of ${x.of} in-era items<span class="dim"> · scored at +0</span></div>
+    <table class="pop__t"><thead><tr><th></th><th>Item</th><th>Carries</th><th>Score</th><th>From</th><th>You hold</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="pop__foot">${own ? `Your ${esc(VL.classes.join("/"))}: ${esc(own)}` : b.anyClass ? "Any class can wear it" : `Your ${esc(VL.classes.join("/"))} can't wear it`}${others.length ? `<span class="dim"> · also ${others.slice(0, 6).map(t => `${esc(t.cls)} #${t.rank}`).join(", ")}${others.length > 6 ? ` +${others.length - 6}` : ""}</span>` : ""}${at && at.rank !== x.rank ? ` · <span class="dim">at +${v.r.tier} as you hold it: #${at.rank}</span>` : ""}</div>`;
+}
+/* Where a catalogue item comes from, one line: the first zone and mob as
+   wiki links when the panel can be clicked, plain when it cannot. The
+   zone/mob vocabulary is the row detail's own (QZONES, mobSpan). */
+function srcCell(rec, link) {
+  const X = window.EQLExaltCore;
+  if (!link) return esc(X.sourceText(rec) || "");
+  const s = (rec && rec.src) || {};
+  const drops = (s.d || []).filter(([z]) => !(GDATA.zone_oe || []).includes(z));
+  const parts = [];
+  if (drops.length) {
+    const [z, mobs] = drops[0];
+    const mobN = drops.reduce((n, [, ms]) => n + ms.length, 0);
+    const zl = QZONES[z] ? `<a class="wk" data-wiki="${esc(QZONES[z])}">${esc(z)}</a>` : esc(z);
+    parts.push(`${zl}${mobs[0] ? ` · ${mobSpan(mobs[0][0])}` : ""}${mobN > 1 ? ` <span class="dim">(+${mobN - 1} more)</span>` : ""}`);
+  }
+  if (s.q) parts.push("quest");
+  if (s.c) parts.push("crafted");
+  if (s.s) parts.push("sold");
+  if (s.f) parts.push("foraged");
+  if (s.v) parts.push("various");
+  return parts.join(" · ");
+}
+
+/* Copies: what the cell says in six words, and what the popover spells out. */
+const MAX_TIER = 10;
+function copiesAction(g, r) {
+  if (g.wornPair) return "both worn";
+  if (g.stack) return g.saves ? `frees ${g.saves} slot${g.saves > 1 ? "s" : ""}` : "no slot to gain";
+  const L = g.landing;
+  if (!L) return g.gear ? "" : `${g.rows.length} places`;
+  if (L.tier >= MAX_TIER && !L.rises) return `already +${MAX_TIER}`;
+  const n = g.donors.length;
+  if (r === g.host) return L.rises ? `merge ${n} in → +${L.tier}` : `merge ${n} in · frees ${n} slot${n > 1 ? "s" : ""}`;
+  if (g.donors.includes(r)) return L.rises ? `into ${whereText(g.host.loc)} → +${L.tier}` : `into ${whereText(g.host.loc)}`;
+  return "stays on";
+}
+/* ONE rule for "is there something to merge here": the cell's colour, the
+   focus menu and the header count all read it. A worn pair, a set of stacks
+   with no slot to gain, a host already at the cap and a pair of things that
+   carry no tier all say no. */
+const copiesTodo = g => !g.wornPair && (g.stack ? g.saves > 0
+  : !!g.landing && !(g.landing.tier >= MAX_TIER && !g.landing.rises));
+// a merge that gains nothing is flagged quietly, not in red
+const copiesQuiet = (g, r) => !copiesTodo(g) || (!g.stack && !g.donors.includes(r) && r !== g.host);
+function copiesPop(v, g) {
+  const I = window.EQLInventory, GS = window.EQLGearScore;
+  const place = r => `${r === v.r ? "<b>here</b> · " : ""}${esc(whereText(r.loc))}${r.tier ? ` +${r.tier}` : ""}${r.count > 1 ? ` ×${r.count}` : ""}`;
+  const L = g.landing;
+  const capped = !!(L && L.tier >= MAX_TIER && !L.rises);
+  const lines = g.rows.map(r => {
+    const role = g.stack || capped || !g.gear ? ""
+      : g.wornPair ? `<span class="dim">worn — stays</span>`
+      : r === g.host ? `<span class="ok">merge into this</span>`
+      : g.donors.includes(r) ? `<span class="pop__hot">merge this in</span>` : `<span class="dim">worn — stays</span>`;
+    return `<tr><td>${place(r)}</td><td>${role}</td></tr>`;
+  }).join("");
+  let verdict;
+  if (g.wornPair) {
+    const slot = GS.WORN_RX.exec(GS.rootLoc(g.host.loc))[1];
+    verdict = g.rows.length === 2
+      ? `Both copies are on. Merging them empties one of your ${esc(slot)} slots.`
+      : `All ${g.rows.length} copies are on. Merging any two empties a worn slot.`;
+  } else if (g.stack) {
+    const sum = g.rows.map(r => r.count).join(" + ");
+    verdict = g.saves
+      ? `${sum} = ${g.total}. At stacks of ${g.cap} — the biggest you hold — that is ${g.slotsMin} slot${g.slotsMin > 1 ? "s" : ""}, not ${g.rows.length}.`
+      : `${sum} = ${g.total}. No slot to gain unless a stack goes past ${g.cap}, the biggest you hold.`;
+  } else if (capped) {
+    verdict = `The +${MAX_TIER} is at the cap. Merging ${g.donors.map(r => `the +${r.tier}`).join(" or ")} into it gains nothing.`;
+  } else if (!g.gear) {
+    verdict = `The wiki lists no slot for it, so there is no tier to merge into. If it stacks, putting them together gives ${g.rows.length - 1} slot${g.rows.length > 2 ? "s" : ""} back.`;
+  } else {
+    const d = g.donors.map(r => `+${r.tier}`).join(" and ");
+    verdict = L.rises
+      ? `${d} merged into the +${g.host.tier} lands on <b>+${L.tier}</b>` + (L.tier < MAX_TIER ? `, with ${L.toward} of the ${L.nextCost} exp toward +${L.tier + 1}.` : " — the cap.")
+      : `${d} merged into the +${g.host.tier} is still <b>+${g.host.tier}</b>, with at least ${L.toward} of the ${L.nextCost} exp toward +${L.tier + 1}.`;
+    verdict += ` <span class="dim">A +${g.donors[0].tier} duplicate donates ${I.donation(g.donors[0].tier)} exp; each tier costs twice the one before.</span>`;
+  }
+  /* the same name on a different item ID is a different item, and the rows
+     sit next to each other saying the same thing — say why one is left out */
+  const k = itemKey(stripDecor(g.base));
+  const others = (INV.rows || []).filter(r => !r.exalt && r.itemId && r.itemId !== g.host.itemId && itemKey(stripDecor(r.name)) === k);
+  const note = others.length
+    ? `<div class="pop__foot dim">${others.map(r => `${esc(r.name)} in ${esc(whereText(r.loc))} is a different item (ID ${r.itemId}${IDLABEL.has(r.itemId) ? `, ${esc(IDLABEL.get(r.itemId))}` : ""}) — not a copy.`).join("<br>")}</div>` : "";
+  return `<div class="pop__head">${g.rows.length} of <b>${esc(g.base)}</b></div><table class="pop__t pop__t--list"><tbody>${lines}</tbody></table><div class="pop__foot">${verdict}</div>${note}`;
+}
+function xkeepPop(v, u) {
+  const lines = u.stones.map(s => {
+    const eff = s.effect ? esc(s.effect) : `<span class="dim">${esc(s.stone.row.base)} — effect unknown to the wiki</span>`;
+    let state;
+    if (s.unique) state = `<span class="pop__keep">the only one you own</span>`;
+    else {
+      const bits = [];
+      for (const e of s.elsewhere) bits.push(e.how === "socketed" ? `in ${esc(e.host.name)} · ${esc(whereText(e.host.loc))}` : `loose · ${esc(whereText(e.row.loc))}`);
+      for (const r of s.again) bits.push(`${esc(r.name)} · ${esc(whereText(r.loc))} can yield another`);
+      state = `<span class="ok">also ${bits.join("; ")}</span>`;
+    }
+    const maybe = s.maybe.length ? ` <span class="dim">· a loose ${esc(s.maybe[0].base)} exaltation${s.maybe.length > 1 ? ` (×${s.maybe.length})` : ""} may be one — its source yields more than one effect</span>` : "";
+    return `<tr><td>${xKind(s.type)}</td><td>${eff}${s.own ? ` <span class="dim">its own</span>` : ""}</td><td>${state}${maybe}</td></tr>`;
+  }).join("");
+  return `<div class="pop__head">Exaltations inside <b>${esc(v.r.name)}</b></div><table class="pop__t pop__t--list"><tbody>${lines}</tbody></table>
+    <div class="pop__foot">${u.unique
+      ? (() => { const n = u.stones.filter(s => s.unique).map(s => s.effect || s.stone.row.base); return `Strip ${esc(n.slice(0, 2).join(" and "))}${n.length > 2 ? ` and ${n.length - 2} more` : ""} before this leaves your bags.`; })()
+      : u.stones.length === 1 ? "You hold this one elsewhere too." : "You hold every one of these elsewhere too."}</div>`;
+}
+
 const CLS_ORDER = window.EQLChar.CLASSES;
 const clsSort = list => list.slice().sort((a, b) => CLS_ORDER.indexOf(a) - CLS_ORDER.indexOf(b));
 
@@ -1031,7 +1302,8 @@ function whereText(loc) {
    question and nothing else. */
 const IV_COLS = [
   { k: "where", h: "Where", d0: 1, key: v => v.r.idx,
-    cell: v => `<td class="iv-where" title="${esc(v.r.loc)}">${esc(whereText(v.r.loc))}</td>` },
+    // a socket row's title names its host: two Ear rows read alike otherwise
+    cell: v => `<td class="iv-where" title="${esc(v.r.loc)}${v.r.parent && window.EQLExalt.socketAt(v.r.loc) ? esc(` · inside ${v.r.parent.name}`) : ""}">${esc(whereText(v.r.loc))}</td>` },
   // sorts on name THEN on which item the ID says it is — otherwise ten rows
   // reading `Old Silver Coin` tie and land in whatever order they came in
   { k: "item", h: "Item", d0: 1, always: true,
@@ -1050,6 +1322,34 @@ const IV_COLS = [
       }The name is what classic EverQuest called this ID — EQL has edited some of these strings.">${esc(which)}</span></span>` : "";
     return `<td class="iv-item">${span}${idl}${badges}${spareChips(v)}</td>`;
   } },
+  /* ── Rank, Copies, Exaltations — next to the name, ahead of the wide cells */
+  { k: "rank", h: "Rank", d0: 1,
+    key: v => { const b = rankOf(v); return b ? rankKey(rankHead(b)) : null; },
+    cell: v => {
+      const b = rankOf(v);
+      if (!b) return `<td class="iv-n"></td>`;
+      const x = rankHead(b);
+      const also = b.best !== x && b.best.rank < x.rank ? ` · ${esc(b.best.cls)} #${b.best.rank}` : "";
+      return `<td class="iv-n iv-rank${x.rank <= 3 ? " is-top" : ""}" data-pop="rank:${v.r.id}"><b>#${x.rank}</b><span class="dim"> of ${x.of}</span><span class="iv-nichex">${esc(x.cls)} ${esc(x.slot)}${also}</span></td>`;
+    } },
+  { k: "copies", h: "Copies", d0: -1,
+    // what merging wins first, the copy count as the tie-break
+    key: v => { const g = COPIES.get(v.r); return g ? (g.stack ? g.saves : g.wornPair ? 0 : g.donors.length) * 100 + g.rows.length : null; },
+    cell: v => {
+      const g = COPIES.get(v.r);
+      if (!g) return `<td class="iv-n"></td>`;
+      const quiet = copiesQuiet(g, v.r);
+      return `<td class="iv-copies${quiet ? " is-quiet" : " is-hot"}" data-pop="copies:${v.r.id}"><span class="iv-glyph">⧉</span>×${g.rows.length}<span class="iv-nichex">${esc(copiesAction(g, v.r))}</span></td>`;
+    } },
+  { k: "xkeep", h: "Exaltations", d0: -1,
+    key: v => { const u = uniqOf(v); return u ? u.unique : null; },
+    cell: v => {
+      const u = uniqOf(v);
+      if (!u) return `<td class="iv-n"></td>`;
+      if (!u.unique) return `<td class="iv-xkeep is-quiet" data-pop="xkeep:${v.r.id}"><span class="dim">${u.stones.length === 1 ? "held elsewhere too" : `all ${u.stones.length} held elsewhere too`}</span></td>`;
+      const names = u.stones.filter(s => s.unique).map(s => s.effect || s.stone.row.base);
+      return `<td class="iv-xkeep is-hot" data-pop="xkeep:${v.r.id}"><span class="iv-glyph">✦</span>strip first<span class="iv-nichex">${esc(names.slice(0, 2).join(" · "))}${names.length > 2 ? ` +${names.length - 2}` : ""}</span></td>`;
+    } },
   { k: "qty", h: "Qty", d0: -1, key: v => v.r.count > 1 ? v.r.count : null, cell: v => `<td class="iv-n">${v.r.count > 1 ? v.r.count : ""}</td>` },
   { k: "quests", h: "Quests", d0: -1, key: v => v.quests.length || null, cell: v => `<td class="iv-q">${invQuestsCell(v)}</td>` },
   { k: "tier", h: "Tier", d0: -1, key: v => v.r.tier || null, cell: v => `<td class="iv-n">${v.r.tier || ""}</td>` },
@@ -1183,29 +1483,39 @@ const IV_COLS = [
         ? `<span class="iv-byline dim">+${s.best.ahead - Math.min(CAP, s.best.by.length)} more</span>` : "";
       return `<td class="iv-by">${rows.join("")}${more}</td>`;
     } },
+
 ];
 /* One saved column set PER MODE. The three modes ask different questions and
    a single shared set meant switching to Gear showed the quest columns.
    Defaults are what Kyle asked each mode for and nothing else — the picker is
    how you get the rest. */
 const IV_DEFAULTS = {
-  quest: ["where", "item", "qty", "quests"],
-  gear:  ["where", "item", "bis"],
-  spare: ["where", "item", "ahead", "beatenby"],
-  exalt: ["where", "item", "tier", "xeff", "xfits", "xfire", "xsock"],
+  quest: ["where", "item", "qty", "quests", "rank", "copies", "xkeep"],
+  gear:  ["where", "item", "bis", "rank", "copies", "xkeep"],
+  spare: ["where", "item", "ahead", "beatenby", "rank", "copies", "xkeep"],
+  exalt: ["where", "item", "tier", "xeff", "xfits", "xfire", "xsock", "xkeep"],
 };
 const IV_DEFAULT_COLS = IV_DEFAULTS.quest;
-const IV_COLS_KEY = "eqlt-companion-invcols-v2";
+/* v3: the three inventory-management columns joined the defaults. A saved v2
+   set is a player's own choice and is kept — with the new columns added
+   once, because a column nobody has heard of cannot be turned on. */
+const IV_COLS_KEY = "eqlt-companion-invcols-v3";
+const IV_COLS_KEY_V2 = "eqlt-companion-invcols-v2";
+const IV_NEW_COLS = ["rank", "copies", "xkeep"];
 const IV_MODE_COLS = {};
 let IV_SHOW = new Set(IV_DEFAULTS.quest);
 function loadInvCols() {
   for (const m of INV_MODES) IV_MODE_COLS[m] = new Set(IV_DEFAULTS[m]);
   try {
-    const o = JSON.parse(localStorage.getItem(IV_COLS_KEY));
+    let o = JSON.parse(localStorage.getItem(IV_COLS_KEY)), migrate = false;
+    if (!o) { o = JSON.parse(localStorage.getItem(IV_COLS_KEY_V2)); migrate = !!o; }
     if (o && typeof o === "object") for (const m of INV_MODES) {
-      if (Array.isArray(o[m]) && o[m].length)
+      if (Array.isArray(o[m]) && o[m].length) {
         IV_MODE_COLS[m] = new Set(o[m].filter(k => IV_COLS.some(c => c.k === k)));
+        if (migrate) for (const k of IV_NEW_COLS) if (IV_DEFAULTS[m].includes(k)) IV_MODE_COLS[m].add(k);
+      }
     }
+    if (migrate) saveInvCols();
   } catch { /* defaults stand */ }
   for (const m of INV_MODES) IV_MODE_COLS[m].add("item");
   syncInvCols();
@@ -1315,11 +1625,20 @@ function invDetail(v) {
   if (g && g.eff && g.eff.length) parts.push(`<div>${g.eff.map(e =>
     `${esc(e.n)}${e.m || e.l || (e.ct && e.ct !== "Instant") ? ` <span class="dim">(${[e.m, e.l && `lvl ${e.l}`, e.ct && e.ct !== "Instant" && e.ct].filter(Boolean).map(esc).join(", ")})</span>` : ""}`).join(" · ")}</div>`);
   if (g && g.ex) parts.push(`<div class="dim">${Object.entries(g.ex).map(([k2, val]) => esc(`${k2}: ${val}`)).join(" · ")}</div>`);
+  /* The three management answers again, with room and with links — the hover
+     popovers cannot be clicked. */
+  const b = rankOf(v);
+  if (b) parts.push(`<div class="ivd__pop">${rankTable(v, b, { n: 5, link: true })}</div>`);
+  const cg = COPIES.get(v.r);
+  if (cg) parts.push(`<div class="ivd__pop">${copiesPop(v, cg)}</div>`);
+  const u = uniqOf(v);
+  if (u) parts.push(`<div class="ivd__pop">${xkeepPop(v, u)}</div>`);
   if (!parts.length) parts.push(`<span class="dim">nothing more known about this item</span>`);
   return parts.join("");
 }
 
 const INV_HINT = $("invEmpty").innerHTML;
+let IV_BYID = new Map();   // row id -> view, for the popovers
 function renderInv() {
   const body = $("invBody"), empty = $("invEmpty"), tabs = $("invTabs"), banner = $("invBanner");
   if (!INV.rows) {
@@ -1373,8 +1692,19 @@ function renderInv() {
     if (!s) return false;
     return mode === "gear" || s.spare;
   };
+  /* The focus menu: the rows the inventory-management columns flag. "copies"
+     keeps only the rows with something to do — a worn pair and a set of full
+     stacks are copies with nothing to merge, and a list you have to re-read
+     before acting on is not a to-do list. */
+  const focusOk = v => {
+    if (!IV.focus) return true;
+    if (IV.focus === "copies") { const g = COPIES.get(v.r); return !!g && copiesTodo(g); }
+    if (IV.focus === "xkeep") { const u = uniqOf(v); return !!u && u.unique > 0; }
+    if (IV.focus === "top") { const b = rankOf(v); return !!b && rankHead(b).rank <= 10; }
+    return true;
+  };
   const pool = INV.rows.map(invView).filter(v =>
-    modeOk(v) && (!qOnly || v.quests.length) && tradeOk(v) && clsOk(v) &&
+    modeOk(v) && (!qOnly || v.quests.length) && tradeOk(v) && clsOk(v) && focusOk(v) &&
     (!needle || v.hay.includes(needle)));
   // subtab counts respect every other filter: searching shows WHERE the hits live
   const counts = { all: pool.length };
@@ -1398,21 +1728,34 @@ function renderInv() {
   const scope = mode === "quest" ? `${rows.length} of ${INV.rows.length} items`
     : mode === "exalt" ? `${rows.length} rows · ${EXALT ? EXALT.loose.length : 0} loose exaltations · ${EXALT ? EXALT.worn.length : 0} worn`
     : `${rows.length} of ${SPARE ? SPARE.items.length : 0} rankable items`;
+  /* what the whole dump says, whatever the filters show: the two counts a
+     bank visit is about */
+  const todo = new Set();
+  for (const g of COPIES.values()) if (copiesTodo(g)) todo.add(g);
+  let slots = 0;
+  for (const g of todo) slots += g.stack ? g.saves : g.donors.length;
+  let uniq = 0;
+  for (const u of UNIQX.values()) uniq += u.unique;
+  const mgmt = [todo.size ? `${todo.size} to merge · ${slots} bag slot${slots === 1 ? "" : "s"} back` : "", uniq ? `${uniq} exaltation${uniq > 1 ? "s" : ""} held nowhere else` : ""].filter(Boolean).join(" · ");
   $("invMeta").textContent =
-    `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()} · ${scope}${wt != null ? ` · ${Math.round(wt * 10) / 10} wt` : ""}`;
+    `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()} · ${scope}${wt != null ? ` · ${Math.round(wt * 10) / 10} wt` : ""}${mgmt ? ` · ${mgmt}` : ""}`;
+  IV_BYID = new Map(rows.map(v => [v.r.id, v]));
   const arrow = k => st.k === k ? (st.d > 0 ? " ▲" : " ▼") : "";
   body.innerHTML = rows.length
     ? `<table class="qtab ivt"><thead><tr>${cols.map(c =>
         `<th class="is-sort${c.k === "item" ? " iv-item" : ""}" data-ivsort="${c.k}">${c.h}${arrow(c.k)}</th>`).join("")}</tr></thead>
       <tbody>${rows.map(v => invRow(v, cols)).join("")}</tbody></table>`
     : `<p class="empty">${invEmptyText(mode)}</p>`;
-  retip();
+  retip(); repop();
 }
 
 /* Why a mode is showing nothing. "Nothing matches those filters" is wrong for
    two of the three cases and sends you looking for a filter you never set. */
 function invEmptyText(mode) {
-  const filtered = $("invSearch").value.trim() || $("invQuestOnly").checked || IV.trade || IV.cls;
+  const otherFilters = $("invSearch").value.trim() || $("invQuestOnly").checked || IV.trade || IV.cls || mode !== "quest";
+  if (IV.focus === "copies" && !otherFilters) return "Nothing in the dump is in two places with something to merge.";
+  if (IV.focus === "xkeep" && !otherFilters) return "No item holds an exaltation you have nowhere else.";
+  const filtered = otherFilters || IV.focus;
   if (filtered) return "Nothing matches those filters.";
   if (mode === "quest") return "Nothing in the dump.";
   if (mode === "exalt") return EXALT ? "Nothing in the dump is an exaltation or yields one." : "The gear dataset has not loaded — refresh from eqltools.com in Settings.";
@@ -4146,7 +4489,8 @@ function wireValet() {
     const v = $(id).value, j = VL.classes.indexOf(v);
     if (j !== -1 && j !== i) VL.classes[j] = VL.classes[i];   // a trio is 3 distinct
     VL.classes[i] = v;
-    saveValetPrefs(); valetRestart(); renderValet(); pushValet(); pushSpare();
+    // Rank's headline tie-break and its popover's "your classes" line read the trio
+    saveValetPrefs(); valetRestart(); renderValet(); pushValet(); pushSpare(); renderInv();
   }));
   $("vlLvl").addEventListener("change", () => {
     VL.level = Math.min(50, Math.max(1, $("vlLvl").value | 0 || 50));
@@ -5157,21 +5501,49 @@ function showExaltTip(name, socketN) {
   tipEl.hidden = false;
   moveTip();
 }
+/* ── the inventory popovers ───────────────────────────────────────────────
+   A second floating panel for the Rank, Copies and Exalt-inside cells: a
+   small table rather than the item window's lines. Same placement rule as the
+   item tooltip; built from the row the cursor is over, so a re-render under
+   the cursor redraws the right one. */
+let popEl = null;
+const IV_POPS = {
+  rank: v => { const b = rankOf(v); return b ? rankTable(v, b) : ""; },
+  copies: v => { const g = COPIES.get(v.r); return g ? copiesPop(v, g) : ""; },
+  xkeep: v => { const u = uniqOf(v); return u ? xkeepPop(v, u) : ""; },
+};
+function repop() {
+  if (!popEl) return;
+  const el = document.elementFromPoint(MX, MY);
+  const t = el && el.closest ? el.closest("[data-pop]") : null;
+  if (!t) { popEl.hidden = true; return; }
+  const [kind, id] = t.dataset.pop.split(":");
+  const v = IV_BYID.get(+id);
+  const html = v && IV_POPS[kind] ? IV_POPS[kind](v) : "";
+  if (!html) { popEl.hidden = true; return; }
+  popEl.innerHTML = html;
+  popEl.hidden = false;
+  placeAt(popEl);
+}
 function initTip() {
   tipEl = document.createElement("div");
   tipEl.id = "eqtip"; tipEl.hidden = true;
   document.body.appendChild(tipEl);
-  document.addEventListener("mousemove", ev => { MX = ev.clientX; MY = ev.clientY; if (!tipEl.hidden) moveTip(); });
-  document.addEventListener("mouseover", ev => { MX = ev.clientX; MY = ev.clientY; retip(); });
-  document.addEventListener("scroll", retip, true);
+  popEl = document.createElement("div");
+  popEl.id = "ivpop"; popEl.hidden = true;
+  document.body.appendChild(popEl);
+  document.addEventListener("mousemove", ev => { MX = ev.clientX; MY = ev.clientY; if (!tipEl.hidden) moveTip(); if (!popEl.hidden) placeAt(popEl); });
+  document.addEventListener("mouseover", ev => { MX = ev.clientX; MY = ev.clientY; retip(); repop(); });
+  document.addEventListener("scroll", () => { retip(); repop(); }, true);
 }
-function moveTip() {
-  const pad = 14, r = tipEl.getBoundingClientRect();
+function placeAt(el) {
+  const pad = 14, r = el.getBoundingClientRect();
   let x = MX + pad, y = MY + pad;
   if (x + r.width > innerWidth - 8) x = Math.max(8, MX - r.width - pad);
   if (y + r.height > innerHeight - 8) y = Math.max(8, innerHeight - r.height - 8);
-  tipEl.style.left = x + "px"; tipEl.style.top = y + "px";
+  el.style.left = x + "px"; el.style.top = y + "px";
 }
+const moveTip = () => placeAt(tipEl);
 
 /* ── updater ──────────────────────────────────────────────────────────────*/
 function renderUpdate(u) {
@@ -5338,6 +5710,7 @@ async function main() {
   $("invSearch").addEventListener("input", renderInv);
   $("invTrade").addEventListener("change", e => { IV.trade = e.target.value; renderInv(); });
   $("invClass").addEventListener("change", e => { IV.cls = e.target.value; renderInv(); });
+  $("invFocus").addEventListener("change", e => { IV.focus = e.target.value; renderInv(); });
   loadInvCols(); renderInvColPicker();
   $("invColsBody").addEventListener("change", e => {
     const k = e.target.dataset.ivcol;
@@ -5521,7 +5894,13 @@ async function main() {
     $("btnRefresh").disabled = true;
     buildIndexes(await window.companion.refreshData());
     $("btnRefresh").disabled = false;
-    renderTracker(); renderData(); pushZone();
+    /* the same chain onDataUpdated runs: a new gear dataset is a new set of
+       record objects, and every analysis keyed on the old ones (Valet,
+       Spare, Exalt, Rank's OWNED index) has to be rebuilt or it answers
+       "you hold none of these" for items sitting in the bank */
+    renderTracker(); renderData(); populateZoneSel(); renderZoneTab(); populateInvFilters(); valetReload(); renderInv();
+    populateQuestFilters(); renderQuests(); populateSkyFilters(); renderSky(); pushZone(); pushQuests(); pushSky();
+    renderValet(); pushValet(); pushSpare();
   });
   // fire and forget — every state change streams back through update:state
   $("btnUpdCheck").addEventListener("click", () => window.companion.checkUpdate());

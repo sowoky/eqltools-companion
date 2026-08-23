@@ -176,6 +176,54 @@ main { flex: 1; overflow-y: auto; padding: 16px; }
 .ivt td.iv-by { white-space: normal; min-width: 300px; max-width: 520px; }
 .iv-byline { font-size: 12px; display: inline-block; margin-right: 10px; white-space: nowrap; }
 .iv-nichex { font: 10px var(--sans); color: var(--ink-dim); margin-left: 6px; }
+/* Rank, Copies, Exalt inside — the three cells that carry a verdict. The
+   number is the cell; the small grey tail says for whom / what to do. A hot
+   cell is the highlight Kyle asked for: red where there is something to
+   merge, violet where a stone has to come out first. */
+.iv-rank { white-space: nowrap; }
+.iv-rank.is-top b { color: var(--gold-bright); }
+.iv-copies, .iv-xkeep { white-space: nowrap; font-family: var(--mono); font-size: 12px; }
+.iv-copies.is-hot { color: var(--bad); font-weight: 600; }
+.iv-xkeep.is-hot { color: var(--invoke); font-weight: 600; }
+.iv-copies.is-quiet, .iv-xkeep.is-quiet { color: var(--ink-dim); }
+.iv-glyph { display: inline-block; margin-right: 4px; font-family: var(--sans); }
+[data-pop] { cursor: help; }
+
+/* the inventory popovers: a small table beside the cursor, on the item
+   tooltip's chrome (#eqtip, below) */
+#ivpop {
+  position: fixed; z-index: 98; pointer-events: none;
+  min-width: 320px; max-width: 860px;
+  border: 1px solid var(--line);
+  padding: 9px 12px 8px; border-radius: 4px;
+  font: 12px/1.45 var(--sans); color: var(--ink-soft);
+}
+#ivpop[hidden] { display: none; }
+.pop__head { color: var(--ink); margin-bottom: 6px; }
+.pop__head b { color: var(--gold-pale); }
+.pop__t { border-collapse: collapse; width: 100%; }
+.pop__t th { text-align: left; font-weight: 500; color: var(--ink-dim); font-size: 10.5px; letter-spacing: .03em; text-transform: uppercase; padding: 0 10px 3px 0; border-bottom: 1px solid var(--line-soft); }
+.pop__t td { padding: 3px 10px 3px 0; vertical-align: top; border-bottom: 1px solid var(--line-soft); }
+.pop__t tr:last-child td { border-bottom: none; }
+.pop__t tr.is-me td { background: color-mix(in srgb, var(--gold) 9%, transparent); }
+.pop__t tr.is-me .pop__item { color: var(--gold-pale); font-weight: 600; }
+.pop__t .pop__n { font-family: var(--mono); color: var(--ink-dim); white-space: nowrap; }
+.pop__t .pop__item { color: var(--ink); white-space: nowrap; }
+.pop__t .pop__item a { color: var(--wiki); text-decoration: none; }
+.pop__t .pop__stats { min-width: 160px; white-space: nowrap; }
+.pop__t .pop__src { color: var(--ink-dim); max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pop__t .pop__src a, .pop__t .pop__src .wk { color: var(--wiki); text-decoration: none; }
+.pop__t .pop__have { white-space: nowrap; }
+.pop__t td.pop__score { font-family: var(--mono); font-size: 11px; color: var(--ink-dim); text-align: right; }
+.pop__gap td { color: var(--ink-dim); font-size: 11px; padding: 1px 0; border-bottom: 1px solid var(--line-soft); }
+.pop__t--list td:first-child { color: var(--ink); }
+.pop__foot { margin-top: 6px; color: var(--ink-soft); border-top: 1px solid var(--line-soft); padding-top: 5px; }
+.pop__hot { color: var(--bad); font-weight: 600; }
+.pop__keep { color: var(--invoke); font-weight: 600; }
+#ivpop .ok, .ivd__pop .ok { color: var(--wiki); }
+/* the same three panels inside an opened row, where the links work */
+.ivd__pop { margin-top: 8px; padding: 8px 10px; background: var(--bg-deep); border: 1px solid var(--line-soft); border-radius: 4px; font-size: 12px; max-width: 900px; }
+.ivd__pop .pop__t .pop__item a { cursor: pointer; }
 /* the rule Spare ranks by — one line, above the filters */
 .invnote {
   margin: 0 0 8px; font-size: 12.5px; line-height: 1.5; color: var(--ink-soft);
@@ -394,13 +442,15 @@ a.zg__name:hover { color: var(--gold-pale); }
 @media (max-width: 860px) { .zonegrid { grid-template-columns: 1fr; } }
 
 /* EQ item tooltip — the in-game item display window, minus the icon */
+#eqtip, #ivpop {
+  background: rgba(8, 9, 14, .97);
+  outline: 1px solid #000;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .6);
+}
 #eqtip {
   position: fixed; z-index: 99; pointer-events: none;
   min-width: 220px; max-width: 360px;
-  background: rgba(8, 9, 14, .97);
   border: 1px solid var(--gold-deep);
-  outline: 1px solid #000;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, .6);
   padding: 8px 11px; border-radius: 3px;
   font: 12.5px/1.45 var(--sans);
   color: #d8d2c4;

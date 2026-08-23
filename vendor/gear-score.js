@@ -140,13 +140,23 @@
      names itself after the item it was rendered from ("Shining Metallic Robes
      (Exaltation)") and would otherwise resolve to that item's gear record and
      be scored as if it were the robe. */
-  function parseRows(text) {
+  /* opts.keepEmpty keeps the dump's "Empty" placeholder rows, flagged
+     `empty: true` with no item on them. They are the only evidence that a
+     socket is OPEN AND EMPTY — the effect pulled out of it, or never there —
+     and exalt-core reads them; every other caller drops them, as before. */
+  function parseRows(text, opts) {
+    const keepEmpty = !!(opts && opts.keepEmpty);
     const rows = [];
     for (const raw of String(text).split(/\r?\n/)) {
       const f = raw.replace(/\r$/, "").split("\t");
       if (f.length < 3 || (f[1] === "Name" && f[2] === "ID")) continue;
       const loc = f[0], name = f[1];
-      if (!name || name === "Empty") continue;
+      if (!name) continue;
+      if (name === "Empty") {
+        if (keepEmpty) rows.push({ loc, root: rootLoc(loc), sec: locSection(loc), name, base: "", tier: 0,
+                                   exalt: false, empty: true, sub: /-Slot\d+$/.test(loc), itemId: 0, count: 0 });
+        continue;
+      }
       const exalt = EXALT_RX.test(name);
       const b = baseName(name.replace(EXALT_RX, ""));
       rows.push({

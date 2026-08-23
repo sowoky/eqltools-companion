@@ -52,6 +52,7 @@ const VENDOR_JS = {
   "public/_shared/exalt-slots.js": "exalt-slots.js",
   "public/_shared/spare-core.js": "spare-core.js",
   "public/exalt/exalt-core.js": "exalt-core.js",
+  "public/_shared/inventory-core.js": "inventory-core.js",
   "public/_shared/achievements.js": "achievements.js",
 };
 for (const [rel, name] of Object.entries(VENDOR_JS)) {

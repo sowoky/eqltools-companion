@@ -194,6 +194,12 @@
           <option value="no">no drop / no trade</option>
         </select>
         <select id="invClass"></select>
+        <select id="invFocus" title="the rows the Rank, Copies and Exaltations columns flag">
+          <option value="">everything</option>
+          <option value="copies">copies to merge</option>
+          <option value="xkeep">exaltation held nowhere else</option>
+          <option value="top">top 10 for a class</option>
+        </select>
         <label class="chk"><input type="checkbox" id="invQuestOnly"> quest items only</label>
         <details id="invColsWrap" class="invcols">
           <summary>columns</summary>
@@ -448,6 +454,7 @@
 <script src="../vendor/exalt-slots.js"></script>
 <script src="../vendor/spare-core.js"></script>
 <script src="../vendor/exalt-core.js"></script>
+<script src="../vendor/inventory-core.js"></script>
 <script src="../vendor/achievements.js"></script>
 <script src="../vendor/site/log-parser/engine.js"></script>
 <script src="../vendor/site/log-parser/render.js"></script>

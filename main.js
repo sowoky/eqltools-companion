@@ -152,7 +152,10 @@ function createMainWindow() {
   mainWin.removeMenu();
   mainWin.loadFile(path.join(__dirname, "renderer", "index.html"));
   if (isDev && process.env.EQLC_DEVTOOLS) mainWin.webContents.openDevTools({ mode: "detach" });
-  if (isDev) mainWin.webContents.on("console-message", (_e, _l, msg) => console.log("[renderer]", msg));
+  /* Electron 35+ passes one event object (`event.message`); the positional
+     (event, level, message) form before it is kept for older runtimes. */
+  if (isDev) mainWin.webContents.on("console-message", (e, _l, msg) =>
+    console.log("[renderer]", e && typeof e.message === "string" ? e.message : msg));
   // Dev: EQLC_TAB=zone|tracker|settings opens the app on that tab, and
   // EQLC_EXEC=<file.js> runs a script in the page — the agent-side
   // screenshot loop can't click or hover, so these drive the UI for it.

@@ -70288,7 +70288,7 @@
       ]
      ],
      "g": "Gorth Bearsoul",
-     "n": "Give Gorth 500 GP to obtain the Potion of Sorrow."
+     "n": "Give her the Potion of Sorrow and 1000 GP."
     },
     {
      "c": [
@@ -70416,7 +70416,7 @@
      "z": "Toxxulia Forest"
     },
     {
-     "gold": 500,
+     "gold": 1000,
      "i": 7,
      "in": [
       [
@@ -70427,7 +70427,7 @@
      "k": "give",
      "npc": "Gorth Bearsoul",
      "npct": "Gorth_Bearsoul",
-     "txt": "Give Gorth 500 GP to obtain the Potion of Sorrow."
+     "txt": "Give her the Potion of Sorrow and 1000 GP."
     },
     {
      "i": 8,
@@ -72302,7 +72302,7 @@
     ],
     [
      "Lambent Stone",
-     4
+     1
     ],
     [
      "Ruby",
@@ -72321,52 +72321,83 @@
     {
      "c": [
       [
-       "Lambent Fire Opal",
+       "Fire Opal",
+       2
+      ],
+      [
+       "Lambent Stone",
        1
       ]
      ],
      "g": "Ostorm",
-     "n": "For the Lambent Fire Opal, give two fire opals and one Lambent Stone to Ostorm."
+     "n": "For the Lambent Fire Opal, give two fire opals and one Lambent Stone to Ostorm.",
+     "r": [
+      "Lambent Fire Opal"
+     ]
     },
     {
      "c": [
       [
-       "Lambent Star Ruby",
+       "Star Ruby",
+       2
+      ],
+      [
+       "Lambent Stone",
        1
       ]
      ],
      "g": "Genni",
-     "n": "For the Lambent Star Ruby, give two Star Rubies and one Lambent Stone to Genni."
+     "n": "For the Lambent Star Ruby, give two Star Rubies and one Lambent Stone to Genni.",
+     "r": [
+      "Lambent Star Ruby"
+     ]
     },
     {
      "c": [
       [
-       "Lambent Sapphire",
+       "Sapphire",
+       2
+      ],
+      [
+       "Lambent Stone",
        1
       ]
      ],
      "g": "Gardern",
-     "n": "For the Lambent Sapphire, give two sapphires and one Lambent Stone to Gardern."
+     "n": "For the Lambent Sapphire, give two sapphires and one Lambent Stone to Gardern.",
+     "r": [
+      "Lambent Sapphire"
+     ]
     },
     {
      "c": [
       [
-       "Lambent Ruby",
+       "Ruby",
+       2
+      ],
+      [
+       "Lambent Stone",
        1
       ]
      ],
      "g": "Vilissia",
-     "n": "For the Lambent Ruby, give two rubies and one Lambent Stone to Vilissia."
+     "n": "For the Lambent Ruby, give two rubies and one Lambent Stone to Vilissia.",
+     "r": [
+      "Lambent Ruby"
+     ]
     },
     {
      "c": [
       [
-       "Fire Opal",
+       "Lambent Fire Opal",
        1
       ]
      ],
      "g": "Genni",
-     "n": "For the Fire Opal, give 550 gold to Genni."
+     "n": "For the Fire Opal, give 550 gold to Genni.",
+     "r": [
+      "Fire Opal"
+     ]
     }
    ],
    "relatedNpcs": [
@@ -72386,11 +72417,11 @@
     "Fire Opal"
    ],
    "roles": {
-    "Fire Opal": "base",
-    "Lambent Fire Opal": "base",
-    "Lambent Ruby": "base",
-    "Lambent Sapphire": "base",
-    "Lambent Star Ruby": "base",
+    "Fire Opal": "mid",
+    "Lambent Fire Opal": "mid",
+    "Lambent Ruby": "reward",
+    "Lambent Sapphire": "reward",
+    "Lambent Star Ruby": "reward",
     "Lambent Stone": "base",
     "Ruby": "base",
     "Sapphire": "base",
@@ -72401,10 +72432,6 @@
     {
      "i": 1,
      "in": [
-      [
-       "Lambent Fire Opal",
-       1
-      ],
       [
        "Fire Opal",
        2
@@ -72417,15 +72444,17 @@
      "k": "give",
      "npc": "Ostorm",
      "npct": "Ostorm",
+     "out": [
+      [
+       "Lambent Fire Opal",
+       1
+      ]
+     ],
      "txt": "For the Lambent Fire Opal, give two fire opals and one Lambent Stone to Ostorm."
     },
     {
      "i": 2,
      "in": [
-      [
-       "Lambent Star Ruby",
-       1
-      ],
       [
        "Star Ruby",
        2
@@ -72438,15 +72467,17 @@
      "k": "give",
      "npc": "Genni",
      "npct": "Genni",
+     "out": [
+      [
+       "Lambent Star Ruby",
+       1
+      ]
+     ],
      "txt": "For the Lambent Star Ruby, give two Star Rubies and one Lambent Stone to Genni."
     },
     {
      "i": 3,
      "in": [
-      [
-       "Lambent Sapphire",
-       1
-      ],
       [
        "Sapphire",
        2
@@ -72459,15 +72490,17 @@
      "k": "give",
      "npc": "Gardern",
      "npct": "Gardern",
+     "out": [
+      [
+       "Lambent Sapphire",
+       1
+      ]
+     ],
      "txt": "For the Lambent Sapphire, give two sapphires and one Lambent Stone to Gardern."
     },
     {
      "i": 4,
      "in": [
-      [
-       "Lambent Ruby",
-       1
-      ],
       [
        "Ruby",
        2
@@ -72480,6 +72513,12 @@
      "k": "give",
      "npc": "Vilissia",
      "npct": "Vilissia",
+     "out": [
+      [
+       "Lambent Ruby",
+       1
+      ]
+     ],
      "txt": "For the Lambent Ruby, give two rubies and one Lambent Stone to Vilissia."
     },
     {
@@ -72487,13 +72526,22 @@
      "i": 5,
      "in": [
       [
-       "Fire Opal",
+       "Lambent Fire Opal",
        1
       ]
      ],
      "k": "give",
      "npc": "Genni",
      "npct": "Genni",
+     "out": [
+      [
+       "Fire Opal",
+       1
+      ]
+     ],
+     "pre": [
+      1
+     ],
      "txt": "For the Fire Opal, give 550 gold to Genni."
     }
    ],
@@ -72504,16 +72552,16 @@
      1
     ],
     [
-     "Lambent Ruby",
-     1
+     "Ruby",
+     2
     ],
     [
-     "Lambent Sapphire",
-     1
+     "Sapphire",
+     2
     ],
     [
-     "Lambent Star Ruby",
-     1
+     "Star Ruby",
+     2
     ]
    ],
    "zone": "The Temple of Solusek Ro"
@@ -80533,16 +80581,8 @@
      1
     ],
     [
-     "Locked Rum Box",
-     2
-    ],
-    [
-     "Rough Silver Chain",
-     1
-    ],
-    [
      "Rum Box Key",
-     2
+     1
     ],
     [
      "Wolf Fur Earcovers",
@@ -80586,14 +80626,13 @@
       [
        "Dissolving Liquid",
        1
-      ],
-      [
-       "Locked Rum Box",
-       1
       ]
      ],
      "g": "gnomish deserter",
-     "n": "Give the Dissolving Liquid to the gnomish deserter in the Great Divide to get th"
+     "n": "Give the Dissolving Liquid to the gnomish deserter in the Great Divide to get th",
+     "r": [
+      "Locked Rum Box"
+     ]
     },
     {
      "c": [
@@ -80639,16 +80678,6 @@
       [
        "Rum Box Key",
        1
-      ]
-     ],
-     "g": "Sojan the Sleepless",
-     "n": "Give Sojan both the chain and key in exchange for a Rum Box Key."
-    },
-    {
-     "c": [
-      [
-       "Rum Box Key",
-       1
       ],
       [
        "Locked Rum Box",
@@ -80661,16 +80690,6 @@
      ],
      "g": "Captain Nalot",
      "n": "Give both the Rum Box Key and Locked Rum Box to Captain Nalot for a bottle of Ca"
-    },
-    {
-     "c": [
-      [
-       "Rough Silver Chain",
-       1
-      ]
-     ],
-     "g": "Nelet Durzit",
-     "n": "Give the rum to Nelet Durzit at the docks for Rough Silver Chain."
     },
     {
      "c": [
@@ -80709,8 +80728,8 @@
     "Fresh Tree Sap": "base",
     "Golden Broken Key": "mid",
     "High Quality Dire Wolf Fur": "base",
-    "Locked Rum Box": "base",
-    "Rough Silver Chain": "base",
+    "Locked Rum Box": "mid",
+    "Rough Silver Chain": "reward",
     "Rum Box Key": "base",
     "Wolf Fur Earcovers": "mid"
    },
@@ -80794,15 +80813,17 @@
       [
        "Dissolving Liquid",
        1
-      ],
-      [
-       "Locked Rum Box",
-       1
       ]
      ],
      "k": "give",
      "npc": "gnomish deserter",
      "npct": "gnomish_deserter",
+     "out": [
+      [
+       "Locked Rum Box",
+       1
+      ]
+     ],
      "pre": [
       4
      ],
@@ -80898,15 +80919,15 @@
     },
     {
      "i": 11,
-     "in": [
+     "k": "give",
+     "npc": "Sojan the Sleepless",
+     "npct": "Sojan_the_Sleepless",
+     "out": [
       [
        "Rum Box Key",
        1
       ]
      ],
-     "k": "give",
-     "npc": "Sojan the Sleepless",
-     "npct": "Sojan_the_Sleepless",
      "txt": "Give Sojan both the chain and key in exchange for a Rum Box Key."
     },
     {
@@ -80928,19 +80949,23 @@
      "k": "give",
      "npc": "Captain Nalot",
      "npct": "Captain_Nalot",
+     "pre": [
+      5,
+      11
+     ],
      "txt": "Give both the Rum Box Key and Locked Rum Box to Captain Nalot for a bottle of Capt. Nalot's Triple Strength Rum."
     },
     {
      "i": 13,
-     "in": [
+     "k": "give",
+     "npc": "Nelet Durzit",
+     "npct": "Nelet_Durzit",
+     "out": [
       [
        "Rough Silver Chain",
        1
       ]
      ],
-     "k": "give",
-     "npc": "Nelet Durzit",
-     "npct": "Nelet_Durzit",
      "txt": "Give the rum to Nelet Durzit at the docks for Rough Silver Chain."
     }
    ],
@@ -80948,10 +80973,6 @@
    "want": [
     [
      "Capt. Nalot's Triple Strength Rum",
-     1
-    ],
-    [
-     "Dissolving Liquid",
      1
     ],
     [
@@ -80964,15 +80985,11 @@
     ],
     [
      "Locked Rum Box",
-     2
-    ],
-    [
-     "Rough Silver Chain",
      1
     ],
     [
      "Rum Box Key",
-     2
+     1
     ]
    ],
    "zone": "Iceclad Ocean"
@@ -82549,7 +82566,7 @@
     ],
     [
      "Sceptre of Ixiblat Fer",
-     2
+     1
     ],
     [
      "Shimmering Pearl",
@@ -82674,16 +82691,13 @@
       [
        "Message to Natasha",
        1
-      ],
-      [
-       "Sceptre of Ixiblat Fer",
-       1
       ]
      ],
      "g": "Natasha Whitewater",
      "n": "Give Message to Natasha (Received when spawning Ixiblat Fer) to Natasha Whitewat",
      "r": [
-      "Shimmering Pearl*"
+      "Shimmering Pearl*",
+      "Sceptre of Ixiblat Fer"
      ]
     },
     {
@@ -83076,10 +83090,6 @@
       [
        "Message to Natasha",
        1
-      ],
-      [
-       "Sceptre of Ixiblat Fer",
-       1
       ]
      ],
      "k": "give",
@@ -83089,6 +83099,10 @@
       [
        "Shimmering Pearl*",
        1
+      ],
+      [
+       "Sceptre of Ixiblat Fer",
+       1
       ]
      ],
      "pre": [
@@ -83096,7 +83110,6 @@
       9,
       11,
       12,
-      13,
       15
      ],
      "txt": "Give Message to Natasha (Received when spawning Ixiblat Fer) to Natasha Whitewater in Timorous Deep –- receive Shimmering Pearl* (This does not despawn Natasha)",
@@ -87815,10 +87828,6 @@
      1
     ],
     [
-     "Dull Bladed Axe",
-     1
-    ],
-    [
      "Ethereal Suspension",
      1
     ],
@@ -87977,16 +87986,6 @@
    ],
    "oe": true,
    "parts": [
-    {
-     "c": [
-      [
-       "Dull Bladed Axe",
-       1
-      ]
-     ],
-     "g": "Garadain Glacierbane",
-     "n": "Say 'I will give assistance.' to Garadain Glacierbane to get"
-    },
     {
      "c": [
       [
@@ -88414,15 +88413,15 @@
     },
     {
      "i": 3,
-     "in": [
+     "k": "give",
+     "npc": "Garadain Glacierbane",
+     "npct": "Garadain_Glacierbane",
+     "out": [
       [
        "Dull Bladed Axe",
        1
       ]
      ],
-     "k": "give",
-     "npc": "Garadain Glacierbane",
-     "npct": "Garadain_Glacierbane",
      "txt": "Say 'I will give assistance.' to Garadain Glacierbane to get"
     },
     {
@@ -89040,10 +89039,6 @@
     ],
     [
      "Doldigun's head",
-     1
-    ],
-    [
-     "Dull Bladed Axe",
      1
     ],
     [
@@ -90931,7 +90926,7 @@
     ],
     [
      "A Glowing Skull",
-     2
+     1
     ],
     [
      "A Page of A Tome",
@@ -90939,10 +90934,6 @@
     ],
     [
      "A Stone Key",
-     2
-    ],
-    [
-     "Chalp Diagram",
      2
     ],
     [
@@ -91095,14 +91086,13 @@
       [
        "Shovel",
        1
-      ],
-      [
-       "Chalp Diagram",
-       1
       ]
      ],
      "g": "An iksar knight",
-     "n": "Turn in Misscribed Gate, Misscribed Lifetap, Scroll in a Bottle, and Shovel to a"
+     "n": "Turn in Misscribed Gate, Misscribed Lifetap, Scroll in a Bottle, and Shovel to a",
+     "r": [
+      "Chalp Diagram"
+     ]
     },
     {
      "c": [
@@ -91226,14 +91216,13 @@
       [
        "Bottle of Liquid Deklium",
        1
-      ],
-      [
-       "A Glowing Skull",
-       1
       ]
      ],
      "g": "Alchemist Granika",
-     "n": "Give Bottle of Liquid Deklium to Alchemist Granika in The Overthere to spawn A G"
+     "n": "Give Bottle of Liquid Deklium to Alchemist Granika in The Overthere to spawn A G",
+     "r": [
+      "A Glowing Skull"
+     ]
     },
     {
      "c": [
@@ -91312,11 +91301,11 @@
    "roles": {
     "A Bone Key": "base",
     "A Bone Necklace": "base",
-    "A Glowing Skull": "base",
+    "A Glowing Skull": "mid",
     "A Page of A Tome": "base",
     "A Stone Key": "base",
     "Bottle of Liquid Deklium": "mid",
-    "Chalp Diagram": "base",
+    "Chalp Diagram": "mid",
     "Charasis Tome": "base",
     "Charasis Tome Copy": "base",
     "Chunk of Tynnonium": "base",
@@ -91326,7 +91315,7 @@
     "Crusader's Khukri": "base",
     "Full Pack of Sarnak Heads": "base",
     "Greenish Metal Shard": "base",
-    "Greenmist": "base",
+    "Greenmist": "reward",
     "Greenmist Design Pattern": "mid",
     "Greenmist Khukri Blade": "mid",
     "Hammer of 1406": "base",
@@ -91642,15 +91631,17 @@
       [
        "Shovel",
        1
-      ],
-      [
-       "Chalp Diagram",
-       1
       ]
      ],
      "k": "give",
      "npc": "An iksar knight",
      "npct": "An_iksar_knight",
+     "out": [
+      [
+       "Chalp Diagram",
+       1
+      ]
+     ],
      "pre": [
       21,
       22,
@@ -91673,6 +91664,9 @@
      "k": "give",
      "npc": "Lord Qyzar",
      "npct": "Lord_Qyzar",
+     "pre": [
+      24
+     ],
      "txt": "Turn in Chalp Diagram and Knight's Khukri to Lord Qyzar"
     },
     {
@@ -92019,17 +92013,18 @@
       [
        "Bottle of Liquid Deklium",
        1
-      ],
-      [
-       "A Glowing Skull",
-       1
       ]
      ],
      "k": "give",
      "npc": "Alchemist Granika",
      "npct": "Alchemist_Granika",
+     "out": [
+      [
+       "A Glowing Skull",
+       1
+      ]
+     ],
      "pre": [
-      16,
       59
      ],
      "txt": "Give Bottle of Liquid Deklium to Alchemist Granika in The Overthere to spawn A Glowing Cliff Golem",
@@ -92244,13 +92239,15 @@
       [
        "Hammer of 1406",
        1
-      ],
+      ]
+     ],
+     "k": "combine",
+     "out": [
       [
        "Greenmist",
        1
       ]
      ],
-     "k": "combine",
      "pre": [
       3,
       63,
@@ -92273,7 +92270,7 @@
     ],
     [
      "A Glowing Skull",
-     2
+     1
     ],
     [
      "A Stone Key",
@@ -92285,7 +92282,7 @@
     ],
     [
      "Chalp Diagram",
-     2
+     1
     ],
     [
      "Charasis Tome",
@@ -92328,14 +92325,6 @@
      1
     ],
     [
-     "Misscribed Gate",
-     1
-    ],
-    [
-     "Misscribed Lifetap",
-     1
-    ],
-    [
      "Note to Librarian Zimor",
      1
     ],
@@ -92349,14 +92338,6 @@
     ],
     [
      "Rile's Shattered Blade",
-     1
-    ],
-    [
-     "Scroll in a Bottle",
-     1
-    ],
-    [
-     "Shovel",
      1
     ],
     [
@@ -100447,20 +100428,8 @@
    "n": "Enchanter Epic Quest",
    "need": [
     [
-     "Chalice of Kings",
-     1
-    ],
-    [
-     "Copy of Notes",
-     2
-    ],
-    [
      "Enchanters Sack",
      1
-    ],
-    [
-     "Gift to Bozlum",
-     2
     ],
     [
      "Head of a Prince",
@@ -100471,16 +100440,8 @@
      1
     ],
     [
-     "Jeb's Seal",
-     1
-    ],
-    [
      "Large Muddy Sandals",
      1
-    ],
-    [
-     "Mechanical Pen",
-     2
     ],
     [
      "Piece of Parchment",
@@ -100491,24 +100452,12 @@
      1
     ],
     [
-     "Scribbled Parchment",
-     2
-    ],
-    [
      "Shining Metallic Robes",
      1
     ],
     [
-     "Snow Blossoms",
-     1
-    ],
-    [
-     "Staff of the Serpent",
-     1
-    ],
-    [
      "White Paper",
-     2
+     1
     ]
    ],
    "oe": true,
@@ -100518,14 +100467,13 @@
       [
        "Shining Metallic Robes",
        1
-      ],
-      [
-       "Mechanical Pen",
-       1
       ]
      ],
      "g": "Rilgor Plegnog",
-     "n": "Give the Shining Metallic Robes to Rilgor Plegnog in Ak'Anon to get the Mechanic"
+     "n": "Give the Shining Metallic Robes to Rilgor Plegnog in Ak'Anon to get the Mechanic",
+     "r": [
+      "Mechanical Pen"
+     ]
     },
     {
      "c": [
@@ -100536,14 +100484,13 @@
       [
        "Piece of Parchment",
        1
-      ],
-      [
-       "White Paper",
-       1
       ]
      ],
      "g": "Chrislin Baker",
-     "n": "Give the Quill and the Piece of Parchment to Chrislin Baker in Western Karana to"
+     "n": "Give the Quill and the Piece of Parchment to Chrislin Baker in Western Karana to",
+     "r": [
+      "White Paper"
+     ]
     },
     {
      "c": [
@@ -100558,98 +100505,100 @@
       [
        "White Paper",
        1
-      ],
-      [
-       "Copy of Notes",
-       1
       ]
      ],
      "g": "Stofo Olan",
-     "n": "Give the Ink of the Dark, the Mechanical Pen, and the White Paper to Stofo Olan "
+     "n": "Give the Ink of the Dark, the Mechanical Pen, and the White Paper to Stofo Olan ",
+     "r": [
+      "Copy of Notes"
+     ]
     },
     {
      "c": [
       [
        "Copy of Notes",
        1
-      ],
-      [
-       "Jeb's Seal",
-       1
       ]
      ],
      "g": "A sarnak imitator",
-     "n": "Give the Copy of Notes to Jeb Lumsed (a sarnak imitator) in Burning Woods to get"
+     "n": "Give the Copy of Notes to Jeb Lumsed (a sarnak imitator) in Burning Woods to get",
+     "r": [
+      "Jeb's Seal"
+     ]
     },
     {
      "c": [
       [
        "Head of a Prince",
        1
-      ],
-      [
-       "Chalice of Kings",
-       1
       ]
      ],
      "g": "Joren Nobleheart",
-     "n": "Give the Head of a Prince to Joren Nobleheart in Felwithe to get the Chalice of "
+     "n": "Give the Head of a Prince to Joren Nobleheart in Felwithe to get the Chalice of ",
+     "r": [
+      "Chalice of Kings"
+     ]
     },
     {
      "c": [
       [
        "Large Muddy Sandals",
        1
-      ],
-      [
-       "Scribbled Parchment",
-       1
       ]
      ],
      "g": "Bozlum Blossom",
-     "n": "Give Large Muddy Sandals to Bozlum Blossom to get Scribbled Parchment."
+     "n": "Give Large Muddy Sandals to Bozlum Blossom to get Scribbled Parchment.",
+     "r": [
+      "Scribbled Parchment"
+     ]
     },
     {
      "c": [
       [
        "Scribbled Parchment",
-       1
-      ],
-      [
-       "Gift to Bozlum",
        1
       ]
      ],
      "g": "Brokk Boxtripper",
-     "n": "Give Scribbled Parchment to Brokk Boxtripper to get a Gift to Bozlum."
+     "n": "Give Scribbled Parchment to Brokk Boxtripper to get a Gift to Bozlum.",
+     "r": [
+      "Gift to Bozlum"
+     ]
     },
     {
      "c": [
-      [
-       "Snow Blossoms",
-       1
-      ],
       [
        "Gift to Bozlum",
        1
       ]
      ],
      "g": "Bozlum Blossom",
-     "n": "Give the gift to Bozlum Blossom to get Snow Blossoms."
+     "n": "Give the gift to Bozlum Blossom to get Snow Blossoms.",
+     "r": [
+      "Snow Blossoms"
+     ]
     },
     {
      "c": [
       [
        "Bundle of Staves",
        1
-      ],
-      [
-       "Staff of the Serpent",
-       1
       ]
      ],
      "g": "A sarnak imitator",
-     "n": "Give the Bundle of Staves to Jeb Lumsed (a sarnak imitator) in Burning Woods to "
+     "n": "Give the Bundle of Staves to Jeb Lumsed (a sarnak imitator) in Burning Woods to ",
+     "r": [
+      "Staff of the Serpent"
+     ]
+    },
+    {
+     "c": [
+      [
+       "Jeb's Seal",
+       1
+      ]
+     ],
+     "n": ""
     }
    ],
    "relatedNpcs": [
@@ -100709,9 +100658,9 @@
     "3rd Piece of Staff": "mid",
     "4th Piece of Staff": "mid",
     "Bundle of Staves": "mid",
-    "Chalice of Kings": "base",
+    "Chalice of Kings": "mid",
     "Charm and Sacrifice": "base",
-    "Copy of Notes": "base",
+    "Copy of Notes": "mid",
     "Dull Diamond": "base",
     "Dull Emerald": "base",
     "Dull Ruby": "base",
@@ -100724,25 +100673,25 @@
     "Enchanters Sack": "tool",
     "Essence of a Ghost": "base",
     "Essence of a Vampire": "base",
-    "Gift to Bozlum": "base",
+    "Gift to Bozlum": "mid",
     "Head of a Prince": "base",
     "Head of the Serpent": "base",
     "Ink of the Dark": "base",
     "Innoruuk's Word": "base",
-    "Jeb's Seal": "base",
+    "Jeb's Seal": "mid",
     "Large Muddy Sandals": "base",
     "Lost Scroll": "base",
-    "Mechanical Pen": "base",
+    "Mechanical Pen": "mid",
     "Piece of Parchment": "base",
     "Quill": "base",
     "Sands of the Mystics": "base",
-    "Scribbled Parchment": "base",
+    "Scribbled Parchment": "mid",
     "Shining Metallic Robes": "base",
-    "Snow Blossoms": "base",
+    "Snow Blossoms": "mid",
     "Spoon": "base",
-    "Staff of the Serpent": "base",
+    "Staff of the Serpent": "reward",
     "The One Key": "base",
-    "White Paper": "base",
+    "White Paper": "mid",
     "Xolion Rod": "base"
    },
    "split": true,
@@ -100808,15 +100757,17 @@
       [
        "Shining Metallic Robes",
        1
-      ],
-      [
-       "Mechanical Pen",
-       1
       ]
      ],
      "k": "give",
      "npc": "Rilgor Plegnog",
      "npct": "Rilgor_Plegnog",
+     "out": [
+      [
+       "Mechanical Pen",
+       1
+      ]
+     ],
      "pre": [
       4
      ],
@@ -100848,15 +100799,17 @@
       [
        "Piece of Parchment",
        1
-      ],
-      [
-       "White Paper",
-       1
       ]
      ],
      "k": "give",
      "npc": "Chrislin Baker",
      "npct": "Chrislin_Baker",
+     "out": [
+      [
+       "White Paper",
+       1
+      ]
+     ],
      "pre": [
       6
      ],
@@ -100877,17 +100830,21 @@
       [
        "White Paper",
        1
-      ],
-      [
-       "Copy of Notes",
-       1
       ]
      ],
      "k": "give",
      "npc": "Stofo Olan",
      "npct": "Stofo_Olan",
+     "out": [
+      [
+       "Copy of Notes",
+       1
+      ]
+     ],
      "pre": [
-      3
+      3,
+      5,
+      7
      ],
      "txt": "Give the Ink of the Dark, the Mechanical Pen, and the White Paper to Stofo Olan in Erudin to get a Copy of Notes.",
      "z": "Erudin"
@@ -100898,15 +100855,20 @@
       [
        "Copy of Notes",
        1
-      ],
-      [
-       "Jeb's Seal",
-       1
       ]
      ],
      "k": "give",
      "npc": "A sarnak imitator",
      "npct": "A_sarnak_imitator",
+     "out": [
+      [
+       "Jeb's Seal",
+       1
+      ]
+     ],
+     "pre": [
+      8
+     ],
      "txt": "Give the Copy of Notes to Jeb Lumsed (a sarnak imitator) in Burning Woods to get Jeb's Seal.",
      "z": "The Burning Woods"
     },
@@ -100960,30 +100922,23 @@
       [
        "Head of a Prince",
        1
-      ],
-      [
-       "Chalice of Kings",
-       1
       ]
      ],
      "k": "give",
      "npc": "Joren Nobleheart",
      "npct": "Joren_Nobleheart",
-     "pre": [
-      13
+     "out": [
+      [
+       "Chalice of Kings",
+       1
+      ]
      ],
      "txt": "Give the Head of a Prince to Joren Nobleheart in Felwithe to get the Chalice of Kings.",
      "z": "Felwithe"
     },
     {
      "i": 15,
-     "k": "get",
-     "out": [
-      [
-       "Snow Blossoms",
-       1
-      ]
-     ],
+     "k": "note",
      "txt": "Obtain Snow Blossoms in Oggok.",
      "z": "Oggok"
     },
@@ -101004,15 +100959,17 @@
       [
        "Large Muddy Sandals",
        1
-      ],
-      [
-       "Scribbled Parchment",
-       1
       ]
      ],
      "k": "give",
      "npc": "Bozlum Blossom",
      "npct": "Bozlum_Blossom",
+     "out": [
+      [
+       "Scribbled Parchment",
+       1
+      ]
+     ],
      "pre": [
       16
      ],
@@ -101024,24 +100981,25 @@
       [
        "Scribbled Parchment",
        1
-      ],
-      [
-       "Gift to Bozlum",
-       1
       ]
      ],
      "k": "give",
      "npc": "Brokk Boxtripper",
      "npct": "Brokk_Boxtripper",
+     "out": [
+      [
+       "Gift to Bozlum",
+       1
+      ]
+     ],
+     "pre": [
+      17
+     ],
      "txt": "Give Scribbled Parchment to Brokk Boxtripper to get a Gift to Bozlum."
     },
     {
      "i": 19,
      "in": [
-      [
-       "Snow Blossoms",
-       1
-      ],
       [
        "Gift to Bozlum",
        1
@@ -101050,8 +101008,14 @@
      "k": "give",
      "npc": "Bozlum Blossom",
      "npct": "Bozlum_Blossom",
+     "out": [
+      [
+       "Snow Blossoms",
+       1
+      ]
+     ],
      "pre": [
-      15
+      18
      ],
      "txt": "Give the gift to Bozlum Blossom to get Snow Blossoms."
     },
@@ -101080,7 +101044,8 @@
       10,
       11,
       13,
-      15
+      14,
+      19
      ],
      "tool": [
       "Enchanters Sack"
@@ -101500,15 +101465,17 @@
       [
        "Bundle of Staves",
        1
-      ],
-      [
-       "Staff of the Serpent",
-       1
       ]
      ],
      "k": "give",
      "npc": "A sarnak imitator",
      "npct": "A_sarnak_imitator",
+     "out": [
+      [
+       "Staff of the Serpent",
+       1
+      ]
+     ],
      "pre": [
       42
      ],
@@ -101523,36 +101490,16 @@
      1
     ],
     [
-     "Chalice of Kings",
-     1
-    ],
-    [
-     "Copy of Notes",
-     2
-    ],
-    [
      "Gift to Bozlum",
-     2
+     1
     ],
     [
      "Head of a Prince",
      1
     ],
     [
-     "Ink of the Dark",
-     1
-    ],
-    [
      "Jeb's Seal",
      1
-    ],
-    [
-     "Large Muddy Sandals",
-     1
-    ],
-    [
-     "Mechanical Pen",
-     2
     ],
     [
      "Piece of Parchment",
@@ -101561,26 +101508,6 @@
     [
      "Quill",
      1
-    ],
-    [
-     "Scribbled Parchment",
-     2
-    ],
-    [
-     "Shining Metallic Robes",
-     1
-    ],
-    [
-     "Snow Blossoms",
-     1
-    ],
-    [
-     "Staff of the Serpent",
-     1
-    ],
-    [
-     "White Paper",
-     2
     ]
    ],
    "zone": "Erudin"
@@ -104372,7 +104299,7 @@
     ],
     [
      "Veisha Fathomwalker's Head",
-     1
+     2
     ]
    ],
    "parts": [
@@ -104442,12 +104369,15 @@
     {
      "c": [
       [
-       "Battle Worn Halberd",
+       "Veisha Fathomwalker's Head",
        1
       ]
      ],
      "g": "Veisha Fathomwalker",
-     "n": "You can skip all of the steps and just kill Veisha and return her head for the H"
+     "n": "You can skip all of the steps and just kill Veisha and return her head for the H",
+     "r": [
+      "Battle Worn Halberd"
+     ]
     }
    ],
    "relatedNpcs": [
@@ -104462,7 +104392,7 @@
    ],
    "roles": {
     "A Locked Chest": "mid",
-    "Battle Worn Halberd": "mid",
+    "Battle Worn Halberd": "reward",
     "Phaeril Nightshire's Head": "base",
     "Rolled up Note": "base",
     "Veisha Fathomwalker's Head": "base",
@@ -104587,17 +104517,16 @@
       [
        "Veisha Fathomwalker's Head",
        1
-      ],
-      [
-       "Battle Worn Halberd",
-       1
       ]
      ],
      "k": "give",
      "npc": "Veisha Fathomwalker",
      "npct": "Veisha_Fathomwalker",
-     "pre": [
-      6
+     "out": [
+      [
+       "Battle Worn Halberd",
+       1
+      ]
      ],
      "txt": "You can skip all of the steps and just kill Veisha and return her head for the Halberd. Just be aware that she is a paladin and has lay on hands available."
     }
@@ -104609,8 +104538,8 @@
      1
     ],
     [
-     "Battle Worn Halberd",
-     1
+     "Veisha Fathomwalker's Head",
+     2
     ],
     [
      "Veisha's Engagement Ring",
@@ -116520,7 +116449,7 @@
      1
     ],
     [
-     "Rat Shaped Ring",
+     "Hurrieta's Tunic",
      1
     ]
    ],
@@ -116528,22 +116457,16 @@
     {
      "c": [
       [
+       "Hurrieta's Tunic",
+       1
+      ],
+      [
        "Hurrieta's Bloody Dress",
        1
       ]
      ],
-     "g": "Garuc Anehm",
-     "n": "Take Hurrieta's Bloody Dress and seek out Garuc Anehm in the Qeynos Aqueducts."
-    },
-    {
-     "c": [
-      [
-       "Rat Shaped Ring",
-       1
-      ]
-     ],
      "g": "Ton Firepride",
-     "n": "Hand the dress to him to get your reward: Experience, faction, money and a piece"
+     "n": ""
     }
    ],
    "relatedNpcs": [
@@ -116556,10 +116479,8 @@
     "Rat Shaped Ring"
    ],
    "roles": {
-    "Hurrieta's Bloody Dress": "base",
-    "Rat Shaped Ring": "base"
+    "Hurrieta's Bloody Dress": "base"
    },
-   "split": true,
    "steps": [
     {
      "i": 1,
@@ -116589,20 +116510,6 @@
       1
      ],
      "txt": "Take Hurrieta's Bloody Dress and seek out Garuc Anehm in the Qeynos Aqueducts."
-    },
-    {
-     "fac": true,
-     "i": 3,
-     "in": [
-      [
-       "Rat Shaped Ring",
-       1
-      ]
-     ],
-     "k": "give",
-     "npc": "Ton Firepride",
-     "npct": "Ton_Firepride",
-     "txt": "Hand the dress to him to get your reward: Experience, faction, money and a piece of Patchwork armor or Rat Shaped Ring."
     }
    ],
    "t": "Hurrieta's_Tunic_Quest",
@@ -116612,7 +116519,7 @@
      1
     ],
     [
-     "Rat Shaped Ring",
+     "Hurrieta's Tunic",
      1
     ]
    ],
@@ -118086,7 +117993,7 @@
     ],
     [
      "Initiate Symbol of Innoruuk",
-     1
+     2
     ],
     [
      "Leatherfoot Raider Orders",
@@ -118229,15 +118136,12 @@
       [
        "Receipt for Provisions Crate",
        1
-      ],
-      [
-       "Disciple Symbol of Innoruuk",
-       1
       ]
      ],
      "g": "Ithvol K`Jasn",
      "n": "Take Voucher of Service to Naythox, Swiftmoon's Head, Receipt for Provisions Cra",
      "r": [
+      "Disciple Symbol of Innoruuk",
       "Regent Symbol of Innoruuk"
      ]
     },
@@ -118273,7 +118177,7 @@
    ],
    "roles": {
     "Crate of teir'dal provisions": "mid",
-    "Disciple Symbol of Innoruuk": "mid",
+    "Disciple Symbol of Innoruuk": "reward",
     "Halfling Druid Master's Head": "base",
     "Head of a Halfling Spy": "base",
     "Initiate Symbol of Innoruuk": "base",
@@ -118516,10 +118420,6 @@
       [
        "Receipt for Provisions Crate",
        1
-      ],
-      [
-       "Disciple Symbol of Innoruuk",
-       1
       ]
      ],
      "k": "give",
@@ -118527,12 +118427,15 @@
      "npct": "Ithvol_K%60Jasn",
      "out": [
       [
+       "Disciple Symbol of Innoruuk",
+       1
+      ],
+      [
        "Regent Symbol of Innoruuk",
        1
       ]
      ],
      "pre": [
-      7,
       10,
       11,
       12
@@ -118543,12 +118446,16 @@
    "t": "Innoruuk_Symbol_Quests",
    "want": [
     [
-     "Disciple Symbol of Innoruuk",
+     "Halfling Druid Master's Head",
      1
     ],
     [
-     "Halfling Druid Master's Head",
+     "Head of a Halfling Spy",
      1
+    ],
+    [
+     "Initiate Symbol of Innoruuk",
+     2
     ],
     [
      "Leatherfoot Raider Orders",
@@ -127780,7 +127687,7 @@
     ],
     [
      "Breath of Gwan",
-     2
+     1
     ],
     [
      "Celestial Fists (book)",
@@ -127795,10 +127702,6 @@
      1
     ],
     [
-     "Danl's Reference",
-     1
-    ],
-    [
      "Demon Fangs",
      4
     ],
@@ -127807,15 +127710,7 @@
      1
     ],
     [
-     "Needle of the Void",
-     1
-    ],
-    [
      "Purple Headband",
-     1
-    ],
-    [
-     "Rare Robe Pattern",
      1
     ],
     [
@@ -127846,14 +127741,13 @@
       [
        "Code of Zan Fi",
        1
-      ],
-      [
-       "Needle of the Void",
-       1
       ]
      ],
      "g": "Brother Qwinn",
-     "n": "Turn in Purple Headband and Code of Zan Fi to Brother Qwinn in Southern Karana t"
+     "n": "Turn in Purple Headband and Code of Zan Fi to Brother Qwinn in Southern Karana t",
+     "r": [
+      "Needle of the Void"
+     ]
     },
     {
      "c": [
@@ -127864,14 +127758,13 @@
       [
        "The Idol",
        1
-      ],
-      [
-       "Rare Robe Pattern",
-       1
       ]
      ],
      "g": "Brother Zephyl",
-     "n": "Turn in Red Sash of Order and The Idol to Brother Zephyl in Rathe Mountains to g"
+     "n": "Turn in Red Sash of Order and The Idol to Brother Zephyl in Rathe Mountains to g",
+     "r": [
+      "Rare Robe Pattern"
+     ]
     },
     {
      "c": [
@@ -127891,42 +127784,39 @@
       [
        "Immortals",
        1
-      ],
-      [
-       "Danl's Reference",
-       1
       ]
      ],
      "g": "Tomekeeper Danl",
-     "n": "Turn in Immortals to Tomekeeper Danl in the Erudin library for Danl's Reference."
+     "n": "Turn in Immortals to Tomekeeper Danl in the Erudin library for Danl's Reference.",
+     "r": [
+      "Danl's Reference"
+     ]
     },
     {
      "c": [
-      [
-       "Breath of Gwan",
-       1
-      ],
       [
        "Charred Scale",
        1
       ]
      ],
      "g": "A presence",
-     "n": "Go to Dojorn's Island (Isle 1.5) in Plane of Sky. Hand Scale to a presence to sp"
+     "n": "Go to Dojorn's Island (Isle 1.5) in Plane of Sky. Hand Scale to a presence to sp",
+     "r": [
+      "Breath of Gwan"
+     ]
     },
     {
      "c": [
       [
        "Breath of Gwan",
        1
-      ],
-      [
-       "Trunt's Head",
-       1
       ]
      ],
      "g": "Gwan",
-     "n": "Hand Breath of Gwan in to a sleeping ogre in Mines of Nurga to spawn Trunt. Kill"
+     "n": "Hand Breath of Gwan in to a sleeping ogre in Mines of Nurga to spawn Trunt. Kill",
+     "r": [
+      "Trunt's Head"
+     ]
     },
     {
      "c": [
@@ -127936,7 +127826,10 @@
       ]
      ],
      "g": "Astral Projection (LOIO)",
-     "n": "In Lake of Ill Omen (It's not on the platform, but on the shore, loc neg 1900 ne"
+     "n": "In Lake of Ill Omen (It's not on the platform, but on the shore, loc neg 1900 ne",
+     "r": [
+      "Demon Fangs"
+     ]
     },
     {
      "c": [
@@ -128001,6 +127894,14 @@
       [
        "A Metal Pipe",
        1
+      ],
+      [
+       "Danl's Reference",
+       1
+      ],
+      [
+       "Trunt's Head",
+       1
       ]
      ],
      "n": ""
@@ -128047,18 +127948,18 @@
    "roles": {
     "A Metal Pipe": "base",
     "Book of Celestial Fists": "mid",
-    "Breath of Gwan": "base",
+    "Breath of Gwan": "mid",
     "Celestial Fists": "reward",
     "Celestial Fists (book)": "mid",
     "Charred Scale": "base",
     "Code of Zan Fi": "base",
-    "Danl's Reference": "base",
-    "Demon Fangs": "base",
+    "Danl's Reference": "mid",
+    "Demon Fangs": "mid",
     "Eye of Kaiaren": "mid",
     "Immortals": "base",
-    "Needle of the Void": "base",
+    "Needle of the Void": "mid",
     "Purple Headband": "base",
-    "Rare Robe Pattern": "base",
+    "Rare Robe Pattern": "mid",
     "Red Sash of Order": "base",
     "Robe of the Lost Circle": "mid",
     "Robe of the Whistling Fists": "mid",
@@ -128066,7 +127967,7 @@
     "Shadow Wolf Pelt": "base",
     "Silk Swatch": "base",
     "The Idol": "base",
-    "Trunt's Head": "base"
+    "Trunt's Head": "mid"
    },
    "split": true,
    "steps": [
@@ -128134,15 +128035,17 @@
       [
        "Code of Zan Fi",
        1
-      ],
-      [
-       "Needle of the Void",
-       1
       ]
      ],
      "k": "give",
      "npc": "Brother Qwinn",
      "npct": "Brother_Qwinn",
+     "out": [
+      [
+       "Needle of the Void",
+       1
+      ]
+     ],
      "pre": [
       2,
       4
@@ -128160,15 +128063,17 @@
       [
        "The Idol",
        1
-      ],
-      [
-       "Rare Robe Pattern",
-       1
       ]
      ],
      "k": "give",
      "npc": "Brother Zephyl",
      "npct": "Brother_Zephyl",
+     "out": [
+      [
+       "Rare Robe Pattern",
+       1
+      ]
+     ],
      "pre": [
       3,
       5
@@ -128225,6 +128130,8 @@
       ]
      ],
      "pre": [
+      6,
+      7,
       8
      ],
      "txt": "Combine Shadow Silk, Needle of the Void, Rare Robe Pattern, and Song: Jonthan's Whistling Warsong in a sewing kit to make Robe of the Lost Circle (no skill check)"
@@ -128295,15 +128202,17 @@
       [
        "Immortals",
        1
-      ],
-      [
-       "Danl's Reference",
-       1
       ]
      ],
      "k": "give",
      "npc": "Tomekeeper Danl",
      "npct": "Tomekeeper_Danl",
+     "out": [
+      [
+       "Danl's Reference",
+       1
+      ]
+     ],
      "pre": [
       13
      ],
@@ -128352,10 +128261,6 @@
      "i": 18,
      "in": [
       [
-       "Breath of Gwan",
-       1
-      ],
-      [
        "Charred Scale",
        1
       ]
@@ -128363,6 +128268,12 @@
      "k": "give",
      "npc": "A presence",
      "npct": "A_presence",
+     "out": [
+      [
+       "Breath of Gwan",
+       1
+      ]
+     ],
      "pre": [
       17
      ],
@@ -128376,15 +128287,20 @@
       [
        "Breath of Gwan",
        1
-      ],
-      [
-       "Trunt's Head",
-       1
       ]
      ],
      "k": "give",
      "npc": "Gwan",
      "npct": "Gwan",
+     "out": [
+      [
+       "Trunt's Head",
+       1
+      ]
+     ],
+     "pre": [
+      18
+     ],
      "txt": "Hand Breath of Gwan in to a sleeping ogre in Mines of Nurga to spawn Trunt. Kill Trunt and loot Trunt's Head (Note: a sleeping ogre must con indifferently, use sneak from behind to turn in).",
      "z": "The Mines of Nurga"
     },
@@ -128422,15 +128338,17 @@
       [
        "Eye of Kaiaren",
        1
-      ],
-      [
-       "Demon Fangs",
-       1
       ]
      ],
      "k": "give",
      "npc": "Astral Projection (LOIO)",
      "npct": "Astral_Projection_(LOIO)",
+     "out": [
+      [
+       "Demon Fangs",
+       1
+      ]
+     ],
      "pre": [
       21
      ],
@@ -128467,7 +128385,8 @@
       ]
      ],
      "pre": [
-      16
+      16,
+      22
      ],
      "txt": "SUPER DUPER IMPORTANT: If you are doing/receiving an MQ or you do not have your Demon Fangs in hand and ready, do NOT turn in Celestial Fists (book) to Sane Kaiaran and receive Book of Celestial Fists because Sane Kaiare"
     },
@@ -128549,6 +128468,7 @@
       ]
      ],
      "pre": [
+      22,
       23
      ],
      "txt": "Turn in the modified Book of Celestial Fists and Demon Fangs to sane Kaiaren to receive the monk epic, Celestial Fists."
@@ -128566,7 +128486,7 @@
     ],
     [
      "Breath of Gwan",
-     2
+     1
     ],
     [
      "Charred Scale",
@@ -128585,19 +128505,7 @@
      1
     ],
     [
-     "Immortals",
-     1
-    ],
-    [
-     "Needle of the Void",
-     1
-    ],
-    [
      "Purple Headband",
-     1
-    ],
-    [
-     "Rare Robe Pattern",
      1
     ],
     [
@@ -130342,7 +130250,7 @@
     ],
     [
      "Full Sack for Master",
-     1
+     2
     ],
     [
      "Goblin Scout Beads",
@@ -130413,10 +130321,6 @@
      1
     ],
     [
-     "Tattered Sack from Rinmark",
-     1
-    ],
-    [
      "Tektite (Item)",
      1
     ],
@@ -130456,16 +130360,13 @@
       [
        "Full Sack for Master",
        1
-      ],
-      [
-       "Tattered Sack from Rinmark",
-       1
       ]
      ],
      "g": "An Iksar Master",
      "n": "Give Full Sack for Master to an Iksar master \"Rinmark\" and receive Iksar Right H",
      "r": [
-      "Iksar Right Hand"
+      "Iksar Right Hand",
+      "Tattered Sack from Rinmark"
      ]
     },
     {
@@ -130860,10 +130761,6 @@
       [
        "Full Sack for Master",
        1
-      ],
-      [
-       "Tattered Sack from Rinmark",
-       1
       ]
      ],
      "k": "give",
@@ -130873,13 +130770,11 @@
       [
        "Iksar Right Hand",
        1
+      ],
+      [
+       "Tattered Sack from Rinmark",
+       1
       ]
-     ],
-     "pre": [
-      10,
-      11,
-      12,
-      13
      ],
      "txt": "Give Full Sack for Master to an Iksar master \"Rinmark\" and receive Iksar Right Hand ('=|-')"
     },
@@ -131016,7 +130911,8 @@
       10,
       11,
       12,
-      13
+      13,
+      15
      ],
      "txt": "Give Tin Box to An Iksar Master \"Rinmark\" (to receive Empty Tin Box)"
     },
@@ -133401,7 +133297,7 @@
    "need": [
     [
      "Apprentice Ring",
-     3
+     1
     ],
     [
      "Black Silk Cape",
@@ -133409,11 +133305,11 @@
     ],
     [
      "Cloak of Spiroc Feathers",
-     2
+     1
     ],
     [
      "Eye of Innoruuk",
-     2
+     1
     ],
     [
      "Flowing Black Robe",
@@ -133428,15 +133324,7 @@
      2
     ],
     [
-     "Rolling Stone Moss",
-     2
-    ],
-    [
      "Scaled Symbol of the Serpent",
-     1
-    ],
-    [
-     "Scythe of the Shadowed Soul",
      1
     ],
     [
@@ -133445,7 +133333,7 @@
     ],
     [
      "Slime Blood of Cazic Thule",
-     2
+     1
     ],
     [
      "Spiroc Feathers",
@@ -133456,12 +133344,8 @@
      1
     ],
     [
-     "Tome of Instruction",
-     1
-    ],
-    [
      "Twisted Bone Earring",
-     2
+     1
     ]
    ],
    "oe": true,
@@ -133471,42 +133355,26 @@
       [
        "Head of Sir Edwin Motte",
        1
-      ],
-      [
-       "Apprentice Ring",
-       1
       ]
      ],
      "g": "Kazen Fecae",
-     "n": "Give the Head to Kazen Fecae for the Symbol of the Apprentice"
+     "n": "Give the Head to Kazen Fecae for the Symbol of the Apprentice",
+     "r": [
+      "Apprentice Ring"
+     ]
     },
     {
      "c": [
-      [
-       "Twisted Bone Earring",
-       1
-      ],
-      [
-       "Apprentice Ring",
-       1
-      ]
-     ],
-     "g": "Venenzi Oberzendi",
-     "n": "Give the Symbol to Venenzi Oberzendi in Nektulos Forest for the Twisted Symbol o"
-    },
-    {
-     "c": [
-      [
-       "Rolling Stone Moss",
-       1
-      ],
       [
        "Flowing Black Robe",
        1
       ]
      ],
      "g": "Venenzi Oberzendi",
-     "n": "Give the Flowing Black Robe to Venenzi for Rolling Stone Moss"
+     "n": "Give the Flowing Black Robe to Venenzi for Rolling Stone Moss",
+     "r": [
+      "Rolling Stone Moss"
+     ]
     },
     {
      "c": [
@@ -133569,16 +133437,6 @@
       [
        "Cloak of Spiroc Feathers",
        1
-      ]
-     ],
-     "g": "Jzil GSix",
-     "n": "Give the items to Jzil GSix for the Cloak of Spiroc Feathers"
-    },
-    {
-     "c": [
-      [
-       "Cloak of Spiroc Feathers",
-       1
       ],
       [
        "Eye of Innoruuk",
@@ -133598,44 +133456,41 @@
     {
      "c": [
       [
-       "Tome of Instruction",
-       1
-      ],
-      [
        "Gkzzallk in a Box",
        1
       ]
      ],
      "g": "Kazen Fecae",
-     "n": "Give the Prepared Regents Box to Kazen for the Tome of Instruction"
+     "n": "Give the Prepared Regents Box to Kazen for the Tome of Instruction",
+     "r": [
+      "Tome of Instruction"
+     ]
     },
     {
      "c": [
-      [
-       "Gkzzallk in a Box",
-       1
-      ],
       [
        "Tome of Instruction",
        1
       ]
      ],
      "g": "Gkzzallk",
-     "n": "Give the Tome of Instruction to Gkzzallk for Gkzzallk in a Box -- See the note b"
+     "n": "Give the Tome of Instruction to Gkzzallk for Gkzzallk in a Box -- See the note b",
+     "r": [
+      "Gkzzallk in a Box"
+     ]
     },
     {
      "c": [
       [
        "Gkzzallk in a Box",
        1
-      ],
-      [
-       "Scythe of the Shadowed Soul",
-       1
       ]
      ],
      "g": "Kazen Fecae",
-     "n": "Give Gkzzallk in a Box to Kazen Fecae for Scythe of the Shadowed Soul"
+     "n": "Give Gkzzallk in a Box to Kazen Fecae for Scythe of the Shadowed Soul",
+     "r": [
+      "Scythe of the Shadowed Soul"
+     ]
     },
     {
      "c": [
@@ -133685,7 +133540,7 @@
     "Scythe of the Shadowed Soul"
    ],
    "roles": {
-    "Apprentice Ring": "base",
+    "Apprentice Ring": "mid",
     "Black Silk Cape": "base",
     "Cloak of Spiroc Feathers": "base",
     "Eye of Innoruuk": "base",
@@ -133693,14 +133548,14 @@
     "Gkzzallk in a Box": "mid",
     "Head of Sir Edwin Motte": "base",
     "Manisi Herb": "base",
-    "Rolling Stone Moss": "base",
+    "Rolling Stone Moss": "mid",
     "Scaled Symbol of the Serpent": "base",
-    "Scythe of the Shadowed Soul": "base",
+    "Scythe of the Shadowed Soul": "reward",
     "Silver Disc": "base",
     "Slime Blood of Cazic Thule": "base",
     "Spiroc Feathers": "base",
     "Symbol of Insanity": "base",
-    "Tome of Instruction": "base",
+    "Tome of Instruction": "mid",
     "Twisted Bone Earring": "base"
    },
    "split": true,
@@ -133733,15 +133588,17 @@
       [
        "Head of Sir Edwin Motte",
        1
-      ],
-      [
-       "Apprentice Ring",
-       1
       ]
      ],
      "k": "give",
      "npc": "Kazen Fecae",
      "npct": "Kazen_Fecae",
+     "out": [
+      [
+       "Apprentice Ring",
+       1
+      ]
+     ],
      "pre": [
       3
      ],
@@ -133749,7 +133606,10 @@
     },
     {
      "i": 5,
-     "in": [
+     "k": "give",
+     "npc": "Venenzi Oberzendi",
+     "npct": "Venenzi_Oberzendi",
+     "out": [
       [
        "Twisted Bone Earring",
        1
@@ -133759,9 +133619,6 @@
        1
       ]
      ],
-     "k": "give",
-     "npc": "Venenzi Oberzendi",
-     "npct": "Venenzi_Oberzendi",
      "txt": "Give the Symbol to Venenzi Oberzendi in Nektulos Forest for the Twisted Symbol of the Apprentice"
     },
     {
@@ -133780,10 +133637,6 @@
      "i": 7,
      "in": [
       [
-       "Rolling Stone Moss",
-       1
-      ],
-      [
        "Flowing Black Robe",
        1
       ]
@@ -133791,6 +133644,12 @@
      "k": "give",
      "npc": "Venenzi Oberzendi",
      "npct": "Venenzi_Oberzendi",
+     "out": [
+      [
+       "Rolling Stone Moss",
+       1
+      ]
+     ],
      "pre": [
       6
      ],
@@ -133820,7 +133679,10 @@
      "npc": "Emkel Kabae",
      "npct": "Emkel_Kabae",
      "pre": [
-      3
+      3,
+      4,
+      5,
+      7
      ],
      "txt": "Head to Lake Rathetear, Give the Rolling Stone Moss and the Twisted Symbol of the Apprentice to Emkel Kabae."
     },
@@ -133987,15 +133849,15 @@
     },
     {
      "i": 24,
-     "in": [
+     "k": "give",
+     "npc": "Jzil GSix",
+     "npct": "Jzil_GSix",
+     "out": [
       [
        "Cloak of Spiroc Feathers",
        1
       ]
      ],
-     "k": "give",
-     "npc": "Jzil GSix",
-     "npct": "Jzil_GSix",
      "txt": "Give the items to Jzil GSix for the Cloak of Spiroc Feathers"
     },
     {
@@ -134048,6 +133910,7 @@
       ]
      ],
      "pre": [
+      24,
       25,
       26
      ],
@@ -134057,10 +133920,6 @@
      "i": 28,
      "in": [
       [
-       "Tome of Instruction",
-       1
-      ],
-      [
        "Gkzzallk in a Box",
        1
       ]
@@ -134068,6 +133927,12 @@
      "k": "give",
      "npc": "Kazen Fecae",
      "npct": "Kazen_Fecae",
+     "out": [
+      [
+       "Tome of Instruction",
+       1
+      ]
+     ],
      "pre": [
       27
      ],
@@ -134077,10 +133942,6 @@
      "i": 29,
      "in": [
       [
-       "Gkzzallk in a Box",
-       1
-      ],
-      [
        "Tome of Instruction",
        1
       ]
@@ -134088,8 +133949,14 @@
      "k": "give",
      "npc": "Gkzzallk",
      "npct": "Gkzzallk",
+     "out": [
+      [
+       "Gkzzallk in a Box",
+       1
+      ]
+     ],
      "pre": [
-      27
+      28
      ],
      "txt": "Give the Tome of Instruction to Gkzzallk for Gkzzallk in a Box -- See the note below. Do not do this step on someone else's (or your own Guild's) Sky slot without contacting their officers first. This will despawn the is"
     },
@@ -134099,17 +133966,20 @@
       [
        "Gkzzallk in a Box",
        1
-      ],
-      [
-       "Scythe of the Shadowed Soul",
-       1
       ]
      ],
      "k": "give",
      "npc": "Kazen Fecae",
      "npct": "Kazen_Fecae",
+     "out": [
+      [
+       "Scythe of the Shadowed Soul",
+       1
+      ]
+     ],
      "pre": [
-      27
+      27,
+      29
      ],
      "txt": "Give Gkzzallk in a Box to Kazen Fecae for Scythe of the Shadowed Soul"
     }
@@ -134118,19 +133988,11 @@
    "want": [
     [
      "Apprentice Ring",
-     3
+     1
     ],
     [
      "Black Silk Cape",
      1
-    ],
-    [
-     "Flowing Black Robe",
-     1
-    ],
-    [
-     "Gkzzallk in a Box",
-     2
     ],
     [
      "Head of Sir Edwin Motte",
@@ -134142,14 +134004,10 @@
     ],
     [
      "Rolling Stone Moss",
-     2
-    ],
-    [
-     "Scaled Symbol of the Serpent",
      1
     ],
     [
-     "Scythe of the Shadowed Soul",
+     "Scaled Symbol of the Serpent",
      1
     ],
     [
@@ -134170,7 +134028,7 @@
     ],
     [
      "Twisted Bone Earring",
-     2
+     1
     ]
    ],
    "zone": "Nektulos Forest"
@@ -139629,20 +139487,12 @@
      1
     ],
     [
-     "Gleaming Crested Breastplate",
-     2
-    ],
-    [
      "Gleaming Crested Shield",
-     2
+     1
     ],
     [
      "Gleaming Crested Sword",
-     2
-    ],
-    [
-     "Mark of Atonement",
-     2
+     1
     ],
     [
      "Tainted Darksteel Breastplate",
@@ -139681,14 +139531,13 @@
       [
        "Pure Crystal",
        1
-      ],
-      [
-       "Gleaming Crested Breastplate",
-       1
       ]
      ],
      "g": "Reklon Gnallen",
-     "n": "Give Tainted Darksteel Breastplate and Pure Crystal to Reklon Gnallen in Quellio"
+     "n": "Give Tainted Darksteel Breastplate and Pure Crystal to Reklon Gnallen in Quellio",
+     "r": [
+      "Gleaming Crested Breastplate"
+     ]
     },
     {
      "c": [
@@ -139726,20 +139575,6 @@
       [
        "Gleaming Crested Shield",
        1
-      ]
-     ],
-     "g": "Elia the Pure",
-     "n": "Give to Elia the Pure, in Felwithe, for Gleaming Crested Shield."
-    },
-    {
-     "c": [
-      [
-       "Mark of Atonement",
-       1
-      ],
-      [
-       "Gleaming Crested Shield",
-       1
       ],
       [
        "Gleaming Crested Breastplate",
@@ -139751,7 +139586,10 @@
       ]
      ],
      "g": "Reklon Gnallen",
-     "n": "Turn in the three purified items (Gleaming Crested Shield, Gleaming Crested Brea"
+     "n": "Turn in the three purified items (Gleaming Crested Shield, Gleaming Crested Brea",
+     "r": [
+      "Mark of Atonement"
+     ]
     },
     {
      "c": [
@@ -139799,10 +139637,10 @@
     "Cold Plate of Beef and Bread": "base",
     "Fiery Avenger": "base",
     "Fiery Defender": "reward",
-    "Gleaming Crested Breastplate": "base",
+    "Gleaming Crested Breastplate": "mid",
     "Gleaming Crested Shield": "base",
     "Gleaming Crested Sword": "base",
-    "Mark of Atonement": "base",
+    "Mark of Atonement": "mid",
     "Pure Crystal": "mid",
     "Tainted Darksteel Breastplate": "base",
     "Tainted Darksteel Sword": "base"
@@ -139866,15 +139704,17 @@
       [
        "Pure Crystal",
        1
-      ],
-      [
-       "Gleaming Crested Breastplate",
-       1
       ]
      ],
      "k": "give",
      "npc": "Reklon Gnallen",
      "npct": "Reklon_Gnallen",
+     "out": [
+      [
+       "Gleaming Crested Breastplate",
+       1
+      ]
+     ],
      "pre": [
       3,
       4
@@ -139943,24 +139783,20 @@
     },
     {
      "i": 11,
-     "in": [
+     "k": "give",
+     "npc": "Elia the Pure",
+     "npct": "Elia_the_Pure",
+     "out": [
       [
        "Gleaming Crested Shield",
        1
       ]
      ],
-     "k": "give",
-     "npc": "Elia the Pure",
-     "npct": "Elia_the_Pure",
      "txt": "Give to Elia the Pure, in Felwithe, for Gleaming Crested Shield."
     },
     {
      "i": 12,
      "in": [
-      [
-       "Mark of Atonement",
-       1
-      ],
       [
        "Gleaming Crested Shield",
        1
@@ -139977,6 +139813,16 @@
      "k": "give",
      "npc": "Reklon Gnallen",
      "npct": "Reklon_Gnallen",
+     "out": [
+      [
+       "Mark of Atonement",
+       1
+      ]
+     ],
+     "pre": [
+      5,
+      11
+     ],
      "txt": "Turn in the three purified items (Gleaming Crested Shield, Gleaming Crested Breastplate, and Gleaming Crested Sword) to Reklon Gnallen for the Mark of Atonement."
     },
     {
@@ -140000,6 +139846,9 @@
        1
       ]
      ],
+     "pre": [
+      12
+     ],
      "txt": "Turn in Mark of Atonement and Fiery Avenger to Irak Altil, a wandering skeleton in Plane of Fear to receive your Fiery Defender."
     }
    ],
@@ -140014,27 +139863,7 @@
      1
     ],
     [
-     "Gleaming Crested Breastplate",
-     2
-    ],
-    [
-     "Gleaming Crested Shield",
-     2
-    ],
-    [
-     "Gleaming Crested Sword",
-     2
-    ],
-    [
      "Mark of Atonement",
-     2
-    ],
-    [
-     "Pure Crystal",
-     1
-    ],
-    [
-     "Tainted Darksteel Breastplate",
      1
     ],
     [
@@ -141958,15 +141787,17 @@
       [
        "Bottle of Kalish",
        3
-      ],
-      [
-       "Severed Paw",
-       1
       ]
      ],
      "k": "give",
      "npc": "Vin Moltor",
      "npct": "Vin_Moltor",
+     "out": [
+      [
+       "Severed Paw",
+       1
+      ]
+     ],
      "txt": "With room for a container in your inventory bring Vin Moltor a Rat Ear Pie and 3x Bottle of Kalish to get, or kill him until he drops, a Severed Paw"
     },
     {
@@ -141984,6 +141815,9 @@
     {
      "i": 4,
      "k": "combine",
+     "pre": [
+      1
+     ],
      "tool": [
       "Severed Paw"
      ],
@@ -143138,10 +142972,6 @@
      1
     ],
     [
-     "Avian Key",
-     1
-    ],
-    [
      "Bird Whistle",
      1
     ],
@@ -143151,30 +142981,6 @@
     ],
     [
      "Dull Dragon Scale",
-     1
-    ],
-    [
-     "Key of Beasts",
-     1
-    ],
-    [
-     "Key of Misfortune",
-     1
-    ],
-    [
-     "Key of Scale",
-     1
-    ],
-    [
-     "Key of Swords",
-     1
-    ],
-    [
-     "Key of the Misplaced",
-     1
-    ],
-    [
-     "Key of the Swarm",
      1
     ],
     [
@@ -143192,10 +142998,6 @@
     [
      "Replica of the Wyrm Queen",
      1
-    ],
-    [
-     "Veeshan's Key",
-     1
     ]
    ],
    "parts": [
@@ -143204,112 +143006,104 @@
       [
        "Miniature Sword",
        1
-      ],
-      [
-       "Key of Swords",
-       1
       ]
      ],
      "g": "Noble Dojorn",
-     "n": "Hand him one Miniature Sword to get the Key of Swords (to island 1.5, Noble Dojo"
+     "n": "Hand him one Miniature Sword to get the Key of Swords (to island 1.5, Noble Dojo",
+     "r": [
+      "Key of Swords"
+     ]
     },
     {
      "c": [
       [
        "Lost rabbit's foot",
        1
-      ],
-      [
-       "Key of the Misplaced",
-       1
       ]
      ],
      "g": "Sirran the Lunatic",
-     "n": "Hand him one Lost Rabbit's Foot to get the Key of the Misplaced (to island 2, Az"
+     "n": "Hand him one Lost Rabbit's Foot to get the Key of the Misplaced (to island 2, Az",
+     "r": [
+      "Key of the Misplaced"
+     ]
     },
     {
      "c": [
       [
        "Broken Mirror",
        1
-      ],
-      [
-       "Key of Misfortune",
-       1
       ]
      ],
      "g": "Sirran the Lunatic",
-     "n": "Hand him one Broken Mirror to get the Key of Misfortune (to Gorgalask Island)."
+     "n": "Hand him one Broken Mirror to get the Key of Misfortune (to Gorgalask Island).",
+     "r": [
+      "Key of Misfortune"
+     ]
     },
     {
      "c": [
       [
        "Animal Figurine",
        1
-      ],
-      [
-       "Key of Beasts",
-       1
       ]
      ],
      "g": "Sirran the Lunatic",
-     "n": "Hand him one Animal Figurine to get the Key of Beasts (to Harvester Island)."
+     "n": "Hand him one Animal Figurine to get the Key of Beasts (to Harvester Island).",
+     "r": [
+      "Key of Beasts"
+     ]
     },
     {
      "c": [
       [
        "Bird Whistle",
        1
-      ],
-      [
-       "Avian Key",
-       1
       ]
      ],
      "g": "The Spiroc Lord",
-     "n": "Hand him one Bird Whistle to get the Avian Key (to Spiroc Island)."
+     "n": "Hand him one Bird Whistle to get the Avian Key (to Spiroc Island).",
+     "r": [
+      "Avian Key"
+     ]
     },
     {
      "c": [
       [
        "Noise Maker",
        1
-      ],
-      [
-       "Key of the Swarm",
-       1
       ]
      ],
      "g": "Sirran the Lunatic",
-     "n": "Hand him one Noise Maker to get the Key of the Swarm (to Wasp Island)."
+     "n": "Hand him one Noise Maker to get the Key of the Swarm (to Wasp Island).",
+     "r": [
+      "Key of the Swarm"
+     ]
     },
     {
      "c": [
       [
        "Dull Dragon Scale",
        1
-      ],
-      [
-       "Key of Scale",
-       1
       ]
      ],
      "g": "Sirran the Lunatic",
-     "n": "Hand him one Dull Dragon Scale to get the Key of Scale (to Drake Island)."
+     "n": "Hand him one Dull Dragon Scale to get the Key of Scale (to Drake Island).",
+     "r": [
+      "Key of Scale"
+     ]
     },
     {
      "c": [
       [
        "Replica of the Wyrm Queen",
        1
-      ],
-      [
-       "Veeshan's Key",
-       1
       ]
      ],
      "g": "Sirran the Lunatic",
-     "n": "Hand him one Replica of the Wyrm Queen to get Veeshan's Key (to the eighth and f"
+     "n": "Hand him one Replica of the Wyrm Queen to get Veeshan's Key (to the eighth and f",
+     "r": [
+      "Veeshan's Key"
+     ]
     }
    ],
    "relatedNpcs": [
@@ -143327,21 +143121,21 @@
    "rewards": [],
    "roles": {
     "Animal Figurine": "base",
-    "Avian Key": "base",
+    "Avian Key": "mid",
     "Bird Whistle": "base",
     "Broken Mirror": "base",
     "Dull Dragon Scale": "base",
-    "Key of Beasts": "base",
-    "Key of Misfortune": "base",
-    "Key of Scale": "base",
-    "Key of Swords": "base",
-    "Key of the Misplaced": "base",
-    "Key of the Swarm": "base",
+    "Key of Beasts": "mid",
+    "Key of Misfortune": "mid",
+    "Key of Scale": "mid",
+    "Key of Swords": "mid",
+    "Key of the Misplaced": "mid",
+    "Key of the Swarm": "mid",
     "Lost rabbit's foot": "base",
     "Miniature Sword": "base",
     "Noise Maker": "base",
     "Replica of the Wyrm Queen": "base",
-    "Veeshan's Key": "base"
+    "Veeshan's Key": "mid"
    },
    "split": true,
    "steps": [
@@ -143357,15 +143151,17 @@
       [
        "Miniature Sword",
        1
-      ],
-      [
-       "Key of Swords",
-       1
       ]
      ],
      "k": "give",
      "npc": "Noble Dojorn",
      "npct": "Noble_Dojorn",
+     "out": [
+      [
+       "Key of Swords",
+       1
+      ]
+     ],
      "txt": "Hand him one Miniature Sword to get the Key of Swords (to island 1.5, Noble Dojorn Island, which is a one-way trip)."
     },
     {
@@ -143374,15 +143170,17 @@
       [
        "Lost rabbit's foot",
        1
-      ],
-      [
-       "Key of the Misplaced",
-       1
       ]
      ],
      "k": "give",
      "npc": "Sirran the Lunatic",
      "npct": "Sirran_the_Lunatic",
+     "out": [
+      [
+       "Key of the Misplaced",
+       1
+      ]
+     ],
      "txt": "Hand him one Lost Rabbit's Foot to get the Key of the Misplaced (to island 2, Azarack Island)."
     },
     {
@@ -143391,15 +143189,17 @@
       [
        "Broken Mirror",
        1
-      ],
-      [
-       "Key of Misfortune",
-       1
       ]
      ],
      "k": "give",
      "npc": "Sirran the Lunatic",
      "npct": "Sirran_the_Lunatic",
+     "out": [
+      [
+       "Key of Misfortune",
+       1
+      ]
+     ],
      "txt": "Hand him one Broken Mirror to get the Key of Misfortune (to Gorgalask Island)."
     },
     {
@@ -143408,15 +143208,17 @@
       [
        "Animal Figurine",
        1
-      ],
-      [
-       "Key of Beasts",
-       1
       ]
      ],
      "k": "give",
      "npc": "Sirran the Lunatic",
      "npct": "Sirran_the_Lunatic",
+     "out": [
+      [
+       "Key of Beasts",
+       1
+      ]
+     ],
      "txt": "Hand him one Animal Figurine to get the Key of Beasts (to Harvester Island)."
     },
     {
@@ -143425,15 +143227,17 @@
       [
        "Bird Whistle",
        1
-      ],
-      [
-       "Avian Key",
-       1
       ]
      ],
      "k": "give",
      "npc": "The Spiroc Lord",
      "npct": "The_Spiroc_Lord",
+     "out": [
+      [
+       "Avian Key",
+       1
+      ]
+     ],
      "txt": "Hand him one Bird Whistle to get the Avian Key (to Spiroc Island)."
     },
     {
@@ -143442,15 +143246,17 @@
       [
        "Noise Maker",
        1
-      ],
-      [
-       "Key of the Swarm",
-       1
       ]
      ],
      "k": "give",
      "npc": "Sirran the Lunatic",
      "npct": "Sirran_the_Lunatic",
+     "out": [
+      [
+       "Key of the Swarm",
+       1
+      ]
+     ],
      "txt": "Hand him one Noise Maker to get the Key of the Swarm (to Wasp Island)."
     },
     {
@@ -143459,15 +143265,17 @@
       [
        "Dull Dragon Scale",
        1
-      ],
-      [
-       "Key of Scale",
-       1
       ]
      ],
      "k": "give",
      "npc": "Sirran the Lunatic",
      "npct": "Sirran_the_Lunatic",
+     "out": [
+      [
+       "Key of Scale",
+       1
+      ]
+     ],
      "txt": "Hand him one Dull Dragon Scale to get the Key of Scale (to Drake Island)."
     },
     {
@@ -143476,15 +143284,17 @@
       [
        "Replica of the Wyrm Queen",
        1
-      ],
-      [
-       "Veeshan's Key",
-       1
       ]
      ],
      "k": "give",
      "npc": "Sirran the Lunatic",
      "npct": "Sirran_the_Lunatic",
+     "out": [
+      [
+       "Veeshan's Key",
+       1
+      ]
+     ],
      "txt": "Hand him one Replica of the Wyrm Queen to get Veeshan's Key (to the eighth and final island, Butterfly Island)."
     }
    ],
@@ -143492,10 +143302,6 @@
    "want": [
     [
      "Animal Figurine",
-     1
-    ],
-    [
-     "Avian Key",
      1
     ],
     [
@@ -143508,30 +143314,6 @@
     ],
     [
      "Dull Dragon Scale",
-     1
-    ],
-    [
-     "Key of Beasts",
-     1
-    ],
-    [
-     "Key of Misfortune",
-     1
-    ],
-    [
-     "Key of Scale",
-     1
-    ],
-    [
-     "Key of Swords",
-     1
-    ],
-    [
-     "Key of the Misplaced",
-     1
-    ],
-    [
-     "Key of the Swarm",
      1
     ],
     [
@@ -143548,10 +143330,6 @@
     ],
     [
      "Replica of the Wyrm Queen",
-     1
-    ],
-    [
-     "Veeshan's Key",
      1
     ]
    ],
@@ -155766,7 +155544,7 @@
     ],
     [
      "Krofer's Requisition",
-     1
+     2
     ],
     [
      "Panther Meat",
@@ -155775,10 +155553,6 @@
     [
      "Raptor Meat",
      1
-    ],
-    [
-     "Report of Failure",
-     3
     ],
     [
      "Sifaye messenger's report",
@@ -155853,14 +155627,13 @@
       [
        "Mission Report",
        1
-      ],
-      [
-       "Report of Failure",
-       1
       ]
      ],
      "g": "Lieutenant Krofer",
-     "n": "Return the Mission Report to Lieutenant Krofer for the Report of Failure. This c"
+     "n": "Return the Mission Report to Lieutenant Krofer for the Report of Failure. This c",
+     "r": [
+      "Report of Failure"
+     ]
     },
     {
      "c": [
@@ -155964,7 +155737,7 @@
     "Mission Report": "mid",
     "Panther Meat": "base",
     "Raptor Meat": "base",
-    "Report of Failure": "base",
+    "Report of Failure": "mid",
     "Sifaye messenger's report": "base",
     "Signed Requisition": "mid",
     "Tar goo strands": "base",
@@ -156070,15 +155843,17 @@
       [
        "Mission Report",
        1
-      ],
-      [
-       "Report of Failure",
-       1
       ]
      ],
      "k": "give",
      "npc": "Lieutenant Krofer",
      "npct": "Lieutenant_Krofer",
+     "out": [
+      [
+       "Report of Failure",
+       1
+      ]
+     ],
      "pre": [
       5
      ],
@@ -156095,6 +155870,9 @@
      "k": "give",
      "npc": "Staff Sergeant Drioc",
      "npct": "Staff_Sergeant_Drioc",
+     "pre": [
+      7
+     ],
      "txt": "Give the Report of Failure to Staff Sergeant Drioc and he will return it to you."
     },
     {
@@ -156117,6 +155895,9 @@
        "Enchanted Velium Mask",
        1
       ]
+     ],
+     "pre": [
+      7
      ],
      "txt": "Next give the Report of Failure to Noble Helssen, he will hand you an Inscribed Velium Tablet. Receive"
     },
@@ -156252,10 +156033,6 @@
      1
     ],
     [
-     "Mission Report",
-     1
-    ],
-    [
      "Panther Meat",
      2
     ],
@@ -156265,7 +156042,7 @@
     ],
     [
      "Report of Failure",
-     3
+     2
     ],
     [
      "Sifaye messenger's report",
@@ -157399,7 +157176,7 @@
     ],
     [
      "Jagged Diamond Dagger",
-     2
+     1
     ],
     [
      "Martune Rapier",
@@ -157469,18 +157246,14 @@
       [
        "Book of Souls",
        1
-      ],
-      [
-       "Translated Parchment",
-       1
-      ],
-      [
-       "Jagged Diamond Dagger",
-       1
       ]
      ],
      "g": "Yendar Starpyre",
-     "n": "Give Tattered Parchment and Book of Souls to Yendar Starpyre to spawn Renux. Kil"
+     "n": "Give Tattered Parchment and Book of Souls to Yendar Starpyre to spawn Renux. Kil",
+     "r": [
+      "Translated Parchment",
+      "Jagged Diamond Dagger"
+     ]
     },
     {
      "c": [
@@ -157640,7 +157413,7 @@
     "Fleshripper": "base",
     "General's Pouch": "base",
     "Gigantic Zweihander": "base",
-    "Jagged Diamond Dagger": "base",
+    "Jagged Diamond Dagger": "mid",
     "Mithril Two-Handed Sword": "base",
     "Painbringer": "base",
     "Ragebringer": "reward",
@@ -157652,7 +157425,7 @@
     "Shining Metallic Robes": "base",
     "Stanos' Pouch": "base",
     "Tattered Parchment": "base",
-    "Translated Parchment": "base"
+    "Translated Parchment": "mid"
    },
    "split": true,
    "steps": [
@@ -157770,7 +157543,12 @@
       [
        "Book of Souls",
        1
-      ],
+      ]
+     ],
+     "k": "give",
+     "npc": "Yendar Starpyre",
+     "npct": "Yendar_Starpyre",
+     "out": [
       [
        "Translated Parchment",
        1
@@ -157780,9 +157558,6 @@
        1
       ]
      ],
-     "k": "give",
-     "npc": "Yendar Starpyre",
-     "npct": "Yendar_Starpyre",
      "pre": [
       8,
       9
@@ -157805,6 +157580,9 @@
        "Sealed Box",
        1
       ]
+     ],
+     "pre": [
+      10
      ],
      "txt": "Return Translated Parchment to Stanos. Receive a Sealed Box from Stanos."
     },
@@ -158033,6 +157811,7 @@
       ]
      ],
      "pre": [
+      10,
       13,
       18,
       23
@@ -158068,7 +157847,7 @@
     ],
     [
      "Jagged Diamond Dagger",
-     2
+     1
     ],
     [
      "Martune Rapier",
@@ -159364,7 +159143,10 @@
     },
     {
      "i": 3,
-     "in": [
+     "k": "give",
+     "npc": "Lynada the Exiled",
+     "npct": "Lynada_the_Exiled",
+     "out": [
       [
        "Clockwork Oil Stout",
        1
@@ -159374,9 +159156,6 @@
        1
       ]
      ],
-     "k": "give",
-     "npc": "Lynada the Exiled",
-     "npct": "Lynada_the_Exiled",
      "txt": "Go to Sol A have someone kill (or pickpocket) CWG Model CX to obtain the Clockwork Oil Stout and have someone group with you and bring Lynada the Exiled to the ent and kill her then loot the Sparkle purse."
     },
     {
@@ -161651,55 +161430,37 @@
     [
      "Scarab Legs",
      2
-    ],
-    [
-     "Small Scarab Boots",
-     1
-    ],
-    [
-     "Small Scarab Breastplate",
-     1
-    ],
-    [
-     "Small Scarab Helm",
-     1
     ]
    ],
    "parts": [
     {
      "c": [
       [
-       "Small Scarab Helm",
-       1
-      ],
-      [
        "Scarab Carapace",
        2
       ]
      ],
      "g": "Vacto Molunel",
-     "n": "For the Small Scarab Helm, hand Vacto Molunel 2 Scarab Carapaces and 5 gold."
+     "n": "For the Small Scarab Helm, hand Vacto Molunel 2 Scarab Carapaces and 5 gold.",
+     "r": [
+      "Small Scarab Helm"
+     ]
     },
     {
      "c": [
-      [
-       "Small Scarab Breastplate",
-       1
-      ],
       [
        "Pristine Giant Scarab Carapace",
        1
       ]
      ],
      "g": "Vacto Molunel",
-     "n": "For the Small Scarab Breastplate, hand Vacto Molunel a Pristine Giant Scarab Car"
+     "n": "For the Small Scarab Breastplate, hand Vacto Molunel a Pristine Giant Scarab Car",
+     "r": [
+      "Small Scarab Breastplate"
+     ]
     },
     {
      "c": [
-      [
-       "Small Scarab Boots",
-       1
-      ],
       [
        "Cracked Giant Scarab Carapace",
        1
@@ -161710,7 +161471,10 @@
       ]
      ],
      "g": "Vacto Molunel",
-     "n": "For the Small Scarab Boots, hand Vacto Molunel a Cracked Giant Scarab Carapace, "
+     "n": "For the Small Scarab Boots, hand Vacto Molunel a Cracked Giant Scarab Carapace, ",
+     "r": [
+      "Small Scarab Boots"
+     ]
     }
    ],
    "relatedNpcs": [
@@ -161730,9 +161494,9 @@
     "Pristine Giant Scarab Carapace": "base",
     "Scarab Carapace": "base",
     "Scarab Legs": "base",
-    "Small Scarab Boots": "base",
-    "Small Scarab Breastplate": "base",
-    "Small Scarab Helm": "base"
+    "Small Scarab Boots": "reward",
+    "Small Scarab Breastplate": "reward",
+    "Small Scarab Helm": "reward"
    },
    "split": true,
    "steps": [
@@ -161741,10 +161505,6 @@
      "i": 1,
      "in": [
       [
-       "Small Scarab Helm",
-       1
-      ],
-      [
        "Scarab Carapace",
        2
       ]
@@ -161752,16 +161512,18 @@
      "k": "give",
      "npc": "Vacto Molunel",
      "npct": "Vacto_Molunel",
+     "out": [
+      [
+       "Small Scarab Helm",
+       1
+      ]
+     ],
      "txt": "For the Small Scarab Helm, hand Vacto Molunel 2 Scarab Carapaces and 5 gold."
     },
     {
      "gold": 23,
      "i": 2,
      "in": [
-      [
-       "Small Scarab Breastplate",
-       1
-      ],
       [
        "Pristine Giant Scarab Carapace",
        1
@@ -161770,16 +161532,18 @@
      "k": "give",
      "npc": "Vacto Molunel",
      "npct": "Vacto_Molunel",
+     "out": [
+      [
+       "Small Scarab Breastplate",
+       1
+      ]
+     ],
      "txt": "For the Small Scarab Breastplate, hand Vacto Molunel a Pristine Giant Scarab Carapace and 23 gold."
     },
     {
      "gold": 17,
      "i": 3,
      "in": [
-      [
-       "Small Scarab Boots",
-       1
-      ],
       [
        "Cracked Giant Scarab Carapace",
        1
@@ -161792,6 +161556,12 @@
      "k": "give",
      "npc": "Vacto Molunel",
      "npct": "Vacto_Molunel",
+     "out": [
+      [
+       "Small Scarab Boots",
+       1
+      ]
+     ],
      "txt": "For the Small Scarab Boots, hand Vacto Molunel a Cracked Giant Scarab Carapace, 2 Scarab Legs, and 17 gold."
     }
    ],
@@ -161812,18 +161582,6 @@
     [
      "Scarab Legs",
      2
-    ],
-    [
-     "Small Scarab Boots",
-     1
-    ],
-    [
-     "Small Scarab Breastplate",
-     1
-    ],
-    [
-     "Small Scarab Helm",
-     1
     ]
    ],
    "zone": "South Kaladim"
@@ -161874,10 +161632,6 @@
    "n": "Scholar Darnath's Help",
    "need": [
     [
-     "Discarded Packaging",
-     2
-    ],
-    [
      "Fire Goblin Skin",
      1
     ],
@@ -161904,14 +161658,13 @@
       [
        "Lost Gift Box",
        1
-      ],
-      [
-       "Discarded Packaging",
-       1
       ]
      ],
      "g": "Kirvil Snowstring",
-     "n": "Go to Thurgadin. Go to the bar in northeast Thurgadin and hand in your Lost Gift"
+     "n": "Go to Thurgadin. Go to the bar in northeast Thurgadin and hand in your Lost Gift",
+     "r": [
+      "Discarded Packaging"
+     ]
     },
     {
      "c": [
@@ -161967,7 +161720,7 @@
     "Chapter IV, Of Flame and Frost": "base",
     "Chapter V, Ashes in the Margins": "base",
     "Chapter VI, The First Frost": "base",
-    "Discarded Packaging": "base",
+    "Discarded Packaging": "mid",
     "Dreadlands Resonance Crystal": "base",
     "Frosted Broach": "base",
     "Frosted Memory Shard": "base",
@@ -162055,15 +161808,17 @@
       [
        "Lost Gift Box",
        1
-      ],
-      [
-       "Discarded Packaging",
-       1
       ]
      ],
      "k": "give",
      "npc": "Kirvil Snowstring",
      "npct": "Kirvil_Snowstring",
+     "out": [
+      [
+       "Discarded Packaging",
+       1
+      ]
+     ],
      "pre": [
       7
      ],
@@ -162080,6 +161835,9 @@
      "k": "give",
      "npc": "Archivist Tyriele",
      "npct": "Archivist_Tyriele",
+     "pre": [
+      8
+     ],
      "txt": "Return to Archivist Tyriele in Iceclad @POS4645, POS1930 and hand in your Discarded Packaging to get CHAPTER II and holiday gift. Use up this gift."
     },
     {
@@ -162254,7 +162012,7 @@
    "want": [
     [
      "Discarded Packaging",
-     2
+     1
     ],
     [
      "Fire Goblin Skin",
@@ -162270,10 +162028,6 @@
     ],
     [
      "Large Sewing Kit",
-     1
-    ],
-    [
-     "Lost Gift Box",
      1
     ]
    ],
@@ -162699,25 +162453,11 @@
      1
     ],
     [
-     "Screaming Mace",
-     1
-    ],
-    [
      "Shiny Brass Shield",
      1
     ]
    ],
    "parts": [
-    {
-     "c": [
-      [
-       "Screaming Mace",
-       1
-      ]
-     ],
-     "g": "A dwarven smith",
-     "n": "You can instead give it to a dwarven smith to get the preliminary dialogue for t"
-    },
     {
      "c": [
       [
@@ -162786,7 +162526,7 @@
     "Dwarven Mace": "base",
     "Dwarven Ringmail Tunic": "base",
     "Prayer Cloth of Tunare": "base",
-    "Screaming Mace": "base",
+    "Screaming Mace": "reward",
     "Unfinished Blade Mold": "base",
     "Unfinished Sledge Mold": "base"
    },
@@ -162794,19 +162534,6 @@
    "steps": [
     {
      "i": 1,
-     "in": [
-      [
-       "Screaming Mace",
-       1
-      ]
-     ],
-     "k": "give",
-     "npc": "A dwarven smith",
-     "npct": "A_dwarven_smith",
-     "txt": "You can instead give it to a dwarven smith to get the preliminary dialogue for the Screaming Mace Quest."
-    },
-    {
-     "i": 2,
      "in": [
       [
        "Brass Earring",
@@ -162819,7 +162546,7 @@
      "txt": "Hand a dwarven smith a Brass Earring, dropped by an orc taskmaster"
     },
     {
-     "i": 3,
+     "i": 2,
      "k": "get",
      "npc": "A dwarven smith",
      "npct": "A_dwarven_smith",
@@ -162832,7 +162559,7 @@
      "txt": "You receive a ."
     },
     {
-     "i": 4,
+     "i": 3,
      "k": "get",
      "npc": "A dwarven smith",
      "npct": "A_dwarven_smith",
@@ -162845,7 +162572,7 @@
      "txt": "You receive an ."
     },
     {
-     "i": 5,
+     "i": 4,
      "in": [
       [
        "Dwarven Ringmail Tunic",
@@ -162858,7 +162585,7 @@
      "txt": "Hand a dwarven smith the Dwarven Ringmail Tunic, dropped by Emperor Crush."
     },
     {
-     "i": 6,
+     "i": 5,
      "k": "get",
      "npc": "A dwarven smith",
      "npct": "A_dwarven_smith",
@@ -162871,7 +162598,7 @@
      "txt": "You receive a ."
     },
     {
-     "i": 7,
+     "i": 6,
      "k": "get",
      "npc": "A dwarven smith",
      "npct": "A_dwarven_smith",
@@ -162884,7 +162611,7 @@
      "txt": "You receive a ."
     },
     {
-     "i": 8,
+     "i": 7,
      "in": [
       [
        "Dwarven Mace",
@@ -162899,13 +162626,13 @@
      "npc": "an elven priest",
      "npct": "an_elven_priest",
      "pre": [
-      6,
-      7
+      5,
+      6
      ],
      "txt": "Give the Dwarven Mace and the Prayer Cloth of Tunare to an elven priest."
     },
     {
-     "i": 9,
+     "i": 8,
      "k": "get",
      "npc": "A dwarven smith",
      "npct": "A_dwarven_smith",
@@ -162938,10 +162665,6 @@
     ],
     [
      "Prayer Cloth of Tunare",
-     1
-    ],
-    [
-     "Screaming Mace",
      1
     ],
     [
@@ -163675,10 +163398,6 @@
      1
     ],
     [
-     "Corrupted Ghoulbane",
-     2
-    ],
-    [
      "Cough Elixir",
      1
     ],
@@ -163696,10 +163415,6 @@
     ],
     [
      "Decrepit Hide",
-     4
-    ],
-    [
-     "Decrepit Sheath",
      2
     ],
     [
@@ -163732,7 +163447,7 @@
     ],
     [
      "Letter to Duriek",
-     2
+     1
     ],
     [
      "Note to Marl",
@@ -163744,7 +163459,7 @@
     ],
     [
      "Soul Leech, Dark Sword of Blood",
-     2
+     1
     ],
     [
      "Soulcase",
@@ -163780,16 +163495,6 @@
      ],
      "g": "Duriek Bloodpool",
      "n": "Give the letter to Duriek Bloodpool in Paineel"
-    },
-    {
-     "c": [
-      [
-       "Cough Elixir",
-       1
-      ]
-     ],
-     "g": "Smaka",
-     "n": "Give Smaka 1000 Platinum for a Cough Elixir"
     },
     {
      "c": [
@@ -163834,14 +163539,13 @@
       [
        "Enchanted Platinum Bar",
        1
-      ],
-      [
-       "Decrepit Sheath",
-       1
       ]
      ],
      "g": "Teydar",
-     "n": "Give the Drake Spine, Decrepit Hide and Enchanted Platinum Bar to Teydar for a D"
+     "n": "Give the Drake Spine, Decrepit Hide and Enchanted Platinum Bar to Teydar for a D",
+     "r": [
+      "Decrepit Sheath"
+     ]
     },
     {
      "c": [
@@ -163862,20 +163566,15 @@
        1
       ],
       [
-       "Corrupted Ghoulbane",
-       1
-      ],
-      [
        "Letter to Duriek",
-       1
-      ],
-      [
-       "Decrepit Hide",
        1
       ]
      ],
      "g": "Duriek Bloodpool",
-     "n": "Go to Duriek. Open trade window, click Hide and make sure you con INDIFFERENT ST"
+     "n": "Go to Duriek. Open trade window, click Hide and make sure you con INDIFFERENT ST",
+     "r": [
+      "Corrupted Ghoulbane"
+     ]
     },
     {
      "c": [
@@ -163970,10 +163669,6 @@
       [
        "Will of Innoruuk",
        1
-      ],
-      [
-       "Soul Leech, Dark Sword of Blood",
-       1
       ]
      ],
      "g": "Lhranc",
@@ -164028,14 +163723,14 @@
     "Blade of Abrogation": "base",
     "Blood of Kyrenna": "base",
     "Cell Key": "base",
-    "Corrupted Ghoulbane": "base",
+    "Corrupted Ghoulbane": "mid",
     "Cough Elixir": "base",
     "Dark Shroud": "mid",
     "Darkforge Breastplate": "base",
     "Darkforge Greaves": "base",
     "Darkforge Helm": "base",
     "Decrepit Hide": "mid",
-    "Decrepit Sheath": "base",
+    "Decrepit Sheath": "mid",
     "Drake Spine": "base",
     "Dusty Tome": "base",
     "Enchanted Platinum Bar": "base",
@@ -164120,15 +163815,15 @@
     {
      "gold": 10000,
      "i": 6,
-     "in": [
+     "k": "give",
+     "npc": "Smaka",
+     "npct": "Smaka",
+     "out": [
       [
        "Cough Elixir",
        1
       ]
      ],
-     "k": "give",
-     "npc": "Smaka",
-     "npct": "Smaka",
      "txt": "Give Smaka 1000 Platinum for a Cough Elixir"
     },
     {
@@ -164142,6 +163837,9 @@
      "k": "give",
      "npc": "Duriek Bloodpool",
      "npct": "Duriek_Bloodpool",
+     "pre": [
+      6
+     ],
      "txt": "Give the Cough Elixir to Duriek"
     },
     {
@@ -164290,15 +163988,17 @@
       [
        "Enchanted Platinum Bar",
        1
-      ],
-      [
-       "Decrepit Sheath",
-       1
       ]
      ],
      "k": "give",
      "npc": "Teydar",
      "npct": "Teydar",
+     "out": [
+      [
+       "Decrepit Sheath",
+       1
+      ]
+     ],
      "pre": [
       13,
       14,
@@ -164327,10 +164027,6 @@
        1
       ],
       [
-       "Corrupted Ghoulbane",
-       1
-      ],
-      [
        "Letter to Duriek",
        1
       ],
@@ -164342,12 +164038,19 @@
      "k": "give",
      "npc": "Duriek Bloodpool",
      "npct": "Duriek_Bloodpool",
+     "out": [
+      [
+       "Corrupted Ghoulbane",
+       1
+      ]
+     ],
      "pre": [
       3,
       10,
       11,
       12,
-      14
+      14,
+      17
      ],
      "txt": "Go to Duriek. Open trade window, click Hide and make sure you con INDIFFERENT STATUS (Hiding is not needed if you have better faction). SUPER IMPORTANT! DO NOT HAND IN ITEMS W/O indifferent status or better. Give the Gho"
     },
@@ -164624,6 +164327,7 @@
      "npct": "Lhranc",
      "pre": [
       11,
+      18,
       30,
       31,
       32
@@ -164646,16 +164350,12 @@
    "t": "Shadow_Knight_Epic_Quest",
    "want": [
     [
-     "Blade of Abrogation",
-     1
-    ],
-    [
      "Cell Key",
      1
     ],
     [
      "Corrupted Ghoulbane",
-     2
+     1
     ],
     [
      "Cough Elixir",
@@ -164678,27 +164378,7 @@
      1
     ],
     [
-     "Decrepit Hide",
-     4
-    ],
-    [
-     "Decrepit Sheath",
-     2
-    ],
-    [
-     "Drake Spine",
-     1
-    ],
-    [
      "Dusty Tome",
-     1
-    ],
-    [
-     "Enchanted Platinum Bar",
-     1
-    ],
-    [
-     "Ghoulbane",
      1
     ],
     [
@@ -164710,20 +164390,12 @@
      1
     ],
     [
-     "Letter to Duriek",
-     2
-    ],
-    [
      "Note to Marl",
      1
     ],
     [
      "Platinum Bar",
      1
-    ],
-    [
-     "Soul Leech, Dark Sword of Blood",
-     2
     ],
     [
      "Will of Innoruuk",
@@ -172899,19 +172571,22 @@
       [
        "Book of Souls",
        1
-      ],
-      [
-       "Translated Parchment",
-       1
       ]
      ],
      "g": "Yendar Starpyre",
-     "n": "Give Tattered Parchment and THEN Book of Souls to Yendar Starpyre to spawn Renux"
+     "n": "Give Tattered Parchment and THEN Book of Souls to Yendar Starpyre to spawn Renux",
+     "r": [
+      "Translated Parchment"
+     ]
     },
     {
      "c": [
       [
        "Head of Stanos",
+       1
+      ],
+      [
+       "Translated Parchment",
        1
       ]
      ],
@@ -172973,7 +172648,7 @@
     "Sealed Box": "mid",
     "Stanos' Pouch": "base",
     "Tattered Parchment": "base",
-    "Translated Parchment": "base"
+    "Translated Parchment": "mid"
    },
    "split": true,
    "steps": [
@@ -173095,15 +172770,17 @@
       [
        "Book of Souls",
        1
-      ],
-      [
-       "Translated Parchment",
-       1
       ]
      ],
      "k": "give",
      "npc": "Yendar Starpyre",
      "npct": "Yendar_Starpyre",
+     "out": [
+      [
+       "Translated Parchment",
+       1
+      ]
+     ],
      "pre": [
       8,
       9
@@ -173116,6 +172793,10 @@
       [
        "Head of Stanos",
        1
+      ],
+      [
+       "Translated Parchment",
+       1
       ]
      ],
      "k": "give",
@@ -173126,6 +172807,9 @@
        "Sealed Box",
        1
       ]
+     ],
+     "pre": [
+      10
      ],
      "txt": "Return Translated Parchment to Stanos. Receive a Sealed Box from Stanos."
     },
@@ -173200,10 +172884,6 @@
     ],
     [
      "Tattered Parchment",
-     1
-    ],
-    [
-     "Translated Parchment",
      1
     ]
    ],
@@ -177849,10 +177529,6 @@
    "n": "The Etched Stone",
    "need": [
     [
-     "Bloodied Piece of Parchment",
-     1
-    ],
-    [
      "Crystalline Orb",
      1
     ],
@@ -177862,14 +177538,6 @@
     ],
     [
      "Prickly Pear",
-     1
-    ],
-    [
-     "Pulsating Hyacinth Telesm",
-     2
-    ],
-    [
-     "Spell: Life Leech",
      1
     ],
     [
@@ -177887,14 +177555,13 @@
       [
        "Prickly Pear",
        1
-      ],
-      [
-       "Bloodied Piece of Parchment",
-       1
       ]
      ],
      "g": "Xenyari Lisariel",
-     "n": "Give the Prickly Pear to Xenyari Lisariel for Bloodied Piece of Parchment at the"
+     "n": "Give the Prickly Pear to Xenyari Lisariel for Bloodied Piece of Parchment at the",
+     "r": [
+      "Bloodied Piece of Parchment"
+     ]
     },
     {
      "c": [
@@ -177939,14 +177606,13 @@
       [
        "Faceted Hyacinth Telesm",
        1
-      ],
-      [
-       "Pulsating Hyacinth Telesm",
-       1
       ]
      ],
      "g": "Xenyari Lisariel",
-     "n": "Give Faceted Hyacinth Telesm to Xenyari Lisariel for Pulsating Hyacinth Telesm"
+     "n": "Give Faceted Hyacinth Telesm to Xenyari Lisariel for Pulsating Hyacinth Telesm",
+     "r": [
+      "Pulsating Hyacinth Telesm"
+     ]
     },
     {
      "c": [
@@ -177963,14 +177629,13 @@
       [
        "Monstrous Zombie Heart",
        1
-      ],
-      [
-       "Spell: Life Leech",
-       1
       ]
      ],
      "g": "Kazzel D`Leryt",
-     "n": "Give the Monstrous Zombie Heart to Kazzel D`Leryt for Spell: Life Leech."
+     "n": "Give the Monstrous Zombie Heart to Kazzel D`Leryt for Spell: Life Leech.",
+     "r": [
+      "Spell: Life Leech"
+     ]
     }
    ],
    "relatedNpcs": [
@@ -177992,14 +177657,14 @@
     "Spell: Life Leech"
    ],
    "roles": {
-    "Bloodied Piece of Parchment": "base",
+    "Bloodied Piece of Parchment": "mid",
     "Crystalline Orb": "base",
     "Faceted Hyacinth": "mid",
     "Faceted Hyacinth Telesm": "mid",
     "Monstrous Zombie Heart": "base",
     "Prickly Pear": "base",
-    "Pulsating Hyacinth Telesm": "base",
-    "Spell: Life Leech": "base",
+    "Pulsating Hyacinth Telesm": "mid",
+    "Spell: Life Leech": "reward",
     "Uncut Hyacinth": "base",
     "White Gold Necklace": "base"
    },
@@ -178037,16 +177702,18 @@
       [
        "Prickly Pear",
        1
-      ],
-      [
-       "Bloodied Piece of Parchment",
-       1
       ]
      ],
      "k": "give",
      "loc": "5298, 1765",
      "npc": "Xenyari Lisariel",
      "npct": "Xenyari_Lisariel",
+     "out": [
+      [
+       "Bloodied Piece of Parchment",
+       1
+      ]
+     ],
      "pre": [
       3
      ],
@@ -178117,6 +177784,7 @@
       ]
      ],
      "pre": [
+      4,
       6
      ],
      "txt": "Turn in White Gold Necklace, Crystalline Orb, Bloodied Piece of Parchment, Faceted Hyacinth to Kazzel D`Leryt and receive Faceted Hyacinth Telesm"
@@ -178127,15 +177795,17 @@
       [
        "Faceted Hyacinth Telesm",
        1
-      ],
-      [
-       "Pulsating Hyacinth Telesm",
-       1
       ]
      ],
      "k": "give",
      "npc": "Xenyari Lisariel",
      "npct": "Xenyari_Lisariel",
+     "out": [
+      [
+       "Pulsating Hyacinth Telesm",
+       1
+      ]
+     ],
      "pre": [
       7
      ],
@@ -178152,6 +177822,9 @@
      "k": "give",
      "npc": "Kazzel D`Leryt",
      "npct": "Kazzel_D%60Leryt",
+     "pre": [
+      8
+     ],
      "txt": "Return the Pulsating Hyacinth Telesm to Kazzel D`Leryt to spawn monstrous zombie."
     },
     {
@@ -178175,15 +177848,17 @@
       [
        "Monstrous Zombie Heart",
        1
-      ],
-      [
-       "Spell: Life Leech",
-       1
       ]
      ],
      "k": "give",
      "npc": "Kazzel D`Leryt",
      "npct": "Kazzel_D%60Leryt",
+     "out": [
+      [
+       "Spell: Life Leech",
+       1
+      ]
+     ],
      "pre": [
       10
      ],
@@ -178193,23 +177868,11 @@
    "t": "The_Etched_Stone",
    "want": [
     [
-     "Faceted Hyacinth Telesm",
-     1
-    ],
-    [
      "Monstrous Zombie Heart",
      1
     ],
     [
-     "Prickly Pear",
-     1
-    ],
-    [
      "Pulsating Hyacinth Telesm",
-     2
-    ],
-    [
-     "Spell: Life Leech",
      1
     ]
    ],
@@ -178347,10 +178010,6 @@
    "need": [
     [
      "Book of Scale",
-     2
-    ],
-    [
-     "Fiery Avenger",
      1
     ],
     [
@@ -178363,7 +178022,7 @@
     ],
     [
      "Miragul's Phylactery",
-     2
+     1
     ],
     [
      "Miragul's Robe",
@@ -178390,22 +178049,11 @@
        1
       ]
      ],
-     "g": "Rysva To`Biath",
-     "n": "Turn in 1000pp and the books to Rysva To`Biath or Rineval Talyas to obtain Book "
-    },
-    {
-     "c": [
-      [
-       "Miragul's Phylactery",
-       1
-      ],
-      [
-       "Book of Scale",
-       1
-      ]
-     ],
      "g": "Oracle of K`Arnon",
-     "n": "Turn in Book of Scale to Oracle of K`Arnon to obtain Miragul's Phylactery"
+     "n": "Turn in Book of Scale to Oracle of K`Arnon to obtain Miragul's Phylactery",
+     "r": [
+      "Miragul's Phylactery"
+     ]
     },
     {
      "c": [
@@ -178440,16 +178088,15 @@
     {
      "c": [
       [
-       "Fiery Avenger",
-       1
-      ],
-      [
        "Miragul's Head",
        1
       ]
      ],
      "g": "Inte Akera",
-     "n": "Give Inte Akera the head, robe, and both blessings (TOGETHER) for the :Fiery Ave"
+     "n": "Give Inte Akera the head, robe, and both blessings (TOGETHER) for the :Fiery Ave",
+     "r": [
+      "Fiery Avenger"
+     ]
     },
     {
      "c": [
@@ -178484,10 +178131,10 @@
    ],
    "roles": {
     "Book of Scale": "base",
-    "Fiery Avenger": "base",
+    "Fiery Avenger": "reward",
     "Ghoulbane": "base",
     "Miragul's Head": "base",
-    "Miragul's Phylactery": "base",
+    "Miragul's Phylactery": "mid",
     "Miragul's Robe": "base",
     "SoulFire": "base",
     "Torn, Frost covered book": "base",
@@ -178542,24 +178189,20 @@
     {
      "gold": 10000,
      "i": 5,
-     "in": [
+     "k": "give",
+     "npc": "Rysva To`Biath",
+     "npct": "Rysva_To%60Biath",
+     "out": [
       [
        "Book of Scale",
        1
       ]
      ],
-     "k": "give",
-     "npc": "Rysva To`Biath",
-     "npct": "Rysva_To%60Biath",
      "txt": "Turn in 1000pp and the books to Rysva To`Biath or Rineval Talyas to obtain Book of Scale"
     },
     {
      "i": 6,
      "in": [
-      [
-       "Miragul's Phylactery",
-       1
-      ],
       [
        "Book of Scale",
        1
@@ -178568,6 +178211,15 @@
      "k": "give",
      "npc": "Oracle of K`Arnon",
      "npct": "Oracle_of_K%60Arnon",
+     "out": [
+      [
+       "Miragul's Phylactery",
+       1
+      ]
+     ],
+     "pre": [
+      5
+     ],
      "txt": "Turn in Book of Scale to Oracle of K`Arnon to obtain Miragul's Phylactery"
     },
     {
@@ -178581,6 +178233,9 @@
      "k": "give",
      "npc": "Lich of Miragul",
      "npct": "Lich_of_Miragul",
+     "pre": [
+      6
+     ],
      "txt": "Hand Miragul's Phylactery to the Lich of Miragul to spawn Miragul"
     },
     {
@@ -178663,10 +178318,6 @@
      "i": 14,
      "in": [
       [
-       "Fiery Avenger",
-       1
-      ],
-      [
        "Miragul's Head",
        1
       ]
@@ -178674,6 +178325,12 @@
      "k": "give",
      "npc": "Inte Akera",
      "npct": "Inte_Akera",
+     "out": [
+      [
+       "Fiery Avenger",
+       1
+      ]
+     ],
      "pre": [
       8
      ],
@@ -178682,14 +178339,6 @@
    ],
    "t": "The_Fiery_Avenger",
    "want": [
-    [
-     "Book of Scale",
-     2
-    ],
-    [
-     "Fiery Avenger",
-     1
-    ],
     [
      "Ghoulbane",
      1
@@ -178700,7 +178349,7 @@
     ],
     [
      "Miragul's Phylactery",
-     2
+     1
     ],
     [
      "Miragul's Robe",
@@ -180732,34 +180381,12 @@
      1
     ],
     [
-     "Third part of an Iceclad Map",
-     1
-    ],
-    [
      "Yakman Parts",
      4
     ]
    ],
    "oe": true,
    "parts": [
-    {
-     "c": [
-      [
-       "Yakman Parts",
-       4
-      ],
-      [
-       "Third part of an Iceclad Map",
-       1
-      ],
-      [
-       "Pieces of the Iceclad Map",
-       1
-      ]
-     ],
-     "g": "Bloodmaw",
-     "n": "Turn in four Parts to Bloodmaw. You need to be non-KoS with Bloodmaw to turn in-"
-    },
     {
      "c": [
       [
@@ -180795,6 +180422,10 @@
       [
        "Second part of an Iceclad Map",
        1
+      ],
+      [
+       "Yakman Parts",
+       4
       ],
       [
        "Fourth part of an Iceclad Map",
@@ -180854,7 +180485,10 @@
     },
     {
      "i": 4,
-     "in": [
+     "k": "give",
+     "npc": "Bloodmaw",
+     "npct": "Bloodmaw",
+     "out": [
       [
        "Yakman Parts",
        4
@@ -180867,12 +180501,6 @@
        "Pieces of the Iceclad Map",
        1
       ]
-     ],
-     "k": "give",
-     "npc": "Bloodmaw",
-     "npct": "Bloodmaw",
-     "pre": [
-      3
      ],
      "txt": "Turn in four Parts to Bloodmaw. You need to be non-KoS with Bloodmaw to turn in--Killing Bloodmaw does not work. You CAN use sneak to do the turn in if you are kos, confirmed 6/20/2023, you CAN turn in on a sneakable cha"
     },
@@ -180941,6 +180569,7 @@
       ]
      ],
      "pre": [
+      4,
       8
      ],
      "txt": "Give the Pieces of the Iceclad Map to the a lost pirate to receive the Completed Map of Iceclad in return."
@@ -180989,10 +180618,6 @@
     ],
     [
      "Second part of an Iceclad Map",
-     1
-    ],
-    [
-     "Third part of an Iceclad Map",
      1
     ],
     [
@@ -181424,19 +181049,11 @@
    "need": [
     [
      "Frost Giant Scout Beard",
-     2
-    ],
-    [
-     "Rune Shafted Harpoon",
-     2
+     1
     ],
     [
      "Runed Totem Staff",
      1
-    ],
-    [
-     "Tinkered Rope",
-     2
     ],
     [
      "Whale Bone",
@@ -181449,14 +181066,13 @@
       [
        "Frost Giant Scout Beard",
        1
-      ],
-      [
-       "Tinkered Rope",
-       1
       ]
      ],
      "g": "Ritap",
-     "n": "|turn-in 4=In Iceclad Ocean, give Ritap the Frost Giant Scout Beard to get a Tin"
+     "n": "|turn-in 4=In Iceclad Ocean, give Ritap the Frost Giant Scout Beard to get a Tin",
+     "r": [
+      "Tinkered Rope"
+     ]
     },
     {
      "c": [
@@ -181471,14 +181087,13 @@
       [
        "Tinkered Rope",
        1
-      ],
-      [
-       "Rune Shafted Harpoon",
-       1
       ]
      ],
      "g": "Grizlin Bloodfang",
-     "n": "|turn-in 5=Give the Runed Totem Staff, Whale Bone, and Tinkered Rope to Grizlin "
+     "n": "|turn-in 5=Give the Runed Totem Staff, Whale Bone, and Tinkered Rope to Grizlin ",
+     "r": [
+      "Rune Shafted Harpoon"
+     ]
     },
     {
      "c": [
@@ -181510,9 +181125,9 @@
    "roles": {
     "Frost Giant Scout Beard": "base",
     "Icy Totem of Protection": "mid",
-    "Rune Shafted Harpoon": "base",
+    "Rune Shafted Harpoon": "mid",
     "Runed Totem Staff": "base",
-    "Tinkered Rope": "base",
+    "Tinkered Rope": "mid",
     "Whale Bone": "base"
    },
    "split": true,
@@ -181523,15 +181138,17 @@
       [
        "Frost Giant Scout Beard",
        1
-      ],
-      [
-       "Tinkered Rope",
-       1
       ]
      ],
      "k": "give",
      "npc": "Ritap",
      "npct": "Ritap",
+     "out": [
+      [
+       "Tinkered Rope",
+       1
+      ]
+     ],
      "txt": "|turn-in 4=In Iceclad Ocean, give Ritap the Frost Giant Scout Beard to get a Tinkered Rope"
     },
     {
@@ -181548,15 +181165,20 @@
       [
        "Tinkered Rope",
        1
-      ],
-      [
-       "Rune Shafted Harpoon",
-       1
       ]
      ],
      "k": "give",
      "npc": "Grizlin Bloodfang",
      "npct": "Grizlin_Bloodfang",
+     "out": [
+      [
+       "Rune Shafted Harpoon",
+       1
+      ]
+     ],
+     "pre": [
+      1
+     ],
      "txt": "|turn-in 5=Give the Runed Totem Staff, Whale Bone, and Tinkered Rope to Grizlin Bloodfang to get a Rune Shafted Harpoon"
     },
     {
@@ -181575,6 +181197,9 @@
        "Icy Totem of Protection",
        1
       ]
+     ],
+     "pre": [
+      2
      ],
      "txt": "|turn-in 6=Give the Rune Shafted Harpoon to Keref Spiritspear to receive your reward of a Icy Totem of Protection"
     },
@@ -181641,23 +181266,7 @@
    "t": "The_Mighty_Snowfang_Hero",
    "want": [
     [
-     "Frost Giant Scout Beard",
-     2
-    ],
-    [
      "Rune Shafted Harpoon",
-     2
-    ],
-    [
-     "Runed Totem Staff",
-     1
-    ],
-    [
-     "Tinkered Rope",
-     2
-    ],
-    [
-     "Whale Bone",
      1
     ]
    ],
@@ -181727,14 +181336,13 @@
       [
        "Tarnished Bronze Key",
        1
-      ],
-      [
-       "A Sealed Letter",
-       1
       ]
      ],
      "g": "Linara Parlone",
-     "n": "Give Tarnished Bronze Key to Linara Parlone in jail cell in Najena, for A Sealed"
+     "n": "Give Tarnished Bronze Key to Linara Parlone in jail cell in Najena, for A Sealed",
+     "r": [
+      "A Sealed Letter"
+     ]
     },
     {
      "c": [
@@ -181786,7 +181394,7 @@
     "Mystic Cloak"
    ],
    "roles": {
-    "A Sealed Letter": "base",
+    "A Sealed Letter": "mid",
     "Faded Cloak": "mid",
     "Guard's Keyring": "base",
     "Mystic Cloak": "reward",
@@ -181832,15 +181440,17 @@
       [
        "Tarnished Bronze Key",
        1
-      ],
-      [
-       "A Sealed Letter",
-       1
       ]
      ],
      "k": "give",
      "npc": "Linara Parlone",
      "npct": "Linara_Parlone",
+     "out": [
+      [
+       "A Sealed Letter",
+       1
+      ]
+     ],
      "pre": [
       1
      ],
@@ -181863,6 +181473,9 @@
        "Faded Cloak",
        1
       ]
+     ],
+     "pre": [
+      4
      ],
      "txt": "Then give the A Sealed Letter to her father in Felwithe near the lake.",
      "z": "Felwithe"
@@ -183792,14 +183405,13 @@
       [
        "Worn Coldain Tome",
        1
-      ],
-      [
-       "Onyxbrand",
-       1
       ]
      ],
      "g": "Historian Baenek",
-     "n": "Crystal Caverns: Hand in Worn Coldain Tome to Historian Baenek to spawn the Ghos"
+     "n": "Crystal Caverns: Hand in Worn Coldain Tome to Historian Baenek to spawn the Ghos",
+     "r": [
+      "Onyxbrand"
+     ]
     },
     {
      "c": [
@@ -183864,6 +183476,10 @@
       [
        "Finished Naginata Blade",
        1
+      ],
+      [
+       "Onyxbrand",
+       1
       ]
      ],
      "n": ""
@@ -183922,7 +183538,7 @@
     "Gold Tinted Diamond": "base",
     "Gray Colored Ice": "base",
     "Mandala sketch": "base",
-    "Onyxbrand": "base",
+    "Onyxbrand": "mid",
     "Portion of Starmetal": "base",
     "Remaining Bone dust": "base",
     "Sanctified bone dust": "base",
@@ -183946,15 +183562,17 @@
       [
        "Worn Coldain Tome",
        1
-      ],
-      [
-       "Onyxbrand",
-       1
       ]
      ],
      "k": "give",
      "npc": "Historian Baenek",
      "npct": "Historian_Baenek",
+     "out": [
+      [
+       "Onyxbrand",
+       1
+      ]
+     ],
      "txt": "Crystal Caverns: Hand in Worn Coldain Tome to Historian Baenek to spawn the Ghost of Burdael (DESPAWNS IN 5 MINUTES), kill and loot Onyxbrand",
      "z": "Crystal Caverns"
     },
@@ -186077,11 +185695,11 @@
      1
     ],
     [
-     "Ribcage Chest Armor",
+     "Puab's Token",
      1
     ],
     [
-     "Treant Fists",
+     "Ribcage Chest Armor",
      1
     ]
    ],
@@ -186117,16 +185735,12 @@
       [
        "Tattered Parchment",
        1
-      ],
-      [
-       "Treant Fists",
-       1
       ]
      ],
      "g": "Puab Closk",
      "n": "Bring Tattered Parchment to Puab Closk for your Treant Fists.",
      "r": [
-      "Puab's Token"
+      "Treant Fists"
      ]
     },
     {
@@ -186142,7 +185756,7 @@
     {
      "c": [
       [
-       "Fractured Femur",
+       "Treant Fists",
        1
       ]
      ],
@@ -186152,7 +185766,7 @@
     {
      "c": [
       [
-       "Cat Skull Cap",
+       "Fractured Femur",
        1
       ]
      ],
@@ -186167,6 +185781,10 @@
       ],
       [
        "Humerus Handled Mace",
+       1
+      ],
+      [
+       "Cat Skull Cap",
        1
       ]
      ],
@@ -186194,10 +185812,10 @@
     "Cat Skull Cap": "base",
     "Fractured Femur": "base",
     "Humerus Handled Mace": "base",
-    "Puab's Token": "mid",
+    "Puab's Token": "base",
     "Ribcage Chest Armor": "base",
     "Tattered Parchment": "mid",
-    "Treant Fists": "base"
+    "Treant Fists": "mid"
    },
    "split": true,
    "steps": [
@@ -186309,10 +185927,6 @@
       [
        "Tattered Parchment",
        1
-      ],
-      [
-       "Treant Fists",
-       1
       ]
      ],
      "k": "give",
@@ -186320,7 +185934,7 @@
      "npct": "Puab_Closk",
      "out": [
       [
-       "Puab's Token",
+       "Treant Fists",
        1
       ]
      ],
@@ -186331,6 +185945,19 @@
     },
     {
      "i": 9,
+     "k": "get",
+     "npc": "Puab Closk",
+     "npct": "Puab_Closk",
+     "out": [
+      [
+       "Puab's Token",
+       1
+      ]
+     ],
+     "txt": "Puab Closk hands you Puab's Token."
+    },
+    {
+     "i": 10,
      "in": [
       [
        "Puab's Token",
@@ -186341,12 +185968,12 @@
      "npc": "A banished kerran",
      "npct": "A_banished_kerran",
      "pre": [
-      8
+      9
      ],
      "txt": "Hand him your Puab's Token."
     },
     {
-     "i": 10,
+     "i": 11,
      "in": [
       [
        "Box With Pawprints",
@@ -186360,7 +185987,7 @@
      "txt": "He hands youa Box With Pawprints (a 4 slot combine box)."
     },
     {
-     "i": 11,
+     "i": 12,
      "k": "collect",
      "out": [
       [
@@ -186372,7 +185999,7 @@
      "z": "The Gorge of King Xorbb"
     },
     {
-     "i": 12,
+     "i": 13,
      "k": "collect",
      "out": [
       [
@@ -186384,7 +186011,7 @@
      "z": "Misty Thicket"
     },
     {
-     "i": 13,
+     "i": 14,
      "k": "collect",
      "out": [
       [
@@ -186396,7 +186023,7 @@
      "z": "The Liberated Citadel of Runnyeye"
     },
     {
-     "i": 14,
+     "i": 15,
      "k": "collect",
      "out": [
       [
@@ -186408,10 +186035,10 @@
      "z": "The Liberated Citadel of Runnyeye"
     },
     {
-     "i": 15,
+     "i": 16,
      "in": [
       [
-       "Fractured Femur",
+       "Treant Fists",
        1
       ]
      ],
@@ -186419,13 +186046,12 @@
      "npc": "a banished kerran",
      "npct": "a_banished_kerran",
      "pre": [
-      5,
-      14
+      8
      ],
      "txt": "Take this back to Kerra and hand it into the banished kerran, Clawfist."
     },
     {
-     "i": 16,
+     "i": 17,
      "k": "get",
      "npc": "A banished kerran",
      "npct": "A_banished_kerran",
@@ -186438,10 +186064,10 @@
      "txt": "He hands you a Tattered Parchment."
     },
     {
-     "i": 17,
+     "i": 18,
      "in": [
       [
-       "Cat Skull Cap",
+       "Fractured Femur",
        1
       ]
      ],
@@ -186449,8 +186075,8 @@
      "npc": "Puab Closk",
      "npct": "Puab_Closk",
      "pre": [
-      4,
-      13
+      5,
+      15
      ],
      "txt": "Bring this back to Puab Closk."
     }
@@ -186475,6 +186101,10 @@
     ],
     [
      "Ribcage Chest Armor",
+     1
+    ],
+    [
+     "Treant Fists",
      1
     ]
    ],
@@ -186653,16 +186283,8 @@
    "n": "The Velium Focus",
    "need": [
     [
-     "Azurite Focus",
-     3
-    ],
-    [
      "Bent Metallic Crystal",
      1
-    ],
-    [
-     "Elbaite Focus",
-     2
     ],
     [
      "Heavy Metallic Crystal",
@@ -186677,10 +186299,6 @@
      1
     ],
     [
-     "Phenocryst's Focus",
-     1
-    ],
-    [
      "Reddish Crystal",
      1
     ],
@@ -186690,7 +186308,7 @@
     ],
     [
      "Velium Focus",
-     2
+     1
     ]
    ],
    "oe": true,
@@ -186712,36 +186330,24 @@
        1
       ]
      ],
-     "g": "Normon Stonetooth",
-     "n": "Return the pickaxe to Normon Stonetooth in exchange for the Velium Focus"
-    },
-    {
-     "c": [
-      [
-       "Velium Focus",
-       1
-      ],
-      [
-       "Elbaite Focus",
-       1
-      ]
-     ],
      "g": "Phenocryst",
-     "n": "Return to Phenocryst and hand him back your new and slightly improved Velium Foc"
+     "n": "Return to Phenocryst and hand him back your new and slightly improved Velium Foc",
+     "r": [
+      "Elbaite Focus"
+     ]
     },
     {
      "c": [
       [
        "Elbaite Focus",
        1
-      ],
-      [
-       "Azurite Focus",
-       1
       ]
      ],
      "g": "Phenocryst",
-     "n": "Return to Phenocryst and hand in all 3 Crystals and your Elbaite Focus for Azuri"
+     "n": "Return to Phenocryst and hand in all 3 Crystals and your Elbaite Focus for Azuri",
+     "r": [
+      "Azurite Focus"
+     ]
     },
     {
      "c": [
@@ -186752,14 +186358,13 @@
       [
        "Azurite Focus",
        1
-      ],
-      [
-       "Phenocryst's Focus",
-       1
       ]
      ],
      "g": "Phenocryst",
-     "n": "Return to Phenocryst and hand in all 3 Holy Symbol of Zek and your Azurite Focus"
+     "n": "Return to Phenocryst and hand in all 3 Holy Symbol of Zek and your Azurite Focus",
+     "r": [
+      "Phenocryst's Focus"
+     ]
     },
     {
      "c": [
@@ -186787,7 +186392,7 @@
     {
      "c": [
       [
-       "Reddish Crystal",
+       "Phenocryst's Focus",
        1
       ]
      ],
@@ -186797,7 +186402,7 @@
     {
      "c": [
       [
-       "Heavy Metallic Crystal",
+       "Reddish Crystal",
        1
       ]
      ],
@@ -186807,7 +186412,7 @@
     {
      "c": [
       [
-       "Bent Metallic Crystal",
+       "Heavy Metallic Crystal",
        1
       ]
      ],
@@ -186823,6 +186428,15 @@
      ],
      "g": "Phenocryst",
      "n": "Take your Azurite Focus and the three medalions to Phenocryst."
+    },
+    {
+     "c": [
+      [
+       "Bent Metallic Crystal",
+       1
+      ]
+     ],
+     "n": ""
     }
    ],
    "relatedNpcs": [
@@ -186842,13 +186456,13 @@
     "Phenocryst's Focus"
    ],
    "roles": {
-    "Azurite Focus": "base",
+    "Azurite Focus": "mid",
     "Bent Metallic Crystal": "base",
-    "Elbaite Focus": "base",
+    "Elbaite Focus": "mid",
     "Heavy Metallic Crystal": "base",
     "Holy Symbol of Zek": "base",
     "Normon's axe": "mid",
-    "Phenocryst's Focus": "base",
+    "Phenocryst's Focus": "mid",
     "Reddish Crystal": "base",
     "Small Piece of Velium": "base",
     "Velium Focus": "base"
@@ -186873,6 +186487,7 @@
      "txt": "You give Hakon the Pick Axe and a Small Piece of Velium"
     },
     {
+     "fac": true,
      "i": 2,
      "in": [
       [
@@ -186881,30 +186496,18 @@
       ]
      ],
      "k": "give",
-     "npc": "Normon Stonetooth",
-     "npct": "Normon_Stonetooth",
-     "txt": "Return the pickaxe to Normon Stonetooth in exchange for the Velium Focus"
-    },
-    {
-     "fac": true,
-     "i": 3,
-     "in": [
-      [
-       "Velium Focus",
-       1
-      ],
+     "npc": "Phenocryst",
+     "npct": "Phenocryst",
+     "out": [
       [
        "Elbaite Focus",
        1
       ]
      ],
-     "k": "give",
-     "npc": "Phenocryst",
-     "npct": "Phenocryst",
      "txt": "Return to Phenocryst and hand him back your new and slightly improved Velium Focus he will give you a positive faction hit. You should be amiable now (if you haven't previously damaged your geonid faction) and you can sa"
     },
     {
-     "i": 4,
+     "i": 3,
      "k": "ground",
      "loc": "-5000,-650",
      "out": [
@@ -186917,7 +186520,7 @@
      "z": "The Great Divide"
     },
     {
-     "i": 5,
+     "i": 4,
      "k": "ground",
      "loc": "-842, -1179",
      "out": [
@@ -186930,7 +186533,7 @@
      "z": "The Burning Woods"
     },
     {
-     "i": 6,
+     "i": 5,
      "k": "ground",
      "loc": "+690, -17",
      "out": [
@@ -186943,25 +186546,30 @@
      "z": "The Lair of the Splitpaw"
     },
     {
-     "i": 7,
+     "i": 6,
      "in": [
       [
        "Elbaite Focus",
-       1
-      ],
-      [
-       "Azurite Focus",
        1
       ]
      ],
      "k": "give",
      "npc": "Phenocryst",
      "npct": "Phenocryst",
+     "out": [
+      [
+       "Azurite Focus",
+       1
+      ]
+     ],
+     "pre": [
+      2
+     ],
      "txt": "Return to Phenocryst and hand in all 3 Crystals and your Elbaite Focus for Azurite Focus."
     },
     {
      "fac": true,
-     "i": 8,
+     "i": 7,
      "k": "collect",
      "out": [
       [
@@ -186972,7 +186580,7 @@
      "txt": "You MUST be amiable or better before turning in the Elbaite Focus or he will eat it!"
     },
     {
-     "i": 9,
+     "i": 8,
      "k": "kill",
      "out": [
       [
@@ -186983,7 +186591,7 @@
      "txt": "Kill all 3 and loot each of their Holy Symbol of Zek"
     },
     {
-     "i": 10,
+     "i": 9,
      "in": [
       [
        "Holy Symbol of Zek",
@@ -186992,23 +186600,26 @@
       [
        "Azurite Focus",
        1
-      ],
-      [
-       "Phenocryst's Focus",
-       1
       ]
      ],
      "k": "give",
      "loc": "-1121, -28",
      "npc": "Phenocryst",
      "npct": "Phenocryst",
+     "out": [
+      [
+       "Phenocryst's Focus",
+       1
+      ]
+     ],
      "pre": [
-      9
+      6,
+      8
      ],
      "txt": "Return to Phenocryst and hand in all 3 Holy Symbol of Zek and your Azurite Focus for Phenocryst's Focus. At this point every geonid in the tunnel will sprint full speed to Phenocryst and begin a train out towards the nor"
     },
     {
-     "i": 11,
+     "i": 10,
      "k": "collect",
      "out": [
       [
@@ -187020,7 +186631,7 @@
     },
     {
      "fac": true,
-     "i": 12,
+     "i": 11,
      "k": "collect",
      "out": [
       [
@@ -187031,7 +186642,7 @@
      "txt": "Open an trade window with Phenocryst but before handing it the Velium Focus, re-acquire Invisiblity from the Druid/Ranger before clicking the 'Trade' button. Once Invisible, hit trade and the game will think you are of I"
     },
     {
-     "i": 13,
+     "i": 12,
      "k": "get",
      "npc": "Normon Stonetooth",
      "npct": "Normon_Stonetooth",
@@ -187044,7 +186655,7 @@
      "txt": "You receive Normon's axe from Normon."
     },
     {
-     "i": 14,
+     "i": 13,
      "in": [
       [
        "Small Piece of Velium",
@@ -187065,13 +186676,13 @@
       ]
      ],
      "pre": [
-      11,
-      13
+      10,
+      12
      ],
      "txt": "You give Hakon the Pick Axe and a Small Piece of Velium"
     },
     {
-     "i": 15,
+     "i": 14,
      "k": "get",
      "npc": "Normon Stonetooth",
      "npct": "Normon_Stonetooth",
@@ -187084,7 +186695,7 @@
      "txt": "You receive a Velium Focus from Normon."
     },
     {
-     "i": 16,
+     "i": 15,
      "in": [
       [
        "Velium Focus",
@@ -187095,10 +186706,26 @@
      "npc": "Normon Stonetooth",
      "npct": "Normon_Stonetooth",
      "pre": [
-      12,
-      15
+      11,
+      14
      ],
      "txt": "Then you give him the Velium Focus."
+    },
+    {
+     "i": 16,
+     "in": [
+      [
+       "Phenocryst's Focus",
+       1
+      ]
+     ],
+     "k": "give",
+     "npc": "Normon Stonetooth",
+     "npct": "Normon_Stonetooth",
+     "pre": [
+      9
+     ],
+     "txt": "We await your return with proof that you have spoken to them.\""
     },
     {
      "i": 17,
@@ -187112,31 +186739,15 @@
      "npc": "Normon Stonetooth",
      "npct": "Normon_Stonetooth",
      "pre": [
-      6
+      5
      ],
-     "txt": "We await your return with proof that you have spoken to them.\""
+     "txt": "Give one of them the focus (any one, doesn't matter, you don't have to hail them or anything) and you'll get it back with the following message"
     },
     {
      "i": 18,
      "in": [
       [
        "Heavy Metallic Crystal",
-       1
-      ]
-     ],
-     "k": "give",
-     "npc": "Normon Stonetooth",
-     "npct": "Normon_Stonetooth",
-     "pre": [
-      5
-     ],
-     "txt": "Give one of them the focus (any one, doesn't matter, you don't have to hail them or anything) and you'll get it back with the following message"
-    },
-    {
-     "i": 19,
-     "in": [
-      [
-       "Bent Metallic Crystal",
        1
       ]
      ],
@@ -187149,7 +186760,7 @@
      "txt": "Take the focus back to Phenocryst in Wakening Land and give it to him."
     },
     {
-     "i": 20,
+     "i": 19,
      "in": [
       [
        "Azurite Focus",
@@ -187159,30 +186770,21 @@
      "k": "give",
      "npc": "Phenocryst",
      "npct": "Phenocryst",
+     "pre": [
+      6
+     ],
      "txt": "Take your Azurite Focus and the three medalions to Phenocryst."
     }
    ],
    "t": "The_Velium_Focus",
    "want": [
     [
-     "Azurite Focus",
-     3
-    ],
-    [
      "Bent Metallic Crystal",
      1
     ],
     [
-     "Elbaite Focus",
-     2
-    ],
-    [
      "Heavy Metallic Crystal",
      1
-    ],
-    [
-     "Holy Symbol of Zek",
-     3
     ],
     [
      "Normon's axe",
@@ -187195,10 +186797,6 @@
     [
      "Reddish Crystal",
      1
-    ],
-    [
-     "Velium Focus",
-     2
     ]
    ],
    "zone": "Thurgadin"
@@ -193865,10 +193463,6 @@
      1
     ],
     [
-     "Grobb Oven Mittens",
-     1
-    ],
-    [
      "Jug of Sauces",
      1
     ],
@@ -193893,30 +193487,38 @@
     {
      "c": [
       [
-       "Grobb Oven Mittens",
-       1
-      ],
-      [
        "Froglok Meat",
        1
       ]
      ],
      "g": "Carver Cagrek",
-     "n": "To get the Grobb Oven Mittens, give Carver Cagrek 3x (unstacked) Froglok Meat an"
+     "n": "To get the Grobb Oven Mittens, give Carver Cagrek 3x (unstacked) Froglok Meat an",
+     "r": [
+      "Grobb Oven Mittens"
+     ]
     },
     {
      "c": [
-      [
-       "Ogre Butcher Apron",
-       1
-      ],
       [
        "Pickled Froglok",
        1
       ]
      ],
      "g": "Chef Dooga",
-     "n": "To get an Ogre Butcher Apron, go to Oggok and give Chef Dooga 3x (unstacked) Pic"
+     "n": "To get an Ogre Butcher Apron, go to Oggok and give Chef Dooga 3x (unstacked) Pic",
+     "r": [
+      "Ogre Butcher Apron"
+     ]
+    },
+    {
+     "c": [
+      [
+       "Ogre Butcher Apron",
+       1
+      ]
+     ],
+     "g": "Carver Cagrek",
+     "n": "Give the apron to the skeleton near Carver Cagrek."
     },
     {
      "c": [
@@ -193954,8 +193556,8 @@
    ],
    "roles": {
     "Froglok Meat": "base",
-    "Grobb Oven Mittens": "base",
-    "Ogre Butcher Apron": "base",
+    "Grobb Oven Mittens": "mid",
+    "Ogre Butcher Apron": "mid",
     "Pickled Froglok": "base",
     "Ship in a Bottle": "base"
    },
@@ -193966,10 +193568,6 @@
      "i": 1,
      "in": [
       [
-       "Grobb Oven Mittens",
-       1
-      ],
-      [
        "Froglok Meat",
        1
       ]
@@ -193977,16 +193575,18 @@
      "k": "give",
      "npc": "Carver Cagrek",
      "npct": "Carver_Cagrek",
+     "out": [
+      [
+       "Grobb Oven Mittens",
+       1
+      ]
+     ],
      "txt": "To get the Grobb Oven Mittens, give Carver Cagrek 3x (unstacked) Froglok Meat and 10 gold."
     },
     {
      "gold": 10,
      "i": 2,
      "in": [
-      [
-       "Ogre Butcher Apron",
-       1
-      ],
       [
        "Pickled Froglok",
        1
@@ -193995,11 +193595,33 @@
      "k": "give",
      "npc": "Chef Dooga",
      "npct": "Chef_Dooga",
+     "out": [
+      [
+       "Ogre Butcher Apron",
+       1
+      ]
+     ],
      "txt": "To get an Ogre Butcher Apron, go to Oggok and give Chef Dooga 3x (unstacked) Pickled Froglok and 10 gold.",
      "z": "Oggok"
     },
     {
      "i": 3,
+     "in": [
+      [
+       "Ogre Butcher Apron",
+       1
+      ]
+     ],
+     "k": "give",
+     "npc": "Carver Cagrek",
+     "npct": "Carver_Cagrek",
+     "pre": [
+      2
+     ],
+     "txt": "Give the apron to the skeleton near Carver Cagrek."
+    },
+    {
+     "i": 4,
      "k": "buy",
      "npc": "Clurg (NPC)",
      "npct": "Clurg_(NPC)",
@@ -194013,7 +193635,7 @@
      "z": "Oggok"
     },
     {
-     "i": 4,
+     "i": 5,
      "in": [
       [
        "Ship in a Bottle",
@@ -194024,7 +193646,7 @@
      "npc": "Basher Avisk",
      "npct": "Basher_Avisk",
      "pre": [
-      3
+      4
      ],
      "txt": "Turn in 4 of them to the skeleton on the throne."
     }
@@ -194032,19 +193654,11 @@
    "t": "Urako's_Big_Mistake",
    "want": [
     [
-     "Grobb Oven Mittens",
-     1
-    ],
-    [
      "Lizardman Scout Fife",
      1
     ],
     [
      "Ogre Butcher Apron",
-     1
-    ],
-    [
-     "Pickled Froglok",
      1
     ],
     [
@@ -197034,7 +196648,7 @@
     "An Emerald": "base",
     "Bixie Berry Pie": "base",
     "Footman Head Plans": "base",
-    "Footman's Pike": "base",
+    "Footman's Pike": "mid",
     "Footman's Pike Head": "base",
     "Footmans Pack": "base",
     "Forging Hammer": "base",
@@ -197047,20 +196661,20 @@
     "Iron Rod": "base",
     "Krup Warrior Guard": "mid",
     "Legionnaire Crown Plans": "base",
-    "Legionnaire's Mancatcher": "base",
+    "Legionnaire's Mancatcher": "reward",
     "Legionnaire's Mancatcher Crown": "base",
     "Peridot": "base",
     "Petrified Redwood": "base",
     "Radiant Meteorite": "base",
     "Sealed Note": "base",
     "Soldier Head Plans": "mid",
-    "Soldier's Pike": "base",
+    "Soldier's Pike": "reward",
     "Soldier's Pike Head": "base",
     "Steel Rod": "base",
     "Tattooed Sarnak Head": "mid",
     "Thick Iksar Skull": "base",
     "Trooper Head Plans": "base",
-    "Trooper's Pike": "base",
+    "Trooper's Pike": "mid",
     "Trooper's Pike Head": "base"
    },
    "split": true,
@@ -197208,13 +196822,15 @@
       [
        "Footman's Pike Head",
        1
-      ],
+      ]
+     ],
+     "k": "combine",
+     "out": [
       [
        "Footman's Pike",
        1
       ]
      ],
-     "k": "combine",
      "pre": [
       8
      ],
@@ -197272,6 +196888,9 @@
      "k": "give",
      "npc": "War Baron Eator",
      "npct": "War_Baron_Eator",
+     "pre": [
+      10
+     ],
      "txt": "Take all three gems (An Emerald, A Ruby, A Sapphire) and your Footman's Pike to War Baron Eator in the fort in East Cabilis."
     },
     {
@@ -197359,13 +196978,15 @@
       [
        "Soldier's Pike Head",
        1
-      ],
+      ]
+     ],
+     "k": "combine",
+     "out": [
       [
        "Soldier's Pike",
        1
       ]
      ],
-     "k": "combine",
      "pre": [
       8,
       15
@@ -197506,13 +197127,15 @@
       [
        "Trooper's Pike Head",
        1
-      ],
+      ]
+     ],
+     "k": "combine",
+     "out": [
       [
        "Trooper's Pike",
        1
       ]
      ],
-     "k": "combine",
      "pre": [
       8,
       15,
@@ -197745,6 +197368,9 @@
      "k": "give",
      "npc": "War Baron Eator",
      "npct": "War_Baron_Eator",
+     "pre": [
+      25
+     ],
      "txt": "Take all three recommendations to War Baron Eator and turn them in along with your Trooper's Pike."
     },
     {
@@ -197841,15 +197467,17 @@
        1
       ],
       [
-       "Legionnaire's Mancatcher",
-       1
-      ],
-      [
        "Legionnaire Crown Plans",
        1
       ]
      ],
      "k": "combine",
+     "out": [
+      [
+       "Legionnaire's Mancatcher",
+       1
+      ]
+     ],
      "pre": [
       8,
       15,
@@ -200378,10 +200006,6 @@
     [
      "Ro's Breath",
      1
-    ],
-    [
-     "Staff of Gabstik",
-     1
     ]
    ],
    "oe": true,
@@ -200428,22 +200052,15 @@
       [
        "Note to Arantir",
        1
-      ],
-      [
-       "Blue Crystal Staff",
-       1
-      ],
-      [
-       "Gnarled Staff",
-       1
-      ],
-      [
-       "Staff of Gabstik",
-       1
       ]
      ],
      "g": "Dargon",
-     "n": "Give Note to Arantir to Dargon to spawn Arantir Karondor, then hail him. Give hi"
+     "n": "Give Note to Arantir to Dargon to spawn Arantir Karondor, then hail him. Give hi",
+     "r": [
+      "Blue Crystal Staff",
+      "Gnarled Staff",
+      "Staff of Gabstik"
+     ]
     },
     {
      "c": [
@@ -200482,6 +200099,14 @@
       [
        "Mistletoe Powder",
        1
+      ],
+      [
+       "Blue Crystal Staff",
+       1
+      ],
+      [
+       "Gnarled Staff",
+       1
       ]
      ],
      "n": ""
@@ -200507,16 +200132,16 @@
    ],
    "roles": {
     "Arantir's Ring": "base",
-    "Blue Crystal Staff": "base",
+    "Blue Crystal Staff": "mid",
     "Cazic's Skin": "base",
-    "Gnarled Staff": "base",
+    "Gnarled Staff": "mid",
     "Golem Sprocket": "base",
     "Green Oil": "base",
     "Mistletoe Powder": "base",
     "Note from Arantir": "mid",
     "Note to Arantir": "base",
     "Ro's Breath": "base",
-    "Staff of Gabstik": "base",
+    "Staff of Gabstik": "reward",
     "Staff of the Four": "reward"
    },
    "split": true,
@@ -200677,7 +200302,12 @@
       [
        "Note to Arantir",
        1
-      ],
+      ]
+     ],
+     "k": "give",
+     "npc": "Dargon",
+     "npct": "Dargon",
+     "out": [
       [
        "Blue Crystal Staff",
        1
@@ -200691,12 +200321,7 @@
        1
       ]
      ],
-     "k": "give",
-     "npc": "Dargon",
-     "npct": "Dargon",
      "pre": [
-      8,
-      9,
       11
      ],
      "txt": "Give Note to Arantir to Dargon to spawn Arantir Karondor, then hail him. Give him the Blue Crystal Staff, Gnarled Staff, and Staff of Gabstik. Receive a bag."
@@ -200916,10 +200541,6 @@
     ],
     [
      "Ro's Breath",
-     1
-    ],
-    [
-     "Staff of Gabstik",
      1
     ]
    ],
@@ -231432,6 +231053,20 @@
    "k": [],
    "z": []
   },
+  "hurrietas tunic": {
+   "k": [
+    "drop"
+   ],
+   "m": {
+    "Butcherblock Mountains": [
+     "Tagnis Ginfarr",
+     "Thar Kelgand"
+    ]
+   },
+   "z": [
+    "Butcherblock Mountains"
+   ]
+  },
   "ice crystal staff": {
    "k": [
     "drop",
@@ -254263,12 +253898,8 @@
    "z": []
   },
   "snow blossoms": {
-   "k": [
-    "drop"
-   ],
-   "z": [
-    "Oggok"
-   ]
+   "k": [],
+   "z": []
   },
   "snow bunny meat": {
    "k": [

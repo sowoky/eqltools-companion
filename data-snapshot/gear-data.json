@@ -470051,17 +470051,39 @@
   "a dark reaver": [
    "a dark reaver"
   ],
+  "a fine wool cloak": [
+   "fine wool cloak"
+  ],
   "a froglok hex doll": [
    "a froglok hex doll"
+  ],
+  "a fungus eye": [
+   "fungus eye"
   ],
   "a ghoul's heart": [
    "a ghouls heart"
   ],
+  "a ghouls heart": [
+   "a ghouls heart"
+  ],
+  "a giant laceless sandal": [
+   "gaint laceless sandal",
+   "giant laceless sandal"
+  ],
   "a giant's broom": [
    "a giants broom"
   ],
+  "a giants reminder string": [
+   "giants reminder string"
+  ],
   "a gigantic kromzek pick": [
    "a gigantic kromzek pick"
+  ],
+  "a gigantic zweihander": [
+   "gigantic zweihander"
+  ],
+  "a glowing black stone": [
+   "glowing black stone"
   ],
   "a gypsy medallion": [
    "a gypsy medallion"
@@ -470069,7 +470091,13 @@
   "a maleficent necromancer doll": [
    "a maleficent necromancer doll"
   ],
+  "a mithril two-handed sword": [
+   "mithril two-handed sword"
+  ],
   "a noble's crest": [
+   "a nobles crest"
+  ],
+  "a nobles crest": [
    "a nobles crest"
   ],
   "a pendant": [
@@ -470083,6 +470111,9 @@
   ],
   "a shimmering orb": [
    "a shimmering orb"
+  ],
+  "a shimmering white shroud": [
+   "shimmering white shroud"
   ],
   "a shovel": [
    "a shovel"
@@ -471587,6 +471618,9 @@
   ],
   "blood sky face plate": [
    "blood sky face plate"
+  ],
+  "blood splattered tunic": [
+   "blood splattered tunic*"
   ],
   "blood splattered tunic*": [
    "blood splattered tunic*"
@@ -474548,6 +474582,9 @@
   "diviner's bowl": [
    "diviners bowl"
   ],
+  "djarn's amethyst ring": [
+   "djarns amethyst ring"
+  ],
   "djarns amethyst ring": [
    "djarns amethyst ring"
   ],
@@ -475958,6 +475995,9 @@
    "faded crimson tunic*"
   ],
   "faded gold felt tunic": [
+   "faded gold felt tunic"
+  ],
+  "faded gold felt tunic*": [
    "faded gold felt tunic"
   ],
   "faded gold training tunic*": [
@@ -478740,6 +478780,9 @@
   "imbued electrum peridot bracelet": [
    "imbued electrum peridot bracelet"
   ],
+  "imbued electrum plains  earring": [
+   "imbued electrum plains earring"
+  ],
   "imbued electrum plains earring": [
    "imbued electrum plains earring"
   ],
@@ -479070,6 +479113,9 @@
   "imbued golden peridot bracelet": [
    "imbued golden peridot bracelet"
   ],
+  "imbued golden plains  earring": [
+   "imbued golden plains earring"
+  ],
   "imbued golden plains earring": [
    "imbued golden plains earring"
   ],
@@ -479343,6 +479389,9 @@
   "imbued platinum amber ring": [
    "imbued platinum amber ring"
   ],
+  "imbued platinum diamond  ring": [
+   "imbued platinum diamond ring"
+  ],
   "imbued platinum diamond ring": [
    "imbued platinum diamond ring"
   ],
@@ -479360,6 +479409,9 @@
   ],
   "imbued platinum peridot ring": [
    "imbued platinum peridot ring"
+  ],
+  "imbued platinum plains  ring": [
+   "imbued platinum plains ring"
   ],
   "imbued platinum plains ring": [
    "imbued platinum plains ring"
@@ -479399,6 +479451,9 @@
   ],
   "imbued silver opal ring": [
    "imbued silver opal ring"
+  ],
+  "imbued silver plains  ring": [
+   "imbued silver plains ring"
   ],
   "imbued silver plains ring": [
    "imbued silver plains ring"
@@ -480071,6 +480126,9 @@
    "journeymans walking stick"
   ],
   "jumjum sack tunic": [
+   "jumjum sack tunic"
+  ],
+  "jumjum sack tunic*": [
    "jumjum sack tunic"
   ],
   "jungle spiritling stone": [
@@ -481563,6 +481621,9 @@
   ],
   "mistmoore battle drums": [
    "mistmoore battle drums"
+  ],
+  "mithril  air ring": [
+   "mithril air ring"
   ],
   "mithril air ring": [
    "mithril air ring"
@@ -484645,6 +484706,9 @@
   "rusty fer'esh": [
    "rusty feresh"
   ],
+  "rusty fer`esh": [
+   "rusty feresh"
+  ],
   "rusty flail": [
    "rusty flail"
   ],
@@ -486351,6 +486415,10 @@
   ],
   "slick leather courier`s cape": [
    "slick leather couriers cape"
+  ],
+  "slime blood of cazic thule": [
+   "slime blood of cazic thule",
+   "slime blood of cazic-thule"
   ],
   "slime blood of cazic-thule": [
    "slime blood of cazic thule",
