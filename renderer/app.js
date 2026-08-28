@@ -1058,12 +1058,36 @@ function rankOf(v) {
   if (b === undefined) { b = R.best(v.g, { classes: VL.classes }); RANK_MEMO.set(v.g, b); }
   return b.best ? b : null;
 }
-/* The rank the cell leads with: the trio's best when one of the Valet trio
-   can wear the item — that is the keep-or-toss number on THIS character —
-   and the best of any class otherwise, with the class named either way. */
-const rankHead = b => b.trio[0] || b.best;
+/* TWO columns, not one headline. "Your trio" is where the item stands for the
+   classes you have selected; "Any class" is the best standing it has anywhere.
+   They part company for 159 in-era items — Basilisk Bracer is BER #67 of 81
+   and SHM #8 of 113 — and one number cannot say both: trio-first calls it junk,
+   best-of-all calls it a top-10 piece for a class you will get to. Kyle
+   settled it 2026-08-28: show two columns. */
+const rankTrio = b => b.trio[0] || null;
+const rankAny = b => b.best || null;
 // rank first, then the bigger pool: a #1 of 459 above a #1 of 27
 const rankKey = x => x.rank * 100000 - x.of;
+/* What the denominator counts, for the cell's title — the main hand is two
+   catalogues now and "of 320" alone does not say which one you are in. */
+const rankWhat = x => `${x.of} ${x.noun || "in-era items"} a ${window.EQLChar.name(x.cls)} can `
+  + (x.slot === "Primary" ? "put in the main hand" : x.slot === "Secondary" ? "put in the off hand" : `wear at ${x.slot}`);
+/* An item can carry a clicky, a proc or a focus and no stats at all — 30
+   in-era records do, Manastone and Shiny Brass Idol among them — and
+   gear-score reads none of it (its weights are HP, mana, stats, AC, resists,
+   haste and weapon ratio; there is no effect term). Those get no pool and no
+   rank, and an empty cell in a keep-or-toss column reads as a verdict. Say
+   why it is empty instead. */
+const rankEffOnly = (v) => !!(v.g && !v.r.exalt && ((v.g.eff && v.g.eff.length) || v.g.foc));
+const NO_SCORE_WHY = "Not ranked — it carries an effect and none of the stats the score reads. "
+  + "Clicky, proc and focus effects are all unscored, so an empty rank here is not a verdict on it.";
+function rankCellHtml(v, x, opts) {
+  const o = opts || {};
+  return `<td class="iv-n iv-rank${x.rank <= 3 ? " is-top" : ""}${o.echo ? " is-echo" : ""}"`
+    + ` data-pop="${o.pop}:${v.r.id}" title="${esc(rankWhat(x))}">`
+    + `<b>#${x.rank}</b><span class="dim"> of ${x.of}</span>`
+    + `<span class="iv-nichex">${esc(x.cls)} ${esc(x.slot)}</span></td>`;
+}
 
 let COPIES = new Map();     // INV row -> copies group
 let UNIQX = new Map();      // row key -> { stones, unique }
@@ -1146,11 +1170,10 @@ function ownedText(rec) {
    what each carries, where it comes from and whether you hold one. `link`
    makes the names wiki links (the row detail); the hover popover cannot be
    clicked, so it names them plain. */
-function rankTable(v, b, opts) {
+function rankTable(v, b, x, opts) {
   const o = opts || {};
   const R = ranker(), X = window.EQLExaltCore;
-  const x = rankHead(b);
-  const pool = R.pool(x.cls, x.slot);
+  const pool = R.pool(x.cls, x.slot, x.kind);
   // the same tie rule as the headline: 1 + the number scoring strictly above
   let above = 0;
   const top = pool.slice(0, o.n || 3).map((e, i) => {
@@ -1170,13 +1193,21 @@ function rankTable(v, b, opts) {
     <td class="pop__stats">${esc(recLine(t.rec, 0))}</td><td class="pop__score">${Math.round(t.s)}</td>
     <td class="pop__src" title="${esc(X.sourceLines(t.rec).join("\n"))}">${srcCell(t.rec, o.link)}</td>
     <td class="pop__have">${t.me ? `<span class="ok">${esc(whereText(v.r.loc))}${v.r.tier ? ` +${v.r.tier}` : ""}</span>` : ownedText(t.rec) ? `<span class="ok">${esc(ownedText(t.rec))}</span>` : `<span class="dim">—</span>`}</td></tr>`).join("");
-  const own = b.trio.length ? b.trio.map(t => `${t.cls} #${t.rank}`).join(" · ") : null;
-  const others = b.all.filter(t => !VL.classes.includes(t.cls) && !(t.cls === x.cls && t.slot === x.slot));
+  /* Every other standing the item has, and each one says WHICH SLOT. They are
+     (class, slot) pairs and were printed class-only, so a one-hander listed
+     the same class twice with two different numbers and no way to tell why —
+     Kyle read a Ranger main-hand #70 next to "also RNG #16" and asked what the
+     16 was (2026-08-28). It was the off hand. */
+  const chip = (t) => `${t.cls} ${t.slot} #${t.rank}`;
+  const own = b.trio.length ? b.trio.map(chip).join(" · ") : null;
+  const others = b.all.filter(t => t !== x && !b.trio.includes(t));
   /* No "at +N as you hold it" rank: the pool is at +0, so any upgraded copy
      lands at #1 against it by construction — a number, not a comparison. */
-  return `<div class="pop__head"><b>${esc(x.slot)}</b> for <b>${esc(window.EQLChar.name(x.cls))}</b> · #${x.rank} of ${x.of} in-era items<span class="dim"> · scored at +0</span></div>
+  const blind = rankEffOnly(v)
+    ? `<div class="pop__warn">Ranked on its stats only — the score has no term for the effect it carries.</div>` : "";
+  return `<div class="pop__head"><b>${esc(x.slot)}</b> for <b>${esc(window.EQLChar.name(x.cls))}</b> · #${x.rank} of ${x.of} ${esc(x.noun || "in-era items")}<span class="dim"> · scored at +0</span></div>${blind}
     <table class="pop__t"><thead><tr><th></th><th>Item</th><th>Carries</th><th>Score</th><th>From</th><th>You hold</th></tr></thead><tbody>${rows}</tbody></table>
-    <div class="pop__foot">${own ? `Your ${esc(VL.classes.join("/"))}: ${esc(own)}` : b.anyClass ? "Any class can wear it" : `Your ${esc(VL.classes.join("/"))} can't wear it`}${others.length ? `<span class="dim"> · also ${others.slice(0, 6).map(t => `${esc(t.cls)} #${t.rank}`).join(", ")}${others.length > 6 ? ` +${others.length - 6}` : ""}</span>` : ""}</div>`;
+    <div class="pop__foot">${own ? `Your ${esc(VL.classes.join("/"))}: ${esc(own)}` : b.anyClass ? "Any class can wear it" : `Your ${esc(VL.classes.join("/"))} can't wear it`}${others.length ? `<span class="dim"> · also ${others.slice(0, 6).map(t => esc(chip(t))).join(", ")}${others.length > 6 ? ` +${others.length - 6}` : ""}</span>` : ""}</div>`;
 }
 /* Where a catalogue item comes from, one line: the first zone and mob as
    wiki links when the panel can be clicked, plain when it cannot. The
@@ -1332,14 +1363,34 @@ const IV_COLS = [
     return `<td class="iv-item">${span}${idl}${badges}${spareChips(v)}</td>`;
   } },
   /* ── Rank, Copies, Exaltations — next to the name, ahead of the wide cells */
-  { k: "rank", h: "Rank", d0: 1,
-    key: v => { const b = rankOf(v); return b ? rankKey(rankHead(b)) : null; },
+  { k: "rank", h: "Your trio", d0: 1,
+    ht: "Where the item sits among every in-era item one of your three classes can wear in that slot, at +0. "
+      + "Each class is scored with its own computed weights, so Stat priorities does not move this number.",
+    key: v => { const b = rankOf(v); const x = b && rankTrio(b); return x ? rankKey(x) : null; },
     cell: v => {
       const b = rankOf(v);
-      if (!b) return `<td class="iv-n"></td>`;
-      const x = rankHead(b);
-      const also = b.best !== x && b.best.rank < x.rank ? ` · ${esc(b.best.cls)} #${b.best.rank}` : "";
-      return `<td class="iv-n iv-rank${x.rank <= 3 ? " is-top" : ""}" data-pop="rank:${v.r.id}"><b>#${x.rank}</b><span class="dim"> of ${x.of}</span><span class="iv-nichex">${esc(x.cls)} ${esc(x.slot)}${also}</span></td>`;
+      const x = b && rankTrio(b);
+      if (!x) return `<td class="iv-n iv-rank is-none"${b ? ` title="None of your three classes can wear this. Any class says what it is worth to somebody."` : ""}></td>`;
+      return rankCellHtml(v, x, { pop: "rank" });
+    } },
+  /* The same item measured for whoever it suits best. In EQL you get to every
+     class eventually, so a Cleric-only piece that is #4 for a Cleric is worth
+     keeping and one that is #70 is not — a question your current trio cannot
+     answer (Kyle, 2026-08-28: "we want to keep the best gear for all classes.
+     but if something is CLR only, and is the 10th best CLR item for that slot,
+     then we can get rid of it"). Dimmed when it is repeating the trio cell. */
+  { k: "rankany", h: "Any class", d0: 1,
+    ht: "The best standing the item has for any class that can wear it, including classes you are not playing. "
+      + "A Cleric-only piece that is #4 for a Cleric is worth keeping; one that is #70 is not.",
+    key: v => { const b = rankOf(v); const x = b && rankAny(b); return x ? rankKey(x) : null; },
+    cell: v => {
+      const b = rankOf(v);
+      const x = b && rankAny(b);
+      if (!x) return rankEffOnly(v)
+        ? `<td class="iv-n iv-rank is-noscore" title="${esc(NO_SCORE_WHY)}">effect only</td>`
+        : `<td class="iv-n"></td>`;
+      const t = rankTrio(b);
+      return rankCellHtml(v, x, { pop: "rankany", echo: !!t && t.cls === x.cls && t.slot === x.slot });
     } },
   { k: "copies", h: "Copies", d0: -1,
     // what merging wins first, the copy count as the tie-break
@@ -1506,24 +1557,29 @@ const IV_COLS = [
    Defaults are what Kyle asked each mode for and nothing else — the picker is
    how you get the rest. */
 const IV_DEFAULTS = {
-  quest: ["where", "item", "rank", "copies", "xkeep", "qty", "quests"],
-  gear:  ["where", "item", "bis", "rank", "copies", "xkeep"],
+  quest: ["where", "item", "rank", "rankany", "copies", "xkeep", "qty", "quests"],
+  gear:  ["where", "item", "bis", "rank", "rankany", "copies", "xkeep"],
   /* Spare exists to reclaim bag space: the disposal route and the weight are
      the two facts that make a row actionable, so they come before the wide
      Beaten-by cell rather than off the right edge behind it. */
-  spare: ["where", "item", "ahead", "how", "wt", "beatenby", "rank", "copies", "xkeep"],
+  spare: ["where", "item", "ahead", "how", "wt", "beatenby", "rank", "rankany", "copies", "xkeep"],
   exalt: ["where", "item", "tier", "xeff", "xfits", "xfire", "xsock", "xkeep"],
 };
 const IV_DEFAULT_COLS = IV_DEFAULTS.quest;
 /* A saved set is a player's own choice and is kept across a version bump —
    with the columns added since it was written turned on once, because a
    column nobody has heard of cannot be turned on. v3 added the three
-   inventory-management columns; v4 added Spare's disposal route and weight. */
-const IV_COLS_KEY = "eqlt-companion-invcols-v4";
+   inventory-management columns; v4 added Spare's disposal route and weight;
+   v5 split Rank into the trio's standing and any class's. */
+const IV_COLS_KEY = "eqlt-companion-invcols-v5";
 /* the columns each older set never heard of — only those get switched on;
    a choice a v3 set made about rank/copies/xkeep stands */
-const IV_COLS_OLD = ["eqlt-companion-invcols-v3", "eqlt-companion-invcols-v2"];
-const IV_NEW_COLS = { "eqlt-companion-invcols-v3": ["how", "wt"], "eqlt-companion-invcols-v2": ["rank", "copies", "xkeep", "how", "wt"] };
+const IV_COLS_OLD = ["eqlt-companion-invcols-v4", "eqlt-companion-invcols-v3", "eqlt-companion-invcols-v2"];
+const IV_NEW_COLS = {
+  "eqlt-companion-invcols-v4": ["rankany"],
+  "eqlt-companion-invcols-v3": ["rankany", "how", "wt"],
+  "eqlt-companion-invcols-v2": ["rankany", "rank", "copies", "xkeep", "how", "wt"],
+};
 const IV_MODE_COLS = {};
 let IV_SHOW = new Set(IV_DEFAULTS.quest);
 function loadInvCols() {
@@ -1663,7 +1719,16 @@ function invDetail(v) {
   /* The three management answers again, with room and with links — the hover
      popovers cannot be clicked. */
   const b = rankOf(v);
-  if (b) parts.push(`<div class="ivd__pop">${rankTable(v, b, { n: 5, link: true })}</div>`);
+  if (b) {
+    /* Both standings get their own table in the row detail when they differ —
+       the two columns, opened up. */
+    const seen = new Set();
+    for (const x of [rankTrio(b), rankAny(b)]) {
+      if (!x || seen.has(x.cls + x.slot)) continue;
+      seen.add(x.cls + x.slot);
+      parts.push(`<div class="ivd__pop">${rankTable(v, b, x, { n: 5, link: true })}</div>`);
+    }
+  }
   const cg = COPIES.get(v.r);
   if (cg) parts.push(`<div class="ivd__pop">${copiesPop(v, cg)}</div>`);
   const u = uniqOf(v);
@@ -1735,7 +1800,7 @@ function renderInv() {
     if (!IV.focus) return true;
     if (IV.focus === "copies") { const g = COPIES.get(v.r); return !!g && copiesTodo(g); }
     if (IV.focus === "xkeep") { const u = uniqOf(v); return !!u && u.unique > 0; }
-    if (IV.focus === "top") { const b = rankOf(v); return !!b && rankHead(b).rank <= 10; }
+    if (IV.focus === "top") { const b = rankOf(v); const x = b && rankAny(b); return !!x && x.rank <= 10; }
     return true;
   };
   const pool = INV.rows.map(invView).filter(v =>
@@ -1778,7 +1843,7 @@ function renderInv() {
   const arrow = k => st.k === k ? (st.d > 0 ? " ▲" : " ▼") : "";
   body.innerHTML = rows.length
     ? `<table class="qtab ivt"><thead><tr>${cols.map(c =>
-        `<th class="is-sort${c.k === "item" ? " iv-item" : ""}" data-ivsort="${c.k}">${c.h}${arrow(c.k)}</th>`).join("")}</tr></thead>
+        `<th class="is-sort${c.k === "item" ? " iv-item" : ""}" data-ivsort="${c.k}"${c.ht ? ` title="${esc(c.ht)}"` : ""}>${c.h}${arrow(c.k)}</th>`).join("")}</tr></thead>
       <tbody>${rows.map(v => invRow(v, cols)).join("")}</tbody></table>`
     : `<p class="empty">${invEmptyText(mode)}</p>`;
   retip(); repop();
@@ -4534,6 +4599,16 @@ function valetReload() {
    invisible here (the same wall Sky's skip marks hit). One panel, under the
    trio picker; the same widget the site mounts (vendor/priorities.js). */
 const VL_PRIO = window.EQLPriorities ? window.EQLPriorities.localStore("eqlt-companion-priorities-v1") : null;
+/* One store, mounted twice: on the Valet tab where the comparisons are, and in
+   Settings so there is a place to look for it (Kyle, 2026-08-28: "it is not
+   clear at all where i adjust the stat priorities for this tab. there should be
+   a common place across the app"). The old note claimed the edits reached
+   "every ranking for your trio in this app" — they do not reach the Inventory
+   tab's Rank columns, which is what sent him looking. Say what they cover. */
+const PRIO_NOTE = "HP-equivalents per point of the stat, computed from your trio and level. "
+  + "Hover a stat for the derivation. These weights score the Valet tab — its walk, its slot tables "
+  + "and its catalogue gap. The Inventory tab's Your trio and Any class ranks are scored per class "
+  + "with that class's own weights and do not read them. The site keeps a separate copy.";
 const vlOverrides = () => (VL_PRIO ? VL_PRIO.read() : {});
 let VSCORER = null;
 function valetScorer() {
@@ -5283,8 +5358,13 @@ function wireValet() {
   if (window.EQLPriorities && VL_PRIO) {
     window.EQLPriorities.mount($("vlPrio"), {
       store: VL_PRIO, scorer: valetScorer, summary: $("vlPrioSummary"), btnClass: "btn btn--sm",
-      note: "HP-equivalents per point of the stat, computed from your trio and level. Hover a stat for the derivation. Edits here apply to every ranking for your trio in this app; the site keeps its own.",
+      note: PRIO_NOTE,
       onChange: () => { valetRestart(); renderValet(); pushValet(); },
+    });
+    /* The Settings copy carries no onChange: a write fires the event at BOTH
+       mounts, so the Valet one already redraws the tab. */
+    window.EQLPriorities.mount($("setPrio"), {
+      store: VL_PRIO, scorer: valetScorer, btnClass: "btn btn--sm", note: PRIO_NOTE,
     });
   }
   $("vlSkip").addEventListener("click", () => { VWALK.skip(); renderValet(); pushValet(); pushSpare(); });
@@ -6317,7 +6397,8 @@ function showExaltTip(name, socketN) {
    the cursor redraws the right one. */
 let popEl = null;
 const IV_POPS = {
-  rank: v => { const b = rankOf(v); return b ? rankTable(v, b) : ""; },
+  rank: v => { const b = rankOf(v); const x = b && rankTrio(b); return x ? rankTable(v, b, x) : ""; },
+  rankany: v => { const b = rankOf(v); const x = b && rankAny(b); return x ? rankTable(v, b, x) : ""; },
   copies: v => { const g = COPIES.get(v.r); return g ? copiesPop(v, g) : ""; },
   xkeep: v => { const u = uniqOf(v); return u ? xkeepPop(v, u) : ""; },
 };

@@ -18,15 +18,21 @@
    deciding whether a thing is worth keeping at all.
 
      makeRanker({ D, level, combat }) -> ranker
-       ranker.pool(cls, slot)            -> [{ key, rec, s }] score-sorted, memoised
-       ranker.rank(rec, cls, slot, tier) -> { rank, of, score, better:[…] } | null
-       ranker.best(rec, opts)            -> { best, all:[{cls, slot, rank, of}], trio }
+       ranker.pool(cls, slot, kind)      -> [{ key, rec, s }] score-sorted, memoised
+       ranker.rank(rec, cls, slot, tier) -> { rank, of, score, kind, noun, better:[…] } | null
+       ranker.best(rec, opts)            -> { best, all:[…], trio, anyClass }
 
-   `best` is the (class, slot) where the item ranks highest, across every
-   class the wiki says can wear it; `trio` is the same list kept to the
-   caller's own classes. Rank is computed at +0 — the item's own worth, the
-   same for every copy you hold whatever tier each is at — and `rank(…, tier)`
-   answers the "at the tier I actually have it" question on demand.
+   `best` is the (class, slot) where the item ranks highest across every class
+   the wiki says can wear it; `trio` is the same list kept to the caller's own
+   classes, and the two are DIFFERENT ANSWERS often enough to be shown side by
+   side rather than reconciled. Rank is computed at +0 — the item's own worth,
+   the same for every copy you hold whatever tier each is at — and
+   `rank(…, tier)` answers the "at the tier I actually have it" question.
+
+   The main hand is two catalogues. A two-hander costs you the off hand, so it
+   is not an alternative to a one-hander for the same slot: `kind` is "1H" or
+   "2H" in Primary ("" everywhere else), an item is ranked among its own kind,
+   and `noun` is what `of` counts ("320 one-handers").
 
    ── 2. copies ─────────────────────────────────────────────────────────────
    The same item in more than one place. Identity is the client item ID the
@@ -104,8 +110,24 @@
     const canPlace = (rec, cls, slot) => slot !== "Secondary"
       || (!GS.TWO_H(rec) && (dualWields(cls) || !rec.dmg));
 
-    function pool(cls, slot) {
-      const k = cls + "|" + slot;
+    /* The main hand holds TWO catalogues, not one. A two-hander takes the off
+       hand with it, so it is not an alternative to a one-hander for the same
+       slot, and ranking them together pushed every 1H down a ladder it never
+       climbs: the Revultant Whip read #70 of 398 for a Ranger when 54 of the
+       69 items "above" it were two-handers. Split, it is #16 of 320 — the
+       honest number, and the one its off hand already agreed with (Kyle,
+       2026-08-28: "it's also comparing against 2h weapon, which obviously
+       isn't fair"). An item ranks in its OWN kind; nothing else has kinds. */
+    const kindOf = (rec, slot) => slot === "Primary" ? (GS.TWO_H(rec) ? "2H" : "1H") : "";
+    const KIND_NOUN = { "1H": "one-handers", "2H": "two-handers" };
+    /* What `of` counts, said out loud — a pool the player can't see is a
+       number they can't argue with. The off hand is its own mixture (shields,
+       off-hand-only items and whatever one-handers the class may put there). */
+    const nounFor = (kind, slot) => KIND_NOUN[kind] || (slot === "Secondary" ? "off-hand items" : "in-era items");
+
+    function pool(cls, slot, kind) {
+      const kd = kind || "";
+      const k = cls + "|" + slot + "|" + kd;
       let p = pools.get(k);
       if (p) return p;
       const sc = scorer(cls);
@@ -114,6 +136,7 @@
         const rec = D.items[key];
         if (rec.oe || !scorable(rec)) continue;
         if (!(rec.sl || []).includes(slot)) continue;
+        if (kd && kindOf(rec, slot) !== kd) continue;
         if (!sc.legal(rec) || !canPlace(rec, cls, slot)) continue;
         p.push({ key, rec, s: sc.score(rec, 0, 0, slot) });
       }
@@ -129,14 +152,33 @@
       if (!rec || rec.oe || !scorable(rec)) return null;
       const sc = scorer(cls);
       if (!sc.legal(rec) || !canPlace(rec, cls, slot)) return null;
-      const p = pool(cls, slot);
+      const kind = kindOf(rec, slot);
+      const p = pool(cls, slot, kind);
       const s = sc.score(rec, tier || 0, 0, slot);
       let lo = 0, hi = p.length;          // first index with score <= s
       while (lo < hi) { const m = (lo + hi) >> 1; if (p[m].s > s) lo = m + 1; else hi = m; }
-      return { rank: lo + 1, of: p.length, score: s,
+      return { rank: lo + 1, of: p.length, score: s, kind, noun: nounFor(kind, slot),
                better: p.slice(0, Math.min(lo, 3)).map((e) => e.rec) };
     }
-    /* Every (class, slot) the item can be ranked in, best first. */
+    /* Every (class, slot) the item can be ranked in, best first — and the two
+       answers a keep-or-toss column needs side by side: `trio` is the best of
+       the classes the caller plays, `best` the best any class gets. They part
+       company for 160 in-era items (Basilisk Bracer: BER #67 of 81, SHM #8 of
+       113), which is exactly why they are two columns and not one headline
+       with a tie-break (Kyle, 2026-08-28).
+
+       Lowest rank number wins: what decides a toss is how many better items
+       exist, and nine better is nine better whether the class has 91 to pick
+       from or 340. Bigger pool breaks a tie. No Primary-over-Secondary rule —
+       once two-handers are out of the main hand the off-hand pool is the
+       larger of the two (a Ranger's is 345 to 320, shields included), so the
+       hand that wins wins on the number. */
+    const HAND = { Primary: 0, Secondary: 1 };
+    const byRank = (a, b) => a.rank - b.rank
+      || (HAND[a.slot] ?? 0) - (HAND[b.slot] ?? 0)   // a tie names the hand it is swung in
+      || b.of - a.of
+      || CLASSES.indexOf(a.cls) - CLASSES.indexOf(b.cls)
+      || a.slot.localeCompare(b.slot);
     function best(rec, o) {
       const opt = o || {};
       const cls = classesOf(rec);
@@ -144,29 +186,13 @@
       const all = [];
       for (const c of universe) for (const slot of realSlots(rec)) {
         const r = rank(rec, c, slot, 0);
-        if (r) all.push({ cls: c, slot, rank: r.rank, of: r.of, score: r.score });
+        if (r) all.push({ cls: c, slot, rank: r.rank, of: r.of, score: r.score,
+                          kind: r.kind, noun: r.noun });
       }
+      all.sort(byRank);
       const own = opt.classes || [];
-      /* best = lowest rank; a tie goes to one of the caller's own classes,
-         then to the bigger pool (a 4th of 212 says more than a 4th of 9). */
-      all.sort((a, b) => a.rank - b.rank
-        || (own.includes(b.cls) - own.includes(a.cls))
-        || b.of - a.of
-        || CLASSES.indexOf(a.cls) - CLASSES.indexOf(b.cls));
-      /* A one-hander fits both hands, and the off-hand pool is the smaller
-         one (no two-handers, no damaging weapons for classes without Dual
-         Wield), so its Secondary rank is the lower NUMBER almost by
-         construction. The headline is where it is swung: Primary, when the
-         item has one. Secondary stays in `all`, and is the headline for a
-         shield or anything else that is Secondary-only. */
-      const slots = realSlots(rec);
-      const head = slots.includes("Primary") && slots.includes("Secondary")
-        ? all.filter((x) => x.slot !== "Secondary") : all;
-      return {
-        best: head[0] || all[0] || null, all,
-        trio: all.filter((x) => own.includes(x.cls)),
-        anyClass: cls === null,
-      };
+      const trio = all.filter((x) => own.includes(x.cls));
+      return { best: all[0] || null, all, trio, anyClass: cls === null };
     }
     return { pool, rank, best, scorer, classesOf, level };
   }

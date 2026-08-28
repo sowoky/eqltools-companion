@@ -182,6 +182,11 @@ main { flex: 1; overflow-y: auto; padding: 16px; }
    merge, violet where a stone has to come out first. */
 .iv-rank { white-space: nowrap; }
 .iv-rank.is-top b { color: var(--gold-bright); }
+/* Any class repeating what Your trio already said: present so the column
+   always sorts, quiet so the eye reads one number per row. */
+.iv-rank.is-echo { opacity: .45; }
+.iv-rank.is-noscore { font: 10px var(--sans); color: var(--ink-dim); }
+.pop__warn { font: 11px var(--sans); color: var(--ink-dim); margin: 4px 0 2px; }
 .iv-copies, .iv-xkeep { white-space: nowrap; font-family: var(--mono); font-size: 12px; }
 .iv-copies.is-hot { color: var(--bad); font-weight: 600; }
 .iv-xkeep.is-hot { color: var(--invoke); font-weight: 600; }
