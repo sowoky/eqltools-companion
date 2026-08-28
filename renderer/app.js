@@ -131,6 +131,9 @@ function buildIndexes(datasets) {
   SOURCES.sky = sd ? sd.source : "none";
   SKYD = sd ? sd.data : null;
   buildSkyUses();
+  // ACH_SKY is keyed off SKYD's tests as well as the achievements file, so a
+  // dataset refresh has to re-derive it too
+  rebuildAchSky();
 }
 
 /* ── tracker state (same blob shape as the /kills page) ───────────────────*/
@@ -199,7 +202,9 @@ function onBootstrap({ file, text, head }) {
   combatSeed(file, text);
   skySeed(file, text, head);
   exaltSeed(file, text);
-  renderStatus(); renderTracker(); pushZone(); renderSky(); pushSky();
+  // renderUnlocks too: on a character switch the "this dump is X's and the log
+  // is Y's" banner is the only thing that says the achievements are not applied
+  renderStatus(); renderTracker(); pushZone(); renderSky(); pushSky(); renderUnlocks();
   renderQuestsSoon(); // the tail's trades, buys and combines just landed in the ledger
 }
 
@@ -668,6 +673,25 @@ function renderZoneTab() {
    resolved at render time from the live datasets so a data refresh re-answers
    the same dump. */
 const INV = { file: null, mtime: 0, rows: null, text: null, problem: null };
+/* Whose dump is this? main.js picks the NEWEST `*-Inventory.txt` in the game
+   folder without looking at who it belongs to, so dumping on one character and
+   then playing another leaves the app holding Averaj's bags against Ravlin's
+   log. Mixing them into a held count is silent fiction — the same rule, and
+   the same wording, as achMine() for the achievements file.
+
+   Scope, deliberately: this gates the HELD COUNTS only (haveMap and the
+   post-dump credit window), which is where the two sources are mixed. The
+   Inventory table, and its Gear/Spare/Valet modes, are views OF the dump and
+   still show it; renderInv says whose it is. Whether an unmatched dump should
+   be hidden outright, or refused earlier in main.js, is a product call — see
+   the Codex finding "inventory dump crosses character boundary". */
+const invChar = f => (String(f || "").match(/^([^_]+)_/) || [])[1] || "";
+function invMine() {
+  if (!INV.rows) return false;
+  const me = SKYL && SKYL.me, who = invChar(INV.file);
+  if (!me || !who) return true;   // can't tell yet — don't withhold
+  return who.toLowerCase() === me.toLowerCase();
+}
 const IV = { tab: "all", trade: "", cls: "", focus: "", sort: "where", dir: 1 };
 /* One sort per mode. Spare opens on the item the most things beat, which is
    the whole point of the mode; Gear opens on the pieces that are first pick
@@ -1837,8 +1861,13 @@ function renderInv() {
   let uniq = 0;
   for (const u of UNIQX.values()) uniq += u.unique;
   const mgmt = [todo.size ? `${todo.size} to merge · ${slots} bag slot${slots === 1 ? "" : "s"} back` : "", uniq ? `${uniq} exaltation${uniq > 1 ? "s" : ""} held nowhere else` : ""].filter(Boolean).join(" · ");
+  // whose dump this is, when it is not the character the log is on: the table
+  // still shows it, but nothing else counts it (see invMine)
+  const notMine = !invMine()
+    ? ` · ${invChar(INV.file)}'s dump, log is ${SKYL && SKYL.me}'s — shown, but not counted as held`
+    : "";
   $("invMeta").textContent =
-    `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()} · ${scope}${wt != null ? ` · ${Math.round(wt * 10) / 10} wt` : ""}${mgmt ? ` · ${mgmt}` : ""}`;
+    `${INV.file} · dumped ${new Date(INV.mtime).toLocaleString()} · ${scope}${wt != null ? ` · ${Math.round(wt * 10) / 10} wt` : ""}${mgmt ? ` · ${mgmt}` : ""}${notMine}`;
   IV_BYID = new Map(rows.map(v => [v.r.id, v]));
   const arrow = k => st.k === k ? (st.d > 0 ? " ▲" : " ▼") : "";
   body.innerHTML = rows.length
@@ -2040,17 +2069,27 @@ const questLedger = () => (SKYL && SKYL.led) || null;
 function haveMap() {
   const m = new Map();
   const add = (name, n) => { for (const k of nameKeys(name)) m.set(k, (m.get(k) || 0) + n); };
-  for (const r of INV.rows || []) {
+  // another character's dump contributes nothing and dates nothing: this is
+  // then exactly the no-dump path, where the log alone answers (see invMine)
+  const mine = invMine();
+  for (const r of mine ? INV.rows : []) {
     // an exaltation stone carries the name of an item you no longer own
     if (r.exalt) continue;
     add(r.name, r.count);
   }
   for (const [k, c] of LIVE_HAVE) m.set(k, (m.get(k) || 0) + c);
   // since the dump: buys and combines arrive, closed hand-ins leave
-  const led = questLedger(), since = INV.mtime || 0;
+  const led = questLedger(), since = mine ? INV.mtime || 0 : 0;
   if (led) {
     for (const b of led.bought || []) if (logTs(b.ts) > since) add(b.n, b.q);
     for (const c of led.made || []) if (logTs(c.ts) > since) add(c.n, 1);
+    /* A player trade or a parcel is an arrival exactly like a buy, and was
+       missing here: the floor pass below reads led.received, but the floor
+       only fills a row the dump has NONE of, so a second copy handed to you
+       after the dump never raised a count the dump already showed. Same
+       caveat as bought/made — a hand-sale prints no quantity, so a copy
+       received and then vendored after the dump stays counted. */
+    for (const e of led.received || []) if (logTs(e.ts) > since) add(e.n, e.q || 1);
     for (const t of led.trades || []) {
       if (logTs(t.ts) <= since) continue;
       for (const [n, q] of t.items) for (const k of nameKeys(n)) if (m.has(k)) m.set(k, Math.max(0, m.get(k) - q));
@@ -2077,7 +2116,7 @@ function haveMap() {
   LOG_FLOOR = new Set();
   if (led) {
     const stones = new Map();
-    for (const r of INV.rows || []) if (r.exalt) {
+    for (const r of mine ? INV.rows : []) if (r.exalt) {
       const b = K.normName(stripDecor(r.name));
       stones.set(b, (stones.get(b) || 0) + 1);
     }
@@ -2305,6 +2344,12 @@ function mergePlans(plans) {
     const tt = names.map(n => r.quests.get(n) ? `${n} → ${r.quests.get(n)}` : n).join("\n");
     return { n: r.n, want: r.want, have: r.have,
              ...(r.st ? { st: r.st } : {}),
+             // the pin has to survive the pool, or zoneBuckets falls back to
+             // the item's GLOBAL sources and the pooled zone view sends you to
+             // cities whose own coin is already in the bank — the exact walk
+             // the pinning exists to shorten. The conflict rule is applied in
+             // the merge above (both quests pin: union; only one pins: dropped).
+             ...(r.zs && r.zs.length ? { zs: r.zs } : {}),
              ...(r.lk ? { lk: true } : {}),
              tag: names.length > 1 ? `${names.length} quests` : names[0],
              ...(tt ? { tt } : {}) };
@@ -2392,7 +2437,8 @@ function stepState(q, have) {
      minus what later proven trades consumed, never below zero. */
   const gained = new Map();
   const credit = (n, q) => { const k = itemKey(n); gained.set(k, (gained.get(k) || 0) + q); };
-  const since = INV.mtime || 0;
+  // another character's dump dates nothing here either — the whole log counts
+  const since = invMine() ? INV.mtime || 0 : 0;
   const logged = st => {
     if (!led) return false;
     if (st.k === "give") {
@@ -3353,6 +3399,11 @@ function skyReset(file) {
   const me = (String(file || "").match(/eqlog_([^_]+)_/) || [])[1] || "";
   SKYL = { st: SKY.stream(me), me, file };
   SKYL.led = SKYL.st.led;
+  /* ACH_SKY is derived from ACH.parsed AND from who the log is on (achMine),
+     and it used to be rebuilt only when an achievements file arrived. A
+     character switch changes `me` here, so without this the previous
+     character's completed tests stayed applied to the new one's Sky tab. */
+  rebuildAchSky();
 }
 function skySeed(file, text, head) {
   skyReset(file);
@@ -6622,7 +6673,8 @@ async function main() {
     const h = e.target.closest("[data-hold]");
     if (h) { e.stopPropagation(); toggleHeld(h.dataset.hold, +h.dataset.want || 1); }
   });
-  window.companion.onMarkHeld(n => toggleHeld(n, 1));
+  // the overlay sends the row's requirement, same as the local tick above
+  window.companion.onMarkHeld((n, c) => toggleHeld(n, c));
   window.companion.onStatsReset(on => on ? raidResetNow() : setRaidZero(null));
   /* The widget asked for a different Sky grouping. It writes through to the
      same widget option the Sky tab draws, so the select down there follows —

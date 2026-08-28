@@ -40,8 +40,12 @@ contextBridge.exposeInMainWorld("companion", {
   sendValet: (v) => ipcRenderer.send("feed:valet", v),
   sendSpare: (v) => ipcRenderer.send("feed:spare", v),
   sendExalt: (v) => ipcRenderer.send("feed:exalt", v),
-  markHeld: (n) => ipcRenderer.send("quest:markHeld", n),
-  onMarkHeld: (fn) => ipcRenderer.on("quest:markHeld", (_e, p) => fn(p)),
+  /* The count is the clicked row's requirement, so a mark can satisfy a row
+     wanting more than one. A bare string (an older overlay) still means one. */
+  markHeld: (n, c) => ipcRenderer.send("quest:markHeld",
+    { n: String(n), c: Math.max(1, +c || 1) }),
+  onMarkHeld: (fn) => ipcRenderer.on("quest:markHeld", (_e, p) =>
+    typeof p === "string" ? fn(p, 1) : fn(p && p.n, Math.max(1, +(p && p.c) || 1))),
   /* The Parser meter's reset stamp. Same shape as markHeld: the overlay asks,
      main forwards, the main renderer (which holds the engine and the only log
      clock) decides what instant that is. Not an overlay pref — a timestamp

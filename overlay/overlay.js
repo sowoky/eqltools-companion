@@ -247,6 +247,10 @@ function itemLi(it) {
   const tick = document.createElement("span");
   tick.className = "tqc__tick"; tick.textContent = done ? "✓" : "·";
   tick.dataset.hold = it.n;
+  // the row's requirement, not one: a mark of 1 against a row wanting 4 leaves
+  // it at 1/4 forever, so the tick could never complete what it was clicked on.
+  // The main window's own rows already carry this (app.js holdChk, data-want).
+  tick.dataset.want = it.want || 1;
   tick.title = it.mk ? "Marked as held — click to clear"
     : "Mark as held (bought it, or it's on your pet)";
   cl.append(tick, link(it.n, it.url, "tqc__n"));
@@ -1234,7 +1238,8 @@ document.addEventListener("click", e => {
     saveFolds(); renderQuests(); rehotspot(); return;
   }
   const h = e.target.closest("[data-hold]");
-  if (h) { window.companion.markHeld(h.dataset.hold); return; }
+  // Sky ticks carry no want and mean one, same as the main window's own
+  if (h) { window.companion.markHeld(h.dataset.hold, +h.dataset.want || 1); return; }
   const q = e.target.closest("[data-url]");
   if (q && q.dataset.url) window.companion.openWiki(q.dataset.url);
 });

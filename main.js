@@ -534,13 +534,13 @@ function startInvWatch() {
   stopInvWatch();
   if (!SETTINGS.logDir) return;
   for (const kind of Object.keys(DUMPS)) {
-    dumpState[kind] = { timer: setInterval(() => pollDump(kind), DUMPS[kind].ms), sent: null, problem: "-" };
+    dumpState[kind] = { timer: setInterval(() => pollDump(kind), DUMPS[kind].ms), sent: null, pick: null, problem: "-" };
     pollDump(kind);
   }
 }
 function stopInvWatch() {
   for (const s of Object.values(dumpState)) if (s.timer) clearInterval(s.timer);
-  for (const kind of Object.keys(DUMPS)) dumpState[kind] = { timer: null, sent: null, problem: "-" };
+  for (const kind of Object.keys(DUMPS)) dumpState[kind] = { timer: null, sent: null, pick: null, problem: "-" };
 }
 function pollDump(kind) {
   if (!rendererReady || !mainWin) return;
@@ -562,6 +562,28 @@ function pollDump(kind) {
   // "you haven't dumped yet" (same rule as the tail engine's sendStatus).
   const problem = readable ? null : "Game folder is unreadable.";
   if (problem !== st8.problem) { st8.problem = problem; mainWin.webContents.send(spec.chan + ":status", { problem }); }
+  /* A hand-picked file wins until a genuinely NEWER one appears on disk (the
+     rule stated at ach:pick). It used to be recorded only as a `sent`
+     signature, so the very next poll saw a different newest candidate, found
+     the signature unequal and replaced the pick — usually with the file the
+     pick existed to override, and within one interval. The pick is now an
+     explicit override, re-stat'ed each poll so re-dumping the picked file
+     still re-sends it, and dropped when it is superseded or deleted. */
+  const ov = st8.pick;
+  if (ov) {
+    let ost; try { ost = fs.statSync(ov.p); } catch { ost = null; }
+    if (!ost) st8.pick = null;                        // the picked file is gone
+    else {
+      /* "Newer" is measured against what was already on disk when the pick was
+         made, not against the picked file's own mtime — a hand-pick is usually
+         of an OLDER file, because the newest one is the wrong one the pick is
+         overriding. Against its own mtime the override would be superseded on
+         the very next poll, which is the bug this is fixing. */
+      if (ov.floor == null) ov.floor = Math.max(best ? best.mtimeMs : 0, ost.mtimeMs);
+      if (best && best.mtimeMs > ov.floor) st8.pick = null;  // a genuinely new dump landed
+      else best = { p: ov.p, mtimeMs: ost.mtimeMs };
+    }
+  }
   if (!best) return;
   const sig = best.p + ":" + best.mtimeMs;
   if (sig === st8.sent) return;
@@ -867,7 +889,10 @@ ipcMain.handle("ach:pick", async () => {
   let text, st;
   try { text = fs.readFileSync(p, "utf8"); st = fs.statSync(p); }
   catch { return { error: "That file could not be read." }; }
-  if (dumpState.ach) dumpState.ach.sent = p + ":" + st.mtimeMs;
+  if (dumpState.ach) {
+    dumpState.ach.sent = p + ":" + st.mtimeMs;
+    dumpState.ach.pick = { p };   // the override pollDump honours; see there
+  }
   return { file: path.basename(p), mtime: st.mtimeMs, text };
 });
 
@@ -1150,8 +1175,12 @@ ipcMain.on("feed:quests", (_e, q) => {
 ipcMain.on("stats:reset", (_e, on) => {
   if (mainWin) mainWin.webContents.send("stats:reset", !!on);
 });
-ipcMain.on("quest:markHeld", (_e, n) => {
-  if (mainWin && typeof n === "string") mainWin.webContents.send("quest:markHeld", n);
+ipcMain.on("quest:markHeld", (_e, p) => {
+  // {n, c}: c is the clicked row's requirement. A bare string means one.
+  const n = typeof p === "string" ? p
+    : p && typeof p.n === "string" ? p.n : null;
+  const c = p && typeof p === "object" ? Math.max(1, +p.c || 1) : 1;
+  if (mainWin && n) mainWin.webContents.send("quest:markHeld", { n, c });
 });
 // the widget picking how its Sky board is grouped; the main renderer builds it
 ipcMain.on("sky:view", (_e, v) => {
