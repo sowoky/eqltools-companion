@@ -166,17 +166,31 @@
        is fixed and written down rather than chosen per run. */
     function optionsFor(step, taken, loreTaken, baseAC) {
       const dw = sc.dualWieldCap() > 0;
-      /* An item ON YOUR BODY is legal for you, whatever the wiki says. The class
-         lists in gear-data are wrong often enough to matter: on the reference
-         character SEVEN worn pieces are illegal for his own trio, including both
-         Any Slot shields (Shield of the Stalwart Seas reads Paladin-only), and
-         NO trio makes the whole set legal — so this is the wiki, not the trio.
-         Filtering them out meant the walk refused to put back gear he is wearing
-         right now, and left the off hand with no candidates at all (Kyle,
-         2026-08-14: "it didn't want to put shield of stalward seas on my any
-         slot. why not"). The game let him equip it; that outranks a wiki table. */
+      /* The class gate is absolute here. It used to carry `|| r.sec === "worn"` —
+         an item on your body is legal for you whatever the wiki says, because
+         the game let you equip it — and that premise is false in EQL: the
+         secondary and tertiary class swap freely
+         (encyclopedia/trio-system.md), so gear equipped under an old combo
+         stays on the body after the class that could wear it is gone. Kyle's
+         Windstriker is the case: the wiki AND the client's own Sky reward table
+         both file it as the RANGER reward, and the walk was recommending it
+         (2026-08-30: "the valet is suggesting wind striker for ranged when I
+         don't have the classes for it").
+
+         Worse, the escape had no slot attached, so anything worn anywhere
+         bypassed the gate for EVERY slot it fits — and Any Slot fits
+         everything, which is how a bow became an Any Slot recommendation.
+
+         The 2026-08-14 shield ("it didn't want to put shield of stalward seas
+         on my any slot") is not lost to this: that shield is Paladin-only and
+         the trio holds Paladin, so it is legal and never needed the escape —
+         the run that produced that report had the wrong trio set.
+
+         The walk is where recommendations are made, so it takes the strict
+         rule. slotView keeps showing a worn piece in its own slot, chipped:
+         seeing what is on you is not the same as being told to put it on. */
       const usable = (r) => r.rec && !taken.has(r.i) && !(r.key && loreTaken.has(r.key))
-        && (sc.legal(r.rec) || r.sec === "worn");
+        && sc.legal(r.rec);
       const mk = (items) => {
         let ac = baseAC, score = 0;
         for (const it of items) {
@@ -240,25 +254,44 @@
     }
 
     /* The two-hander question, answered once so the Main hand step can state
-       it: the best 2H on its own against the best main+off pair. Both are
-       priced by the same scorer at the same AC base, which is the only way the
-       two numbers mean anything next to each other. */
-    function weaponCompare(taken, lore, baseAC) {
-      const prim = optionsFor({ kind: "primary", slot: "Primary", key: "Primary#1" }, taken, lore, baseAC);
-      const best2H = prim.find((o) => GS.TWO_H(o.items[0].row.rec)) || null;
-      let bestPair = null;
+       it — and state it as TWO RANKED PATHS rather than one mixed list, because
+       a two-hander and a one-hander are not competing for the same thing (Kyle,
+       2026-08-30: "it should show 2h weapons and 2x 1h items separately").
+
+         twoH   – every two-hander you own, each scored on its own; a 2H fills
+                  both hands, so its score already IS the hands total.
+         pairs  – every one-hander you own as a main hand, each carried with the
+                  best off hand still available behind it and the two scored
+                  TOGETHER, so the number sits next to a 2H's honestly.
+
+       Both sides are priced by the same scorer at the same AC base, which is the
+       only way the two numbers mean anything next to each other. `best2H` and
+       `bestPair` are the heads of the two lists, kept for the one-line headline.
+
+       Picking stays two steps: a 1H here still leads to the Off hand step, so
+       choosing a main hand asks about the off hand instead of silently deciding
+       it (the 2026-08-14 fix). `partner` is what that step would offer first. */
+    function weaponCompare(taken, lore, baseAC, primList) {
+      /* The walk already priced the Main hand step; reuse ITS option objects so
+         a host can address a card by its index in options("Primary#1"). */
+      const prim = primList || optionsFor({ kind: "primary", slot: "Primary", key: "Primary#1" }, taken, lore, baseAC);
+      const twoH = prim.filter((o) => GS.TWO_H(o.items[0].row.rec));
+      const pairs = [];
       for (const p of prim) {
         if (GS.TWO_H(p.items[0].row.rec)) continue;
-        const after = new Set(taken); after.add(p.items[0].row.i);
+        const row = p.items[0].row;
+        const after = new Set(taken); after.add(row.i);
         const secs = optionsFor({ kind: "secondary", slot: "Secondary", key: "Secondary#1" },
-                                after, lore, baseAC + acOf(p.items[0].row.rec, p.items[0].row.tier));
-        if (!secs.length) continue;
-        const total = p.score + secs[0].score;
-        if (!bestPair || total > bestPair.total)
-          bestPair = { total, main: p.items[0].row, off: secs[0].items[0].row };
-        break;   // prim is score-sorted; the best main hand fixes the best pair
+                                after, lore, baseAC + acOf(row.rec, row.tier));
+        const off = secs.length ? secs[0] : null;
+        pairs.push({ opt: p, main: row, partner: off ? off.items[0].row : null,
+                     offScore: off ? off.score : 0, total: p.score + (off ? off.score : 0),
+                     offCount: secs.length });
       }
-      return { best2H, bestPair };
+      pairs.sort((a, b) => b.total - a.total || b.opt.score - a.opt.score);
+      const best2H = twoH[0] || null;
+      const bestPair = pairs.find((x) => x.partner) || null;
+      return { best2H, bestPair, twoH, pairs };
     }
 
     /* Recompute every step from the first, because a pick changes what is left
@@ -380,7 +413,7 @@
         const k = key || (steps[W.i] || {}).key;
         const c = W.ctx[k];
         if (k !== "Primary#1" || !c) return null;
-        return weaponCompare(c.taken, c.lore, c.baseAC);
+        return weaponCompare(c.taken, c.lore, c.baseAC, W.opts[k]);
       },
       /* What a step was priced in: the rows already spoken for, the LORE keys
          already used, and the AC the loadout carries when the step opens.
@@ -413,6 +446,11 @@
          change it. */
       back() {
         for (let j = W.i - 1; j >= 0; j--) {
+          /* A step the walk settled for itself is not a stop: the off hand
+             under a two-hander, or a flat step, has candidates in its list,
+             but landing there just re-settles it and the walk bounces back
+             to where Back was pressed. */
+          if (W.auto[steps[j].key] === "twoh" || W.auto[steps[j].key] === "flat") continue;
           if ((W.opts[steps[j].key] || []).length > 1) {
             mem.del(steps[j].key);
             advance(j);
@@ -459,7 +497,7 @@
       out.push({ k: "SV" + k.toUpperCase(), n: rec.sv[k], w: sc.w.sv, v }); total += v;
     }
     if (rec.haste) { const v = sc.w.haste * rec.haste; out.push({ k: "haste", n: rec.haste, w: sc.w.haste, v }); total += v; }
-    if (rec.dmg && rec.dly && (slot === "Primary" || slot === "Secondary" || slot === "Range")) {
+    if (rec.dmg && rec.dly && GS.SWINGS(slot)) {
       const v = sc.w.ratio * 10 * statAt(rec.dmg, tier) / rec.dly * (GS.TWO_H(rec) ? 2 : 1);
       out.push({ k: "DMG/DLY", n: +(statAt(rec.dmg, tier) / rec.dly).toFixed(2), w: sc.w.ratio, v }); total += v;
     }
@@ -547,9 +585,12 @@
     /* What is worn IN THIS SLOT is a candidate for it whatever the wiki's
        class list, slot list or the Dual Wield gate say — the game put it
        there (the walk's rule, and the 2026-08-14 shield). Worn elsewhere,
-       it is gated like anything else. */
+       it is gated like anything else — including the class gate, which the
+       second clause used to hand a blanket `|| r.sec === "worn"` exemption.
+       That put every worn piece the wiki calls illegal into every other slot
+       it fits, Any Slot most of all (2026-08-30; see the walk's note). */
     const usable = (r) => r.rec && !r.exalt && ((r.sec === "worn" && wornSlotOf(r.loc) === slot)
-      || (fitsSlot(r.rec, slot) && placeable(r.rec, slot, dw) && (sc.legal(r.rec) || r.sec === "worn")));
+      || (fitsSlot(r.rec, slot) && placeable(r.rec, slot, dw) && sc.legal(r.rec)));
     const owned = rows.filter(usable).map((r) => {
       const wornIn = r.sec === "worn" ? wornSlotOf(r.loc) : null;
       return {

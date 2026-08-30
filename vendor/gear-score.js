@@ -43,6 +43,13 @@
   const PAIRED = { Ear: 2, Wrist: 2, Fingers: 2, [ANY]: 2 };
   const WORN_RX = /^(Charm|Ear|Head|Face|Neck|Shoulders|Arms|Back|Wrist|Range|Hands|Primary|Secondary|Fingers?|Ring|Chest|Legs|Feet|Waist|Ammo|Power Source|Any Slot)$/;
   const TWO_H = (rec) => /^2H|Two/i.test((rec && rec.skill) || "");
+  /* The placements a weapon can actually be used from. Nothing parked in Any
+     Slot swings, so a bow left there is a stat stick and its DMG/DLY is not a
+     number about it — score(), terms(), breakdown() and every table that
+     prints a ratio ask this one predicate rather than re-listing the slots
+     (four copies, and the display copies had drifted: /valet was printing
+     90/60 = 1.50 on an Any Slot card the scorer had already zeroed). */
+  const SWINGS = (placement) => placement === "Primary" || placement === "Secondary" || placement === "Range";
 
   /* ── class mechanics ─────────────────────────────── */
   const MANA_STAT = { BRD: "int", SHD: "int", NEC: "int", WIZ: "int", MAG: "int", ENC: "int",
@@ -486,7 +493,7 @@
          backed out — zeroing the slot is no better supported than the stand-in,
          and Kyle reported ranged reading correctly (2026-08-14). Settle it with
          an archery measurement, not a preference. */
-      if (rec.dmg && rec.dly && (placement === "Primary" || placement === "Secondary" || placement === "Range")) {
+      if (rec.dmg && rec.dly && SWINGS(placement)) {
         sum += w.ratio * 10 * statAt(rec.dmg, tier) / rec.dly * (TWO_H(rec) ? 2 : 1);
       }
       return sum;
@@ -519,7 +526,7 @@
       if (rec.dmg) out.push({ k: "dmg", label: "DMG", v: statAt(rec.dmg, tier), pts: 0, unscored: true });
       if (rec.dly) out.push({ k: "dly", label: "Delay", v: rec.dly, pts: 0, unscored: true });
       if (rec.dmg && rec.dly) {
-        const swings = placement === "Primary" || placement === "Secondary" || placement === "Range";
+        const swings = SWINGS(placement);
         const ratio = statAt(rec.dmg, tier) / rec.dly;
         out.push({ k: "ratio", label: "DMG/DLY" + (TWO_H(rec) ? " (2H, ×2)" : ""),
           v: Math.round(ratio * 100) / 100, dec: 2,
@@ -558,7 +565,7 @@
   }
 
   window.EQLGearScore = {
-    SLOTS, WORN_SLOTS, ANY, PAIRED, WORN_RX, TWO_H, STAT_DEFS, ITEM_STATS, SV_NAMES, RATES,
+    SLOTS, WORN_SLOTS, ANY, PAIRED, WORN_RX, TWO_H, SWINGS, STAT_DEFS, ITEM_STATS, SV_NAMES, RATES,
     MANA_STAT, FULL_CASTER, PURE_MELEE, TANKS,
     LOC_SECTIONS, SECTION_LABEL, rootLoc, locSection, locBadge,
     baseName, parseRows, parseInventory, make,

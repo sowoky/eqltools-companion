@@ -4677,6 +4677,9 @@ function valetRestart() {
   VSCORER = null;
   VWALK = VINV ? window.EQLValet.makeWalk({ rows: VINV.rows, equipped: VINV.equipped,
                                             scorer: valetScorer(), mem: VL_MEM }) : null;
+  /* The pet walk holds row objects from the old VINV and a pool cut against
+     the old player plan — both just moved. */
+  VPWALK = null; VPWALK_KEY = null;
   valetAuditReload();
 }
 
@@ -4688,6 +4691,7 @@ function valetRestart() {
 let VEXALT = null, VAUDIT = null, VRANKER = null, VRANKER_LVL = 0;
 const VS = { view: "slot", slot: "Head", cols: null, gapAll: false, sort: null, dir: 1, gsort: null, gdir: 1,
   petLine: null, petRank: 0, psort: null, pdir: 1,
+  petAllOpen: false, pasort: "score", padir: -1,
   // the Exaltations view's three tables, each sorted on its own
   xesort: "fits", xedir: -1, xisort: "empty", xidir: -1, xnsort: "where", xndir: 1,
   // Get dressed: every option for the open step, not only the four cards
@@ -4781,16 +4785,21 @@ const VS_COLS = [
       Object.keys(rec.sv || {}).reduce((n, k) => (k === "v" ? n : n + (+rec.sv[k] || 0)), 0)}</span>` : ""; } },
   { k: "haste", h: "Haste", num: 1, def: false, v: (rec) => rec.haste || 0,
     cell: (rec) => (rec.haste ? `${rec.haste}%` : "") },
-  { k: "ratio", h: "DMG/DLY", num: 1, def: null, v: (rec, tier) => (rec.dmg && rec.dly ? window.EQLTier.statAt(rec.dmg, tier) / rec.dly : 0),
+  /* On for the hands and Range, and offered nowhere else: the picked-column set
+     is sticky across slots, so ticking DMG/DLY on Main hand carried it onto Any
+     Slot, where the scorer gives a ratio nothing (Kyle, 2026-08-30). */
+  { k: "ratio", h: "DMG/DLY", num: 1, def: null, avail: (slot) => window.EQLGearScore.SWINGS(slot),
+    v: (rec, tier) => (rec.dmg && rec.dly ? window.EQLTier.statAt(rec.dmg, tier) / rec.dly : 0),
     cell: (rec, tier) => (rec.dmg && rec.dly ? `${window.EQLTier.statAt(rec.dmg, tier)}/${rec.dly} = ${(window.EQLTier.statAt(rec.dmg, tier) / rec.dly).toFixed(2)}` : "") },
   { k: "fx", h: "Effects", def: true, v: (rec) => (rec.eff || []).length + (rec.foc ? 1 : 0), cell: (rec) => vlEffects(rec) },
   { k: "sock", h: "Sockets", def: true, own: 1 },
 ];
 const VS_HANDS = ["Primary", "Secondary", "Range"];
+const vsAvail = (c) => (typeof c.avail === "function" ? c.avail(VS.slot) : true);
 function vsCols() {
   const picked = Array.isArray(VS.cols) ? new Set(VS.cols) : null;
-  return VS_COLS.filter((c) => c.fixed || (picked ? picked.has(c.k)
-    : (c.def === null ? VS_HANDS.includes(VS.slot) : typeof c.def === "function" ? c.def() : c.def)));
+  return VS_COLS.filter((c) => c.fixed || (vsAvail(c) && (picked ? picked.has(c.k)
+    : (c.def === null ? VS_HANDS.includes(VS.slot) : typeof c.def === "function" ? c.def() : c.def))));
 }
 function vsSorted(list, cols, key, dir, valueOf) {
   const col = cols.find((c) => c.k === key);
@@ -4823,7 +4832,7 @@ function renderValetSlot() {
     + (sv.handsNow && sv.handsNow.off ? `<div class="dim">Main + off together: <b>${Math.round(sv.handsNow.total)}</b> — the number a two-hander has to beat.</div>` : "");
   // columns
   const C = vsCols(), on = new Set(C.map((c) => c.k));
-  $("vlOwnCols").innerHTML = VS_COLS.filter((c) => !c.fixed).map((c) => `<label class="chk"><input type="checkbox" data-vlcol="${c.k}" ${on.has(c.k) ? "checked" : ""}> ${esc(c.h)}</label>`).join("")
+  $("vlOwnCols").innerHTML = VS_COLS.filter((c) => !c.fixed && vsAvail(c)).map((c) => `<label class="chk"><input type="checkbox" data-vlcol="${c.k}" ${on.has(c.k) ? "checked" : ""}> ${esc(c.h)}</label>`).join("")
     + `<button type="button" class="linkish" id="vlColsReset">reset</button>`;
   $("vlOwnCount").textContent = sv.owned.length ? `${sv.owned.length} cop${sv.owned.length === 1 ? "y" : "ies"} fit` : "";
   const valueOf = (col, c) => (col.k === "item" ? c.row.name.toLowerCase() : col.k === "where" ? V.secRank(c.row.sec) * 1000 + (GS.locBadge(c.row.loc).n || 0)
@@ -4834,7 +4843,7 @@ function renderValetSlot() {
     rows.length ? rows.map((c) => {
       const r = c.row, w = vlSocketsFor(c);
       return `<tr class="${c.wornHere ? "is-worn" : ""}">${C.map((col) => {
-        if (col.k === "item") return `<td class="iv-item vl-item">${itemSpan(r.name, true)}${c.twoH ? ` <span class="dim">2H</span>` : ""}${c.unscored.includes("charges") ? ` <span class="warn" title="Its click has charges and runs out.">charges</span>` : ""}${!c.legal ? ` <span class="warn" title="The wiki's class list for this item has none of your three; it is on your body, so the game disagrees.">wiki: not your class</span>` : ""}${c.wornHere && !c.placeable ? ` <span class="warn" title="Without Dual Wield the wiki says a damaging one-hander cannot go here; it is in your off hand, so the game disagrees.">wiki: can't hold it</span>` : ""}</td>`;
+        if (col.k === "item") return `<td class="iv-item vl-item">${itemSpan(r.name, true)}${c.twoH ? ` <span class="dim">2H</span>` : ""}${c.unscored.includes("charges") ? ` <span class="warn" title="Its click has charges and runs out.">charges</span>` : ""}${!c.legal ? ` <span class="warn" title="None of your three classes is on this item's class list. It is on your body either because an earlier combo could wear it or because the wiki is wrong \u2014 either way, off is a one-way trip. Listed for the slot it sits in, offered for no other.">not your class</span>` : ""}${c.wornHere && !c.placeable ? ` <span class="warn" title="Without Dual Wield the wiki says a damaging one-hander cannot go here; it is in your off hand, so the game disagrees.">wiki: can't hold it</span>` : ""}</td>`;
         if (col.k === "where") return `<td>${c.wornHere ? `<span class="skl skl--word">on you</span>` : c.wornIn ? `<span class="skl skl--word">on you · ${esc(c.wornIn)}</span>` : vlBadge(r.loc)}</td>`;
         if (col.k === "sock") return `<td>${w ? vlSockets(w) : `<span class="dim" title="The storage bins export no sockets.">not listed</span>`}</td>`;
         return `<td class="${col.num ? "num" : ""}">${col.own ? col.cell(c) : col.cell(r.rec, r.tier)}</td>`;
@@ -4871,7 +4880,11 @@ function renderValetSlot() {
    Same core as the site (vendor/pet-core.js). The player plan is the walk run
    to completion on its own — every open step takes its top card, remembered
    decisions apply through a READ-ONLY view of the memory (pick(key, opt,
-   false) would otherwise erase the user's own "remember this" marks). */
+   false) would otherwise erase the user's own "remember this" marks). The
+   pet's set is then chosen the way the player's is: makePetWalk, one step at
+   a time, ranked cards. Weapons rank by DMG/DLY; the proc is a separate
+   decision (petProcs), because a proc is an exaltation and moves to
+   whichever weapon the pet holds. */
 function vlAutoPlanTaken() {
   const roMem = { get: VL_MEM.get, set: () => {}, del: () => {} };
   const W = window.EQLValet.makeWalk({ rows: VINV.rows, equipped: VINV.equipped, scorer: valetScorer(), mem: roMem });
@@ -4888,18 +4901,235 @@ function vlAutoPlanTaken() {
 }
 const VL_PET_WHY = {
   ae: (c) => `<span class="warn" title="AE procs never fire from a summoned pet.">AE proc: ${esc(c.n)}</span>`,
-  proc: (c) => `<span title="Procs fire even when the pet ignores the weapon for damage. The gate is the pet's base level, before spell rank.">proc: ${esc(vlFxName(c.n))}</span>`,
+  proc: (c) => `<span title="An innate effect of this weapon, not a socketed exaltation. Procs fire even when the pet ignores the weapon for damage; the gate is the pet's base level, before spell rank.">proc: ${esc(vlFxName(c.n))}</span>`,
   proclvl: (c) => `<span class="warn" title="The proc's level requirement reads the pet's base level, before spell rank.">proc at pet ${c.l}: ${esc(vlFxName(c.n))}</span>`,
-  hits: () => `<span title="Players put the bar for a one-hander out-damaging a level-50 pet's own swing near 40 damage.">40+ dmg</span>`,
   twoh: () => `<span>2H</span>`,
-  bash: () => `<span title="Shield AC raises the pet's bash damage.">bash</span>`,
-  haste: (c) => `<span>haste ${c.n}%</span>`,
+  bash: () => `<span title="Shield AC raises the pet's bash damage (broken_stoic's parse).">bash</span>`,
 };
+const VL_PET_SCORE_TIP = "HP-equivalents under the pet model: item HP at 1, mana by what the pet casts, STR 0.6, AC 0.3, AGI/DEX 0.1, haste 2 per % — STA/WIS/INT/CHA do nothing for a pet.";
+
+/* The pet walk survives re-renders while nothing it was built from moved:
+   the summon, the rank, the dump, or the player plan it picks after. */
+let VPWALK = null, VPWALK_KEY = null, VPWALK_LINE = null, VP_TAKEN = null;
+const vlPetMem = (lineKey) => ({
+  get: (k) => VL_MEM.get(`pet/${lineKey}/${k}`),
+  set: (k, rec) => VL_MEM.set(`pet/${lineKey}/${k}`, rec),
+  del: (k) => VL_MEM.del(`pet/${lineKey}/${k}`),
+});
+
+function vlPetCard(o, step, foot) {
+  const all = VPWALK.options();
+  const n = all.findIndex((x) => x === o || x.id === o.id);
+  const row = o.items[0].row;
+  const hand = step.kind !== "cell";
+  const big = hand && row.rec.dmg
+    ? `<div class="vlc__s" title="Damage over delay at this copy's tier — the number a pet weapon ranks by.">${o.ratio.toFixed(2)}<span class="dim"> d/d</span></div>`
+    : `<div class="vlc__s" title="${esc(VL_PET_SCORE_TIP)}">${Math.round(o.score)}</div>`;
+  const chips = (o.chips || []).map((c) => (VL_PET_WHY[c.k] || (() => ""))(c)).join(" ");
+  const slots = !hand && o.slots && o.slots.length > 1
+    ? ` <span class="dim">${o.slots.map(esc).join(" or ")}</span>`
+    : !hand ? ` <span class="dim">${esc(o.items[0].slot)}</span>` : "";
+  return `<div class="vlc" role="button" tabindex="0" data-vlpetopt="${n}">
+    ${big}
+    <div class="vlc__i">
+      <div class="vlc__n">${vlNameCell(row.name)}</div>
+      <div class="vlc__st">${vlStat(row.rec, row.tier, o.items[0].slot)}</div>
+      <div class="vlc__w">${vlBadge(row.loc)}${slots}${chips ? ` ${chips}` : ""}</div>
+    </div>
+    ${foot || ""}
+  </div>`;
+}
+
+function renderValetPetRun(pet) {
+  const step = VPWALK.step(), all = VPWALK.options();
+  $("vlPetSlot").textContent = step.label;
+  $("vlPetCount").textContent = `${VPWALK.i + 1} of ${VPWALK.steps.length}`;
+  $("vlPetPool").textContent = (step.kind === "cell"
+    ? `${all.length} usable item${all.length === 1 ? "" : "s"} left`
+    : `${all.length} you own fit here`) + (all.length > 4 ? " · the four best are below" : "");
+  const notes = {
+    primary: `A weapon out-damages a level-50 pet's own swing only past roughly 40 damage (player consensus), and a weaker weapon costs the pet its spell damage bonus. The proc is chosen after the hands — a proc exaltation moves to whichever weapon wins.`,
+    secondary: `Pets dual wield. A shield is a real pick too: its AC raises the pet's bash damage.`,
+  };
+  $("vlPetStepNote").textContent = notes[step.kind] || "";
+  $("vlPetStepNote").hidden = !notes[step.kind];
+
+  const wc = VPWALK.weaponCompare();
+  if (wc && (wc.best2H || wc.bestPair)) {
+    const a = wc.best2H ? `<b>${wc.best2H.ratio.toFixed(2)}</b> two-handed — ${esc(wc.best2H.items[0].row.name)}` : "no two-hander you own fits";
+    const b = wc.bestPair && wc.bestPair.partner
+      ? `<b>${wc.bestPair.total.toFixed(2)}</b> main + off — ${esc(wc.bestPair.main.name)} + ${esc(wc.bestPair.partner.name)}`
+      : "no one-hand pair you own";
+    $("vlPetCmp").innerHTML = `${a} · ${b} <span class="dim">combined dmg/dly</span>`;
+    $("vlPetCmp").hidden = false;
+  } else $("vlPetCmp").hidden = true;
+
+  const paths = step.kind === "primary" && wc && (wc.twoH.length || wc.pairs.length) ? wc : null;
+  $("vlPetCards").className = paths ? "vl-paths" : "vl-cards";
+  if (paths) {
+    const pairFoot = (x) => x.partner
+      ? `<div class="vlc__p"><b>${x.total.toFixed(2)}</b> with ${vlNameCell(x.partner.name)}<br><span class="dim">${x.offCount > 1 ? `${x.offCount} off hands fit; you pick next` : "the only off hand that fits"}</span></div>`
+      : `<div class="vlc__p"><span class="dim">nothing you own fits the off hand behind it</span></div>`;
+    $("vlPetCards").innerHTML =
+      `<div class="vl-path"><h4 class="vl-path__h">Two-handed <span class="dim">${wc.twoH.length} you own · one hand, one cell</span></h4>
+         <div class="vl-cards">${wc.twoH.slice(0, 4).map((o) => vlPetCard(o, step)).join("") || `<p class="dim">No two-hander you own fits here.</p>`}</div></div>
+       <div class="vl-path"><h4 class="vl-path__h">One hand + off hand <span class="dim">${wc.pairs.length} you own · ratios add</span></h4>
+         <div class="vl-cards">${wc.pairs.slice(0, 4).map((x) => vlPetCard(x.opt, step, pairFoot(x))).join("") || `<p class="dim">No one-hander you own fits here.</p>`}</div></div>`;
+  } else {
+    $("vlPetCards").innerHTML = all.slice(0, 4).map((o) => vlPetCard(o, step)).join("")
+      || `<p class="dim">Nothing you own fits here.</p>`;
+  }
+
+  $("vlPetAllWrap").hidden = all.length <= 4;
+  $("vlPetAllToggle").textContent = VS.petAllOpen ? "Show the four best only" : `Show all ${all.length}`;
+  $("vlPetAll").hidden = !VS.petAllOpen;
+  if (VS.petAllOpen && all.length > 4) renderValetPetAll(all, step);
+
+  $("vlPetRemember").checked = !!vlPetMem(VPWALK_LINE).get(step.key);
+  $("vlPetBack").disabled = VPWALK.i === 0;
+  const k = VPWALK.autoSummary(), bits = [];
+  if (k.mem.length) bits.push(`<b>${k.mem.length}</b> remembered (<button type="button" class="linkish" id="vlPetClearMem">ask me again</button>)`);
+  if (k.only.length) bits.push(`<b>${k.only.length}</b> had one candidate`);
+  if (k.twoh.length) bits.push("off hand held by the two-hander");
+  if (k.skip.length) bits.push(`<b>${k.skip.length}</b> left empty`);
+  if (k.none.length) bits.push(`<b>${k.none.length}</b> had nothing that fits`);
+  $("vlPetAuto").innerHTML = bits.join(" · ");
+}
+
+const VPA_COLS = [
+  { k: "score", h: "Score", d0: -1, num: 1, key: (o) => o.score },
+  { k: "item", h: "Item", d0: 1, key: (o) => o.items[0].row.name.toLowerCase() },
+  { k: "where", h: "Where", d0: 1, key: (o) => vlWhereKey(o.items[0].row) },
+  ...["hp", "mana", "ac"].map((k) => ({ k, h: k.toUpperCase(), d0: -1, num: 1,
+    key: (o) => window.EQLTier.statsAt(o.items[0].row.rec, o.items[0].row.tier)[k] || null })),
+  { k: "ratio", h: "DMG/DLY", d0: -1, num: 1, key: (o) => o.ratio || null },
+];
+function renderValetPetAll(all, step) {
+  const swings = step.kind !== "cell";
+  const cols = VPA_COLS.filter((c) => swings || c.k !== "ratio");
+  const key = cols.some((c) => c.k === VS.pasort) ? VS.pasort : "score";
+  const dir = key === VS.pasort ? VS.padir : -1;
+  const rows = vsSorted(all, cols, key, dir, (c, o) => { const v = c.key(o); return v == null ? (c.num ? -Infinity : "") : v; });
+  const arrow = (k) => (k === key ? (dir > 0 ? " ▲" : " ▼") : "");
+  $("vlPetAll").innerHTML = `<table class="qtab ivt"><thead><tr>${cols.map((c) => `<th data-vlpasort="${c.k}"${c.k === "score" ? ` title="${esc(VL_PET_SCORE_TIP)}"` : ""}>${esc(c.h)}${arrow(c.k)}</th>`).join("")}</tr></thead><tbody>${
+    rows.map((o) => {
+      const r = o.items[0].row;
+      const n = all.findIndex((x) => x === o);
+      const s = window.EQLTier.statsAt(r.rec, r.tier);
+      return `<tr data-vlpetopt="${n}">
+        <td class="num"><b>${Math.round(o.score)}</b></td>
+        <td class="iv-item vl-item">${vlNameCell(r.name)}</td>
+        <td>${vlBadge(r.loc)}</td>
+        ${["hp", "mana", "ac"].map((k) => `<td class="num">${s[k] || ""}</td>`).join("")}
+        ${swings ? `<td class="num">${o.ratio ? o.ratio.toFixed(2) : ""}</td>` : ""}
+      </tr>`;
+    }).join("")}</tbody></table>`;
+}
+
+function renderValetPetDone(pet) {
+  const DP = VPWALK.planPet();
+  const P = window.EQLPetCore;
+  const wtCol = !!DP.weightCap;
+  const cols = [
+    { k: "slot", h: "Slot", v: (p) => DP.picks.indexOf(p) },
+    { k: "item", h: "Item", v: (p) => p.row.name.toLowerCase() },
+    { k: "why", h: "Why", v: (p) => p.chips.map((c) => c.k).join(" ") || "stats" },
+    { k: "score", h: "Score", num: 1, v: (p) => p.score },
+    { k: "where", h: "Where", v: (p) => vlWhereKey(p.row) },
+    ...(wtCol ? [{ k: "wt", h: "Wt", num: 1, v: (p) => p.row.rec.wt || 0 }] : []),
+  ];
+  const arrow = (k) => (VS.psort === k ? (VS.pdir > 0 ? " ▲" : " ▼") : "");
+  const rows = VS.psort ? vsSorted(DP.picks, cols, VS.psort, VS.pdir, (col, p) => col.v(p)) : DP.picks;
+  $("vlPet").innerHTML = `<table class="qtab ivt"><thead><tr>${cols.map((c) => `<th data-vlpsort="${c.k}"${c.k === "score" ? ` title="${esc(VL_PET_SCORE_TIP)}"` : ""}>${esc(c.h)}${arrow(c.k)}</th>`).join("")}</tr></thead><tbody>${
+    rows.length ? rows.map((p) => {
+      const bits = p.chips.map((c) => (VL_PET_WHY[c.k] || (() => ""))(c));
+      const isHand = p.slot === "Primary" || p.slot === "Secondary";
+      if (p.row.rec.dmg && isHand)
+        bits.unshift(`<span title="Damage over delay at this copy's tier."><b>${p.ratio.toFixed(2)}</b> dmg/dly</span>`);
+      const why = bits.join(" ") || `<span class="dim">stats</span>`;
+      const where = p.row.sec === "worn" ? `<span class="skl skl--word">on you now</span>` : vlBadge(p.row.loc);
+      return `<tr>
+        <td>${esc(p.slot)}</td>
+        <td class="iv-item vl-item">${itemSpan(p.row.name, true)}</td>
+        <td>${why}</td>
+        <td class="num">${Math.round(p.score)}</td>
+        <td>${where}</td>
+        ${wtCol ? `<td class="num">${p.row.rec.wt || ""}</td>` : ""}
+      </tr>`;
+    }).join("") : `<tr><td colspan="${cols.length}">Nothing usable is left over for the pet.</td></tr>`}</tbody></table>`;
+
+  const sums = P.petStats(DP.picks), bits = [];
+  for (const [k, label] of [["hp", "HP"], ["mana", "mana"], ["ac", "AC"], ["str", "STR"], ["agi", "AGI"], ["dex", "DEX"]])
+    if (sums.st[k]) bits.push(`<b>${sums.st[k]}</b> ${label}`);
+  // incidental haste on a stat pick is dead under a trio pet-haste buff — don't advertise it
+  if (sums.haste && !VPWALK.hasteBuff) bits.push(`<b>${sums.haste}%</b> haste`);
+  $("vlPetFoot").innerHTML = (bits.length ? `This set adds ${bits.join(" · ")} to the pet. ` : "")
+    + `<span class="dim">Slot count, legality and what a stat does for a pet are player-reported (Discord, 2026-08); pet classes are read off pet windows.</span>`;
+  renderValetPetProcs(DP, pet);
+  return DP;
+}
+
+function renderValetPetProcs(DP, pet) {
+  const X = window.EQLExaltCore, P = window.EQLPetCore;
+  const hands = DP.picks.filter((p) => p.slot === "Primary" || p.slot === "Secondary");
+  if (!hands.length || !VEXALT || !X) { $("vlPetProcWrap").hidden = true; return; }
+  const PR = P.petProcs({ picks: DP.picks, exalt: VEXALT, X, taken: VP_TAKEN,
+                          pet, allCls: VPWALK.allCls, effects: GDATA && GDATA.effects });
+  $("vlPetProcWrap").hidden = false;
+  const state = PR.hands.map((h) => {
+    const nm = `<b>${esc(h.pick.slot === "Primary" ? "Main hand" : "Off hand")}</b> ${esc(h.pick.row.name)}`;
+    if (!h.open) return `${nm}: the proc socket opens at +4 — this copy is +${h.pick.row.tier}.`;
+    if (h.inIt) {
+      const f = h.inIt.fire;
+      const gate = f.ae ? "an AE — it never fires from a pet" : f.ok ? "the pet can fire it" : `needs pet base ${f.l}, this pet's base is ${pet.base}`;
+      return `${nm}: holds ${esc(vlFxName(h.inIt.stone.effect))} — ${gate}.`;
+    }
+    if (h.known) return `${nm}: proc socket empty.`;
+    return `${nm}: socket contents unknown — the dump only shows sockets on worn items and bag items, not storage rows.`;
+  });
+  $("vlPetProcNote").innerHTML = state.join("<br>")
+    + `<br><span class="dim">A proc fires even when the pet ignores the weapon for damage; the gate is the pet's base level (${pet.base}), before spell rank. Focus effects do nothing for a pet.</span>`;
+
+  $("vlPetProc").innerHTML = `<table class="qtab ivt"><thead><tr>
+    <th>Exaltation</th><th>Effect</th>
+    <th class="num" title="The hit the effect text states — a parse of the wiki's spell line, not a measurement.">Hit</th>
+    <th title="A proc fires only if its level requirement is within the pet's base level, before spell rank.">Fires</th>
+    <th>Where it is</th><th>Goes in</th>
+  </tr></thead><tbody>${PR.stones.length ? PR.stones.map((s) => {
+    const src = s.stone;
+    const fire = s.fire.ae ? `<span class="warn">AE — never</span>`
+      : s.fire.ok ? "yes" : `<span class="warn">at pet base ${s.fire.l}</span>`;
+    const where = s.from === "loose" ? (s.srcRow ? vlBadge(s.srcRow.loc) : "")
+      : s.host ? `${vlBadge(s.host.row.loc)} <span class="dim">in ${esc(s.host.row.name)}</span>` : "";
+    const goesIn = s.fits.map((f) => {
+      const label = f.hand.pick.slot === "Primary" ? "Main hand" : "Off hand";
+      return f.hand.open ? esc(label) : `${esc(label)} <span class="dim">once it's +4</span>`;
+    }).join(" · ");
+    return `<tr>
+      <td class="iv-item vl-item">${itemSpan(src.item, true)}${src.maybe ? ` <span class="warn" title="This exaltation's source yields more than one effect, and the dump does not say which one the loose copy holds.">maybe</span>` : ""}</td>
+      <td>${esc(vlFxName(src.effect))}</td>
+      <td class="num">${s.dmg || ""}</td>
+      <td>${fire}</td>
+      <td>${where}</td>
+      <td>${goesIn}</td>
+    </tr>`;
+  }).join("") : (() => {
+    const seen = new Set(), rej = [];
+    for (const r of PR.rejected) {
+      if (seen.has(r.stone.id)) continue;
+      seen.add(r.stone.id);
+      rej.push(`${esc(r.stone.item)} (${esc(r.why)})`);
+    }
+    const tail = rej.length ? ` You own ${rej.length}, none fits: ${rej.join(", ")}.` : "";
+    return `<tr><td colspan="6">No proc exaltation you own fits the chosen weapon${hands.length > 1 ? "s" : ""}.${tail}</td></tr>`;
+  })()}</tbody></table>`;
+}
+
 function renderValetPet() {
   const P = window.EQLPetCore;
   const showEmpty = (msg) => {
     $("vlPetEmpty").innerHTML = msg; $("vlPetEmpty").hidden = false;
-    $("vlPet").innerHTML = ""; $("vlPetNotes").innerHTML = ""; $("vlPetFoot").textContent = "";
+    $("vlPetRun").hidden = true; $("vlPetDone").hidden = true; $("vlPetNotes").innerHTML = "";
     $("vlPetName").textContent = "Pet"; $("vlPetMath").textContent = "";
     $("vlPetLine").closest(".vl-petpick").hidden = true;
   };
@@ -4922,62 +5152,48 @@ function renderValetPet() {
     const first = line.owners[VL.classes.find((c) => line.owners[c])][0].o;
     return showEmpty(`Nothing to summon yet — the first ${esc(line.label)} arrives at level ${first}.`);
   }
+
   const taken = vlAutoPlanTaken();
-  const DP = P.dressPet({ rows: VINV.rows, taken, trio: VL.classes, pet, PD: PETD, effects: GDATA && GDATA.effects });
+  const key = [lineKey, rank, VL.classes.join(","), VL.level,
+               Array.from(taken).sort((a, b) => a - b).join("+")].join("|");
+  if (!VPWALK || VPWALK_KEY !== key) {
+    VPWALK_LINE = lineKey;
+    VP_TAKEN = taken;
+    VPWALK = P.makePetWalk({ rows: VINV.rows, taken, trio: VL.classes, pet,
+                             PD: PETD, effects: GDATA && GDATA.effects, mem: vlPetMem(lineKey) });
+    VPWALK_KEY = key;
+  }
 
   $("vlPetName").textContent = `${pet.line.label} — ${pet.cls.join("/")}, level ${pet.level}`;
-  $("vlPetMath").innerHTML = `<b>${DP.slotMath.count}</b> pet slots: `
-    + DP.slotMath.parts.map((p) => `${p.n} ${esc(p.label === "base" ? "base" : p.label)}`).join(" + ")
-    + ` &middot; wears gear for ${DP.allCls.map(esc).join(", ")}`
-    + (DP.weightCap ? ` &middot; ${DP.weight} of ~${DP.weightCap} weight` : "");
+  const cap = P.slots(PETD, VL.classes);
+  $("vlPetMath").innerHTML = `<b>${cap.count}</b> pet slots: `
+    + cap.parts.map((p) => `${p.n} ${esc(p.label)}`).join(" + ")
+    + ` · wears gear for ${VPWALK.allCls.map(esc).join(", ")}`;
+
+  const done = VPWALK.done();
+  $("vlPetRun").hidden = done;
+  $("vlPetDone").hidden = !done;
+  let DP = null;
+  if (done) DP = renderValetPetDone(pet);
+  else renderValetPetRun(pet);
 
   const notes = [];
-  notes.push(`You are dressed first; the pet picks from the ${DP.pool} usable items your loadout doesn't take.`);
-  for (const n of DP.notes) {
-    if (n.k === "hasteBuff") notes.push(`No haste item: ${esc(n.buff.n)} (${n.buff.pct}%) from your ${esc(n.buff.cls)} already covers most of the pet's haste cap.`);
-    if (n.k === "twoh") notes.push(`A two-hander in the main hand — the pet refuses off-hand items while it holds one.`);
-    if (n.k === "nowep") notes.push(`Empty hands: no spare weapon carries a proc the pet can fire, stats worth wearing, or 40+ damage — the pet's own swing beats them all.`);
+  notes.push(`You are dressed first; the pet picks from the ${VPWALK.poolSize} usable items your loadout doesn't take.`);
+  if (VPWALK.hasteBuff)
+    notes.push(`No haste item needed: ${esc(VPWALK.hasteBuff.n)} (${VPWALK.hasteBuff.pct}%) from your ${esc(VPWALK.hasteBuff.cls)} already covers most of the pet's haste cap.`);
+  if (done && DP) {
+    for (const n of DP.notes) {
+      if (n.k === "twoh") notes.push(`A two-hander in the main hand — the pet refuses off-hand items while it holds one (dev, 2026-08-18).`);
+      if (n.k === "nowep") notes.push(`Empty hands: nothing spare clears the pet's own swing, and a weaker weapon costs the pet its spell damage bonus.`);
+    }
+    if (DP.weightCap)
+      notes.push((DP.weight > DP.weightCap ? `<b>${DP.weight} weight</b>` : `${DP.weight} weight`)
+        + ` on a monk-classed pet — past ~${DP.weightCap} its AC drops.`);
+    notes.push(`The game equips pet weapons by its own score and prefers dual wielding: a one-hander handed to a dual-wielding pet replaces a two-hander, and a two-hander replaces a one-hander only when the off hand is empty (dev patch note, 2026-06-09).`);
   }
-  if (DP.picks.some((p) => p.kind === "weapon" && p.row.rec.dmg))
-    notes.push(`Weapon picks are proc-first: a weapon only out-damages the pet's own swing when it clears the pet's innate (player consensus puts a one-hander's bar near 40 damage at 50), and the dev team says this scaling is being rewritten.`);
-  if (DP.weightCap && DP.weight > DP.weightCap)
-    notes.push(`<b>${DP.weight} weight</b> on a monk-classed pet — past ~${DP.weightCap} its AC drops.`);
   if (pet.line.seal === "chat") notes.push(`This pet's class pair is player-reported; no pet-window reading yet.`);
   for (const extra of pet.line.notes || []) notes.push(esc(extra));
   $("vlPetNotes").innerHTML = notes.map((n) => `<p class="dim">${n}</p>`).join("");
-
-  const wtCol = !!DP.weightCap;
-  const cols = [
-    { k: "slot", h: "Slot", v: (p) => DP.picks.indexOf(p) },
-    { k: "item", h: "Item", v: (p) => p.row.name.toLowerCase() },
-    { k: "why", h: "Why", v: (p) => p.chips.map((c) => c.k).join(" ") },
-    { k: "score", h: "Score", num: 1, v: (p) => p.score },
-    { k: "where", h: "Where", v: (p) => vlWhereKey(p.row) },
-    ...(wtCol ? [{ k: "wt", h: "Wt", num: 1, v: (p) => p.row.rec.wt || 0 }] : []),
-  ];
-  const arrow = (k) => (VS.psort === k ? (VS.pdir > 0 ? " ▲" : " ▼") : "");
-  const rows = VS.psort ? vsSorted(DP.picks, cols, VS.psort, VS.pdir, (col, p) => col.v(p)) : DP.picks;
-  $("vlPet").innerHTML = `<table class="qtab ivt"><thead><tr>${cols.map((c) => `<th data-vlpsort="${c.k}">${esc(c.h)}${arrow(c.k)}</th>`).join("")}</tr></thead><tbody>${
-    rows.length ? rows.map((p) => {
-      const why = p.chips.map((c) => (VL_PET_WHY[c.k] || (() => ""))(c)).join(" ") || (p.kind === "haste" ? "" : `<span class="dim">stats</span>`);
-      const where = p.row.sec === "worn" ? `<span class="skl skl--word">on you now</span>` : vlBadge(p.row.loc);
-      return `<tr>
-        <td>${esc(p.slot)}</td>
-        <td class="iv-item vl-item">${itemSpan(p.row.name, true)}</td>
-        <td>${why}</td>
-        <td class="num">${Math.round(p.score)}</td>
-        <td>${where}</td>
-        ${wtCol ? `<td class="num">${p.row.rec.wt || ""}</td>` : ""}
-      </tr>`;
-    }).join("") : `<tr><td colspan="${cols.length}">Nothing usable is left over for the pet.</td></tr>`}</tbody></table>`;
-
-  const sums = P.petStats(DP.picks), bits = [];
-  for (const [k, label] of [["hp", "HP"], ["mana", "mana"], ["ac", "AC"], ["str", "STR"], ["agi", "AGI"], ["dex", "DEX"]])
-    if (sums.st[k]) bits.push(`<b>${sums.st[k]}</b> ${label}`);
-  // incidental haste on a stat pick is dead under a trio pet-haste buff — don't advertise it
-  if (sums.haste && !DP.notes.some((n) => n.k === "hasteBuff")) bits.push(`<b>${sums.haste}%</b> haste`);
-  $("vlPetFoot").innerHTML = (bits.length ? `This set adds ${bits.join(" · ")} to the pet. ` : "")
-    + `<span class="dim">Slot count, legality and what a stat does for a pet are player-reported (Discord, 2026-08); pet classes are read off pet windows.</span>`;
 }
 
 const vlStoneName = (row) => row.name.replace(/\s*\(Exaltation\)\*?$/, "");
@@ -5060,13 +5276,17 @@ function renderValetExalt() {
     "Every exaltation you own fits something you're wearing.");
 }
 
-const vlStat = (rec, tier) => {
+/* `where` is the placement the line describes. A ratio is only a fact about an
+   item in a hand or in Range — nothing parked in Any Slot swings, and the scorer
+   already gives it nothing there, so printing it reads as a reason the card is
+   on screen (Kyle, 2026-08-30). No placement passed: print it. */
+const vlStat = (rec, tier, where) => {
   const s = window.EQLTier.statsAt(rec, tier), out = [];
   for (const k of ["ac", "hp", "mana", "end", "atk", "str", "sta", "agi", "dex", "wis", "int", "cha"])
     if (s[k]) out.push(`<b>${s[k]}</b> ${k.toUpperCase()}`);
   for (const k in rec.sv || {}) if (k !== "v") out.push(`<b>${rec.sv[k]}</b> SV${k.toUpperCase()}`);
   if (rec.haste) out.push(`<b>${rec.haste}%</b> haste`);
-  if (rec.dmg && rec.dly) out.push(`<b>${window.EQLTier.statAt(rec.dmg, tier)}</b>/<b>${rec.dly}</b> = <b>${(window.EQLTier.statAt(rec.dmg, tier) / rec.dly).toFixed(2)}</b>${window.EQLGearScore.TWO_H(rec) ? " 2H" : ""}`);
+  if (rec.dmg && rec.dly && (where === undefined || window.EQLGearScore.SWINGS(where))) out.push(`<b>${window.EQLTier.statAt(rec.dmg, tier)}</b>/<b>${rec.dly}</b> = <b>${(window.EQLTier.statAt(rec.dmg, tier) / rec.dly).toFixed(2)}</b>${window.EQLGearScore.TWO_H(rec) ? " 2H" : ""}`);
   return out.join(" · ") || `<span class="dim">no stats on the wiki</span>`;
 };
 function vlBadge(loc) {
@@ -5216,7 +5436,7 @@ function renderValetRun() {
   /* The two-hander question, on the step where the choice is made. */
   const wc = VWALK.weaponCompare();
   const a = wc && wc.best2H ? `<b>${Math.round(wc.best2H.score)}</b> two-handed — ${esc(wc.best2H.items[0].row.name)}` : "";
-  const b = wc && wc.bestPair ? `<b>${Math.round(wc.bestPair.total)}</b> main + off — ${esc(wc.bestPair.main.name)} + ${esc(wc.bestPair.off.name)}` : "";
+  const b = wc && wc.bestPair ? `<b>${Math.round(wc.bestPair.total)}</b> main + off — ${esc(wc.bestPair.main.name)} + ${esc(wc.bestPair.partner.name)}` : "";
   $("vlCmp").innerHTML = a || b ? [a, b].filter(Boolean).join(" · ") : "";
   $("vlCmp").hidden = !(a || b);
   const occ = vlOccupant(step);
@@ -5225,23 +5445,65 @@ function renderValetRun() {
     ? "On you now: " + (occ.e.rec ? `<b>${itemSpan(occ.e.name, true)}</b>` : `<b>${esc(occ.e.name)}</b>`)
       + (occ.e.rec ? "" : ` <span class="warn">no wiki page — nothing here can be compared against it</span>`)
       + (occ.score != null ? ` <span class="vl-nowscore" data-pop="vlwhy:${vlWhy(occ.e.rec, occ.e.tier, baseAC, step.slot, occ.score)}">${Math.round(occ.score)}</span>` : "")
+      /* A worn piece your trio cannot equip is not a candidate — the walk offers
+         replacements for it and would otherwise look like it had forgotten what
+         is in the slot. */
+      + (occ.e.rec && !valetScorer().legal(occ.e.rec) ? ` <span class="warn">— no class in your trio can equip it, so nothing below puts it back on</span>` : "")
       + (moved ? ` <span class="dim">· this plan moves it to ${esc(moved.label)}</span>` : vlStripHtml(occ.w, true))
     : "nothing in this slot";
-  $("vlCards").innerHTML = opts.map((o, n) => {
+  /* A card is addressed by its index in the FULL option list, so grouping them
+     is presentation only — the click handler still reads options()[data-vlopt]. */
+  const vlCard = (o, foot, over) => {
+    const n = all.findIndex((x) => x === o || x.id === o.id);
     const it0 = o.items[0];
-    const gain = occ && occ.score != null ? o.score - occ.score : null;
+    const headline = over && over.score != null ? over.score : o.score;
+    const vs = over && over.vs != null ? over.vs : (occ && occ.score != null ? occ.score : null);
+    const gain = vs == null ? null : headline - vs;
     return `
     <div class="vlc" role="button" tabindex="0" data-vlopt="${n}">
-      <div class="vlc__s" data-pop="vlwhy:${vlWhy(it0.row.rec, it0.row.tier, baseAC, it0.slot, o.score)}">${Math.round(o.score)}</div>
-      ${occ ? `<div class="vlc__d ${gain > 0 ? "up" : gain < 0 ? "down" : ""}" title="${esc(`Against ${occ.e.name}${moved ? `, which this plan moves to ${moved.label}` : ""}, priced at the same AC base`)}">${
-        gain == null ? "" : (gain > 0 ? "+" : "") + Math.round(gain)}</div>` : ""}
+      ${over && over.score != null
+        ? `<div class="vlc__s" title="Both hands together. The lines below split it: this weapon, and the best off hand still free.">${Math.round(headline)}</div>`
+        : `<div class="vlc__s" data-pop="vlwhy:${vlWhy(it0.row.rec, it0.row.tier, baseAC, it0.slot, o.score)}">${Math.round(o.score)}</div>`}
+      ${gain != null ? `<div class="vlc__d ${gain > 0 ? "up" : gain < 0 ? "down" : ""}" title="${esc(over && over.vsLabel ? over.vsLabel : `Against ${occ ? occ.e.name : "nothing"}${moved ? `, which this plan moves to ${moved.label}` : ""}, priced at the same AC base`)}">${
+        (gain > 0 ? "+" : "") + Math.round(gain)}${over && over.vsWord ? ` <span class="dim">vs ${over.vsWord}</span>` : ""}</div>` : ""}
       ${o.items.map(it => `<div class="vlc__i">
         <div class="vlc__n">${vlNameCell(it.row.name)}</div>
-        <div class="vlc__st">${vlStat(it.row.rec, it.row.tier)}</div>
+        <div class="vlc__st">${vlStat(it.row.rec, it.row.tier, it.slot)}</div>
         <div class="vlc__w">${vlBadge(it.row.loc)}${o.items.length > 1 ? ` <span class="dim">${esc(it.slot)}</span>` : ""}</div>
       </div>`).join("")}
+      ${foot || ""}
     </div>`;
-  }).join("") || `<p class="dim">Nothing you own fits here.</p>`;
+  };
+  /* The Main hand is two questions wearing one hat: a two-hander is a whole
+     hands decision, a one-hander is half of one, and ranked together the numbers
+     are not the same kind of number (Kyle, 2026-08-30: "it should show 2h
+     weapons and 2x 1h items separately"). A 2H card's score IS the hands total;
+     a one-hander carries the best off hand still free and the pair total behind
+     it, and picking it still opens the Off hand step. */
+  const paths = step.kind === "primary" && wc && (wc.twoH.length || wc.pairs.length) ? wc : null;
+  $("vlCards").className = paths ? "vl-paths" : "vl-cards";
+  if (paths) {
+    const dw = valetScorer().dualWieldCap() > 0;
+    /* Both columns headline the SAME kind of number — what the two hands are
+       worth together — so a two-hander reads against a pair total and not
+       against the main hand of that pair on its own. Every card is therefore
+       measured against both hands as they are now. */
+    const offNow = VWALK.wearingAt({ key: "Secondary#1", slot: "Secondary" })[0] || null;
+    const offNowScore = offNow && offNow.rec ? valetScorer().score(offNow.rec, offNow.tier, baseAC, "Secondary") : 0;
+    const handsNow = occ && occ.score != null ? occ.score + offNowScore : null;
+    const vsWord = "both hands now";
+    const vsLabel = `Against ${occ ? occ.e.name : "an empty main hand"}${offNow ? ` + ${offNow.name}` : ""}, priced at the same AC base`;
+    const pairFoot = (x) => x.partner
+      ? `<div class="vlc__p"><b>${Math.round(x.opt.score)}</b> in hand, <b>${Math.round(x.offScore)}</b> off — ${vlNameCell(x.partner.name)}<br><span class="dim">${x.offCount > 1 ? `${x.offCount} off hands fit; you pick next` : "the only off hand that fits"}</span></div>`
+      : `<div class="vlc__p"><b>${Math.round(x.opt.score)}</b> in hand<br><span class="dim">${dw ? "nothing you own fits the off hand behind it" : "no off hand — this trio has no Dual Wield, so only a shield or a no-damage item can go there"}</span></div>`;
+    $("vlCards").innerHTML =
+      `<div class="vl-path"><h4 class="vl-path__h">Two-handed <span class="dim">${wc.twoH.length} you own · fills both hands</span></h4>
+         <div class="vl-cards">${wc.twoH.slice(0, 4).map((o) => vlCard(o, "", { vs: handsNow, vsWord, vsLabel })).join("") || `<p class="dim">No two-hander you own fits here.</p>`}</div></div>
+       <div class="vl-path"><h4 class="vl-path__h">One hand + off hand <span class="dim">${wc.pairs.length} you own · the pair total, so it reads against a two-hander</span></h4>
+         <div class="vl-cards">${wc.pairs.slice(0, 4).map((x) => vlCard(x.opt, pairFoot(x), { score: x.total, vs: handsNow, vsWord, vsLabel })).join("") || `<p class="dim">No one-hander you own fits here.</p>`}</div></div>`;
+  } else {
+    $("vlCards").innerHTML = opts.map((o) => vlCard(o)).join("") || `<p class="dim">Nothing you own fits here.</p>`;
+  }
   /* The four cards are the decision; everything else that fits is one click
      away as a sortable table. A cap that does not say it is a cap is a tool
      lying — on Any Slot the cards are 4 of 95. */
@@ -5277,16 +5539,20 @@ const VA_COLS = [
 ];
 function renderValetAll(all, occ, baseAC) {
   for (const o of all) o.__gain = occ && occ.score != null ? o.score - occ.score : null;
-  const col = VA_COLS.find((c) => c.k === VS.asort) || VA_COLS[0];
+  /* The ratio column belongs to the steps where a weapon can swing; on Any Slot
+     it was printing and sorting on a number the scorer zeroes. */
+  const st = VWALK.step();
+  const COLS = VA_COLS.filter((c) => c.k !== "ratio" || (st && window.EQLGearScore.SWINGS(st.slot)));
+  const col = COLS.find((c) => c.k === VS.asort) || COLS[0];
   const rows = all.slice().sort((a, b) => cmpNullLast(col.key(a), col.key(b), VS.adir));
   const arrow = (k) => (VS.asort === k ? (VS.adir > 0 ? " ▲" : " ▼") : "");
   const val = (c, o) => { const v = c.key(o); return v == null ? "" : c.k === "ratio" ? v.toFixed(2)
     : c.k === "score" || c.k === "gain" ? Math.round(v) : c.k === "tier" ? "+" + v : v; };
-  $("vlAll").innerHTML = `<table class="qtab ivt vl-all"><thead><tr>${VA_COLS.map((c) =>
+  $("vlAll").innerHTML = `<table class="qtab ivt vl-all"><thead><tr>${COLS.map((c) =>
     `<th class="is-sort" data-vlasort="${c.k}">${esc(c.h)}${arrow(c.k)}</th>`).join("")}</tr></thead><tbody>${
     rows.map((o) => {
       const n = all.indexOf(o), it0 = o.items[0];
-      return `<tr data-vlopt="${n}" class="${it0.row.sec === "worn" ? "is-worn" : ""}">${VA_COLS.map((c) => {
+      return `<tr data-vlopt="${n}" class="${it0.row.sec === "worn" ? "is-worn" : ""}">${COLS.map((c) => {
         if (c.k === "score") return `<td class="num"><b data-pop="vlwhy:${vlWhy(it0.row.rec, it0.row.tier, baseAC, it0.slot, o.score)}">${Math.round(o.score)}</b></td>`;
         if (c.k === "gain") return `<td class="num">${o.__gain == null ? "" : vlGainHtml(o.__gain)}</td>`;
         if (c.k === "item") return `<td class="iv-item vl-item">${o.items.map((it) => vlNameCell(it.row.name)).join(` <span class="dim">+</span> `)}</td>`;
@@ -5392,11 +5658,15 @@ function renderValetDone() {
       <td class="iv-item">${itemSpan(it.row.name, true)}</td>
       <td>${it.row.tier ? "+" + it.row.tier : ""}</td>
       <td class="iv-item">${occ && !same
-        ? (occ.e.rec ? itemSpan(occ.e.name, true) : esc(occ.e.name)) + (moved ? ` <span class="dim">moves to ${esc(moved.label)}</span>` : vlStripHtml(occ.w))
+        ? (occ.e.rec ? itemSpan(occ.e.name, true) : esc(occ.e.name))
+          /* A piece your trio cannot equip is coming off whatever it scores;
+             without this the swap reads as the plan making you worse. */
+          + (occ.e.rec && !valetScorer().legal(occ.e.rec) ? ` <span class="warn" title="None of your three classes is on this item's class list — left on from an earlier combo, or a wrong class list on the wiki. It cannot go back on, so its score is not a number you can keep.">not your class</span>` : "")
+          + (moved ? ` <span class="dim">moves to ${esc(moved.label)}</span>` : vlStripHtml(occ.w))
         : `<span class="dim">${occ ? "" : "nothing"}</span>`}</td>
       <td class="num">${same ? "" : vlGainHtml(vlItemGain(it))}</td>
       <td>${worn ? `<span class="dim">already on</span>` : "<b>fetch</b>"}</td>
-      <td>${vlStat(it.row.rec, it.row.tier)}</td>
+      <td>${vlStat(it.row.rec, it.row.tier, it.slot)}</td>
     </tr>`;
   }).join("") + plan.kept.map(k => `<tr class="is-dim">
       <td>${vlBadge(k.slot)}</td>
@@ -5428,8 +5698,13 @@ function vlPetPlan() {
   const rank = Math.min(10, Math.max(0, VS.petRank | 0));
   const pet = P.petAt(PETD, lineKey, VL.classes, VL.level, rank);
   if (!pet) return null;
-  const DP = P.dressPet({ rows: VINV.rows, taken: vlAutoPlanTaken(), trio: VL.classes, pet, PD: PETD, effects: GDATA && GDATA.effects });
-  return { pet, DP };
+  /* The overlay gets the walk run to completion unattended — remembered
+     decisions apply through a read-only memory, open steps take their top
+     card, a hand only fills when the weapon earns it. */
+  const roMem = { get: (k) => VL_MEM.get(`pet/${lineKey}/${k}`), set: () => {}, del: () => {} };
+  const W = P.makePetWalk({ rows: VINV.rows, taken: vlAutoPlanTaken(), trio: VL.classes, pet,
+                            PD: PETD, effects: GDATA && GDATA.effects, mem: roMem });
+  return { pet, DP: W.autoRun() };
 }
 function pushValet() {
   if (!VWALK) { if (lastValetJson !== "null") { lastValetJson = "null"; window.companion.sendValet(null); } return; }
@@ -5538,8 +5813,46 @@ function wireValet() {
   $("vlOwn").addEventListener("click", (e) => { const th = e.target.closest("[data-vlosort]"); if (!th) return; const k = th.dataset.vlosort; VS.dir = VS.sort === k ? -VS.dir : 1; VS.sort = k; vsRedraw(); });
   $("vlGap").addEventListener("click", (e) => { const th = e.target.closest("[data-vlgsort]"); if (!th) return; const k = th.dataset.vlgsort; VS.gdir = VS.gsort === k ? -VS.gdir : 1; VS.gsort = k; vsRedraw(); });
   $("vlPet").addEventListener("click", (e) => { const th = e.target.closest("[data-vlpsort]"); if (!th) return; const k = th.dataset.vlpsort; VS.pdir = VS.psort === k ? -VS.pdir : 1; VS.psort = k; renderValetPet(); });
-  $("vlPetLine").addEventListener("change", () => { VS.petLine = $("vlPetLine").value; saveValetPrefs(); renderValetPet(); });
-  $("vlPetRank").addEventListener("change", () => { VS.petRank = +$("vlPetRank").value; saveValetPrefs(); renderValetPet(); });
+  /* The pet walk's controls — same gestures as Get dressed. */
+  const petTake = (e) => {
+    if (e.target.closest("a, [data-url], [data-wiki]")) return;
+    const b = e.target.closest("[data-vlpetopt]");
+    if (!b || !VPWALK || VPWALK.done()) return;
+    const st = VPWALK.step();
+    if (!st) return;
+    const opt = VPWALK.options()[+b.dataset.vlpetopt];
+    if (opt) { VPWALK.pick(st.key, opt, $("vlPetRemember").checked); renderValetPet(); pushValet(); }
+  };
+  $("vlPetCards").addEventListener("click", petTake);
+  $("vlPetCards").addEventListener("keydown", (e) => {
+    if ((e.key !== "Enter" && e.key !== " ") || !e.target.closest(".vlc")) return;
+    e.preventDefault(); petTake(e);
+  });
+  $("vlPetAll").addEventListener("click", (e) => {
+    const th = e.target.closest("[data-vlpasort]");
+    if (th) {
+      const k = th.dataset.vlpasort;
+      VS.padir = VS.pasort === k ? -VS.padir : -1;
+      VS.pasort = k; saveValetPrefs(); renderValetPet(); return;
+    }
+    petTake(e);
+  });
+  $("vlPetAllToggle").addEventListener("click", () => { VS.petAllOpen = !VS.petAllOpen; saveValetPrefs(); renderValetPet(); });
+  $("vlPetSkip").addEventListener("click", () => { if (VPWALK) { VPWALK.skip(); renderValetPet(); pushValet(); } });
+  $("vlPetBack").addEventListener("click", () => { if (VPWALK && VPWALK.back()) { renderValetPet(); pushValet(); } });
+  $("vlPetRestart").addEventListener("click", () => { if (VPWALK) { VPWALK.restart(); renderValetPet(); pushValet(); } });
+  $("vlPetAuto").addEventListener("click", (e) => {
+    if (!e.target.closest("#vlPetClearMem")) return;
+    const m = VL.mem[vlTrioKey()];
+    if (m) {
+      for (const k of Object.keys(m)) if (k.startsWith(`pet/${VPWALK_LINE}/`)) delete m[k];
+      saveValetPrefs();
+    }
+    VPWALK = null; VPWALK_KEY = null;
+    renderValetPet(); pushValet();
+  });
+  $("vlPetLine").addEventListener("change", () => { VS.petLine = $("vlPetLine").value; saveValetPrefs(); renderValetPet(); pushValet(); });
+  $("vlPetRank").addEventListener("change", () => { VS.petRank = +$("vlPetRank").value; saveValetPrefs(); renderValetPet(); pushValet(); });
   // the Exaltations view's three tables, one handler each
   for (const [id, attr, cols, sk, dk] of [["vlExEmpty", "vlxesort", VX_ECOLS, "xesort", "xedir"],
                                           ["vlExIdle", "vlxisort", VX_ICOLS, "xisort", "xidir"],

@@ -350,10 +350,41 @@
           <label class="chk">Spell rank <select id="vlPetRank"></select></label>
         </div>
       </div>
-      <div id="vlPetNotes"></div>
       <p id="vlPetEmpty" class="dim" hidden></p>
-      <div id="vlPet" class="invwrap"></div>
-      <p id="vlPetFoot" class="dim"></p>
+
+      <div id="vlPetRun" hidden>
+        <div class="vl-head">
+          <h3 id="vlPetSlot"></h3>
+          <span id="vlPetCount" class="dim"></span>
+        </div>
+        <p id="vlPetPool" class="dim"></p>
+        <p id="vlPetStepNote" class="dim" hidden></p>
+        <p id="vlPetCmp" class="vl-cmp" hidden></p>
+        <div id="vlPetCards" class="vl-cards"></div>
+        <div id="vlPetAllWrap" class="vl-allwrap" hidden>
+          <button type="button" class="linkish" id="vlPetAllToggle"></button>
+          <div id="vlPetAll" class="invwrap" hidden></div>
+        </div>
+        <div class="vl-foot">
+          <label class="chk" title="Stop asking about this one. It re-opens when something you own scores above the fourth card, or when you no longer have the one you picked."><input type="checkbox" id="vlPetRemember"> Remember &mdash; this beats the others</label>
+          <button id="vlPetBack" class="btn btn--sm">Back</button>
+          <button id="vlPetSkip" class="btn btn--sm">Leave empty</button>
+        </div>
+        <p id="vlPetAuto" class="dim"></p>
+      </div>
+
+      <div id="vlPetDone" hidden>
+        <div class="vl-tblhead"><b>Hand it over</b> <button id="vlPetRestart" class="btn btn--sm">Start over</button></div>
+        <div id="vlPet" class="invwrap"></div>
+        <p id="vlPetFoot" class="dim"></p>
+        <div id="vlPetProcWrap" hidden>
+          <div class="vl-tblhead"><b>The proc</b></div>
+          <p id="vlPetProcNote" class="dim"></p>
+          <div id="vlPetProc" class="invwrap"></div>
+        </div>
+      </div>
+
+      <div id="vlPetNotes"></div>
     </div>
 
     <div id="vlSlotView" hidden>

@@ -748,6 +748,14 @@ input[type="checkbox"] { accent-color: var(--gold); }
 #vlPool, #vlNow, #vlAuto, #vlNotes { margin: 2px 0 0; }
 #vlNow b { color: var(--ink-soft); font-weight: 500; }
 .vl-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 10px 0; }
+/* The Main hand step asks two questions — a two-hander, or a one-hander with an
+   off hand behind it — so its cards come in two labelled rows. */
+.vl-paths { display: grid; gap: 14px; margin: 10px 0; }
+.vl-paths .vl-cards { margin: 0; }
+.vl-path__h { font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--ink-soft, #9aa); margin: 0 0 6px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.vl-path__h .dim { text-transform: none; letter-spacing: 0; font-weight: 400; }
+.vlc__p { font-size: 11px; border-top: 1px solid var(--line); padding-top: 6px; margin-top: 6px; }
 .vlc { background: var(--bg-panel-2); border: 1px solid var(--line); border-radius: 8px;
   padding: 8px 9px; cursor: pointer; min-width: 0; }
 .vlc:hover { border-color: var(--gold); background: rgba(255,255,255,.03); }

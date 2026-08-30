@@ -4,37 +4,42 @@
    and the companion app the way valet-core.js is. DOM-free, no state.
 
    The player is dressed FIRST; the pet considers only rows the player's plan
-   did not take (Kyle's rule, 2026-08-30). Exaltations are not considered for
-   the pet yet.
+   did not take (Kyle's rule, 2026-08-30). The pet's set is chosen the way the
+   player's is — a walk, one step at a time, ranked cards, remembered
+   decisions — makePetWalk mirrors valet-core's makeWalk contract so the same
+   UI idioms drive both.
 
    What this file knows about pets it knows from the 2026-08 corpus study
-   (workflow receipts in the session journal; the durable summary is
-   docs/tools/valet.md §Pet):
+   (durable summary: docs/tools/valet.md §Pet; receipted fact tables in
+   pipeline/scripts/build_pet_data.py):
 
    - The pet inventory holds 4 + per-owner-class-bonus items (pet-data.json
-     `slots`; player consensus, cross-checked against six reported loadouts,
-     never contradicted). The PET's own classes add nothing to the count.
-   - Each item auto-equips into a player-style equipment slot, ONE of each —
-     no second chest, no Any slots. First cell is the primary hand, second
-     the secondary.
+     `slots`). Each item auto-equips into a player-style equipment slot, ONE
+     of each — no second chest, no Any slots.
    - Legality is the union: anything usable by the owner's three classes OR
-     the pet's own two (consensus, no dev post). The item's level requirement
-     gates against the PET's level (dev). There is no worn-legality escape
-     here — the walk's rule exists because the game proved the wiki wrong by
-     equipping the PLAYER; nothing proves it for the pet.
-   - Lore-Equip is per-holder: one copy on you AND one on the pet is legal
-     (eldarmark, 2026-08). The pet itself still holds at most one.
+     the pet's own two. The item's level requirement gates against the PET's
+     level (dev). Lore-Equip is per-holder: one copy on you AND one on the
+     pet is legal; the pet itself still holds at most one.
    - What measurably works on a pet: +HP and +mana items, HP/mana regen,
      worn haste (to a LOW level-scaled cap), single-target weapon procs
      (gated by the pet's BASE level, firing even when the weapon is ignored
      for damage), shield AC for bash. STR is small (+6 ATK per 10), AGI tiny
      (+1 AC per 10). STA/WIS/INT/CHA do NOTHING — a pet's pools do not come
      from stats. Focus effects are dead. AE procs never fire.
-   - Weapons are conditional: a weapon only beats the pet's own swing when
-     its damage/ratio clears the pet's innate (rule of thumb at 50: a 1H
-     needs ~40+ damage), and a weak weapon LOSES the pet-spell damage bonus.
-     The dev said the model is being rewritten (2026-08-22 roundtable), so
-     weapons here are ranked as proc/stat sticks first and the copy says why.
+   - WEAPONS RANK BY RATIO. A weapon replaces the pet's own swing only when
+     it beats the pet's innate (player rule of thumb: a 1H needs ~40+ damage
+     at 50; a weaker weapon costs the pet its spell damage bonus), and once
+     it swings, damage over delay is the number that moves. Procs are NOT a
+     reason to rank one weapon over another: a proc is an exaltation, and an
+     exaltation moves to whichever weapon the pet ends up holding — the proc
+     is a separate decision, made after the hands (petProcs below). An
+     innate proc the pet can fire is stated on the card, not scored.
+   - Pets dual wield, and hold two-handers. Dev patch note 2026-06-09
+     (brasse): the game equips pet weapons by its own score; "a 1H weapon
+     given to a dual wield capable pet that already has a 2H weapon equipped
+     will always replace the 2H weapon to allow dual wielding", and a 2H
+     replaces a 1H only when the secondary is empty. So the Main hand step
+     states the 2H-vs-pair question the way the player's walk does.
 
    Requires: window.EQLGearScore, window.EQLTier. */
 (function () {
@@ -154,9 +159,10 @@
     return allCls.some((cl) => (c.c || []).includes(cl));
   }
 
-  /* The weapon's proc, if the pet can fire it: a combat effect whose own
+  /* The weapon's own (innate) proc, if it has one: a combat effect whose
      level requirement the pet's BASE level meets (mote levels don't count —
-     sebelious_seb/sepptb, 2026-08). AE procs never fire. */
+     sebelious_seb/sepptb, 2026-08). AE procs never fire. Stated on the card
+     as a fact about the item; never a reason it outranks another weapon. */
   function procOf(rec, petBase, effects) {
     for (const e of rec.eff || []) {
       if (e.m !== "combat") continue;
@@ -166,163 +172,464 @@
     return null;
   }
 
-  /* ── dressing the pet ────────────────────────────────────────────────────
-     dressPet({ rows, taken, trio, pet, PD })
-       rows  – readInventory().rows
-       taken – Set of row indexes the PLAYER's plan holds (picks + kept)
-       trio  – the owner's three class codes
-       pet   – petAt() result
-       PD    – pet-data.json
+  const ratioOf = (rec, tier) =>
+    rec && rec.dmg && rec.dly ? statAt(rec.dmg, tier) / rec.dly : 0;
 
-     Returns { picks, notes, hasteBuff, weight, weightCap, slotMath, pool }.
-     Each pick: { slot, row, score, kind: weapon|haste|fill, chips[] }.
+  // Identity for a remembered decision — item at tier, valet-core's rule.
+  const itemId = (row) => (row.key || row.base.toLowerCase()) + "+" + row.tier;
 
-     Order of decisions is Kyle's: weapons, haste, then the best of what is
-     left — except the haste slot is only spent when no trio class carries a
-     pet-haste buff, because the buff reaches most of the pet's low haste cap
-     on its own (whether a worn item stacks on top at all is disputed in the
-     corpus; the headroom is small either way). */
-  function dressPet(o) {
+  /* Is this weapon worth a hand at all, for the AUTO-run (overlay, the
+     companion's summary): an innate proc the pet can fire, stats the scorer
+     prices, or damage near the innate bar. The interactive walk shows
+     everything and lets Kyle decide; this gate only keeps the unattended
+     plan from equipping junk that costs the pet its spell damage bonus. */
+  function wepWorth(r, petBase, effects, psc) {
+    const p = procOf(r.rec, petBase, effects);
+    if (p && p.ok && !p.ae) return true;
+    if (psc.score(r.rec, r.tier) > 0) return true;
+    return statAt(r.rec.dmg || 0, r.tier) >= 40;
+  }
+
+  /* ── the pet walk ────────────────────────────────────────────────────────
+     makePetWalk({ rows, taken, trio, pet, PD, effects, mem })
+       rows    – readInventory().rows
+       taken   – Set of row indexes the PLAYER's plan holds (picks + kept)
+       trio    – the owner's three class codes
+       pet     – petAt() result
+       PD      – pet-data.json
+       effects – gear-data effects map (AE detection)
+       mem     – { get(stepKey), set(stepKey, rec), del(stepKey) }; the host
+                 scopes keys (per trio AND per summon line). Pass a no-op
+                 memory to run without one.
+
+     Same contract as valet-core's makeWalk: steps / i / picks / auto / ctx /
+     options() / pick() / skip() / back() / restart() / autoSummary() /
+     weaponCompare() / done(). Differences a host must know:
+
+     - Steps are Main hand, Off hand, then ONE STEP PER REMAINING CELL, not
+       one per slot type: the pet holds cap.count items across 14 possible
+       slots, so each cell offers the best of everything still unplaced,
+       each card naming the slot it would fill. Fixed body order would spend
+       questions on slots with junk while the cap eats the good ones.
+     - There is no "wearing now": the dump cannot see the pet's inventory,
+       so no flat state and no deltas — a card's score stands alone.
+     - Hands sort by DMG/DLY at the row's tier; everything else by pet score. */
+  function makePetWalk(o) {
     const PD = o.PD, pet = o.pet, trio = o.trio;
     const allCls = Array.from(new Set(trio.concat(pet.cls)));
     const cap = slots(PD, trio);
     const buff = hasteBuffOf(PD, trio);
     const psc = petScorer(pet.cls, { hasteCovered: !!buff });
-    const notes = [];
-
-    const usable = (r) => r.rec && !r.exalt && !o.taken.has(r.i)
-      && petLegal(r.rec, allCls, pet.level);
-    const pool = o.rows.filter(usable);
-
-    /* One physical copy fills one cell; LORE is per-holder, so the pet's own
-       lore set starts empty — a lore ring on you AND in the pet tab is legal,
-       two in the pet tab is not. */
-    const petLore = new Set();
-    const takenRows = new Set();
-    const free = new Set(PET_SLOTS);
-    const picks = [];
-    const loreOk = (r) => !(r.key && (r.rec.fl || []).includes("lore") && petLore.has(r.key));
-    const place = (slot, row, score, kind, chips) => {
-      picks.push({ slot, row, score, kind, chips: chips || [] });
-      takenRows.add(row.i);
-      free.delete(slot);
-      if (row.key && (row.rec.fl || []).includes("lore")) petLore.add(row.key);
-    };
-
-    /* Weapons first. Ranked as what they measurably are for a pet: a proc it
-       can fire, then the stats on the stick, then the ratio (the conditional
-       damage case, chipped rather than scored — the innate threshold is
-       contested and the dev is rewriting the model).
-
-       EMPTY HANDS ARE A REAL ANSWER. A weak weapon costs the pet its
-       spell-rank damage bonus ("200 dps without weapons, 70-90 with"), so a
-       hand is only filled by a weapon that earns the cell: a proc the pet can
-       fire, stats the scorer prices, or damage clearing the ~40 bar. Nothing
-       qualifying → the hand stays empty and a note says why. */
     const FX = o.effects || null;
-    const wepRank = (a, b) => {
-      const pa = procOf(a.rec, pet.base, FX), pb = procOf(b.rec, pet.base, FX);
-      const fa = pa && pa.ok ? 1 : 0, fb = pb && pb.ok ? 1 : 0;
-      if (fa !== fb) return fb - fa;
-      const sa = psc.score(a.rec, a.tier), sb = psc.score(b.rec, b.tier);
-      if (sa !== sb) return sb - sa;
-      return statAt(b.rec.dmg || 0, b.tier) / (b.rec.dly || 30)
-        - statAt(a.rec.dmg || 0, a.tier) / (a.rec.dly || 30);
-    };
-    const wepWorth = (r) => {
-      const p = procOf(r.rec, pet.base, FX);
-      if (p && p.ok && !p.ae) return true;
-      if (psc.score(r.rec, r.tier) > 0) return true;
-      return statAt(r.rec.dmg || 0, r.tier) >= 40;
-    };
-    const wepChips = (r) => {
+    const mem = o.mem || { get: () => null, set: () => {}, del: () => {} };
+
+    const pool = (o.rows || []).filter((r) => r.rec && !r.exalt
+      && !o.taken.has(r.i) && petLegal(r.rec, allCls, pet.level));
+
+    const W = { steps: [], i: 0, picks: {}, opts: {}, auto: {}, ctx: {}, skipped: new Set() };
+
+    /* Hands first (Kyle's order), then the leftover cells. A 2H is one item,
+       so it costs one cell and the off hand simply cannot be filled. */
+    function buildSteps() {
+      const steps = [
+        { key: "Primary#1", kind: "primary", slot: "Primary", label: "Main hand" },
+        { key: "Secondary#1", kind: "secondary", slot: "Secondary", label: "Off hand" },
+      ];
+      let used = 0;
+      for (const k of ["Primary#1", "Secondary#1"]) if (W.picks[k]) used++;
+      for (let n = used + 1; n <= cap.count; n++)
+        steps.push({ key: "Cell#" + n, kind: "cell", slot: null, label: `Item ${n} of ${cap.count}` });
+      return steps;
+    }
+
+    const isLore = (row) => row.key && (row.rec.fl || []).includes("lore");
+
+    /* Weapon chips: facts about the item, none of them the ranking. */
+    function wepChips(r) {
       const out = [];
       const p = procOf(r.rec, pet.base, FX);
       if (p && p.ae) out.push({ k: "ae", n: p.n });
       else if (p && p.ok) out.push({ k: "proc", n: p.n });
       else if (p) out.push({ k: "proclvl", n: p.n, l: p.l });
-      if (r.rec.dmg && statAt(r.rec.dmg, r.tier) >= 40 && !GS.TWO_H(r.rec)) out.push({ k: "hits" });
       if (GS.TWO_H(r.rec)) out.push({ k: "twoh" });
+      if (!r.rec.dmg && r.rec.st && r.rec.st.ac) out.push({ k: "bash" });
       return out;
+    }
+
+    const mkOpt = (row, slot) => ({
+      id: itemId(row) + "@" + slot, items: [{ row, slot }],
+      score: psc.score(row.rec, row.tier), ratio: ratioOf(row.rec, row.tier),
+      chips: slot === "Primary" || slot === "Secondary" ? wepChips(row) : [],
+    });
+
+    /* Two copies of one item at one tier are the same offer; keep one. */
+    function dedupe(list) {
+      const seen = new Set(), out = [];
+      for (const opt of list) {
+        if (seen.has(opt.id)) continue;
+        seen.add(opt.id); out.push(opt);
+      }
+      return out;
+    }
+
+    /* Hands: damage weapons by ratio, then no-damage items (shields, stat
+       sticks) by pet score. The same list a card row and the show-all table
+       both read. */
+    const handSort = (a, b) => {
+      const da = a.items[0].row.rec.dmg ? 1 : 0, db = b.items[0].row.rec.dmg ? 1 : 0;
+      if (da !== db) return db - da;
+      if (da) return b.ratio - a.ratio || b.score - a.score;
+      return b.score - a.score || b.ratio - a.ratio;
     };
-    const prims = pool.filter((r) => !takenRows.has(r.i) && loreOk(r)
-      && (r.rec.sl || []).includes("Primary") && r.rec.dmg && wepWorth(r)).sort(wepRank);
-    if (prims.length) place("Primary", prims[0], psc.score(prims[0].rec, prims[0].tier), "weapon", wepChips(prims[0]));
-    else notes.push({ k: "nowep" });
-    const mainIs2H = picks.length && picks[0].slot === "Primary" && GS.TWO_H(picks[0].row.rec);
-    if (mainIs2H) {
-      /* Dev, 2026-08-18: a pet holding a two-hander refuses secondary-only
-         items — so the tool does not offer the off hand either. */
-      notes.push({ k: "twoh" });
-    } else {
-      /* A shield is a real off-hand pick — its AC raises the pet's bash
-         damage (broken_stoic's parse) — so the off hand is not gated on
-         dmg the way the main hand is; it still has to earn the cell. */
-      const secs = pool.filter((r) => !takenRows.has(r.i) && loreOk(r)
-        && (r.rec.sl || []).includes("Secondary") && !GS.TWO_H(r.rec) && wepWorth(r)).sort(wepRank);
-      if (secs.length) {
-        const r = secs[0], chips = wepChips(r);
-        if (!r.rec.dmg && r.rec.st && r.rec.st.ac) chips.push({ k: "bash" });
-        place("Secondary", r, psc.score(r.rec, r.tier), "weapon", chips);
+
+    function optionsFor(step, taken, loreTaken, freeSlots) {
+      const usable = (r) => !taken.has(r.i) && !(r.key && isLore(r) && loreTaken.has(r.key));
+      if (step.kind === "primary") {
+        return dedupe(pool.filter((r) => usable(r) && (r.rec.sl || []).includes("Primary"))
+          .map((r) => mkOpt(r, "Primary")).sort(handSort));
       }
-    }
-
-    /* The haste slot. */
-    if (buff) {
-      notes.push({ k: "hasteBuff", buff });
-    } else {
-      const hastes = pool.filter((r) => !takenRows.has(r.i) && loreOk(r) && r.rec.haste
-        && (r.rec.sl || []).some((s) => free.has(s)))
-        .sort((a, b) => b.rec.haste - a.rec.haste || psc.score(b.rec, b.tier) - psc.score(a.rec, a.tier));
-      if (hastes.length) {
-        const r = hastes[0];
-        const slot = (r.rec.sl || []).find((s) => free.has(s));
-        place(slot, r, psc.score(r.rec, r.tier), "haste", [{ k: "haste", n: r.rec.haste }]);
+      if (step.kind === "secondary") {
+        return dedupe(pool.filter((r) => usable(r) && (r.rec.sl || []).includes("Secondary")
+          && !GS.TWO_H(r.rec)).map((r) => mkOpt(r, "Secondary")).sort(handSort));
       }
-    }
-
-    /* Fill what is left, best first, one item per slot type, up to the cell
-       count. Assignment is score-descending with augmenting paths (Kuhn):
-       when a better item's slots are all taken, an occupant that can move to
-       another of ITS slots moves — so a Head-or-Neck ring never evicts a
-       Head-only helm from the table by taking Head. */
-    const fillPool = pool.filter((r) => !takenRows.has(r.i)
-      && (r.rec.sl || []).some((s) => PET_SLOTS.includes(s)))
-      .map((r) => ({ r, score: psc.score(r.rec, r.tier) }))
-      .filter((c) => c.score > 0)
-      .sort((a, b) => b.score - a.score || b.r.tier - a.r.tier);
-    const heldBy = {};                       // slot -> fill candidate
-    const slotsOf = (c) => (c.r.rec.sl || []).filter((s) => free.has(s) || heldBy[s]);
-    function augment(c, seen) {
-      for (const s of slotsOf(c)) {
-        if (seen.has(s)) continue;
-        seen.add(s);
-        if (!heldBy[s] || augment(heldBy[s], seen)) { heldBy[s] = c; return true; }
+      /* A cell: the best of everything still unplaced, across every free pet
+         slot. The slot on the option is provisional — pickSlot() settles it
+         when the item is taken. Zero-score rows are not offered: with no
+         "wearing now" to keep, a card the scorer cannot price is a coin
+         flip wearing a rank. */
+      const list = [];
+      for (const r of pool) {
+        if (!usable(r)) continue;
+        const fits = (r.rec.sl || []).filter((s) => freeSlots.has(s));
+        if (!fits.length) continue;
+        const opt = mkOpt(r, fits[0]);
+        if (opt.score <= 0) continue;
+        opt.slots = fits;
+        opt.id = itemId(r);          // one offer per item, whichever slot
+        list.push(opt);
       }
-      return false;
+      return dedupe(list.sort((a, b) => b.score - a.score || b.items[0].row.tier - a.items[0].row.tier));
     }
-    const seenLore = new Set(petLore);
-    for (const c of fillPool) {
-      if (Object.keys(heldBy).length >= cap.count - picks.length) break;
-      const isLore = c.r.key && (c.r.rec.fl || []).includes("lore");
-      if (isLore && seenLore.has(c.r.key)) continue;
-      if (augment(c, new Set()) && isLore) seenLore.add(c.r.key);
+
+    /* When a flexible item is taken, give it the free slot that blocks the
+       least: the one whose best remaining alternative is weakest. */
+    function pickSlot(opt, taken, loreTaken, freeSlots) {
+      const fits = (opt.slots || [opt.items[0].slot]).filter((s) => freeSlots.has(s));
+      if (fits.length <= 1) return fits[0] || opt.items[0].slot;
+      let best = fits[0], bestRival = Infinity;
+      for (const s of fits) {
+        let rival = 0;
+        for (const r of pool) {
+          if (taken.has(r.i) || r === opt.items[0].row) continue;
+          if (r.key && isLore(r) && loreTaken.has(r.key)) continue;
+          if (!(r.rec.sl || []).includes(s)) continue;
+          rival = Math.max(rival, psc.score(r.rec, r.tier));
+        }
+        if (rival < bestRival) { bestRival = rival; best = s; }
+      }
+      return best;
     }
-    for (const s in heldBy) place(s, heldBy[s].r, heldBy[s].score, "fill");
 
-    /* The pet wears what it wears; weight only matters to the monk-classed
-       air pet (~18 before its AC penalty — riptoes, 2026-08-03). */
-    let weight = 0;
-    for (const p of picks) weight += (p.row.rec.wt || 0);
-    const weightCap = pet.cls.includes("MNK") ? 18 : null;
+    /* Remembered decisions — valet-core's floor rule, verbatim: the pick, the
+       four ids it beat, the fourth one's score. Reopens when the field moves. */
+    function remember(stepKey, list, pick) {
+      const top = list.slice(0, 4);
+      mem.set(stepKey, { pick: pick.id, set: top.map((x) => x.id),
+                         floor: top.length ? top[top.length - 1].score : 0 });
+    }
+    function memApply(stepKey, list) {
+      const m = mem.get(stepKey);
+      if (!m) return null;
+      const pick = list.find((x) => x.id === m.pick);
+      if (!pick) return null;
+      const set = new Set(m.set);
+      return list.some((x) => !set.has(x.id) && x.score > m.floor) ? null : pick;
+    }
 
-    const order = ["Primary", "Secondary"].concat(PET_SLOTS);
-    picks.sort((a, b) => order.indexOf(a.slot) - order.indexOf(b.slot));
-    return {
-      picks, notes, pool: pool.length,
-      weight: Math.round(weight * 10) / 10, weightCap,
-      slotMath: cap, allCls,
+    /* The 2H-vs-pair question for the Main hand step, in combined ratio: a
+       2H's ratio is its hands total; a 1H carries the best off-hand WEAPON
+       still free behind it and the two ratios add. (Both hands swing on
+       their own delay — the off hand's exact share of a pet's swings is
+       unmeasured, so the sum is the honest upper line, and it is the same
+       arithmetic on both sides.) */
+    function weaponCompare(taken, loreTaken) {
+      const prim = optionsFor({ kind: "primary" }, taken, loreTaken, null);
+      const twoH = prim.filter((x) => GS.TWO_H(x.items[0].row.rec));
+      const pairs = [];
+      for (const p of prim) {
+        const row = p.items[0].row;
+        if (GS.TWO_H(row.rec)) continue;
+        if (!row.rec.dmg) continue;
+        const after = new Set(taken); after.add(row.i);
+        const lore2 = new Set(loreTaken); if (isLore(row)) lore2.add(row.key);
+        const secs = optionsFor({ kind: "secondary" }, after, lore2, null);
+        const off = secs.length ? secs[0] : null;
+        pairs.push({ opt: p, main: row, partner: off ? off.items[0].row : null,
+                     partnerOpt: off, total: p.ratio + (off ? off.ratio : 0),
+                     offCount: secs.length });
+      }
+      pairs.sort((a, b) => b.total - a.total || b.opt.ratio - a.opt.ratio);
+      return { best2H: twoH[0] || null, bestPair: pairs[0] || null, twoH, pairs };
+    }
+
+    function advance(from) {
+      W.steps = buildSteps();
+      const taken = new Set(), loreTaken = new Set();
+      const freeSlots = new Set(PET_SLOTS);
+      W.opts = {}; W.auto = {}; W.ctx = {};
+      for (let i = 0; i < W.steps.length; i++) {
+        const st = W.steps[i];
+        const list = optionsFor(st, taken, loreTaken, freeSlots);
+        W.opts[st.key] = list;
+        W.ctx[st.key] = { taken: new Set(taken), lore: new Set(loreTaken), free: new Set(freeSlots) };
+
+        let chosen = i < from ? W.picks[st.key] : null;
+        if (chosen && !list.some((x) => x.id === chosen.id)) chosen = null;
+        const mainPick = W.picks["Primary#1"];
+        if (st.kind === "secondary" && mainPick && GS.TWO_H(mainPick.items[0].row.rec)) {
+          W.auto[st.key] = "twoh";
+          W.picks[st.key] = null;
+          continue;
+        }
+        if (!chosen) {
+          if (!list.length) W.auto[st.key] = "none";
+          else if (list.length === 1) { W.auto[st.key] = "only"; chosen = list[0]; }
+          else {
+            const m = memApply(st.key, list);
+            if (m) { W.auto[st.key] = "mem"; chosen = m; }
+          }
+        }
+        if (!chosen && W.skipped.has(st.key)) W.auto[st.key] = "skip";
+        if (!chosen && !W.auto[st.key] && list.length > 1) {
+          W.picks[st.key] = null;
+          W.i = i;
+          return;
+        }
+        if (chosen && st.kind === "cell") {
+          /* Settle the provisional slot against what is actually free. */
+          const slot = pickSlot(chosen, taken, loreTaken, freeSlots);
+          chosen = Object.assign({}, chosen, { items: [{ row: chosen.items[0].row, slot }] });
+          freeSlots.delete(slot);
+        }
+        W.picks[st.key] = chosen || null;
+        if (chosen) {
+          const row = chosen.items[0].row;
+          taken.add(row.i);
+          if (isLore(row)) loreTaken.add(row.key);
+        }
+      }
+      W.i = W.steps.length;
+    }
+
+    /* The finished set — one shape for the plan table, the overlay fold and
+       petStats. */
+    function planPet() {
+      const picks = [], notes = [];
+      for (const st of W.steps) {
+        const p = W.picks[st.key];
+        if (!p) continue;
+        const it = p.items[0];
+        picks.push({ slot: it.slot, row: it.row, score: p.score, ratio: p.ratio,
+                     kind: st.kind === "cell" ? "fill" : "weapon", chips: p.chips || [] });
+      }
+      if (buff) notes.push({ k: "hasteBuff", buff });
+      if (W.picks["Primary#1"] && GS.TWO_H(W.picks["Primary#1"].items[0].row.rec))
+        notes.push({ k: "twoh" });
+      if (!W.picks["Primary#1"] && !W.picks["Secondary#1"]
+          && (W.auto["Primary#1"] === "none" || W.skipped.has("Primary#1")))
+        notes.push({ k: "nowep" });
+      let weight = 0;
+      for (const p of picks) weight += (p.row.rec.wt || 0);
+      const order = ["Primary", "Secondary"].concat(PET_SLOTS);
+      picks.sort((a, b) => order.indexOf(a.slot) - order.indexOf(b.slot));
+      return {
+        picks, notes, pool: pool.length,
+        weight: Math.round(weight * 10) / 10,
+        weightCap: pet.cls.includes("MNK") ? 18 : null,
+        slotMath: cap, allCls,
+      };
+    }
+
+    advance(0);
+
+    const api = {
+      get steps() { return W.steps; },
+      get i() { return W.i; },
+      get picks() { return W.picks; },
+      get auto() { return W.auto; },
+      pet, allCls, hasteBuff: buff, scorer: psc, poolSize: pool.length,
+      done: () => W.i >= W.steps.length,
+      step: () => (W.i < W.steps.length ? W.steps[W.i] : null),
+      options: (key) => W.opts[key || (W.steps[W.i] || {}).key] || [],
+      ctx: (key) => W.ctx[key || (W.steps[W.i] || {}).key] || null,
+      weaponCompare(key) {
+        const k = key || (W.steps[W.i] || {}).key;
+        const c = W.ctx[k];
+        if (k !== "Primary#1" || !c) return null;
+        return weaponCompare(c.taken, c.lore);
+      },
+      pick(stepKey, opt, keep) {
+        const i = W.steps.findIndex((s) => s.key === stepKey);
+        W.picks[stepKey] = opt;
+        if (keep) remember(stepKey, W.opts[stepKey] || [], opt); else mem.del(stepKey);
+        advance(i + 1);
+      },
+      skip() {
+        const at = W.i;
+        W.skipped.add(W.steps[at].key);
+        advance(at + 1);
+        if (W.i === at) W.i = at + 1;
+      },
+      /* Back goes to the previous step that was a real choice; landing on a
+         remembered step forgets it — you came back to change it. A step the
+         walk settled for itself is not a stop: the off hand under a
+         two-hander has candidates in its list, but landing there just
+         re-settles it and the walk bounces back to where Back was pressed. */
+      back() {
+        for (let j = W.i - 1; j >= 0; j--) {
+          if (W.auto[W.steps[j].key] === "twoh") continue;
+          if ((W.opts[W.steps[j].key] || []).length > 1) {
+            mem.del(W.steps[j].key);
+            advance(j);
+            return true;
+          }
+        }
+        return false;
+      },
+      restart() { W.picks = {}; W.skipped = new Set(); advance(0); },
+      autoSummary() {
+        const kinds = { none: [], only: [], mem: [], skip: [], twoh: [] };
+        for (const s of W.steps) if (W.auto[s.key]) kinds[W.auto[s.key]].push(s.label);
+        return kinds;
+      },
+      planPet,
+      /* Run to completion unattended — the overlay fold and the companion's
+         summary. Remembered decisions apply (the mem the walk was built with
+         should be read-only there); open hands take the top option only when
+         it earns the cell, open cells take their top card. */
+      autoRun() {
+        let guard = 0;
+        while (W.i < W.steps.length && guard++ < 40) {
+          const st = W.steps[W.i], list = W.opts[st.key] || [];
+          const top = list[0];
+          const worth = top && (st.kind === "cell"
+            || wepWorth(top.items[0].row, pet.base, FX, psc));
+          if (worth) api.pick(st.key, top, false);
+          else api.skip();
+        }
+        return planPet();
+      },
     };
+    return api;
+  }
+
+  /* ── the proc decision ───────────────────────────────────────────────────
+     Separate from the weapon decision, because a proc is an exaltation and
+     an exaltation moves: rank the weapon by what it swings, then put the
+     best proc the pet can fire into whichever weapon won.
+
+     petProcs({ picks, exalt, X, taken, pet, allCls, effects })
+       picks   – planPet().picks
+       exalt   – EQLExaltCore.readDump() over the same dump rows
+       X       – window.EQLExaltCore
+       taken   – the PLAYER plan's row set (a stone in a planned item is his)
+       pet     – petAt() result
+       allCls  – trio ∪ pet classes
+       effects – gear-data effects map
+
+     Returns { hands, stones }:
+       hands  – each hand pick with its proc-socket state: opensAt 4, open
+                (tier ≥ 4), known (this copy's sockets visible in the dump),
+                inIt (the stone already socketed, with its fire gate), innate
+                (procOf — the weapon's own effect)
+       stones – every movable proc exaltation you own that fits a chosen
+                hand: loose ones, and ones socketed in items neither plan
+                uses. fire.ok gates on the pet's BASE level; AE never fires.
+                Sorted by the nuke the effect text states, biggest first,
+                unparsed last — dmg is that parse, not a measurement. */
+  function petProcs(o) {
+    const X = o.X, exalt = o.exalt, pet = o.pet, FX = o.effects || {};
+    const hands = [], stones = [], rejected = [];
+    if (!X || !exalt) return { hands, stones, rejected };
+    const handPicks = (o.picks || []).filter((p) => p.slot === "Primary" || p.slot === "Secondary");
+    if (!handPicks.length) return { hands, stones, rejected };
+
+    const petRows = new Set((o.picks || []).map((p) => p.row));
+    const srcOf = new Map();
+    for (const s of exalt.sources) srcOf.set(s.row, s);
+
+    for (const p of handPicks) {
+      const src = srcOf.get(p.row);
+      const sk = src && src.socketsKnown ? src.sockets.proc : null;
+      hands.push({
+        pick: p, open: p.row.tier >= 4, opensAt: 4,
+        known: !!(src && src.socketsKnown),
+        inIt: sk && sk.filled && sk.stone && sk.stone.stone ? {
+          stone: sk.stone.stone,
+          fire: fireGate(sk.stone.stone, pet, FX),
+        } : null,
+        innate: procOf(p.row.rec, pet.base, FX),
+      });
+    }
+
+    function fireGate(stone, pet2, fx) {
+      const e = stone.eff || {};
+      if (isAE(stone.effect, fx)) return { ok: false, ae: true };
+      return { ok: !e.l || e.l <= pet2.base, l: e.l || 0 };
+    }
+
+    const consider = (stone, from, host, srcRow) => {
+      if (!stone || stone.type !== "proc") return;
+      const fits = [];
+      let slotOk = false, clsOk = false;
+      for (const h of hands) {
+        const f = X.fit(stone, { cls: X.classesOf(h.pick.row.rec), sl: h.pick.row.rec.sl, tier: h.pick.row.tier });
+        if (!f.why.includes("no shared slot")) slotOk = true;
+        if (!f.why.includes("no shared class")) clsOk = true;
+        if (!f.ok) continue;
+        if (!X.usableBy(f.cls, o.allCls)) continue;
+        fits.push({ hand: h, open: f.open });
+      }
+      if (!fits.length) {
+        /* An empty table that knows why must say why: the stone's own class
+           list when class is the block, its slot list when the slot is. */
+        const why = !slotOk ? `fits ${stone.sl.join("/")} only`
+          : !clsOk || stone.cls ? `${X.clsText(stone.cls)} only` : "no fit";
+        rejected.push({ stone, from, why });
+        return;
+      }
+      stones.push({ stone, from, host: host || null, srcRow: srcRow || null, fits,
+                    fire: fireGate(stone, pet, FX), dmg: nukeOf(stone, FX) });
+    };
+    /* A loose stone whose source yields several effects is a MAYBE — the dump
+       does not say which one it holds (exalt-core's rule); every proc the
+       source could yield is offered and the row says so. */
+    for (const l of exalt.loose) {
+      const procs = (l.yields || []).filter((y) => y.type === "proc");
+      for (const y of procs) consider(Object.assign({}, y, { maybe: l.yields.length > 1 }), "loose", null, l.row);
+    }
+    for (const src of exalt.sources) {
+      if (o.taken && o.taken.has(src.row.i)) continue;   // the player's plan holds it
+      if (petRows.has(src.row)) continue;                // already part of the pet's set
+      const sk = src.sockets.proc;
+      if (sk && sk.filled && sk.stone && sk.stone.stone) consider(sk.stone.stone, "socketed", src, src.row);
+    }
+    /* Biggest stated nuke first; the parse reads "Decrease Hitpoints by N"
+       off the effect text, so an effect that states no number sorts last,
+       not at zero damage. */
+    stones.sort((a, b) => (b.fire.ok ? 1 : 0) - (a.fire.ok ? 1 : 0)
+      || (b.dmg || -1) - (a.dmg || -1)
+      || String(a.stone.effect).localeCompare(String(b.stone.effect)));
+    return { hands, stones, rejected };
+
+    function nukeOf(stone, fx) {
+      const rec = fx[stone.effect];
+      for (const s of (rec && rec.s) || []) {
+        const m = /Decrease Hitpoints by (\d+)/i.exec(s);
+        if (m) return +m[1];
+      }
+      return null;
+    }
   }
 
   /* Stat sums for the picks, restricted to what does something for a pet, so
@@ -340,6 +647,6 @@
 
   window.EQLPetCore = {
     PET_SLOTS, slots, linesFor, petAt, hasteBuffOf, petScorer, petLegal,
-    procOf, dressPet, petStats,
+    procOf, ratioOf, makePetWalk, petProcs, petStats,
   };
 })();
