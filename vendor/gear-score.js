@@ -437,7 +437,7 @@
       why.end = `<h5>Endurance</h5><p>Fuels stances and melee abilities. No published pool math; kept small.</p>`;
 
       w.sv = 0.4;
-      why.sv = `<h5>Resists</h5><p>Fire/Cold/Magic/Disease/Poison, weighted equally — resist value is actively disputed in the player corpus (one parse credited +100 resist with only ≈1600 damage over a whole fight), so the default stays modest. <b>SV VOID is never scored</b> — players are unanimous it's the upgrade-tier marker with no combat effect yet.</p>`;
+      why.sv = `<h5>Resists</h5><p>Fire/Cold/Magic/Disease/Poison, weighted equally — resist value is actively disputed in the player corpus: some call resists one of the strongest stats, others report resisting little even at 250 MR, and no parse settles it, so the default stays modest. <b>SV VOID is never scored</b> — players are unanimous it's the upgrade-tier marker with no combat effect yet.</p>`;
 
       w.haste = castHeavy ? 0 : melee ? 3 : 1.5;
       why.haste = `<h5>Haste</h5><p>${castHeavy

@@ -118,7 +118,7 @@ const FAILING = ["companion/data/quest-items.json", "log-parser/data/con-bands.j
 
 await M.refreshDatasets(false);
 const at = () => M.settings().dataRefreshedAt;
-check("pass 1 (13 h stale): every file is fetched", () => assert.equal(calls.length, 9));
+check("pass 1 (13 h stale): every file is fetched", () => assert.equal(calls.length, 10));
 check("pass 1: only validated+cached files advance their clock", () => {
   assert.equal(typeof at(), "object");
   assert.equal(at()["kills-data.json"], clock);
@@ -151,11 +151,11 @@ check(`pass 3 (+${M.REFRESH_RETRY_MS / MIN + 1} min): only the three failed file
 clock += M.REFRESH_MS + MIN;
 calls.length = 0;
 await M.refreshDatasets(false);
-check("pass 4 (+12 h): every file is due again", () => assert.equal(calls.length, 9));
+check("pass 4 (+12 h): every file is due again", () => assert.equal(calls.length, 10));
 
 calls.length = 0;
 await M.refreshDatasets(true);
-check("force: every file, whatever the clocks say", () => assert.equal(calls.length, 9));
+check("force: every file, whatever the clocks say", () => assert.equal(calls.length, 10));
 
 Date.now = realNow;
 

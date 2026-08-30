@@ -335,7 +335,25 @@
     <div class="seg vl-views" id="vlViews" role="tablist">
       <button type="button" class="seg__b is-on" data-vlview="slot">By slot</button>
       <button type="button" class="seg__b" data-vlview="dress">Get dressed</button>
+      <button type="button" class="seg__b" data-vlview="pet">Pet</button>
       <button type="button" class="seg__b" data-vlview="exalt">Exaltations</button>
+    </div>
+
+    <div id="vlPetView" hidden>
+      <div class="vl-pethead">
+        <div>
+          <h3 id="vlPetName"></h3>
+          <p id="vlPetMath" class="dim"></p>
+        </div>
+        <div class="vl-petpick">
+          <label class="chk">Pet <select id="vlPetLine"></select></label>
+          <label class="chk">Spell rank <select id="vlPetRank"></select></label>
+        </div>
+      </div>
+      <div id="vlPetNotes"></div>
+      <p id="vlPetEmpty" class="dim" hidden></p>
+      <div id="vlPet" class="invwrap"></div>
+      <p id="vlPetFoot" class="dim"></p>
     </div>
 
     <div id="vlSlotView" hidden>
@@ -506,6 +524,7 @@
 <script src="../vendor/priorities.js"></script>
 <script src="../vendor/sky-core.js"></script>
 <script src="../vendor/valet-core.js"></script>
+<script src="../vendor/pet-core.js"></script>
 <script src="../vendor/exalt-slots.js"></script>
 <script src="../vendor/spare-core.js"></script>
 <script src="../vendor/exalt-core.js"></script>

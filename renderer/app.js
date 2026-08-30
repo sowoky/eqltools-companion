@@ -24,6 +24,7 @@ let QIDX_L = new Map(), TIDX_L = new Map(), GIDX_L = new Map(), QSRC_L = {}, QDR
 let TDATA = null;     // item-tooltips.json
 let TIDX = new Map(); // normName(item) -> {n, t, ic, sb: [lines]}
 let GDATA = null;     // gear-data.json — stats, flags, slots, classes, drop sources
+let PETD = null;      // pet-data.json — summon lines, pet slot table, pet-haste buffs
 let GIDX = new Map(); // itemKey(item) -> gear record (the name's FIRST wiki record, same pick as /gear)
 let GVARS = new Map(); // itemKey(item) -> [all records sharing that display name], only when > 1
 let GEO = null;       // quest-items.json geo: {nodes: {name: {adj, keys, oe}}, alias}
@@ -103,6 +104,8 @@ function buildIndexes(datasets) {
   const gd = datasets["gear-data.json"];
   GDATA = gd ? gd.data : null;
   SOURCES.gear = gd ? gd.source : "none";
+  const petd = datasets["pet-data.json"];
+  PETD = petd ? petd.data : null;
   GIDX = new Map(); GVARS = new Map();
   /* 57 display names map to several distinct wiki records (deity armor
      variants, "(Sky)" pages, material variants) and a dump only carries the
@@ -4613,8 +4616,10 @@ function loadValetPrefs() {
     if (o.mem && typeof o.mem === "object") VL.mem = o.mem;
     // the By slot view's own state: which view, which slot, which columns, the gap toggle
     if (o.vs && typeof o.vs === "object") {
-      Object.assign(VS, { view: ["slot", "dress", "exalt"].includes(o.vs.view) ? o.vs.view : "slot",
+      Object.assign(VS, { view: ["slot", "dress", "pet", "exalt"].includes(o.vs.view) ? o.vs.view : "slot",
         slot: o.vs.slot || "Head", cols: Array.isArray(o.vs.cols) ? o.vs.cols : null, gapAll: !!o.vs.gapAll });
+      if (o.vs.petLine) VS.petLine = o.vs.petLine;
+      if (o.vs.petRank != null) VS.petRank = o.vs.petRank | 0;
       // sorts and the show-all toggle: only what was actually stored, so a
       // saved set from before they existed keeps this file's defaults
       for (const k of ["xesort", "xedir", "xisort", "xidir", "xnsort", "xndir", "asort", "adir"])
@@ -4626,6 +4631,7 @@ function loadValetPrefs() {
 const saveValetPrefs = () => {
   try { localStorage.setItem(VL_KEY, JSON.stringify({ classes: VL.classes, level: VL.level, mem: VL.mem,
     vs: { view: VS.view, slot: VS.slot, cols: VS.cols, gapAll: VS.gapAll,
+          petLine: VS.petLine, petRank: VS.petRank,
           xesort: VS.xesort, xedir: VS.xedir, xisort: VS.xisort, xidir: VS.xidir,
           xnsort: VS.xnsort, xndir: VS.xndir, allOpen: VS.allOpen, asort: VS.asort, adir: VS.adir } })); } catch (e) {}
 };
@@ -4681,6 +4687,7 @@ function valetRestart() {
    reused here. VAUDIT is per trio. */
 let VEXALT = null, VAUDIT = null, VRANKER = null, VRANKER_LVL = 0;
 const VS = { view: "slot", slot: "Head", cols: null, gapAll: false, sort: null, dir: 1, gsort: null, gdir: 1,
+  petLine: null, petRank: 0, psort: null, pdir: 1,
   // the Exaltations view's three tables, each sorted on its own
   xesort: "fits", xedir: -1, xisort: "empty", xidir: -1, xnsort: "where", xndir: 1,
   // Get dressed: every option for the open step, not only the four cards
@@ -4860,6 +4867,119 @@ function renderValetSlot() {
       }).join("")}</tr>`;
     }).join("") : `<tr><td colspan="${gcols.length}">${gap.items.length ? "Nothing in the catalogue scores above your best copy at its rank." : ""}</td></tr>`}</tbody></table>`;
 }
+/* ── the Pet view: dress the pet out of what dressing YOU did not take ─────
+   Same core as the site (vendor/pet-core.js). The player plan is the walk run
+   to completion on its own — every open step takes its top card, remembered
+   decisions apply through a READ-ONLY view of the memory (pick(key, opt,
+   false) would otherwise erase the user's own "remember this" marks). */
+function vlAutoPlanTaken() {
+  const roMem = { get: VL_MEM.get, set: () => {}, del: () => {} };
+  const W = window.EQLValet.makeWalk({ rows: VINV.rows, equipped: VINV.equipped, scorer: valetScorer(), mem: roMem });
+  let guard = 0;
+  while (!W.done() && guard++ < 60) {
+    const opts = W.options();
+    if (opts.length) W.pick(W.step().key, opts[0], false); else W.skip();
+  }
+  const plan = W.planLoadout();
+  const taken = new Set();
+  for (const it of plan.items) taken.add(it.row.i);
+  for (const k of plan.kept) if (k.e.row) taken.add(k.e.row.i);
+  return taken;
+}
+const VL_PET_WHY = {
+  ae: (c) => `<span class="warn" title="AE procs never fire from a summoned pet.">AE proc: ${esc(c.n)}</span>`,
+  proc: (c) => `<span title="Procs fire even when the pet ignores the weapon for damage. The gate is the pet's base level, before spell rank.">proc: ${esc(vlFxName(c.n))}</span>`,
+  proclvl: (c) => `<span class="warn" title="The proc's level requirement reads the pet's base level, before spell rank.">proc at pet ${c.l}: ${esc(vlFxName(c.n))}</span>`,
+  hits: () => `<span title="Players put the bar for a one-hander out-damaging a level-50 pet's own swing near 40 damage.">40+ dmg</span>`,
+  twoh: () => `<span>2H</span>`,
+  bash: () => `<span title="Shield AC raises the pet's bash damage.">bash</span>`,
+  haste: (c) => `<span>haste ${c.n}%</span>`,
+};
+function renderValetPet() {
+  const P = window.EQLPetCore;
+  const showEmpty = (msg) => {
+    $("vlPetEmpty").innerHTML = msg; $("vlPetEmpty").hidden = false;
+    $("vlPet").innerHTML = ""; $("vlPetNotes").innerHTML = ""; $("vlPetFoot").textContent = "";
+    $("vlPetName").textContent = "Pet"; $("vlPetMath").textContent = "";
+    $("vlPetLine").closest(".vl-petpick").hidden = true;
+  };
+  if (!PETD || !P) return showEmpty("The pet dataset has not loaded — refresh from eqltools.com in Settings.");
+  const lines = P.linesFor(PETD, VL.classes);
+  if (!lines.length) return showEmpty("No pet class in this trio. Summoned pets come with Magician, Necromancer, Shadow Knight, Enchanter, Beastlord or Shaman.");
+  $("vlPetLine").closest(".vl-petpick").hidden = false;
+  $("vlPetEmpty").hidden = true;
+
+  const lineKey = lines.some((l) => l.key === VS.petLine) ? VS.petLine : lines[0].key;
+  const rank = Math.min(10, Math.max(0, VS.petRank | 0));
+  $("vlPetLine").innerHTML = lines.map((l) =>
+    `<option value="${esc(l.key)}"${l.key === lineKey ? " selected" : ""}>${esc(l.label)} (${esc(Object.keys(l.owners).find((c) => VL.classes.includes(c)))})</option>`).join("");
+  $("vlPetRank").innerHTML = Array.from({ length: 11 }, (_, i) =>
+    `<option value="${i}"${i === rank ? " selected" : ""}>+${i}</option>`).join("");
+
+  const pet = P.petAt(PETD, lineKey, VL.classes, VL.level, rank);
+  if (!pet) {
+    const line = lines.find((l) => l.key === lineKey);
+    const first = line.owners[VL.classes.find((c) => line.owners[c])][0].o;
+    return showEmpty(`Nothing to summon yet — the first ${esc(line.label)} arrives at level ${first}.`);
+  }
+  const taken = vlAutoPlanTaken();
+  const DP = P.dressPet({ rows: VINV.rows, taken, trio: VL.classes, pet, PD: PETD, effects: GDATA && GDATA.effects });
+
+  $("vlPetName").textContent = `${pet.line.label} — ${pet.cls.join("/")}, level ${pet.level}`;
+  $("vlPetMath").innerHTML = `<b>${DP.slotMath.count}</b> pet slots: `
+    + DP.slotMath.parts.map((p) => `${p.n} ${esc(p.label === "base" ? "base" : p.label)}`).join(" + ")
+    + ` &middot; wears gear for ${DP.allCls.map(esc).join(", ")}`
+    + (DP.weightCap ? ` &middot; ${DP.weight} of ~${DP.weightCap} weight` : "");
+
+  const notes = [];
+  notes.push(`You are dressed first; the pet picks from the ${DP.pool} usable items your loadout doesn't take.`);
+  for (const n of DP.notes) {
+    if (n.k === "hasteBuff") notes.push(`No haste item: ${esc(n.buff.n)} (${n.buff.pct}%) from your ${esc(n.buff.cls)} already covers most of the pet's haste cap.`);
+    if (n.k === "twoh") notes.push(`A two-hander in the main hand — the pet refuses off-hand items while it holds one.`);
+    if (n.k === "nowep") notes.push(`Empty hands: no spare weapon carries a proc the pet can fire, stats worth wearing, or 40+ damage — the pet's own swing beats them all.`);
+  }
+  if (DP.picks.some((p) => p.kind === "weapon" && p.row.rec.dmg))
+    notes.push(`Weapon picks are proc-first: a weapon only out-damages the pet's own swing when it clears the pet's innate (player consensus puts a one-hander's bar near 40 damage at 50), and the dev team says this scaling is being rewritten.`);
+  if (DP.weightCap && DP.weight > DP.weightCap)
+    notes.push(`<b>${DP.weight} weight</b> on a monk-classed pet — past ~${DP.weightCap} its AC drops.`);
+  if (pet.line.seal === "chat") notes.push(`This pet's class pair is player-reported; no pet-window reading yet.`);
+  for (const extra of pet.line.notes || []) notes.push(esc(extra));
+  $("vlPetNotes").innerHTML = notes.map((n) => `<p class="dim">${n}</p>`).join("");
+
+  const wtCol = !!DP.weightCap;
+  const cols = [
+    { k: "slot", h: "Slot", v: (p) => DP.picks.indexOf(p) },
+    { k: "item", h: "Item", v: (p) => p.row.name.toLowerCase() },
+    { k: "why", h: "Why", v: (p) => p.chips.map((c) => c.k).join(" ") },
+    { k: "score", h: "Score", num: 1, v: (p) => p.score },
+    { k: "where", h: "Where", v: (p) => vlWhereKey(p.row) },
+    ...(wtCol ? [{ k: "wt", h: "Wt", num: 1, v: (p) => p.row.rec.wt || 0 }] : []),
+  ];
+  const arrow = (k) => (VS.psort === k ? (VS.pdir > 0 ? " ▲" : " ▼") : "");
+  const rows = VS.psort ? vsSorted(DP.picks, cols, VS.psort, VS.pdir, (col, p) => col.v(p)) : DP.picks;
+  $("vlPet").innerHTML = `<table class="qtab ivt"><thead><tr>${cols.map((c) => `<th data-vlpsort="${c.k}">${esc(c.h)}${arrow(c.k)}</th>`).join("")}</tr></thead><tbody>${
+    rows.length ? rows.map((p) => {
+      const why = p.chips.map((c) => (VL_PET_WHY[c.k] || (() => ""))(c)).join(" ") || (p.kind === "haste" ? "" : `<span class="dim">stats</span>`);
+      const where = p.row.sec === "worn" ? `<span class="skl skl--word">on you now</span>` : vlBadge(p.row.loc);
+      return `<tr>
+        <td>${esc(p.slot)}</td>
+        <td class="iv-item vl-item">${itemSpan(p.row.name, true)}</td>
+        <td>${why}</td>
+        <td class="num">${Math.round(p.score)}</td>
+        <td>${where}</td>
+        ${wtCol ? `<td class="num">${p.row.rec.wt || ""}</td>` : ""}
+      </tr>`;
+    }).join("") : `<tr><td colspan="${cols.length}">Nothing usable is left over for the pet.</td></tr>`}</tbody></table>`;
+
+  const sums = P.petStats(DP.picks), bits = [];
+  for (const [k, label] of [["hp", "HP"], ["mana", "mana"], ["ac", "AC"], ["str", "STR"], ["agi", "AGI"], ["dex", "DEX"]])
+    if (sums.st[k]) bits.push(`<b>${sums.st[k]}</b> ${label}`);
+  // incidental haste on a stat pick is dead under a trio pet-haste buff — don't advertise it
+  if (sums.haste && !DP.notes.some((n) => n.k === "hasteBuff")) bits.push(`<b>${sums.haste}%</b> haste`);
+  $("vlPetFoot").innerHTML = (bits.length ? `This set adds ${bits.join(" · ")} to the pet. ` : "")
+    + `<span class="dim">Slot count, legality and what a stat does for a pet are player-reported (Discord, 2026-08); pet classes are read off pet windows.</span>`;
+}
+
 const vlStoneName = (row) => row.name.replace(/\s*\(Exaltation\)\*?$/, "");
 const vlStoneLink = (it) => (it.rec ? itemSpan(vlStoneName(it.row), true) : esc(vlStoneName(it.row)));
 const vlStoneWhere = (it) => (it.host ? `${vlBadge(it.host.row.loc)} <span class="dim">in ${esc(it.host.row.name)}</span>`
@@ -4961,7 +5081,7 @@ function renderValet() {
   drawValetTrio();
   if (!VWALK) {
     run.hidden = true; done.hidden = true; empty.hidden = false;
-    $("vlSlotView").hidden = true; $("vlExaltView").hidden = true; $("vlFlags").hidden = true;
+    $("vlSlotView").hidden = true; $("vlExaltView").hidden = true; $("vlPetView").hidden = true; $("vlFlags").hidden = true;
     if (INV.problem) empty.textContent = INV.problem;
     meta.textContent = "";
     return;
@@ -4973,9 +5093,11 @@ function renderValet() {
   renderValetFlags();
   for (const b of $("vlViews").querySelectorAll("[data-vlview]")) b.classList.toggle("is-on", b.dataset.vlview === VS.view);
   $("vlSlotView").hidden = VS.view !== "slot"; $("vlExaltView").hidden = VS.view !== "exalt";
+  $("vlPetView").hidden = VS.view !== "pet";
   run.hidden = true; done.hidden = true;
   if (VS.view === "slot") renderValetSlot();
   else if (VS.view === "exalt") renderValetExalt();
+  else if (VS.view === "pet") renderValetPet();
   else if (VWALK.done()) { done.hidden = false; renderValetDone(); }
   else { run.hidden = false; renderValetRun(); }
 }
@@ -5293,6 +5415,22 @@ function renderValetDone() {
    wearing. Same shape discipline as pushSky — build it here, send only on
    change, and keep it small enough to redraw a 340px panel. */
 let lastValetJson = "";
+/* The pet plan as pet-core computes it for the current selection, or null
+   when there is nothing to summon. pushValet sends it to the overlay whether
+   or not the Pet view is open — handing gear to the pet happens at the bank,
+   which is where the overlay is read. */
+function vlPetPlan() {
+  const P = window.EQLPetCore;
+  if (!PETD || !P || !VINV) return null;
+  const lines = P.linesFor(PETD, VL.classes);
+  if (!lines.length) return null;
+  const lineKey = lines.some((l) => l.key === VS.petLine) ? VS.petLine : lines[0].key;
+  const rank = Math.min(10, Math.max(0, VS.petRank | 0));
+  const pet = P.petAt(PETD, lineKey, VL.classes, VL.level, rank);
+  if (!pet) return null;
+  const DP = P.dressPet({ rows: VINV.rows, taken: vlAutoPlanTaken(), trio: VL.classes, pet, PD: PETD, effects: GDATA && GDATA.effects });
+  return { pet, DP };
+}
 function pushValet() {
   if (!VWALK) { if (lastValetJson !== "null") { lastValetJson = "null"; window.companion.sendValet(null); } return; }
   const plan = VWALK.planLoadout(), cur = VWALK.currentLoadout();
@@ -5325,6 +5463,18 @@ function pushValet() {
                loc: { k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title } };
     }),
   };
+  const pp = vlPetPlan();
+  p.pet = pp ? {
+    line: `${pp.pet.line.label} — ${pp.pet.cls.join("/")}, level ${pp.pet.level}`,
+    slots: pp.DP.slotMath.count,
+    haste: (pp.DP.notes.find((n) => n.k === "hasteBuff") || {}).buff || null,
+    items: pp.DP.picks.map((pk) => {
+      const b = window.EQLGearScore.locBadge(pk.row.loc);
+      const ref = skyRef(pk.row.name);
+      return { slot: pk.slot, n: pk.row.name, url: ref.url, sb: ref.sb, worn: pk.row.sec === "worn",
+               loc: { k: b.kind, n: b.n, sub: b.sub, w: b.word, t: b.title } };
+    }),
+  } : null;
   const j = JSON.stringify(p);
   if (j !== lastValetJson) { lastValetJson = j; window.companion.sendValet(p); }
 }
@@ -5387,6 +5537,9 @@ function wireValet() {
   $("vlSlotPick").addEventListener("click", (e) => { const b = e.target.closest("[data-vlslot]"); if (!b) return; VS.slot = b.dataset.vlslot; saveValetPrefs(); vsRedraw(); });
   $("vlOwn").addEventListener("click", (e) => { const th = e.target.closest("[data-vlosort]"); if (!th) return; const k = th.dataset.vlosort; VS.dir = VS.sort === k ? -VS.dir : 1; VS.sort = k; vsRedraw(); });
   $("vlGap").addEventListener("click", (e) => { const th = e.target.closest("[data-vlgsort]"); if (!th) return; const k = th.dataset.vlgsort; VS.gdir = VS.gsort === k ? -VS.gdir : 1; VS.gsort = k; vsRedraw(); });
+  $("vlPet").addEventListener("click", (e) => { const th = e.target.closest("[data-vlpsort]"); if (!th) return; const k = th.dataset.vlpsort; VS.pdir = VS.psort === k ? -VS.pdir : 1; VS.psort = k; renderValetPet(); });
+  $("vlPetLine").addEventListener("change", () => { VS.petLine = $("vlPetLine").value; saveValetPrefs(); renderValetPet(); });
+  $("vlPetRank").addEventListener("change", () => { VS.petRank = +$("vlPetRank").value; saveValetPrefs(); renderValetPet(); });
   // the Exaltations view's three tables, one handler each
   for (const [id, attr, cols, sk, dk] of [["vlExEmpty", "vlxesort", VX_ECOLS, "xesort", "xedir"],
                                           ["vlExIdle", "vlxisort", VX_ICOLS, "xisort", "xidir"],

@@ -876,6 +876,12 @@ select { cursor: pointer; max-width: 100%; text-overflow: ellipsis; }
 .vl-prio { margin: 6px 0; }
 .vl-prio summary { cursor: pointer; color: var(--ink-soft); font-size: 12px; }
 .vl-prio .prio-note { font-size: 12px; color: var(--ink-dim); margin: 4px 0 6px; }
+.vl-pethead { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: flex-start; justify-content: space-between; margin-top: 8px; }
+.vl-pethead h3 { margin: 0; }
+.vl-petpick { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.vl-petpick select { font: inherit; color: var(--ink); background: var(--bg-deep); border: 1px solid var(--line); border-radius: 5px; padding: 2px 4px; }
+.vl-prio .prio-presets { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0 0; }
+.vl-prio .prio-preset.is-on { color: var(--gold-pale); border-color: var(--gold-pale); }
 .vl-prio .prio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 2px 12px; margin: 4px 0; }
 .vl-prio .prio-row { display: grid; grid-template-columns: 1fr 5.5em auto; gap: 6px; align-items: center; font-size: 12px; color: var(--ink-soft); }
 .vl-prio .prio-row.custom { color: var(--gold-pale); }

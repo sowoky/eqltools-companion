@@ -85,6 +85,27 @@
     + "your own totals once a race is set. Hover a stat for the derivation. Edits here apply on "
     + "/gear, /valet and /sky.";
 
+  /* Presets — one-click override bundles for the three gearing camps the
+     player corpus actually argues from (2026-08 study). Each REPLACES the
+     current overrides with a few stats; everything unnamed stays computed.
+     A value that matches the computed one is dropped, so the "(N custom)"
+     count stays honest. Two are trio-conditional: mana only moves when the
+     trio has a counted pool, haste is left at 0 for a cast-heavy trio. */
+  const PRESETS = [
+    { k: "tank", label: "Tank / solo",
+      title: "Sets AC to 4 and each resist to 0.8; everything else stays computed. For tanking or soloing, where mitigation is the buy.",
+      w: () => ({ ac: 4, sv: 0.8 }) },
+    /* No haste override here: zeroing the weight would also devalue the one
+       item that gets a character TO the 75% cap, and the scorer has no
+       current-haste plumbing to price only the excess. */
+    { k: "geared50", label: "Geared at 50",
+      title: "Sets AC to 1, resists to 0.6, and mana to 1.3 if your trio has a pool; everything else stays computed. Past the softcap AC buys less, and at 50 the pools keep paying.",
+      w: (auto) => Object.assign({ ac: 1, sv: 0.6 }, auto.mana > 0 ? { mana: 1.3 } : {}) },
+    { k: "leveling", label: "Leveling",
+      title: "Sets AC to 3, and haste to 3 unless your trio is cast-heavy. Below the caps, AC and haste are the strongest buys.",
+      w: (auto) => Object.assign({ ac: 3 }, auto.haste > 0 ? { haste: 3 } : {}) },
+  ];
+
   function mount(el, opts) {
     const store = opts.store || SITE;
     const note = opts.note === undefined ? NOTE : opts.note;
@@ -104,7 +125,22 @@
           <span class="fine">${custom ? "custom" : "auto"}</span>
         </label>`;
       }).join("");
+      const bundleOf = (p) => {
+        const b = p.w(auto), out = {};
+        for (const k in b) if (b[k] !== auto[k]) out[k] = b[k];
+        return out;
+      };
+      const active = (b) => {
+        const ks = Object.keys(b);
+        return ks.length === Object.keys(cur).length && ks.every((k) => cur[k] === b[k]);
+      };
+      const presets = PRESETS.map((p) => {
+        const b = bundleOf(p);
+        return `<button type="button" class="${esc(opts.btnClass || "btn-sm")} prio-preset${active(b) ? " is-on" : ""}"
+          data-preset="${p.k}" title="${esc(p.title)}" aria-pressed="${active(b)}">${esc(p.label)}</button>`;
+      }).join(" ");
       el.innerHTML = (note ? `<p class="fine prio-note">${esc(note)}</p>` : "")
+        + `<div class="prio-presets">${presets}<span class="fine">a preset replaces your custom weights; unlisted stats stay computed</span></div>`
         + `<div class="prio-grid">${rows}</div>`
         + `<div class="prio-foot"><button type="button" class="${esc(opts.btnClass || "btn-sm")} prio-reset">reset to computed</button></div>`;
       if (opts.summary) opts.summary.textContent = summary(cur);
@@ -119,6 +155,14 @@
       write(w, store);
     });
     el.addEventListener("click", (e) => {
+      const pb = e.target.closest("[data-preset]");
+      if (pb) {
+        const p = PRESETS.find((x) => x.k === pb.dataset.preset);
+        const auto = opts.scorer().computed || {}, b = p.w(auto), out = {};
+        for (const k in b) if (b[k] !== auto[k]) out[k] = b[k];
+        write(out, store);
+        return;
+      }
       if (!e.target.closest(".prio-reset")) return;
       write({}, store);
     });

@@ -692,6 +692,51 @@ function renderValet() {
       valetEl.append(sec);
     }
   }
+  /* The pet's set, one fold: what to hand it and where each piece is. Rows
+     already on you say so instead of a place — the plan doesn't use them, so
+     they come off you and into the pet tab. */
+  if (VALET.pet && VALET.pet.items.length) {
+    const sec = document.createElement("section");
+    sec.className = "ovg";
+    const h = document.createElement("button");
+    h.type = "button"; h.className = "ovg__h"; h.dataset.ovalet = "__pet";
+    h.textContent = `Pet · ${VALET.pet.line}`;
+    const c = document.createElement("span");
+    c.className = "ovg__c"; c.textContent = `${VALET.pet.items.length} of ${VALET.pet.slots}`;
+    h.append(c); sec.append(h);
+    if (!VAL_CLOSED.has("__pet")) {
+      const ul = document.createElement("ul");
+      ul.className = "ovl";
+      for (const r of VALET.pet.items) {
+        const li = document.createElement("li");
+        li.className = "ovi";
+        const sl = document.createElement("span");
+        sl.className = "ovi__s"; sl.textContent = r.slot;
+        li.append(sl, itemSpan(r.n, r.url, r.sb, "ovi__n"));
+        if (r.worn) {
+          const w = document.createElement("span");
+          w.className = "ovi__off"; w.textContent = "on you now";
+          li.append(w);
+        } else {
+          li.append(skyLocEl(r.loc));
+          if (r.loc.sub) {
+            const sub = document.createElement("span");
+            sub.className = "ovi__sub"; sub.textContent = "slot " + r.loc.sub;
+            li.append(sub);
+          }
+        }
+        ul.append(li);
+      }
+      if (VALET.pet.haste) {
+        const li = document.createElement("li");
+        li.className = "ovi ovi__note";
+        li.textContent = `no haste item — ${VALET.pet.haste.n} (${VALET.pet.haste.pct}%) covers the pet`;
+        ul.append(li);
+      }
+      sec.append(ul);
+    }
+    valetEl.append(sec);
+  }
 }
 valetEl.addEventListener("click", (e) => {
   const h = e.target.closest("[data-ovalet]");

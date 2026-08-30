@@ -26,8 +26,11 @@
    the wiki says can wear it; `trio` is the same list kept to the caller's own
    classes, and the two are DIFFERENT ANSWERS often enough to be shown side by
    side rather than reconciled. Rank is computed at +0 — the item's own worth,
-   the same for every copy you hold whatever tier each is at — and
-   `rank(…, tier)` answers the "at the tier I actually have it" question.
+   the same for every copy you hold whatever tier each is at. The POOL is
+   always scored at +0, so `rank(…, tier)` with a nonzero tier prices the
+   candidate against a pool standing at a different rank — a mixed comparison
+   that pins any upgraded copy near rank 1. Every caller in the repo passes 0;
+   keep it that way unless the pool learns to scale with it.
 
    The main hand is two catalogues. A two-hander costs you the off hand, so it
    is not an alternative to a one-hander for the same slot: `kind` is "1H" or

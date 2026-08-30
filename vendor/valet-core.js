@@ -575,11 +575,15 @@
       handsNow = { main: ctx.now[0] || null, off: off.now[0] || null,
                    total: (ctx.now[0] && ctx.now[0].score || 0) + (off.now[0] && off.now[0].score || 0) };
     }
-    /* The rank the catalogue gap is priced at: the highest you hold in this
-       slot — the rank you have demonstrably reached here — not the tier of
-       whichever copy scores best, which is +0 often enough to print two
-       identical score columns. */
-    const parTier = owned.reduce((m, c) => Math.max(m, c.row.tier), 0);
+    /* The rank the catalogue gap is priced at: the rank of the copy the gap is
+       measured AGAINST — the best-scoring one — so both sides of the "above
+       your best" filter stand at the same rank, which is spare-core's per-pair
+       parity rule. It was the slot-wide MAX held tier, and that is a mixed
+       comparison: the reference Chest held a +7 Any-Slot-bound piece and a +0
+       best robe, so the catalogue was handed +7 and filtered against the robe
+       at +0 — 16 of 185 rows read "above your best" when the honest count,
+       both sides at one rank, is 1. Same defect on 10 of 19 populated slots. */
+    const parTier = owned.length ? owned[0].row.tier : 0;
     return { slot, now: ctx.now, vs: ctx.vs, baseAC: ctx.baseAC, wornAC: ctx.wornAC, owned, handsNow, parTier };
   }
 

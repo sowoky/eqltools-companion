@@ -30,6 +30,7 @@ const REMOTE = {
   "item-tooltips.json": "https://eqltools.com/companion/data/item-tooltips.json",
   "gear-data.json": "https://eqltools.com/gear/data/gear-data.json",
   "sky.json": "https://eqltools.com/sky/data/sky.json",
+  "pet-data.json": "https://eqltools.com/valet/data/pet-data.json",
 };
 /* Data the embedded /log-parser page fetches. Cached under its site URL
    paths and served straight to the iframe by the eqlt:// protocol — the

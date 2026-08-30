@@ -333,6 +333,7 @@ body.through #grip { display: none; }  /* resizing needs the mouse; unlock first
 .ovi__gain.up { color: #9ccc9c; }
 .ovi__gain.down { color: #e0713a; }
 .ovi__off { flex: 1 0 100%; color: #8d84a8; font-size: 10.5px; padding-left: 2px; }
+.ovi__note { color: #8d84a8; font-size: 10.5px; }
 /* Exalt: the effect is the choice, so it reads on the row rather than on
    hover — on the row's second line, with where the stone is and what it fits */
 .ovi__l2 { flex: 1 0 100%; display: flex; gap: 4px; align-items: baseline;

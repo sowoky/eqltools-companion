@@ -250,24 +250,39 @@
     const canPlace = (it, cls, slot) => slot !== "Secondary"
       || (!GS.TWO_H(it.rec) && (dw[cls] || !it.rec.dmg));
 
+    /* The main hand is TWO niches, not one. A two-hander costs you the off
+       hand, so it is not an alternative to a one-hander for the same slot, and
+       pooling them together reads every 1H as beaten by weapons it never
+       competes with: the Blade of Abrogation came out "beaten by 7" for a
+       Shadow Knight and all seven were two-handers. inventory-core's ranker
+       already splits on this (Kyle, 2026-08-28: "it's also comparing against
+       2h weapon, which obviously isn't fair"); this file did not, so /valet's
+       Spare view, the companion's Inventory tab and the bank organiser were
+       all recommending one-handers for the sell pile on a comparison that
+       never happens in the game. Same rule, same place in the vocabulary. */
+    const kindOf = (it, slot) => slot === "Primary" ? (GS.TWO_H(it.rec) ? "2H" : "1H") : "";
+
     /* ── pass 1: the real slots ─────────────────────────────────────────── */
-    const buckets = new Map();           // "CLS|Slot" -> items, score-sorted
+    const buckets = new Map();           // "CLS|Slot|Kind" -> items, score-sorted
     for (const c of universe) {
       for (const s of GS.SLOTS) {
-        const pool = items.filter((it) => it.classes.includes(c) && it.slots.includes(s)
-          && canPlace(it, c, s));
-        if (!pool.length) continue;
-        pool.sort((x, y) => score(y, c, s, y.tier) - score(x, c, s, x.tier) || x.i - y.i);
-        buckets.set(c + "|" + s, pool);
+        for (const k of (s === "Primary" ? ["1H", "2H"] : [""])) {
+          const pool = items.filter((it) => it.classes.includes(c) && it.slots.includes(s)
+            && canPlace(it, c, s) && kindOf(it, s) === k);
+          if (!pool.length) continue;
+          pool.sort((x, y) => score(y, c, s, y.tier) - score(x, c, s, x.tier) || x.i - y.i);
+          buckets.set(c + "|" + s + "|" + k, pool);
+        }
       }
     }
     for (const [key, pool] of buckets) {
-      const [c, s] = key.split("|");
+      const [c, s, k] = key.split("|");
       const cap = capOf(s);
       for (const a of pool) {
         const par = aheadIn(pool, a, c, s, a.tier, true);
         const asIs = aheadIn(pool, a, c, s, a.tier, false);
-        a.niches.push({ cls: c, slot: s, cap, ahead: par.length, aheadAsIs: asIs.length,
+        a.niches.push({ cls: c, slot: s, kind: k, cap, ahead: par.length,
+                        aheadAsIs: asIs.length,
                         by: par.slice(0, 8), byAsIs: asIs.slice(0, 8) });
       }
     }

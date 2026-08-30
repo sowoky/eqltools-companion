@@ -49,6 +49,7 @@ const VENDOR_JS = {
   "public/_shared/char-state.js": "char-state.js",   // gear-score's nakedStats() calls EQLChar.name
   "public/sky/sky-core.js": "sky-core.js",
   "public/valet/valet-core.js": "valet-core.js",
+  "public/valet/pet-core.js": "pet-core.js",
   "public/_shared/exalt-slots.js": "exalt-slots.js",
   "public/_shared/spare-core.js": "spare-core.js",
   "public/_shared/priorities.js": "priorities.js",
@@ -72,7 +73,7 @@ let missing = 0;
 /* sky.json is the one dataset here that is COMMITTED rather than wiki-synced
    (see docs/tools/sky.md) — it is always on disk, and it ships to the site with
    the deploy rather than through the hourly R2 upload. */
-for (const rel of ["public/kills/data/kills-data.json", "public/companion/data/quest-items.json", "public/companion/data/item-tooltips.json", "public/gear/data/gear-data.json", "public/sky/data/sky.json"]) {
+for (const rel of ["public/kills/data/kills-data.json", "public/companion/data/quest-items.json", "public/companion/data/item-tooltips.json", "public/gear/data/gear-data.json", "public/sky/data/sky.json", "public/valet/data/pet-data.json"]) {
   const src = join(repo, rel);
   const out = join(companion, "data-snapshot", rel.split("/").pop());
   if (existsSync(src)) {

@@ -1424,6 +1424,8 @@ th.sort-desc::after { content: " ▼"; color: var(--gold); font-size: .6rem; }
    wiki"); /gear had it, the rest of the pages used the class unstyled */
 .fine { color: var(--ink-dim); font-size: .86rem; font-family: var(--font-accent), Georgia, serif; }
 .prio-note { margin: 0 0 .5rem; }
+.prio-presets { display: flex; flex-wrap: wrap; gap: .35rem; margin: .35rem 0 0; }
+.prio-preset.is-on { color: var(--gold-bright); border-color: var(--gold-bright); }
 .prio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); gap: .25rem .9rem; margin: .5rem 0; }
 .prio-row { display: grid; grid-template-columns: minmax(0, 1fr) 4.5em auto; gap: .4rem; align-items: center;
   font-family: var(--font-accent), Georgia, serif; font-size: .9rem; color: var(--ink-soft); }
