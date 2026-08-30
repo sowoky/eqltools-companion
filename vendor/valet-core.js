@@ -296,19 +296,33 @@
 
     /* Recompute every step from the first, because a pick changes what is left
        for every later one. Steps that need no decision are settled in passing.
-       The walk stops at the first step that is a real, still-open choice. */
-    function advance(from) {
+       The walk stops at the first step that is a real, still-open choice.
+
+       A pick SURVIVES a change to an earlier step when the item is still
+       available — editing one slot must not re-ask the other twenty (Kyle,
+       2026-08-30: "I need a way to … just edit a certain slot after I've gone
+       through the flow"). A pick whose item an earlier change took away is
+       dropped, and the walk stops there to re-ask.
+
+       `stopAt` forces the walk to present that step: open steps before it do
+       not stop the loop (a forward jump leaves them open and comes back),
+       and the forced step's own auto-settling — flat, mem, only, skip — is
+       bypassed, because you came to change it. Only twoh stays settled: the
+       off hand under a two-hander is not a question. */
+    function advance(stopAt) {
       const taken = new Set(), lore = new Set();
       let baseAC = 0;
       W.opts = {}; W.auto = {}; W.ctx = {};
+      let stop = -1;
       for (let i = 0; i < steps.length; i++) {
         const st = steps[i];
+        const forced = i === stopAt;
         const list = optionsFor(st, taken, lore, baseAC);
         W.opts[st.key] = list;
 
         W.ctx[st.key] = { taken: new Set(taken), lore: new Set(lore), baseAC };
 
-        let chosen = i < from ? W.picks[st.key] : null;
+        let chosen = W.picks[st.key] || null;
         if (chosen && !list.some((o) => o.id === chosen.id)) chosen = null;
         /* A two-hander occupies both hands, so the off-hand step is not a
            question — and it must not read as one the walk forgot. */
@@ -318,7 +332,7 @@
           W.picks[st.key] = null;
           continue;
         }
-        if (!chosen) {
+        if (!chosen && !forced) {
           if (!list.length) W.auto[st.key] = "none";
           /* Nothing the scorer reads: every candidate comes out at zero, so the
              ranking is arbitrary and a swap cannot be an improvement. Ammo is
@@ -330,15 +344,18 @@
             const m = memApply(st.key, list);
             if (m) { W.auto[st.key] = "mem"; chosen = m; }
           }
+          if (!chosen && W.skipped.has(st.key)) W.auto[st.key] = "skip";
         }
-        if (!chosen && W.skipped.has(st.key)) W.auto[st.key] = "skip";
-        // Stop only on a step nothing above settled. A step the walk decided for
+        // Stop on a step nothing above settled — the first one when no stop is
+        // forced, the forced one regardless. A step the walk decided for
         // itself is marked in auto whether or not it ends up holding an item,
         // and a marked step must not then be asked about anyway.
-        if (!chosen && !W.auto[st.key] && list.length > 1) {
+        if (!chosen && !W.auto[st.key] && (forced || list.length > 1)) {
           W.picks[st.key] = null;
-          W.i = i;
-          return;
+          if (stop < 0) stop = i;
+          if (forced) { W.i = i; return; }
+          if (stopAt == null) { W.i = i; return; }
+          continue;
         }
         W.picks[st.key] = chosen || null;
         if (chosen) {
@@ -349,7 +366,7 @@
           }
         }
       }
-      W.i = steps.length;   // done
+      W.i = stop >= 0 ? stop : steps.length;   // steps.length = done
     }
 
     /* ── loadout arithmetic ──────────────────────────────────────────────
@@ -367,7 +384,14 @@
       for (const step of steps) {
         const p = W.picks[step.key];
         if (!p) {
-          for (const e of wearingAt(step)) kept.push({ step, slot: step.slot, e });
+          /* `illegal` marks a worn piece the trio cannot equip at all — the
+             absolute class gate means the plan can neither keep it as a pick
+             nor put it back, so it is stranded on the body, not selected.
+             The pet's pool reads this: a stranded piece is exactly what the
+             pet inherits (Kyle, 2026-08-30: the RNG-only Arydryidriyorn on a
+             MAG trio belongs to the earth pet's off hand). */
+          for (const e of wearingAt(step))
+            kept.push({ step, slot: step.slot, e, illegal: !!(e.rec && !sc.legal(e.rec)) });
           continue;
         }
         for (const it of p.items) {
@@ -403,7 +427,7 @@
       return { score, st, items };
     }
 
-    advance(0);
+    advance();
 
     return {
       steps, wearingAt, planLoadout, currentLoadout,
@@ -427,18 +451,33 @@
       step: () => (W.i < steps.length ? steps[W.i] : null),
       options: (key) => W.opts[key || (steps[W.i] || {}).key] || [],
       pick(stepKey, opt, keep) {
-        const i = steps.findIndex((s) => s.key === stepKey);
         W.picks[stepKey] = opt;
         if (keep) remember(stepKey, W.opts[stepKey] || [], opt); else mem.del(stepKey);
-        advance(i + 1);
+        advance();
       },
       /* Leaving a slot empty is a decision the walk has to honour, so the
          skipped step is recorded and the walk resumes AFTER it. */
       skip() {
         const at = W.i;
         W.skipped.add(steps[at].key);
-        advance(at + 1);
+        advance();
         if (W.i === at) W.i = at + 1;
+      },
+      /* Jump to a step — from anywhere, including the finished view — and
+         re-open it: the remembered decision and a Leave-empty are cleared,
+         because you came to change it, and the step is presented even where
+         the walk would settle it (flat, one candidate). Every OTHER step's
+         pick survives the edit; only a pick whose item the change takes away
+         re-opens. The one refusal is the off hand under a two-hander — that
+         is the two-hander's cell, not a question. */
+      goTo(stepKey) {
+        const j = steps.findIndex((s) => s.key === stepKey);
+        if (j < 0 || W.auto[stepKey] === "twoh") return false;
+        mem.del(stepKey);
+        W.skipped.delete(stepKey);
+        W.picks[stepKey] = null;
+        advance(j);
+        return true;
       },
       /* Back goes to the previous step that was a real choice — stepping onto
          one the walk settled by itself only to have it settle again is a dead
@@ -446,20 +485,14 @@
          change it. */
       back() {
         for (let j = W.i - 1; j >= 0; j--) {
-          /* A step the walk settled for itself is not a stop: the off hand
-             under a two-hander, or a flat step, has candidates in its list,
-             but landing there just re-settles it and the walk bounces back
-             to where Back was pressed. */
-          if (W.auto[steps[j].key] === "twoh" || W.auto[steps[j].key] === "flat") continue;
-          if ((W.opts[steps[j].key] || []).length > 1) {
-            mem.del(steps[j].key);
-            advance(j);
-            return true;
-          }
+          /* The off hand under a two-hander is not a stop: it has candidates
+             in its list, but it is the two-hander's cell. */
+          if (W.auto[steps[j].key] === "twoh") continue;
+          if ((W.opts[steps[j].key] || []).length > 1) return this.goTo(steps[j].key);
         }
         return false;
       },
-      restart() { W.picks = {}; W.skipped = new Set(); advance(0); },
+      restart() { W.picks = {}; W.skipped = new Set(); advance(); },
       // What the walk settled without asking, so a slot it never showed you
       // does not read as a slot it forgot.
       autoSummary() {

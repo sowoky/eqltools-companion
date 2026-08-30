@@ -918,3 +918,15 @@ select { cursor: pointer; max-width: 100%; text-overflow: ellipsis; }
 .slotdot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-left: 4px; vertical-align: middle; }
 .ivt tr.is-worn td { background: color-mix(in srgb, var(--gold) 6%, transparent); }
 .ivt td.vl-item { min-width: 13em; }
+
+/* ── the step strip: every step of a walk, clickable — jump anywhere, edit
+     any slot after the flow (same feature as the site's). ───────────────── */
+.stepstrip { display: flex; flex-wrap: wrap; gap: 4px 5px; margin: 8px 0; align-items: center; }
+.stepstrip .dim { margin-right: 4px; }
+.step-chip { background: var(--bg-panel, transparent); border: 1px solid var(--line); color: var(--ink-dim);
+  border-radius: 999px; padding: 1px 9px; font-size: 12px; line-height: 1.5; cursor: pointer; font-family: inherit; }
+.step-chip:hover { color: var(--ink); border-color: var(--gold); }
+.step-chip.is-picked { color: var(--ink-soft); border-color: var(--line-hot); }
+.step-chip.is-cur { color: var(--gold-bright); border-color: var(--gold); font-weight: 600; }
+.step-chip.is-skip, .step-chip.is-none { opacity: .55; }
+.step-chip:disabled { opacity: .4; cursor: default; }

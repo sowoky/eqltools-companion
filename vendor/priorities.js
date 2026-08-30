@@ -67,14 +67,24 @@
     };
   }
   const SITE = localStore(KEY);
-  const read = (store) => (store || SITE).read();
+  /* Overrides stored before the per-resist split carried one {sv} for all
+     five schools; it now reads as every school the user didn't set
+     individually. Applied on every read (any store — the companion's too),
+     and the next write persists the expanded form. */
+  function norm(w) {
+    if (!w || w.sv == null) return w || {};
+    for (const k of ["svf", "svc", "svm", "svd", "svp"]) if (!(k in w)) w[k] = w.sv;
+    delete w.sv;
+    return w;
+  }
+  const read = (store) => norm((store || SITE).read());
   function write(w, store) {
     (store || SITE).write(w);
     window.dispatchEvent(new CustomEvent("eqlt-priorities", { detail: { store: store || SITE } }));
   }
-  const summary = (w) => {
+  const summary = (w, zero) => {
     const n = Object.keys(w || {}).length;
-    return n ? `(${n} custom)` : "(computed for your trio)";
+    return n ? `(${n} custom)` : (zero || "(computed for your trio)");
   };
 
   /* The base note. A host that prints a single-class ranking appends the
@@ -91,16 +101,17 @@
      A value that matches the computed one is dropped, so the "(N custom)"
      count stays honest. Two are trio-conditional: mana only moves when the
      trio has a counted pool, haste is left at 0 for a cast-heavy trio. */
+  const allSv = (v) => ({ svf: v, svc: v, svm: v, svd: v, svp: v });
   const PRESETS = [
     { k: "tank", label: "Tank / solo",
       title: "Sets AC to 4 and each resist to 0.8; everything else stays computed. For tanking or soloing, where mitigation is the buy.",
-      w: () => ({ ac: 4, sv: 0.8 }) },
+      w: () => Object.assign({ ac: 4 }, allSv(0.8)) },
     /* No haste override here: zeroing the weight would also devalue the one
        item that gets a character TO the 75% cap, and the scorer has no
        current-haste plumbing to price only the excess. */
     { k: "geared50", label: "Geared at 50",
       title: "Sets AC to 1, resists to 0.6, and mana to 1.3 if your trio has a pool; everything else stays computed. Past the softcap AC buys less, and at 50 the pools keep paying.",
-      w: (auto) => Object.assign({ ac: 1, sv: 0.6 }, auto.mana > 0 ? { mana: 1.3 } : {}) },
+      w: (auto) => Object.assign({ ac: 1 }, allSv(0.6), auto.mana > 0 ? { mana: 1.3 } : {}) },
     { k: "leveling", label: "Leveling",
       title: "Sets AC to 3, and haste to 3 unless your trio is cast-heavy. Below the caps, AC and haste are the strongest buys.",
       w: (auto) => Object.assign({ ac: 3 }, auto.haste > 0 ? { haste: 3 } : {}) },
@@ -110,14 +121,20 @@
     const store = opts.store || SITE;
     const note = opts.note === undefined ? NOTE : opts.note;
     const tip = !!window.EQLTip;
-    if (tip) EQLTip.provider("w", (k) => (opts.scorer().why || {})[k] || null);
+    /* Two mounts on one page — the player panel and the pet panel — need
+       their own tooltip namespaces or the second registration wins both. */
+    const ns = opts.tipNs || "w";
+    if (tip) EQLTip.provider(ns, (k) => (opts.scorer().why || {})[k] || null);
 
     function draw() {
-      const S = opts.scorer(), auto = S.computed || {}, why = S.why || {}, cur = store.read();
-      const rows = window.EQLGearScore.STAT_DEFS.map(([k, label]) => {
+      const S = opts.scorer(), auto = S.computed || {}, why = S.why || {}, cur = norm(store.read());
+      /* A host with its own stat model — the pet panel — passes its own row
+         list; the default is the player model's. */
+      const defs = opts.defs || window.EQLGearScore.STAT_DEFS;
+      const rows = defs.map(([k, label]) => {
         const custom = k in cur;
         const name = tip
-          ? `<span class="prio-name tt" data-tip="w:${k}" data-tip-nopin>${esc(label)}</span>`
+          ? `<span class="prio-name tt" data-tip="${ns}:${k}" data-tip-nopin>${esc(label)}</span>`
           : `<span class="prio-name" title="${esc(String(why[k] || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim())}">${esc(label)}</span>`;
         return `<label class="prio-row${custom ? " custom" : ""}">
           ${name}
@@ -134,22 +151,24 @@
         const ks = Object.keys(b);
         return ks.length === Object.keys(cur).length && ks.every((k) => cur[k] === b[k]);
       };
-      const presets = PRESETS.map((p) => {
+      /* opts.presets === null hides the row — the bundles are player gearing
+         camps and mean nothing to a pet model. */
+      const presets = opts.presets === null ? "" : PRESETS.map((p) => {
         const b = bundleOf(p);
         return `<button type="button" class="${esc(opts.btnClass || "btn-sm")} prio-preset${active(b) ? " is-on" : ""}"
           data-preset="${p.k}" title="${esc(p.title)}" aria-pressed="${active(b)}">${esc(p.label)}</button>`;
       }).join(" ");
       el.innerHTML = (note ? `<p class="fine prio-note">${esc(note)}</p>` : "")
-        + `<div class="prio-presets">${presets}<span class="fine">a preset replaces your custom weights; unlisted stats stay computed</span></div>`
+        + (presets ? `<div class="prio-presets">${presets}<span class="fine">a preset replaces your custom weights; unlisted stats stay computed</span></div>` : "")
         + `<div class="prio-grid">${rows}</div>`
         + `<div class="prio-foot"><button type="button" class="${esc(opts.btnClass || "btn-sm")} prio-reset">reset to computed</button></div>`;
-      if (opts.summary) opts.summary.textContent = summary(cur);
+      if (opts.summary) opts.summary.textContent = summary(cur, opts.summaryZero);
       if (tip) EQLTip.decorate();
     }
     el.addEventListener("change", (e) => {
       const inp = e.target.closest("[data-w]");
       if (!inp) return;
-      const k = inp.dataset.w, v = parseFloat(inp.value), w = store.read();
+      const k = inp.dataset.w, v = parseFloat(inp.value), w = norm(store.read());
       const c = Math.min(99, Math.max(0, v));   // the input's min/max are advisory in Chrome
       if (isNaN(v) || c === opts.scorer().computed[k]) delete w[k]; else w[k] = c;
       write(w, store);

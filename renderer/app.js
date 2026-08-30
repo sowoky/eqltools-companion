@@ -4896,7 +4896,11 @@ function vlAutoPlanTaken() {
   const plan = W.planLoadout();
   const taken = new Set();
   for (const it of plan.items) taken.add(it.row.i);
-  for (const k of plan.kept) if (k.e.row) taken.add(k.e.row.i);
+  /* A kept row the trio cannot legally wear is stranded on the body, not
+     selected — the absolute class gate means the plan can never put it back.
+     The pet inherits it (Kyle, 2026-08-30: the RNG-only Arydryidriyorn on a
+     MAG trio belongs to the earth pet's off hand). */
+  for (const k of plan.kept) if (k.e.row && !k.illegal) taken.add(k.e.row.i);
   return taken;
 }
 const VL_PET_WHY = {
@@ -4906,7 +4910,25 @@ const VL_PET_WHY = {
   twoh: () => `<span>2H</span>`,
   bash: () => `<span title="Shield AC raises the pet's bash damage (broken_stoic's parse).">bash</span>`,
 };
-const VL_PET_SCORE_TIP = "HP-equivalents under the pet model: item HP at 1, mana by what the pet casts, STR 0.6, AC 0.3, AGI/DEX 0.1, haste 2 per % — STA/WIS/INT/CHA do nothing for a pet.";
+/* Every step of a walk as a chip — jump anywhere, mid-walk or from the
+   finished view, and edit that one slot; the other picks survive (same
+   feature as the site's). */
+function vlStepsHtml(walk, label) {
+  const chips = walk.steps.map((st, idx) => {
+    const p = walk.picks[st.key], a = walk.auto[st.key];
+    const cur = !walk.done() && idx === walk.i;
+    const locked = a === "twoh";
+    const cls = ["step-chip", cur ? "is-cur" : "", p ? "is-picked" : "",
+      !p && a === "skip" ? "is-skip" : "", !p && a === "none" ? "is-none" : ""].filter(Boolean).join(" ");
+    const title = p ? p.items.map((it) => it.row.name).join(" + ") + (a === "mem" ? " (remembered)" : "")
+      : a === "skip" ? "Left empty" : a === "none" ? "Nothing you own fits"
+      : a === "flat" ? "Kept what you have on" : a === "twoh" ? "Held by the two-hander" : "";
+    return `<button type="button" class="${cls}" data-vlstep="${esc(st.key)}"${locked ? " disabled" : ""}${title ? ` title="${esc(title)}"` : ""}>${esc(st.chip || st.label)}</button>`;
+  }).join("");
+  return (label ? `<span class="dim">${esc(label)}</span>` : "") + chips;
+}
+
+const VL_PET_SCORE_TIP = "HP-equivalents under the pet model — open Pet stat priorities above the walk to see, hover and edit every weight.";
 
 /* The pet walk survives re-renders while nothing it was built from moved:
    the summon, the rank, the dump, or the player plan it picks after. */
@@ -4916,6 +4938,21 @@ const vlPetMem = (lineKey) => ({
   set: (k, rec) => VL_MEM.set(`pet/${lineKey}/${k}`, rec),
   del: (k) => VL_MEM.del(`pet/${lineKey}/${k}`),
 });
+/* The pet's own priorities: the same widget, the app's own store (another
+   origin — the site's is invisible here), the pet model's rows. The widget
+   has no EQLTip in the app, so each stat's derivation rides its title. */
+const VL_PET_PRIO = window.EQLPriorities ? window.EQLPriorities.localStore("eqlt-companion-petprio-v1") : null;
+const vlPetOverrides = () => (VL_PET_PRIO ? window.EQLPriorities.read(VL_PET_PRIO) : {});
+function vlPetPanelScorer() {
+  const P = window.EQLPetCore;
+  if (!P || !PETD) return { w: {}, computed: {}, why: {}, score: () => 0 };
+  const lines = P.linesFor(PETD, VL.classes);
+  const lineKey = lines.some((l) => l.key === VS.petLine) ? VS.petLine : (lines[0] || {}).key;
+  const pet = lineKey ? P.petAt(PETD, lineKey, VL.classes, VL.level, Math.min(10, Math.max(0, VS.petRank | 0))) : null;
+  const buff = P.hasteBuffOf(PETD, VL.classes);
+  return P.petScorer(pet ? pet.cls : ["WAR"], { hasteCovered: !!buff, buff, overrides: vlPetOverrides() });
+}
+let drawVlPetPrio = () => {};
 
 function vlPetCard(o, step, foot) {
   const all = VPWALK.options();
@@ -4953,6 +4990,7 @@ function renderValetPetRun(pet) {
   };
   $("vlPetStepNote").textContent = notes[step.kind] || "";
   $("vlPetStepNote").hidden = !notes[step.kind];
+  $("vlPetStrip").innerHTML = vlStepsHtml(VPWALK);
 
   const wc = VPWALK.weaponCompare();
   if (wc && (wc.best2H || wc.bestPair)) {
@@ -5027,6 +5065,7 @@ function renderValetPetAll(all, step) {
 }
 
 function renderValetPetDone(pet) {
+  $("vlPetDoneStrip").innerHTML = vlStepsHtml(VPWALK, "Change a pick:");
   const DP = VPWALK.planPet();
   const P = window.EQLPetCore;
   const wtCol = !!DP.weightCap;
@@ -5129,6 +5168,7 @@ function renderValetPet() {
   const P = window.EQLPetCore;
   const showEmpty = (msg) => {
     $("vlPetEmpty").innerHTML = msg; $("vlPetEmpty").hidden = false;
+    $("vlPetPrioWrap").hidden = true;
     $("vlPetRun").hidden = true; $("vlPetDone").hidden = true; $("vlPetNotes").innerHTML = "";
     $("vlPetName").textContent = "Pet"; $("vlPetMath").textContent = "";
     $("vlPetLine").closest(".vl-petpick").hidden = true;
@@ -5154,15 +5194,19 @@ function renderValetPet() {
   }
 
   const taken = vlAutoPlanTaken();
-  const key = [lineKey, rank, VL.classes.join(","), VL.level,
+  const ov = vlPetOverrides();
+  const key = [lineKey, rank, VL.classes.join(","), VL.level, JSON.stringify(ov),
                Array.from(taken).sort((a, b) => a - b).join("+")].join("|");
   if (!VPWALK || VPWALK_KEY !== key) {
     VPWALK_LINE = lineKey;
     VP_TAKEN = taken;
     VPWALK = P.makePetWalk({ rows: VINV.rows, taken, trio: VL.classes, pet,
-                             PD: PETD, effects: GDATA && GDATA.effects, mem: vlPetMem(lineKey) });
+                             PD: PETD, effects: GDATA && GDATA.effects, mem: vlPetMem(lineKey),
+                             overrides: ov });
     VPWALK_KEY = key;
   }
+  $("vlPetPrioWrap").hidden = false;
+  drawVlPetPrio();
 
   $("vlPetName").textContent = `${pet.line.label} — ${pet.cls.join("/")}, level ${pet.level}`;
   const cap = P.slots(PETD, VL.classes);
@@ -5431,6 +5475,7 @@ function renderValetRun() {
   const baseAC = vlBaseAC(step);
   $("vlSlot").textContent = step.label;
   $("vlCount").textContent = `${VWALK.i + 1} of ${VWALK.steps.length}`;
+  $("vlStrip").innerHTML = vlStepsHtml(VWALK);
   $("vlPool").textContent = all.length + " you own fit here"
     + (all.length > 4 ? " · the four best are below" : "");
   /* The two-hander question, on the step where the choice is made. */
@@ -5625,6 +5670,7 @@ function renderValetCmp(cur, plan) {
     }</tbody></table>` : `<p class="dim">Nothing you are wearing or picking has a stat the wiki lists.</p>`;
 }
 function renderValetDone() {
+  $("vlDoneStrip").innerHTML = vlStepsHtml(VWALK, "Change a pick:");
   const plan = VWALK.planLoadout(), cur = VWALK.currentLoadout();
   const ds = plan.score - cur.score;
   $("vlNow2").textContent = Math.round(cur.score);
@@ -5703,7 +5749,8 @@ function vlPetPlan() {
      card, a hand only fills when the weapon earns it. */
   const roMem = { get: (k) => VL_MEM.get(`pet/${lineKey}/${k}`), set: () => {}, del: () => {} };
   const W = P.makePetWalk({ rows: VINV.rows, taken: vlAutoPlanTaken(), trio: VL.classes, pet,
-                            PD: PETD, effects: GDATA && GDATA.effects, mem: roMem });
+                            PD: PETD, effects: GDATA && GDATA.effects, mem: roMem,
+                            overrides: vlPetOverrides() });
   return { pet, DP: W.autoRun() };
 }
 function pushValet() {
@@ -5883,7 +5930,27 @@ function wireValet() {
     window.EQLPriorities.mount($("setPrio"), {
       store: VL_PRIO, scorer: valetScorer, btnClass: "btn btn--sm", note: PRIO_NOTE,
     });
+    if (VL_PET_PRIO && window.EQLPetCore) {
+      const M = window.EQLPriorities.mount($("vlPetPrio"), {
+        store: VL_PET_PRIO, scorer: vlPetPanelScorer, summary: $("vlPetPrioSummary"),
+        defs: window.EQLPetCore.PET_STAT_DEFS, presets: null, tipNs: "pw",
+        btnClass: "btn btn--sm", summaryZero: "(the measured pet model)",
+        note: "HP-equivalents per point of the stat, under the pet model — only what a pet measurably uses. Hover a stat for the measurement behind it.",
+        onChange: () => { VPWALK = null; VPWALK_KEY = null; renderValetPet(); pushValet(); },
+      });
+      drawVlPetPrio = M.draw;
+    }
   }
+  const vlStripGo = (walk, after) => (e) => {
+    const b = e.target.closest("[data-vlstep]");
+    if (!b) return;
+    const w = walk();
+    if (w && w.goTo(b.dataset.vlstep)) after();
+  };
+  $("vlStrip").addEventListener("click", vlStripGo(() => VWALK, () => { renderValet(); pushValet(); pushSpare(); }));
+  $("vlDoneStrip").addEventListener("click", vlStripGo(() => VWALK, () => { renderValet(); pushValet(); pushSpare(); }));
+  $("vlPetStrip").addEventListener("click", vlStripGo(() => VPWALK, () => { renderValetPet(); pushValet(); }));
+  $("vlPetDoneStrip").addEventListener("click", vlStripGo(() => VPWALK, () => { renderValetPet(); pushValet(); }));
   $("vlSkip").addEventListener("click", () => { VWALK.skip(); renderValet(); pushValet(); pushSpare(); });
   $("vlBack").addEventListener("click", () => { if (VWALK.back()) { renderValet(); pushValet(); pushSpare(); } });
   $("vlAuto").addEventListener("click", (e) => {

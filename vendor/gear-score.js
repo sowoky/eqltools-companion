@@ -62,11 +62,13 @@
     ["ac",    "AC"], ["hp", "HP"], ["mana", "Mana"], ["end", "Endurance"],
     ["str",   "STR"], ["sta", "STA"], ["agi", "AGI"], ["dex", "DEX"],
     ["wis",   "WIS"], ["int", "INT"], ["cha", "CHA"], ["atk", "Attack"],
-    ["sv",    "Resists (each; SV VOID unscored)"], ["haste", "Haste (per 1%)"],
+    ["svf",   "SV Fire"], ["svc", "SV Cold"], ["svm", "SV Magic"],
+    ["svd",   "SV Disease"], ["svp", "SV Poison"],
+    ["haste", "Haste (per 1%)"],
     ["ratio", "Weapon ratio (dmg/dly ×10)"],
   ];
   // the twelve an item's stat block can carry, in the order a breakdown lists them
-  const ITEM_STATS = STAT_DEFS.filter(([k]) => k !== "sv" && k !== "haste" && k !== "ratio");
+  const ITEM_STATS = STAT_DEFS.filter(([k]) => !/^sv/.test(k) && k !== "haste" && k !== "ratio");
   const SV_NAMES = { f: "FIRE", c: "COLD", m: "MAGIC", d: "DISEASE", p: "POISON", v: "VOID" };
   // Derivation inputs (the sliders override the resulting WEIGHTS, not these).
   // lm: the ancestral per-class HP factor at 50 (EQEmu GetClassLevelFactor,
@@ -443,8 +445,16 @@
       w.end = melee ? 0.3 : 0.1;
       why.end = `<h5>Endurance</h5><p>Fuels stances and melee abilities. No published pool math; kept small.</p>`;
 
-      w.sv = 0.4;
-      why.sv = `<h5>Resists</h5><p>Fire/Cold/Magic/Disease/Poison, weighted equally — resist value is actively disputed in the player corpus: some call resists one of the strongest stats, others report resisting little even at 250 MR, and no parse settles it, so the default stays modest. <b>SV VOID is never scored</b> — players are unanimous it's the upgrade-tier marker with no combat effect yet.</p>`;
+      /* One weight per resist (Kyle, 2026-08-30: "need to be able to weight
+         different resists differently"). The computed default is the same
+         modest 0.4 for all five — resist value is actively disputed in the
+         player corpus and no parse ranks one school over another — so the
+         per-school weights exist to be edited, not because the model knows a
+         difference. */
+      for (const k of ["f", "c", "m", "d", "p"]) {
+        w["sv" + k] = 0.4;
+        why["sv" + k] = `<h5>SV ${SV_NAMES[k]}</h5><p>Resist value is actively disputed in the player corpus: some call resists one of the strongest stats, others report resisting little even at 250 MR, and no parse settles it — or ranks one school over another — so every school defaults to the same modest 0.4. Weight it up for the content you fight. <b>SV VOID is never scored</b> — players are unanimous it's the upgrade-tier marker with no combat effect yet.</p>`;
+      }
 
       w.haste = castHeavy ? 0 : melee ? 3 : 1.5;
       why.haste = `<h5>Haste</h5><p>${castHeavy
@@ -458,7 +468,14 @@
     }
 
     const cw = computedWeights();
-    const w = Object.assign({}, cw.w, overrides);
+    /* A stored override from before the per-resist split ({sv: x}) still
+       applies — to every school the user didn't override individually. */
+    const ov = Object.assign({}, overrides);
+    if (ov.sv != null) {
+      for (const k of ["f", "c", "m", "d", "p"]) if (!("sv" + k in ov)) ov["sv" + k] = ov.sv;
+      delete ov.sv;
+    }
+    const w = Object.assign({}, cw.w, ov);
 
     function effAC(raw) { return raw <= sc.v ? raw : sc.v + (raw - sc.v) * sc.mult; }
 
@@ -476,7 +493,7 @@
       if (st.ac) sum += w.ac * (effAC(baseAC + st.ac) - effAC(baseAC));
       // SV VOID ("v") is displayed but never scored — player consensus is it's
       // the upgrade-tier marker, with no combat effect yet
-      for (const k in rec.sv || {}) if (k !== "v") sum += w.sv * rec.sv[k];
+      for (const k in rec.sv || {}) if (k !== "v") sum += (w["sv" + k] || 0) * rec.sv[k];
       if (rec.haste) sum += w.haste * rec.haste;
       /* A weapon's ratio only counts where it can swing — the two melee hands.
          Two-handers deal double damage and double ratio in EQL (dannuic, chat —
@@ -520,7 +537,7 @@
       }
       for (const k in rec.sv || {}) {
         out.push({ k: "sv:" + k, label: "SV " + (SV_NAMES[k] || k.toUpperCase()), v: rec.sv[k],
-          pts: k === "v" ? 0 : w.sv * rec.sv[k], unscored: k === "v" });
+          pts: k === "v" ? 0 : (w["sv" + k] || 0) * rec.sv[k], unscored: k === "v" });
       }
       if (rec.haste) out.push({ k: "haste", label: "Haste", v: rec.haste, unit: "%", pts: w.haste * rec.haste });
       if (rec.dmg) out.push({ k: "dmg", label: "DMG", v: statAt(rec.dmg, tier), pts: 0, unscored: true });

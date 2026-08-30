@@ -350,6 +350,10 @@
           <label class="chk">Spell rank <select id="vlPetRank"></select></label>
         </div>
       </div>
+      <details class="vl-prio" id="vlPetPrioWrap" hidden>
+        <summary>Pet stat priorities <span id="vlPetPrioSummary" class="dim"></span></summary>
+        <div id="vlPetPrio"></div>
+      </details>
       <p id="vlPetEmpty" class="dim" hidden></p>
 
       <div id="vlPetRun" hidden>
@@ -360,6 +364,7 @@
         <p id="vlPetPool" class="dim"></p>
         <p id="vlPetStepNote" class="dim" hidden></p>
         <p id="vlPetCmp" class="vl-cmp" hidden></p>
+        <div class="stepstrip" id="vlPetStrip"></div>
         <div id="vlPetCards" class="vl-cards"></div>
         <div id="vlPetAllWrap" class="vl-allwrap" hidden>
           <button type="button" class="linkish" id="vlPetAllToggle"></button>
@@ -375,6 +380,7 @@
 
       <div id="vlPetDone" hidden>
         <div class="vl-tblhead"><b>Hand it over</b> <button id="vlPetRestart" class="btn btn--sm">Start over</button></div>
+        <div class="stepstrip stepstrip--done" id="vlPetDoneStrip"></div>
         <div id="vlPet" class="invwrap"></div>
         <p id="vlPetFoot" class="dim"></p>
         <div id="vlPetProcWrap" hidden>
@@ -425,6 +431,7 @@
       <p id="vlPool" class="dim"></p>
       <p id="vlNow" class="dim"></p>
       <p id="vlCmp" class="vl-cmp" hidden></p>
+      <div class="stepstrip" id="vlStrip"></div>
       <div id="vlCards" class="vl-cards"></div>
       <!-- the cards are the decision; everything else that fits is one click away -->
       <div id="vlAllWrap" class="vl-allwrap" hidden>
@@ -446,6 +453,7 @@
         <span><span class="dim">difference</span> <b id="vlDelta">0</b></span>
       </div>
       <p id="vlNotes" class="dim"></p>
+      <div class="stepstrip stepstrip--done" id="vlDoneStrip"></div>
       <div id="vlFetch" class="invwrap"></div>
       <div class="vl-tblhead"><b>Before and after</b> <span class="dim">stats, resists and haste, both kits</span></div>
       <div id="vlCmp2" class="invwrap"></div>
