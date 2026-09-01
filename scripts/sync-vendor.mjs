@@ -54,6 +54,7 @@ const VENDOR_JS = {
   "public/_shared/spare-core.js": "spare-core.js",
   "public/_shared/priorities.js": "priorities.js",
   "public/exalt/exalt-core.js": "exalt-core.js",
+  "public/exalt/exalt-wants.js": "exalt-wants.js",
   "public/_shared/inventory-core.js": "inventory-core.js",
   "public/_shared/achievements.js": "achievements.js",
 };

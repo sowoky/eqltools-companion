@@ -4622,7 +4622,8 @@ function loadValetPrefs() {
       if (o.vs.petRank != null) VS.petRank = o.vs.petRank | 0;
       // sorts and the show-all toggle: only what was actually stored, so a
       // saved set from before they existed keeps this file's defaults
-      for (const k of ["xesort", "xedir", "xisort", "xidir", "xnsort", "xndir", "asort", "adir"])
+      for (const k of ["xesort", "xedir", "xisort", "xidir", "xnsort", "xndir", "asort", "adir",
+                       "xmsort", "xmdir", "xmMinor", "xmNo"])
         if (o.vs[k] != null) VS[k] = o.vs[k];
       VS.allOpen = !!o.vs.allOpen;
     }
@@ -4633,7 +4634,8 @@ const saveValetPrefs = () => {
     vs: { view: VS.view, slot: VS.slot, cols: VS.cols, gapAll: VS.gapAll,
           petLine: VS.petLine, petRank: VS.petRank,
           xesort: VS.xesort, xedir: VS.xedir, xisort: VS.xisort, xidir: VS.xidir,
-          xnsort: VS.xnsort, xndir: VS.xndir, allOpen: VS.allOpen, asort: VS.asort, adir: VS.adir } })); } catch (e) {}
+          xnsort: VS.xnsort, xndir: VS.xndir, allOpen: VS.allOpen, asort: VS.asort, adir: VS.adir,
+          xmsort: VS.xmsort, xmdir: VS.xmdir, xmMinor: VS.xmMinor, xmNo: VS.xmNo } })); } catch (e) {}
 };
 const vlTrioKey = () => VL.classes.slice().sort().join("/");
 const VL_MEM = {
@@ -4692,8 +4694,9 @@ let VEXALT = null, VAUDIT = null, VRANKER = null, VRANKER_LVL = 0;
 const VS = { view: "slot", slot: "Head", cols: null, gapAll: false, sort: null, dir: 1, gsort: null, gdir: 1,
   petLine: null, petRank: 0, psort: null, pdir: 1,
   petAllOpen: false, pasort: "score", padir: -1,
-  // the Exaltations view's three tables, each sorted on its own
+  // the Exaltations view's four tables, each sorted on its own
   xesort: "fits", xedir: -1, xisort: "empty", xidir: -1, xnsort: "where", xndir: 1,
+  xmsort: "tier", xmdir: 1, xmMinor: false, xmNo: false,
   // Get dressed: every option for the open step, not only the four cards
   allOpen: false, asort: "score", adir: -1 };
 function valetAuditReload() {
@@ -5292,6 +5295,81 @@ const VX_NCOLS = [
   VX_ICOLS[0], VX_ICOLS[1], VX_ICOLS[2],
   { k: "why", h: "Why", d0: 1, key: (it) => it.why || null, cell: (it) => `<td>${esc(it.why || "")}</td>` },
 ];
+/* What you're missing: one row per effect family the trio isn't covered on.
+   vendor/exalt-wants.js owns the model (family grouping, the capability gate,
+   the tier); this table is the companion rendering of it. */
+const VXM_CAP_WORDS = {
+  dot: "a DoT class", undeadPet: "an undead-pet class", ownPet: "a pet class",
+  petClass: "a pet class", charm: "a charm class", heals: "a healer",
+  cures: "a curer", rez: "a rez class", caster: "a caster", nukes: "a nuke caster",
+  nukeFire: "a fire caster", nukeCold: "a cold caster", nukeMagic: "a magic caster",
+  nukePoison: "a poison caster", nukeDisease: "a disease caster",
+  melee: "a melee class", songs: "a bard", buffs: "a buff caster",
+  undeadNukes: "an anti-undead caster", summonedNukes: "an anti-summoned caster",
+  manaRegen: "a mana-regen caster", ranged: "a ranged class",
+  elemPet: "an element-pet class (MAG)",
+};
+function vxmWhy(r) {
+  const v = r.verdict, g = v.gate, bits = [];
+  if (v.bucket === "no") {
+    bits.push(`needs ${esc(VXM_CAP_WORDS[v.missingCap] || v.missingCap)}`);
+    if (g.why) bits.push(`<span class="dim">${esc(g.why)}</span>`);
+    return bits.join(" · ");
+  }
+  if (g.why) bits.push(esc(g.why));
+  if (g.unrated) bits.push(`<span class="dim" title="a new effect on the wiki this build hasn't judged yet">not yet rated</span>`);
+  if (v.who.length) bits.push(`<b>${v.who.map(esc).join(" ")}</b>`);
+  if (v.dupBy.length) bits.push(`<span class="dim" title="a duplicate of something the trio casts natively counts for less — slows, hastes and same-line buffs don't stack">your ${v.dupBy.map(esc).join("/")} casts this</span>`);
+  if (g.situ) bits.push(`<span class="dim">${esc(g.situ)}</span>`);
+  if (g.lvlNote) bits.push(`<span class="dim">${esc(g.lvlNote)}</span>`);
+  return bits.join(" · ");
+}
+/* the dump's word on a candidate stone: loose, socketed somewhere, or the
+   source item itself with the tier gap */
+function vxmHave(r) {
+  if (!VEXALT) return null;
+  for (const s of r.stones) {
+    for (const l of VEXALT.loose) if (l.key === s.key) {
+      const multi = l.yields.filter((y) => y.type).length > 1;
+      return { n: 0, html: `loose${multi ? ` <span class="dim" title="The dump does not say which of its source's effects a loose exaltation holds.">one of ${l.yields.filter((y) => y.type).length}</span>` : ""} ${vlBadge(l.row.loc)}` };
+    }
+    for (const o of VEXALT.sources) if (o.key === s.key) {
+      const ready = o.tier >= s.at;
+      return { n: ready ? 1 : 2, html: ready ? `ready — ${esc(o.row.name)} ${vlBadge(o.row.loc)}` : `<span class="dim">+${o.tier} of +${s.at} — ${esc(o.row.name)}</span> ${vlBadge(o.row.loc)}` };
+    }
+  }
+  return null;
+}
+function vxmGoes(r) {
+  if (!VEXALT) return { n: null, html: "" };
+  const now = [], later = [], seen = new Set();
+  for (const s of r.stones) {
+    const h = window.EQLExaltCore.homesFor(s, VEXALT.worn);
+    for (const x of h.now) { const k = x.w.row.loc + x.w.row.name; if (!seen.has(k)) { seen.add(k); now.push(x); } }
+    for (const x of h.later) { const k = "l" + x.w.row.loc + x.w.row.name; if (!seen.has(k)) { seen.add(k); later.push(x); } }
+  }
+  if (now.length) return { n: 2, html: now.slice(0, 2).map((x) => vlWornLine(x.w) + (x.occupied ? ' <span class="dim">(holds one)</span>' : "")).join("<br>") + (now.length > 2 ? ` <span class="dim">+${now.length - 2}</span>` : "") };
+  if (later.length) { const x = later.reduce((a, b) => (a.needs <= b.needs ? a : b)); return { n: 1, html: `<span class="dim">${vlWornLine(x.w)} at +${x.needs}</span>` }; }
+  return { n: null, html: `<span class="dim">nothing you wear takes it</span>` };
+}
+const vxmDesc = (r) => (r.fx && r.fx.d) ? r.fx.d : (r.fx && r.fx.s ? r.fx.s.join("; ") : "");
+const vxmLabel = (r) => r.stones[0].effect;
+const VX_MCOLS = [
+  { k: "kind", h: "Kind", d0: 1, key: (r) => r.kinds.join(" "),
+    cell: (r) => `<td>${r.kinds.map((k) => `<span class="dim">${esc(window.EQLExaltCore.TYPE[k].label)}</span>`).join(" ")}</td>` },
+  { k: "eff", h: "Effect", d0: 1, key: (r) => r.family.toLowerCase(),
+    cell: (r) => `<td class="iv-item vl-item"><b title="${esc(vxmDesc(r))}">${esc(vlFxName(vxmLabel(r)))}</b>${r.status === "upgrade" ? ` <span class="dim" title="a lower rank of this effect is socketed in something you wear">wearing a lower rank</span>` : ""}</td>` },
+  { k: "why", h: "Why you want it", d0: 1, key: (r) => r.verdict.tier || 9, cell: (r) => `<td>${vxmWhy(r)}</td>` },
+  { k: "tier", h: "Tier", d0: 1, key: (r) => r.verdict.tier || 9,
+    cell: (r) => `<td class="num" title="1 core · 2 useful · 3 minor at 50">${r.verdict.tier || ""}</td>` },
+  { k: "have", h: "You have", d0: 1, key: (r) => { const h = vxmHave(r); return h ? h.n : null; },
+    cell: (r) => { const h = vxmHave(r); return `<td>${h ? h.html : `<span class="dim" title="the /outputfile export drops some storage rows, so this only means the dump doesn't show one">not in this dump</span>`}</td>`; } },
+  { k: "goes", h: "Goes in", d0: -1, key: (r) => vxmGoes(r).n, cell: (r) => `<td>${vxmGoes(r).html}</td>` },
+  { k: "items", h: "From", d0: -1, key: (r) => r.stones.length,
+    cell: (r) => `<td>${r.stones.slice(0, 3).map((s) => (s.rec ? itemSpan(s.item, true) : esc(s.item))).join("<br>")}${r.stones.length > 3 ? `<br><span class="dim">+${r.stones.length - 3} more</span>` : ""}</td>` },
+  { k: "src", h: "Get it", d0: 1, key: (r) => window.EQLExaltCore.sourceText(r.stones[0].rec) || null,
+    cell: (r) => `<td title="${esc(r.stones.map((s) => `${s.item}: ${window.EQLExaltCore.sourceLines(s.rec).join(" · ")}`).join("\n"))}">${esc(window.EQLExaltCore.sourceText(r.stones[0].rec) || "")}${r.stones.length > 1 ? `<span class="dim"> · ${r.stones.length - 1} more item${r.stones.length > 2 ? "s" : ""}</span>` : ""}</td>` },
+];
 function vxTable(id, cols, rows, attr, sort, dir, rowCls, empty) {
   const col = cols.find((c) => c.k === sort);
   const list = col ? rows.slice().sort((a, b) => cmpNullLast(col.key(a), col.key(b), dir)) : rows;
@@ -5318,6 +5396,22 @@ function renderValetExalt() {
     all.length ? "None of them fits anything you're wearing." : "Every exaltation you own is socketed into something you're wearing.");
   vxTable("vlExNone", VX_NCOLS, none, "vlxnsort", VS.xnsort, VS.xndir, null,
     "Every exaltation you own fits something you're wearing.");
+  // what you're missing — the catalogue side of the same audit
+  let miss = [];
+  if (window.EQLExaltWants && VEXALT && EXALT_CAT)
+    miss = window.EQLExaltWants.missing(EXALT_CAT, VEXALT, VL.classes, { hideOE: true }).rows;
+  const nMinor = miss.filter((r) => r.verdict.bucket === "minor").length;
+  const nNo = miss.filter((r) => r.verdict.bucket === "no").length;
+  $("vlXmMinorN").textContent = nMinor ? `(${nMinor})` : "";
+  $("vlXmNoN").textContent = nNo ? `(${nNo})` : "";
+  $("vlXmMinor").checked = !!VS.xmMinor;
+  $("vlXmNo").checked = !!VS.xmNo;
+  if (!VS.xmMinor) miss = miss.filter((r) => r.verdict.bucket !== "minor");
+  if (!VS.xmNo) miss = miss.filter((r) => r.verdict.bucket !== "no");
+  $("vlExMissN").textContent = miss.length ? `${miss.length}` : "";
+  vxTable("vlExMiss", VX_MCOLS, miss, "vlxmsort", VS.xmsort, VS.xmdir,
+    (r) => (r.verdict.bucket === "wanted" && r.verdict.tier === 1 ? "is-worn" : ""),
+    "Every effect your trio would use is socketed in something you're wearing.");
 }
 
 /* `where` is the placement the line describes. A ratio is only a fact about an
@@ -5903,7 +5997,8 @@ function wireValet() {
   // the Exaltations view's three tables, one handler each
   for (const [id, attr, cols, sk, dk] of [["vlExEmpty", "vlxesort", VX_ECOLS, "xesort", "xedir"],
                                           ["vlExIdle", "vlxisort", VX_ICOLS, "xisort", "xidir"],
-                                          ["vlExNone", "vlxnsort", VX_NCOLS, "xnsort", "xndir"]]) {
+                                          ["vlExNone", "vlxnsort", VX_NCOLS, "xnsort", "xndir"],
+                                          ["vlExMiss", "vlxmsort", VX_MCOLS, "xmsort", "xmdir"]]) {
     $(id).addEventListener("click", (e) => {
       const th = e.target.closest("[data-" + attr + "]");
       if (!th) return;
@@ -5913,6 +6008,8 @@ function wireValet() {
     });
   }
   $("vlGapAll").addEventListener("click", () => { VS.gapAll = !VS.gapAll; saveValetPrefs(); vsRedraw(); });
+  $("vlXmMinor").addEventListener("change", () => { VS.xmMinor = $("vlXmMinor").checked; saveValetPrefs(); vsRedraw(); });
+  $("vlXmNo").addEventListener("change", () => { VS.xmNo = $("vlXmNo").checked; saveValetPrefs(); vsRedraw(); });
   $("vlOwnCols").addEventListener("change", (e) => {
     const inp = e.target.closest("[data-vlcol]"); if (!inp) return;
     const on = new Set(vsCols().map((c) => c.k)); if (inp.checked) on.add(inp.dataset.vlcol); else on.delete(inp.dataset.vlcol);

@@ -3747,14 +3747,6 @@
     "Temple_of_Veeshan"
    ]
   ],
-  "boots of the bonecaster": [
-   [
-    "a rolling plains steed",
-    "A_Rolling_Plains_Steed",
-    "The Plane of Growth",
-    "Plane_of_Growth"
-   ]
-  ],
   "boots of zorash": [
    [
     "Zorash",
@@ -5971,14 +5963,6 @@
     "A_windrider_drake",
     "The Plane of Sky",
     "Plane_of_Sky"
-   ]
-  ],
-  "crown of the bonecaster": [
-   [
-    "a rolling plains steed",
-    "A_Rolling_Plains_Steed",
-    "The Plane of Growth",
-    "Plane_of_Growth"
    ]
   ],
   "crown of the kromzek kings": [
@@ -10107,14 +10091,6 @@
     "Mummy_of_Glohnor",
     "The Ruins of Old Paineel",
     "The_Hole"
-   ]
-  ],
-  "gloves of the bonecaster": [
-   [
-    "a rolling plains steed",
-    "A_Rolling_Plains_Steed",
-    "The Plane of Growth",
-    "Plane_of_Growth"
    ]
   ],
   "glowing diamond": [
@@ -15371,32 +15347,6 @@
     "Stonebrunt_Mountains"
    ]
   ],
-  "pantaloons of the bonecaster": [
-   [
-    "a rolling plains steed",
-    "A_Rolling_Plains_Steed",
-    "The Plane of Growth",
-    "Plane_of_Growth"
-   ],
-   [
-    "Galiel Spirithoof",
-    "Galiel_Spirithoof",
-    "The Plane of Growth",
-    "Plane_of_Growth"
-   ],
-   [
-    "an entoling harvester",
-    "An_entoling_harvester",
-    "The Plane of Growth",
-    "Plane_of_Growth"
-   ],
-   [
-    "a phase puma",
-    "A_Phase_Puma",
-    "The Plane of Growth",
-    "Plane_of_Growth"
-   ]
-  ],
   "panther meat": [
    [
     "a panther",
@@ -17163,32 +17113,6 @@
     "X%60Ta_Tompi",
     "Neriak - Foreign Quarter",
     "Neriak_Foreign_Quarter"
-   ]
-  ],
-  "robe of the bonecaster": [
-   [
-    "a rolling plains steed",
-    "A_Rolling_Plains_Steed",
-    "The Plane of Growth",
-    "Plane_of_Growth"
-   ],
-   [
-    "an entoling harvester",
-    "An_entoling_harvester",
-    "The Plane of Growth",
-    "Plane_of_Growth"
-   ],
-   [
-    "Ail the Elder",
-    "Ail_the_Elder",
-    "The Plane of Growth",
-    "Plane_of_Growth"
-   ],
-   [
-    "Rumbleroot",
-    "Rumbleroot",
-    "The Plane of Growth",
-    "Plane_of_Growth"
    ]
   ],
   "robe of the ishva": [
@@ -19911,26 +19835,6 @@
     "Goblin_Warlord_(Clan_Runnyeye)",
     "The Liberated Citadel of Runnyeye",
     "RunnyEye_Citadel"
-   ]
-  ],
-  "sleeves of the bonecaster": [
-   [
-    "a rolling plains steed",
-    "A_Rolling_Plains_Steed",
-    "The Plane of Growth",
-    "Plane_of_Growth"
-   ],
-   [
-    "Sarik the Fang",
-    "Sarik_the_Fang",
-    "The Plane of Growth",
-    "Plane_of_Growth"
-   ],
-   [
-    "an entoling harvester",
-    "An_entoling_harvester",
-    "The Plane of Growth",
-    "Plane_of_Growth"
    ]
   ],
   "slime blood of cazic thule": [
@@ -24331,14 +24235,6 @@
     "A_pack_elder",
     "The Warrens",
     "The_Warrens"
-   ]
-  ],
-  "wristband of the bonecaster": [
-   [
-    "a rolling plains steed",
-    "A_Rolling_Plains_Steed",
-    "The Plane of Growth",
-    "Plane_of_Growth"
    ]
   ],
   "written announcement": [
@@ -29056,10 +28952,6 @@
    [
     454,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "a glimmering fairie wing": [
@@ -29772,10 +29664,6 @@
   ],
   "acolytes anklet": [
    [
-    584,
-    "c"
-   ],
-   [
     745,
     "r"
    ]
@@ -29784,10 +29672,6 @@
    [
     2,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "adamantite band": [
@@ -29812,22 +29696,12 @@
    [
     3,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "aegis of the wind": [
    [
     123,
     "r"
-   ]
-  ],
-  "agilmentes flute of flight": [
-   [
-    584,
-    "c"
    ]
   ],
   "aglthins fishing pole": [
@@ -30600,10 +30474,6 @@
    [
     523,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "apprentice skullcap - 2nd rank": [
@@ -30784,10 +30654,6 @@
    [
     223,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "aviak charm": [
@@ -31080,20 +30946,12 @@
    [
     247,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "band of tunare": [
    [
     489,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "band of wailing winds": [
@@ -31103,10 +30961,6 @@
    ]
   ],
   "bandages": [
-   [
-    8,
-    "c"
-   ],
    [
     20,
     "c"
@@ -31410,10 +31264,6 @@
    [
     32,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "barracuda liver": [
@@ -31504,10 +31354,6 @@
    [
     221,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "battleworn canteen": [
@@ -31685,10 +31531,6 @@
    ]
   ],
   "belt of the river": [
-   [
-    584,
-    "c"
-   ],
    [
     676,
     "r"
@@ -31941,10 +31783,6 @@
    ],
    [
     274,
-    "c"
-   ],
-   [
-    584,
     "c"
    ]
   ],
@@ -32274,19 +32112,11 @@
   ],
   "blade of strategy": [
    [
-    584,
-    "c"
-   ],
-   [
     886,
     "r"
    ]
   ],
   "blade of tactics": [
-   [
-    584,
-    "c"
-   ],
    [
     886,
     "r"
@@ -32574,47 +32404,27 @@
    [
     543,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "bloodforge boots": [
    [
     543,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "bloodforge bracers": [
    [
     543,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "bloodforge gauntlets": [
    [
     543,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "bloodforge hammer": [
-   [
-    584,
-    "c"
-   ],
    [
     864,
     "r"
@@ -32624,30 +32434,18 @@
    [
     543,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "bloodforge legplates": [
    [
     543,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "bloodforge mail": [
    [
     543,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "bloodgill scales": [
@@ -32729,10 +32527,6 @@
    ]
   ],
   "bloody shank": [
-   [
-    584,
-    "c"
-   ],
    [
     749,
     "r"
@@ -32831,10 +32625,6 @@
    ]
   ],
   "bone chips": [
-   [
-    8,
-    "c"
-   ],
    [
     14,
     "c"
@@ -32954,10 +32744,6 @@
    [
     374,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "bone walk": [
@@ -32986,10 +32772,6 @@
    [
     204,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "book of celestial fists": [
@@ -33080,10 +32862,6 @@
   ],
   "boots of deep thought": [
    [
-    584,
-    "c"
-   ],
-   [
     816,
     "r"
    ]
@@ -33108,18 +32886,8 @@
   ],
   "boots of silent striding": [
    [
-    584,
-    "c"
-   ],
-   [
     902,
     "r"
-   ]
-  ],
-  "boots of the bonecaster": [
-   [
-    878,
-    "c"
    ]
   ],
   "boots of the invoker": [
@@ -33129,10 +32897,6 @@
    ]
   ],
   "boots of the myrmidon": [
-   [
-    584,
-    "c"
-   ],
    [
     890,
     "r"
@@ -33148,10 +32912,6 @@
    [
     30,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "boots of zorash": [
@@ -33386,19 +33146,11 @@
   ],
   "bracer of hammerfal": [
    [
-    584,
-    "c"
-   ],
-   [
     879,
     "r"
    ]
   ],
   "bracer of midnight": [
-   [
-    584,
-    "c"
-   ],
    [
     713,
     "r"
@@ -33412,10 +33164,6 @@
   ],
   "bracer of the myrmidon": [
    [
-    584,
-    "c"
-   ],
-   [
     890,
     "r"
    ]
@@ -33424,10 +33172,6 @@
    [
     30,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "bracers of battle": [
@@ -33522,10 +33266,6 @@
    [
     432,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "breastplate of distraction": [
@@ -33548,10 +33288,6 @@
   ],
   "breastplate of the myrmidon": [
    [
-    584,
-    "c"
-   ],
-   [
     890,
     "r"
    ]
@@ -33560,21 +33296,11 @@
    [
     30,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "breath of gwan": [
    [
     501,
-    "c"
-   ]
-  ],
-  "breezeboots frigid gnasher": [
-   [
-    584,
     "c"
    ]
   ],
@@ -33820,10 +33546,6 @@
    [
     468,
     "c"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "broons eye": [
@@ -33906,10 +33628,6 @@
   ],
   "bull smasher": [
    [
-    584,
-    "c"
-   ],
-   [
     621,
     "r"
    ]
@@ -33973,10 +33691,6 @@
    ]
   ],
   "burning rapier": [
-   [
-    584,
-    "c"
-   ],
    [
     637,
     "c"
@@ -34248,10 +33962,6 @@
    [
     501,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "celestial fists (book)": [
@@ -34302,19 +34012,11 @@
   ],
   "cerulean greaves": [
    [
-    584,
-    "c"
-   ],
-   [
     701,
     "r"
    ]
   ],
   "cerulean vambraces": [
-   [
-    584,
-    "c"
-   ],
    [
     701,
     "r"
@@ -34346,29 +34048,17 @@
   ],
   "champions boots": [
    [
-    584,
-    "c"
-   ],
-   [
     891,
     "r"
    ]
   ],
   "champions bracer": [
    [
-    584,
-    "c"
-   ],
-   [
     891,
     "r"
    ]
   ],
   "champions breastplate": [
-   [
-    584,
-    "c"
-   ],
    [
     891,
     "r"
@@ -34380,29 +34070,17 @@
     "c"
    ],
    [
-    584,
-    "c"
-   ],
-   [
     891,
     "r"
    ]
   ],
   "champions gauntlets": [
    [
-    584,
-    "c"
-   ],
-   [
     891,
     "r"
    ]
   ],
   "champions greaves": [
-   [
-    584,
-    "c"
-   ],
    [
     891,
     "r"
@@ -34415,10 +34093,6 @@
    ]
   ],
   "champions vambraces": [
-   [
-    584,
-    "c"
-   ],
    [
     891,
     "r"
@@ -34664,10 +34338,6 @@
   ],
   "chord of vines": [
    [
-    584,
-    "c"
-   ],
-   [
     796,
     "r"
    ]
@@ -34718,10 +34388,6 @@
    [
     175,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "circlet of brambles": [
@@ -34734,10 +34400,6 @@
    [
     115,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "circlet of tallon": [
@@ -34784,10 +34446,6 @@
    [
     117,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "clay coated blade": [
@@ -34840,10 +34498,6 @@
    [
     56,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "cloak of spiroc feathers": [
@@ -34858,10 +34512,6 @@
   ],
   "cloak of the fire storm": [
    [
-    584,
-    "c"
-   ],
-   [
     740,
     "r"
    ]
@@ -34873,10 +34523,6 @@
    ]
   ],
   "cloak of the undead eye": [
-   [
-    584,
-    "c"
-   ],
    [
     696,
     "r"
@@ -35088,20 +34734,12 @@
    [
     496,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "collar of neshika": [
    [
     276,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "collar of the storm": [
@@ -35694,80 +35332,48 @@
    [
     146,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "crafted breastplate": [
    [
     146,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "crafted gauntlets": [
    [
     146,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "crafted greaves": [
    [
     146,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "crafted helm": [
    [
     146,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "crafted pauldron": [
    [
     146,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "crafted plate boots": [
    [
     146,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "crafted vambraces": [
    [
     146,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "crate for tonics": [
@@ -35924,12 +35530,6 @@
     "c"
    ]
   ],
-  "crown of the bonecaster": [
-   [
-    878,
-    "c"
-   ]
-  ],
   "crown of the kromzek kings": [
    [
     168,
@@ -35947,10 +35547,6 @@
   "crown of the myrmidon": [
    [
     169,
-    "c"
-   ],
-   [
-    584,
     "c"
    ],
    [
@@ -36016,10 +35612,6 @@
   ],
   "crushbone belt": [
    [
-    8,
-    "c"
-   ],
-   [
     157,
     "c"
    ],
@@ -36029,10 +35621,6 @@
    ]
   ],
   "crushbone shoulderpads": [
-   [
-    8,
-    "c"
-   ],
    [
     158,
     "c"
@@ -37342,10 +36930,6 @@
    [
     366,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "dark runed boots": [
@@ -37506,10 +37090,6 @@
     "r"
    ],
    [
-    584,
-    "c"
-   ],
-   [
     719,
     "c"
    ]
@@ -37564,19 +37144,11 @@
   ],
   "deathfist shoulderpads": [
    [
-    8,
-    "c"
-   ],
-   [
     553,
     "c"
    ]
   ],
   "deathfist slashed belt": [
-   [
-    8,
-    "c"
-   ],
    [
     176,
     "c"
@@ -37760,10 +37332,6 @@
   ],
   "deep six cutlass": [
    [
-    584,
-    "c"
-   ],
-   [
     763,
     "r"
    ]
@@ -37775,10 +37343,6 @@
    ]
   ],
   "deepwater harpoon": [
-   [
-    584,
-    "c"
-   ],
    [
     667,
     "r"
@@ -37806,10 +37370,6 @@
    [
     28,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "derakor the vindicator": [
@@ -38000,10 +37560,6 @@
    [
     85,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "disciple symbol of cazic thule": [
@@ -38016,27 +37572,15 @@
    [
     415,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "disciple symbol of quellious": [
-   [
-    584,
-    "c"
-   ],
    [
     592,
     "r"
    ]
   ],
   "disciple symbol of tunare": [
-   [
-    584,
-    "c"
-   ],
    [
     868,
     "r"
@@ -38202,10 +37746,6 @@
    [
     242,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "dragonbane herb": [
@@ -38224,10 +37764,6 @@
    [
     178,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "dragonwing skin": [
@@ -38284,10 +37820,6 @@
   ],
   "dread forged shield": [
    [
-    584,
-    "c"
-   ],
-   [
     818,
     "r"
    ]
@@ -38296,10 +37828,6 @@
    [
     19,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "dreadlands resonance crystal": [
@@ -38702,10 +38230,6 @@
   ],
   "earring of the living flame": [
    [
-    584,
-    "c"
-   ],
-   [
     741,
     "r"
    ]
@@ -38722,10 +38246,6 @@
   ],
   "earthcaller": [
    [
-    584,
-    "c"
-   ],
-   [
     601,
     "r"
    ]
@@ -38734,10 +38254,6 @@
    [
     199,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "earthshakers mantle": [
@@ -39092,10 +38608,6 @@
    [
     201,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "emerald orange": [
@@ -39530,10 +39042,6 @@
   ],
   "eruds tonic": [
    [
-    8,
-    "c"
-   ],
-   [
     215,
     "r"
    ],
@@ -39613,10 +39121,6 @@
    ]
   ],
   "ethereal bladed naginata": [
-   [
-    584,
-    "c"
-   ],
    [
     817,
     "r"
@@ -39880,10 +39384,6 @@
    [
     28,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "fae pauldrons": [
@@ -39942,10 +39442,6 @@
   ],
   "falchion of the koadavie": [
    [
-    584,
-    "c"
-   ],
-   [
     774,
     "r"
    ]
@@ -39954,10 +39450,6 @@
    [
     262,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "fangol": [
@@ -39980,100 +39472,60 @@
    [
     266,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "faydark ringmail bracer": [
    [
     266,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "faydark ringmail coat": [
    [
     266,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "faydark ringmail coif": [
    [
     266,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "faydark ringmail collar": [
    [
     266,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "faydark ringmail gloves": [
    [
     266,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "faydark ringmail mantle": [
    [
     266,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "faydark ringmail pants": [
    [
     266,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "faydark ringmail skirt": [
    [
     266,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "faydark ringmail sleeves": [
    [
     266,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "fear": [
@@ -40158,10 +39610,6 @@
     "c"
    ],
    [
-    584,
-    "c"
-   ],
-   [
     776,
     "r"
    ]
@@ -40170,10 +39618,6 @@
    [
     558,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "fiery vambraces": [
@@ -41054,10 +40498,6 @@
   ],
   "flayed coldain-skin leggings": [
    [
-    584,
-    "c"
-   ],
-   [
     775,
     "r"
    ]
@@ -41151,10 +40591,6 @@
    ]
   ],
   "footmans pike": [
-   [
-    584,
-    "c"
-   ],
    [
     888,
     "r"
@@ -41428,10 +40864,6 @@
   ],
   "fright forged helm": [
    [
-    584,
-    "c"
-   ],
-   [
     819,
     "r"
    ]
@@ -41657,10 +41089,6 @@
    ]
   ],
   "frozen shard": [
-   [
-    584,
-    "c"
-   ],
    [
     896,
     "r"
@@ -41924,10 +41352,6 @@
   ],
   "garou bone club": [
    [
-    584,
-    "c"
-   ],
-   [
     799,
     "r"
    ]
@@ -42006,10 +41430,6 @@
   ],
   "gauntlets of the myrmidon": [
    [
-    584,
-    "c"
-   ],
-   [
     890,
     "r"
    ]
@@ -42018,20 +41438,12 @@
    [
     30,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "gavel of justice": [
    [
     267,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "geedas scout coin": [
@@ -42480,16 +41892,6 @@
    [
     259,
     "r"
-   ],
-   [
-    584,
-    "c"
-   ]
-  ],
-  "gloves of the bonecaster": [
-   [
-    878,
-    "c"
    ]
   ],
   "gloves of the gatecaller": [
@@ -42612,10 +42014,6 @@
   ],
   "gnoll fang": [
    [
-    8,
-    "c"
-   ],
-   [
     261,
     "c"
    ],
@@ -42669,10 +42067,6 @@
    ]
   ],
   "gnoll slayer": [
-   [
-    584,
-    "c"
-   ],
    [
     785,
     "r"
@@ -43078,10 +42472,6 @@
   ],
   "grathins invoice": [
    [
-    8,
-    "c"
-   ],
-   [
     538,
     "c"
    ]
@@ -43130,10 +42520,6 @@
   ],
   "greater lightstone": [
    [
-    8,
-    "c"
-   ],
-   [
     219,
     "c"
    ],
@@ -43180,10 +42566,6 @@
   ],
   "greaves of the myrmidon": [
    [
-    584,
-    "c"
-   ],
-   [
     890,
     "r"
    ]
@@ -43198,10 +42580,6 @@
    [
     30,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "green and tan tunic*": [
@@ -43304,10 +42682,6 @@
    [
     155,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "greenmist design pattern": [
@@ -43448,10 +42822,6 @@
    [
     375,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "grobb oven mittens": [
@@ -43521,10 +42891,6 @@
    ]
   ],
   "guise of the coercer": [
-   [
-    584,
-    "c"
-   ],
    [
     720,
     "r"
@@ -43726,10 +43092,6 @@
    [
     367,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "hazy opal": [
@@ -43982,10 +43344,6 @@
    [
     376,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "helm of twilight": [
@@ -43995,10 +43353,6 @@
    ],
    [
     169,
-    "c"
-   ],
-   [
-    584,
     "c"
    ]
   ],
@@ -44320,10 +43674,6 @@
    [
     111,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "holy symbol of zek": [
@@ -44333,10 +43683,6 @@
    ]
   ],
   "honey jum": [
-   [
-    8,
-    "c"
-   ],
    [
     162,
     "c"
@@ -44504,10 +43850,6 @@
   ],
   "ice forged shackles": [
    [
-    584,
-    "c"
-   ],
-   [
     787,
     "r"
    ]
@@ -44659,10 +44001,6 @@
    ]
   ],
   "icy totem of protection": [
-   [
-    584,
-    "c"
-   ],
    [
     800,
     "c"
@@ -44904,10 +44242,6 @@
    [
     410,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "incandescent mask": [
@@ -44918,20 +44252,12 @@
    [
     411,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "incandescent wand": [
    [
     410,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "incomplete blackbox": [
@@ -45018,30 +44344,18 @@
    [
     53,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "initiate symbol of brell serilis": [
    [
     85,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "initiate symbol of cazic thule": [
    [
     110,
     "r"
-   ],
-   [
-    584,
-    "c"
    ],
    [
     819,
@@ -45052,19 +44366,11 @@
    [
     415,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "initiate symbol of quellious": [
    [
     438,
-    "c"
-   ],
-   [
-    584,
     "c"
    ],
    [
@@ -45074,29 +44380,17 @@
   ],
   "initiate symbol of rallos zek": [
    [
-    584,
-    "c"
-   ],
-   [
     600,
     "r"
    ]
   ],
   "initiate symbol of the tribunal": [
    [
-    584,
-    "c"
-   ],
-   [
     861,
     "r"
    ]
   ],
   "initiate symbol of tunare": [
-   [
-    584,
-    "c"
-   ],
    [
     868,
     "r"
@@ -45127,10 +44421,6 @@
    ]
   ],
   "innoruuks curse": [
-   [
-    584,
-    "c"
-   ],
    [
     669,
     "r"
@@ -45214,10 +44504,6 @@
   ],
   "interrogators badge": [
    [
-    584,
-    "c"
-   ],
-   [
     591,
     "r"
    ]
@@ -45235,10 +44521,6 @@
    ]
   ],
   "investigators badge": [
-   [
-    584,
-    "c"
-   ],
    [
     591,
     "r"
@@ -45264,10 +44546,6 @@
   ],
   "ionys absorber": [
    [
-    584,
-    "c"
-   ],
-   [
     621,
     "r"
    ],
@@ -45284,19 +44562,11 @@
   ],
   "iron cudgel of the channeler": [
    [
-    584,
-    "c"
-   ],
-   [
     680,
     "r"
    ]
   ],
   "iron cudgel of the clairvoyant": [
-   [
-    584,
-    "c"
-   ],
    [
     680,
     "r"
@@ -45304,19 +44574,11 @@
   ],
   "iron cudgel of the mystic": [
    [
-    584,
-    "c"
-   ],
-   [
     680,
     "r"
    ]
   ],
   "iron cudgel of the petitioner": [
-   [
-    584,
-    "c"
-   ],
    [
     680,
     "r"
@@ -45328,19 +44590,11 @@
   ],
   "iron cudgel of the prophet": [
    [
-    584,
-    "c"
-   ],
-   [
     680,
     "r"
    ]
   ],
   "iron cudgel of the seer": [
-   [
-    584,
-    "c"
-   ],
    [
     680,
     "r"
@@ -45388,10 +44642,6 @@
    [
     465,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "ivory mask": [
@@ -45504,10 +44754,6 @@
   ],
   "jagged blade of war": [
    [
-    584,
-    "c"
-   ],
-   [
     886,
     "r"
    ]
@@ -45528,10 +44774,6 @@
    [
     418,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "jaled dars tomb key": [
@@ -45654,10 +44896,6 @@
    [
     387,
     "c"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "jewelers kit": [
@@ -45720,10 +44958,6 @@
   ],
   "kaglari mana doll": [
    [
-    584,
-    "c"
-   ],
-   [
     874,
     "r"
    ]
@@ -45741,10 +44975,6 @@
    ]
   ],
   "karanas tear": [
-   [
-    584,
-    "c"
-   ],
    [
     737,
     "r"
@@ -45852,10 +45082,6 @@
    [
     237,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "kerran fishingpole": [
@@ -45936,10 +45162,6 @@
     "r"
    ],
    [
-    584,
-    "c"
-   ],
-   [
     817,
     "c"
    ]
@@ -45971,10 +45193,6 @@
    ]
   ],
   "kiola nut": [
-   [
-    8,
-    "c"
-   ],
    [
     81,
     "r"
@@ -46043,10 +45261,6 @@
    ]
   ],
   "koalindl fish": [
-   [
-    8,
-    "c"
-   ],
    [
     220,
     "c"
@@ -46186,30 +45400,18 @@
    [
     441,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "lambent bracers": [
    [
     441,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "lambent breastplate": [
    [
     441,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "lambent fire opal": [
@@ -46226,30 +45428,18 @@
    [
     441,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "lambent greaves": [
    [
     441,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "lambent helm": [
    [
     441,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "lambent ruby": [
@@ -46304,10 +45494,6 @@
    [
     441,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "lancer swordfish fin": [
@@ -46320,20 +45506,12 @@
    [
     442,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "langseax of the wolves": [
    [
     442,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "languid pace": [
@@ -46706,10 +45884,6 @@
     "r"
    ],
    [
-    584,
-    "c"
-   ],
-   [
     817,
     "c"
    ]
@@ -46728,10 +45902,6 @@
    [
     444,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "leech husk": [
@@ -46833,10 +46003,6 @@
    ]
   ],
   "legionnaires mancatcher": [
-   [
-    584,
-    "c"
-   ],
    [
     888,
     "r"
@@ -46957,10 +46123,6 @@
    ]
   ],
   "lightstone": [
-   [
-    8,
-    "c"
-   ],
    [
     219,
     "c"
@@ -47134,10 +46296,6 @@
    [
     460,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "logrin skull": [
@@ -47362,48 +46520,6 @@
     "r"
    ]
   ],
-  "maleficent boots": [
-   [
-    878,
-    "c"
-   ]
-  ],
-  "maleficent bracer": [
-   [
-    878,
-    "c"
-   ]
-  ],
-  "maleficent crown": [
-   [
-    878,
-    "c"
-   ]
-  ],
-  "maleficent gloves": [
-   [
-    878,
-    "c"
-   ]
-  ],
-  "maleficent leggings": [
-   [
-    878,
-    "c"
-   ]
-  ],
-  "maleficent robe": [
-   [
-    878,
-    "c"
-   ]
-  ],
-  "maleficent sleeves": [
-   [
-    878,
-    "c"
-   ]
-  ],
   "malevolent boots": [
    [
     672,
@@ -47556,10 +46672,6 @@
    [
     17,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "mantle of the songweaver": [
@@ -47684,18 +46796,8 @@
   ],
   "mask of the silver eyes": [
    [
-    584,
-    "c"
-   ],
-   [
     628,
     "r"
-   ]
-  ],
-  "mask of the songbird": [
-   [
-    584,
-    "c"
    ]
   ],
   "mask of the tundra walker": [
@@ -47776,10 +46878,6 @@
    [
     260,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "medallion of the jarsath": [
@@ -47944,10 +47042,6 @@
   ],
   "metal bits": [
    [
-    8,
-    "c"
-   ],
-   [
     24,
     "c"
    ],
@@ -48022,10 +47116,6 @@
   ],
   "militias pike": [
    [
-    584,
-    "c"
-   ],
-   [
     888,
     "r"
    ]
@@ -48040,10 +47130,6 @@
    [
     493,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "miniature sword": [
@@ -48056,10 +47142,6 @@
    [
     494,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "minion of shadows": [
@@ -48482,10 +47564,6 @@
   ],
   "mystic cloak": [
    [
-    584,
-    "c"
-   ],
-   [
     802,
     "r"
    ]
@@ -48586,10 +47664,6 @@
    [
     193,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "nature walkers vambraces": [
@@ -48602,10 +47676,6 @@
    [
     518,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "nebs head": [
@@ -48764,10 +47834,6 @@
   ],
   "noclins femur": [
    [
-    584,
-    "c"
-   ],
-   [
     794,
     "r"
    ]
@@ -48795,10 +47861,6 @@
    ]
   ],
   "nostrolo tambourine": [
-   [
-    584,
-    "c"
-   ],
    [
     607,
     "r"
@@ -49308,10 +48370,6 @@
    [
     468,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "orc hatchet": [
@@ -49474,12 +48532,6 @@
     "c"
    ]
   ],
-  "pantaloons of the bonecaster": [
-   [
-    878,
-    "c"
-   ]
-  ],
   "panther meat": [
    [
     625,
@@ -49496,10 +48548,6 @@
    [
     565,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "part of a large key": [
@@ -49515,10 +48563,6 @@
    ]
   ],
   "partisans pike": [
-   [
-    584,
-    "c"
-   ],
    [
     808,
     "r"
@@ -49618,10 +48662,6 @@
   ],
   "pauldrons of the deep flame": [
    [
-    584,
-    "c"
-   ],
-   [
     738,
     "r"
    ]
@@ -49630,10 +48670,6 @@
    [
     566,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "pawbook": [
@@ -49656,10 +48692,6 @@
    [
     567,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "pearl": [
@@ -49968,10 +49000,6 @@
   ],
   "pitted iron ring": [
    [
-    584,
-    "c"
-   ],
-   [
     817,
     "r"
    ]
@@ -49990,70 +49018,42 @@
    [
     521,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "plague bearers circlet": [
    [
     521,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "plague bearers gloves": [
    [
     521,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "plague bearers robe": [
    [
     521,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "plague bearers sleeves": [
    [
     521,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "plague bearers trousers": [
    [
     521,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "plague bearers wristguard": [
    [
     521,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "plains pebble": [
@@ -50436,10 +49436,6 @@
   ],
   "prayer cloth of tunare": [
    [
-    584,
-    "c"
-   ],
-   [
     662,
     "r"
    ]
@@ -50548,20 +49544,12 @@
    [
     249,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "priceless velium knights sword": [
    [
     249,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "priceless velium warsword": [
@@ -50616,20 +49604,12 @@
    [
     249,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "primal velium knights sword": [
    [
     249,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "primal velium warsword": [
@@ -50725,10 +49705,6 @@
    ]
   ],
   "pulsating hyacinth telesm": [
-   [
-    584,
-    "c"
-   ],
    [
     773,
     "r"
@@ -50928,10 +49904,6 @@
    [
     510,
     "c"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "purse": [
@@ -51038,19 +50010,11 @@
   ],
   "rage war maul": [
    [
-    584,
-    "c"
-   ],
-   [
     747,
     "r"
    ]
   ],
   "ragebringer": [
-   [
-    584,
-    "c"
-   ],
    [
     637,
     "r"
@@ -51070,10 +50034,6 @@
   ],
   "rain caller": [
    [
-    584,
-    "c"
-   ],
-   [
     598,
     "r"
    ]
@@ -51091,10 +50051,6 @@
    ]
   ],
   "rantho rapier": [
-   [
-    584,
-    "c"
-   ],
    [
     779,
     "r"
@@ -51182,10 +50138,6 @@
    [
     399,
     "r"
-   ],
-   [
-    584,
-    "c"
    ],
    [
     613,
@@ -51352,19 +50304,11 @@
   ],
   "reaper of the dead": [
    [
-    584,
-    "c"
-   ],
-   [
     840,
     "r"
    ]
   ],
   "rebbys rat whiskers": [
-   [
-    8,
-    "c"
-   ],
    [
     539,
     "c"
@@ -51506,10 +50450,6 @@
     "c"
    ],
    [
-    584,
-    "c"
-   ],
-   [
     765,
     "c"
    ]
@@ -51521,10 +50461,6 @@
    ]
   ],
   "red wine": [
-   [
-    8,
-    "c"
-   ],
    [
     78,
     "c"
@@ -51572,17 +50508,9 @@
    [
     415,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "regent symbol of quellious": [
-   [
-    584,
-    "c"
-   ],
    [
     592,
     "r"
@@ -51676,10 +50604,6 @@
   ],
   "researchers badge": [
    [
-    584,
-    "c"
-   ],
-   [
     591,
     "r"
    ]
@@ -51700,50 +50624,30 @@
    [
     31,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "resonant bracer": [
    [
     31,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "resonant breastplate": [
    [
     31,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "resonant gauntlets": [
    [
     31,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "resonant greaves": [
    [
     31,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "resonant helm": [
@@ -51754,20 +50658,12 @@
    [
     170,
     "c"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "resonant vambraces": [
    [
     31,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "revenant ash": [
@@ -51832,10 +50728,6 @@
    [
     489,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "ring of the ancients": [
@@ -51970,10 +50862,6 @@
   ],
   "robe of enshroudment": [
    [
-    584,
-    "c"
-   ],
-   [
     671,
     "r"
    ]
@@ -51984,17 +50872,7 @@
     "r"
    ]
   ],
-  "robe of the bonecaster": [
-   [
-    878,
-    "c"
-   ]
-  ],
   "robe of the elements": [
-   [
-    584,
-    "c"
-   ],
    [
     634,
     "r"
@@ -52036,10 +50914,6 @@
     "r"
    ],
    [
-    584,
-    "c"
-   ],
-   [
     792,
     "c"
    ]
@@ -52054,10 +50928,6 @@
    [
     501,
     "r"
-   ],
-   [
-    584,
-    "c"
    ],
    [
     792,
@@ -52083,10 +50953,6 @@
    ]
   ],
   "rod of insidious glamour": [
-   [
-    584,
-    "c"
-   ],
    [
     635,
     "r"
@@ -52194,20 +51060,12 @@
    [
     524,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "rotting crown": [
    [
     524,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "rotting femur": [
@@ -52220,50 +51078,30 @@
    [
     524,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "rotting robe": [
    [
     524,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "rotting sleeves": [
    [
     524,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "rotting trousers": [
    [
     524,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "rotting wristguard": [
    [
     524,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "rough elm recurve bow": [
@@ -52282,10 +51120,6 @@
    [
     104,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "round shield": [
@@ -52514,19 +51348,11 @@
   ],
   "rune crafters boots": [
    [
-    584,
-    "c"
-   ],
-   [
     685,
     "r"
    ]
   ],
   "rune crafters bracer": [
-   [
-    584,
-    "c"
-   ],
    [
     685,
     "r"
@@ -52534,19 +51360,11 @@
   ],
   "rune crafters breastplate": [
    [
-    584,
-    "c"
-   ],
-   [
     685,
     "r"
    ]
   ],
   "rune crafters gauntlets": [
-   [
-    584,
-    "c"
-   ],
    [
     685,
     "r"
@@ -52554,29 +51372,17 @@
   ],
   "rune crafters greaves": [
    [
-    584,
-    "c"
-   ],
-   [
     685,
     "r"
    ]
   ],
   "rune crafters helm": [
    [
-    584,
-    "c"
-   ],
-   [
     685,
     "r"
    ]
   ],
   "rune crafters vambraces": [
-   [
-    584,
-    "c"
-   ],
    [
     685,
     "r"
@@ -52670,10 +51476,6 @@
    [
     91,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "runed prayer shawl pattern": [
@@ -52840,10 +51642,6 @@
   ],
   "runescale cloak": [
    [
-    584,
-    "c"
-   ],
-   [
     645,
     "r"
    ]
@@ -52918,19 +51716,11 @@
   ],
   "rusty bastard sword": [
    [
-    8,
-    "c"
-   ],
-   [
     60,
     "c"
    ]
   ],
   "rusty broad sword": [
-   [
-    8,
-    "c"
-   ],
    [
     60,
     "c"
@@ -52975,10 +51765,6 @@
    ]
   ],
   "rusty long sword": [
-   [
-    8,
-    "c"
-   ],
    [
     60,
     "c"
@@ -53039,10 +51825,6 @@
    ]
   ],
   "rusty short sword": [
-   [
-    8,
-    "c"
-   ],
    [
     60,
     "c"
@@ -53284,10 +52066,6 @@
   ],
   "sanctum guardians earring": [
    [
-    584,
-    "c"
-   ],
-   [
     817,
     "r"
    ]
@@ -53321,10 +52099,6 @@
    ]
   ],
   "sap sheen staff": [
-   [
-    584,
-    "c"
-   ],
    [
     842,
     "r"
@@ -53526,19 +52300,11 @@
   ],
   "scaled mystic boots": [
    [
-    584,
-    "c"
-   ],
-   [
     654,
     "r"
    ]
   ],
   "scaled mystic bracers": [
-   [
-    584,
-    "c"
-   ],
    [
     654,
     "r"
@@ -53546,19 +52312,11 @@
   ],
   "scaled mystic breastplate": [
    [
-    584,
-    "c"
-   ],
-   [
     654,
     "r"
    ]
   ],
   "scaled mystic cloak": [
-   [
-    584,
-    "c"
-   ],
    [
     654,
     "r"
@@ -53566,19 +52324,11 @@
   ],
   "scaled mystic gauntlets": [
    [
-    584,
-    "c"
-   ],
-   [
     654,
     "r"
    ]
   ],
   "scaled mystic greaves": [
-   [
-    584,
-    "c"
-   ],
    [
     654,
     "r"
@@ -53586,19 +52336,11 @@
   ],
   "scaled mystic helm": [
    [
-    584,
-    "c"
-   ],
-   [
     654,
     "r"
    ]
   ],
   "scaled mystic vambraces": [
-   [
-    584,
-    "c"
-   ],
    [
     654,
     "r"
@@ -53706,10 +52448,6 @@
   ],
   "scouts blade": [
    [
-    584,
-    "c"
-   ],
-   [
     658,
     "r"
    ],
@@ -53719,10 +52457,6 @@
    ]
   ],
   "scouts cape": [
-   [
-    584,
-    "c"
-   ],
    [
     658,
     "c"
@@ -53755,10 +52489,6 @@
    ]
   ],
   "screaming mace": [
-   [
-    584,
-    "c"
-   ],
    [
     662,
     "r"
@@ -53842,10 +52572,6 @@
    [
     520,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "sea dragon meat": [
@@ -53864,10 +52590,6 @@
    [
     425,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "seahorse scales": [
@@ -54018,10 +52740,6 @@
   ],
   "seax": [
    [
-    584,
-    "c"
-   ],
-   [
     815,
     "r"
    ]
@@ -54070,10 +52788,6 @@
   ],
   "sejah ghulam bracer": [
    [
-    584,
-    "c"
-   ],
-   [
     666,
     "r"
    ]
@@ -54103,10 +52817,6 @@
    ]
   ],
   "serrated dragon tooth": [
-   [
-    584,
-    "c"
-   ],
    [
     744,
     "r"
@@ -54146,10 +52856,6 @@
    [
     400,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "severed paw": [
@@ -54256,10 +52962,6 @@
    [
     507,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "shackle of stone": [
@@ -54350,19 +53052,11 @@
   ],
   "shadowbound boots": [
    [
-    584,
-    "c"
-   ],
-   [
     671,
     "r"
    ]
   ],
   "shadowbound gloves": [
-   [
-    584,
-    "c"
-   ],
    [
     671,
     "r"
@@ -54512,20 +53206,10 @@
     "c"
    ]
   ],
-  "shattering hammer": [
-   [
-    584,
-    "c"
-   ]
-  ],
   "shawl of the wind spirit": [
    [
     4,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "shazda turban": [
@@ -54571,10 +53255,6 @@
    ]
   ],
   "shield of the devout": [
-   [
-    584,
-    "c"
-   ],
    [
     690,
     "r"
@@ -54684,10 +53364,6 @@
    [
     162,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "shining stone": [
@@ -54788,10 +53464,6 @@
    [
     514,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "shovel": [
@@ -54806,10 +53478,6 @@
     "c"
    ],
    [
-    584,
-    "c"
-   ],
-   [
     694,
     "r"
    ]
@@ -54818,10 +53486,6 @@
    [
     428,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "shroud of the dar brood": [
@@ -54881,10 +53545,6 @@
    ]
   ],
   "silent watch shield": [
-   [
-    584,
-    "c"
-   ],
    [
     588,
     "r"
@@ -55028,10 +53688,6 @@
   ],
   "silver mask of the slayer": [
    [
-    584,
-    "c"
-   ],
-   [
     629,
     "r"
    ]
@@ -55057,10 +53713,6 @@
    ]
   ],
   "silver steel gauntlets": [
-   [
-    584,
-    "c"
-   ],
    [
     882,
     "r"
@@ -55116,10 +53768,6 @@
   ],
   "silvermesh leggings": [
    [
-    584,
-    "c"
-   ],
-   [
     660,
     "r"
    ]
@@ -55140,10 +53788,6 @@
    [
     24,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "siphon strength": [
@@ -55304,16 +53948,6 @@
    [
     431,
     "r"
-   ],
-   [
-    584,
-    "c"
-   ]
-  ],
-  "sleeves of the bonecaster": [
-   [
-    878,
-    "c"
    ]
   ],
   "sleeves of the invoker": [
@@ -55373,10 +54007,6 @@
    ]
   ],
   "small brick of high quality ore": [
-   [
-    8,
-    "c"
-   ],
    [
     726,
     "c"
@@ -55592,10 +54222,6 @@
   ],
   "small piece of high quality ore": [
    [
-    8,
-    "c"
-   ],
-   [
     726,
     "c"
    ]
@@ -55633,10 +54259,6 @@
    ]
   ],
   "small scarab breastplate": [
-   [
-    584,
-    "c"
-   ],
    [
     655,
     "r"
@@ -56022,10 +54644,6 @@
   ],
   "soldiers pike": [
    [
-    584,
-    "c"
-   ],
-   [
     888,
     "r"
    ]
@@ -56056,18 +54674,8 @@
   ],
   "solvedi scimitar": [
    [
-    584,
-    "c"
-   ],
-   [
     709,
     "r"
-   ]
-  ],
-  "songweavers mantle": [
-   [
-    584,
-    "c"
    ]
   ],
   "sontalaks talisman": [
@@ -56120,10 +54728,6 @@
   ],
   "soulfiend lance": [
    [
-    584,
-    "c"
-   ],
-   [
     633,
     "r"
    ]
@@ -56135,10 +54739,6 @@
    ],
    [
     558,
-    "c"
-   ],
-   [
-    584,
     "c"
    ],
    [
@@ -56228,10 +54828,6 @@
   ],
   "spear of fate": [
    [
-    584,
-    "c"
-   ],
-   [
     677,
     "r"
    ]
@@ -56240,10 +54836,6 @@
    [
     28,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "speckled molded mushroom": [
@@ -56456,19 +55048,11 @@
   ],
   "spirit callers boots": [
    [
-    584,
-    "c"
-   ],
-   [
     678,
     "r"
    ]
   ],
   "spirit callers bracer": [
-   [
-    584,
-    "c"
-   ],
    [
     678,
     "r"
@@ -56476,19 +55060,11 @@
   ],
   "spirit callers breastplate": [
    [
-    584,
-    "c"
-   ],
-   [
     678,
     "r"
    ]
   ],
   "spirit callers gauntlets": [
-   [
-    584,
-    "c"
-   ],
    [
     678,
     "r"
@@ -56496,29 +55072,17 @@
   ],
   "spirit callers greaves": [
    [
-    584,
-    "c"
-   ],
-   [
     678,
     "r"
    ]
   ],
   "spirit callers helm": [
    [
-    584,
-    "c"
-   ],
-   [
     678,
     "r"
    ]
   ],
   "spirit callers vambraces": [
-   [
-    584,
-    "c"
-   ],
    [
     678,
     "r"
@@ -56720,10 +55284,6 @@
   ],
   "staff of temperate flux": [
    [
-    584,
-    "c"
-   ],
-   [
     719,
     "r"
    ]
@@ -56735,10 +55295,6 @@
    ]
   ],
   "staff of the four": [
-   [
-    584,
-    "c"
-   ],
    [
     905,
     "r"
@@ -56758,10 +55314,6 @@
   ],
   "staff of the observers": [
    [
-    584,
-    "c"
-   ],
-   [
     826,
     "r"
    ]
@@ -56770,17 +55322,9 @@
    [
     205,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "staff of the wheel": [
-   [
-    584,
-    "c"
-   ],
    [
     728,
     "r"
@@ -56984,10 +55528,6 @@
   ],
   "steel warrior bracer": [
    [
-    584,
-    "c"
-   ],
-   [
     721,
     "r"
    ]
@@ -57014,17 +55554,9 @@
    [
     220,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "stein of ulissa": [
-   [
-    584,
-    "c"
-   ],
    [
     722,
     "r"
@@ -57312,10 +55844,6 @@
   ],
   "swiftwind": [
    [
-    584,
-    "c"
-   ],
-   [
     601,
     "r"
    ]
@@ -57351,10 +55879,6 @@
    ]
   ],
   "symbol of tunarian worship": [
-   [
-    584,
-    "c"
-   ],
    [
     781,
     "r"
@@ -57970,10 +56494,6 @@
   ],
   "terror forged mask": [
    [
-    584,
-    "c"
-   ],
-   [
     820,
     "r"
    ]
@@ -57994,10 +56514,6 @@
    [
     450,
     "r"
-   ],
-   [
-    584,
-    "c"
    ],
    [
     876,
@@ -58140,10 +56656,6 @@
    [
     500,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "the velium keg collectors mug": [
@@ -58155,10 +56667,6 @@
   "the visceral dagger": [
    [
     155,
-    "c"
-   ],
-   [
-    584,
     "c"
    ],
    [
@@ -58191,10 +56699,6 @@
    ]
   ],
   "thex mallet": [
-   [
-    584,
-    "c"
-   ],
    [
     840,
     "r"
@@ -58262,10 +56766,6 @@
    [
     192,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "thunderbold": [
@@ -58399,10 +56899,6 @@
    ]
   ],
   "tishans kilt": [
-   [
-    584,
-    "c"
-   ],
    [
     846,
     "r"
@@ -58605,10 +57101,6 @@
    ]
   ],
   "torch of alna": [
-   [
-    584,
-    "c"
-   ],
    [
     854,
     "r"
@@ -58906,19 +57398,11 @@
   ],
   "totemic boots": [
    [
-    584,
-    "c"
-   ],
-   [
     857,
     "r"
    ]
   ],
   "totemic bracers": [
-   [
-    584,
-    "c"
-   ],
    [
     857,
     "r"
@@ -58926,19 +57410,11 @@
   ],
   "totemic breastplate": [
    [
-    584,
-    "c"
-   ],
-   [
     857,
     "r"
    ]
   ],
   "totemic cloak": [
-   [
-    584,
-    "c"
-   ],
    [
     857,
     "r"
@@ -58946,19 +57422,11 @@
   ],
   "totemic gauntlets": [
    [
-    584,
-    "c"
-   ],
-   [
     857,
     "r"
    ]
   ],
   "totemic greaves": [
-   [
-    584,
-    "c"
-   ],
    [
     857,
     "r"
@@ -58966,19 +57434,11 @@
   ],
   "totemic helm": [
    [
-    584,
-    "c"
-   ],
-   [
     857,
     "r"
    ]
   ],
   "totemic vambraces": [
-   [
-    584,
-    "c"
-   ],
    [
     857,
     "r"
@@ -59060,10 +57520,6 @@
   ],
   "treant fists": [
    [
-    584,
-    "c"
-   ],
-   [
     832,
     "r"
    ]
@@ -59116,19 +57572,11 @@
   ],
   "trooper scale boots": [
    [
-    584,
-    "c"
-   ],
-   [
     862,
     "r"
    ]
   ],
   "trooper scale bracers": [
-   [
-    584,
-    "c"
-   ],
    [
     862,
     "r"
@@ -59136,19 +57584,11 @@
   ],
   "trooper scale breastplate": [
    [
-    584,
-    "c"
-   ],
-   [
     862,
     "r"
    ]
   ],
   "trooper scale gauntlets": [
-   [
-    584,
-    "c"
-   ],
    [
     862,
     "r"
@@ -59156,19 +57596,11 @@
   ],
   "trooper scale greaves": [
    [
-    584,
-    "c"
-   ],
-   [
     862,
     "r"
    ]
   ],
   "trooper scale helm": [
-   [
-    584,
-    "c"
-   ],
    [
     862,
     "r"
@@ -59176,19 +57608,11 @@
   ],
   "trooper scale pauldron": [
    [
-    584,
-    "c"
-   ],
-   [
     862,
     "r"
    ]
   ],
   "trooper scale vambraces": [
-   [
-    584,
-    "c"
-   ],
    [
     862,
     "r"
@@ -59201,10 +57625,6 @@
    ]
   ],
   "troopers pike": [
-   [
-    584,
-    "c"
-   ],
    [
     888,
     "r"
@@ -59220,50 +57640,30 @@
    [
     25,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "troubadours bracer": [
    [
     25,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "troubadours breastplate": [
    [
     25,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "troubadours gauntlets": [
    [
     25,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "troubadours greaves": [
    [
     25,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "troubadours helm": [
@@ -59274,20 +57674,12 @@
    [
     168,
     "c"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "troubadours vambraces": [
    [
     25,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "true north": [
@@ -59309,10 +57701,6 @@
    ]
   ],
   "trueshot longbow": [
-   [
-    584,
-    "c"
-   ],
    [
     598,
     "c"
@@ -59368,10 +57756,6 @@
    [
     243,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "tunares finest": [
@@ -59928,10 +58312,6 @@
    [
     537,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "used napkin": [
@@ -59998,10 +58378,6 @@
   ],
   "vambraces of the myrmidon": [
    [
-    584,
-    "c"
-   ],
-   [
     890,
     "r"
    ]
@@ -60010,21 +58386,11 @@
    [
     30,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "vanikis heart": [
    [
     429,
-    "c"
-   ]
-  ],
-  "vastly deep ale": [
-   [
-    8,
     "c"
    ]
   ],
@@ -60126,10 +58492,6 @@
    [
     412,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "venom of the snake": [
@@ -60386,10 +58748,6 @@
   ],
   "warden symbol of tunare": [
    [
-    584,
-    "c"
-   ],
-   [
     868,
     "r"
    ]
@@ -60410,70 +58768,42 @@
    [
     526,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "warlocks crown": [
    [
     526,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "warlocks gloves": [
    [
     526,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "warlocks pantaloons": [
    [
     526,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "warlocks robe": [
    [
     526,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "warlocks sleeves": [
    [
     526,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "warlocks wristguard": [
    [
     526,
     "r"
-   ],
-   [
-    878,
-    "c"
    ]
   ],
   "warlord drawing pen": [
@@ -60490,29 +58820,17 @@
   ],
   "warlords boots": [
    [
-    584,
-    "c"
-   ],
-   [
     887,
     "r"
    ]
   ],
   "warlords bracer": [
    [
-    584,
-    "c"
-   ],
-   [
     887,
     "r"
    ]
   ],
   "warlords breastplate": [
-   [
-    584,
-    "c"
-   ],
    [
     887,
     "r"
@@ -60524,19 +58842,11 @@
     "c"
    ],
    [
-    584,
-    "c"
-   ],
-   [
     887,
     "r"
    ]
   ],
   "warlords gauntlets": [
-   [
-    584,
-    "c"
-   ],
    [
     887,
     "r"
@@ -60544,19 +58854,11 @@
   ],
   "warlords greaves": [
    [
-    584,
-    "c"
-   ],
-   [
     887,
     "r"
    ]
   ],
   "warlords vambraces": [
-   [
-    584,
-    "c"
-   ],
    [
     887,
     "r"
@@ -60601,10 +58903,6 @@
    ]
   ],
   "watchman boots": [
-   [
-    584,
-    "c"
-   ],
    [
     845,
     "r"
@@ -60698,10 +58996,6 @@
    [
     121,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "waterlogged flesh": [
@@ -60724,19 +59018,11 @@
   ],
   "wee harvester": [
    [
-    584,
-    "c"
-   ],
-   [
     676,
     "r"
    ]
   ],
   "weeping wand": [
-   [
-    584,
-    "c"
-   ],
    [
     894,
     "r"
@@ -60820,10 +59106,6 @@
   ],
   "white dragon idol": [
    [
-    584,
-    "c"
-   ],
-   [
     903,
     "r"
    ]
@@ -60835,10 +59117,6 @@
    ]
   ],
   "white dragon statue": [
-   [
-    584,
-    "c"
-   ],
    [
     777,
     "r"
@@ -60884,10 +59162,6 @@
    [
     502,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "white hellebore": [
@@ -60969,10 +59243,6 @@
    ]
   ],
   "white wine": [
-   [
-    8,
-    "c"
-   ],
    [
     386,
     "c"
@@ -61502,19 +59772,11 @@
   ],
   "wolf callers boots": [
    [
-    584,
-    "c"
-   ],
-   [
     681,
     "r"
    ]
   ],
   "wolf callers bracer": [
-   [
-    584,
-    "c"
-   ],
    [
     681,
     "r"
@@ -61522,19 +59784,11 @@
   ],
   "wolf callers breastplate": [
    [
-    584,
-    "c"
-   ],
-   [
     681,
     "r"
    ]
   ],
   "wolf callers gauntlets": [
-   [
-    584,
-    "c"
-   ],
    [
     681,
     "r"
@@ -61542,29 +59796,17 @@
   ],
   "wolf callers greaves": [
    [
-    584,
-    "c"
-   ],
-   [
     681,
     "r"
    ]
   ],
   "wolf callers helm": [
    [
-    584,
-    "c"
-   ],
-   [
     681,
     "r"
    ]
   ],
   "wolf callers vambraces": [
-   [
-    584,
-    "c"
-   ],
    [
     681,
     "r"
@@ -61705,10 +59947,6 @@
    ]
   ],
   "words of darkness": [
-   [
-    584,
-    "c"
-   ],
    [
     916,
     "r"
@@ -61962,12 +60200,6 @@
     "r"
    ]
   ],
-  "wristband of the bonecaster": [
-   [
-    878,
-    "c"
-   ]
-  ],
   "wristguard of distraction": [
    [
     177,
@@ -61990,10 +60222,6 @@
    [
     188,
     "r"
-   ],
-   [
-    584,
-    "c"
    ]
   ],
   "wus fist of mastery": [
@@ -68260,6 +66488,7 @@
     "Honey Jum": "Honey_Jum_Quest"
    },
    "giver": null,
+   "hub": true,
    "items": [
     "Red Wine",
     "Lightstone",
@@ -86236,10 +84465,6 @@
      1
     ],
     [
-     "Block of Clay",
-     2
-    ],
-    [
      "Borannin's Seal",
      1
     ],
@@ -86345,7 +84570,7 @@
     ],
     [
      "High Quality Firing Sheet",
-     4
+     2
     ],
     [
      "Iceclad Cutlassfish",
@@ -86401,10 +84626,6 @@
     ],
     [
      "Pie Tin Mold",
-     1
-    ],
-    [
-     "Pie Tin Sketch",
      1
     ],
     [
@@ -86553,7 +84774,7 @@
     ],
     [
      "Water Flask",
-     13
+     12
     ],
     [
      "Wenglawks Manly Purse",
@@ -86606,6 +84827,14 @@
       ],
       [
        "Snow Bunny Stew",
+       1
+      ],
+      [
+       "High Quality Firing Sheet",
+       1
+      ],
+      [
+       "Unfired Pot",
        1
       ],
       [
@@ -87700,6 +85929,10 @@
     ],
     [
      "Ulthork Meat Pie",
+     1
+    ],
+    [
+     "Unfired Pot",
      1
     ],
     [
@@ -100029,15 +98262,7 @@
      1
     ],
     [
-     "Low Quality Bear Skin",
-     1
-    ],
-    [
      "Low Quality Cat Pelt",
-     1
-    ],
-    [
-     "Low Quality Wolf Skin",
      1
     ],
     [
@@ -116828,15 +115053,7 @@
      1
     ],
     [
-     "High Quality Firing Sheet",
-     1
-    ],
-    [
      "Jug of Sauces",
-     1
-    ],
-    [
-     "Large Block of Clay",
      1
     ],
     [
@@ -116848,12 +115065,8 @@
      1
     ],
     [
-     "Pot Sketch",
-     1
-    ],
-    [
      "Small Piece of Ore",
-     4
+     2
     ],
     [
      "Snow Bunny Meat",
@@ -116869,7 +115082,7 @@
     ],
     [
      "Water Flask",
-     6
+     4
     ]
    ],
    "parts": [
@@ -119538,15 +117751,7 @@
    "n": "Kelorek's Scales",
    "need": [
     [
-     "Low Quality Bear Skin",
-     1
-    ],
-    [
      "Low Quality Cat Pelt",
-     1
-    ],
-    [
-     "Low Quality Wolf Skin",
      1
     ],
     [
@@ -132794,10 +130999,6 @@
      1
     ],
     [
-     "Block of Clay",
-     1
-    ],
-    [
      "Bottle of Milk",
      1
     ],
@@ -132834,10 +131035,6 @@
      1
     ],
     [
-     "High Quality Firing Sheet",
-     1
-    ],
-    [
      "Muffin",
      1
     ],
@@ -132850,10 +131047,6 @@
      1
     ],
     [
-     "Muffin Tin Sketch",
-     1
-    ],
-    [
      "Quality Firing Sheet",
      1
     ],
@@ -132863,7 +131056,7 @@
     ],
     [
      "Small Piece of Ore",
-     4
+     2
     ],
     [
      "Snake Egg",
@@ -132871,7 +131064,7 @@
     ],
     [
      "Water Flask",
-     5
+     3
     ],
     [
      "Wurm Egg",
@@ -143530,14 +141723,6 @@
    "n": "Poison Cures",
    "need": [
     [
-     "Algae Spices",
-     1
-    ],
-    [
-     "Jug of Oyster Sauces",
-     1
-    ],
-    [
      "Jug of Sauces",
      1
     ],
@@ -143997,6 +142182,7 @@
     "Wurmslayer": "Dragon_Scales_Quest"
    },
    "giver": null,
+   "hub": true,
    "items": [
     "Shawl of the Wind Spirit",
     "Used Merchants Gloves",
@@ -190230,10 +188416,6 @@
      1
     ],
     [
-     "High Quality Firing Sheet",
-     1
-    ],
-    [
      "Hopeless Willow Moss",
      1
     ],
@@ -190311,10 +188493,6 @@
     ],
     [
      "Traitor's Heart",
-     1
-    ],
-    [
-     "Unfired Pot",
      1
     ],
     [
@@ -194177,6 +192355,7 @@
     "Warlock's Wristguard": "Necromancer_Thurgadin_Armor_Quests"
    },
    "giver": null,
+   "hub": true,
    "items": [
     "Warlock's Robe",
     "Plague Bearer's Robe",
@@ -204954,10 +203133,6 @@
     "Erud's Crossing"
    ]
   },
-  "algae spices": {
-   "k": [],
-   "z": []
-  },
   "alkabors cap of binding": {
    "k": [],
    "z": []
@@ -209799,237 +207974,6 @@
    },
    "z": [
     "The Great Divide"
-   ]
-  },
-  "block of clay": {
-   "k": [
-    "drop",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor"
-   ],
-   "m": {
-    "The Gorge of King Xorbb": [
-     "a muddite elder",
-     "a muddite minor",
-     "a muddite recordkeeper",
-     "Qlei"
-    ]
-   },
-   "many": true,
-   "v": {
-    "Ak'Anon": [
-     [
-      "a clockwork miner",
-      "(760, -155)"
-     ],
-     [
-      "a clockwork potter",
-      "(750, -173)"
-     ]
-    ],
-    "Butcherblock Mountains": [
-     [
-      "Izbal Brightblaze",
-      "(-1287, -1972)"
-     ]
-    ],
-    "Cabilis East": [
-     [
-      "Klok Toren",
-      "(190, -303)"
-     ],
-     [
-      "Klok Hoga",
-      "(253, -202)"
-     ]
-    ],
-    "East Commonlands": [
-     [
-      "Merra Clayfinger",
-      "(-135, 21)"
-     ]
-    ],
-    "Erudin": [
-     [
-      "Shinan Orefinder",
-      "(-683, -246)"
-     ]
-    ],
-    "Grobb": [
-     [
-      "Okun",
-      "(683, -412)"
-     ]
-    ],
-    "Halas": [
-     [
-      "Greta O`Reilly",
-      "(78, -245)"
-     ],
-     [
-      "Merin",
-      "(260, 273)"
-     ]
-    ],
-    "High Keep": [
-     [
-      "Miner Harton",
-      "(42, -273)"
-     ]
-    ],
-    "Highpass Hold": [
-     [
-      "Winn Greenbane",
-      "(-364, -124)"
-     ]
-    ],
-    "Misty Thicket": [
-     [
-      "Topper Drodo",
-      "(585, -2357)"
-     ]
-    ],
-    "Neriak - Commons": [
-     [
-      "Glazn D`Unnar",
-      "(46, -796)"
-     ]
-    ],
-    "Neriak - Foreign Quarter": [
-     [
-      "ChonChon",
-      "(147, -92)"
-     ]
-    ],
-    "North Freeport": [
-     [
-      "Kyrin Steelbone",
-      "(-21, 470)"
-     ]
-    ],
-    "Northern Felwithe": [
-     [
-      "Bedida Claygrinder",
-      "(103, -422)"
-     ]
-    ],
-    "Oggok": [
-     [
-      "Helgara Dirtcarver",
-      "(225, 743)"
-     ],
-     [
-      "Blergerda",
-      "(191, 915)"
-     ]
-    ],
-    "Paineel": [
-     [
-      "Tentus Brackmar",
-      "(995, 810)"
-     ],
-     [
-      "Evus Doracmal",
-      "(996, 817)"
-     ]
-    ],
-    "Rivervale": [
-     [
-      "Bodbin Gimple",
-      "(-80, -370)"
-     ]
-    ],
-    "South Kaladim": [
-     [
-      "Dooni",
-      "(224, -254)"
-     ]
-    ],
-    "The Greater Faydark": [
-     [
-      "Merchant Legweien",
-      "(420, 373)"
-     ]
-    ],
-    "The Overthere": [
-     [
-      "Tin Merchant VI",
-      "(2614, 2557)"
-     ]
-    ],
-    "The Southern Desert of Ro": [
-     [
-      "Merchant Ulyssa",
-      "(128, 495)"
-     ]
-    ],
-    "The Steamfont Mountains": [
-     [
-      "Godbin Strumharp",
-      "(43, -618)"
-     ]
-    ],
-    "The Western Plains of Karana": [
-     [
-      "Tarnar",
-      "(1008, -2087)"
-     ]
-    ],
-    "West Freeport": [
-     [
-      "Gurb Smithson",
-      "(-183, -329)"
-     ]
-    ]
-   },
-   "z": [
-    "The Gorge of King Xorbb",
-    "Ak'Anon",
-    "Butcherblock Mountains",
-    "Cabilis East",
-    "East Commonlands",
-    "Erudin",
-    "North Freeport",
-    "West Freeport",
-    "The Greater Faydark",
-    "Grobb",
-    "Halas",
-    "High Keep",
-    "Highpass Hold",
-    "South Kaladim",
-    "Misty Thicket",
-    "Neriak - Foreign Quarter",
-    "Neriak - Commons",
-    "Northern Felwithe",
-    "Oggok",
-    "The Overthere",
-    "Paineel",
-    "The Western Plains of Karana",
-    "Rivervale",
-    "The Southern Desert of Ro",
-    "The Steamfont Mountains"
    ]
   },
   "block of living granite": {
@@ -233101,10 +231045,6 @@
    "k": [],
    "z": []
   },
-  "jug of oyster sauces": {
-   "k": [],
-   "z": []
-  },
   "jug of sauces": {
    "k": [
     "vendor",
@@ -236970,14 +234910,6 @@
      [
       1,
       "Mammoth Meat"
-     ],
-     [
-      1,
-      "Algae Spices"
-     ],
-     [
-      1,
-      "Jug of Oyster Sauces"
      ]
     ]
    },
@@ -238837,14 +236769,6 @@
      [
       1,
       "Water Flask"
-     ],
-     [
-      1,
-      "High Quality Firing Sheet"
-     ],
-     [
-      1,
-      "Unfired Muffin Tin"
      ]
     ]
    },
@@ -238941,111 +236865,6 @@
     "Surefall Glade",
     "Rivervale",
     "The Steamfont Mountains"
-   ]
-  },
-  "muffin tin sketch": {
-   "k": [
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor"
-   ],
-   "many": true,
-   "v": {
-    "Ak'Anon": [
-     [
-      "a clockwork sketcher",
-      "(762, -140)"
-     ]
-    ],
-    "Cabilis East": [
-     [
-      "Klok Grots",
-      "(239, -275)"
-     ]
-    ],
-    "Grobb": [
-     [
-      "Vynugga",
-      "(443, -167)"
-     ]
-    ],
-    "Halas": [
-     [
-      "Skoni",
-      "(6, -42)"
-     ]
-    ],
-    "Highpass Hold": [
-     [
-      "Min Greyeagle",
-      "(197, 461)"
-     ]
-    ],
-    "Neriak - Third Gate": [
-     [
-      "Petra D`Dbth",
-      "(1362, -1716)"
-     ]
-    ],
-    "North Freeport": [
-     [
-      "Winoyn",
-      "(-110, -177)"
-     ]
-    ],
-    "Oggok": [
-     [
-      "Kerplooe Dirtcarver",
-      "(238, 756)"
-     ]
-    ],
-    "Rivervale": [
-     [
-      "Marta Claytoe",
-      "(-160, -90)"
-     ]
-    ],
-    "The Greater Faydark": [
-     [
-      "Merchant Nildar",
-      "(867, 205)"
-     ]
-    ],
-    "The Southern Desert of Ro": [
-     [
-      "Artist Passia",
-      "(160, 444)"
-     ]
-    ],
-    "West Freeport": [
-     [
-      "Jynsa Smithson",
-      "(-178, -339)"
-     ]
-    ]
-   },
-   "z": [
-    "Ak'Anon",
-    "Cabilis East",
-    "North Freeport",
-    "West Freeport",
-    "The Greater Faydark",
-    "Grobb",
-    "Halas",
-    "Highpass Hold",
-    "Neriak - Third Gate",
-    "Oggok",
-    "Rivervale",
-    "The Southern Desert of Ro"
    ]
   },
   "mundane helm": {
@@ -242410,111 +240229,6 @@
     "The Steamfont Mountains"
    ]
   },
-  "pie tin sketch": {
-   "k": [
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor",
-    "vendor"
-   ],
-   "many": true,
-   "v": {
-    "Ak'Anon": [
-     [
-      "a clockwork sketcher",
-      "(762, -140)"
-     ]
-    ],
-    "Cabilis East": [
-     [
-      "Klok Grots",
-      "(239, -275)"
-     ]
-    ],
-    "Grobb": [
-     [
-      "Vynugga",
-      "(443, -167)"
-     ]
-    ],
-    "Halas": [
-     [
-      "Skoni",
-      "(6, -42)"
-     ]
-    ],
-    "Highpass Hold": [
-     [
-      "Min Greyeagle",
-      "(197, 461)"
-     ]
-    ],
-    "Neriak - Third Gate": [
-     [
-      "Petra D`Dbth",
-      "(1362, -1716)"
-     ]
-    ],
-    "North Freeport": [
-     [
-      "Winoyn",
-      "(-110, -177)"
-     ]
-    ],
-    "Oggok": [
-     [
-      "Kerplooe Dirtcarver",
-      "(238, 756)"
-     ]
-    ],
-    "Rivervale": [
-     [
-      "Marta Claytoe",
-      "(-160, -90)"
-     ]
-    ],
-    "The Greater Faydark": [
-     [
-      "Merchant Nildar",
-      "(867, 205)"
-     ]
-    ],
-    "The Southern Desert of Ro": [
-     [
-      "Artist Passia",
-      "(160, 444)"
-     ]
-    ],
-    "West Freeport": [
-     [
-      "Jynsa Smithson",
-      "(-178, -339)"
-     ]
-    ]
-   },
-   "z": [
-    "Ak'Anon",
-    "Cabilis East",
-    "North Freeport",
-    "West Freeport",
-    "The Greater Faydark",
-    "Grobb",
-    "Halas",
-    "Highpass Hold",
-    "Neriak - Third Gate",
-    "Oggok",
-    "Rivervale",
-    "The Southern Desert of Ro"
-   ]
-  },
   "piece of a medallion": {
    "k": [
     "drop",
@@ -243492,14 +241206,6 @@
      [
       1,
       "Water Flask"
-     ],
-     [
-      1,
-      "High Quality Firing Sheet"
-     ],
-     [
-      1,
-      "Unfired Pot"
      ]
     ]
    },
