@@ -4604,7 +4604,7 @@ function populateSkyFilters() {
    panel is not something anyone does with a corpse on the floor; reading "bank
    3 · Ethereal Mist Helm +2" while standing at the banker is the whole point. */
 const VL_KEY = "eqlt-companion-valet-v1";
-const VL = { classes: ["WAR", "CLR", "WIZ"], level: 50, mem: {}, sort: "where", dir: 1,
+const VL = { classes: ["WAR", "CLR", "WIZ"], level: 50, race: "", mem: {}, sort: "where", dir: 1,
   // the before-and-after table under the fetch list
   csort: "d", cdir: -1 };
 let VWALK = null;
@@ -4613,6 +4613,7 @@ function loadValetPrefs() {
     const o = JSON.parse(localStorage.getItem(VL_KEY)) || {};
     if (Array.isArray(o.classes) && o.classes.length === 3) VL.classes = o.classes;
     if (o.level) VL.level = Math.min(50, Math.max(1, o.level | 0));
+    if (typeof o.race === "string") VL.race = o.race;
     if (o.mem && typeof o.mem === "object") VL.mem = o.mem;
     // the By slot view's own state: which view, which slot, which columns, the gap toggle
     if (o.vs && typeof o.vs === "object") {
@@ -4630,7 +4631,7 @@ function loadValetPrefs() {
   } catch (e) {}
 }
 const saveValetPrefs = () => {
-  try { localStorage.setItem(VL_KEY, JSON.stringify({ classes: VL.classes, level: VL.level, mem: VL.mem,
+  try { localStorage.setItem(VL_KEY, JSON.stringify({ classes: VL.classes, level: VL.level, race: VL.race, mem: VL.mem,
     vs: { view: VS.view, slot: VS.slot, cols: VS.cols, gapAll: VS.gapAll,
           petLine: VS.petLine, petRank: VS.petRank,
           xesort: VS.xesort, xedir: VS.xedir, xisort: VS.xisort, xidir: VS.xidir,
@@ -4646,10 +4647,15 @@ const VL_MEM = {
 
 let VINV = null;   // { rows, equipped, unmatched, wornUnknown }
 function valetReload() {
-  /* No race here on purpose: gear-score derives its weights from the
-     character's own totals only when it has one, and this tab has no race
-     picker. Without it the weights fall back to the class/level model, exactly
-     as the site does before you choose a race. */
+  /* The race matters here and used to be missing. gear-score only reaches the
+     character's OWN stat totals when it has a race, and without them every
+     position-aware weight silently takes its most generous default: INT/WIS
+     are priced in the 101–200 band (the best one) however far past 200 you
+     actually are, STA never hits its past-255 halving, and STR never drops
+     below the 75 floor. On a SK/WIZ/CLR at INT 302 that read INT at 12.4
+     HP-equivalents instead of 3.1 — a 4× overvaluation, and the reason this
+     tab ranked Tobrin's Mystical Eyepatch over the Darkbrood Mask (Kyle,
+     2026-09-01). VL.race feeds valetScorer(); the picker is beside the trio. */
   VINV = (INV.text && GDATA) ? window.EQLValet.readInventory(INV.text, GDATA) : null;
   spareReload();
   valetRestart();
@@ -4671,12 +4677,14 @@ const PRIO_NOTE = "HP-equivalents per point of the stat, computed from your trio
 const vlOverrides = () => (VL_PRIO ? VL_PRIO.read() : {});
 let VSCORER = null;
 function valetScorer() {
-  if (!VSCORER) VSCORER = window.EQLGearScore.make({ classes: VL.classes, level: VL.level, race: null,
+  if (!VSCORER) VSCORER = window.EQLGearScore.make({ classes: VL.classes, level: VL.level, race: VL.race || null,
                                     equipped: VINV && VINV.equipped, D: window.EQL_DATA, overrides: vlOverrides() });
   return VSCORER;
 }
 function valetRestart() {
   VSCORER = null;
+  // the panel's auto column tracks the scorer this just threw away
+  setTimeout(() => { try { drawVlPrio(); drawSetPrio(); } catch (e) {} }, 0);
   VWALK = VINV ? window.EQLValet.makeWalk({ rows: VINV.rows, equipped: VINV.equipped,
                                             scorer: valetScorer(), mem: VL_MEM }) : null;
   /* The pet walk holds row objects from the old VINV and a pool cut against
@@ -4955,6 +4963,7 @@ function vlPetPanelScorer() {
   const buff = P.hasteBuffOf(PETD, VL.classes);
   return P.petScorer(pet ? pet.cls : ["WAR"], { hasteCovered: !!buff, buff, overrides: vlPetOverrides() });
 }
+let drawVlPrio = () => {}, drawSetPrio = () => {};
 let drawVlPetPrio = () => {};
 
 function vlPetCard(o, step, foot) {
@@ -5928,6 +5937,18 @@ function drawValetTrio() {
     sel.value = VL.classes[i];
   });
   $("vlLvl").value = VL.level;
+  const rsel = $("vlRace");
+  if (!rsel.options.length) {
+    /* prSniffRace() fills VL.race from your own /who line when one goes past;
+       this picker is for the log that never had one, and for correcting it. */
+    rsel.innerHTML = `<option value="">Race?</option>`
+      + ((window.EQL_ATTRIBUTES && window.EQL_ATTRIBUTES.races) || [])
+        .map((r) => `<option value="${esc(r.name)}">${esc(r.name)}</option>`).join("");
+  }
+  rsel.value = VL.race || "";
+  rsel.classList.toggle("warn", !VL.race);
+  rsel.title = VL.race ? `Naked base for ${VL.race} + your worn gear = the stat totals the weights are derived from.`
+    : "Without a race the weights can't read your own INT/WIS/STA totals, so they assume the best mana band. Pick one.";
 }
 function wireValet() {
   loadValetPrefs();
@@ -5938,6 +5959,12 @@ function wireValet() {
     // Rank's headline tie-break and its popover's "your classes" line read the trio
     saveValetPrefs(); valetRestart(); renderValet(); pushValet(); pushSpare(); renderInv();
   }));
+  $("vlRace").addEventListener("change", () => {
+    VL.race = $("vlRace").value || "";
+    // every position-aware weight (INT/WIS band, STA past 255, STR under 75)
+    // only exists once the scorer can total this character's own stats
+    saveValetPrefs(); valetRestart(); renderValet(); pushValet(); renderInv();
+  });
   $("vlLvl").addEventListener("change", () => {
     VL.level = Math.min(50, Math.max(1, $("vlLvl").value | 0 || 50));
     // every per-class scorer behind Gear and Spare is built at this level
@@ -6017,16 +6044,25 @@ function wireValet() {
   });
   $("vlOwnCols").addEventListener("click", (e) => { if (!e.target.closest("#vlColsReset")) return; VS.cols = null; saveValetPrefs(); vsRedraw(); });
   if (window.EQLPriorities && VL_PRIO) {
-    window.EQLPriorities.mount($("vlPrio"), {
+    /* The panel's "auto" column is the SCORER's numbers, and the scorer is
+       rebuilt whenever the trio, the level or the race moves — so the mount's
+       draw() has to be called from valetRestart(). Without it the panel kept
+       painting the weights it was mounted with: on Kyle's SK/WIZ/CLR it read
+       INT 12.4 while the scorer that actually ranked his gear was using 3.1
+       (2026-09-01). /valet and /gear on the site have always done this from
+       recharacter(); only this copy didn't. */
+    const VP = window.EQLPriorities.mount($("vlPrio"), {
       store: VL_PRIO, scorer: valetScorer, summary: $("vlPrioSummary"), btnClass: "btn btn--sm",
       note: PRIO_NOTE,
       onChange: () => { valetRestart(); renderValet(); pushValet(); },
     });
+    drawVlPrio = VP.draw;
     /* The Settings copy carries no onChange: a write fires the event at BOTH
        mounts, so the Valet one already redraws the tab. */
-    window.EQLPriorities.mount($("setPrio"), {
+    const SP = window.EQLPriorities.mount($("setPrio"), {
       store: VL_PRIO, scorer: valetScorer, btnClass: "btn btn--sm", note: PRIO_NOTE,
     });
+    drawSetPrio = SP.draw;
     if (VL_PET_PRIO && window.EQLPetCore) {
       const M = window.EQLPriorities.mount($("vlPetPrio"), {
         store: VL_PET_PRIO, scorer: vlPetPanelScorer, summary: $("vlPetPrioSummary"),
@@ -6235,9 +6271,28 @@ const PR = {
 /* Same head-pinning rule as capLive(): a plain tail-slice would cut the
    window's own zone-entry line, and with it both the zone readout and the
    claims-cut-at-window-start property. */
+/* Your own /who line names your race, and the Valet's weights are wrong
+   without it (see valetReload). Read it off the stream directly rather than
+   waiting for the Combat tab's full parse — this runs on every feed, so it
+   has to stay one cheap regex against lines that already mention a ZONE. */
+const WHO_SELF_RX = /\[(\d+) ([A-Z]{2,3}(?:\/[A-Z]{2,3})*)\] (\w+) \(([\w ]+)\)\s+(?:<[^>]*>\s+)?ZONE: /;
+function prSniffRace(l) {
+  if (VL.race || !CB.owner || l.indexOf("ZONE:") === -1) return;
+  const m = WHO_SELF_RX.exec(l);
+  if (!m || m[3] !== CB.owner) return;
+  const known = ((window.EQL_ATTRIBUTES && window.EQL_ATTRIBUTES.races) || [])
+    .find((r) => r.name.toLowerCase() === m[4].trim().toLowerCase());
+  if (!known) return;
+  VL.race = known.name;
+  saveValetPrefs();
+  /* prPush runs inside the bootstrap loop over the whole seed file; a redraw
+     from in there would fire before the rest of that pass has settled. */
+  setTimeout(() => { try { valetRestart(); renderValet(); pushValet(); renderInv(); } catch (e) {} }, 0);
+}
 function prPush(lines) {
   for (const l of lines) {
     if (CB_ZONE_RX.test(l)) PR.zoneLine = l;
+    prSniffRace(l);
     PR.win.push(l);
   }
   if (PR.win.length > PR_WIN_LINES) {

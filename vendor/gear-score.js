@@ -73,19 +73,61 @@
   // Derivation inputs (the sliders override the resulting WEIGHTS, not these).
   // lm: the ancestral per-class HP factor at 50 (EQEmu GetClassLevelFactor,
   // transcribed on the wiki's Game Mechanics page) — marginal HP per STA for
-  // one class pool = level × lm / 3000, HALVED above STA 255.
-  // Mana: the EQL-measured piecewise formula (theory-crafting 2026-06,
-  // cross-validated against a live character): converted-stat marginal is
-  // 1/pt to 100, 2.5/pt to 200, 1.25/pt to 510, 0 past the 510 stat cap —
-  // × the level-50 scaler 4.5. Hybrids reportedly get the SAME rate as full
-  // casters in EQL ("variance has always been from itemization").
+  // one class pool = level × lm / 3000, HALVED above STA 255. STA feeds HP
+  // ONLY here; the client's own inventory tooltip also credits it to
+  // Endurance, and that half is not modelled (see w.end).
+  // Mana: converted caster stat × the level-50 scaler 4.5, per counted pool.
+  // Hybrids get the SAME rate as full casters ("variance has always been from
+  // itemization" — kosstile, theory-crafting 2026-06-06).
   const RATES = {
     lm: { WAR: 270, SHD: 230, PAL: 230, BER: 230, RNG: 200, MNK: 180,
           BRD: 180, ROG: 180, BST: 180, CLR: 150, DRU: 150, SHM: 150,
           MAG: 120, WIZ: 120, NEC: 120, ENC: 120 },
     manaFac50: 4.5,
+    /* Converted-caster-stat marginal per RAW point, by band. × manaFac50 gives
+       mana per point per counted pool. The three bands are kosstile's
+       transcription of the LIVE-EQ formula out of the published game files
+       (theory-crafting 2026-06-06): stat ≤100 is 1:1; 101–200 is (5S−300)/2;
+       201+ is ((5(S+200))/2−300)/2 — slopes 1, 2.5 and 1.25.
+
+       `lo` and `mid` are CORROBORATED in EQL. 2.5 × 4.5 = 11.25 mana per point
+       per pool, which is malkavon's "~11 mana per point of Int/Wis" pre-200
+       (wiz-wizard 2026-08-07) and valkyrie.9's "22.5 mana per wis at least
+       under 200, at lvl 50 with 2x wis casters" (theory-crafting 2026-08-10).
+
+       `hi` is NOT 1.25, and this file used to say the whole piecewise was
+       "EQL-measured". It never was. kosstile quoted the live-EQ number and in
+       the same conversation answered "do we know whether wisdom above 200
+       provides the same mana as wisdom below 200 yet?" with "I'm still working
+       on that. I would expect it to be unchanged... my testers keep getting
+       distracted." Nobody confirmed it in EQL, and it is wrong here.
+
+       MEASURED, 2026-09-01. Kyle, SK/WIZ/CLR at INT 302 / WIS 204, swapped
+       Tobrin's Mystical Eyepatch +2 (18 INT / 18 WIS at that tier) for the
+       Darkbrood Mask +4 (9 / 9 / +70 mana) and GAINED 17 mana — both tiers
+       read off his own inventory dump, not assumed. One equation, one unknown:
+
+           70 − 18b = 17   →   b = 2.944 mana per point per pool
+           slope = b / manaFac50 = 0.654 converted per point
+
+       It does not matter which of the two was on when he read 302/204: with
+       the mask on (base 293/195) the sub-200 WIS points cancel out of both
+       sides and b is unchanged; with the eyepatch on there is no positive b
+       that fits at all, which is consistent with the mask being what he wears.
+       The live-EQ 1.25 predicts a 63-mana LOSS on that swap — it is 1.9× too
+       steep. A ±1 mana error in the reading moves the slope only 0.642–0.667.
+
+       This is ONE point's local slope at INT≈300 / WIS≈200, not the band's
+       shape: it says nothing about where the knee sits or whether EQL's curve
+       is even piecewise-linear. Seal: `client-observed` for the swap, `model`
+       for extending its slope across the whole 201+ band. The series that
+       settles the shape (and gives endurance its first slope) is in
+       docs/tools/gear.md, "Measuring the mana and endurance curves". */
+    manaConv: { lo: 1, mid: 2.5, hi: 0.654 },
     statCap: 510,      // with-gear attribute cap (player-measured)
-    staDR: 255,        // STA half-rate breakpoint (player-confirmed)
+    staDR: 255,        // STA half-rate breakpoint — kosstile, 2026-06-06: "I
+                       // also DO have confirmation that stamina scaling still
+                       // has DR at values >255"
   };
 
   const seals = (t) => `<span class="fine">${t}</span>`;
@@ -271,8 +313,9 @@
     function manaMarginal(statVal) {
       // per point, per counted pool, at the character's position in the bands
       const s = statVal == null ? 150 : statVal;   // most geared chars sit 100–200
-      const d = s >= RATES.statCap ? 0 : s > 200 ? 1.25 : s > 100 ? 2.5 : 1;
-      return RATES.manaFac50 * d;
+      const c = RATES.manaConv;
+      const d = s >= RATES.statCap ? 0 : s > 200 ? c.hi : s > 100 ? c.mid : c.lo;
+      return Math.round(RATES.manaFac50 * d * 100) / 100;
     }
     function nakedStats() {
       if (!race || !A) return null;
@@ -399,7 +442,7 @@
       const hs = hpPerSta(cur);
       w.sta = hs.rate * w.hp;
       const per = (c) => Math.round(level * RATES.lm[c] / 300) / 10;
-      why.sta = `<h5>STA → HP</h5><p>${pos("sta")}Counted HP pool${hs.counted.length > 1 ? "s (best 2 of 3)" : ""}: <b>${hs.counted.join(" + ")}</b>; each gains level × class factor / 3000 HP per STA — at ${level}: ${hs.counted.map((c) => `${c} ${per(c)}`).join(" + ")} = <b>${hs.note === "cap" ? "0 — you're at the 510 stat cap" : hs.note === "dr" ? `${hs.rate} HP per STA (halved — you're past the 255 breakpoint)` : `${hs.rate} HP per STA`}</b>. The class factors are the ancestral table (WAR 270 … INT casters 120); players confirmed the past-255 halving holds in EQL. Weight = rate × HP weight.</p>${noRace}`;
+      why.sta = `<h5>STA → HP</h5><p>${pos("sta")}Counted HP pool${hs.counted.length > 1 ? "s (best 2 of 3)" : ""}: <b>${hs.counted.join(" + ")}</b>; each gains level × class factor / 3000 HP per STA — at ${level}: ${hs.counted.map((c) => `${c} ${per(c)}`).join(" + ")} = <b>${hs.note === "cap" ? "0 — you're at the 510 stat cap" : hs.note === "dr" ? `${hs.rate} HP per STA (halved — you're past the 255 breakpoint)` : `${hs.rate} HP per STA`}</b>. The class factors are the ancestral table (WAR 270 … INT casters 120); players confirmed the past-255 halving holds in EQL. Weight = rate × HP weight.</p><p><b>This is HP only.</b> The client's own inventory tooltip says Stamina also feeds Endurance, and players measure it — 16 STA bought 38 endurance on a level-50 melee trio (theory-crafting, 2026-08-26). No pool formula for endurance has been published or measured, so none of that is in this weight and STA is undervalued by however much your endurance is worth. ${seals("(the HP half is the ancestral model; the endurance half is unmodelled)")}</p>${noRace}`;
 
       // INT/WIS through the counted pools only — the EQL-measured mana bands
       for (const stat of ["int", "wis"]) {
@@ -411,11 +454,13 @@
         w[stat] = Math.round(v * 10) / 10;
         const band = sv == null ? "assuming the 101–200 band (set your race for your real position)"
           : sv >= RATES.statCap ? "past the 510 cap — worth nothing"
-          : sv > 200 ? "in the 201+ band (diminished: 1.25 converted/pt)"
-          : sv > 100 ? "in the 101–200 band (best: 2.5 converted/pt)"
-          : "under 100 (1 converted/pt)";
+          : sv > 200 ? `past the 200 softcap (${RATES.manaConv.hi} converted/pt — the weakest band, and the least certain number in this model)`
+          : sv > 100 ? `in the 101–200 band (best: ${RATES.manaConv.mid} converted/pt)`
+          : `under 100 (${RATES.manaConv.lo} converted/pt)`;
         why[stat] = `<h5>${stat.toUpperCase()} → mana</h5><p>${pos(stat)}Counted pools: <b>${sel.counted.map((p) => `${p.c}·${p.stat.toUpperCase()}`).join(" + ") || "none"}</b> — the two biggest of the three, and a full caster's pool is always bigger than a hybrid's, so the pick is about your CLASSES and never moves when you change a ring.</p><p>${mine.length
-          ? `${stat.toUpperCase()} feeds ${mine.map((p) => p.c).join(" and ")}: you're ${band}, × the measured level-50 scaler 4.5 ≈ <b>${perPool} mana per point per pool</b>${mine.length > 1 ? ` × <b>${mine.length} counted pools that both run on ${stat.toUpperCase()}</b>` : ""} × the Mana weight — <b>${w[stat]} HP-equivalents per point</b>. The band formula is player-derived and checked against a real character's exact total; hybrids reportedly gain the same per-point rate as full casters. ${mine.length > 1 ? `Two pools on one stat is what makes this number large: the trio sums the best two, so a point of ${stat.toUpperCase()} is bought twice. ` : ""}<b>If that looks out of proportion to AC, the AC rate is the softer of the two numbers</b> — the mana chain is measured, 1 AC ≈ 3 HP is a guess (see the AC note).`
+          ? `${stat.toUpperCase()} feeds ${mine.map((p) => p.c).join(" and ")}: you're ${band}, × the level-50 scaler 4.5 ≈ <b>${perPool} mana per point per pool</b>${mine.length > 1 ? ` × <b>${mine.length} counted pools that both run on ${stat.toUpperCase()}</b>` : ""} × the Mana weight — <b>${w[stat]} HP-equivalents per point</b>. ${sv != null && sv > 200
+            ? `<b>Read this band with suspicion.</b> Below 200 the rate is confirmed in EQL (11.25 mana per point per pool, two players' own totals). Above 200 there is exactly ONE measurement: a real SK/WIZ/CLR at INT 302 swapped Tobrin's Mystical Eyepatch +2 for the Darkbrood Mask +4 and gained 17 mana, which solves to <b>${RATES.manaConv.hi} converted/pt</b> — the live-EQ formula's 1.25 predicts a 63-mana loss on that same swap. That is one point's local slope near stat 300, not the shape of the band, so treat this weight as the roughest one on the page. `
+            : "The band formula is player-derived and checked against a real character's exact total; hybrids gain the same per-point rate as full casters. "}${mine.length > 1 ? `Two pools on one stat is what makes this number large: the trio sums the best two, so a point of ${stat.toUpperCase()} is bought twice. ` : ""}<b>If that looks out of proportion to AC, both numbers are soft</b> — 1 AC ≈ 3 HP is a guess (see the AC note), and above stat 200 so is this.`
           : dropped.length
             ? `${dropped.map((p) => p.c).join("+")} draws from ${stat.toUpperCase()}, but ${dropped.length === 1 ? "its pool is the dropped third" : "those pools are dropped"} — the stat adds nothing here.`
             : `Nothing here draws mana from ${stat.toUpperCase()}.`}</p>${noRace}`;
@@ -443,7 +488,7 @@
       why.cha = `<h5>CHA</h5><p>Vendor prices and faction; charm behavior in the ancestral model${has(["ENC", "BRD"]) ? " — with ENC/BRD here, charm gives it a small real value" : ""}. Zero combat presence.</p>`;
 
       w.end = melee ? 0.3 : 0.1;
-      why.end = `<h5>Endurance</h5><p>Fuels stances and melee abilities. No published pool math; kept small.</p>`;
+      why.end = `<h5>Endurance</h5><p>Fuels stances and melee abilities — and it is the resource melee players run out of, not HP. No pool formula has been published or measured, so this weight is a flat guess and the stat feeding it is not scored at all: STA (and, players report, STR/DEX/AGI) raise endurance and only STA's HP half is modelled here. Treat this row and the STA row as a known gap, not a verdict. ${seals("(model; no endurance pool math exists — see the STA note)")}</p>`;
 
       /* One weight per resist (Kyle, 2026-08-30: "need to be able to weight
          different resists differently"). The computed default is the same
