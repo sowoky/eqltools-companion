@@ -19,7 +19,13 @@ const WIN_LOG_DIR = "C:\\Users\\Public\\Daybreak Game Company\\Installed Games\\
 const MAC_LOG_DIR = path.join(require("os").homedir(),
   "Library", "Application Support", "osxEQL", "prefix", "drive_c",
   "users", "Public", "Daybreak Game Company", "Installed Games", "EverQuest Legends", "Logs");
-const DEFAULT_LOG_DIR = process.platform === "darwin" ? MAC_LOG_DIR : WIN_LOG_DIR;
+/* norrath-legends keeps its Proton prefix separate from traditional EQ.
+   Only adopt this default if it exists; other Linux layouts use the picker. */
+const LINUX_LOG_DIR = path.join(require("os").homedir(),
+  ".local", "share", "norrath-legends", "prefix", "compatdata", "pfx", "drive_c",
+  "users", "Public", "Daybreak Game Company", "Installed Games", "EverQuest Legends", "Logs");
+const DEFAULT_LOG_DIR = process.platform === "darwin" ? MAC_LOG_DIR
+  : process.platform === "linux" ? LINUX_LOG_DIR : WIN_LOG_DIR;
 
 /* Same live site files the browser tools fetch; the app refreshes its bundled
    snapshot from them. 404 on quest-items just means the site hasn't shipped
@@ -704,7 +710,7 @@ const PAGE_DATA_RX = /^\/(log-parser\/data\/(?:con-bands|wiki-items|wiki-mobs)\.
 const PAGE_FILE_RX = /^\/(log-parser\/style\.css|_shared\/(?:theme\.css|tip\.js|fonts\/[A-Za-z0-9.-]+\.woff2))$/;
 const vendorSiteDir = () => path.join(__dirname, "vendor", "site");
 protocol.registerSchemesAsPrivileged([
-  { scheme: "eqlt", privileges: { standard: true, secure: true, supportFetchAPI: true } },
+  { scheme: "eqlt", privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true } },
 ]);
 const PAGE_MIME = {
   ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8",
@@ -716,7 +722,11 @@ const PAGE_MIME = {
 function pageResponse(p) {
   try {
     const body = fs.readFileSync(p);
-    return new Response(body, { headers: { "content-type": PAGE_MIME[path.extname(p)] || "application/octet-stream" } });
+    // The file:// renderer fetches these allowlisted public app resources.
+    return new Response(body, { headers: {
+      "content-type": PAGE_MIME[path.extname(p)] || "application/octet-stream",
+      "access-control-allow-origin": "*",
+    } });
   } catch { return null; }
 }
 function registerPageProtocol() {
@@ -865,7 +875,7 @@ ipcMain.on("update:openPage", () => shell.openExternal(RELEASES_URL));
 ipcMain.handle("log:pickDir", async () => {
   const r = await dialog.showOpenDialog(mainWin, {
     title: "Pick the EverQuest Legends Logs folder",
-    defaultPath: SETTINGS.logDir || DEFAULT_LOG_DIR,
+    defaultPath: SETTINGS.logDir || (fs.existsSync(DEFAULT_LOG_DIR) ? DEFAULT_LOG_DIR : require("os").homedir()),
     properties: ["openDirectory"],
   });
   if (r.canceled || !r.filePaths.length) return SETTINGS.logDir || null;
@@ -1224,5 +1234,5 @@ else {
    files. Electron itself ignores a main script's exports. */
 module.exports = {
   readRange, readTail, readAppended, loadSettings, loadDatasets, refreshDatasets, MIN_SCHEMA,
-  settings: () => SETTINGS, REFRESH_MS, REFRESH_RETRY_MS,
+  settings: () => SETTINGS, REFRESH_MS, REFRESH_RETRY_MS, registerPageProtocol,
 };

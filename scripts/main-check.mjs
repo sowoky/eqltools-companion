@@ -11,7 +11,9 @@
    - refreshDatasets: per-file clocks — a failed or partial pass never marks a
      file refreshed; failed files retry after REFRESH_RETRY_MS, good ones wait
      REFRESH_MS; a legacy single-number settings value still loads.
-   - MIN_SCHEMA: a cached gear-data below the floor yields to the bundle. */
+   - MIN_SCHEMA: a cached gear-data below the floor yields to the bundle.
+   - eqlt://: cross-origin renderer fetches can read allowlisted resources;
+     unrelated local files remain inaccessible. */
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -26,13 +28,17 @@ const Module = require("node:module");
 const userData = fs.mkdtempSync(path.join(os.tmpdir(), "eqlc-userdata-"));
 const noop = () => {};
 const chain = new Proxy(function () {}, { get: () => chain, apply: () => chain });
+let schemes, pageHandler;
 const electron = {
   app: {
     isPackaged: false, getPath: () => userData, getVersion: () => "0.0.0-check",
     requestSingleInstanceLock: () => false, quit: noop, on: noop, whenReady: () => Promise.resolve(),
   },
   ipcMain: { handle: noop, on: noop },
-  protocol: { registerSchemesAsPrivileged: noop, handle: noop },
+  protocol: {
+    registerSchemesAsPrivileged: value => { schemes = value; },
+    handle: (_scheme, handler) => { pageHandler = handler; },
+  },
   BrowserWindow: chain, Menu: chain, dialog: chain, shell: chain, globalShortcut: chain, screen: chain,
 };
 const realLoad = Module._load;
@@ -172,6 +178,24 @@ check("schema-1 gear cache yields to the bundled snapshot", () => {
 fs.writeFileSync(gearCache, JSON.stringify({ schema: 2, items: {}, effects: {}, zone_oe: [] }));
 ds = M.loadDatasets();
 check("schema-2 gear cache is used", () => assert.equal(ds["gear-data.json"].source, "cached"));
+
+/* ── D: renderer access to allowlisted protocol resources ──────────────── */
+M.registerPageProtocol();
+check("eqlt scheme permits cross-origin fetches", () => {
+  assert.equal(schemes.find(s => s.scheme === "eqlt").privileges.corsEnabled, true);
+});
+const response = pageHandler({ url: "eqlt://app/log-parser/data/wiki-items.json" });
+const body = await response.json();
+check("allowlisted JSON is readable with CORS and its original MIME type", () => {
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("access-control-allow-origin"), "*");
+  assert.equal(response.headers.get("content-type"), "application/json; charset=utf-8");
+  assert.ok(body && typeof body === "object");
+});
+check("protocol cannot expose settings or arbitrary local files", () => {
+  assert.equal(pageHandler({ url: "eqlt://app/settings.json" }).status, 404);
+  assert.equal(pageHandler({ url: "eqlt://app/../../package.json" }).status, 404);
+});
 
 fs.rmSync(userData, { recursive: true, force: true });
 fs.rmSync(logDir, { recursive: true, force: true });
