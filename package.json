@@ -14,10 +14,12 @@
     "predist:win": "npm run sync",
     "dist:win": "electron-builder --win --x64",
     "predist:mac": "npm run sync",
-    "dist:mac": "electron-builder --mac dmg --arm64"
+    "dist:mac": "electron-builder --mac dmg --arm64",
+    "predist:linux": "npm run sync",
+    "dist:linux": "electron-builder --linux tar.gz --x64"
   },
   "devDependencies": {
-    "electron": "^38.2.0",
+    "electron": "44.4.5",
     "electron-builder": "^26.0.12"
   },
   "build": {
@@ -63,6 +65,11 @@
           ]
         }
       ]
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "category": "Game",
+      "artifactName": "EQL-Tools-Companion-${version}-linux-${arch}.${ext}"
     },
     "dmg": {
       "artifactName": "EQL-Tools-Companion-${version}-arm64.dmg"

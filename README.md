@@ -1,9 +1,9 @@
 # EQL Tools Companion
 
-Windows companion app for [eqltools.com](https://eqltools.com) — reads your
+Companion app for [eqltools.com](https://eqltools.com) — reads your
 EverQuest Legends log file in real time and can overlay the game window.
 
-**Download:** grab `EQL-Tools-Companion-Setup-<version>.exe` from the
+**Windows download:** grab `EQL-Tools-Companion-Setup-<version>.exe` from the
 [latest release](https://github.com/sowoky/eqltools-companion/releases/latest).
 It installs per-user — no admin rights needed — and keeps itself updated.
 
@@ -55,10 +55,63 @@ Logging must be on in game: `/log`.
 
 ## Build
 
+Use Node.js 22.12 or newer (Node.js 24 LTS is a suitable choice). The locked
+Electron runtime is 44.4.5; Electron 38 is past its support window.
+
 ```
-npm install
+npm ci
+node scripts/main-check.mjs
 npm run dist:win     # → dist/  (per-user installer, x64)
 ```
+
+### Linux x64
+
+The app runs natively beside the Legends Windows client under Wine/Proton.
+Build a portable archive from the published checkout:
+
+```bash
+npm ci
+node scripts/main-check.mjs
+npm run dist:linux   # → dist/EQL-Tools-Companion-<version>-linux-x64.tar.gz
+```
+
+Extract the archive and run `./eqltools-companion --ozone-platform=x11` from
+the extracted directory. XWayland was tested on Ubuntu 24.04; native Wayland
+overlay behavior has not been validated. The archive does not install system
+files or update itself in place. Settings can notify you of a newer release.
+
+The default Linux log folder is the isolated
+[norrath-legends](https://github.com/williamzujkowski/norrath-legends) Proton
+prefix under `~/.local/share/norrath-legends/`. It is selected only if it
+exists. For other install layouts, use **Settings → Log folder** to choose
+the Legends `Logs` directory. Type `/log on` in game. Inventory and
+achievements exports beside `Logs` are watched automatically.
+
+Ubuntu can report “No usable sandbox” for a user-owned Electron archive
+because AppArmor restricts unprivileged user namespaces. On the tested host,
+Google Chrome already provides `/opt/google/chrome/chrome-sandbox`, owned by
+root with mode `4755`. In that specific setup, use the existing helper:
+
+```bash
+# Run once in the extracted Companion directory.
+mv chrome-sandbox chrome-sandbox.unconfigured
+CHROME_DEVEL_SANDBOX=/opt/google/chrome/chrome-sandbox \
+  ./eqltools-companion --ozone-platform=x11
+```
+
+For a source run, rename `node_modules/electron/dist/chrome-sandbox` instead
+and use the same environment variable with
+`node_modules/.bin/electron . --ozone-platform=x11`. This preserves Chromium's
+sandbox and leaves AppArmor unchanged. Check that the system helper has the
+stated ownership and mode before using it; this workaround requires an
+existing Chrome installation. Do not use `--no-sandbox` for an app that
+fetches network data. [Chromium's Ubuntu sandbox guidance](https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md)
+explains the restriction and supported setup choices.
+
+Linux validation so far: the app reads a live Legends log, imports an
+inventory export, and displays its overlay on the tested Ubuntu host. Live
+kill/loot/experience parsing and Windows/macOS behavior with the upgraded
+Electron runtime still need validation.
 
 Works from this repo as published: `vendor/` (the site's canonical
 parsing/credit modules, copied verbatim from eqltools `public/kills/`) and
